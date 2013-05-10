@@ -1,0 +1,27 @@
+
+enum WebsocketState {
+ wsInvalid = 0,
+ wsConnecting = 1,
+ wsConnected,
+ wsClosed,
+ wsError
+};
+
+
+typedef int WEBSOCKET_ID;
+
+class WebsocketManager : public cocos2d::CCObject {
+
+ static WebsocketManager* sharedWebsocketManager();
+
+ WEBSOCKET_ID connect(const char* uri, LUA_FUNCTION on_open_handler, LUA_FUNCTION on_close_handler, LUA_FUNCTION on_message_handler, LUA_FUNCTION on_error_handler);
+ void close(WEBSOCKET_ID websocket);
+
+ bool send(WEBSOCKET_ID websocket, const char* message);
+
+ void close_all_websockets();
+
+ WebsocketState get_websocket_state(WEBSOCKET_ID websocket);
+ bool is_connected(WEBSOCKET_ID websocket);
+
+};
