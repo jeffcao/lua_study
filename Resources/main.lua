@@ -28,123 +28,9 @@ end
 
 local json = require "cjson"
 
-login_websocket = nil
 
-local function __bind(fn, obj)
-    return function(event) fn(obj, event) end
-end
-
-
-local function connect_websocket()
-	local websocket_id = 0
-	local function on_message(message)
-		print("[on_message] [socket_id: " .. websocket_id .. "] message => " .. message)
-	end
-	
-	local function on_open(message)
-		print("[on_open] [socket_id: " .. websocket_id .. "] message => " .. message)
-	end
-	
-	local function on_close(message)
-		print("[on_close] [socket_id: " .. websocket_id .. "] message => " .. message)
-	end
-	
-	local function on_error(message)
-		print("[on_error] [socket_id: " .. websocket_id .. "] message => " .. message)
-	end
-	
-	print("start to connect socket....")
-	local socketManager = WebsocketManager:sharedWebsocketManager()
-	websocket_id = socketManager:connect("ws://192.168.9.165/websocket", on_open, on_close, on_message, on_error )
-	print("websocket_id => " .. websocket_id)
-	
-	return websocket_id
-end
-
-local function sign_success(data)
-	print("[sign_success] updating local user info.")
-	local userDefault = CCUserDefault:sharedUserDefault()
-	userDefault:setStringForKey("user.user_id", data.user_id)
-	userDefault:setStringForKey("user.token", data.token)
-end
-
-local function sign_failure(data)
-	print("[sign_failure] ")
-end
-
-local function do_signup()
-	local new_event = {}
-	new_event.sign_type = "100"
-	
-	login_websocket:trigger("login.sign_up", {retry="0", sign_type="100"} , sign_success, sign_failure )
-end
-
-local function on_server_test(data)
-	print("[on_server_test] username ==> " , data.user_name)
-end
-
-local function do_login(event)
-	print(string.format("[do_login] event: %s", json.encode(event) ))
-	print(string.format("[do_login] connection_id: %d", event.connection_id))
-	if not login_websocket.already_bound then
-		login_websocket:bind("server_test", on_server_test)
-		login_websocket.already_bound = true
-	end
-	
-	local userDefault = CCUserDefault:sharedUserDefault()
-	local user_id = userDefault:getStringForKey("user.user_id")
-	local user_token = userDefault:getStringForKey("user.token")
-	
-	print(string.format("user_id => [%s], user_token => [%s]", user_id, user_token))
-	
-	if user_id == "" or user_token == "" then
-		do_signup()
-		return
-	end
-	
-	-- fast login
-	local event_data = {retry="0", login_type="102", user_id = user_id, token = user_token, version="1.0"}
-	
-	login_websocket:trigger("login.sign_in", event_data, sign_success, function(data) 
-			print("login failed, try to sign up")
-			do_signup()
-		end )
-	
-end
-
-local function init_websocket()
-	login_websocket = WebSocketRails:new("ws://login.game.170022.cn/websocket", true)
-	login_websocket.on_open = function(event) do_login(event) end 
-end
-
-
-local function create_progress_animation(layer, sprite)
-	local frameCache = CCSpriteFrameCache:sharedSpriteFrameCache()
-	if frameCache == nil then
-		print("frame cache is null")
-	end
-	
-	local animationCache = CCAnimationCache:sharedAnimationCache()
-	--frameCache:addSpriteFramesWithFile("ccbResources/landing.plist")
-	local frames = CCArray:create()
-	for i=1, 10 do
-		local image_file = string.format("load%02d.png", i)
-		print(image_file)
-		local frame = frameCache:spriteFrameByName(image_file)
-		if frame == nil then
-			print("frame should not be nil")
-		end
-		frames:addObject(frame)		
-	end
-	
-	local anim = CCAnimation:createWithSpriteFrames(frames, 0.05);
-	animationCache:addAnimation(anim, "progress")
-	
-	local animate = CCAnimate:create(anim)
-	sprite:runAction( CCRepeatForever:create(animate) )
-	
-	
-	
+function __bind(fn, obj)
+	return function(...) fn(obj, ...) end
 end
 
 local function main()
@@ -157,6 +43,8 @@ local function main()
     local cclog = function(...)
         print(string.format(...))
     end
+    
+	Timer.scheduler = CCDirector:sharedDirector():getScheduler()
 
 	GlobalSetting.user_info = UserInfo:new()
 	WebSocketRails.config = GlobalSetting
