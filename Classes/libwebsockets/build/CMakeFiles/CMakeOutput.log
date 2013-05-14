@@ -1,0 +1,548 @@
+The system is: Darwin - 12.3.0 - i386
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is Clang, found in "/Users/edwardzhou/install/libwebsockets/build/CMakeFiles/2.8.10.2/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is Clang, found in "/Users/edwardzhou/install/libwebsockets/build/CMakeFiles/2.8.10.2/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1455837670/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1455837670.dir/build.make CMakeFiles/cmTryCompileExec1455837670.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1455837670.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1455837670.dir/testCCompiler.c.o   -c /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec1455837670
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1455837670.dir/link.txt --verbose=1
+/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec1455837670.dir/testCCompiler.c.o  -o cmTryCompileExec1455837670  
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2047144032/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2047144032.dir/build.make CMakeFiles/cmTryCompileExec2047144032.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2047144032.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec2047144032.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec2047144032
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2047144032.dir/link.txt --verbose=1
+/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names -v CMakeFiles/cmTryCompileExec2047144032.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec2047144032   
+Apple LLVM version 4.2 (clang-425.0.28) (based on LLVM 3.2svn)
+Target: x86_64-apple-darwin12.3.0
+Thread model: posix
+ "/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.8.0 -o cmTryCompileExec2047144032 -search_paths_first -headerpad_max_install_names CMakeFiles/cmTryCompileExec2047144032.dir/CMakeCCompilerABI.c.o -lSystem /usr/bin/../lib/clang/4.2/lib/darwin/libclang_rt.osx.a
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:/usr/bin/gmake "cmTryCompileExec2047144032/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2047144032.dir/build.make CMakeFiles/cmTryCompileExec2047144032.dir/build]
+  ignore line: [/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec2047144032.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTryCompileExec2047144032.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec2047144032]
+  ignore line: [/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2047144032.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names -v CMakeFiles/cmTryCompileExec2047144032.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec2047144032   ]
+  ignore line: [Apple LLVM version 4.2 (clang-425.0.28) (based on LLVM 3.2svn)]
+  ignore line: [Target: x86_64-apple-darwin12.3.0]
+  ignore line: [Thread model: posix]
+  link line: [ "/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.8.0 -o cmTryCompileExec2047144032 -search_paths_first -headerpad_max_install_names CMakeFiles/cmTryCompileExec2047144032.dir/CMakeCCompilerABI.c.o -lSystem /usr/bin/../lib/clang/4.2/lib/darwin/libclang_rt.osx.a]
+    arg [/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [x86_64] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [10.8.0] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec2047144032] ==> ignore
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec2047144032.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lSystem] ==> lib [System]
+    arg [/usr/bin/../lib/clang/4.2/lib/darwin/libclang_rt.osx.a] ==> lib [/usr/bin/../lib/clang/4.2/lib/darwin/libclang_rt.osx.a]
+  remove lib [System]
+  implicit libs: [/usr/bin/../lib/clang/4.2/lib/darwin/libclang_rt.osx.a]
+  implicit dirs: []
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1804631495/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1804631495.dir/build.make CMakeFiles/cmTryCompileExec1804631495.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1804631495.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec1804631495.dir/testCXXCompiler.cxx.o -c /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec1804631495
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1804631495.dir/link.txt --verbose=1
+/usr/bin/c++       -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec1804631495.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec1804631495  
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1436844967/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1436844967.dir/build.make CMakeFiles/cmTryCompileExec1436844967.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1436844967.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec1436844967.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec1436844967
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1436844967.dir/link.txt --verbose=1
+/usr/bin/c++       -Wl,-search_paths_first -Wl,-headerpad_max_install_names -v CMakeFiles/cmTryCompileExec1436844967.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1436844967   
+Apple LLVM version 4.2 (clang-425.0.28) (based on LLVM 3.2svn)
+Target: x86_64-apple-darwin12.3.0
+Thread model: posix
+ "/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.8.0 -o cmTryCompileExec1436844967 -search_paths_first -headerpad_max_install_names CMakeFiles/cmTryCompileExec1436844967.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lSystem /usr/bin/../lib/clang/4.2/lib/darwin/libclang_rt.osx.a
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:/usr/bin/gmake "cmTryCompileExec1436844967/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1436844967.dir/build.make CMakeFiles/cmTryCompileExec1436844967.dir/build]
+  ignore line: [/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec1436844967.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTryCompileExec1436844967.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec1436844967]
+  ignore line: [/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1436844967.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++       -Wl,-search_paths_first -Wl,-headerpad_max_install_names -v CMakeFiles/cmTryCompileExec1436844967.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1436844967   ]
+  ignore line: [Apple LLVM version 4.2 (clang-425.0.28) (based on LLVM 3.2svn)]
+  ignore line: [Target: x86_64-apple-darwin12.3.0]
+  ignore line: [Thread model: posix]
+  link line: [ "/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.8.0 -o cmTryCompileExec1436844967 -search_paths_first -headerpad_max_install_names CMakeFiles/cmTryCompileExec1436844967.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lSystem /usr/bin/../lib/clang/4.2/lib/darwin/libclang_rt.osx.a]
+    arg [/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [x86_64] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [10.8.0] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec1436844967] ==> ignore
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec1436844967.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lSystem] ==> lib [System]
+    arg [/usr/bin/../lib/clang/4.2/lib/darwin/libclang_rt.osx.a] ==> lib [/usr/bin/../lib/clang/4.2/lib/darwin/libclang_rt.osx.a]
+  remove lib [System]
+  implicit libs: [stdc++;/usr/bin/../lib/clang/4.2/lib/darwin/libclang_rt.osx.a]
+  implicit dirs: []
+
+
+Determining if the function bzero exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3895153707/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3895153707.dir/build.make CMakeFiles/cmTryCompileExec3895153707.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3895153707.dir/CheckFunctionExists.c.o
+/usr/bin/cc  -DKEYWORD=__inline -DCHECK_FUNCTION_EXISTS=bzero   -o CMakeFiles/cmTryCompileExec3895153707.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c
+/usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c:3:6: warning: incompatible redeclaration of library function 'bzero'
+char CHECK_FUNCTION_EXISTS();
+     ^
+<command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+#define CHECK_FUNCTION_EXISTS bzero
+                              ^
+/usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c:3:6: note: 'bzero' is a builtin with type 'void (void *, unsigned long)'
+char CHECK_FUNCTION_EXISTS();
+     ^
+<command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+#define CHECK_FUNCTION_EXISTS bzero
+                              ^
+1 warning generated.
+Linking C executable cmTryCompileExec3895153707
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3895153707.dir/link.txt --verbose=1
+/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=bzero -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec3895153707.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3895153707  
+
+
+Determining if the function fork exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec4154920376/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec4154920376.dir/build.make CMakeFiles/cmTryCompileExec4154920376.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec4154920376.dir/CheckFunctionExists.c.o
+/usr/bin/cc  -DKEYWORD=__inline -DCHECK_FUNCTION_EXISTS=fork   -o CMakeFiles/cmTryCompileExec4154920376.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec4154920376
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4154920376.dir/link.txt --verbose=1
+/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=fork -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec4154920376.dir/CheckFunctionExists.c.o  -o cmTryCompileExec4154920376  
+
+
+Determining if the function malloc exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec4162246455/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec4162246455.dir/build.make CMakeFiles/cmTryCompileExec4162246455.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec4162246455.dir/CheckFunctionExists.c.o
+/usr/bin/cc  -DKEYWORD=__inline -DCHECK_FUNCTION_EXISTS=malloc   -o CMakeFiles/cmTryCompileExec4162246455.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c
+/usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c:3:6: warning: incompatible redeclaration of library function 'malloc'
+char CHECK_FUNCTION_EXISTS();
+     ^
+<command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+#define CHECK_FUNCTION_EXISTS malloc
+                              ^
+/usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c:3:6: note: 'malloc' is a builtin with type 'void *(unsigned long)'
+char CHECK_FUNCTION_EXISTS();
+     ^
+<command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+#define CHECK_FUNCTION_EXISTS malloc
+                              ^
+1 warning generated.
+Linking C executable cmTryCompileExec4162246455
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4162246455.dir/link.txt --verbose=1
+/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=malloc -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec4162246455.dir/CheckFunctionExists.c.o  -o cmTryCompileExec4162246455  
+
+
+Determining if the function memset exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1938155765/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1938155765.dir/build.make CMakeFiles/cmTryCompileExec1938155765.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1938155765.dir/CheckFunctionExists.c.o
+/usr/bin/cc  -DKEYWORD=__inline -DCHECK_FUNCTION_EXISTS=memset   -o CMakeFiles/cmTryCompileExec1938155765.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c
+/usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c:3:6: warning: incompatible redeclaration of library function 'memset'
+char CHECK_FUNCTION_EXISTS();
+     ^
+<command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+#define CHECK_FUNCTION_EXISTS memset
+                              ^
+/usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c:3:6: note: 'memset' is a builtin with type 'void *(void *, int, unsigned long)'
+char CHECK_FUNCTION_EXISTS();
+     ^
+<command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+#define CHECK_FUNCTION_EXISTS memset
+                              ^
+1 warning generated.
+Linking C executable cmTryCompileExec1938155765
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1938155765.dir/link.txt --verbose=1
+/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=memset -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec1938155765.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1938155765  
+
+
+Determining if the function realloc exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec4168606361/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec4168606361.dir/build.make CMakeFiles/cmTryCompileExec4168606361.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec4168606361.dir/CheckFunctionExists.c.o
+/usr/bin/cc  -DKEYWORD=__inline -DCHECK_FUNCTION_EXISTS=realloc   -o CMakeFiles/cmTryCompileExec4168606361.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c
+/usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c:3:6: warning: incompatible redeclaration of library function 'realloc'
+char CHECK_FUNCTION_EXISTS();
+     ^
+<command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+#define CHECK_FUNCTION_EXISTS realloc
+                              ^
+/usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c:3:6: note: 'realloc' is a builtin with type 'void *(void *, unsigned long)'
+char CHECK_FUNCTION_EXISTS();
+     ^
+<command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+#define CHECK_FUNCTION_EXISTS realloc
+                              ^
+1 warning generated.
+Linking C executable cmTryCompileExec4168606361
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4168606361.dir/link.txt --verbose=1
+/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=realloc -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec4168606361.dir/CheckFunctionExists.c.o  -o cmTryCompileExec4168606361  
+
+
+Determining if the function socket exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3471371286/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3471371286.dir/build.make CMakeFiles/cmTryCompileExec3471371286.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3471371286.dir/CheckFunctionExists.c.o
+/usr/bin/cc  -DKEYWORD=__inline -DCHECK_FUNCTION_EXISTS=socket   -o CMakeFiles/cmTryCompileExec3471371286.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec3471371286
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3471371286.dir/link.txt --verbose=1
+/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=socket -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec3471371286.dir/CheckFunctionExists.c.o  -o cmTryCompileExec3471371286  
+
+
+Determining if the function strerror exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2168479282/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2168479282.dir/build.make CMakeFiles/cmTryCompileExec2168479282.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2168479282.dir/CheckFunctionExists.c.o
+/usr/bin/cc  -DKEYWORD=__inline -DCHECK_FUNCTION_EXISTS=strerror   -o CMakeFiles/cmTryCompileExec2168479282.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c
+/usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c:3:6: warning: incompatible redeclaration of library function 'strerror'
+char CHECK_FUNCTION_EXISTS();
+     ^
+<command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+#define CHECK_FUNCTION_EXISTS strerror
+                              ^
+/usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c:3:6: note: 'strerror' is a builtin with type 'char *(int)'
+char CHECK_FUNCTION_EXISTS();
+     ^
+<command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+#define CHECK_FUNCTION_EXISTS strerror
+                              ^
+1 warning generated.
+Linking C executable cmTryCompileExec2168479282
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2168479282.dir/link.txt --verbose=1
+/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=strerror -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2168479282.dir/CheckFunctionExists.c.o  -o cmTryCompileExec2168479282  
+
+
+Determining if the function vfork exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec762951905/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec762951905.dir/build.make CMakeFiles/cmTryCompileExec762951905.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec762951905.dir/CheckFunctionExists.c.o
+/usr/bin/cc  -DKEYWORD=__inline -DCHECK_FUNCTION_EXISTS=vfork   -o CMakeFiles/cmTryCompileExec762951905.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c
+/usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c:3:6: warning: incompatible redeclaration of library function 'vfork'
+char CHECK_FUNCTION_EXISTS();
+     ^
+<command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+#define CHECK_FUNCTION_EXISTS vfork
+                              ^
+/usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c:3:6: note: 'vfork' is a builtin with type 'int (void)'
+char CHECK_FUNCTION_EXISTS();
+     ^
+<command line>:2:31: note: expanded from macro 'CHECK_FUNCTION_EXISTS'
+#define CHECK_FUNCTION_EXISTS vfork
+                              ^
+1 warning generated.
+Linking C executable cmTryCompileExec762951905
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec762951905.dir/link.txt --verbose=1
+/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=vfork -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec762951905.dir/CheckFunctionExists.c.o  -o cmTryCompileExec762951905  
+
+
+Determining if the function getifaddrs exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1708507093/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1708507093.dir/build.make CMakeFiles/cmTryCompileExec1708507093.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1708507093.dir/CheckFunctionExists.c.o
+/usr/bin/cc  -DKEYWORD=__inline -DCHECK_FUNCTION_EXISTS=getifaddrs   -o CMakeFiles/cmTryCompileExec1708507093.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/2.8.10.2/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1708507093
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1708507093.dir/link.txt --verbose=1
+/usr/bin/cc     -DCHECK_FUNCTION_EXISTS=getifaddrs -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec1708507093.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1708507093  
+
+
+Determining if the include file dlfcn.h exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2426934085/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2426934085.dir/build.make CMakeFiles/cmTryCompileExec2426934085.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2426934085.dir/CheckIncludeFile.c.o
+/usr/bin/cc  -DKEYWORD=__inline  -o CMakeFiles/cmTryCompileExec2426934085.dir/CheckIncludeFile.c.o   -c /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec2426934085
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2426934085.dir/link.txt --verbose=1
+/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2426934085.dir/CheckIncludeFile.c.o  -o cmTryCompileExec2426934085  
+
+
+Determining if the include file fcntl.h exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2270344212/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2270344212.dir/build.make CMakeFiles/cmTryCompileExec2270344212.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2270344212.dir/CheckIncludeFile.c.o
+/usr/bin/cc  -DKEYWORD=__inline  -o CMakeFiles/cmTryCompileExec2270344212.dir/CheckIncludeFile.c.o   -c /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec2270344212
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2270344212.dir/link.txt --verbose=1
+/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2270344212.dir/CheckIncludeFile.c.o  -o cmTryCompileExec2270344212  
+
+
+Determining if the include file inttypes.h exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1807141263/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1807141263.dir/build.make CMakeFiles/cmTryCompileExec1807141263.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1807141263.dir/CheckIncludeFile.c.o
+/usr/bin/cc  -DKEYWORD=__inline  -o CMakeFiles/cmTryCompileExec1807141263.dir/CheckIncludeFile.c.o   -c /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec1807141263
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1807141263.dir/link.txt --verbose=1
+/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec1807141263.dir/CheckIncludeFile.c.o  -o cmTryCompileExec1807141263  
+
+
+Determining if the include file memory.h exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2730650136/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2730650136.dir/build.make CMakeFiles/cmTryCompileExec2730650136.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2730650136.dir/CheckIncludeFile.c.o
+/usr/bin/cc  -DKEYWORD=__inline  -o CMakeFiles/cmTryCompileExec2730650136.dir/CheckIncludeFile.c.o   -c /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec2730650136
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2730650136.dir/link.txt --verbose=1
+/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2730650136.dir/CheckIncludeFile.c.o  -o cmTryCompileExec2730650136  
+
+
+Determining if the include file netinet/in.h exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec651497127/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec651497127.dir/build.make CMakeFiles/cmTryCompileExec651497127.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec651497127.dir/CheckIncludeFile.c.o
+/usr/bin/cc  -DKEYWORD=__inline  -o CMakeFiles/cmTryCompileExec651497127.dir/CheckIncludeFile.c.o   -c /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec651497127
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec651497127.dir/link.txt --verbose=1
+/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec651497127.dir/CheckIncludeFile.c.o  -o cmTryCompileExec651497127  
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2689063050/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2689063050.dir/build.make CMakeFiles/cmTryCompileExec2689063050.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2689063050.dir/CheckIncludeFile.c.o
+/usr/bin/cc  -DKEYWORD=__inline  -o CMakeFiles/cmTryCompileExec2689063050.dir/CheckIncludeFile.c.o   -c /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec2689063050
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2689063050.dir/link.txt --verbose=1
+/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2689063050.dir/CheckIncludeFile.c.o  -o cmTryCompileExec2689063050  
+
+
+Determining if the include file stdlib.h exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2182160631/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2182160631.dir/build.make CMakeFiles/cmTryCompileExec2182160631.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2182160631.dir/CheckIncludeFile.c.o
+/usr/bin/cc  -DKEYWORD=__inline  -o CMakeFiles/cmTryCompileExec2182160631.dir/CheckIncludeFile.c.o   -c /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec2182160631
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2182160631.dir/link.txt --verbose=1
+/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2182160631.dir/CheckIncludeFile.c.o  -o cmTryCompileExec2182160631  
+
+
+Determining if the include file strings.h exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1490617445/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1490617445.dir/build.make CMakeFiles/cmTryCompileExec1490617445.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1490617445.dir/CheckIncludeFile.c.o
+/usr/bin/cc  -DKEYWORD=__inline  -o CMakeFiles/cmTryCompileExec1490617445.dir/CheckIncludeFile.c.o   -c /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec1490617445
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1490617445.dir/link.txt --verbose=1
+/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec1490617445.dir/CheckIncludeFile.c.o  -o cmTryCompileExec1490617445  
+
+
+Determining if the include file string.h exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1218176546/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1218176546.dir/build.make CMakeFiles/cmTryCompileExec1218176546.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1218176546.dir/CheckIncludeFile.c.o
+/usr/bin/cc  -DKEYWORD=__inline  -o CMakeFiles/cmTryCompileExec1218176546.dir/CheckIncludeFile.c.o   -c /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec1218176546
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1218176546.dir/link.txt --verbose=1
+/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec1218176546.dir/CheckIncludeFile.c.o  -o cmTryCompileExec1218176546  
+
+
+Determining if the include file sys/socket.h exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec4171137813/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec4171137813.dir/build.make CMakeFiles/cmTryCompileExec4171137813.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec4171137813.dir/CheckIncludeFile.c.o
+/usr/bin/cc  -DKEYWORD=__inline  -o CMakeFiles/cmTryCompileExec4171137813.dir/CheckIncludeFile.c.o   -c /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec4171137813
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4171137813.dir/link.txt --verbose=1
+/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec4171137813.dir/CheckIncludeFile.c.o  -o cmTryCompileExec4171137813  
+
+
+Determining if the include file sys/stat.h exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1874462669/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1874462669.dir/build.make CMakeFiles/cmTryCompileExec1874462669.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1874462669.dir/CheckIncludeFile.c.o
+/usr/bin/cc  -DKEYWORD=__inline  -o CMakeFiles/cmTryCompileExec1874462669.dir/CheckIncludeFile.c.o   -c /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec1874462669
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1874462669.dir/link.txt --verbose=1
+/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec1874462669.dir/CheckIncludeFile.c.o  -o cmTryCompileExec1874462669  
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2173170096/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2173170096.dir/build.make CMakeFiles/cmTryCompileExec2173170096.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2173170096.dir/CheckIncludeFile.c.o
+/usr/bin/cc  -DKEYWORD=__inline  -o CMakeFiles/cmTryCompileExec2173170096.dir/CheckIncludeFile.c.o   -c /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec2173170096
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2173170096.dir/link.txt --verbose=1
+/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2173170096.dir/CheckIncludeFile.c.o  -o cmTryCompileExec2173170096  
+
+
+Determining if the include file unistd.h exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2165480331/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2165480331.dir/build.make CMakeFiles/cmTryCompileExec2165480331.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2165480331.dir/CheckIncludeFile.c.o
+/usr/bin/cc  -DKEYWORD=__inline  -o CMakeFiles/cmTryCompileExec2165480331.dir/CheckIncludeFile.c.o   -c /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec2165480331
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2165480331.dir/link.txt --verbose=1
+/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2165480331.dir/CheckIncludeFile.c.o  -o cmTryCompileExec2165480331  
+
+
+Determining if the include file zlib.h exists passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3196755022/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3196755022.dir/build.make CMakeFiles/cmTryCompileExec3196755022.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3196755022.dir/CheckIncludeFile.c.o
+/usr/bin/cc  -DKEYWORD=__inline  -o CMakeFiles/cmTryCompileExec3196755022.dir/CheckIncludeFile.c.o   -c /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec3196755022
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3196755022.dir/link.txt --verbose=1
+/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec3196755022.dir/CheckIncludeFile.c.o  -o cmTryCompileExec3196755022  
+
+
+Determining if files stdlib.h;stdarg.h;string.h;float.h exist passed with the following output:
+Change Dir: /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2445740948/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2445740948.dir/build.make CMakeFiles/cmTryCompileExec2445740948.dir/build
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_progress_report /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2445740948.dir/CheckIncludeFiles.c.o
+/usr/bin/cc  -DKEYWORD=__inline  -o CMakeFiles/cmTryCompileExec2445740948.dir/CheckIncludeFiles.c.o   -c /Users/edwardzhou/install/libwebsockets/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec2445740948
+/usr/local/Cellar/cmake/2.8.10.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2445740948.dir/link.txt --verbose=1
+/usr/bin/cc      -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2445740948.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec2445740948  
+
+

@@ -1,0 +1,9 @@
+/Users/edwardzhou/install/libwebsockets/build/CMakeFiles/dist.dir
+/Users/edwardzhou/install/libwebsockets/build/CMakeFiles/test-client.dir
+/Users/edwardzhou/install/libwebsockets/build/CMakeFiles/test-echo.dir
+/Users/edwardzhou/install/libwebsockets/build/CMakeFiles/test-fraggle.dir
+/Users/edwardzhou/install/libwebsockets/build/CMakeFiles/test-ping.dir
+/Users/edwardzhou/install/libwebsockets/build/CMakeFiles/test-server.dir
+/Users/edwardzhou/install/libwebsockets/build/CMakeFiles/test-server-extpoll.dir
+/Users/edwardzhou/install/libwebsockets/build/CMakeFiles/websockets.dir
+/Users/edwardzhou/install/libwebsockets/build/CMakeFiles/websockets_shared.dir
