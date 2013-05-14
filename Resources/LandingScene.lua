@@ -92,7 +92,7 @@ function LandingScene:do_login(event)
 	print(string.format("user_id => [%s], user_token => [%s]", user_id, user_token))
 	
 	if user_id == "" or user_token == "" then
-		do_signup()
+		self:do_signup()
 		return
 	end
 	

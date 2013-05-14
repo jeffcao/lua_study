@@ -16,6 +16,7 @@ function LandingScene:ctor()
 	self.rootNode = tolua.cast(node, "CCLayer")
 	print("self.rootNode ==> ", self.rootNode)
 	self:addChild(self.rootNode)
+	
 	self.sprite_loading = self.ccbproxy:getNodeWithType("sprite_loading", "CCSprite")
 	self:create_progress_animation(self.rootNode, self.sprite_loading)
 	
@@ -44,14 +45,13 @@ function LandingScene:on_keypad_pressed(key)
 	if key == "backClicked" then
 		self:do_close()
 	elseif key == "menuClicked" then
-		--print("websocket state => ", WebsocketManager:sharedWebsocketManager():get_websocket_state(login_websocket._conn._websocket_id) )
+		print("websocket state => ", WebsocketManager:sharedWebsocketManager():get_websocket_state(self.websocket._conn._websocket_id) )
 	end 
 end
 
 function LandingScene:do_close()
 	CCDirector:sharedDirector():endToLua()
 end
-
 
 function LandingScene:sign_success(data)
 	print("[sign_success] updating local user info.")
@@ -92,7 +92,7 @@ function LandingScene:do_login(event)
 	print(string.format("user_id => [%s], user_token => [%s]", user_id, user_token))
 	
 	if user_id == "" or user_token == "" then
-		do_signup()
+		self:do_signup()
 		return
 	end
 	
@@ -139,7 +139,6 @@ function LandingScene:create_progress_animation(layer, sprite)
 	sprite:runAction( CCRepeatForever:create(animate) )
 	
 end
-
 
 
 function createLandingScene()
