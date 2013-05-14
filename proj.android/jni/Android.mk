@@ -8,6 +8,8 @@ LOCAL_MODULE_FILENAME := libgame
 
 LWS_LIB_PATH := ../../Classes/libwebsockets/lib
 
+QC_LIB_PATH := ../../Classes/quick_cocos2dx-lib
+
 LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AppDelegate.cpp \
                    ../../Classes/HelloWorldScene.cpp \
@@ -34,6 +36,12 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
 					$(LWS_LIB_PATH)/getifaddrs.c \
 					$(LWS_LIB_PATH)/libwebsockets.c \
 					$(LWS_LIB_PATH)/output.c \
+					$(LWS_LIB_PATH)/parsers.c \
+					
+					
+#					$(QC_LIB_PATH)/cocos2dx_extensions_luabinding/cocos2dx_extensions_luabinding.cpp \
+					$(LWS_LIB_PATH)/parsers.c \
+					$(LWS_LIB_PATH)/parsers.c \
 					$(LWS_LIB_PATH)/parsers.c \
 
 					                   

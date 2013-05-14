@@ -21,5 +21,7 @@ GlobalSetting = {
 	current_user = {},
 	-- 游戏大厅的URLs
 	game_hall_urls = {},
+	
+	content_scale_factor = 1.0,
 }
 
