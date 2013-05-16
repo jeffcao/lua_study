@@ -53,6 +53,7 @@ local function main()
 	local size = CCDirector:sharedDirector():getWinSize()
 	local contentScaleFactor = CCDirector:sharedDirector():getContentScaleFactor()
 	GlobalSetting.content_scale_factor = CCDirector:sharedDirector():getContentScaleFactor()
+	GlobalSetting.currrent_user = UserInfo:new():load(CCUserDefault:sharedUserDefault())
 	cclog(string.format("size.width: %d, size.height: %d;  contentScaleFactor: %f", size.width, size.height, contentScaleFactor))
 	
 	CCEGLView:sharedOpenGLView():setDesignResolutionSize(800, 480, kResolutionExactFit)
