@@ -28,6 +28,9 @@ function LandingScene:onEnter()
 	self.super.onEnter(self)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	self:setup_websocket()
+	print("go to hall in landing scene")
+	local hall = createHallScene()
+	CCDirector:sharedDirector():replaceScene(hall)
 end
 
 function LandingScene:onExit()

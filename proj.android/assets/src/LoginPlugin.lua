@@ -1,3 +1,4 @@
+require "HallScene"
 LoginPlugin = {}
 
 function LoginPlugin.bind(theClass)
@@ -13,6 +14,10 @@ function LoginPlugin.bind(theClass)
 		cur_user.login_token = data.token
 		cur_user.save(userDefault)
 		dump(cur_user, "current_user")
+		--when sign succuss, go to hall scene
+		print("go to hall in login plugin")
+		local hall = createHallScene()
+		CCDirector:sharedDirector():replaceScene(hall)
 	end
 	
 	function theClass:sign_failure(data)
