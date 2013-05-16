@@ -13,3 +13,7 @@ function scaleNode(node, scaleFactor)
 	end
 	
 end
+
+function is_blank(str)
+	return str == nil or string.len(string.trim(str)) == 0
+end
