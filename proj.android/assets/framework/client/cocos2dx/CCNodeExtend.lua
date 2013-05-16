@@ -118,6 +118,14 @@ function CCNodeExtend:stopAllActions()
 end
 
 function CCNodeExtend:onEnter()
+	print("[CCNodeExtend:onEnter()]")
+	print("self.initializer => ", self.initializers)
+	if self.initializers then
+		for name, initializer in pairs(self.initializers) do
+			print(string.format("[CCNodeExtend:onEnter()] call initializer: %s", name))
+			initializer(self)
+		end
+	end
 end
 
 function CCNodeExtend:onExit()
@@ -130,6 +138,14 @@ function CCNodeExtend:onExitTransitionStart()
 end
 
 function CCNodeExtend:onCleanup()
+	print("[CCNodeExtend:onCleanup()] ")
+	--print( dump(self, "CCNodeExtend self", true) )
+	if self.cleanups then
+		for name, deinit in pairs(self.cleanups) do
+			print(string.format("[CCNodeExtend:onCleanup()] call cleanup: %s", name))
+			deinit(self)
+		end
+	end
 end
 
 function CCNodeExtend:registerNodeEvent(handler)
@@ -154,3 +170,5 @@ end
 function CCNodeExtend:unregisterNodeEvent()
     self:unregisterScriptHandler()
 end
+
+

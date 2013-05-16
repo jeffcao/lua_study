@@ -41,7 +41,7 @@ function LoginPlugin.bind(theClass)
 		if is_blank(cur_user.user_id) and is_blank(cur_user.login_token) then
 			self:sign_in_by_token(cur_user.user_id, cur_user.login_token)
 		else
-			self:signup()	
+			self:signup()
 		end
 	end
 	
@@ -49,5 +49,22 @@ function LoginPlugin.bind(theClass)
 		self.login_websocket = WebSocketRails:new(config.login_urls[1], true)
 		self.login_websocket.on_open = __bind(self.on_websocket_ready, self)
 	end
+	
+	function theClass:close_login_websocket()
+		print("[theClass:close_login_websocket()]")
+		if self.login_websocket then
+			self.login_websocket:close()
+			self.login_websocket = nil
+		end
+	end
+	
+	--print("theClass.registerCleanup ==> ", theClass.registerCleanup)
+	if theClass.registerCleanup then
+		--print("register cleanup for LoginPlugin")
+		theClass:registerCleanup("LoginPlugin.close_login_websocket", theClass.close_login_websocket)
+	end
+	
+	--print( dump(theClass, "theClass", true) )
+	
 	
 end
