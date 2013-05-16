@@ -219,6 +219,7 @@ function class(classname, super)
             return instance
         end
 
+
     else
         -- inherited from Lua Object
         if super then
@@ -239,6 +240,27 @@ function class(classname, super)
             return instance
         end
     end
+    
+    if not cls.registerInitializer then
+    	cls.initializers = {}
+    	function cls:registerInitializer(name, fn)
+			if not self.initializers then
+				self.initializers = {}
+			end
+			self.initializers[name] = fn
+    	end
+    end
+    if not cls.registerCleanup then
+    	cls.cleanups = {}
+		function cls:registerCleanup(name, fn)
+			if not self.cleanups then
+				self.cleanups = {}
+			end
+			
+			self.cleanups[name] = fn
+			--print( dump(self, "cls:registerCleanup self", true) )
+		end
+	end    
 
     return cls
 end
