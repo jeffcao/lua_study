@@ -4,6 +4,19 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>kuang01.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,484},{771,452}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{771,452}}</string>
+                <key>sourceSize</key>
+                <string>{771,452}</string>
+            </dict>
             <key>mubanbg.png</key>
             <dict>
                 <key>frame</key>
@@ -11,7 +24,7 @@
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{800,480}}</string>
                 <key>sourceSize</key>
@@ -25,9 +38,9 @@
             <key>realTextureFileName</key>
             <string>common2.png</string>
             <key>size</key>
-            <string>{512,1024}</string>
+            <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:938d22b45bff90bf25d7bb11bfc997a7$</string>
+            <string>$TexturePacker:SmartUpdate:e380644be079f32eaf2b9b09db2167d4$</string>
             <key>textureFileName</key>
             <string>common2.png</string>
         </dict>

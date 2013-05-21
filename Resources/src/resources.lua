@@ -1,3 +1,4 @@
 Res = {
-	s_landing_scene = "LandingScene.ccbi";
+	s_landing_scene = "LandingScene.ccbi",
+	common_plist = "ccbResources/common.plist",
 }

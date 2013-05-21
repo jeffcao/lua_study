@@ -24,6 +24,7 @@ require "src.UserInfo"
 require "src.GlobalFunction"
 --require "src.functions"
 require "LandingScene"
+require "src.resources"
 end
 
 local json = require "cjson"

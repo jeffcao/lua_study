@@ -7,7 +7,7 @@
             <key>about.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{116,795},{103,46}}</string>
+                <string>{{933,2},{103,46}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>about_a.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{116,690},{103,46}}</string>
+                <string>{{116,790},{103,46}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>biaoti02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{804,41},{127,37}}</string>
+                <string>{{804,2},{127,37}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,11 +98,11 @@
             <key>biaoti03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{804,119},{126,37}}</string>
+                <string>{{981,2},{126,37}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{126,37}}</string>
                 <key>sourceSize</key>
@@ -111,11 +111,11 @@
             <key>biaoti04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{804,2},{127,37}}</string>
+                <string>{{166,743},{127,37}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{127,37}}</string>
                 <key>sourceSize</key>
@@ -137,11 +137,11 @@
             <key>biaoti06.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{979,2},{126,37}}</string>
+                <string>{{804,80},{126,37}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{126,37}}</string>
                 <key>sourceSize</key>
@@ -150,7 +150,7 @@
             <key>biaoti07.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{804,80},{126,37}}</string>
+                <string>{{804,41},{126,37}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +163,7 @@
             <key>biaoti08.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{804,158},{125,37}}</string>
+                <string>{{804,119},{125,37}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -225,10 +225,36 @@
                 <key>sourceSize</key>
                 <string>{101,53}</string>
             </dict>
+            <key>guanbi.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{116,740},{48,48}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{48,48}}</string>
+                <key>sourceSize</key>
+                <string>{48,48}</string>
+            </dict>
+            <key>guanbi_a.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{116,690},{48,48}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{48,48}}</string>
+                <key>sourceSize</key>
+                <string>{48,48}</string>
+            </dict>
             <key>help.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{933,2},{99,44}}</string>
+                <string>{{978,130},{99,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -241,7 +267,7 @@
             <key>help_a.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{164,743},{99,44}}</string>
+                <string>{{932,107},{99,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -280,11 +306,11 @@
             <key>setup.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{978,130},{98,44}}</string>
+                <string>{{804,204},{98,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{98,44}}</string>
                 <key>sourceSize</key>
@@ -293,11 +319,11 @@
             <key>setup_a.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{932,103},{98,44}}</string>
+                <string>{{804,158},{98,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{98,44}}</string>
                 <key>sourceSize</key>
@@ -339,7 +365,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:f9e425d82d6e1f65d4da4ecc65c815e9$</string>
+            <string>$TexturePacker:SmartUpdate:8ff4bb5d3c16feb27bc1380b5c4bebe1$</string>
             <key>textureFileName</key>
             <string>common.png</string>
         </dict>
