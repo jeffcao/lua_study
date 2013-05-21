@@ -1170,7 +1170,7 @@
 								<key>memberVarAssignmentName</key>
 								<string>menu_btn</string>
 								<key>memberVarAssignmentType</key>
-								<integer>1</integer>
+								<integer>2</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -1278,6 +1278,8 @@
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -2186,8 +2188,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
