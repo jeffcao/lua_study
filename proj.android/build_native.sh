@@ -1,3 +1,5 @@
+#!/bin/bash
+
 APPNAME="DouDiZhu_Lua"
 
 # options

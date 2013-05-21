@@ -6,6 +6,8 @@ LOCAL_MODULE := game_shared
 
 LOCAL_MODULE_FILENAME := libgame
 
+APP_ABI := armeabi
+
 LWS_LIB_PATH := ../../Classes/libwebsockets/lib
 
 QC_LIB_PATH := ../../Classes/quick_cocos2dx-lib

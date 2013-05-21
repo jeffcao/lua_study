@@ -1,4 +1,9 @@
 eclipse.preferences.version=1
+environment/project/0.143224128/NDK_ROOT/delimiter=\:
+environment/project/0.143224128/NDK_ROOT/operation=append
+environment/project/0.143224128/NDK_ROOT/value=/home/qy/develop/android-ndk-r8d
+environment/project/0.143224128/append=true
+environment/project/0.143224128/appendContributed=true
 environment/project/0.1650077156/COCOS2DX/delimiter=\:
 environment/project/0.1650077156/COCOS2DX/operation=append
 environment/project/0.1650077156/COCOS2DX/value=/Users/edwardzhou/develop/cocos2d-x-master

@@ -1,5 +1,6 @@
 require "src.HallPlugin"
 require "RoomItem"
+require "Menu"
 
 HallScene = class("HallScene", function() 
 	print("create new hall scene")
@@ -14,6 +15,8 @@ HallScene = class("HallScene", function()
  
  HallPlugin.bind(HallScene)
  
+
+
  function HallScene:ctor()
  	self.ccbproxy = CCBProxy:create()
  	self.ccbproxy:retain()
@@ -30,7 +33,40 @@ HallScene = class("HallScene", function()
 	self.avatar_item = self.ccbproxy:getNodeWithType("avatar_btn", "CCMenuItemImage")
 	--self.avatar_item = self.ccbproxy:getNode("avatar_btn")
 	self.avatar_item:setScale(GlobalSetting.content_scale_factor * 0.45)
+	local function onKeypad(key)
+		if key == "menuClicked" then
+			if self.pop_menu then
+				self.pop_menu:setVisible(not self.pop_menu:isVisible())
+			else
+				 self.pop_menu = createMenu()
+				 self.pop_menu:setVisible(true)
+				 self.rootNode:addChild(self.pop_menu)
+			end
+		elseif key == "backClicked" then
+			if self.pop_menu and self.pop_menu:isVisible() then
+				self.pop_menu:setVisible(false)
+			else
+				CCDirector:sharedDirector():endToLua()
+			end
+		end
+	end
+	local function onMenuClick()
+		onKeypad("menuClicked")
+	end
+	self.menu = self.ccbproxy:getNodeWithType("menu_btn", "CCMenuItemImage")
+	self.menu:registerScriptTapHandler(onMenuClick)
+	self.rootNode:setKeypadEnabled(true)
+	self.rootNode:registerScriptKeypadHandler(onKeypad)
  end
+ 
+
+ 
+ --[[
+ function HallScene:onMenuClick(tag)
+ 	local menu = createMenu()
+ 	self.rootNode.addChild(menu)
+ end
+ ]]
  
  function HallScene:onEnter() 
 	local data = {}
