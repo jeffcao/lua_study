@@ -13,6 +13,7 @@ end
 function AboutScene:ctor()
 	local layer = createFullMubanStyleLayer()
 	self:addChild(layer)
+	self.rootNode = layer
 	layer:setTitle("biaoti07.png")
 	self.ccbproxy = CCBProxy:create()
 	self.ccbproxy:retain()

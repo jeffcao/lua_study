@@ -1,4 +1,5 @@
 require "AboutScene"
+require "HelpScene"
 
 Menu = class("Menu", function() 
 	print("new menu")
@@ -28,7 +29,14 @@ function Menu:ctor()
 		local scene = createAboutScene()
 		CCDirector:sharedDirector():replaceScene(scene)
 	end
+	local function help()
+		local scene = createHelpScene()
+		CCDirector:sharedDirector():replaceScene(scene)
+	end
 	self.about = self.ccbproxy:getNodeWithType("menu_about_item", "CCMenuItemImage")
 	self.about:registerScriptTapHandler(about)
+	
+	self.help = self.ccbproxy:getNodeWithType("menu_help_item", "CCMenuItemImage")
+	self.help:registerScriptTapHandler(help)
 	
 end
