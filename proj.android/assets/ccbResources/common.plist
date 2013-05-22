@@ -277,6 +277,32 @@
                 <key>sourceSize</key>
                 <string>{99,44}</string>
             </dict>
+            <key>kuang_c.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{992,645},{32,30}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{32,30}}</string>
+                <key>sourceSize</key>
+                <string>{32,30}</string>
+            </dict>
+            <key>kuang_d.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{992,611},{32,30}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{32,30}}</string>
+                <key>sourceSize</key>
+                <string>{32,30}</string>
+            </dict>
             <key>more.png</key>
             <dict>
                 <key>frame</key>
@@ -365,7 +391,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:8ff4bb5d3c16feb27bc1380b5c4bebe1$</string>
+            <string>$TexturePacker:SmartUpdate:eb97d205a4716f3c93bca9aeef416139$</string>
             <key>textureFileName</key>
             <string>common.png</string>
         </dict>
