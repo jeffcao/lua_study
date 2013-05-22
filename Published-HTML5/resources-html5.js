@@ -1,4 +1,5 @@
 var ccb_resources = [
+    {type:'image', src:"ccbResources/hall.png"},
     {type:'image', src:"ccbResources/common2.png"},
     {type:'image', src:"ccbResources/ccbDefaultImages.png"},
     {type:'image', src:"clickme.png"},
@@ -13,6 +14,7 @@ var ccb_resources = [
     {type:'image', src:"ccbResources/ccbParticleSmoke.png"},
     {type:'ccbi', src:"LandingScene.ccbi"},
     {type:'ccbi', src:"RegisterScene.ccbi"},
+    {type:'ccbi', src:"About.ccbi"},
     {type:'ccbi', src:"Menu.ccbi"},
     {type:'image', src:"ccbResources/biankuang_9.9.png"},
     {type:'image', src:"ccbResources/common.png"},
@@ -25,6 +27,7 @@ var ccb_resources = [
     {type:'plist', src:"ccbResources/hall.plist"},
     {type:'ccbi', src:"ProgressScene.ccbi"},
     {type:'plist', src:"ccbResources/common2.plist"},
+    {type:'ccbi', src:"FullMubanStyleLayer.ccbi"},
     {type:'image', src:"ccbResources/ccbParticleFire.png"},
     {type:'image', src:"ccbResources/hall.png"},
     {type:'plist', src:"ccbResources/ccbDefaultImages.plist"},
