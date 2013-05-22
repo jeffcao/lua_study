@@ -3,6 +3,7 @@ bin/
 gen/
 obj/
 .project
+.cproject
 lint.xml
 *~
 *.DS*
