@@ -18,7 +18,7 @@ function HelpSceneUPlugin.bind(theClass)
 		scroll_view:setContentOffset(ccp(0,-210))
 		scroll_view:setPosition(ccp(75,70))
 		scroll_view:setDirection(kCCScrollViewDirectionVertical)
-		scroll_view:setBounceable(false)
+		scroll_view:setBounceable(true)
 		return scroll_view
 	end
 	

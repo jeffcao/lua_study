@@ -1,4 +1,4 @@
-require "src.HallPlugin"
+require "src.HallSceneUPlugin"
 require "RoomItem"
 require "Menu"
 
@@ -13,10 +13,8 @@ HallScene = class("HallScene", function()
  	return HallScene.new()
  end
  
- HallPlugin.bind(HallScene)
+ HallSceneUPlugin.bind(HallScene)
  
-
-
  function HallScene:ctor()
  	self.ccbproxy = CCBProxy:create()
  	self.ccbproxy:retain()
@@ -25,38 +23,32 @@ HallScene = class("HallScene", function()
 	assert(node, "failed to load hall scene")
 	self.rootNode = tolua.cast(node, "CCLayer")
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
-	print("hall scene self.rootNode ==> ", self.rootNode)
 	self:addChild(self.rootNode)
-	--self.room_layer = self.ccbproxy:getNodeWithType("room_layer", "CCLayer")
 	self.room_layer = self.ccbproxy:getNode("room_layer")
 	assert(self.room_layer, "room_layer is null")
 	self.avatar_item = self.ccbproxy:getNodeWithType("avatar_btn", "CCMenuItemImage")
-	--self.avatar_item = self.ccbproxy:getNode("avatar_btn")
 	self.avatar_item:setScale(GlobalSetting.content_scale_factor * 0.45)
-	local function onKeypad(key)
-		if key == "menuClicked" then
-			if self.pop_menu then
-				self.pop_menu:setVisible(not self.pop_menu:isVisible())
-			else
-				 self.pop_menu = createMenu()
-				 self.pop_menu:setVisible(true)
-				 self.rootNode:addChild(self.pop_menu)
-			end
-		elseif key == "backClicked" then
-			if self.pop_menu and self.pop_menu:isVisible() then
-				self.pop_menu:setVisible(false)
-			else
-				CCDirector:sharedDirector():endToLua()
-			end
-		end
-	end
-	local function onMenuClick()
-		onKeypad("menuClicked")
-	end
+	
 	self.menu = self.ccbproxy:getNodeWithType("menu_btn", "CCMenuItemImage")
-	self.menu:registerScriptTapHandler(onMenuClick)
+	self.menu:registerScriptTapHandler(__bind(self.onMenuClick, self))
+	
+	self.avatar_btn = self.ccbproxy:getNodeWithType("avatar_btn", "CCMenuItemImage")
+	self.info_btn = self.ccbproxy:getNodeWithType("info_btn", "CCMenuItemImage")
+	self.info_btn:registerScriptTapHandler(__bind(self.onInfoClick, self))
+	self.avatar_btn:registerScriptTapHandler(__bind(self.onAvatarClick, self))
+	
 	self.rootNode:setKeypadEnabled(true)
-	self.rootNode:registerScriptKeypadHandler(onKeypad)
+	self.rootNode:registerScriptKeypadHandler(__bind(self.onKeypad, self))
+	
+	local mysprite = MySprite:createMS("btn_bujiao.png")
+	self.rootNode:addChild(tolua.cast(mysprite, "CCNode"))
+	
+	local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+		cache:addSpriteFramesWithFile(Res.common_plist)
+		local frame1 = cache:spriteFrameByName("caidanlan.png")
+		local frame2 = cache:spriteFrameByName("caidanlan.png")
+		local size = CCSizeMake(200,100)
+	--local editbox = CCEditBoxBridge:create(size,frame1, frame2)
  end
  
 

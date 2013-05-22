@@ -1,0 +1,3 @@
+class MySprite : public cocos2d::CCSprite {
+	static MySprite* createMS(const char* filename);
+};

@@ -6,6 +6,7 @@
 #include "CCLuaEngine.h"
 //#include "lua++.h"
 #include "WebsocketManager_lua.h"
+#include "MySprite_lua.h"
 #include "tolua/luaopen_LuaProxy.h"
 extern "C" {
 #include "cjson/lua_extensions.h"
@@ -137,6 +138,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     lua_State* pLuaState = pEngine->getLuaStack()->getLuaState();
 
     tolua_WebsocketManager_open(pLuaState);
+    tolua_MySprite_open(pLuaState);
     luaopen_LuaProxy(pLuaState);
     luaopen_lua_extensions(pLuaState);
 
