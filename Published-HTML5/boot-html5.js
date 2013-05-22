@@ -11,8 +11,8 @@
         //engineDir:'../../../../cocos2d/',
         SingleEngineFile:'cocos2d-html5.min.js',
         appFiles:[
-          'LandingScene.js',
-    'MainScene.js',
+          'MainScene.js',
+    'LandingScene.js',
 
             'resources-html5.js',
             'boot2-html5.js'
