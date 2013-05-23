@@ -3,5 +3,21 @@ class CCEditBoxBridge : public cocos2d::CCObject{
 	static CCEditBoxBridge* create(const char* plist_name, const char* normal9scale, int height, int width);
 
 	void addTo(CCNode* node, int x, int y);
+	
+	void setHint(const char* hint);
+	
+	void setHintSize(int fontSize);
+
+	void setText(const char* text);
+
+	char* getText();
+
+	void setTextSize(int fontSize);
+
+	void setTextColor(int r, int g, int b);
+
+	void setInputFlag(int flag);
+
+	void setMaxLength(int max);
 
 };

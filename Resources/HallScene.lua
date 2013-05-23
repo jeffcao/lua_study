@@ -1,6 +1,7 @@
 require "src.HallSceneUPlugin"
 require "RoomItem"
 require "Menu"
+require "src.WidgetPlugin"
 
 HallScene = class("HallScene", function() 
 	print("create new hall scene")
@@ -14,6 +15,7 @@ HallScene = class("HallScene", function()
  end
  
  HallSceneUPlugin.bind(HallScene)
+ WidgetPlugin.bind(HallScene)
  
  function HallScene:ctor()
  	self.ccbproxy = CCBProxy:create()
@@ -46,10 +48,17 @@ HallScene = class("HallScene", function()
 	local mysprite = MySprite:createMS("btn_bujiao.png")
 	self.rootNode:addChild(tolua.cast(mysprite, "CCNode"))
 	
-	local editbox = CCEditBoxBridge:create(Res.common_plist, "kuang_a.png", 320, 50)
-	local cnode = CCNode:create();
-	self.rootNode:addChild(cnode);
-	editbox:addTo(cnode, 400, 120)
+	--local editbox = CCEditBoxBridge:create(Res.common_plist, "kuang_a.png", 320, 50)
+	--editbox:addTo(tolua.cast(self.rootNode, "CCNode"), 400, 120)
+	local editbox = self:createEditBoxOn(self.rootNode, 400, 120)
+	editbox:setHintSize(10)
+	editbox:setText("hfdkahfla")
+	editbox:setTextSize(40)
+	editbox:setTextColor(255,0,0)
+	editbox:setMaxLength(10)
+	editbox:setInputFlag(0)
+	local tx = editbox:getText()
+	print("tx is " .. tx)
  end
  
 
