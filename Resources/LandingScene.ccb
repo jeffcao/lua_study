@@ -207,8 +207,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<string>clickme.png</string>
+									<string>ccbResources/common.plist</string>
+									<string>kuang_a.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -234,6 +234,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -982,8 +984,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
