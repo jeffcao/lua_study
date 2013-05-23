@@ -767,7 +767,7 @@
 								<key>displayName</key>
 								<string>menu_switch_item</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>menu_switch_item</string>
 								<key>memberVarAssignmentType</key>
 								<integer>0</integer>
 								<key>properties</key>
@@ -877,6 +877,8 @@
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
