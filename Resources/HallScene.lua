@@ -46,12 +46,10 @@ HallScene = class("HallScene", function()
 	local mysprite = MySprite:createMS("btn_bujiao.png")
 	self.rootNode:addChild(tolua.cast(mysprite, "CCNode"))
 	
-	local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
-		cache:addSpriteFramesWithFile(Res.common_plist)
-		local frame1 = cache:spriteFrameByName("caidanlan.png")
-		local frame2 = cache:spriteFrameByName("caidanlan.png")
-		local size = CCSizeMake(200,100)
-	--local editbox = CCEditBoxBridge:create(size,frame1, frame2)
+	local editbox = CCEditBoxBridge:create(Res.common_plist, "kuang_a.png", 320, 50)
+	local cnode = CCNode:create();
+	self.rootNode:addChild(cnode);
+	editbox:addTo(cnode, 400, 120)
  end
  
 

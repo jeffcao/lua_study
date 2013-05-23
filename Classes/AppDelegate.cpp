@@ -7,6 +7,7 @@
 //#include "lua++.h"
 #include "WebsocketManager_lua.h"
 #include "MySprite_lua.h"
+#include "CCEditBoxBridge_lua.h"
 #include "tolua/luaopen_LuaProxy.h"
 extern "C" {
 #include "cjson/lua_extensions.h"
@@ -140,6 +141,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     tolua_WebsocketManager_open(pLuaState);
     tolua_MySprite_open(pLuaState);
+    tolua_CCEditBoxBridge_open(pLuaState);
     luaopen_LuaProxy(pLuaState);
     luaopen_lua_extensions(pLuaState);
 
