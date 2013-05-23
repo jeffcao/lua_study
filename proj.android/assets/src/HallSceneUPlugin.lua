@@ -1,5 +1,6 @@
 require "UserCenterScene"
 require "YesNoDialog"
+require "MarketScene"
 HallSceneUPlugin = {}
 
 function HallSceneUPlugin.bind(theClass)
@@ -46,6 +47,15 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:onAvatarClick()
 		self.doToInfo()
+	end
+	
+	function theClass:onMarketClick()
+		self.doToMarket()
+	end
+	
+	function theClass:doToMarket()
+		local scene = createMarketScene()
+		CCDirector:sharedDirector():replaceScene(scene)
 	end
 	
 	function theClass:doToInfo()

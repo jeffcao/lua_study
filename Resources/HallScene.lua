@@ -40,6 +40,9 @@ HallScene = class("HallScene", function()
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler(__bind(self.onKeypad, self))
 	
+	self.market_btn = self.ccbproxy:getNodeWithType("market_btn", "CCMenuItemImage")
+	self.market_btn:registerScriptTapHandler(__bind(self.onMarketClick, self))
+	
 	local mysprite = MySprite:createMS("btn_bujiao.png")
 	self.rootNode:addChild(tolua.cast(mysprite, "CCNode"))
 	
