@@ -113,6 +113,7 @@ bool AppDelegate::applicationDidFinishLaunching()
         else
         {
             resourceSize = CCSizeMake(480, 320);
+            resDirOrders.push_back("resources-medium");
             resDirOrders.push_back("resources-small");
         }
     }
