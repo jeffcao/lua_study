@@ -2,8 +2,8 @@
 
 require("jsb.js");
 
-require("MainScene.js");
 require("LandingScene.js");
+require("MainScene.js");
 
 
 function main()

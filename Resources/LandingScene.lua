@@ -31,6 +31,7 @@ function LandingScene:onEnter()
 	print("go to hall in landing scene")
 	local hall = createHallScene()
 	CCDirector:sharedDirector():replaceScene(hall)
+	
 end
 
 function LandingScene:onExit()
