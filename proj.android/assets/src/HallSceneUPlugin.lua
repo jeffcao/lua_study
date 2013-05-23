@@ -1,8 +1,10 @@
 require "UserCenterScene"
+require "YesNoDialog"
 HallSceneUPlugin = {}
 
 function HallSceneUPlugin.bind(theClass)
 	function theClass:onKeypad(key)
+		print("hall scene on key pad")
 		if key == "menuClicked" then
 			if self.pop_menu then
 				self.pop_menu:setVisible(not self.pop_menu:isVisible())
@@ -15,8 +17,20 @@ function HallSceneUPlugin.bind(theClass)
 			if self.pop_menu and self.pop_menu:isVisible() then
 				self.pop_menu:setVisible(false)
 			else
-				CCDirector:sharedDirector():endToLua()
+				self:doShowExitDialog()
 			end
+		end
+	end
+	
+	function theClass:doShowExitDialog()
+		if not self.exit_dialog then
+			self.exit_dialog = createYesNoDialog()
+			self.exit_dialog:setYesButton(function()
+				CCDirector:sharedDirector():endToLua()
+			end)
+			self.rootNode:addChild(self.exit_dialog)
+		else
+			self.exit_dialog:setVisible(not self.exit_dialog:isVisible())
 		end
 	end
 	
