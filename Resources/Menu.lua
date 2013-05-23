@@ -45,7 +45,7 @@ function Menu:ctor()
 	self.help = self.ccbproxy:getNodeWithType("menu_help_item", "CCMenuItemImage")
 	self.help:registerScriptTapHandler(help)
 	
-	self.help = self.ccbproxy:getNodeWithType("menu_switch_item", "CCMenuItemImage")
-	self.help:registerScriptTapHandler(switch)
+	self.switch = self.ccbproxy:getNodeWithType("menu_switch_item", "CCMenuItemImage")
+	self.switch:registerScriptTapHandler(switch)
 	
 end
