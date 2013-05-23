@@ -1,6 +1,6 @@
 /*
 ** Lua binding: CCEditBoxBridge
-** Generated automatically by tolua++-1.0.93 on Thu May 23 16:36:49 2013.
+** Generated automatically by tolua++-1.0.93 on Thu May 23 17:05:33 2013.
 */
 
 /****************************************************************************
@@ -39,6 +39,7 @@ TOLUA_API int  tolua_CCEditBoxBridge_open (lua_State* tolua_S);
 /* function to register type */
 static void tolua_reg_types (lua_State* tolua_S)
 {
+ 
  tolua_usertype(tolua_S,"CCEditBoxBridge");
  tolua_usertype(tolua_S,"CCNode");
  tolua_usertype(tolua_S,"cocos2d::CCObject");
@@ -384,6 +385,39 @@ static int tolua_CCEditBoxBridge_CCEditBoxBridge_setMaxLength00(lua_State* tolua
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: registerOnTextChange of class  CCEditBoxBridge */
+#ifndef TOLUA_DISABLE_tolua_CCEditBoxBridge_CCEditBoxBridge_registerOnTextChange00
+static int tolua_CCEditBoxBridge_CCEditBoxBridge_registerOnTextChange00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCEditBoxBridge",0,&tolua_err) ||
+     (tolua_isvaluenil(tolua_S,2,&tolua_err) || !toluafix_isfunction(tolua_S,2,"LUA_FUNCTION",0,&tolua_err)) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CCEditBoxBridge* self = (CCEditBoxBridge*)  tolua_tousertype(tolua_S,1,0);
+  LUA_FUNCTION fn = (  toluafix_ref_function(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'registerOnTextChange'", NULL);
+#endif
+  {
+   self->registerOnTextChange(fn);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'registerOnTextChange'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* Open function */
 TOLUA_API int tolua_CCEditBoxBridge_open (lua_State* tolua_S)
 {
@@ -403,6 +437,7 @@ TOLUA_API int tolua_CCEditBoxBridge_open (lua_State* tolua_S)
    tolua_function(tolua_S,"setTextColor",tolua_CCEditBoxBridge_CCEditBoxBridge_setTextColor00);
    tolua_function(tolua_S,"setInputFlag",tolua_CCEditBoxBridge_CCEditBoxBridge_setInputFlag00);
    tolua_function(tolua_S,"setMaxLength",tolua_CCEditBoxBridge_CCEditBoxBridge_setMaxLength00);
+   tolua_function(tolua_S,"registerOnTextChange",tolua_CCEditBoxBridge_CCEditBoxBridge_registerOnTextChange00);
   tolua_endmodule(tolua_S);
  tolua_endmodule(tolua_S);
  return 1;

@@ -19,5 +19,7 @@ class CCEditBoxBridge : public cocos2d::CCObject{
 	void setInputFlag(int flag);
 
 	void setMaxLength(int max);
+	
+	void registerOnTextChange(LUA_FUNCTION fn);
 
 };

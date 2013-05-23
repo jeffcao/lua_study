@@ -1,6 +1,6 @@
 /*
 ** Lua binding: CCEditBoxBridge
-** Generated automatically by tolua++-1.0.93 on Thu May 23 16:36:49 2013.
+** Generated automatically by tolua++-1.0.93 on Thu May 23 17:05:33 2013.
 */
 extern "C" {
 #include "tolua++.h"

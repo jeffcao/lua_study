@@ -43,8 +43,8 @@ void CCEditBoxBridge::setTextSize(int fontSize) {
 }
 
 void CCEditBoxBridge::setTextColor(int r, int g, int b) {
-	ccColor3B color = {r,g,b};
-	this->mEditBox->setFontColor( color);
+	ccColor3B color = { r, g, b };
+	this->mEditBox->setFontColor(color);
 }
 
 void CCEditBoxBridge::setInputFlag(int flag) {
@@ -59,18 +59,37 @@ void CCEditBoxBridge::setMaxLength(int max) {
 	this->mEditBox->setMaxLength(max);
 }
 
+void CCEditBoxBridge::registerOnTextChange(LUA_FUNCTION fn) {
+	this->delegate->registerOnTextChange(fn);
+}
+
 void DelegateBridge::editBoxEditingDidBegin(CCEditBox* editBox) {
-	CCLog("editBox %p DidBegin !", editBox);
+	this->last_text = editBox->getText();
 }
 void DelegateBridge::editBoxEditingDidEnd(CCEditBox* editBox) {
-	CCLog("editBox %p DidEnd !", editBox);
+	char* cur_text = (char*) (editBox->getText());
+	bool equal = strcmp(this->last_text.c_str(), cur_text) == 0;
+	if (this->on_text_change_fn != 0 && !equal) {
+		CCScriptEngineProtocol* pEngine =
+				CCScriptEngineManager::sharedManager()->getScriptEngine();
+		CCLuaEngine* pLuaEngine = dynamic_cast<CCLuaEngine*>(pEngine);
+		if (pLuaEngine) {
+			CCLuaStack* pStack = pLuaEngine->getLuaStack();
+			pStack->pushString(this->last_text.c_str());
+			pStack->pushString(cur_text);
+			pStack->executeFunctionByHandler(this->on_text_change_fn, 2);
+			pStack->clean();
+		}
+	}
 }
 void DelegateBridge::editBoxTextChanged(CCEditBox* editBox,
 		const std::string& text) {
-	CCLog("editBox %p TextChanged, text: %s ", editBox, text.c_str());
 
 }
 void DelegateBridge::editBoxReturn(CCEditBox* editBox) {
-	CCLog("editBox %p was returned !");
+}
+
+void DelegateBridge::registerOnTextChange(LUA_FUNCTION fn) {
+	this->on_text_change_fn = fn;
 }
 

@@ -59,6 +59,9 @@ HallScene = class("HallScene", function()
 	editbox:setInputFlag(0)
 	local tx = editbox:getText()
 	print("tx is " .. tx)
+	editbox:registerOnTextChange(function(before_text, cur_text)
+		print("tx change from " .. before_text .. " to " .. cur_text)
+	end)
  end
  
 
