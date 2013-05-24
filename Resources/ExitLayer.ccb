@@ -353,9 +353,9 @@
 				<key>displayName</key>
 				<string>CCMenu</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>confirm_menu</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -561,8 +561,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -570,9 +568,9 @@
 				<key>displayName</key>
 				<string>CCMenu</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>reject_menu</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -652,6 +650,8 @@
 						<true/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
