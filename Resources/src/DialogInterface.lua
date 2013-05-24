@@ -15,12 +15,7 @@ function DialogInterface.bind(theClass)
 		self:setVisible(false)
 	end
 	
-	function theClass:swallowOnTouch()
-		local menus = CCArray:create()
-		self.reject_menu = self.ccbproxy:getNodeWithType("reject_menu", "CCMenu")
-		self.confirm_menu = self.ccbproxy:getNodeWithType("confirm_menu", "CCMenu")
-		menus:addObject(self.reject_menu)
-		menus:addObject(self.confirm_menu)
+	function theClass:swallowOnTouch(menus)
 		self.convertor = DialogLayerConvertor:create(menus)
     end
 end

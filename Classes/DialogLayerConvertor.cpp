@@ -5,18 +5,17 @@ using namespace cocos2d;
 DialogLayerConvertor* DialogLayerConvertor::create(CCArray* menus) {
 	DialogLayerConvertor* convertor = new DialogLayerConvertor();
 	convertor->delegater = new TouchDelegater();
-
-		CCObject* pObj = NULL;
-		CCARRAY_FOREACH(menus, pObj) {
-			CCMenu* cmenu = dynamic_cast<CCMenu*>(pObj);
-			convertor->delegater->addMenu(cmenu);
-		}
-		return convertor;
+	CCObject* pObj = NULL;
+	CCARRAY_FOREACH(menus, pObj) {
+		CCMenu* cmenu = dynamic_cast<CCMenu*>(pObj);
+		convertor->delegater->addMenu(cmenu);
+	}
+	return convertor;
 }
 
 void DialogLayerConvertor::convert() {
 	CCTouchDispatcher* dispatcher =
-					CCDirector::sharedDirector()->getTouchDispatcher();
+			CCDirector::sharedDirector()->getTouchDispatcher();
 	dispatcher->addTargetedDelegate(this->delegater, kCCMenuHandlerPriority - 1,
 			true);
 }
