@@ -32,8 +32,13 @@ function HallSceneUPlugin.bind(theClass)
 				CCDirector:sharedDirector():endToLua()
 			end)
 			self.rootNode:addChild(self.exit_dialog)
+			self.exit_dialog:show()
 		else
-			self.exit_dialog:setVisible(not self.exit_dialog:isVisible())
+			if self.exit_dialog:isShowing() then
+				self.exit_dialog:dismiss()
+			else
+				self.exit_dialog:show()
+			end
 		end
 	end
 	

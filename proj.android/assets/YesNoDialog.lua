@@ -1,4 +1,5 @@
 require "src.YesNoDialogUPlugin"
+require "src.DialogInterface"
 
 YesNoDialog = class("YesNoDialog", function()
 	print("new YesNoDialog")
@@ -25,10 +26,12 @@ function YesNoDialog:ctor()
 	self.title = self.ccbproxy:getNodeWithType("title_text", "CCLabelTTF")
 	self.confirm = self.ccbproxy:getNodeWithType("confirm_btn", "CCMenuItemImage")
 	self.reject = self.ccbproxy:getNodeWithType("reject_btn", "CCMenuItemImage")
+	self:setVisible(false)
 	
 	self:setNoButton(function()
-		self:setVisible(false)
+		self:dismiss()
 	end)
+	self:swallowOnTouch()
 	--[[
 	self:setOnKeypad(function(key)
 		print("yesno dialog on key pad")
@@ -41,3 +44,4 @@ function YesNoDialog:ctor()
 	]]
 end
 YesNoDialogUPlugin.bind(YesNoDialog)
+DialogInterface.bind(YesNoDialog)

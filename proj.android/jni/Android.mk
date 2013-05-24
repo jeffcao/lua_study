@@ -19,6 +19,8 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
  	                ../../Classes/WebsocketManager_lua.cpp \
  	                ../../Classes/MySprite.cpp \
  	                ../../Classes/MySprite_lua.cpp \
+ 	                ../../Classes/DialogLayerConvertor.cpp \
+ 	                ../../Classes/DialogLayerConvertor_lua.cpp \
  	                ../../Classes/CCEditBoxBridge.cpp \
  	                ../../Classes/CCEditBoxBridge_lua.cpp \
 					../../Classes/cocos2dx-LuaProxy/tolua/CCBProxy.cpp \

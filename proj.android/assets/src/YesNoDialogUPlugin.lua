@@ -21,4 +21,5 @@ function YesNoDialogUPlugin.bind(theClass)
 		self.rootNode:setKeypadEnabled(true)
 		self.rootNode:registerScriptKeypadHandler(fn)
 	end
+
 end
