@@ -38,16 +38,17 @@ function YesNoDialog:ctor()
 	menus:addObject(self.reject_menu)
 	menus:addObject(self.confirm_menu)
 	self:swallowOnTouch(menus)
-	--[[
+	self:swallowOnKeypad()
+
 	self:setOnKeypad(function(key)
 		print("yesno dialog on key pad")
 		if key == "backClicked" then
-			if self:isVisible()  then
-				self:setVisible(false)
+			if self:isShowing()  then
+				self:dismiss()
 			end
 		end
 	end)
-	]]
+	
 end
 YesNoDialogUPlugin.bind(YesNoDialog)
 DialogInterface.bind(YesNoDialog)
