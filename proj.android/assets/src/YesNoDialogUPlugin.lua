@@ -17,9 +17,6 @@ function YesNoDialogUPlugin.bind(theClass)
 		self.reject:registerScriptTapHandler(fn)
 	end
 	
-	function theClass:setOnKeypad(fn)
-		self.rootNode:setKeypadEnabled(true)
-		self.rootNode:registerScriptKeypadHandler(fn)
-	end
+	
 
 end

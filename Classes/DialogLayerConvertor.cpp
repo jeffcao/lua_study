@@ -7,7 +7,7 @@ DialogLayerConvertor* DialogLayerConvertor::create(CCArray* menus) {
 	convertor->delegater = new TouchDelegater();
 	CCObject* pObj = NULL;
 	CCARRAY_FOREACH(menus, pObj) {
-		CCMenu* cmenu = dynamic_cast<CCMenu*>(pObj);
+		CCLayerRGBA* cmenu = dynamic_cast<CCLayerRGBA*>(pObj);
 		convertor->delegater->addMenu(cmenu);
 	}
 	return convertor;
@@ -29,7 +29,7 @@ bool TouchDelegater::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent) {
 	this->pTouchedMenu = NULL;
 	CCObject* pObj = NULL;
 	CCARRAY_FOREACH(this->m_menus, pObj) {
-		CCMenu* cmenu = dynamic_cast<CCMenu*>(pObj);
+		CCLayerRGBA* cmenu = dynamic_cast<CCLayerRGBA*>(pObj);
 		if (cmenu->ccTouchBegan(pTouch, pEvent)) {
 			this->pTouchedMenu = cmenu;
 			break;
@@ -56,6 +56,6 @@ void TouchDelegater::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent) {
 	}
 }
 
-void TouchDelegater::addMenu(CCMenu *menu) {
+void TouchDelegater::addMenu(CCLayerRGBA *menu) {
 	this->m_menus->addObject(menu);
 }

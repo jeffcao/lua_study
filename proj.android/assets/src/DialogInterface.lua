@@ -31,4 +31,9 @@ function DialogInterface.bind(theClass)
     function theClass:swallowOnKeypad()
     	self.swallow_keypad = true
     end
+    
+    function theClass:setOnKeypad(fn)
+		self.rootNode:setKeypadEnabled(true)
+		self.rootNode:registerScriptKeypadHandler(fn)
+	end
 end

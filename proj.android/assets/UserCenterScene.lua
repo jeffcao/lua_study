@@ -1,4 +1,5 @@
 require "src.UserCenterSceneUPlugin"
+require "SetDialog"
 UserCenterScene = class("UserCenterScene", function()
 	print("new UserCenterScene")
 	return display.newScene("UserCenterScene")
@@ -38,6 +39,10 @@ function UserCenterScene:ctor()
 	self.avatar_menu_item:registerScriptTapHandler(__bind(self.onAvatarClick, self))
 	self.update_avatar_menu_item:registerScriptTapHandler(__bind(self.onUpdateAvatarClick, self))
 	self.update_pswd_menu_item:registerScriptTapHandler(__bind(self.onUpdatePswdClick, self))
+
+	local set = createSetDialog()
+	self.rootNode:addChild(set)
+	set:show()
 end
 
 UserCenterSceneUPlugin.bind(UserCenterScene)

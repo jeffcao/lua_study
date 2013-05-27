@@ -3,6 +3,7 @@ require "RoomItem"
 require "Menu"
 require "src.WidgetPlugin"
 
+
 HallScene = class("HallScene", function() 
 	print("create new hall scene")
 	return display.newScene("HallScene")
@@ -68,6 +69,8 @@ HallScene = class("HallScene", function()
 	local editbox = CCEditBox:create(CCSizeMake(320,50), scale9)
 	editbox:setText("hfdkahfla")
 	self.rootNode:addChild(editbox)
+		
+	
  end
  
 

@@ -15,11 +15,11 @@ public:
 	virtual void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
 	virtual void ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
 
-	void addMenu(cocos2d::CCMenu* menu);
+	void addMenu(cocos2d::CCLayerRGBA* menu);
 
 private:
 	cocos2d::CCArray *m_menus;
-	cocos2d::CCMenu *pTouchedMenu;
+	cocos2d::CCLayerRGBA *pTouchedMenu;
 };
 
 class DialogLayerConvertor : public cocos2d::CCObject {
