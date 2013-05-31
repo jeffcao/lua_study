@@ -122,9 +122,9 @@
 								<key>displayName</key>
 								<string>menu_set_item</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>menu_set_item</string>
 								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
+								<integer>2</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -134,8 +134,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>50</real>
-											<real>50</real>
+											<real>48.979591369628906</real>
+											<real>47.727272033691406</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -232,6 +232,8 @@
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -447,8 +449,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
