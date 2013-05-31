@@ -40,9 +40,7 @@ function UserCenterScene:ctor()
 	self.update_avatar_menu_item:registerScriptTapHandler(__bind(self.onUpdateAvatarClick, self))
 	self.update_pswd_menu_item:registerScriptTapHandler(__bind(self.onUpdatePswdClick, self))
 
-	local set = createSetDialog()
-	self.rootNode:addChild(set)
-	set:show()
+	
 end
 
 UserCenterSceneUPlugin.bind(UserCenterScene)

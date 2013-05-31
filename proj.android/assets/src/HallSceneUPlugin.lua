@@ -10,7 +10,7 @@ function HallSceneUPlugin.bind(theClass)
 			if self.pop_menu then
 				self.pop_menu:setVisible(not self.pop_menu:isVisible())
 			else
-				 self.pop_menu = createMenu()
+				 self.pop_menu = createMenu(self.rootNode)
 				 self.pop_menu:setVisible(true)
 				 self.rootNode:addChild(self.pop_menu)
 			end
