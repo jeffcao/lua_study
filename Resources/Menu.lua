@@ -2,6 +2,7 @@ require "AboutScene"
 require "HelpScene"
 require "LoginScene"
 require "SetDialog"
+require "src.DialogInterface"
 
 Menu = class("Menu", function() 
 	print("new menu")
@@ -24,10 +25,11 @@ function Menu:ctor()
 	assert(node, "fail to load menu")
 	self.rootNode = tolua.cast(node, "CCLayer")
 	self:addChild(self.rootNode)
+	self:setVisible(false)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
 	local function dismiss()
-		self:setVisible(false)
+		self:dismiss()
 	end
 	
 	local function about()
@@ -50,12 +52,9 @@ function Menu:ctor()
 	local function set()
 		if not self.set_dialog then
 			self.set_dialog = createSetDialog()
-			--self.rootNode:addChild(self.set_dialog)
 			self.container:addChild(self.set_dialog)
 		end
-		if not self.set_dialog:isShowing() then
-			self.set_dialog:show()
-		end
+		self.set_dialog:show()
 		dismiss()
 	end
 	self.about = self.ccbproxy:getNodeWithType("menu_about_item", "CCMenuItemImage")
@@ -69,4 +68,17 @@ function Menu:ctor()
 	
 	self.set = self.ccbproxy:getNodeWithType("menu_set_item", "CCMenuItemImage")
 	self.set:registerScriptTapHandler(set)
+
+	local menus = CCArray:create()
+	menus:addObject(self.set:getParent())
+	menus:addObject(self.switch:getParent())
+	menus:addObject(self.help:getParent())
+	menus:addObject(self.about:getParent())
+	self:swallowOnTouch(menus)
+	self:swallowOnKeypad()
+	self:setOnKeypad(function()
+		self:dismiss()
+	end)
 end
+
+DialogInterface.bind(Menu)

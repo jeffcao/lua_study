@@ -8,15 +8,15 @@ function HallSceneUPlugin.bind(theClass)
 		print("hall scene on key pad")
 		if key == "menuClicked" then
 			if self.pop_menu then
-				self.pop_menu:setVisible(not self.pop_menu:isVisible())
+				self.pop_menu:show()
 			else
 				 self.pop_menu = createMenu(self.rootNode)
-				 self.pop_menu:setVisible(true)
 				 self.rootNode:addChild(self.pop_menu)
+				 self.pop_menu:show()
 			end
 		elseif key == "backClicked" then
-			if self.pop_menu and self.pop_menu:isVisible() then
-				self.pop_menu:setVisible(false)
+			if self.pop_menu and self.pop_menu:isShowing() then
+				self.pop_menu:dismiss()
 			else
 				self:doShowExitDialog()
 			end

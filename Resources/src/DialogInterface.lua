@@ -1,3 +1,4 @@
+require "src.WebsocketRails.Timer"
 DialogInterface = {}
 
 function DialogInterface.bind(theClass)
@@ -6,6 +7,9 @@ function DialogInterface.bind(theClass)
 	end
 	
 	function theClass:show()
+		if self:isShowing() then
+			return
+		end
 		self.convertor:convert()
 		print("set visible after convert")
 		self:setVisible(true)
@@ -16,12 +20,20 @@ function DialogInterface.bind(theClass)
 	end
 	
 	function theClass:dismiss()
+		if not self:isShowing() then
+			return
+		end
 		self.convertor:unconvert()
 		self:setVisible(false)
+		print("dismiss before")
 		if self.swallow_keypad then
+			Timer.add_timer(0.7, function()
 			self.rootNode:setKeypadEnabled(false)
 			self:getParent():setKeypadEnabled(true)
+			print("exceute function")
+			end)
 		end
+		print("dismiss after")
 	end
 	
 	function theClass:swallowOnTouch(menus)
