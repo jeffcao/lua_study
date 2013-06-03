@@ -50,7 +50,7 @@
 								<key>value</key>
 								<array>
 									<real>11</real>
-									<real>26</real>
+									<real>25</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -166,7 +166,7 @@
 								<key>value</key>
 								<array>
 									<real>72</real>
-									<real>26</real>
+									<real>25</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -282,7 +282,7 @@
 								<key>value</key>
 								<array>
 									<real>465</real>
-									<real>2</real>
+									<real>1</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -293,8 +293,8 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
-									<real>0.5</real>
+									<real>0.0</real>
+									<real>0.0</real>
 								</array>
 							</dict>
 							<dict>
@@ -312,19 +312,11 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>tag</string>
-								<key>type</key>
-								<string>Integer</string>
-								<key>value</key>
-								<integer>1000</integer>
-							</dict>
-							<dict>
-								<key>name</key>
 								<string>ignoreAnchorPointForPosition</string>
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -496,7 +488,7 @@
 								<key>value</key>
 								<array>
 									<real>11</real>
-									<real>26</real>
+									<real>25</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -612,7 +604,7 @@
 								<key>value</key>
 								<array>
 									<real>465</real>
-									<real>2</real>
+									<real>1</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -623,8 +615,8 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
-									<real>0.5</real>
+									<real>0.0</real>
+									<real>0.0</real>
 								</array>
 							</dict>
 							<dict>
@@ -642,19 +634,11 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>tag</string>
-								<key>type</key>
-								<string>Integer</string>
-								<key>value</key>
-								<integer>1000</integer>
-							</dict>
-							<dict>
-								<key>name</key>
 								<string>ignoreAnchorPointForPosition</string>
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -715,9 +699,9 @@
 				<key>displayName</key>
 				<string>nickname_layer</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>nickname_layer</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -728,7 +712,7 @@
 						<key>value</key>
 						<array>
 							<real>507</real>
-							<real>307</real>
+							<real>304</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -826,7 +810,7 @@
 								<key>value</key>
 								<array>
 									<real>11</real>
-									<real>26</real>
+									<real>25</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -942,7 +926,7 @@
 								<key>value</key>
 								<array>
 									<real>465</real>
-									<real>2</real>
+									<real>1</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -953,8 +937,8 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
-									<real>0.5</real>
+									<real>0.0</real>
+									<real>0.0</real>
 								</array>
 							</dict>
 							<dict>
@@ -972,19 +956,11 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>tag</string>
-								<key>type</key>
-								<string>Integer</string>
-								<key>value</key>
-								<integer>1000</integer>
-							</dict>
-							<dict>
-								<key>name</key>
 								<string>ignoreAnchorPointForPosition</string>
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1045,9 +1021,9 @@
 				<key>displayName</key>
 				<string>gender_layer</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>gender_layer</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -1058,7 +1034,7 @@
 						<key>value</key>
 						<array>
 							<real>507</real>
-							<real>260</real>
+							<real>254</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1156,7 +1132,7 @@
 								<key>value</key>
 								<array>
 									<real>11</real>
-									<real>26</real>
+									<real>25</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1272,7 +1248,7 @@
 								<key>value</key>
 								<array>
 									<real>72</real>
-									<real>26</real>
+									<real>25</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1388,7 +1364,7 @@
 								<key>value</key>
 								<array>
 									<real>465</real>
-									<real>2</real>
+									<real>1</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1399,8 +1375,8 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
-									<real>0.5</real>
+									<real>0.0</real>
+									<real>0.0</real>
 								</array>
 							</dict>
 							<dict>
@@ -1418,19 +1394,11 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>tag</string>
-								<key>type</key>
-								<string>Integer</string>
-								<key>value</key>
-								<integer>1000</integer>
-							</dict>
-							<dict>
-								<key>name</key>
 								<string>ignoreAnchorPointForPosition</string>
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
-								<true/>
+								<false/>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -1504,7 +1472,7 @@
 						<key>value</key>
 						<array>
 							<real>507</real>
-							<real>215</real>
+							<real>204</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1602,7 +1570,7 @@
 								<key>value</key>
 								<array>
 									<real>11</real>
-									<real>26</real>
+									<real>25</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1694,6 +1662,8 @@
 								<string>胜率：</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -1718,7 +1688,7 @@
 								<key>value</key>
 								<array>
 									<real>72</real>
-									<real>26</real>
+									<real>25</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1830,7 +1800,7 @@
 						<key>value</key>
 						<array>
 							<real>507</real>
-							<real>168</real>
+							<real>154</real>
 							<integer>0</integer>
 						</array>
 					</dict>
