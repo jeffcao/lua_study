@@ -108,8 +108,20 @@ HallScene = class("HallScene", function()
  end
  ]]
  
+ function HallScene:init()
+ 	print("HallScene:init()")
+ end
+ 
  function HallScene:onEnter() 
-	
+	print("HallScene:onEnter()")
+ end
+ 
+ function HallScene:onExit()
+ 	print("HallScene:onExit()")
+ end
+ 
+ function HallScene:onEnterTransitionDidFinish()
+ 	print("HallScene:onEnterTransitionDidFinish()")
  end
  
  

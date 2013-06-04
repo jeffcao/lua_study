@@ -10,8 +10,8 @@ function UserCenterSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:doToHall()
-		local scene = createHallScene()
-		CCDirector:sharedDirector():replaceScene(scene)
+		--local scene = createHallScene()
+		CCDirector:sharedDirector():popScene()
 	end
 	
 	function theClass:onCloseClick()

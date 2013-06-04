@@ -66,11 +66,11 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:doToMarket()
 		local scene = createMarketScene()
-		CCDirector:sharedDirector():replaceScene(scene)
+		CCDirector:sharedDirector():pushScene(scene)
 	end
 	
 	function theClass:doToInfo()
 		local scene = createUserCenterScene()
-		CCDirector:sharedDirector():replaceScene(scene)
+		CCDirector:sharedDirector():pushScene(scene)
 	end
 end
