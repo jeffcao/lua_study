@@ -5,14 +5,14 @@ function LoginPlugin.bind(theClass)
 	--theClass.login_websocket = nil
 	
 	function theClass:sign_success(data)
-		--print(data, "data", true)
+--		print(data, "data", true)
 		print("[LoginWebsocketPlugin.sign_success] updating local user info.")
 		local userDefault = CCUserDefault:sharedUserDefault()
-		GlobalSetting.current_user.load_from_json(data.user_profile)
+		GlobalSetting.current_user:load_from_json(data.user_profile)
 		local cur_user = GlobalSetting.current_user
 		--cur_user.user_id = data.user_id
 		cur_user.login_token = data.token
-		cur_user.save(userDefault)
+		cur_user:save(userDefault)
 		dump(cur_user, "current_user")
 		--when sign succuss, go to hall scene
 		print("go to hall in login plugin")
@@ -44,13 +44,14 @@ function LoginPlugin.bind(theClass)
 	function theClass:on_websocket_ready()
 		local cur_user = GlobalSetting.current_user
 		if is_blank(cur_user.user_id) and is_blank(cur_user.login_token) then
-			self:sign_in_by_token(cur_user.user_id, cur_user.login_token)
-		else
 			self:signup()
+		else
+			self:sign_in_by_token(cur_user.user_id, cur_user.login_token)
 		end
 	end
 	
 	function theClass:connect_to_login_server(config)
+		print("[theClass:connect_to_login_server()]")
 		self.login_websocket = WebSocketRails:new(config.login_urls[1], true)
 		self.login_websocket.on_open = __bind(self.on_websocket_ready, self)
 	end
