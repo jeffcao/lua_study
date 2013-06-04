@@ -48,4 +48,8 @@ function DialogInterface.bind(theClass)
 		self.rootNode:setKeypadEnabled(true)
 		self.rootNode:registerScriptKeypadHandler(fn)
 	end
+	
+	function theClass:isAlive()
+		return true
+	end
 end

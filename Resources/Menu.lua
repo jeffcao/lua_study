@@ -14,6 +14,7 @@ function createMenu(container)
 	print("create menu")
 	local menu = Menu.new()
 	menu.container = container
+	menu.container:addChild(menu)
 	return menu
 end
 
@@ -80,6 +81,8 @@ function Menu:ctor()
 	self:setOnKeypad(function()
 		self:dismiss()
 	end)
+	
+	
 end
 
 DialogInterface.bind(Menu)
