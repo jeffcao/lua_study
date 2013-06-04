@@ -1,6 +1,8 @@
 require "UserCenterScene"
+require "MenuScene"
 require "YesNoDialog"
 require "MarketScene"
+
 HallSceneUPlugin = {}
 
 function HallSceneUPlugin.bind(theClass)
@@ -14,6 +16,10 @@ function HallSceneUPlugin.bind(theClass)
 				 self.rootNode:addChild(self.pop_menu)
 				 self.pop_menu:show()
 			end
+			--[[
+			local scene = createMenuScene()
+			CCDirector:sharedDirector():pushScene(scene)
+			]]
 		elseif key == "backClicked" then
 			if self.pop_menu and self.pop_menu:isShowing() then
 				self.pop_menu:dismiss()

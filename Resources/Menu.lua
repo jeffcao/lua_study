@@ -29,22 +29,23 @@ function Menu:ctor()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
 	local function dismiss()
-		self:dismiss()
+		if self then
+			self:dismiss()
+		end
 	end
 	
 	local function about()
 		dismiss()
 		local scene = createAboutScene()
-		CCDirector:sharedDirector():replaceScene(scene)
+		CCDirector:sharedDirector():pushScene(scene)
 	end
 	local function help()
 		dismiss()
 		local scene = createHelpScene()
-		CCDirector:sharedDirector():replaceScene(scene)
+		CCDirector:sharedDirector():pushScene(scene)
 	end
 	
 	local function switch()
-		dismiss()
 		local scene = createLoginScene()
 		CCDirector:sharedDirector():replaceScene(scene)
 	end
