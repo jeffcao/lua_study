@@ -8,6 +8,7 @@ LoginScene = class("LoginScene", function()
 end)
 
 function LoginScene:ctor()
+	
 	self.ccbproxy = CCBProxy:create()
 	self.ccbproxy:retain()
 	
@@ -16,6 +17,7 @@ function LoginScene:ctor()
 	self.rootNode = tolua.cast(node, "CCLayer")
 	print("self.rootNode ==> ", self.rootNode)
 	self:addChild(self.rootNode)
+	
 	
 	local function onRegisterMenuClick()
 		print("go to register in login scene")
@@ -34,6 +36,7 @@ function LoginScene:ctor()
 	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler( __bind(self.on_keypad_pressed, self) )
+	
 end
 
 function LoginScene:onKuaisuLoginBtnClick()

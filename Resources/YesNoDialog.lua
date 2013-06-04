@@ -7,9 +7,11 @@ YesNoDialog = class("YesNoDialog", function()
 end
 )
 
-function createYesNoDialog()
+function createYesNoDialog(container)
 	print("create YesNoDialog")
-	return YesNoDialog.new()
+	local dialog = YesNoDialog.new()
+	container:addChild(dialog)
+	return dialog
 end
 
 function YesNoDialog:ctor()

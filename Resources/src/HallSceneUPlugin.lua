@@ -1,17 +1,20 @@
 require "UserCenterScene"
+require "YesNoDialog2"
 require "YesNoDialog"
 require "MarketScene"
+require "MenuDialog"
+
 HallSceneUPlugin = {}
 
 function HallSceneUPlugin.bind(theClass)
 	function theClass:onKeypad(key)
 		print("hall scene on key pad")
 		if key == "menuClicked" then
-			if self.pop_menu then
+			if self.pop_menu and self.pop_menu:isAlive() then
 				self.pop_menu:show()
 			else
-				 self.pop_menu = createMenu(self.rootNode)
-				 self.rootNode:addChild(self.pop_menu)
+				 --self.pop_menu = createMenu(self.rootNode)
+				 self.pop_menu = createMenuDialog()
 				 self.pop_menu:show()
 			end
 		elseif key == "backClicked" then
@@ -24,21 +27,21 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:doShowExitDialog()
-		if not self.exit_dialog then
-			self.exit_dialog = createYesNoDialog()
-			self.exit_dialog:setTitle("退出")
-			self.exit_dialog:setMessage("您是否退出游戏?")
-			self.exit_dialog:setYesButton(function()
-				CCDirector:sharedDirector():endToLua()
-			end)
-			self.rootNode:addChild(self.exit_dialog)
-			self.exit_dialog:show()
-		else
+		if self.exit_dialog and self.exit_dialog:isAlive() then
 			if self.exit_dialog:isShowing() then
 				self.exit_dialog:dismiss()
 			else
 				self.exit_dialog:show()
 			end
+		else
+		--	self.exit_dialog = createYesNoDialog(self.rootNode)
+			self.exit_dialog = createYesNoDialog2()
+			self.exit_dialog:setTitle("退出")
+			self.exit_dialog:setMessage("您是否退出游戏?")
+			self.exit_dialog:setYesButton(function()
+				CCDirector:sharedDirector():endToLua()
+			end)
+			self.exit_dialog:show()
 		end
 	end
 	
@@ -60,11 +63,11 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:doToMarket()
 		local scene = createMarketScene()
-		CCDirector:sharedDirector():replaceScene(scene)
+		CCDirector:sharedDirector():pushScene(scene)
 	end
 	
 	function theClass:doToInfo()
 		local scene = createUserCenterScene()
-		CCDirector:sharedDirector():replaceScene(scene)
+		CCDirector:sharedDirector():pushScene(scene)
 	end
 end

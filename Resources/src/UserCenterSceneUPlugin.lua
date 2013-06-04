@@ -10,8 +10,8 @@ function UserCenterSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:doToHall()
-		local scene = createHallScene()
-		CCDirector:sharedDirector():replaceScene(scene)
+		--local scene = createHallScene()
+		CCDirector:sharedDirector():popScene()
 	end
 	
 	function theClass:onCloseClick()
@@ -35,7 +35,7 @@ function UserCenterSceneUPlugin.bind(theClass)
 			return
 		end
 		self.current_layer = name
-		self.upload_pic:setVisible(name == "personal_info")
+		self.upload_pic:setVisible(not (name == "personal_info"))
 		self.container:removeAllChildrenWithCleanup(true)
 		local layer = nil
 		if name == "personal_info"  then 
