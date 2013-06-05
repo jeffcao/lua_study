@@ -46,8 +46,8 @@ end
 
 function LoginScene:onLoginBtnClick()
 	print("[LoginScene:onLoginBtnClick()]")
-	dump(GlobalSetting, "GlobalSetting")
 	local cur_user = GlobalSetting.current_user
+	dump(cur_user, "current_user")
 	if not is_blank(cur_user.user_id) and not is_blank(cur_user.login_token) then
 		self:sign_in_by_token(cur_user.user_id, cur_user.login_token)
 	end
