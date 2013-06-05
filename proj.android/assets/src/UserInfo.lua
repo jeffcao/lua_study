@@ -14,7 +14,7 @@ end
 
 function UserInfo:load(userDefault)
 	local str_user_ids = userDefault:getStringForKey("user.user_ids")
-	print("[UserInfo:load_by_id] str_user_ids: "..str_user_ids)
+	print("[UserInfo:load] str_user_ids: "..str_user_ids)
 	if str_user_ids == nil then
 		return nil
 	end
