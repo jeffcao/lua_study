@@ -1,5 +1,6 @@
 require "InfoLayer"
 require "UpdatePasswordLayer"
+require "AvatarLayer"
 UserCenterSceneUPlugin = {}
 
 function UserCenterSceneUPlugin.bind(theClass)
@@ -43,7 +44,7 @@ function UserCenterSceneUPlugin.bind(theClass)
 		elseif name == "update_password" then
 			layer = createUpdatePasswordLayer()
 		else 
-			layer = display.newLayer()
+			layer = createAvatarLayer()
 		end
 		self.container:addChild(layer)
 	end
