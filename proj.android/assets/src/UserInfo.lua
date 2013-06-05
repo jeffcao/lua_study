@@ -16,11 +16,11 @@ function UserInfo:load(userDefault)
 	local str_user_ids = userDefault:getStringForKey("user.user_ids")
 	print("[UserInfo:load] str_user_ids: "..str_user_ids)
 	if str_user_ids == nil then
-		return nil
+		return self
 	end
 	local user_ids = split(str_user_ids, ",")
 	if #user_ids < 1 then
-		return nil
+		return self
 	end
 	
 	self.user_id = user_ids[#user_ids]
