@@ -13,15 +13,53 @@ function UserInfo:new(info)
 end
 
 function UserInfo:load(userDefault)
-	self.user_id = userDefault:getStringForKey("user.user_id")
-	self.login_token = userDefault:getStringForKey("user.login_token")
+	local str_user_ids = userDefault:getStringForKey("user.user_ids")
+	print("[UserInfo:load_by_id] str_user_ids: "..str_user_ids)
+	if str_user_ids == nil then
+		return nil
+	end
+	local user_ids = split(str_user_ids, ",")
+	if #user_ids < 1 then
+		return nil
+	end
 	
+	self.user_id = user_ids[#user_ids]
+	self.login_token = userDefault:getStringForKey("user.login_token_"..self.user_id)
+	return self
+end
+
+function UserInfo:load_by_id(userDefault,u_id)
+	local str_user_ids = userDefault:getStringForKey("user.user_ids")
+	print("[UserInfo:load_by_id] str_user_ids: "..str_user_ids)
+	if str_user_ids == nil then
+		return nil
+	end
+	local user_ids = split(str_user_ids, ",")
+	if #user_ids < 1 then
+		return nil
+	end
+	for k, v in pairs(user_ids) do
+		if v == u_id then
+			self.user_id = u_id
+			break
+		end
+	end	
+	if self.user_id ~= nil then
+		self.login_token = userDefault:getStringForKey("user.login_token_"..u_id)
+	end
+	dump(self, "UserInfo:self")
 	return self
 end
 
 function UserInfo:save(userDefault)
-	userDefault:setStringForKey("user.user_id", self.user_id)
-	userDefault:setStringForKey("user.login_token", self.login_token)
+	local str_user_ids = userDefault:getStringForKey("user.user_ids")
+	if str_user_ids == nil then
+		userDefault:setStringForKey("user.user_ids", self.user_id)
+	else
+		userDefault:setStringForKey("user.user_ids", str_user_ids..","..self.user_id)
+	end
+	
+	userDefault:setStringForKey("user.login_token_"..self.user_id, self.login_token)
 end
 
 function UserInfo:load_from_json(json_data)

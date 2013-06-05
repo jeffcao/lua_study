@@ -1,5 +1,6 @@
 local json = require "cjson"
 require "RegisterScene"
+require "src.LoginScenePlugin"
 
 LoginScene = class("LoginScene", function()
 	print("creating new loginScene")
@@ -26,15 +27,37 @@ function LoginScene:ctor()
 	self.register_menu = self.ccbproxy:getNodeWithType("register_account_btn", "CCMenuItemImage")
 	self.register_menu:registerScriptTapHandler(onRegisterMenuClick)
 	
+	self.kuaisu_login_menu = self.ccbproxy:getNodeWithType("kuaisu_login_btn", "CCMenuItemImage")
+	self.kuaisu_login_menu:registerScriptTapHandler(__bind(self.onKuaisuLoginBtnClick, self) )
+	
+	self.login_menu = self.ccbproxy:getNodeWithType("login_btn", "CCMenuItemImage")
+	self.login_menu:registerScriptTapHandler(__bind(self.onLoginBtnClick, self) )
+	
+	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler( __bind(self.on_keypad_pressed, self) )
 	
+end
+
+function LoginScene:onKuaisuLoginBtnClick()
+	print("[LoginScene:onKuaisuLoginBtnClick()]")
+	self:signup()
+end
+
+function LoginScene:onLoginBtnClick()
+	print("[LoginScene:onLoginBtnClick()]")
+	local cur_user = GlobalSetting.current_user
+	dump(cur_user, "current_user")
+	if not is_blank(cur_user.user_id) and not is_blank(cur_user.login_token) then
+		self:sign_in_by_token(cur_user.user_id, cur_user.login_token)
+	end
 end
 	
 function LoginScene:onEnter()
 	print("[LoginScene:on_enter()]")
 	self.super.onEnter(self)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+	self:connect_to_login_server(GlobalSetting)
 end
 
 function LoginScene:onExit()
@@ -63,7 +86,7 @@ function LoginScene:do_close()
 	CCDirector:sharedDirector():endToLua()
 end
 
---LoginPlugin.bind(LoginScene)
+LoginScenePlugin.bind(LoginScene)
 
 function createLoginScene()
 	print("createLoginScene()")

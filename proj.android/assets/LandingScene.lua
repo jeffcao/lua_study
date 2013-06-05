@@ -1,5 +1,6 @@
 local json = require "cjson"
 require "src.LoginPlugin"
+require "LoginScene"
 
 LandingScene = class("LandingScene", function()
 	print("creating new landingScene")
@@ -27,11 +28,12 @@ function LandingScene:onEnter()
 	print("[LandingScene:on_enter()]")
 	self.super.onEnter(self)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
-	self:setup_websocket()
+--	self:setup_websocket()
 	print("go to hall in landing scene")
-	local hall = createHallScene()
+--	local hall = createHallScene()
+--	CCDirector:sharedDirector():replaceScene(hall)
+	local hall = createLoginScene()
 	CCDirector:sharedDirector():replaceScene(hall)
-	
 end
 
 function LandingScene:onExit()
