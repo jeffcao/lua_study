@@ -15,7 +15,7 @@
 	<key>guides</key>
 	<array/>
 	<key>jsControlled</key>
-	<false/>
+	<true/>
 	<key>nodeGraph</key>
 	<dict>
 		<key>baseClass</key>
@@ -258,6 +258,8 @@
 								<string>50470</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -1662,8 +1664,6 @@
 								<string>胜率：</string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -1872,7 +1872,7 @@
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string></string>
+		<string>GamingScene</string>
 		<key>displayName</key>
 		<string>CCLayer</string>
 		<key>jsController</key>

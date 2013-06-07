@@ -15,7 +15,7 @@
 	<key>guides</key>
 	<array/>
 	<key>jsControlled</key>
-	<false/>
+	<true/>
 	<key>nodeGraph</key>
 	<dict>
 		<key>baseClass</key>
@@ -1063,8 +1063,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -2360,11 +2358,9 @@
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string></string>
+		<string>GamingScene</string>
 		<key>displayName</key>
 		<string>CCLayer</string>
-		<key>jsController</key>
-		<string>MainScene</string>
 		<key>memberVarAssignmentName</key>
 		<string></string>
 		<key>memberVarAssignmentType</key>

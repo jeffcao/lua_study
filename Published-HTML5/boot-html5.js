@@ -12,7 +12,6 @@
         SingleEngineFile:'cocos2d-html5.min.js',
         appFiles:[
           'LandingScene.js',
-    'MainScene.js',
 
             'resources-html5.js',
             'boot2-html5.js'
