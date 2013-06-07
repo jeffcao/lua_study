@@ -51,6 +51,20 @@ function UserInfo:load_by_id(userDefault,u_id)
 	return self
 end
 
+function UserInfo:get_all_user_ids(userDefault)
+	local str_user_ids = userDefault:getStringForKey("user.user_ids")
+	print("[UserInfo:load_by_id] str_user_ids: "..str_user_ids)
+	if str_user_ids == nil then
+		return {}
+	end
+	local user_ids = split(str_user_ids, ",")
+	if #user_ids < 1 then
+		return {}
+	end
+	
+	return user_ids
+end
+
 function UserInfo:save(userDefault)
 	local str_user_ids = userDefault:getStringForKey("user.user_ids")
 	if str_user_ids == nil then
