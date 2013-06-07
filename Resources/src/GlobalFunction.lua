@@ -18,6 +18,11 @@ function is_blank(str)
 	return str == nil or string.len(string.trim(str)) == 0
 end
 
+function trim(s)
+ 	local from = s:match"^%s*()"
+ 	return from > #s and "" or s:match(".*%S", from)
+end
+
 function split(str, pat)
    local t = {}  -- NOTE: use {n = 0} in Lua-5.0
    local fpat = "(.-)" .. pat

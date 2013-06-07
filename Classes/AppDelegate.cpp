@@ -13,6 +13,7 @@
 extern "C" {
 #include "cjson/lua_extensions.h"
 }
+#include "Lua_extensions_CCB.h"
 
 
 USING_NS_CC;
@@ -144,8 +145,9 @@ bool AppDelegate::applicationDidFinishLaunching()
     tolua_MySprite_open(pLuaState);
     tolua_CCEditBoxBridge_open(pLuaState);
     tolua_DialogLayerConvertor_open(pLuaState);
-    luaopen_LuaProxy(pLuaState);
+    //luaopen_LuaProxy(pLuaState);
     luaopen_lua_extensions(pLuaState);
+    tolua_extensions_ccb_open(pLuaState);
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CCString* pstrFileContent = CCString::createWithContentsOfFile("main.lua");

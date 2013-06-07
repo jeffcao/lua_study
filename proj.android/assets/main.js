@@ -3,7 +3,6 @@
 require("jsb.js");
 
 require("LandingScene.js");
-require("MainScene.js");
 
 
 function main()

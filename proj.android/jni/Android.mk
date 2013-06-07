@@ -23,9 +23,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
  	                ../../Classes/DialogLayerConvertor_lua.cpp \
  	                ../../Classes/CCEditBoxBridge.cpp \
  	                ../../Classes/CCEditBoxBridge_lua.cpp \
-					../../Classes/cocos2dx-LuaProxy/tolua/CCBProxy.cpp \
 					../../Classes/cocos2dx-LuaProxy/tolua/LuaEventHandler.cpp \
-					../../Classes/cocos2dx-LuaProxy/tolua/luaopen_LuaProxy.cpp \
 					../../Classes/cocos2dx-LuaProxy/tolua/LuaTableView.cpp \
 					../../Classes/cocos2dx-LuaProxy/ui/CursorTextField.cpp \
 					../../Classes/cjson/lua_extensions.c \
