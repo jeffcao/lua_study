@@ -46,9 +46,9 @@ function LoginScene:init_input_controll()
 
 	local createEditbox = function(width, is_password)
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
-		cache:addSpriteFramesWithFile(Res.common_plist)
+		cache:addSpriteFramesWithFile(Res.common2_plist)
 		
-		local scale9_2 = CCScale9Sprite:createWithSpriteFrameName("kuang_a.png")
+		local scale9_2 = CCScale9Sprite:createWithSpriteFrameName("xiankuang02.png")
 		local editbox2 = CCEditBox:create(CCSizeMake(width,35), scale9_2)
 		editbox2:setPosition(ccp(0,0))
 		editbox2:setAnchorPoint(ccp(0,0))
@@ -71,34 +71,65 @@ function LoginScene:init_input_controll()
 	add_editbox(register_account_layer, 145, false, 1001)
 	
 	local forget_password_layer = self.ccbproxy:getNodeWithType("forget_password_layer", "CCLayer")
-	add_editbox(forget_password_layer, 170, true, 1002)
+	add_editbox(forget_password_layer, 165, true, 1002)
 	
-	local function userIdMenuCallback(tag, sender)
-		local user_id_list_layer = self.ccbproxy:getNodeWithType("user_id_list_layer", "CCLayerColor")
-		user_id_list_layer:setVisible(false)
-		print(dump(sender, "callback sender", true))
-		local user_id_item = tolua.cast(sender, "CCMenuItemLabel")
-		local user_id_label = tolua.cast(user_id_item:getLabel(), "CCLabelTTF")
-		local user_id = user_id_label:getString()
-		print("[LoginScene:userIdMenuCallback()] user id: "..user_id)
-		self:setUserInfo(user_id)
-	end
+	
 	
 	local createUserIdMenue = function(lb_text)
-		local menu_lb = CCLabelTTF:create()
-		menu_lb:setString(lb_text)
+		local menu_lb = CCLabelTTF:create(lb_text, "default",16)
+		menu_lb:setColor(ccc3(0, 0, 0))
+--		menu_lb:setString(lb_text)
+--		menu_lb:setPlaceholderFont("default",16)
 		
-		local lb_menu_item = CCMenuItemLabel:create(menu_lb)
-		lb_menu_item:setAnchorPoint(ccp(0, 0.5))
-		lb_menu_item:setColor(ccc3(0, 0, 0))
-		lb_menu_item:registerScriptTapHandler(userIdMenuCallback)
-		return lb_menu_item
+		local menu_item = CCMenuItemImage:create()
+		menu_item:setNormalSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("xiankuang02.png"))
+		menu_item:setSelectedSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("xiankuang01.png"))
+		
+--		local lb_menu_item = CCMenuItemLabel:create(menu_lb)
+		menu_item:setContentSize(CCSizeMake(170, 20))
+		menu_item:setAnchorPoint(ccp(0, 0.5))
+--		menu_item:setColor(ccc3(0, 0, 0))
+		menu_item:addChild(menu_lb, 999, 101)
+		
+		menu_lb:setAnchorPoint(ccp(0.5, 0.5))
+		menu_lb:setPosition(ccp(25, 15))
+		menu_item:registerScriptTapHandler(__bind(self.userIdMenuCallback, self))
+		
+		
+		return menu_item
 	end
-	local user_id_list_layer = self.ccbproxy:getNodeWithType("user_id_list_layer", "CCLayerColor")
-	local user_id_list_menu = self.ccbproxy:getNodeWithType("user_id_list_menu", "CCMenu")
-	user_ids = UserInfo:get_all_user_ids(CCUserDefault:sharedUserDefault())
-	user_id_list_layer:setContentSize(CCSizeMake(140, 20*#user_ids+15))
 	
+	local bg_sprite = self.ccbproxy:getNodeWithType("bg_sprite", "CCSprite")
+	
+	local pwd_bg_sprite = self.ccbproxy:getNodeWithType("pwd_bg_sprite", "CCScale9Sprite")
+	local user_bg_sprite = self.ccbproxy:getNodeWithType("user_bg_sprite", "CCScale9Sprite")
+	user_bg_sprite:setSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_a.png"))
+	pwd_bg_sprite:setSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_a.png"))
+--	bg_sprite:reorderChild(user_bg_sprite, 0)
+--	bg_sprite:reorderChild(pwd_bg_sprite, 0)
+	
+	user_bg_sprite:setPreferredSize(CCSizeMake(220, 40))
+	pwd_bg_sprite:setPreferredSize(CCSizeMake(220, 40))
+	
+--	user_bg_sprite_p_x = user_bg_sprite:getPositionX()
+--	pwd_bg_sprite_p_x = pwd_bg_sprite:getPositionX()
+--	user_bg_sprite_p_y = user_bg_sprite:getPositionY()
+--	pwd_bg_sprite_p_y = pwd_bg_sprite:getPositionY()
+	
+--	user_bg_sprite:setPosition(ccp(user_bg_sprite_p_x -3, user_bg_sprite_p_y))
+--	pwd_bg_sprite:setPosition(ccp(pwd_bg_sprite_p_x -3, pwd_bg_sprite_p_y))
+	
+	local user_id_list_layer = self.ccbproxy:getNodeWithType("user_id_list_layer", "CCLayer")
+	local user_id_list_menu = self.ccbproxy:getNodeWithType("user_id_list_menu", "CCMenu")
+	local user_id_list_sprite = self.ccbproxy:getNodeWithType("user_id_list_sprite", "CCScale9Sprite")
+	user_ids = UserInfo:get_all_user_ids(CCUserDefault:sharedUserDefault())
+	user_id_list_layer:setContentSize(CCSizeMake(173, 23*#user_ids+15))
+	user_id_list_sprite:setSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_a.png"))
+	user_id_list_sprite:setPreferredSize(CCSizeMake(173, 23*#user_ids+15))
+	user_id_list_sprite:setAnchorPoint(ccp(0,0.5))
+	--user_id_list_sprite:setPosition(ccp(0,0))
+--	user_id_list_sprite:setScaleX(5)
+--	user_id_list_sprite:setScaleY(5)
 	local menu_old_p_x = user_id_list_menu:getPositionX()
 	local menu_old_p_y = user_id_list_menu:getPositionY()
 	print("[LoginScene:init_input_controll] id_list_menu_old_p.x: "..menu_old_p_x.." y: "..menu_old_p_y)
@@ -109,11 +140,13 @@ function LoginScene:init_input_controll()
 			print("[LoginScene:ctor()] add ueser id menu, user_id=>".._user_id)
 		end
 	end
-	user_id_list_menu:alignItemsVerticallyWithPadding(5)
+	user_id_list_menu:alignItemsVerticallyWithPadding(2.5)
 	menu_old_p_x = user_id_list_menu:getPositionX()
 	menu_old_p_y = user_id_list_menu:getPositionY()
 	print("[LoginScene:init_input_controll] new id_list_menu_old_p.x: "..menu_old_p_x.." y: "..menu_old_p_y)
-	user_id_list_menu:setPosition(ccp(3, user_id_list_layer:getContentSize().height / 2 ))
+	user_id_list_menu:setPosition(ccp(3, user_id_list_layer:getContentSize().height / 2-5 ))
+	user_id_list_sprite:setPosition(ccp(0, user_id_list_layer:getContentSize().height / 2 ))
+--	user_id_list_layer:reorderChild(user_id_list_menu, 999)
 	
 	if GlobalSetting.current_user ~= nil then
 		self:setUserInfo(GlobalSetting.current_user.user_id)
@@ -121,7 +154,16 @@ function LoginScene:init_input_controll()
 
 end
 
-
+function LoginScene:userIdMenuCallback(tag, sender)
+		local user_id_list_layer = self.ccbproxy:getNodeWithType("user_id_list_layer", "CCLayer")
+		user_id_list_layer:setVisible(false)
+		print(dump(sender, "callback sender", true))
+		local user_id_item = tolua.cast(sender, "CCMenuItemImage")
+		local user_id_label = tolua.cast(user_id_item:getChildByTag(101), "CCLabelTTF")
+		local user_id = user_id_label:getString()
+		print("[LoginScene:userIdMenuCallback()] user id: "..user_id)
+		self:setUserInfo(user_id)
+	end
 
 function LoginScene:setUserInfo(user_id)
 	print("[LoginScene:setUserInfo()]")
@@ -147,7 +189,7 @@ end
 
 function LoginScene:onShowUsersBtnClick()
 	print("[LoginScene:onShowUsersBtnClick]")
-	local user_id_list_layer = self.ccbproxy:getNodeWithType("user_id_list_layer", "CCLayerColor")
+	local user_id_list_layer = self.ccbproxy:getNodeWithType("user_id_list_layer", "CCLayer")
 --	print("[LoginScene:onShowUsersBtnClick] id list layer: "..user_id_list_layer)
 	if user_id_list_layer:isVisible() then
 		print("[LoginScene:onShowUsersBtnClick] set layer invisible")

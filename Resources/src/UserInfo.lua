@@ -84,10 +84,12 @@ function UserInfo:subUserIds(str_user_ids, user_id)
 	if #user_ids < 1 then
 		return ""
 	end
+	local count = 0
 	for k, v in pairs(user_ids) do
-		if k < 6 and tonumber(v) ~= tonumber(user_id)  then
+		if count < 5 and tonumber(v) ~= tonumber(user_id)  then
 			print("[UserInfo:subUserIds] user_id: "..user_id.." v: "..v)
 			return_value = return_value..","..v
+			count = count + 1
 		end
 	end
 	print("[UserInfo:subUserIds] return_value: "..return_value)
