@@ -26,9 +26,15 @@ function GDataPlugin.bind(theClass)
 		self.CHAT_LAYER_ORDER = 2120--聊天板
 		self.MSG_LAYER_ORDER = 2400--聊天气泡
 		self.winSize = CCDirector:sharedDirector():getWinSize()
+		self.y_ratio = self.winSize.height / 480.0
+		self.x_ratio = self.winSize.width / 800.0
 		PokeCard.sharedPokeCard(self.rootNode)
 		print(g_shared_cards, #g_shared_cards)
 		self.cardContentSize = g_shared_cards[1].card_sprite:getContentSize()
+		
+        
+        self.rootNode:registerScriptTouchHandler(__bind(self.onTouch, self))
+        self.rootNode:setTouchEnabled(true)
 	end
 
 	function theClass:retrievePlayers(player_list)

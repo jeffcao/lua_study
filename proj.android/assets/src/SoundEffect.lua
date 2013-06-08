@@ -7,14 +7,14 @@ function SoundEffect.bind(theClass)
 		if not SoundSettings.effect_music then
 			return
 		end
-		SimpleAudioEngine:sharedEngine():playEffect(Res.Res.s_effect_pick_card)
+		SimpleAudioEngine:sharedEngine():playEffect(Res.s_effect_pick_card)
 	end
 
 	function theClass:playButtonEffect()
 		if not SoundSettings.effect_music then
 			return
 		end
-		SimpleAudioEngine:sharedEngine():playEffect(s_music_button_click)
+		SimpleAudioEngine:sharedEngine():playEffect(Res.s_music_button_click)
 	end
 
 

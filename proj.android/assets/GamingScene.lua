@@ -9,6 +9,9 @@ require "src.PokeCard"
 require "src.GAlarmPlugin"
 require "src.SoundEffect"
 require "src.Avatar"
+require "src.GTouchPlugin"
+require "src.GTouchPlugin"
+require "src.CardUtility"
 
 GamingScene = class("GamingScene", function()
 	return display.newScene("GamingScene")
@@ -25,8 +28,8 @@ function GamingScene:ctor()
 	self.onPrevUserClickedvv = __bind(self.onPrevUserClicked, self)
 	local node = CCBReaderLoad("GamingScene.ccbi", self.ccbproxy, true, "GamingScene")
 
-	self.rootNode = node
-	self:addChild(node)
+	self.rootNode = tolua.cast(node, "CCLayer")
+	self:addChild(self.rootNode)
 	
 	self:initData()
 	
@@ -39,8 +42,8 @@ function GamingScene:ctor()
 	
 end
 
-function GamingScene:onMa()
-	print("onSelfUserClicked")
+function GamingScene:onNextUserClicked()
+	print("onNextUserClicked")
 end
 
 function GamingScene:onPrevUserClicked()
@@ -59,3 +62,5 @@ GUIUpdatePlugin.bind(GamingScene)
 GDataPlugin.bind(GamingScene)
 GAlarmPlugin.bind(GamingScene)
 SoundEffect.bind(GamingScene)
+GTouchPlugin.bind(GamingScene)
+GTouchPlugin.bind(GamingScene)

@@ -14,6 +14,44 @@ function scaleNode(node, scaleFactor)
 	
 end
 
+function clone_table(array)
+	local result = {}
+	table.merge(result, array)
+	return result
+end
+
+function table.reverse(array)
+	local result = {}
+	for index = -#array, -1 do
+		table.insert(result, array[-index])
+	end
+	return result
+end
+
+function table.some(array, func)
+	local result = false
+	for _, obj in pairs(array) do
+		if func(obj) then
+			result = true
+			break
+		end
+	end
+	return result
+end
+
+function table.unique(array, getObjectValueFuc)
+	local newArray = {}
+	for elementIndex,_ in pairs(array) do
+		local elementValue = getObjectValueFuc(array[elementIndex])
+		local search = function(obj) return (getObjectValueFuc(obj) == elementValue) end
+		local exist = table.some(newArray, search)
+		if not exist then
+			table.insert(newArray, array[elementIndex])
+		end
+	end
+	return newArray
+end
+
 function is_blank(str)
 	return str == nil or string.len(string.trim(str)) == 0
 end

@@ -1,6 +1,6 @@
 g_shared_cards = {}
 
-local PokeCardState = {
+PokeCardState = {
 	["NONE"] = 0,
 	["NORMAL"] = 1,
 	["PICKED"] = 2,
@@ -8,7 +8,7 @@ local PokeCardState = {
 }
 
 -- 扑克牌的取值对照
-local PokeCardValue = {
+PokeCardValue = {
 		["NONE"] = 0,			-- 无效
 		["THREE"] = 3,			-- 3
 		["FOUR"] =  4,			-- 4
@@ -47,7 +47,7 @@ PokeCardString[PokeCardValue.SMALL_JOKER] = "w"
 PokeCardString[PokeCardValue.BIG_JOKER] = "W"
 
 -- 扑克牌花色
-local PokeCardType = {
+PokeCardType = {
 		["NONE"] =  0, 		-- 无效
 		["DIAMOND"] =   1, 	-- 方块
 		["HEART"] =   2, 		-- 红桃
@@ -78,7 +78,7 @@ PokeCardTypeId["W"] = PokeCardType.BIG_JOKER
 
 
 -- 出牌牌型
-local CardType = {
+CardType = {
 		["NONE"] = 0, 				-- 无效
 		["SINGLE"] = 1,				-- 单张
 		["PAIRS"] = 2,				-- 一对
@@ -253,7 +253,7 @@ PokeCard.sharedPokeCard = function(parent)
 			local poke_card = PokeCard.new(parent, card_image_file_name)
 			poke_card.index = ci
 			ci = ci + 1
-			poke_card.poke_value = tonumber(card_index) + 3
+			poke_card.poke_value = tonumber(card_index) + 2
 			poke_card.poke_card_type = PokeCardTypeId[ card_type ]
 			poke_card.poke_id = card_name
 			

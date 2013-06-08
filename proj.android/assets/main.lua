@@ -38,7 +38,9 @@ local json = require "cjson"
 
 
 function __bind(fn, obj)
-	return function(...) fn(obj, ...) end
+	return function(...) 
+		return fn(obj, ...) 
+	end
 end
 
 local function main()
