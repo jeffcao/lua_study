@@ -43,7 +43,7 @@ function LoginScene:ctor()
 end
 
 function LoginScene:init_input_controll()
-	
+
 	local createEditbox = function(width, is_password)
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 		cache:addSpriteFramesWithFile(Res.common_plist)
@@ -68,10 +68,21 @@ function LoginScene:init_input_controll()
 	end
 	
 	local register_account_layer = self.ccbproxy:getNodeWithType("register_account_layer", "CCLayer")
-	add_editbox(register_account_layer, 145, false, 101)
+	add_editbox(register_account_layer, 145, false, 1001)
 	
 	local forget_password_layer = self.ccbproxy:getNodeWithType("forget_password_layer", "CCLayer")
-	add_editbox(forget_password_layer, 170, true, 102)
+	add_editbox(forget_password_layer, 170, true, 1002)
+	
+	local function userIdMenuCallback(tag, sender)
+		local user_id_list_layer = self.ccbproxy:getNodeWithType("user_id_list_layer", "CCLayerColor")
+		user_id_list_layer:setVisible(false)
+		print(dump(sender, "callback sender", true))
+		local user_id_item = tolua.cast(sender, "CCMenuItemLabel")
+		local user_id_label = tolua.cast(user_id_item:getLabel(), "CCLabelTTF")
+		local user_id = user_id_label:getString()
+		print("[LoginScene:userIdMenuCallback()] user id: "..user_id)
+		self:setUserInfo(user_id)
+	end
 	
 	local createUserIdMenue = function(lb_text)
 		local menu_lb = CCLabelTTF:create()
@@ -80,7 +91,7 @@ function LoginScene:init_input_controll()
 		local lb_menu_item = CCMenuItemLabel:create(menu_lb)
 		lb_menu_item:setAnchorPoint(ccp(0, 0.5))
 		lb_menu_item:setColor(ccc3(0, 0, 0))
-		lb_menu_item:registerScriptTapHandler(__bind(self.userIdMenuCallback, self))
+		lb_menu_item:registerScriptTapHandler(userIdMenuCallback)
 		return lb_menu_item
 	end
 	local user_id_list_layer = self.ccbproxy:getNodeWithType("user_id_list_layer", "CCLayerColor")
@@ -110,17 +121,10 @@ function LoginScene:init_input_controll()
 
 end
 
-function LoginScene:userIdMenuCallback(sender)
-	local user_id_list_layer = self.ccbproxy:getNodeWithType("user_id_list_layer", "CCLayerColor")
-	user_id_list_layer:setVisible(false)
-	
-	local user_id_item = tolua.cast(sender, "CCMenuItemLabel")
-	local user_id = user_id_item.getLable():getString()
-	self:setUserInfo(user_id)
-end
+
 
 function LoginScene:setUserInfo(user_id)
-	print("[LoginScene:onLoginBtnClick()]")
+	print("[LoginScene:setUserInfo()]")
 	local user = UserInfo:load_by_id(CCUserDefault:sharedUserDefault(), user_id)
 	if is_blank(user.user_id) then
 		return
@@ -129,8 +133,8 @@ function LoginScene:setUserInfo(user_id)
 	local register_account_layer = self.ccbproxy:getNodeWithType("register_account_layer", "CCLayer")
 	local forget_password_layer = self.ccbproxy:getNodeWithType("forget_password_layer", "CCLayer")
 	
-	local user_id_txt = tolua.cast(register_account_layer:getChildByTag(101), "CCEditBox")
-	local user_pwd_txt = tolua.cast(forget_password_layer:getChildByTag(102), "CCEditBox")
+	local user_id_txt = tolua.cast(register_account_layer:getChildByTag(1001), "CCEditBox")
+	local user_pwd_txt = tolua.cast(forget_password_layer:getChildByTag(1002), "CCEditBox")
 	
 	if user_id_txt ~= nil then
 		user_id_txt:setText(user_id)
@@ -140,9 +144,6 @@ function LoginScene:setUserInfo(user_id)
 	end
 end
 
-function LoginScene:onUserIdBtnClick()
-	
-end
 
 function LoginScene:onShowUsersBtnClick()
 	print("[LoginScene:onShowUsersBtnClick]")
@@ -172,8 +173,8 @@ function LoginScene:onLoginBtnClick()
 	local register_account_layer = self.ccbproxy:getNodeWithType("register_account_layer", "CCLayer")
 	local forget_password_layer = self.ccbproxy:getNodeWithType("forget_password_layer", "CCLayer")
 	
-	local user_id_txt = tolua.cast(register_account_layer:getChildByTag(101), "CCEditBox")
-	local user_pwd_txt = tolua.cast(forget_password_layer:getChildByTag(102), "CCEditBox")
+	local user_id_txt = tolua.cast(register_account_layer:getChildByTag(1001), "CCEditBox")
+	local user_pwd_txt = tolua.cast(forget_password_layer:getChildByTag(1002), "CCEditBox")
 	
 	local user_id = ""
 	local user_pwd = ""

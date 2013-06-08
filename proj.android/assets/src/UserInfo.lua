@@ -23,7 +23,7 @@ function UserInfo:load(userDefault)
 		return self
 	end
 	
-	self.user_id = user_ids[#user_ids]
+	self.user_id = user_ids[1]
 	self.login_token = userDefault:getStringForKey("user.login_token_"..self.user_id)
 	return self
 end
@@ -70,10 +70,28 @@ function UserInfo:save(userDefault)
 	if str_user_ids == nil then
 		userDefault:setStringForKey("user.user_ids", self.user_id)
 	else
-		userDefault:setStringForKey("user.user_ids", str_user_ids..","..self.user_id)
+		str_user_ids = self:subUserIds(str_user_ids, self.user_id)
+		userDefault:setStringForKey("user.user_ids", self.user_id..","..str_user_ids)
 	end
 	
 	userDefault:setStringForKey("user.login_token_"..self.user_id, self.login_token)
+end
+
+function UserInfo:subUserIds(str_user_ids, user_id)
+	local return_value = ""
+	print("[UserInfo:subUserIds] user_id: "..user_id)
+	local user_ids = split(str_user_ids, ",")
+	if #user_ids < 1 then
+		return ""
+	end
+	for k, v in pairs(user_ids) do
+		if k < 6 and tonumber(v) ~= tonumber(user_id)  then
+			print("[UserInfo:subUserIds] user_id: "..user_id.." v: "..v)
+			return_value = return_value..","..v
+		end
+	end
+	print("[UserInfo:subUserIds] return_value: "..return_value)
+	return trim(return_value,',')
 end
 
 function UserInfo:load_from_json(json_data)

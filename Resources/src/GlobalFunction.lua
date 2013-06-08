@@ -36,3 +36,17 @@ function split(str, pat)
    end
    return t
 end
+
+function trim(str, char)
+	local return_value = str
+	local char_index = string.find(str, char)
+	if char_index == 1 then
+		return_value = str:sub(2)	
+	end
+	
+	char_index = string.find(return_value, char, -1)
+	if char_index == #return_value then
+		return_value = return_value:sub(1, #return_value-1)	
+	end
+	return return_value
+end
