@@ -14,6 +14,12 @@ function scaleNode(node, scaleFactor)
 	
 end
 
+function table.combine(dest, src)
+	for _, value in pairs(src) do
+		table.insert(dest, value)
+	end
+end
+
 function clone_table(array)
 	local result = {}
 	table.merge(result, array)

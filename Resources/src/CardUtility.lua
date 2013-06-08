@@ -116,8 +116,8 @@ CardUtility.compare = function(card_a, card_b)
 		return true
 	end
 	
--- card_a.dumpPokeStrings()
--- card_b.dumpPokeStrings()
+-- card_a.--dumpPokeStrings()
+-- card_b.--dumpPokeStrings()
 	
 	if card_a.card_type == CardType.ROCKET then
 		cclog("[CardUtility.compare] card_a is rocket.")
@@ -290,7 +290,7 @@ end
 
 --检查三带一对, 条件：5张牌， 三张 + 对子
 CardUtility.isThreeWithPairs = function(card)
-	cclog("[CardUtility.isThreeWithPairs] #card.poke_cards => " .. #card.poke_cards)
+	--dump("[CardUtility.isThreeWithPairs] #card.poke_cards => " , card.poke_cards)
 	-- 取出牌
 	local poke_cards = card.poke_cards
 	-- 牌数必须为5
@@ -651,11 +651,11 @@ CardUtility.get_larger = function(to_compare_card, source_card)
 	elseif c_type == CardType.THREE then
 		result_card = CardUtility.get_larger_card_helper(three_cards, to_compare_card)
 		
+	elseif c_type == CardType.THREE_WITH_PAIRS then
+		result_card = CardUtility.get_larger_three_with_one(three_cards, pairs_cards, to_compare_card)	
+		
 	elseif c_type == CardType.THREE_WITH_ONE then
 		result_card = CardUtility.get_larger_three_with_one(three_cards, single_cards, to_compare_card)
-		
-	elseif c_type == CardType.THREE_WITH_PAIRS then
-		result_card = CardUtility.get_larger_three_with_one(three_cards, pairs_cards, to_compare_card)
 		
 	elseif c_type == CardType.THREE_STRAIGHT then
 		cclog("card type is then " .. to_compare_card.card_type)
@@ -664,6 +664,7 @@ CardUtility.get_larger = function(to_compare_card, source_card)
 		result_card = CardUtility.get_larger_four_with_two(four_cards, single_cards, to_compare_card)
 		
 	elseif c_type == CardType.FOUR_WITH_TWO_PAIRS then
+		--dump(pairs_cards, "CardType.FOUR_WITH_TWO_PAIRS:pairs_cards")
 		result_card = CardUtility.get_larger_four_with_two(four_cards, pairs_cards, to_compare_card)
 		
 	elseif c_type == CardType.PLANE then
@@ -703,7 +704,7 @@ CardUtility.get_tip_card = function(source_card, is_reverse)
 	--ROCKET: 14
 	local to_compare_card = Card.new()
 	to_compare_card.is_min_card = true
-	local seq = {CardType.STRAIGHT, CardType.PAIRS_STRAIGHT, CardType.PLANE, 
+	local seq = {CardType.FOUR_WITH_TWO_PAIRS, CardType.FOUR_WITH_TWO, CardType.STRAIGHT, CardType.PAIRS_STRAIGHT, CardType.PLANE, 
 	           CardType.THREE_WITH_PAIRS, CardType.THREE_WITH_ONE, CardType.THREE, CardType.PAIRS, CardType.SINGLE}
 	if (is_reverse) then
 		seq = table.reverse(seq)
@@ -711,7 +712,7 @@ CardUtility.get_tip_card = function(source_card, is_reverse)
 	for index,_ in pairs(seq) do
 		to_compare_card.card_type = seq[index]
 		local result = CardUtility.get_larger(to_compare_card, source_card)
-		print("get_tip_card=>" , seq[index] , ":" , result)
+		--dump(result, "get_tip_card=>" .. seq[index] .. ":" )
 		if (#result > 0) then
 			return result
 		end
@@ -726,7 +727,7 @@ CardUtility.combine_pokes = function(all_cards, four_cards, pairs_cards, single_
 		function(x, y)
 			local xv = x.poke_value
 			local yv = y.poke_value
-			local result = xv > yv
+			local result = xv < yv
 			return result
 		end)
 	local tmp_cards = {}
@@ -762,10 +763,10 @@ CardUtility.combine_pokes = function(all_cards, four_cards, pairs_cards, single_
         end
         table.insert(tmp_cards,card)
 	end
-	dump(single_cards, "single_cards")
-	dump(pairs_cards, "pairs_cards")
-	dump(three_cards, "three_cards")
-	dump(four_cards, "four_cards")
+	--dump(single_cards, "single_cards")
+	--dump(pairs_cards, "pairs_cards")
+	--dump(three_cards, "three_cards")
+	--dump(four_cards, "four_cards")
 end
 
 CardUtility.getRocket = function(cards)
@@ -775,7 +776,7 @@ CardUtility.getRocket = function(cards)
 			function(x, y)
 				local xv = x.poke_value
 				local yv = y.poke_value
-				local result = xv > yv
+				local result = xv < yv
 				return result
 			end)
 		print("get rocket, sort_cards:" , sort_cards)
@@ -809,7 +810,7 @@ CardUtility.get_larger_three_with_one = function(three_cards, single_cards, s_ca
 		for index,_ in pairs(three_cards) do
 			local three = three_cards[index]
 			local cards = clone_table(three)
-			table.merge(cards, one_card)
+			table.combine(cards, one_card)
 			if (CardUtility.compare(CardUtility.getCard(cards), s_card)) then
 				return cards
 			end
@@ -819,6 +820,8 @@ CardUtility.get_larger_three_with_one = function(three_cards, single_cards, s_ca
 end
 
 CardUtility.get_larger_four_with_two = function(four_cards, with_two_cards, s_card)
+	--dump(four_cards, "get_larger_four_with_two four_cards")
+	--dump(with_two_cards, "get_larger_four_with_two with_two_cards")
 	local with_two_card = nil
 	if #with_two_cards > 1 then
 		with_two_card = {with_two_cards[1], with_two_cards[2]}
@@ -826,7 +829,8 @@ CardUtility.get_larger_four_with_two = function(four_cards, with_two_cards, s_ca
 	local skip = false
 	if (with_two_card)  then
 		for index,_ in pairs(with_two_card) do
-			local card = with_two_card[index]
+			local card = with_two_card[index][1]
+			
 			if (card.poke_value > 14) then
 				skip = true
 			end
@@ -839,8 +843,8 @@ CardUtility.get_larger_four_with_two = function(four_cards, with_two_cards, s_ca
 		for index,n in pairs(four_cards) do
 			local four = four_cards[index]
 			local cards = clone_table(four)
-			table.insert(cards, with_two_card[1])
-			table.insert(cards, with_two_card[2])
+			table.combine(cards, with_two_card[1])
+			table.combine(cards, with_two_card[2])
 			if (CardUtility.compare(CardUtility.getCard(cards), s_card))  then
 				return cards
 			end
@@ -864,7 +868,7 @@ CardUtility.get_straight = function(pairs_cards, single_cards)
 			local result = xv < yv
 			return result
 		end)
-	dump(sort_cards, "[get_straight] sort_cards =>")
+	--dump(sort_cards, "[get_straight] sort_cards =>")
 	local tmp_cards = clone_table(sort_cards)	
 	local straight_cards = {}
 	local straight_card = {}
@@ -887,7 +891,7 @@ CardUtility.get_straight = function(pairs_cards, single_cards)
 		end
 		straight_card = {}
 	end
-	dump(straight_cards, "straight_cards")
+	--dump(straight_cards, "straight_cards")
 	return straight_cards
 end
 
@@ -917,7 +921,7 @@ CardUtility.get_pair_straight = function(three_cards, pairs_cards)
 	table.sort(sort_cards, function(x, y) 
 		local xv = x.poke_value
 		local yv = y.poke_value
-		local result = xv > yv
+		local result = xv < yv
 		return result
 	end)
 	
@@ -928,16 +932,16 @@ CardUtility.get_pair_straight = function(three_cards, pairs_cards)
 	for index,_ in pairs(sort_cards) do
 		local card = sort_cards[index]
 		table.insert(pairs_straight_card, card)
-		if(index%2 == 1) then
+		if(index%2 == 0) then
 			local compare_card = card
 			local tmp_pairs_cards = {}
 			
 			for index2,_ in pairs(tmp_cards) do
 				local next_card = tmp_cards[index2]
 				table.insert(tmp_pairs_cards, next_card)
-				if(index2%2 == 1) then
+				if(index2%2 == 0) then
 					 if (compare_card.poke_value + 1 == next_card.poke_value) then
-					 	table.merge(pairs_straight_card, tmp_pairs_cards)
+					 	table.combine(pairs_straight_card, tmp_pairs_cards)
 			           	compare_card = next_card
 					 end
 			         tmp_pairs_cards = {}

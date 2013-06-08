@@ -34,7 +34,7 @@ function GTouchPlugin.bind(theClass)
 	function theClass:getCheckedCards() 
 		local result = {}
 		local checked_cards = {}
-		dump(self._all_cards, "all cards in get checked cards")
+		--dump(self._all_cards, "all cards in get checked cards")
 		for _, poke_card in pairs(self._all_cards) do
 			if poke_card.card_sprite:getTag() == 1003 then
 				table.insert(checked_cards, poke_card)
@@ -43,7 +43,7 @@ function GTouchPlugin.bind(theClass)
 		local is_self_play = self.play_card_menu:isVisible()
 		local is_last_card_self = self.lastPlayer and self.lastPlayer.user_id == self.g_user_id
 		result = CardUtility.slide_card(lastPlayCard, checked_cards, is_self_play, is_last_card_self)
-		dump(result, "result")
+		--dump(result, "result")
 		return result
 	end
 	
@@ -157,7 +157,7 @@ function GTouchPlugin.bind(theClass)
 			cclog("[pickPokeCard] pick " .. poke_card.index)
 			poke_card.card_sprite:runAction(CCMoveBy:create(0.08, ccp(0, 30 * self.y_ratio)))
 			poke_card.picked = true
-			dump(self._all_cards, "all cards after pickPokeCard")
+			--dump(self._all_cards, "all cards after pickPokeCard")
 		end 
 	end
 
