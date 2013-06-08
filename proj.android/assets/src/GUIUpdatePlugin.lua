@@ -85,7 +85,7 @@ function GUIUpdatePlugin.bind(theClass)
 		else
 			local frame = cache:spriteFrameByName("poke_bg_small.png")
 			lord_card_ui:setDisplayFrame(frame)
-			local scale = 2.0 * GlobalSetting.content_scale_factor
+			local scale = 1.0 * GlobalSetting.content_scale_factor
 			lord_card_ui:setScale(scale)
 		end
 	end

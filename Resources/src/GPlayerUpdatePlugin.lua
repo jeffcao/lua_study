@@ -140,9 +140,9 @@ function GPlayerUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:updatePlayerAvatars()
-		self:updatePlayerAvatar(self_user, self.self_user_avatar, self.self_user_avatar_bg)
-		self:updatePlayerAvatar(prev_user, self.prev_user_avatar, self.prev_user_avatar_bg)
-		self:updatePlayerAvatar(next_user, self.next_user_avatar, self.next_user_avatar_bg)
+		self:updatePlayerAvatar(self.self_user, self.self_user_avatar, self.self_user_avatar_bg)
+		self:updatePlayerAvatar(self.prev_user, self.prev_user_avatar, self.prev_user_avatar_bg)
+		self:updatePlayerAvatar(self.next_user, self.next_user_avatar, self.next_user_avatar_bg)
 	end
 	
 	function theClass:updatePlayerAvatar(player, player_avatar_ui, player_avatar_bg)

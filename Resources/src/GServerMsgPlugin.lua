@@ -46,7 +46,7 @@ function GServerMsgPlugin.bind(theClass)
 			self:startPrevUserAlarm(30, nil)
 		end
 		
-		SoundEffect:playDeliverCardsEffect()
+		self:playDeliverCardsEffect()
 		
 		--_has_gaming_started = true
 		cclog("onServerStartGame gaming to true")

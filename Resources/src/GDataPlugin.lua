@@ -15,7 +15,16 @@ function GDataPlugin.bind(theClass)
 		self.prev_user_lord_value = tolua.cast(self.prev_user_lord_value, "CCSprite")
 		self.next_user_lord_value = tolua.cast(self.next_user_lord_value, "CCSprite")
 		]]
-	
+		
+		self.NOTIFY_ORDER = 4000--退出提示层
+		self.GAME_OVER_ORDER = 3000--游戏结束层
+		self.BUTTERFLY_ANIM_ORDER = 2210--动画层
+		self.TOP_PANEL_ORDER = 2200--顶部栏层
+		self.INFO_ORDER = 2110--用户资料层
+		self.ALARM_ORDER = 2100--闹钟层
+		self.INSECT_ANIM_ORDER = 2000
+		self.CHAT_LAYER_ORDER = 2120--聊天板
+		self.MSG_LAYER_ORDER = 2400--聊天气泡
 		self.winSize = CCDirector:sharedDirector():getWinSize()
 		PokeCard.sharedPokeCard(self.rootNode)
 		print(g_shared_cards, #g_shared_cards)

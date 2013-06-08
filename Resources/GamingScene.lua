@@ -6,6 +6,9 @@ require "src.GDataPlugin"
 require "src/WebsocketRails/WebSocketRails"
 require "src/WebsocketRails/WebSocketRails_Event"
 require "src.PokeCard"
+require "src.GAlarmPlugin"
+require "src.SoundEffect"
+require "src.Avatar"
 
 GamingScene = class("GamingScene", function()
 	return display.newScene("GamingScene")
@@ -54,3 +57,5 @@ end
 GServerMsgPlugin.bind(GamingScene)
 GUIUpdatePlugin.bind(GamingScene)
 GDataPlugin.bind(GamingScene)
+GAlarmPlugin.bind(GamingScene)
+SoundEffect.bind(GamingScene)
