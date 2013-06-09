@@ -8,17 +8,26 @@ LandingScene = class("LandingScene", function()
 end)
 
 function LandingScene:ctor()
-	self.ccbproxy = CCBProxy:create()
-	self.ccbproxy:retain()
+
 	
-	local node = self.ccbproxy:readCCBFromFile("LandingScene.ccbi")
-	assert(node, "failed to load landing scene")
-	self.rootNode = tolua.cast(node, "CCLayer")
-	print("self.rootNode ==> ", self.rootNode)
-	self:addChild(self.rootNode)
+	ccb.landing_scene = self
+	self.on_ui_clickme_clicked = __bind(self.do_ui_clickme, self)
 	
-	self.sprite_loading = self.ccbproxy:getNodeWithType("sprite_loading", "CCSprite")
-	self:create_progress_animation(self.rootNode, self.sprite_loading)
+
+	local ccbproxy = CCBProxy:create()
+	
+	local node = CCBReaderLoad("LandingScene.ccbi", ccbproxy, false, "")
+	
+	self:addChild(node)
+	
+--	local node = self.ccbproxy:readCCBFromFile("LandingScene.ccbi")
+--	assert(node, "failed to load landing scene")
+--	self.rootNode = tolua.cast(node, "CCLayer")
+--	print("self.rootNode ==> ", self.rootNode)
+--	self:addChild(self.rootNode)
+--	
+--	self.sprite_loading = self.ccbproxy:getNodeWithType("sprite_loading", "CCSprite")
+--	self:create_progress_animation(self.rootNode, self.sprite_loading)
 	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler( __bind(self.on_keypad_pressed, self) )
@@ -30,10 +39,8 @@ function LandingScene:onEnter()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 --	self:setup_websocket()
 	print("go to hall in landing scene")
---	local hall = createHallScene()
---	CCDirector:sharedDirector():replaceScene(hall)
-	local hall = createLoginScene()
-	CCDirector:sharedDirector():replaceScene(hall)
+	local login = createLoginScene()
+	CCDirector:sharedDirector():replaceScene(login)
 end
 
 function LandingScene:onExit()
@@ -98,6 +105,15 @@ function LandingScene:create_progress_animation(layer, sprite)
 	local animate = CCAnimate:create(anim)
 	sprite:runAction( CCRepeatForever:create(animate) )
 	
+end
+
+function LandingScene:do_ui_clickme(tag, sender)
+	print("[LandingScene:do_ui_clickme] tag: ", tag, ", sender: ", sender)
+end
+
+function LoginScene:on_login_success()
+	local hall = createHallScene()
+	CCDirector:sharedDirector():replaceScene(hall)
 end
 
 LoginPlugin.bind(LandingScene)

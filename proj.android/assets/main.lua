@@ -25,6 +25,7 @@ require "src.GlobalFunction"
 --require "src.functions"
 require "LandingScene"
 require "src.resources"
+require "CCBReaderLoad"
 end
 
 local json = require "cjson"

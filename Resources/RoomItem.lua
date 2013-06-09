@@ -10,16 +10,16 @@ function createRoomItem()
 end
 
 function RoomItem:ctor()
-	self.ccbproxy = CCBProxy:create()
- 	self.ccbproxy:retain()
- 	
- 	local node = self.ccbproxy:readCCBFromFile("RoomItem.ccbi")
-	assert(node, "failed to load hall scene")
-	self.rootNode = tolua.cast(node, "CCLayer")
+	ccb.room_item_scene = self
+	
+	local ccbproxy = CCBProxy:create()
+ 	local node = CCBReaderLoad("RoomItem.ccbi", ccbproxy, false, "")
+	self:addChild(node)
+
 	self.rootNode:ignoreAnchorPointForPosition(false)
 	self.rootNode:setAnchorPoint(ccp(0,0.5))
 	self.rootNode:setPosition(ccp(0,240))
-	local bg = self.ccbproxy:getNodeWithType("bg", "CCSprite")
+
 	print("room item self.rootNode ==> ", self.rootNode)
 	
 	local function onTouch(eventType, x, y)
@@ -48,6 +48,6 @@ function RoomItem:ctor()
     
     self.rootNode:setTouchEnabled(true)
 	self.rootNode:registerScriptTouchHandler(onTouch)
-	self:addChild(self.rootNode)
+	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 end

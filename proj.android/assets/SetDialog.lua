@@ -11,17 +11,13 @@ function createSetDialog()
 end
 
 function SetDialog:ctor()
-	self.ccbproxy = CCBProxy:create()
-	self.ccbproxy:retain()
 	
-	local node = self.ccbproxy:readCCBFromFile("Set.ccbi")
-	assert(node, "failed to load hall scene")
-	self.rootNode = tolua.cast(node, "CCLayer")
+	local ccbproxy = CCBProxy:create()
+ 	local node = CCBReaderLoad("Set.ccbi", ccbproxy, false, "")
+	self:addChild(node)
+
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
-	self:addChild(self.rootNode)
-	self.music_slider_layer = self.ccbproxy:getNodeWithType("music_slider_layer", "CCLayer")
-	self.effect_slider_layer = self.ccbproxy:getNodeWithType("effect_slider_layer", "CCLayer")
-	
+
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 	cache:addSpriteFramesWithFile(Res.dialog_plist);
 	local function valueChanged(strEventName,pSender)

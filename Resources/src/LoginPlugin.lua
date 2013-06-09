@@ -1,4 +1,4 @@
-require "HallScene"
+--require "HallScene"
 LoginPlugin = {}
 
 function LoginPlugin.bind(theClass)
@@ -16,8 +16,11 @@ function LoginPlugin.bind(theClass)
 		dump(cur_user, "current_user")
 		--when sign succuss, go to hall scene
 		print("go to hall in login plugin")
-		local hall = createHallScene()
-		CCDirector:sharedDirector():replaceScene(hall)
+		
+		if "function" == type(self.on_login_success) then
+			self:on_login_success()
+		end
+
 	end
 	
 	function theClass:sign_failure(data)
