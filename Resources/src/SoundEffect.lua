@@ -120,7 +120,7 @@ function SoundEffect.bind(theClass)
 		if not male then
 			s_effect_file = Res.s_effect_grab_lord_path .. lord_value .. "_f.wav"
 		end
-		SimpleAudioEngine:sharedEngine():playEffect(Res.s_effect_file)
+		SimpleAudioEngine:sharedEngine():playEffect(s_effect_file)
 		
 	end
 

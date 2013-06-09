@@ -28,6 +28,7 @@ function GDataPlugin.bind(theClass)
 		self.winSize = CCDirector:sharedDirector():getWinSize()
 		self.y_ratio = self.winSize.height / 480.0
 		self.x_ratio = self.winSize.width / 800.0
+		self._playing_timeout = 0
 		PokeCard.sharedPokeCard(self.rootNode)
 		print(g_shared_cards, #g_shared_cards)
 		self.cardContentSize = g_shared_cards[1].card_sprite:getContentSize()

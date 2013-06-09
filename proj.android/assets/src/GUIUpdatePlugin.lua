@@ -216,7 +216,9 @@ function GUIUpdatePlugin.bind(theClass)
 			lord_value_ui:setVisible(false)
 			return
 		end
-	
+		
+		lord_value = lord_value + 1
+		print("updateLordValue lord_value:", lord_value)
 		local frameCache = CCSpriteFrameCache:sharedSpriteFrameCache()
 		local info_bujiao_frame = frameCache:spriteFrameByName("info_bujiao.png")
 		local info_1fen_frame = frameCache:spriteFrameByName("1fen.png")
@@ -233,6 +235,105 @@ function GUIUpdatePlugin.bind(theClass)
 		
 		lord_value_ui:setDisplayFrame(value_frames[lord_value])
 		lord_value_ui:setVisible(true)
+	end
+	
+	---------------------------------------------------------------------------------------------
+	-- 显示出牌菜单
+	--------------------------------------------------------------------------------------------
+	function theClass:showPlayCardMenu(bShow) 
+		self.play_card_menu:setVisible(bShow)
+		if bShow then
+			local buchuCallback = function() 
+				self._playing_timeout = self._playing_timeout + 1
+				self:doBuchu()
+				if self._playing_timeout > 1 then
+					self:doTuoguan()
+				end
+			end
+			local chupaiCallback = function() 
+				self._playing_timeout = self._playing_timeout + 1
+				self:playMinSingleCard()
+				if self._playing_timeout > 1 then
+					self:doTuoguan()
+				end
+			end
+			
+			print("[showPlayCardMenu] lastPlayCard => " , lastPlayCard)
+			local last_id = nil
+			if self.lastPlayer then
+				last_id = self.lastPlayer.user_id
+			end
+			print("[showPlayCardMenu] lastPlayer.user_id => " , last_id )
+			print("[showPlayCardMenu] g_user_id => " , self.g_user_id )
+			local bSelfFirst = false
+			-- 自己是第一个出牌的人?
+			if lastPlayCard == nil or lastPlayer.user_id == self.g_user_id then
+				bSelfFirst = true
+			end
+			
+			self.menu_item_buchu:setEnabled(not bSelfFirst)
+			local res_enable = false
+			for index,_ in pairs(self._all_cards) do
+				if self._all_cards[index].picked then
+					res_enable = true
+					break
+				end
+			end
+			self.menu_item_reselect:setEnabled(res_enable)
+			
+			if bSelfFirst then
+				-- 是, 自动出一张
+				cclog("[showPlayCardMenu] self is the first playernot not not ")
+				self:startSelfUserAlarm(30, chupaiCallback)
+	 		else 
+				cclog("[showPlayCardMenu] self is NOT the first playernot not not ")
+				-- 不是, 自动不出
+				self:startSelfUserAlarm(30, buchuCallback)
+			end
+		else
+			self:stopUserAlarm()
+		end
+	end
+	
+	----------------------------------------------------------------------------
+	-- 显示叫地主菜单
+	----------------------------------------------------------------------------
+	function theClass:showGrabLordMenu(data, needDelay) 
+		if needDelay then
+			cclog("grab lord delay 0.5s")
+			-- 延时0.5秒后显示叫地主菜单
+			local delayTime = CCDelayTime:create(0.5)
+			-- self.rootNode.ws_data = data
+			local callFunc = CCCallFunc:create(function(sender, data_param)
+				self:onGrabLordNotice(data_param)
+			end, self, data)
+			local seq = CCSequence:createWithTwoActions(delayTime, callFunc)
+			self.rootNode:runAction(seq)	
+	 	else 
+			cclog("grab lord do not delay")
+			self:onGrabLordNotice(data)
+		end
+	end
+	
+	function theClass:onGrabLordNotice(data) 
+		if data.user_id == self.g_user_id  then
+			self.menu_item_1fen:setEnabled( data.lord_value < 1 )
+			self.menu_item_2fen:setEnabled( data.lord_value < 2 )
+			self.menu_item_3fen:setEnabled( data.lord_value < 3 )
+			self.menu_get_lord:setVisible(true)
+		end
+		-- 开始计时提示
+		self:startSelfUserAlarm(30, function()
+			-- 超时为不叫
+			self:doGetLord(0)
+		end)
+	end
+	
+	--------------------------------------------------------------------------------
+	-- 隐藏叫地主菜单
+	--------------------------------------------------------------------------------
+	function theClass:hideGetLordMenu() 
+		self.menu_get_lord:setVisible(false)
 	end
 	
 end

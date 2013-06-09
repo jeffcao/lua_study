@@ -167,5 +167,20 @@ function GPlayerUpdatePlugin.bind(theClass)
 		end
 	end
 	
+	
+	--------------------------------------------------------------------------
+	-- 显示不出标签 参数： buchu_ui 显示不出图片的UI控件 bBuchu True 显示 False 隐藏
+	--------------------------------------------------------------------------
+	function theClass:updatePlayerBuchu(buchu_ui, bBuchu) 
+		if not bBuchu then
+			buchu_ui:setVisible(false)
+			return
+		end
+		
+		local frameCache = CCSpriteFrameCache:sharedSpriteFrameCache()
+		buchu_ui:setDisplayFrame(frameCache:spriteFrameByName("info_buchu.png"))
+		buchu_ui:setVisible(true)
+	end
+	
 
 end

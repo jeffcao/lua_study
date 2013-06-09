@@ -14,6 +14,16 @@ function scaleNode(node, scaleFactor)
 	
 end
 
+function table.filter(src, fn)
+	local result = {}
+	for _,v in pairs(src) do
+		if fn(v) then
+			table.insert(result, v)
+		end
+	end
+	return result
+end
+
 function table.combine(dest, src)
 	for _, value in pairs(src) do
 		table.insert(dest, value)
