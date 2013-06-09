@@ -15,7 +15,7 @@
 	<key>guides</key>
 	<array/>
 	<key>jsControlled</key>
-	<false/>
+	<true/>
 	<key>nodeGraph</key>
 	<dict>
 		<key>baseClass</key>
@@ -124,7 +124,7 @@
 								<key>memberVarAssignmentName</key>
 								<string>menu_set_item</string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>1</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -186,8 +186,8 @@
 										<string>Block</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<integer>0</integer>
+											<string>on_set_item_clicked</string>
+											<integer>1</integer>
 										</array>
 									</dict>
 									<dict>
@@ -339,7 +339,7 @@
 								<key>memberVarAssignmentName</key>
 								<string>menu_help_item</string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>1</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -401,8 +401,8 @@
 										<string>Block</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<integer>0</integer>
+											<string>on_help_item_clicked</string>
+											<integer>1</integer>
 										</array>
 									</dict>
 									<dict>
@@ -554,7 +554,7 @@
 								<key>memberVarAssignmentName</key>
 								<string>menu_about_item</string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>1</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -616,8 +616,8 @@
 										<string>Block</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<integer>0</integer>
+											<string>on_about_item_clicked</string>
+											<integer>1</integer>
 										</array>
 									</dict>
 									<dict>
@@ -769,7 +769,7 @@
 								<key>memberVarAssignmentName</key>
 								<string>menu_switch_item</string>
 								<key>memberVarAssignmentType</key>
-								<integer>2</integer>
+								<integer>1</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -831,8 +831,8 @@
 										<string>Block</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<integer>0</integer>
+											<string>on_switch_item_clicked</string>
+											<integer>1</integer>
 										</array>
 									</dict>
 									<dict>
@@ -1357,11 +1357,11 @@
 		<key>displayName</key>
 		<string>CCLayer</string>
 		<key>jsController</key>
-		<string>MainScene</string>
+		<string>menu_scene</string>
 		<key>memberVarAssignmentName</key>
-		<string></string>
+		<string>rootNode</string>
 		<key>memberVarAssignmentType</key>
-		<integer>0</integer>
+		<integer>1</integer>
 		<key>properties</key>
 		<array>
 			<dict>
@@ -1429,6 +1429,8 @@
 				<true/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

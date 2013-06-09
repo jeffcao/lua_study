@@ -22,7 +22,7 @@
 		</dict>
 	</array>
 	<key>jsControlled</key>
-	<false/>
+	<true/>
 	<key>nodeGraph</key>
 	<dict>
 		<key>baseClass</key>
@@ -234,8 +234,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -938,8 +936,8 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<integer>0</integer>
+									<string>on_ui_clickme_clicked</string>
+									<integer>1</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1080,11 +1078,11 @@
 		<key>displayName</key>
 		<string>CCLayer</string>
 		<key>jsController</key>
-		<string>LandingScene</string>
+		<string>landing_scene</string>
 		<key>memberVarAssignmentName</key>
-		<string></string>
+		<string>rootNode</string>
 		<key>memberVarAssignmentType</key>
-		<integer>0</integer>
+		<integer>1</integer>
 		<key>properties</key>
 		<array>
 			<dict>

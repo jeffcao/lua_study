@@ -359,7 +359,7 @@
 						<key>memberVarAssignmentName</key>
 						<string>music_slider_layer</string>
 						<key>memberVarAssignmentType</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -1098,7 +1098,7 @@
 						<key>memberVarAssignmentName</key>
 						<string>effect_slider_layer</string>
 						<key>memberVarAssignmentType</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -1178,8 +1178,6 @@
 								<true/>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -1363,15 +1361,15 @@
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string></string>
+		<string>set_scene</string>
 		<key>displayName</key>
 		<string>CCLayer</string>
 		<key>jsController</key>
 		<string>MainScene</string>
 		<key>memberVarAssignmentName</key>
-		<string></string>
+		<string>rootNode</string>
 		<key>memberVarAssignmentType</key>
-		<integer>0</integer>
+		<integer>1</integer>
 		<key>properties</key>
 		<array>
 			<dict>
@@ -1439,6 +1437,8 @@
 				<true/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
