@@ -177,6 +177,110 @@ function GServerMsgPlugin.bind(theClass)
 	-- g_channel and c_channel
 	function theClass:onServerPlayCard(data)
 		print("onServerPlayCard")
+		dump(data, "[onServerPlayCard] data => ")
+		-- 提取玩家信息
+		self:retrievePlayers(data.players)
+		self:updateTuoguan()
+		if self.lastPlayer == nil or self.lastPlayer.user_id == data.player_id then
+			-- 隐藏不出提示
+			self:updatePlayerBuchu(self.self_user_lord_value, false)
+			self:updatePlayerBuchu(self.prev_user_lord_value, false)
+			self:updatePlayerBuchu(self.next_user_lord_value, false)		
+		end
+		-- 出牌玩家的 user_id
+		local the_player_id = tonumber(data.player_id)
+		-- 提取所出的牌
+		local poke_cards = {}
+		local poke_card_ids = split(data.poke_cards, ",")
+		for _, poke_card_id in pairs(poke_card_ids) do 
+			local tmp_id = string.trim(poke_card_id)
+			if #tmp_id > 0 then
+				table.insert(poke_cards, PokeCard.getCardById(tmp_id))
+			end
+		end
+		
+		cclog("[onPlayCard] poke_cards.length => " .. #poke_cards)
+		dump(poke_cards, "[onPlayCard] poke_cards => ")
+		
+		-- 根据所出的牌生成牌型
+		local card = CardUtility.getCard(poke_cards)
+		if the_player_id == self.prev_user.user_id then
+			card.owner = self.prev_user
+	 	elseif  the_player_id == self.next_user.user_id then
+			card.owner = self.next_user
+		end
+		cclog("ids, self:%d,prev:%d,next:%d,g:%d,player:%d", self.self_user.user_id, self.prev_user.user_id, self.next_user.user_id, self.g_user_id, the_player_id)
+		cclog("[onPlayCard] card.type => " .. card.card_type)
+		if the_player_id ~= self.g_user_id then
+			cclog("playCardEffect not self")
+			self:playCardEffect(card)
+		end
+		
+	
+		if self._is_playing then
+			local player
+			
+			-- 是自己的出牌回传？
+			if the_player_id == self.g_user_id then
+				-- 应该由下家出牌， 开始下家出牌计时
+				print("hide play is self card, is tuoguan?" , self:isTuoguan() , ", is menu show?" , self.play_card_menu:isVisible())
+				--服务器自动帮忙出牌play card 
+					cclog("hide play card menu firstlynot ")
+					self:showPlayCardMenu(false)
+					self:doChupai(card, true)
+					if self.self_user.tuo_guan == 1 and not self:isTuoguan() then
+						self:doTuoguan(true)
+					end
+					---- 隐藏上一手出的牌
+					if self.prevUserLastCard  then
+						self:reset_card(self.prevUserLastCard)
+						self.prevUserLastCard = nil
+					end
+				self:startNextUserAlarm(30, nil)
+				-- 隐藏下家不出标签
+				self:updatePlayerBuchu(self.next_user_lord_value, false)
+				return
+			end
+			-- 是上家出的牌？
+			if the_player_id == self.prev_user.user_id then
+				cclog("is prev user play card")
+				player = self.prev_user
+				-- 执行上家出牌效果
+				self:doPrevUserPlayCard(card)
+				
+				if not self:isTuoguan() then
+					-- 轮到自己出牌，显示出牌菜单
+					self:showPlayCardMenu(true)
+					-- 隐藏上一手出的牌
+					if self.lastCard  then
+						self:reset_card(self.lastCard)
+						self.lastCard = nil
+					end 
+					-- 开始自己计时提示
+					-- self:startSelfUserAlarm()
+					-- 隐藏自己的不出标签
+					self:updatePlayerBuchu(self.self_user_lord_value, false)
+				end
+	 		else 
+	 			cclog("is next user play card")
+				player = self.next_user
+				-- 是下家出的牌，执行下家出牌
+				self:doNextUserPlayCard(card)
+				-- 开始下家出牌计时提示
+				self:startPrevUserAlarm(30, nil)
+				-- 隐藏下家不出标签
+				self:updatePlayerBuchu(self.prev_user_lord_value, false)
+			end
+			if player.poke_card_count <= 2 and #poke_cards > 0 then
+				self:playCardTips(player.poke_card_count, player.gender == 1)
+			end
+		else
+			cclog("is not playing")
+		end
+		
+		-- 更新各更手上的牌数
+		self:updatePlayerPokeCounts()
+		
 	end
 	
 	-- g_channel and c_channel

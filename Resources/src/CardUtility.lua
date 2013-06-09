@@ -10,6 +10,7 @@ CardUtility = {}
 CardUtility.getCard = function(poke_cards)
 	
 	local poke_count = #poke_cards
+	cclog("poke_count"..poke_count)
 	local card = Card.new()
 	card.card_type = CardType.NONE -- 无效牌型
 	card.poke_cards = poke_cards
@@ -276,13 +277,14 @@ CardUtility.isThreeWithOne = function(card)
 		-- 符合条件，标设为三张，和最大牌值
 		card.card_type = CardType.THREE_WITH_ONE
 		card.max_poke_value = poke_cards[1].poke_value
+		card.card_length = 4
 	 -- 或者后三张的牌值必须相同?
 	elseif (poke_cards[2].poke_value == poke_cards[3].poke_value and 
 			poke_cards[2].poke_value == poke_cards[3].poke_value) then
 		-- 符合条件，标设为三张，和最大牌值
 		card.card_type = CardType.THREE_WITH_ONE
 		card.max_poke_value = poke_cards[2].poke_value
-		card.card_length = 1
+		card.card_length = 4
 	end
 	
 	return (card.card_type ~= CardType.NONE)

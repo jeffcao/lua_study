@@ -93,5 +93,5 @@ function split(str, pat)
       cap = str:sub(last_end)
       table.insert(t, cap)
    end
-   return t
+   return table.reverse(t)
 end

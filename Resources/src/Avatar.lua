@@ -10,7 +10,7 @@ Avatar.getUserAvatarFrame = function(player)
 	local img = nil
 	if avatar == 0 then
 		img = "touxiang00_m.png"
-		if player.gender ~= 1 then
+		if tonumber(player.gender) ~= 1 then
 			img = "touxiang00_f.png"
 		end
 	else
@@ -24,7 +24,7 @@ Avatar.getUserAvatarFrame = function(player)
 	if not avatarFrame then
 		cclog("get default avatar")
 		img = "touxiang00_m.png"
-		if player.gender ~= 1 then
+		if tonumber(player.gender) ~= 1 then
 			img = "touxiang00_f.png"
 		end
 		avatarFrame = CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(img)

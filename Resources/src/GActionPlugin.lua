@@ -74,8 +74,8 @@ function GActionPlugin.bind(theClass)
 	-- 出牌
 	---------------------------------------------------------------------------------------
 	function theClass:doChupai(card, isServerAutoPlay)
-	
-		print("card.card_type => " , card.card_type .. " , max_poke_value => " , card.max_poke_value , ", card_length => " , card.card_length)
+		dump(card, "doChupai")
+		print("card.card_type => " .. card.card_type .. " .. max_poke_value => " .. card.max_poke_value .. ".. card_length => " .. card.card_length)
 		-- 无效牌型？ 返回
 		if card.card_type == CardType.NONE then
 			if not isServerAutoPlay then
@@ -104,21 +104,25 @@ function GActionPlugin.bind(theClass)
 			
 			-- 记住本人是当前最后一个出牌人，和所出的牌
 			self.lastPlayer = self.self_user
-			self.lastPlayCard = self.card
+			self.lastPlayCard = card
 			
 			-- 产生出牌效果
-			local poke_size = card.poke_cards[0].card_sprite:getContentSize().width / 2
-			local center_point = ccp(winSize.width/2, 200)
+			local poke_size = card.poke_cards[1].card_sprite:getContentSize().width / 2
+			local center_point = ccp(self.winSize.width/2, 200)
 			local step = 35 * 0.7
 			local start_x = center_point.x - (step * (#(card.poke_cards))/2 + poke_size) * 0.7
 			
 			for index = -#(card.poke_cards), -1 do
+				cclog("index is ".. (-index))
+				cclog("card_value is "..card.poke_cards[-index].poke_value)
 				local poke_card = card.poke_cards[-index].card_sprite
 				local moveAnim = CCMoveTo:create(0.2, ccp(start_x, center_point.y) )
-				local scaleAnim = CCScaleTo:create(0.1, 0.7 * contentScaleFactor)
-				local sequence = CCSequence:create(moveAnim, scaleAnim)
+				cclog("position is (%d,%d)", start_x, center_point.y)
+				local scaleAnim = CCScaleTo:create(0.1, 0.7 * GlobalSetting.content_scale_factor)
+				local sequence = CCSequence:createWithTwoActions(moveAnim, scaleAnim)
 				poke_card:runAction( moveAnim )
 				poke_card:runAction( scaleAnim )
+				
 				start_x = start_x + 35 * 0.7
 		
 				poke_card:getParent():reorderChild(poke_card, 19 + index)
@@ -130,18 +134,18 @@ function GActionPlugin.bind(theClass)
 			end
 			
 			-- 记住本次出牌
-			self.lastCard = self.card
+			self.lastCard = card
 		
-			local contains = function(value)
+			local not_contains = function(value)
 				for _,v in pairs(card.poke_cards) do
 					if value == v then
-						return true
+						return false
 					end
 				end
-				return false
+				return true
 			end
 			-- 从手上的牌里面去除所出的牌
-			self._all_cards = table.filter(self._all_cards, contains)
+			self._all_cards = table.filter(self._all_cards, not_contains)
 			
 			-- 对已出牌取消选取标志
 			for _, poke_card in pairs(card.poke_cards) do 
@@ -149,6 +153,7 @@ function GActionPlugin.bind(theClass)
 			end
 			
 			-- 重新排列现有的牌
+			cclog("self:align_cards()")
 			self:align_cards()
 		end
 		
@@ -167,7 +172,7 @@ function GActionPlugin.bind(theClass)
 		-- 隐藏出牌菜单
 		self:showPlayCardMenu(false)
 		if isServerAutoPlay then
-			card.owner = self_user
+			card.owner = self.self_user
 			self:playCardEffect(card)
 		end
 	end
@@ -182,5 +187,135 @@ function GActionPlugin.bind(theClass)
 		-- 隐藏叫地主菜单，并显示叫的分数
 		self:hideGetLordMenu()
 		self:updateLordValue(self.self_user_lord_value, lord_value)
+	end
+	
+	-----------------------------------------------------------------------------------------
+	-- 下家出牌
+	-----------------------------------------------------------------------------------------
+	function theClass:doPrevUserPlayCard(card) 
+	
+		-- 隐藏上一手出的牌
+		if self.prevUserLastCard  then
+			self:reset_card(self.prevUserLastCard)
+			self.prevUserLastCard = nil
+		end
+		
+		if card.card_type == CardType.NONE then
+			-- 无效牌型，表示不出牌
+			self:updatePlayerBuchu(self.prev_user_lord_value, true)
+			return			
+	 	else 
+			-- 有效出牌，隐藏不出标签
+			self:updatePlayerBuchu(self.prev_user_lord_value, false)
+			-- 保存为最后出牌信息
+			self.lastPlayer = self.prev_user
+			self.lastPlayCard = card
+		end
+		
+		
+		-- 初始化出牌位置
+		local start_point = ccp(-100, self.winSize.height + 100)
+		for index = -#(card.poke_cards), -1 do 
+			local p = card.poke_cards[-index].card_sprite
+			p:setPosition(start_point)
+			p:setScale(GlobalSetting.content_scale_factor)
+			p:setTag(0)
+			-- self.rootNode:addChild(p)
+			p:getParent():reorderChild(p, 100 + index )
+			p:setVisible(true)
+		end
+	
+		-- 产生出牌效果
+		local poke_size = card.poke_cards[1].card_sprite:getContentSize().width / 2
+		local center_point = ccp(self.winSize.width/2, self.cardContentSize.height * GlobalSetting.content_scale_factor + 15)
+		local step = 35 * 0.7
+		local start_x = 165
+		local start_y = 300
+		
+		for index = -#(card.poke_cards), -1 do 
+			local poke_card = card.poke_cards[-index].card_sprite
+			local moveAnim = CCMoveTo:create(0.2, ccp(start_x, start_y) )
+			local scaleAnim = CCScaleTo:create(0.1, 0.7 * GlobalSetting.content_scale_factor)
+			local sequence = CCSequence:createWithTwoActions(moveAnim, scaleAnim)
+			poke_card:runAction( moveAnim )
+			poke_card:runAction( scaleAnim )
+			start_x = start_x + 35 * 0.7
+	
+			-- poke_card:getParent():reorderChild(poke_card, -10 - index)
+			poke_card:setTag(-1)
+		end
+		
+		if card.card_type == CardType.BOMB or card.card_type == CardType.ROCKET then
+			cclog("炸弹效果")
+			--TODO BOMB
+			Explosion:explode(self.rootNode)
+		end
+		
+		-- 记住本次出牌
+		self.prevUserLastCard = card
+		
+	end
+		
+	------------------------------------------------------------------------------------------
+	-- 下家出牌
+	------------------------------------------------------------------------------------------
+	function theClass:doNextUserPlayCard(card) 
+		-- 隐藏上一手出的牌
+		if self.nextUserLastCard  then
+			self:reset_card(self.nextUserLastCard)
+			self.nextUserLastCard = nil
+		end
+		
+		if card.card_type == CardType.NONE then
+			-- 无效牌型，表示不出牌
+			self:updatePlayerBuchu(self.next_user_lord_value, true)
+			return			
+	 	else 
+			-- 有效出牌，隐藏不出标签
+			self:updatePlayerBuchu(self.next_user_lord_value, false)
+			-- 保存为最后出牌信息
+			self.lastPlayer = self.next_user
+			self.lastPlayCard = card
+		end
+		
+		-- 初始化出牌位置
+		local start_point = ccp(self.winSize.width + 100, self.winSize.height + 100)
+		for index = -#(card.poke_cards), -1 do 
+			local p = card.poke_cards[-index].card_sprite
+			p:setPosition(start_point)
+			p:setScale(GlobalSetting.content_scale_factor)
+			p:setTag(0)
+			p:setVisible(true)
+			-- self.rootNode:addChild(p)
+			p:getParent():reorderChild(p, 100 + index )
+		end
+	
+		-- 产生出牌效果
+		local poke_size = card.poke_cards[1].card_sprite:getContentSize().width / 2
+		local center_point = ccp(self.winSize.width/2, self.cardContentSize.height * GlobalSetting.content_scale_factor + 15)
+		local step = 35 * 0.7
+		local start_x = 585
+		local start_y = 300
+		
+		for index, _ in pairs(card.poke_cards) do
+			local poke_card = card.poke_cards[index].card_sprite
+			local moveAnim = CCMoveTo:create(0.2, ccp(start_x, start_y) )
+			local scaleAnim = CCScaleTo:create(0.1, 0.7 * GlobalSetting.content_scale_factor)
+			local sequence = CCSequence:createWithTwoActions(moveAnim, scaleAnim)
+			poke_card:runAction( moveAnim )
+			poke_card:runAction( scaleAnim )
+			start_x = start_x - 35 * 0.7
+	
+			-- poke_card:getParent():reorderChild(poke_card, -10 - index)
+			poke_card:setTag(-1)
+		end
+		
+		if card.card_type == CardType.BOMB or card.card_type == CardType.ROCKET then
+			cclog("炸弹效果")
+			Explosion:explode(self.rootNode)
+		end
+		
+		-- 记住本次出牌
+		self.nextUserLastCard = card
 	end
 end

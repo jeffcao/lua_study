@@ -133,7 +133,7 @@ function SoundEffect.bind(theClass)
 		if not male then
 			s_effect_file = Res.s_effect_single_path .. "poke" .. poke_value .. "_f.wav"
 		end
-		SimpleAudioEngine:sharedEngine():playEffect(Res.s_effect_file)
+		SimpleAudioEngine:sharedEngine():playEffect(s_effect_file)
 	end
 
 	function theClass:playPassEffect(male)
@@ -145,7 +145,7 @@ function SoundEffect.bind(theClass)
 		if not male then
 				s_effect_file = Res.s_effect_pass_path .. "buyao" .. n .. "_f.wav"
 		end
-		SimpleAudioEngine:sharedEngine():playEffect(Res.s_effect_file)
+		SimpleAudioEngine:sharedEngine():playEffect(s_effect_file)
 		
 	end
 
@@ -158,7 +158,7 @@ function SoundEffect.bind(theClass)
 		if not male then
 					s_effect_file = Res.s_effect_pairs_path .. "dui" .. poke_value .. "_f.wav"
 		end
-		SimpleAudioEngine:sharedEngine():playEffect(Res.s_effect_file)
+		SimpleAudioEngine:sharedEngine():playEffect(s_effect_file)
 		
 	end
 
@@ -191,12 +191,14 @@ function SoundEffect.bind(theClass)
 			if not male then
 				s_effect_file = Res.s_effect_card_type_path .. tmp_type .. "f.wav"
 			end
-			SimpleAudioEngine:sharedEngine():playEffect(Res.s_effect_file)
+			SimpleAudioEngine:sharedEngine():playEffect(s_effect_file)
 		end
 	end
 
 	function theClass:playCardEffect(card)
-		local male = card.owner.gender == 1
+		dump(card.owner, "playCardEffect")
+		local male = tonumber(card.owner.gender) == 1
+		dump(male, "playCardEffect")
 		local card_type = card.card_type
 		if card.card_type == CardType.NONE then
 			self:playPassEffect(male)
@@ -224,6 +226,6 @@ function SoundEffect.bind(theClass)
 		if not male then
 			s_effect_file = Res.s_effect_tips_path .. "baojing" .. card_count .. "_woman.wav"
 		end
-		SimpleAudioEngine:sharedEngine():playEffect(Res.s_effect_file)
+		SimpleAudioEngine:sharedEngine():playEffect(s_effect_file)
 	end
 end

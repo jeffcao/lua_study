@@ -182,5 +182,9 @@ function GPlayerUpdatePlugin.bind(theClass)
 		buchu_ui:setVisible(true)
 	end
 	
+	function theClass:isTuoguan() 
+		return self.menu_tuoguan:isVisible()
+	end
+	
 
 end

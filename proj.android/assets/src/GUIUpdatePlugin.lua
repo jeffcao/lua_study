@@ -43,8 +43,10 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	function theClass:showLordCards(lord_card_ids, lord_value) 
 		--提取出扑克牌
+		cclog("showLordCards1")
 		local poke_card_ids = {}
 		if lord_card_ids ~= nil and #lord_card_ids ~=0 then
+			cclog("showLordCards2")
 			local tmp_ids = split(lord_card_ids,",")
 			for _, tmp_id in pairs(tmp_ids) do
 				if #tmp_id > 0 then
@@ -52,16 +54,18 @@ function GUIUpdatePlugin.bind(theClass)
 				end
 			end
 		end
-
+		cclog("showLordCards3")
 		if #poke_card_ids == 3  then
+			cclog("showLordCards4")
 			self._is_playing = true
 			
 			local poke_cards = {}
-			for i = 1, 3 do
+			for _, poke_id in pairs(poke_card_ids) do
 				table.insert(poke_cards, PokeCard.getCardById(poke_id))
 			end
-			table.sort(poke_cards, function(a, b) return b.index > a.index end)
+			table.sort(poke_cards, function(a, b) return b.index < a.index end)
 			
+			cclog("showLordCards5")
 			self:updateLordCard(self.lord_poke_card_1, poke_cards[1])
 			self:updateLordCard(self.lord_poke_card_2, poke_cards[2])
 			self:updateLordCard(self.lord_poke_card_3, poke_cards[3])
@@ -74,10 +78,12 @@ function GUIUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:updateLordCard(lord_card_ui, lord_poke_card)
+		cclog("updateLordCard")
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
 		--cache:addSpriteFramesWithFile(plist_name)
-		lord_card_ui = tolua.cast(lord_card_ui,"CCSprite")
+		--lord_card_ui = tolua.cast(lord_card_ui,"CCSprite")
 		if lord_poke_card then
+			cclog("updateLordCard2:"..lord_poke_card.image_filename)
 			local frame = cache:spriteFrameByName(lord_poke_card.image_filename)
 			lord_card_ui:setDisplayFrame(frame)
 			local scale = 0.4 * GlobalSetting.content_scale_factor
@@ -110,7 +116,7 @@ function GUIUpdatePlugin.bind(theClass)
 		end
 		
 		local frameCache = CCSpriteFrameCache:sharedSpriteFrameCache()
-		buchu_ui:initWithSpriteFrame(frameCache:getSpriteFrame("info_buchu.png"))
+		buchu_ui:setDisplayFrame(frameCache:spriteFrameByName("info_buchu.png"))
 		buchu_ui:setVisible(true)
   end
   
@@ -334,6 +340,12 @@ function GUIUpdatePlugin.bind(theClass)
 	--------------------------------------------------------------------------------
 	function theClass:hideGetLordMenu() 
 		self.menu_get_lord:setVisible(false)
+	end
+	
+	function theClass:reset_card(card) 
+		for _, poke_card in paris(card.poke_cards) do 
+			poke_card:reset()
+		end
 	end
 	
 end
