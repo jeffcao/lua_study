@@ -1,6 +1,7 @@
 local json = require "cjson"
 require "RegisterScene"
 require "HallScene"
+require "src.UIControllerPlugin"
 require "src.LoginScenePlugin"
 require "YesNoDialog2"
 
@@ -10,8 +11,6 @@ LoginScene = class("LoginScene", function()
 end)
 
 user_token_chars = "-D-D-Z--"
-
-
 
 
 function LoginScene:ctor()
@@ -36,34 +35,9 @@ function LoginScene:ctor()
 end
 
 function LoginScene:init_input_controll()
-
-	local createEditbox = function(width, is_password)
-		local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
-		cache:addSpriteFramesWithFile(Res.common2_plist)
-		
-		local scale9_2 = CCScale9Sprite:createWithSpriteFrameName("xiankuang02.png")
-		local editbox2 = CCEditBox:create(CCSizeMake(width,35), scale9_2)
-		editbox2:setPosition(ccp(0,0))
-		editbox2:setAnchorPoint(ccp(0,0))
-		editbox2:setPlaceholderFont("default",16)
-		editbox2:setFont("default",16)
-		editbox2:setFontColor(ccc3(0, 0, 0))
-		if is_password then
-			editbox2:setInputFlag(kEditBoxInputFlagPassword)
-		end
-		return editbox2
-	end
-	
-	local add_editbox = function(layer, width, is_password, tag)
-		layer.editbox = createEditbox(width, is_password)
-		layer:addChild(layer.editbox, 0, tag)
-	end
-	
---	local register_account_layer = self.ccbproxy:getNodeWithType("register_account_layer", "CCLayer")
-	add_editbox(self.register_account_layer, 145, false, 1001)
-	
---	local forget_password_layer = self.ccbproxy:getNodeWithType("forget_password_layer", "CCLayer")
-	add_editbox(self.forget_password_layer, 165, true, 1002)
+	self.input_png = "xiankuang02.png"
+	self:addEditbox(self.register_account_layer, 145, 35, false, 1001)
+	self:addEditbox(self.forget_password_layer, 165, 35, true, 1002)
 	
 	local createUserIdMenue = function(lb_text)
 		local menu_lb = CCLabelTTF:create(lb_text, "default",16)
@@ -236,6 +210,7 @@ function LoginScene:do_close()
 	CCDirector:sharedDirector():endToLua()
 end
 
+UIControllerPlugin.bind(LoginScene)
 LoginScenePlugin.bind(LoginScene)
 
 function createLoginScene()

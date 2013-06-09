@@ -1,4 +1,5 @@
 local json = require "cjson"
+require "src.UIControllerPlugin"
 
 RegisterScene = class("RegisterScene", function()
 	print("creating new RegisterScene")
@@ -6,26 +7,77 @@ RegisterScene = class("RegisterScene", function()
 end)
 
 function RegisterScene:ctor()
-	self.ccbproxy = CCBProxy:create()
-	self.ccbproxy:retain()
+
+	ccb.register_scene = self
+	self.on_cancel_btn_clicked =  __bind(self.onCancelMenuClick, self)
 	
-	local node = self.ccbproxy:readCCBFromFile("RegisterScene.ccbi")
-	assert(node, "failed to load Register scene")
-	self.rootNode = tolua.cast(node, "CCLayer")
-	print("self.rootNode ==> ", self.rootNode)
-	self:addChild(self.rootNode)
+	local ccbproxy = CCBProxy:create()
+	local node = CCBReaderLoad("RegisterScene.ccbi", ccbproxy, false, "")
+	self:addChild(node)
+	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
-	local function onCancelMenuClick()
-		print("go to login in register scene")
-		CCDirector:sharedDirector():replaceScene(createLoginScene())	
-	end
-	
-	self.cancel_menu = self.ccbproxy:getNodeWithType("cancel_btn", "CCMenuItemImage")
-	self.cancel_menu:registerScriptTapHandler(onCancelMenuClick)
-	
+	self:init_input_controller()
+
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler( __bind(self.on_keypad_pressed, self) )
 end
+
+function RegisterScene:init_input_controller()
+	self.input_png = "kuang_a.png"
+	self:addEditbox(self.nick_name_layer, 225, 30, false, 1001)
+	self:addEditbox(self.password_layer, 225, 30, true, 1002)
+	self:addEditbox(self.confirm_pwd_layer, 225, 30, true, 1003)
+	
+	local male_on_sprite = CCSprite:createWithSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_d.png"))
+	local male_off_sprite = CCSprite:createWithSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_c.png"))
+	local male_on_btn = CCMenuItemSprite:create(male_on_sprite,nil)
+	local male_off_btn = CCMenuItemSprite:create(male_off_sprite,nil)
+	local male_item_toggle = CCMenuItemToggle:create(male_on_btn)
+	male_item_toggle:addSubItem(male_off_btn)
+	male_item_toggle:setSelectedIndex(1)
+	male_item_toggle:registerScriptTapHandler(__bind(self.do_male_btn_clicked, self))
+	self.gender_male_menu:addChild(male_item_toggle,0,101)
+	
+	local female_on_sprite = CCSprite:createWithSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_d.png"))
+	local female_off_sprite = CCSprite:createWithSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_c.png"))
+	local female_on_btn = CCMenuItemSprite:create(female_on_sprite,nil)
+	local female_off_btn = CCMenuItemSprite:create(female_off_sprite,nil)
+	local female_item_toggle = CCMenuItemToggle:create(female_on_btn)
+	female_item_toggle:registerScriptTapHandler(__bind(self.do_female_btn_clicked, self))
+	female_item_toggle:addSubItem(female_off_btn)
+	self.gender_female_menu:addChild(female_item_toggle,0,101)
+	 
+end
+
+function RegisterScene:do_male_btn_clicked(tag, sender)
+	print("[RegisterScene:do_male_btn_clicked]")
+	menu_toggle = tolua.cast(sender, "CCMenuItemToggle")
+	local selectedIndex = menu_toggle:getSelectedIndex()
+	if selectedIndex == 0 then
+		menu_toggle:setSelectedIndex(1)
+	else
+		local femal_menu_toggle = tolua.cast(self.gender_female_menu:getChildByTag(101), "CCMenuItemToggle")
+		femal_menu_toggle:setSelectedIndex(0)
+	end
+	
+end
+
+function RegisterScene:do_female_btn_clicked(tag, sender)
+	print("[RegisterScene:do_female_btn_clicked]")
+	menu_toggle = tolua.cast(sender, "CCMenuItemToggle")
+	local selectedIndex = menu_toggle:getSelectedIndex()
+	if selectedIndex == 0 then
+		menu_toggle:setSelectedIndex(1)
+	else
+		local male_menu_toggle = tolua.cast(self.gender_male_menu:getChildByTag(101), "CCMenuItemToggle")
+		male_menu_toggle:setSelectedIndex(0)
+	end
+end
+
+function RegisterScene:onCancelMenuClick(tag, sender)
+		print("go to login in register scene")
+		CCDirector:sharedDirector():replaceScene(createLoginScene())	
+	end
 	
 function RegisterScene:onEnter()
 	print("[RegisterScene:on_enter()]")
@@ -61,6 +113,7 @@ function RegisterScene:do_close()
 	CCDirector:sharedDirector():endToLua()
 end
 
+UIControllerPlugin.bind(RegisterScene)
 --LoginPlugin.bind(RegisterScene)
 
 function createRegisterScene()
