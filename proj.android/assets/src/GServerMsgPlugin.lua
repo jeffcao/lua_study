@@ -56,6 +56,24 @@ function GServerMsgPlugin.bind(theClass)
 	-- g_channel and c_channel
 	function theClass:onServerPlayerJoin(data)
 		print("onServerPlayerJoin")
+		if data.players then
+			print("_has_gaming_started:" , self._has_gaming_started)
+			if (self._has_gaming_started) then
+				cclog("流局的join notify")
+				self:stopUserAlarm()
+				self:reset_all(data.players)
+				self:startSelfUserAlarm(20, function()
+					cclog("do not auto ready")
+					self:exit()
+				end)
+				self.menu_ready:setVisible(true)
+				self.menu_huanzhuo:setVisible(true)
+			else
+				cclog("一般的join notify")
+				self:updatePlayers(data.players)
+			end
+		end
+	
 	end
 	
 	-- g_channel and c_channel
