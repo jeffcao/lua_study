@@ -25,9 +25,9 @@ end
 
 function RegisterScene:init_input_controller()
 	self.input_png = "kuang_a.png"
-	self:addEditbox(self.nick_name_layer, 225, 30, false, 1001)
-	self:addEditbox(self.password_layer, 225, 30, true, 1002)
-	self:addEditbox(self.confirm_pwd_layer, 225, 30, true, 1003)
+	self:addEditbox(self.nick_name_layer, 225, 30, false, 101)
+	self:addEditbox(self.password_layer, 225, 30, true, 102)
+	self:addEditbox(self.confirm_pwd_layer, 225, 30, true, 103)
 	
 	local male_on_sprite = CCSprite:createWithSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_d.png"))
 	local male_off_sprite = CCSprite:createWithSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_c.png"))
@@ -37,7 +37,7 @@ function RegisterScene:init_input_controller()
 	male_item_toggle:addSubItem(male_off_btn)
 	male_item_toggle:setSelectedIndex(1)
 	male_item_toggle:registerScriptTapHandler(__bind(self.do_male_btn_clicked, self))
-	self.gender_male_menu:addChild(male_item_toggle,0,101)
+	self.gender_male_menu:addChild(male_item_toggle,0,2001)
 	
 	local female_on_sprite = CCSprite:createWithSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_d.png"))
 	local female_off_sprite = CCSprite:createWithSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_c.png"))
@@ -46,7 +46,7 @@ function RegisterScene:init_input_controller()
 	local female_item_toggle = CCMenuItemToggle:create(female_on_btn)
 	female_item_toggle:registerScriptTapHandler(__bind(self.do_female_btn_clicked, self))
 	female_item_toggle:addSubItem(female_off_btn)
-	self.gender_female_menu:addChild(female_item_toggle,0,101)
+	self.gender_female_menu:addChild(female_item_toggle,0,2001)
 	 
 end
 
@@ -57,7 +57,7 @@ function RegisterScene:do_male_btn_clicked(tag, sender)
 	if selectedIndex == 0 then
 		menu_toggle:setSelectedIndex(1)
 	else
-		local femal_menu_toggle = tolua.cast(self.gender_female_menu:getChildByTag(101), "CCMenuItemToggle")
+		local femal_menu_toggle = tolua.cast(self.gender_female_menu:getChildByTag(2001), "CCMenuItemToggle")
 		femal_menu_toggle:setSelectedIndex(0)
 	end
 	
@@ -70,7 +70,7 @@ function RegisterScene:do_female_btn_clicked(tag, sender)
 	if selectedIndex == 0 then
 		menu_toggle:setSelectedIndex(1)
 	else
-		local male_menu_toggle = tolua.cast(self.gender_male_menu:getChildByTag(101), "CCMenuItemToggle")
+		local male_menu_toggle = tolua.cast(self.gender_male_menu:getChildByTag(2001), "CCMenuItemToggle")
 		male_menu_toggle:setSelectedIndex(0)
 	end
 end
