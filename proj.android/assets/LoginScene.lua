@@ -36,8 +36,8 @@ end
 
 function LoginScene:init_input_controll()
 	self.input_png = "xiankuang02.png"
-	self:addEditbox(self.register_account_layer, 145, 35, false, 1001)
-	self:addEditbox(self.forget_password_layer, 165, 35, true, 1002)
+	self:addEditbox(self.register_account_layer, 145, 35, false, 101)
+	self:addEditbox(self.forget_password_layer, 165, 35, true, 102)
 	
 	local createUserIdMenue = function(lb_text)
 		local menu_lb = CCLabelTTF:create(lb_text, "default",16)
@@ -49,7 +49,7 @@ function LoginScene:init_input_controll()
 		
 		menu_item:setContentSize(CCSizeMake(170, 20))
 		menu_item:setAnchorPoint(ccp(0, 0.5))
-		menu_item:addChild(menu_lb, 999, 101)
+		menu_item:addChild(menu_lb, 999, 201)
 		
 		menu_lb:setAnchorPoint(ccp(0.5, 0.5))
 		menu_lb:setPosition(ccp(25, 15))
@@ -97,7 +97,7 @@ function LoginScene:userIdMenuCallback(tag, sender)
 		self.user_id_list_layer:setVisible(false)
 		print(dump(sender, "callback sender", true))
 		local user_id_item = tolua.cast(sender, "CCMenuItemImage")
-		local user_id_label = tolua.cast(user_id_item:getChildByTag(101), "CCLabelTTF")
+		local user_id_label = tolua.cast(user_id_item:getChildByTag(201), "CCLabelTTF")
 		local user_id = user_id_label:getString()
 		print("[LoginScene:userIdMenuCallback()] user id: "..user_id)
 		self:setUserInfo(user_id)
@@ -113,8 +113,8 @@ function LoginScene:setUserInfo(user_id)
 --	local register_account_layer = self.ccbproxy:getNodeWithType("register_account_layer", "CCLayer")
 --	local forget_password_layer = self.ccbproxy:getNodeWithType("forget_password_layer", "CCLayer")
 	
-	local user_id_txt = tolua.cast(self.register_account_layer:getChildByTag(1001), "CCEditBox")
-	local user_pwd_txt = tolua.cast(self.forget_password_layer:getChildByTag(1002), "CCEditBox")
+	local user_id_txt = tolua.cast(self.register_account_layer:getChildByTag(101), "CCEditBox")
+	local user_pwd_txt = tolua.cast(self.forget_password_layer:getChildByTag(102), "CCEditBox")
 	
 	if user_id_txt ~= nil then
 		user_id_txt:setText(user_id)
@@ -151,8 +151,8 @@ end
 function LoginScene:onLoginBtnClick(tag, sender)
 	print("[LoginScene:onLoginBtnClick()]")
 
-	local user_id_txt = tolua.cast(self.register_account_layer:getChildByTag(1001), "CCEditBox")
-	local user_pwd_txt = tolua.cast(self.forget_password_layer:getChildByTag(1002), "CCEditBox")
+	local user_id_txt = tolua.cast(self.register_account_layer:getChildByTag(101), "CCEditBox")
+	local user_pwd_txt = tolua.cast(self.forget_password_layer:getChildByTag(102), "CCEditBox")
 	
 	local user_id = ""
 	local user_pwd = ""

@@ -9,7 +9,8 @@ end)
 function RegisterScene:ctor()
 
 	ccb.register_scene = self
-	self.on_cancel_btn_clicked =  __bind(self.onCancelMenuClick, self)
+	self.on_cancel_btn_clicked =  __bind(self.do_cancel_btn_clicked, self)
+	self.on_register_btn_clicked = __bind(self.do_register_btn_clicked, self)
 	
 	local ccbproxy = CCBProxy:create()
 	local node = CCBReaderLoad("RegisterScene.ccbi", ccbproxy, false, "")
@@ -74,10 +75,15 @@ function RegisterScene:do_female_btn_clicked(tag, sender)
 	end
 end
 
-function RegisterScene:onCancelMenuClick(tag, sender)
+function RegisterScene:do_cancel_btn_clicked(tag, sender)
 		print("go to login in register scene")
 		CCDirector:sharedDirector():replaceScene(createLoginScene())	
-	end
+end
+
+function RegisterScene:do_register_btn_clicked(tag, sender)
+	print("[RegisterScene:do_register_btn_clicked]")
+	
+end
 	
 function RegisterScene:onEnter()
 	print("[RegisterScene:on_enter()]")
