@@ -348,4 +348,87 @@ function GUIUpdatePlugin.bind(theClass)
 		end
 	end
 	
+	function theClass:onReturn()
+		self:closeGameOver()
+		self:playButtonEffect()	
+	end
+	
+	function theClass:closeGameOver() 
+		cclog("closeGameOver()")
+		self.menu_tuoguan:setVisible(false)
+		self.alarm:setPosition(ccp(400,230))
+		if self.game_over_layer and self.game_over_layer:isShowing() then
+			self.game_over_layer:dismiss()
+			cclog("on closeGameOver music")
+			self:playBackgroundMusic()
+		end
+		self:reset_all()
+		self.menu_ready:setVisible(true)
+		
+		
+		local tag = self.menu_huanzhuo:getTag()
+		if tag ~= self.CHANGE_DESK_TAG then
+			cclog("tag is 1000 set huanzhuo true")
+			self.menu_huanzhuo:setVisible(true)
+			self.menu_ready:setVisible(true)
+	 	else 
+			cclog("tag is 1001 set huanzhuo false")
+			self.menu_huanzhuo:setVisible(false)
+			self.menu_ready:setVisible(false)
+		end
+		
+		self:startSelfUserAlarm( 20, function() 
+			self.game_over_layer:dismiss()
+			self:reset_all()
+			self:exit()
+		end)
+		self.rootNode:stopActionByTag(self.GAME_OVER_HIDE_ACTION_TAG)
+	end
+	
+	function theClass:onCloseClicked() 
+		if self._has_gaming_started then
+			self:showExit() --TODO
+	 	else 
+			self:exit()
+		end
+	end
+	
+	function theClass:showGameOver(data)
+		self.menu_tuoguan:setVisible(false)
+		if self.game_over_layer == nil  then
+			self.game_over_layer = createGameOver()
+			self.rootNode:addChild(self.game_over_layer)
+		end
+		self:retrievePlayers(data.players)
+		self.game_over_layer:initWith(self, data)
+		
+		-- 延时3秒后显示game over layer
+		local delayTime = CCDelayTime:create(2)
+		local show = function()
+			print("_has_gaming_started " ,  self._has_gaming_started)
+			
+			if self._has_gaming_started then
+				return
+			end
+			
+			cclog("show game_over_layer")
+			self.game_over_layer:show()
+	
+			self:showPlayCardMenu(false)
+			self:hideGetLordMenu()
+		end
+		local callFunc = CCCallFunc:create(__bind(show, self))
+		local seq = CCSequence:createWithTwoActions(delayTime, callFunc)
+		self.rootNode:runAction(seq)
+		local close_seq = CCSequence:createWithTwoActions(CCDelayTime:create(7),CCCallFunc:create(function() 
+			self:closeGameOver()
+		end))
+		close_seq:setTag(self.GAME_OVER_HIDE_ACTION_TAG)
+		self.rootNode:runAction(close_seq)
+	end
+	
+	function theClass:onBgMusicClicked() 
+		self:showChatBoard()
+	end
+	
 end

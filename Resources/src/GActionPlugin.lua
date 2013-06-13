@@ -49,6 +49,13 @@ function GActionPlugin.bind(theClass)
 		end
 	end
 	
+	function theClass:doSendChatMessage(message) 
+		--TODO_LUA
+		local message1 = "[[\"g.on_message\",{\"id\":101472,\"channel\":\"1_513_chat\",\"data\":{\"msg\":\"" .. message .."\",\"user_id\":10006,\"__srv_seq_id\":3243059},\"success\":null,\"result\":null,\"server_token\":\"tgZBlgd7D3FZ-fZIpX3I4w\"}]]"
+		self:onEvent(message1, self.onServerChatMessage)
+		--self.c_channel:trigger("g.on_message", {msg = message, user_id = self.g_user_id})
+	end
+	
 	function theClass:doTuoguan(isNotServerAuto) 
 		self.menu_tuoguan:setVisible(true)
 		self._playing_timeout = 2
@@ -317,5 +324,38 @@ function GActionPlugin.bind(theClass)
 		
 		-- 记住本次出牌
 		self.nextUserLastCard = card
+	end
+	
+	
+	function theClass:doChangeDesk()
+		-- 通知服务器，换桌
+		local event_data = {player_id = self.g_user_id, poke_cards = ""}
+		self.menu_huanzhuo:setTag(self.CHANGE_DESK_TAG)
+		self.menu_huanzhuo:setVisible(false)
+		self.menu_ready:setVisible(false)
+		if self.game_over_layer and self.game_over_layer:isShowing() then
+			self.game_over_layer:dismiss()
+		end
+		--TODO_LUA
+		g_WebSocket:trigger("g.user_change_table", event_data, function(data) 
+			dump(data, "========game.user_change_table return succss: ")
+			self.menu_huanzhuo:setVisible(true)
+			self.menu_ready:setVisible(true)
+			self.menu_huanzhuo:setTag(1000)
+			if self.game_over_layer and self.game_over_layer:isShowing() then
+				self.game_over_layer:dismiss()
+			end
+			self:onReturn()
+			self:onEnterRoomSuccss(data)
+		end, function(data) 
+			self.menu_huanzhuo:setVisible(true)
+			self.menu_ready:setVisible(true)
+			self.menu_huanzhuo:setTag(ScaleUtility.NODE_SCALE_TAG_BASE) --TODO
+			if self.game_over_layer and self.game_over_layer:isShowing() then
+				self.game_over_layer:dismiss()
+			end
+			dump(data, "----------------game.user_change_table return failure: ")
+		end)
+		cclog("MainSceneDelegate on change desk")
 	end
 end

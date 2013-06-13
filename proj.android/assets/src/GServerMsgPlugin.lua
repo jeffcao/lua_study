@@ -286,10 +286,25 @@ function GServerMsgPlugin.bind(theClass)
 	-- g_channel and c_channel
 	function theClass:onServerGameOver(data)
 		print("onServerGameOver")
+		self._is_playing = false
+		cclog("onServerGameOver gaming to false")
+		self:setHasGamingStarted(false)
+		self:showGameOver(data)
 	end
 	
 	--c_channel
-	function theClass:onServerChatMessage(data)
+	function theClass:onServerChatMessage(message)
 		print("onServerChatMessage")
+		--cclog("chat messageon server :" .. message.msg .. ", from id:" .. tostring(message.user_id))
+		local layer = nil
+		local id = message.user_id
+		if self.next_user and id == self.next_user.user_id then
+			layer = self.next_liaotian
+		elseif  self.prev_user and id == self.prev_user.user_id then
+			layer = self.prev_liaotian
+		else 
+			layer = self.self_liaotian
+		end
+		self:displayChatMessage(message.msg, layer, id)
 	end
 end

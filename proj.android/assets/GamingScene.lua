@@ -1,4 +1,6 @@
 require "CCBReaderLoad"
+require "GameOver"
+require "GChat"
 require "src.GServerMsgPlugin"
 require "src.GUIUpdatePlugin"
 require "src.GPlayerUpdatePlugin"
@@ -13,6 +15,9 @@ require "src.GTouchPlugin"
 require "src.CardUtility"
 require "src.GActionPlugin"
 require "src.WebsocketRails.Timer"
+require "src.GTriggerCallback"
+require "src.GConnectionPlugin"
+require "src.GChatPlugin"
 
 GamingScene = class("GamingScene", function()
 	return display.newScene("GamingScene")
@@ -27,6 +32,7 @@ function GamingScene:ctor()
 	self.ccbproxy:retain()
 	ccb.GamingScene = self
 	self.onSelfUserClicked = __bind(self.onPrevUserClicked, self)
+	self.onBgMusicClicked = __bind(self.onBgMusicClicked, self)
 	local node = CCBReaderLoad("GamingScene.ccbi", self.ccbproxy, true, "GamingScene")
 
 	self.rootNode = tolua.cast(node, "CCLayer")
@@ -59,17 +65,24 @@ function GamingScene:onPrevUserClicked()
 	local play_card1 = "[[\"g.play_card\",{\"id\":null,\"channel\":\"1_374\",\"data\":{\"player_id\":\"40056\",\"poke_cards\":\"a07,a06,a05,a04,a03\",\"players\":[{\"user_id\":10006,\"avatar\":\"6\",\"nick_name\":\"10006\",\"gender\":\"1\",\"is_robot\":\"0\",\"state\":1,\"tuo_guan\":0,\"lord_value\":-1,\"grab_lord\":0,\"player_role\":1,\"poke_card_count\":11},{\"user_id\":40056,\"avatar\":\"51\",\"nick_name\":\"59826b4c4ea6598268a6\",\"gender\":\"2\",\"is_robot\":\"1\",\"state\":1,\"tuo_guan\":1,\"lord_value\":0,\"grab_lord\":1,\"player_role\":1,\"poke_card_count\":10},{\"user_id\":40006,\"avatar\":\"1\",\"nick_name\":\"53d154e5\",\"gender\":\"1\",\"is_robot\":\"1\",\"state\":1,\"tuo_guan\":1,\"lord_value\":3,\"grab_lord\":0,\"player_role\":2,\"poke_card_count\":8}],\"next_user_id\":\"40006\",\"notify_id\":220,\"__srv_seq_id\":16492393},\"success\":null,\"result\":null,\"server_token\":\"tgZBlgd7D3FZ-fZIpX3I4w\"}]]"
 	local play_card2 = "[[\"g.play_card\",{\"id\":null,\"channel\":\"1_374\",\"data\":{\"player_id\":\"40006\",\"poke_cards\":\"a10,d09,c09,b09,d08,c08,b08,a07\",\"players\":[{\"user_id\":10006,\"avatar\":\"6\",\"nick_name\":\"10006\",\"gender\":\"1\",\"is_robot\":\"0\",\"state\":1,\"tuo_guan\":0,\"lord_value\":-1,\"grab_lord\":0,\"player_role\":1,\"poke_card_count\":11},{\"user_id\":40056,\"avatar\":\"51\",\"nick_name\":\"59826b4c4ea6598268a6\",\"gender\":\"2\",\"is_robot\":\"1\",\"state\":1,\"tuo_guan\":1,\"lord_value\":0,\"grab_lord\":1,\"player_role\":1,\"poke_card_count\":10},{\"user_id\":40006,\"avatar\":\"1\",\"nick_name\":\"53d154e5\",\"gender\":\"1\",\"is_robot\":\"1\",\"state\":1,\"tuo_guan\":1,\"lord_value\":3,\"grab_lord\":0,\"player_role\":2,\"poke_card_count\":4}],\"next_user_id\":\"10006\",\"notify_id\":221,\"__srv_seq_id\":13760717},\"success\":null,\"result\":null,\"server_token\":\"tgZBlgd7D3FZ-fZIpX3I4w\"}]]"
 	local play_card3 = "[[\"g.play_card\",{\"id\":null,\"channel\":\"1_374\",\"data\":{\"player_id\":\"10006\",\"poke_cards\":\"d11,c11,,d10,c10,b10,a10,d06,a06\",\"players\":[{\"user_id\":10006,\"avatar\":\"6\",\"nick_name\":\"10006\",\"gender\":\"1\",\"is_robot\":\"0\",\"state\":1,\"tuo_guan\":0,\"lord_value\":-1,\"grab_lord\":0,\"player_role\":1,\"poke_card_count\":7},{\"user_id\":40056,\"avatar\":\"51\",\"nick_name\":\"59826b4c4ea6598268a6\",\"gender\":\"2\",\"is_robot\":\"1\",\"state\":1,\"tuo_guan\":1,\"lord_value\":0,\"grab_lord\":1,\"player_role\":1,\"poke_card_count\":10},{\"user_id\":40006,\"avatar\":\"1\",\"nick_name\":\"53d154e5\",\"gender\":\"1\",\"is_robot\":\"1\",\"state\":1,\"tuo_guan\":1,\"lord_value\":3,\"grab_lord\":0,\"player_role\":2,\"poke_card_count\":4}],\"next_user_id\":\"40056\",\"notify_id\":222,\"__srv_seq_id\":6356404},\"success\":null,\"result\":null,\"server_token\":\"tgZBlgd7D3FZ-fZIpX3I4w\"}]]"
+	local game_over1 = "[[\"g.game_over\",{\"id\":null,\"channel\":\"3_1387\",\"data\":{\"game_result\":{\"winner_player_id\":\"40040\",\"bombs\":\"0\",\"spring\":\"0\",\"anti_spring\":1,\"base\":100,\"lord_value\":\"3\",\"total\":1200,\"balance\":{\"10006\":-1200,\"40040\":600,\"40016\":600}},\"players\":[{\"user_id\":10006,\"avatar\":\"6\",\"nick_name\":\"10006\",\"gender\":\"1\",\"is_robot\":\"0\",\"state\":1,\"tuo_guan\":1,\"lord_value\":3,\"grab_lord\":1,\"player_role\":2,\"poke_card_count\":14},{\"user_id\":40040,\"avatar\":\"50\",\"nick_name\":\"73b273b2\",\"gender\":\"2\",\"is_robot\":\"1\",\"state\":1,\"tuo_guan\":1,\"lord_value\":-1,\"grab_lord\":0,\"player_role\":1,\"poke_card_count\":0},{\"user_id\":40016,\"avatar\":\"5\",\"nick_name\":\"4e0a5e1d76845de67738\",\"gender\":\"1\",\"is_robot\":\"1\",\"state\":1,\"tuo_guan\":1,\"lord_value\":-1,\"grab_lord\":0,\"player_role\":1,\"poke_card_count\":17}],\"notify_id\":23,\"__srv_seq_id\":1411253},\"success\":null,\"result\":null,\"server_token\":\"Tp9BAwGm0aE8TQBxAaI95w\"}]]"
+	local game_over2 = "[[\"g.game_over\",{\"id\":null,\"channel\":\"1_374\",\"data\":{\"game_result\":{\"winner_player_id\":\"10006\",\"bombs\":\"0\",\"spring\":1,\"anti_spring\":\"0\",\"base\":20,\"lord_value\":\"3\",\"total\":240,\"balance\":{\"10006\":240,\"40035\":-120,\"40002\":-120}},\"players\":[{\"user_id\":10006,\"avatar\":\"6\",\"nick_name\":\"10006\",\"gender\":\"1\",\"is_robot\":\"0\",\"state\":1,\"tuo_guan\":0,\"lord_value\":3,\"grab_lord\":0,\"player_role\":2,\"poke_card_count\":0},{\"user_id\":40035,\"avatar\":\"51\",\"nick_name\":\"51b084dd68b57130\",\"gender\":\"2\",\"is_robot\":\"1\",\"state\":1,\"tuo_guan\":1,\"lord_value\":1,\"grab_lord\":1,\"player_role\":1,\"poke_card_count\":17},{\"user_id\":40002,\"avatar\":\"3\",\"nick_name\":\"MT5f526765\",\"gender\":\"1\",\"is_robot\":\"1\",\"state\":1,\"tuo_guan\":1,\"lord_value\":0,\"grab_lord\":0,\"player_role\":1,\"poke_card_count\":17}],\"notify_id\":259,\"__srv_seq_id\":4160951},\"success\":null,\"result\":null,\"server_token\":\"xOJF23eIpmxgbb0IY9vEPg\"}]]"
+	local message1 = "[[\"g.on_message\",{\"id\":101472,\"channel\":\"1_513_chat\",\"data\":{\"msg\":\"快点吧，等到花儿都谢了！\",\"user_id\":10006,\"__srv_seq_id\":3243059},\"success\":null,\"result\":null,\"server_token\":\"tgZBlgd7D3FZ-fZIpX3I4w\"}]]"
+	local message2 = "[[\"g.on_message\",{\"id\":101472,\"channel\":\"1_513_chat\",\"data\":{\"msg\":\"快点吧，等到花儿都谢了！\",\"user_id\":40029,\"__srv_seq_id\":3243059},\"success\":null,\"result\":null,\"server_token\":\"tgZBlgd7D3FZ-fZIpX3I4w\"}]]"
+	local message3 = "[[\"g.on_message\",{\"id\":101472,\"channel\":\"1_513_chat\",\"data\":{\"msg\":\"快点吧，等到花儿都谢了！\",\"user_id\":40052,\"__srv_seq_id\":3243059},\"success\":null,\"result\":null,\"server_token\":\"tgZBlgd7D3FZ-fZIpX3I4w\"}]]"
 	
 	--local arr = {self_join, another_join, all_join}
 	--local arr = {grab_1, grab_2, grab_3}
-	local arr = {play_card1, play_card2, play_card3}
+	--local arr = {play_card1, play_card2, play_card3}
+	local arr = {message1, message2, message3}
 	local s = arr[math.random(3)]
 	self:onEvent(all_join, self.onServerPlayerJoin)
 	self:onEvent(start, self.onServerStartGame)
 	self:onEvent(grab_3, self.onServerGrabLordNotify)
-	Timer.add_timer(2, function()
-		self:onEvent(s, self.onServerPlayCard)
-		end)
+	--Timer.add_timer(2, function()
+	--	self:onEvent(s, self.onServerPlayCard)
+	--	end)
+	self:onEvent(s, self.onServerChatMessage)
 end
 
 function GamingScene:onEvent(json_str, fn)
@@ -89,3 +102,6 @@ SoundEffect.bind(GamingScene)
 GTouchPlugin.bind(GamingScene)
 GTouchPlugin.bind(GamingScene)
 GActionPlugin.bind(GamingScene)
+GTriggerCallback.bind(GamingScene)
+GConnectionPlugin.bind(GamingScene)
+GChatPlugin.bind(GamingScene)

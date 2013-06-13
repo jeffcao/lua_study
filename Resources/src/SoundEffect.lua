@@ -93,13 +93,13 @@ function SoundEffect.bind(theClass)
 		if  SoundSettings.bg_music then
 			self:stopBackgroundMusic()
 			local rd = math.random(#Res.s_music_bg_arr)
-			SimpleAudioEngine:sharedEngine():playMusic(Res.s_music_bg_arr[rd], true)
+			SimpleAudioEngine:sharedEngine():playBackgroundMusic(Res.s_music_bg_arr[rd], true)
 		end
 	end
 
 	function theClass:stopBackgroundMusic()
-		if SimpleAudioEngine:sharedEngine():isMusicPlaying() then
-			SimpleAudioEngine:sharedEngine():stopMusic()
+		if SimpleAudioEngine:sharedEngine():isBackgroundMusicPlaying() then
+			SimpleAudioEngine:sharedEngine():stopBackgroundMusic()
 		end
 	end
 
