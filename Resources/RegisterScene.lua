@@ -94,7 +94,7 @@ function RegisterScene:do_register_btn_clicked(tag, sender)
 	
 	if is_blank(nick_name) then
 		print("[RegisterScene:do_register_btn_clicked] 昵称不能为空.")
-		self:show_message_box("昵称不能为空")
+		self:show_progress_message_box("昵称不能为空")
 		return
 	end
 	if is_blank(password) then

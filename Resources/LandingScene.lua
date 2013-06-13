@@ -1,5 +1,6 @@
 local json = require "cjson"
 require "src.LoginServerConnectionPlugin"
+require "src.UIControllerPlugin"
 require "LoginScene"
 
 LandingScene = class("LandingScene", function()
@@ -20,14 +21,8 @@ function LandingScene:ctor()
 	
 	self:addChild(node)
 	
---	local node = self.ccbproxy:readCCBFromFile("LandingScene.ccbi")
---	assert(node, "failed to load landing scene")
---	self.rootNode = tolua.cast(node, "CCLayer")
---	print("self.rootNode ==> ", self.rootNode)
---	self:addChild(self.rootNode)
---	
 --	self.sprite_loading = self.ccbproxy:getNodeWithType("sprite_loading", "CCSprite")
---	self:create_progress_animation(self.rootNode, self.sprite_loading)
+	self:create_progress_animation(self.rootNode, self.sprite_loading)
 	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler( __bind(self.on_keypad_pressed, self) )
@@ -86,32 +81,6 @@ function LandingScene:setup_websocket()
 	self:connect_to_login_server(GlobalSetting)
 end
 
-function LandingScene:create_progress_animation(layer, sprite)
-	local frameCache = CCSpriteFrameCache:sharedSpriteFrameCache()
-	if frameCache == nil then
-		print("frame cache is null")
-	end
-	
-	local animationCache = CCAnimationCache:sharedAnimationCache()
-	--frameCache:addSpriteFramesWithFile("ccbResources/landing.plist")
-	local frames = CCArray:create()
-	for i=1, 10 do
-		local image_file = string.format("load%02d.png", i)
-		print(image_file)
-		local frame = frameCache:spriteFrameByName(image_file)
-		if frame == nil then
-			print("frame should not be nil")
-		end
-		frames:addObject(frame)		
-	end
-	
-	local anim = CCAnimation:createWithSpriteFrames(frames, 0.05);
-	animationCache:addAnimation(anim, "progress")
-	
-	local animate = CCAnimate:create(anim)
-	sprite:runAction( CCRepeatForever:create(animate) )
-	
-end
 
 function LandingScene:do_ui_clickme(tag, sender)
 	print("[LandingScene:do_ui_clickme] tag: ", tag, ", sender: ", sender)
@@ -128,6 +97,7 @@ function LandingScene:do_on_login_failure()
 end
 
 LoginServerConnectionPlugin.bind(LandingScene)
+UIControllerPlugin.bind(LandingScene)
 
 function createLandingScene()
 	print("createLandingScene()")
