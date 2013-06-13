@@ -1740,8 +1740,8 @@
 												<string>Block</string>
 												<key>value</key>
 												<array>
-													<string>onNextUserClickedvv</string>
-													<integer>2</integer>
+													<string>onNextUserClicked</string>
+													<integer>1</integer>
 												</array>
 											</dict>
 											<dict>
@@ -3137,7 +3137,7 @@
 												<key>value</key>
 												<array>
 													<string>onSelfUserClicked</string>
-													<integer>2</integer>
+													<integer>1</integer>
 												</array>
 											</dict>
 											<dict>
@@ -5520,7 +5520,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>70</real>
+									<real>71</real>
 									<real>40</real>
 									<integer>0</integer>
 								</array>
@@ -8871,8 +8871,6 @@
 						<true/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
