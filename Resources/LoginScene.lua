@@ -57,19 +57,16 @@ function LoginScene:init_input_controll()
 
 		return menu_item
 	end
-	
---	local bg_sprite = self.ccbproxy:getNodeWithType("bg_sprite", "CCSprite")
-	local pwd_bg_sprite = tolua.cast(self.pwd_bg_sprite, "CCScale9Sprite") --self.ccbproxy:getNodeWithType("pwd_bg_sprite", "CCScale9Sprite")
-	local user_bg_sprite = tolua.cast(self.user_bg_sprite, "CCScale9Sprite") --self.ccbproxy:getNodeWithType("user_bg_sprite", "CCScale9Sprite")
+
+	local pwd_bg_sprite = tolua.cast(self.pwd_bg_sprite, "CCScale9Sprite") 
+	local user_bg_sprite = tolua.cast(self.user_bg_sprite, "CCScale9Sprite") 
 	
 	self.user_bg_sprite:setSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_a.png"))
 	self.pwd_bg_sprite:setSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_a.png"))
 	self.user_bg_sprite:setPreferredSize(CCSizeMake(220, 40))
 	self.pwd_bg_sprite:setPreferredSize(CCSizeMake(220, 40))
 
---	local user_id_list_layer = self.ccbproxy:getNodeWithType("user_id_list_layer", "CCLayer")
---	local user_id_list_menu = self.ccbproxy:getNodeWithType("user_id_list_menu", "CCMenu")
-	local user_id_list_sprite = tolua.cast(self.user_id_list_sprite, "CCScale9Sprite") --self.ccbproxy:getNodeWithType("user_id_list_sprite", "CCScale9Sprite")
+	local user_id_list_sprite = tolua.cast(self.user_id_list_sprite, "CCScale9Sprite")
 	
 	user_ids = UserInfo:get_all_user_ids(CCUserDefault:sharedUserDefault())
 	self.user_id_list_layer:setContentSize(CCSizeMake(173, 23*#user_ids+15))
@@ -80,13 +77,12 @@ function LoginScene:init_input_controll()
 	if user_ids ~= nil then
 		for _index, _user_id in pairs(user_ids) do
 			self.user_id_list_menu:addChild(createUserIdMenue(_user_id), 999)
-			print("[LoginScene:ctor()] add ueser id menu, user_id=>".._user_id)
 		end
 	end
 	self.user_id_list_menu:alignItemsVerticallyWithPadding(2.5)
 	self.user_id_list_menu:setPosition(ccp(3, self.user_id_list_layer:getContentSize().height / 2-5 ))
 	self.user_id_list_sprite:setPosition(ccp(0, self.user_id_list_layer:getContentSize().height / 2 ))
-	
+	dump(GlobalSetting.current_user, "[LoginScene:init_input_controll()] current_user")
 	if GlobalSetting.current_user ~= nil then
 		self:setUserInfo(GlobalSetting.current_user.user_id)
 	end
@@ -110,9 +106,6 @@ function LoginScene:setUserInfo(user_id)
 		return
 	end
 	
---	local register_account_layer = self.ccbproxy:getNodeWithType("register_account_layer", "CCLayer")
---	local forget_password_layer = self.ccbproxy:getNodeWithType("forget_password_layer", "CCLayer")
-	
 	local user_id_txt = tolua.cast(self.register_account_layer:getChildByTag(101), "CCEditBox")
 	local user_pwd_txt = tolua.cast(self.forget_password_layer:getChildByTag(102), "CCEditBox")
 	
@@ -127,8 +120,7 @@ end
 
 function LoginScene:onShowUsersBtnClick(tag, sender)
 	print("[LoginScene:onShowUsersBtnClick]")
---	local user_id_list_layer = self.ccbproxy:getNodeWithType("user_id_list_layer", "CCLayer")
---	print("[LoginScene:onShowUsersBtnClick] id list layer: "..user_id_list_layer)
+
 	if self.user_id_list_layer:isVisible() then
 		print("[LoginScene:onShowUsersBtnClick] set layer invisible")
 		self.user_id_list_layer:setVisible(false)
@@ -165,7 +157,7 @@ function LoginScene:onLoginBtnClick(tag, sender)
 	
 	if is_blank(user_id) or is_blank(user_pwd) or #user_id ~= 5 or #user_pwd < 8 then
 		print("请输入正确的账号，密码信息.")
-		self:show_message("请输入正确的账号，密码信息.")
+		self:show_message_box("请输入正确的账号，密码信息")
 		return
 	end
 	

@@ -52,9 +52,9 @@ function LoginServerConnectionPlugin.bind(theClass)
 			__bind(self.sign_failure, self) )
 	end
 	
-	function theClass:fast_sign_up(nick_name, password)
+	function theClass:fast_sign_up(nick_name, password, gender)
 		GlobalSetting.login_server:trigger("login.sign_up", 
-			{retry="0", sign_type="101", nick_name=nick_name, password=password} , 
+			{retry="0", sign_type="101", nick_name=nick_name, password=password, gender=gender} , 
 			__bind(self.sign_success, self), 
 			__bind(self.sign_failure, self) )
 	end

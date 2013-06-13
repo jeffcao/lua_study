@@ -39,7 +39,7 @@ function UserInfo:load_by_id(userDefault,u_id)
 		return self
 	end
 	for k, v in pairs(user_ids) do
-		if v == u_id then
+		if tonumber(v) == tonumber(u_id) then
 			self.user_id = u_id
 			break
 		end
@@ -86,7 +86,7 @@ function UserInfo:subUserIds(str_user_ids, user_id)
 	end
 	local count = 0
 	for k, v in pairs(user_ids) do
-		if count < 5 and tonumber(v) ~= tonumber(user_id)  then
+		if count < 4 and tonumber(v) ~= tonumber(user_id)  then
 			print("[UserInfo:subUserIds] user_id: "..user_id.." v: "..v)
 			return_value = return_value..","..v
 			count = count + 1

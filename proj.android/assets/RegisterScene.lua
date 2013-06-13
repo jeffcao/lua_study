@@ -94,18 +94,21 @@ function RegisterScene:do_register_btn_clicked(tag, sender)
 	
 	if is_blank(nick_name) then
 		print("[RegisterScene:do_register_btn_clicked] 昵称不能为空.")
+		self:show_message_box("昵称不能为空")
 		return
 	end
 	if is_blank(password) then
 		print("[RegisterScene:do_register_btn_clicked] 密码不能为空.")
+		self:show_message_box("密码不能为空")
 		return
 	end
 	if password ~= confirm_pwd then
 		print("[RegisterScene:do_register_btn_clicked] 两次密码输入不一致.")
+		self:show_message_box("两次密码输入不一致")
 		return
 	end
 	
-	self:fast_sign_up(nick_name, password)
+	self:fast_sign_up(nick_name, password, gender)
 	
 end
 
@@ -117,7 +120,7 @@ end
 
 function RegisterScene:do_on_login_failure()
 	print("[RegisterScene:do_on_login_failure].")
-
+	
 end
 	
 function RegisterScene:onEnter()
