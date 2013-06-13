@@ -125,11 +125,12 @@ function UIControllerPlugin.bind(theClass)
 		msg_lb:setPosition(ccp(win_size.width/2+30, win_size.height/2))
 		
 		local progress_sprite = CCSprite:create()
-		msg_layer:addChild(progress_sprite, 999)
+		progress_sprite:setScale(0.8)
+		msg_layer:addChild(progress_sprite, 999, 1000)
 		progress_sprite:setAnchorPoint(ccp(0.5, 0.5))
-		progress_sprite:setPosition(ccp(win_size.width/2, win_size.height/2))
+		progress_sprite:setPosition(ccp(win_size.width/2-200, win_size.height/2))
 		
-		msg_layer:addChild(msg_sprite, 0)
+		msg_layer:addChild(msg_sprite, 0, 1000)
 		msg_sprite:setAnchorPoint(ccp(0.5, 0.5))
 		msg_sprite:setPosition(ccp(win_size.width/2, win_size.height/2))
 		

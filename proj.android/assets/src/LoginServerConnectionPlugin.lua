@@ -23,7 +23,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 	function theClass:sign_failure(data)
 		print("[LoginServerConnectionPlugin.sign_failure].")
 		dump(data, "fign_failure data")
-		print("[LoginServerConnectionPlugin.sign_failure] result code: "..data.result_code)
+--		print("[LoginServerConnectionPlugin.sign_failure] result code: "..data.result_code)
 		if "function" == type(self.do_on_login_failure) then
 			self:do_on_login_failure()
 		end
