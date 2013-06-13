@@ -2,7 +2,7 @@ local json = require "cjson"
 require "RegisterScene"
 require "HallScene"
 require "src.UIControllerPlugin"
-require "src.LoginScenePlugin"
+require "src.LoginServerConnectionPlugin"
 require "YesNoDialog2"
 
 LoginScene = class("LoginScene", function()
@@ -211,7 +211,7 @@ function LoginScene:do_close()
 end
 
 UIControllerPlugin.bind(LoginScene)
-LoginScenePlugin.bind(LoginScene)
+LoginServerConnectionPlugin.bind(LoginScene)
 
 function createLoginScene()
 	print("createLoginScene()")
@@ -220,7 +220,7 @@ function createLoginScene()
 end
 
 
-function LoginScene:on_login_success()
+function LoginScene:do_on_login_success()
 	local hall = createHallScene()
 	CCDirector:sharedDirector():replaceScene(hall)
 end

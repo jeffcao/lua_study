@@ -1,5 +1,5 @@
 local json = require "cjson"
-require "src.LoginPlugin"
+require "src.LoginServerConnectionPlugin"
 require "LoginScene"
 
 LandingScene = class("LandingScene", function()
@@ -37,10 +37,16 @@ function LandingScene:onEnter()
 	print("[LandingScene:on_enter()]")
 	self.super.onEnter(self)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
---	self:setup_websocket()
-	print("go to hall in landing scene")
-	local login = createLoginScene()
-	CCDirector:sharedDirector():replaceScene(login)
+	self:setup_websocket()
+end
+
+function LandingScene:do_on_websocket_ready()
+	local cur_user = GlobalSetting.current_user
+	if is_blank(cur_user.user_id) and is_blank(cur_user.login_token) then
+		self:sign_in_by_token(cur_user.user_id, cur_user.login_token)
+	else
+		self:signup()
+	end
 end
 
 function LandingScene:onExit()
@@ -111,12 +117,17 @@ function LandingScene:do_ui_clickme(tag, sender)
 	print("[LandingScene:do_ui_clickme] tag: ", tag, ", sender: ", sender)
 end
 
-function LoginScene:on_login_success()
+function LandingScene:do_on_login_success()
 	local hall = createHallScene()
 	CCDirector:sharedDirector():replaceScene(hall)
 end
 
-LoginPlugin.bind(LandingScene)
+function LandingScene:do_on_login_failure()
+	local login = createLoginScene()
+	CCDirector:sharedDirector():replaceScene(login)
+end
+
+LoginServerConnectionPlugin.bind(LandingScene)
 
 function createLandingScene()
 	print("createLandingScene()")

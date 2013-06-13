@@ -82,7 +82,42 @@ end
 
 function RegisterScene:do_register_btn_clicked(tag, sender)
 	print("[RegisterScene:do_register_btn_clicked]")
+	local nick_name_box = tolua.cast(self.nick_name_layer:getChildByTag(101), "CCEditBox")
+	local password_box = tolua.cast(self.password_layer:getChildByTag(102), "CCEditBox")
+	local confirm_pwd_box = tolua.cast(self.confirm_pwd_layer:getChildByTag(103), "CCEditBox")
+	local male_menu_toggle = tolua.cast(self.gender_male_menu:getChildByTag(2001), "CCMenuItemToggle")
 	
+	local nick_name = nick_name_box:getText()
+	local password = password_box:getText()
+	local confirm_pwd = confirm_pwd_box:getText()
+	local gender = male_menu_toggle:getSelectedIndex() == 1 and 1 or 2
+	
+	if is_blank(nick_name) then
+		print("[RegisterScene:do_register_btn_clicked] 昵称不能为空.")
+		return
+	end
+	if is_blank(password) then
+		print("[RegisterScene:do_register_btn_clicked] 密码不能为空.")
+		return
+	end
+	if password ~= confirm_pwd then
+		print("[RegisterScene:do_register_btn_clicked] 两次密码输入不一致.")
+		return
+	end
+	
+	self:fast_sign_up(nick_name, password, gender)
+	
+end
+
+function RegisterScene:do_on_login_success()
+	print("[RegisterScene:do_on_login_success].")
+	local hall = createHallScene()
+	CCDirector:sharedDirector():replaceScene(hall)
+end
+
+function RegisterScene:do_on_login_failure()
+	print("[RegisterScene:do_on_login_failure].")
+
 end
 	
 function RegisterScene:onEnter()
@@ -120,7 +155,7 @@ function RegisterScene:do_close()
 end
 
 UIControllerPlugin.bind(RegisterScene)
---LoginPlugin.bind(RegisterScene)
+LoginServerConnectionPlugin.bind(RegisterScene)
 
 function createRegisterScene()
 	print("createRegisterScene()")
