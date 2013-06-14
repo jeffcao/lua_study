@@ -41,6 +41,7 @@ function GDataPlugin.bind(theClass)
                  "又断线了，网络怎么这么差！！ ",
                  "大家好，很高兴见到各位！   "}
         self:initChat()
+        self.users = {}
         
         self.rootNode:registerScriptTouchHandler(__bind(self.onTouch, self))
         self.rootNode:setTouchEnabled(true)

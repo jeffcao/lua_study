@@ -38,9 +38,10 @@ function GDataPlugin.bind(theClass)
 		self.CHAT_MSGS = {"快点吧，我等到花儿也谢了。",
                  "你的牌打得太好了！         ",
                  "别走，我们战斗到天亮。     ",
-                 "又断线了，网络怎么这么！！  ",
+                 "又断线了，网络怎么这么差！！ ",
                  "大家好，很高兴见到各位！   "}
         self:initChat()
+        self.users = {}
         
         self.rootNode:registerScriptTouchHandler(__bind(self.onTouch, self))
         self.rootNode:setTouchEnabled(true)

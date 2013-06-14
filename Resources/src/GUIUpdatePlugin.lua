@@ -431,4 +431,51 @@ function GUIUpdatePlugin.bind(theClass)
 		self:showChatBoard()
 	end
 	
+	function theClass:onEffectMusicClicked()
+		if not self.set_dialog then
+			self.set_dialog = createSetDialog()
+			self.rootNode:addChild(self.set_dialog)
+		end
+		self.set_dialog:updateVolume()
+		self.set_dialog:show()
+		
+	end
+	
+	function theClass:onPrevUserClicked()
+		cclog("onPrevUserClicked")
+		if self.prev_user then
+			self:showUserInfo(self.prev_user.user_id)
+		end
+	end
+	
+	function theClass:onNextUserClicked()
+		cclog("onNextUserClicked")
+		if self.next_user then
+			self:showUserInfo(self.next_user.user_id)
+		end
+	end
+	
+	function theClass:onSelfUserClicked()
+		self:showUserInfo(self.self_user.user_id)
+	end
+	
+	function theClass:showUserInfo(user_id) 
+		if not user_id then
+			return
+		end
+		cclog("call show user info ")
+		if self.user_info_layer == nil  then
+			self.user_info_layer = createPlayerInfo()
+			self.user_info_layer:setVisible(false)
+			self.rootNode:addChild(self.user_info_layer, self.INFO_ORDER)
+		end
+		
+		local info = self.users[tostring(user_id)]
+		if info then
+			self.user_info_layer:initWithInfo(self, info)
+			self.user_info_layer:setVisible(true)
+		end
+		self.user_info_layer:setVisible(true)
+	end
+	
 end
