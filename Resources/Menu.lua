@@ -1,6 +1,5 @@
 require "AboutScene"
 require "HelpScene"
-require "LoginScene"
 require "SetDialog"
 require "src.DialogInterface"
 
@@ -19,15 +18,8 @@ function createMenu(container)
 end
 
 function Menu:ctor()
-	self.ccbproxy = CCBProxy:create()
-	self.ccbproxy:retain()
-	
-	local node = self.ccbproxy:readCCBFromFile("Menu.ccbi")
-	assert(node, "fail to load menu")
-	self.rootNode = tolua.cast(node, "CCLayer")
-	self:addChild(self.rootNode)
-	self:setVisible(false)
-	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+
+	ccb.menu_scene = self
 	
 	local function dismiss()
 		if self then
@@ -35,23 +27,23 @@ function Menu:ctor()
 		end
 	end
 	
-	local function about()
+	local function about(tag, sender)
 		dismiss()
 		local scene = createAboutScene()
 		CCDirector:sharedDirector():pushScene(scene)
 	end
-	local function help()
+	local function help(tag, sender)
 		dismiss()
 		local scene = createHelpScene()
 		CCDirector:sharedDirector():pushScene(scene)
 	end
 	
-	local function switch()
+	local function switch(tag, sender)
 		local scene = createLoginScene()
 		CCDirector:sharedDirector():replaceScene(scene)
 	end
 	
-	local function set()
+	local function set(tag, sender)
 		if not self.set_dialog then
 			self.set_dialog = createSetDialog()
 			self.container:addChild(self.set_dialog)
@@ -59,18 +51,19 @@ function Menu:ctor()
 		self.set_dialog:show()
 		dismiss()
 	end
-	self.about = self.ccbproxy:getNodeWithType("menu_about_item", "CCMenuItemImage")
-	self.about:registerScriptTapHandler(about)
 	
-	self.help = self.ccbproxy:getNodeWithType("menu_help_item", "CCMenuItemImage")
-	self.help:registerScriptTapHandler(help)
-	
-	self.switch = self.ccbproxy:getNodeWithType("menu_switch_item", "CCMenuItemImage")
-	self.switch:registerScriptTapHandler(switch)
-	
-	self.set = self.ccbproxy:getNodeWithType("menu_set_item", "CCMenuItemImage")
-	self.set:registerScriptTapHandler(set)
+	self.on_help_item_clicked = help
+	self.on_about_item_clicked = about
+	self.on_switch_item_clicked = switch
+	self.on_set_item_clicked = set
 
+	local ccbproxy = CCBProxy:create()
+ 	local node = CCBReaderLoad("Menu.ccbi", ccbproxy, false, "")
+	self:addChild(node)
+	
+	self:setVisible(false)
+	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+	
 	local menus = CCArray:create()
 	menus:addObject(self.set:getParent())
 	menus:addObject(self.switch:getParent())

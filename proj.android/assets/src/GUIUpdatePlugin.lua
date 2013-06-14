@@ -136,7 +136,7 @@ function GUIUpdatePlugin.bind(theClass)
 			card_ids = data.poke_cards
 		end
 		for _, card_id in pairs(card_ids) do
-			card_id = trim(card_id)
+			card_id = trim_blank(card_id)
 			table.insert(self._all_cards, PokeCard.getCardById(card_id))
 		end
 		

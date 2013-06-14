@@ -30,6 +30,7 @@ require "src.GlobalFunction"
 require "LandingScene"
 require "GamingScene"
 require "src.resources"
+require "CCBReaderLoad"
 end
 
 local json = require "cjson"
@@ -62,6 +63,7 @@ local function main()
 	local contentScaleFactor = CCDirector:sharedDirector():getContentScaleFactor()
 	GlobalSetting.content_scale_factor = CCDirector:sharedDirector():getContentScaleFactor()
 	GlobalSetting.current_user = UserInfo:new():load(CCUserDefault:sharedUserDefault())
+	dump(GlobalSetting, "GlobalSetting")
 	cclog(string.format("size.width: %d, size.height: %d;  contentScaleFactor: %f", size.width, size.height, contentScaleFactor))
 	
 	CCEGLView:sharedOpenGLView():setDesignResolutionSize(800, 480, kResolutionExactFit)

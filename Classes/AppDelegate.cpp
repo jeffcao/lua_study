@@ -16,6 +16,9 @@ extern "C" {
 }
 #include "Lua_extensions_CCB.h"
 
+#include "Lua_extensions_CCB.h"
+
+
 
 USING_NS_CC;
 

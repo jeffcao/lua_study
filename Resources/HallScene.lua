@@ -20,35 +20,27 @@ HallScene = class("HallScene", function()
  WidgetPlugin.bind(HallScene)
  
  function HallScene:ctor()
- 	self.ccbproxy = CCBProxy:create()
- 	self.ccbproxy:retain()
  	
- 	local node = self.ccbproxy:readCCBFromFile("HallScene.ccbi")
-	assert(node, "failed to load hall scene")
-	self.rootNode = tolua.cast(node, "CCLayer")
+	ccb.hall_scene = self
+	
+	self.on_menu_clicked = __bind(self.onMenuClick, self)
+	self.on_info_btn_clicked = __bind(self.onInfoClick, self)
+	self.on_avatar_btn_clicked = __bind(self.onAvatarClick, self) 
+	self.on_market_btn_clicked = __bind(self.onMarketClick, self)
+	
+	local ccbproxy = CCBProxy:create()
+ 	local node = CCBReaderLoad("HallScene.ccbi", ccbproxy, false, "")
+	self:addChild(node)
+	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
-	self:addChild(self.rootNode)
-	self.room_layer = self.ccbproxy:getNode("room_layer")
-	assert(self.room_layer, "room_layer is null")
-	self.avatar_item = self.ccbproxy:getNodeWithType("avatar_btn", "CCMenuItemImage")
-	self.avatar_item:setScale(GlobalSetting.content_scale_factor * 0.45)
 	
-	self.menu = self.ccbproxy:getNodeWithType("menu_btn", "CCMenuItemImage")
-	self.menu:registerScriptTapHandler(__bind(self.onMenuClick, self))
-	
-	self.avatar_btn = self.ccbproxy:getNodeWithType("avatar_btn", "CCMenuItemImage")
-	self.info_btn = self.ccbproxy:getNodeWithType("info_btn", "CCMenuItemImage")
-	self.info_btn:registerScriptTapHandler(__bind(self.onInfoClick, self))
-	self.avatar_btn:registerScriptTapHandler(__bind(self.onAvatarClick, self))
-	
-	self.rootNode:setKeypadEnabled(true)
-	self.rootNode:registerScriptKeypadHandler(__bind(self.onKeypad, self))
-	
-	self.market_btn = self.ccbproxy:getNodeWithType("market_btn", "CCMenuItemImage")
-	self.market_btn:registerScriptTapHandler(__bind(self.onMarketClick, self))
+	self.avatar_btn:setScale(GlobalSetting.content_scale_factor * 0.45)
 	
 	local mysprite = MySprite:createMS("btn_bujiao.png")
 	self.rootNode:addChild(tolua.cast(mysprite, "CCNode"))
+	
+	self.rootNode:setKeypadEnabled(true)
+	self.rootNode:registerScriptKeypadHandler(__bind(self.onKeypad, self))
 	
 	--local editbox = CCEditBoxBridge:create(Res.common_plist, "kuang_a.png", 320, 50)
 	--editbox:addTo(tolua.cast(self.rootNode, "CCNode"), 400, 120)
@@ -96,6 +88,8 @@ HallScene = class("HallScene", function()
 	t:reloadData()
 	t:setPosition(CCPointMake(0,0))
 	self.room_layer:addChild(t)
+	
+	
 	
  end
  

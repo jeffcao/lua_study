@@ -46,19 +46,19 @@ function HallSceneUPlugin.bind(theClass)
 		end
 	end
 	
-	function theClass:onMenuClick()
+	function theClass:onMenuClick(tag, sender)
 		self:onKeypad("menuClicked")
 	end
 	
-	function theClass:onInfoClick()
+	function theClass:onInfoClick(tag, sender)
 		self.doToInfo()
 	end
 	
-	function theClass:onAvatarClick()
+	function theClass:onAvatarClick(tag, sender)
 		self.doToInfo()
 	end
 	
-	function theClass:onMarketClick()
+	function theClass:onMarketClick(tag, sender)
 		self.doToMarket()
 	end
 	

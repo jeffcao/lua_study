@@ -23,7 +23,7 @@ function UserInfo:load(userDefault)
 		return self
 	end
 	
-	self.user_id = user_ids[#user_ids]
+	self.user_id = user_ids[1]
 	self.login_token = userDefault:getStringForKey("user.login_token_"..self.user_id)
 	return self
 end
@@ -39,7 +39,7 @@ function UserInfo:load_by_id(userDefault,u_id)
 		return self
 	end
 	for k, v in pairs(user_ids) do
-		if v == u_id then
+		if tonumber(v) == tonumber(u_id) then
 			self.user_id = u_id
 			break
 		end
@@ -51,15 +51,49 @@ function UserInfo:load_by_id(userDefault,u_id)
 	return self
 end
 
+function UserInfo:get_all_user_ids(userDefault)
+	local str_user_ids = userDefault:getStringForKey("user.user_ids")
+	print("[UserInfo:load_by_id] str_user_ids: "..str_user_ids)
+	if str_user_ids == nil then
+		return {}
+	end
+	local user_ids = split(str_user_ids, ",")
+	if #user_ids < 1 then
+		return {}
+	end
+	
+	return user_ids
+end
+
 function UserInfo:save(userDefault)
 	local str_user_ids = userDefault:getStringForKey("user.user_ids")
 	if str_user_ids == nil then
 		userDefault:setStringForKey("user.user_ids", self.user_id)
 	else
-		userDefault:setStringForKey("user.user_ids", str_user_ids..","..self.user_id)
+		str_user_ids = self:subUserIds(str_user_ids, self.user_id)
+		userDefault:setStringForKey("user.user_ids", self.user_id..","..str_user_ids)
 	end
 	
 	userDefault:setStringForKey("user.login_token_"..self.user_id, self.login_token)
+end
+
+function UserInfo:subUserIds(str_user_ids, user_id)
+	local return_value = ""
+	print("[UserInfo:subUserIds] user_id: "..user_id)
+	local user_ids = split(str_user_ids, ",")
+	if #user_ids < 1 then
+		return ""
+	end
+	local count = 0
+	for k, v in pairs(user_ids) do
+		if count < 4 and tonumber(v) ~= tonumber(user_id)  then
+			print("[UserInfo:subUserIds] user_id: "..user_id.." v: "..v)
+			return_value = return_value..","..v
+			count = count + 1
+		end
+	end
+	print("[UserInfo:subUserIds] return_value: "..return_value)
+	return trim(return_value,',')
 end
 
 function UserInfo:load_from_json(json_data)

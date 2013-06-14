@@ -2,14 +2,12 @@ SceneDialog = {}
 
 function SceneDialog.bind(theClass)
 	function theClass:create(ccbi_name)
-		self.ccbproxy = CCBProxy:create()
-	 	self.ccbproxy:retain()
-	 	
-	 	local node = self.ccbproxy:readCCBFromFile(ccbi_name)
-		assert(node, "failed to load hall scene")
-		self.rootNode = tolua.cast(node, "CCLayer")
+		
+		local ccbproxy = CCBProxy:create()
+ 		local node = CCBReaderLoad(ccbi_name, ccbproxy, false, "")
+		self:addChild(node)
 		scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
-		self:addChild(self.rootNode)
+		
 		self.director = CCDirector:sharedDirector()
 		return self
 	end

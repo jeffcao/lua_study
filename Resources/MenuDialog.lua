@@ -8,8 +8,9 @@ function createMenuDialog()
 end
 
 function MenuDialog:ctor()
-	self:create("Menu.ccbi")
-	self:setOnKeypad(function() self:dismiss() end)
+
+	ccb.menu_scene = self
+
 	local function about()
 		self:dismiss()
 		local scene = createAboutScene()
@@ -29,17 +30,15 @@ function MenuDialog:ctor()
 	local function set()
 		
 	end
-	self.about = self.ccbproxy:getNodeWithType("menu_about_item", "CCMenuItemImage")
-	self.about:registerScriptTapHandler(about)
 	
-	self.help = self.ccbproxy:getNodeWithType("menu_help_item", "CCMenuItemImage")
-	self.help:registerScriptTapHandler(help)
+	self.on_help_item_clicked = help
+	self.on_about_item_clicked = about
+	self.on_switch_item_clicked = switch
+	self.on_set_item_clicked = set
 	
-	self.switch = self.ccbproxy:getNodeWithType("menu_switch_item", "CCMenuItemImage")
-	self.switch:registerScriptTapHandler(switch)
-	
-	self.set = self.ccbproxy:getNodeWithType("menu_set_item", "CCMenuItemImage")
-	self.set:registerScriptTapHandler(set)
+	self:create("Menu.ccbi")
+	self:setOnKeypad(function() self:dismiss() end)
+
 end
 
 SceneDialog.bind(MenuDialog)

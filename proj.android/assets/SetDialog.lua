@@ -24,7 +24,6 @@ end
 function SetDialog:ctor()
 	self.ccbproxy = CCBProxy:create()
 	self.ccbproxy:retain()
-	
 	ccb.Set = self
 	local node = CCBReaderLoad("Set.ccbi", self.ccbproxy, true, "Set")
 	assert(node, "failed to load hall scene")

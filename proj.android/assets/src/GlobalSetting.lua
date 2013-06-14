@@ -21,7 +21,8 @@ GlobalSetting = {
 	current_user = {},
 	-- 游戏大厅的URLs
 	game_hall_urls = {},
-	login_urls = {"ws://login.jc.170022.cn/websocket"},
+	login_urls = {"ws://192.168.2.2:5001/websocket"},
+	login_server = nil,
 	
 	content_scale_factor = 1.0,
 }

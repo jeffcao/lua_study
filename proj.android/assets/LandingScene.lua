@@ -1,5 +1,6 @@
 local json = require "cjson"
-require "src.LoginPlugin"
+require "src.LoginServerConnectionPlugin"
+require "src.UIControllerPlugin"
 require "LoginScene"
 require "CCBReaderLoad"
 
@@ -9,16 +10,19 @@ LandingScene = class("LandingScene", function()
 end)
 
 function LandingScene:ctor()
-	self.ccbproxy = CCBProxy:create()
-	self.ccbproxy:retain()
+
 	
-	local node = self.ccbproxy:readCCBFromFile("LandingScene.ccbi")
-	assert(node, "failed to load landing scene")
-	self.rootNode = tolua.cast(node, "CCLayer")
-	print("self.rootNode ==> ", self.rootNode)
-	self:addChild(self.rootNode)
+	ccb.landing_scene = self
+	self.on_ui_clickme_clicked = __bind(self.do_ui_clickme, self)
 	
-	self.sprite_loading = self.ccbproxy:getNodeWithType("sprite_loading", "CCSprite")
+
+	local ccbproxy = CCBProxy:create()
+	
+	local node = CCBReaderLoad("LandingScene.ccbi", ccbproxy, false, "")
+	
+	self:addChild(node)
+	
+--	self.sprite_loading = self.ccbproxy:getNodeWithType("sprite_loading", "CCSprite")
 	self:create_progress_animation(self.rootNode, self.sprite_loading)
 	
 	self.rootNode:setKeypadEnabled(true)
@@ -29,12 +33,16 @@ function LandingScene:onEnter()
 	print("[LandingScene:on_enter()]")
 	self.super.onEnter(self)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
---	self:setup_websocket()
-	print("go to hall in landing scene")
---	local hall = createHallScene()
---	CCDirector:sharedDirector():replaceScene(hall)
-	local hall = createLoginScene()
-	CCDirector:sharedDirector():replaceScene(hall)
+	self:setup_websocket()
+end
+
+function LandingScene:do_on_websocket_ready()
+	local cur_user = GlobalSetting.current_user
+	if is_blank(cur_user.user_id) and is_blank(cur_user.login_token) then
+		self:sign_in_by_token(cur_user.user_id, cur_user.login_token)
+	else
+		self:signup()
+	end
 end
 
 function LandingScene:onExit()
@@ -74,34 +82,23 @@ function LandingScene:setup_websocket()
 	self:connect_to_login_server(GlobalSetting)
 end
 
-function LandingScene:create_progress_animation(layer, sprite)
-	local frameCache = CCSpriteFrameCache:sharedSpriteFrameCache()
-	if frameCache == nil then
-		print("frame cache is null")
-	end
-	
-	local animationCache = CCAnimationCache:sharedAnimationCache()
-	--frameCache:addSpriteFramesWithFile("ccbResources/landing.plist")
-	local frames = CCArray:create()
-	for i=1, 10 do
-		local image_file = string.format("load%02d.png", i)
-		print(image_file)
-		local frame = frameCache:spriteFrameByName(image_file)
-		if frame == nil then
-			print("frame should not be nil")
-		end
-		frames:addObject(frame)		
-	end
-	
-	local anim = CCAnimation:createWithSpriteFrames(frames, 0.05);
-	animationCache:addAnimation(anim, "progress")
-	
-	local animate = CCAnimate:create(anim)
-	sprite:runAction( CCRepeatForever:create(animate) )
-	
+
+function LandingScene:do_ui_clickme(tag, sender)
+	print("[LandingScene:do_ui_clickme] tag: ", tag, ", sender: ", sender)
 end
 
-LoginPlugin.bind(LandingScene)
+function LandingScene:do_on_login_success()
+	local hall = createHallScene()
+	CCDirector:sharedDirector():replaceScene(hall)
+end
+
+function LandingScene:do_on_login_failure()
+	local login = createLoginScene()
+	CCDirector:sharedDirector():replaceScene(login)
+end
+
+LoginServerConnectionPlugin.bind(LandingScene)
+UIControllerPlugin.bind(LandingScene)
 
 function createLandingScene()
 	print("createLandingScene()")
