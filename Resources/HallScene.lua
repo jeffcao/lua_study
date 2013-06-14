@@ -86,13 +86,12 @@ HallScene = class("HallScene", function()
 		return r
 	end)
 	
-	local t = LuaTableView:createWithHandler(h, CCSizeMake(800,480))
+	local t = LuaTableView:createWithHandler(h, CCSizeMake(800,260))
 	t:setDirection(kCCScrollViewDirectionHorizontal)
 	t:reloadData()
+--	t:setAnchorPoint(ccp(0.5, 0.5))
 	t:setPosition(CCPointMake(0,0))
-	self.room_layer:addChild(t)
-	
-	
+	self.middle_layer:addChild(t)
 	
  end
  

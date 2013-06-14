@@ -16,9 +16,9 @@ function RoomItem:ctor()
  	local node = CCBReaderLoad("RoomItem.ccbi", ccbproxy, false, "")
 	self:addChild(node)
 
-	self.rootNode:ignoreAnchorPointForPosition(false)
-	self.rootNode:setAnchorPoint(ccp(0,0.5))
-	self.rootNode:setPosition(ccp(0,240))
+--	self.rootNode:ignoreAnchorPointForPosition(false)
+--	self.rootNode:setAnchorPoint(ccp(0,0.5))
+--	self.rootNode:setPosition(ccp(0,240))
 
 	print("room item self.rootNode ==> ", self.rootNode)
 	
@@ -35,12 +35,12 @@ function RoomItem:ctor()
         	self.move = self.move + 1
         elseif eventType == "ended" then
         	if self.move < 3 then
-        	if not self.rootNode:getActionByTag(10) then
-            local sca = CCScaleBy:create(0.1, 1.5)
-        	local seq = CCSequence:createWithTwoActions(sca, sca:reverse())
-        	seq:setTag(10)
-        	self.rootNode:runAction(seq)
-        	end
+	        	if not self.rootNode:getActionByTag(10) then
+		            local sca = CCScaleBy:create(0.1, 1.2)
+		        	local seq = CCSequence:createWithTwoActions(sca, sca:reverse())
+		        	seq:setTag(10)
+		        	self.rootNode:runAction(seq)
+	        	end
         	end
         	self.move = 0
         end
