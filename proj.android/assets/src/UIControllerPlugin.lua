@@ -101,9 +101,10 @@ function UIControllerPlugin.bind(theClass)
 	function theClass:show_message_box(message, msg_width, msg_height)
 		msg_width = msg_width or 330
 		msg_height = msg_height or 50
-		self.rootNode:addChild(self:create_message_layer(message, msg_width, msg_height), 0, 901)
+		local msg_layer = self:create_message_layer(message, msg_width, msg_height)
+		self.rootNode:addChild(msg_layer, 0, 901)
 		
-		scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+		scaleNode(msg_layer, GlobalSetting.content_scale_factor)
 		
 		Timer.add_timer(3, function()
 			local msg_layer = self.rootNode:getChildByTag(901)
