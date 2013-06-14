@@ -94,15 +94,18 @@ local function main()
 							local gw_oauth_fn = function()
 								hl:close()
 								print("gw_oauth_fn")
-								local ls = createGamingScene()
 								GlobalSetting.game_info = data2
-								dump(data2)
+								dump(data2, 'game_info')
 								GlobalSetting.g_WebSocket = gw
+								local ls = createGamingScene()
 								CCDirector:sharedDirector():runWithScene(ls)
+							end
+							local gw_oauth_fail = function()
+								print("open game socket oauth fail")
 							end
 							gw.on_open = function()
 								print("gw.on_open")
-								gw:trigger("g.check_connection", oauth, gw_oauth_fn)
+								gw:trigger("g.check_connection", oauth, gw_oauth_fn, gw_oauth_fail)
 							end
 						end
 						local go_game = {retry = "0", user_id = "10006", room_id = data.room[1].room_id}
@@ -116,10 +119,11 @@ local function main()
 		end
 		lg:trigger("login.sign_in",  event_data, fn, fn)
 	end
---	game_test()
+	game_test()
+	
 
-	local ls = createLandingScene()
-	CCDirector:sharedDirector():runWithScene(ls)
+--	local ls = createLandingScene()
+--	CCDirector:sharedDirector():runWithScene(ls)
 	
 --	return true
 --	

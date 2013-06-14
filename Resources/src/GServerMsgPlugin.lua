@@ -79,11 +79,12 @@ function GServerMsgPlugin.bind(theClass)
 	-- g_channel and c_channel
 	function theClass:onServerLeave(data)
 		--TODO_LUA_TEST
-		print("onServerLeave")
-		if (self.g_user_id == data.user_id) then
+		print("onServerLeave " .. data.user_id)
+		if (tonumber(self.g_user_id) == tonumber(data.user_id)) then
 			cclog("被踢出房间")
 			--TODO_LUA
 			--cc.WebSocketBridge.sharedWebSocketBridge().notifyGameClose()
+			SimpleAudioEngine:sharedEngine():stopBackgroundMusic()
 			local scene = createHallScene()
 			CCDirector:sharedDirector():replaceScene(scene)
 		else

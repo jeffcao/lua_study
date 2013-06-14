@@ -22,7 +22,7 @@ function GPlayerUpdatePlugin.bind(theClass)
 				self.menu_tuoguan:setVisible(true)
 			end
 	 	else 
-			cclog("is not tuoguan status")
+			dump(self.menu_tuoguan, "is not tuoguan status")
 			if self.menu_tuoguan:isVisible() then
 				cclog("hide tuoguan")
 				self.menu_tuoguan:setVisible(false)
