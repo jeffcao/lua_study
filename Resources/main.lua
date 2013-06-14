@@ -68,8 +68,53 @@ local function main()
 	
 	CCEGLView:sharedOpenGLView():setDesignResolutionSize(800, 480, kResolutionExactFit)
 	
-	local ls = createGamingScene()
-	CCDirector:sharedDirector():runWithScene(ls)
+	local lg = WebSocketRails:new("ws://login.test.170022.cn:8080/websocket", true)
+	lg.on_open = function() print("lg on open") end
+	local event_data = {retry="0", login_type="103", user_id = "10006", password = "12345678", version="1.0"}
+	local fn = function(data) 
+		GlobalSetting.current_user:load_from_json(data.user_profile)
+		local cur_user = GlobalSetting.current_user
+		--cur_user.user_id = data.user_id
+		cur_user.login_token = data.token
+		local url = "ws://" .. data.url[1] .. "/websocket"
+		local hl = WebSocketRails:new(url, true)
+		hl.on_open = function()
+			local oauth = {retry = "0", token = cur_user.login_token, user_id = "10006"}
+			local oauth_fn = function(data)
+				lg:close()
+				print("hall on open")
+				local get_room = {retry = "0", user_id = "10006"}
+				local fnc = function(data) 
+					print("get_room succ") 
+					local go_game_fn = function(data2)
+						print("go_game_fn")
+						local url2 = data2.urls[1]
+						local gw = WebSocketRails:new(url2, true)
+						local gw_oauth_fn = function()
+							hl:close()
+							print("gw_oauth_fn")
+							local ls = createGamingScene()
+							GlobalSetting.game_info = data2
+							dump(data2)
+							GlobalSetting.g_WebSocket = gw
+							CCDirector:sharedDirector():runWithScene(ls)
+						end
+						gw.on_open = function()
+							print("gw.on_open")
+							gw:trigger("g.check_connection", oauth, gw_oauth_fn)
+						end
+					end
+					local go_game = {retry = "0", user_id = "10006", room_id = data.room[1].room_id}
+					hl:trigger("ui.request_enter_room", go_game, go_game_fn)
+				end
+				hl:trigger("ui.get_room", get_room, fnc, fnc)
+				
+			end
+			hl:trigger("ui.check_connection", oauth, oauth_fn)
+		end
+	end
+	lg:trigger("login.sign_in",  event_data, fn, fn)
+	
 	
 --	return true
 --	
