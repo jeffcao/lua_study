@@ -475,7 +475,7 @@ function GUIUpdatePlugin.bind(theClass)
 			self.user_info_layer:initWithInfo(self, info)
 			self.user_info_layer:setVisible(true)
 		end
-		self.user_info_layer:setVisible(true)
+		--self.user_info_layer:setVisible(true)
 	end
 	
 	function theClass:onCloseClicked() 

@@ -475,7 +475,7 @@ function GUIUpdatePlugin.bind(theClass)
 			self.user_info_layer:initWithInfo(self, info)
 			self.user_info_layer:setVisible(true)
 		end
-		self.user_info_layer:setVisible(true)
+		--self.user_info_layer:setVisible(true)
 	end
 	
 	function theClass:onCloseClicked() 
@@ -491,7 +491,7 @@ function GUIUpdatePlugin.bind(theClass)
 	-- 弹出强退对话框
 	function theClass:showExit() 
 		if not self._has_gaming_started then
-		--	return
+			return
 		end
 		cclog("call exit ")
 		if not self.exit_layer then
