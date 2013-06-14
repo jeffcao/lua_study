@@ -31,7 +31,7 @@ function HallServerConnectionPlugin.bind(theClass)
 		end
 	end
 	
-	function theClass:connect_to_hall_server(hall_server_url)
+	function theClass:connect_to_hall_server()
 		print("[HallServerConnectionPlugin:connect_to_hall_server()]")
 		local function connection_failure(data)
 			print("[HallServerConnectionPlugin.connection_failure].")
@@ -43,7 +43,7 @@ function HallServerConnectionPlugin.bind(theClass)
 		end
 		if GlobalSetting.hall_server_websocket == nil then
 			print("[HallServerConnectionPlugin:connect_to_hall_server()] hall_server_websocket is nil, init it.")
-			GlobalSetting.hall_server_websocket = WebSocketRails:new(hall_server_url, true)
+			GlobalSetting.hall_server_websocket = WebSocketRails:new("ws://"..GlobalSetting.hall_server_url.."/websocket", true)
 			GlobalSetting.hall_server_websocket.on_open = __bind(self.on_websocket_ready, self)
 			GlobalSetting.hall_server_websocket:bind("connection_error", connection_failure)
 		end
