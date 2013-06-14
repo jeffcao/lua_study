@@ -358,4 +358,48 @@ function GActionPlugin.bind(theClass)
 		end)
 		cclog("MainSceneDelegate on change desk")
 	end
+	
+	function theClass:enter_room(room_id) 
+		local event_data = {user_id = self.g_user_id, room_id = self.g_room_id}
+		self.g_WebSocket:trigger("g.enter_room", event_data, 
+			function(data)
+				print("g.enter_room succ")
+				self:onEnterRoomSuccess(data)
+			end,
+			function(data) 
+				self:onEnterRoomFailure(data)
+			end)
+	end
+	
+	function theClass:loadSettings() 
+		local ls = CCUserDefault:sharedUserDefault()
+		SoundSettings.bg_music = ls:getStringForKey("bg_music") ~= "0"
+		SoundSettings.effect_music = ls:getStringForKey("effect_music") ~= "0"
+		
+		print("[MainSceneDelegate.loadSettings] SoundSettings.bg_music => " , SoundSettings.bg_music)
+		print("[MainSceneDelegate.loadSettings] SoundSettings.effect_music => " , SoundSettings.effect_music)
+	end
+	
+	function theClass:saveSettings() 
+		local ls = CCUserDefault:sharedUserDefault()
+		local bg = "0"
+		if SoundSettings.bg_music then bg = "1" end
+		local effect = "0"
+		if SoundSettings.effect_music then effect = "1" end
+		ls:setStringForKey("bg_music", bg)
+		ls:setStringForKey("effect_music", effect)
+		
+	end
+	
+	function theClass:doStartReady(isServer) 
+		self:stopUserAlarm()
+		self:reset_all()
+		self.menu_ready:setVisible(false)
+		self.menu_huanzhuo:setVisible(false)
+		-- 只有在客户端发起的准备才需要调用此接口，若是恢复数据，则不用通知服务器
+		if not isServer then
+			self.g_WebSocket:trigger("g.ready_game", {user_id = self.g_user_id})
+		end
+			
+	end
 end

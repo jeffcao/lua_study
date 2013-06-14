@@ -40,14 +40,14 @@ function GamingScene:ctor()
 	self.onPrevUserClicked = __bind(self.onPrevUserClicked, self)
 	self.onNextUserClicked = __bind(self.onNextUserClicked, self)
 	self.onCloseClicked = __bind(self.onCloseClicked, self)
+	self.onStartReadyClicked = __bind(self.onStartReadyClicked, self)
 	
 	local node = CCBReaderLoad("GamingScene.ccbi", self.ccbproxy, true, "GamingScene")
 
 	self.rootNode = tolua.cast(node, "CCLayer")
 	self:addChild(self.rootNode)
 	
-	self.rootNode:setKeypadEnabled(true)
-	self.rootNode:registerScriptKeypadHandler(__bind(self.onCloseClicked, self))
+	
 	self:initData()
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)

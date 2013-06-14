@@ -510,4 +510,37 @@ function GUIUpdatePlugin.bind(theClass)
 		--do nothing
 	end
 	
+	function theClass:onEnterRoomSuccess(data) 
+		--TODO self.g_WebSocket:clear_notify_id()
+		dump(data, "[onEnterRoomSuccess] data => ")
+		local game_info = data.game_info
+		
+		self:updatePlayers(data.players)
+		self:init_channel(game_info)
+		self.menu_ready:setVisible(true)
+		self.menu_huanzhuo:setVisible(true)
+		
+		cclog("[onEnterRoomSuCCss] update room base...")
+		local room_base = "底注: " .. data.game_info.room_base
+		
+		self.dizhu:setString(room_base)
+		
+		cclog("[onEnterRoomSuCCss] start tick count...")
+		self:startSelfUserAlarm(20, function()
+			cclog("do not auto ready")
+			self:exit()
+		end)
+		
+		cclog("[onEnterRoomSuCCss] exit...")
+	end
+	
+	function theClass:onEnterRoomFailure(data)
+		dump(data, "enter room failure")
+	end
+	
+	function theClass:onStartReadyClicked() 
+		self:playButtonEffect()	
+		self:doStartReady()
+	end
+	
 end

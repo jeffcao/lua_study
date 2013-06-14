@@ -1075,7 +1075,8 @@ end
  -- 响应抢地主菜单事件 参数： sender - 被点击的菜单项 选择的分数 ＝ sender.tag - 1000 0 - 不叫 1 - 叫1分 2 -
  -- 叫2分 3 - 叫3分
  ------------------------------------------------------------------------------------------------------------------------------------------------------------	
-function theClass:onGetLordClicked(sender) 
+function theClass:onGetLordClicked(tag, sender) 
+    -- theClass.onGetLord = __bind(theClass.onGetLardClicked, theClass)
 	-- 取叫的分数
 	local lord_value = sender:getTag() - ScaleUtility.NODE_SCALE_TAG_BASE
 	cclog("[onGetLord] lord_value => " .. lord_value)

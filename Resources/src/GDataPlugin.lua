@@ -3,19 +3,6 @@ GDataPlugin = {}
 function GDataPlugin.bind(theClass) 
 
 	function theClass:initData()
-	--[[
-		self.self_user_name = tolua.cast(self.self_user_name, "CCLabelTTF")
-		self.prev_user_name = tolua.cast(self.prev_user_name, "CCLabelTTF")
-		self.next_user_name = tolua.cast(self.next_user_name, "CCLabelTTF")
-		self.self_user_poke_count = tolua.cast(self.self_user_poke_count, "CCLabelTTF")
-		self.prev_user_poke_count = tolua.cast(self.prev_user_poke_count, "CCLabelTTF")
-		self.next_user_poke_count = tolua.cast(self.next_user_poke_count, "CCLabelTTF")
-		
-		self.self_user_lord_value = tolua.cast(self.self_user_lord_value, "CCSprite")
-		self.prev_user_lord_value = tolua.cast(self.prev_user_lord_value, "CCSprite")
-		self.next_user_lord_value = tolua.cast(self.next_user_lord_value, "CCSprite")
-		]]
-		
 		self.NOTIFY_ORDER = 4000--退出提示层
 		self.GAME_OVER_ORDER = 3000--游戏结束层
 		self.BUTTERFLY_ANIM_ORDER = 2210--动画层
@@ -45,6 +32,42 @@ function GDataPlugin.bind(theClass)
         
         self.rootNode:registerScriptTouchHandler(__bind(self.onTouch, self))
         self.rootNode:setTouchEnabled(true)
+        self.rootNode:setKeypadEnabled(true)
+        local key_fn = function(event)
+        	print(event)
+        	if event == "backClicked" then
+        		self:onCloseClicked()
+        	end
+        end
+		self.rootNode:registerScriptKeypadHandler(key_fn)
+        
+        --TODO bind onPause和onResume事件
+        --TODO 加入虫子动画
+        self.g_WebSocket = GlobalSetting.g_WebSocket
+        self.self_user = GlobalSetting.current_user
+        self.g_user_id = self.self_user.user_id
+        self.g_room_id = GlobalSetting.game_info.room_id
+        self.self_user_name:setString("uid: " .. tonumber(self.g_user_id))
+        self.menu_tuoguan:getParent():reorderChild(self.menu_tuoguan, 1000)
+        
+        self:updatePlayers({})
+        self:updateLordValue(self.self_user_lord_value, -1)
+		self:updateLordValue(self.prev_user_lord_value, -1)
+		self:updateLordValue(self.next_user_lord_value, -1)
+		
+		self.menu_tuoguan:setVisible(true)
+        
+        self:enter_room(self.g_room_id)
+        
+        self:loadSettings()
+        
+        if (SoundSettings.bg_music) then
+			self:playBackgroundMusic()
+		end
+		
+		self.top_panel:getParent():reorderChild(self.top_panel, self.TOP_PANEL_ORDER)
+		
+		
 	end
 
 	function theClass:retrievePlayers(player_list)
