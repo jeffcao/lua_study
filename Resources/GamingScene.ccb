@@ -3182,8 +3182,6 @@
 												</array>
 											</dict>
 										</array>
-										<key>selected</key>
-										<true/>
 									</dict>
 								</array>
 								<key>customClass</key>
@@ -4151,7 +4149,7 @@
 										<string>Block</string>
 										<key>value</key>
 										<array>
-											<string>onClose</string>
+											<string>onCloseClicked</string>
 											<integer>2</integer>
 										</array>
 									</dict>
