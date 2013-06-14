@@ -7,11 +7,11 @@
             <key>buquankuang.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,457},{450,230}}</string>
+                <string>{{559,647},{450,230}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{450,230}}</string>
                 <key>sourceSize</key>
@@ -33,11 +33,11 @@
             <key>jiesuan02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{611,336},{319,106}}</string>
+                <string>{{312,686},{319,106}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{319,106}}</string>
                 <key>sourceSize</key>
@@ -46,7 +46,7 @@
             <key>jiesuan03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{611,202},{322,65}}</string>
+                <string>{{611,369},{322,65}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>jiesuan04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{611,269},{320,65}}</string>
+                <string>{{611,436},{320,65}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,11 +72,11 @@
             <key>jiesuan05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{234,457},{140,227}}</string>
+                <string>{{417,457},{140,227}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{140,227}}</string>
                 <key>sourceSize</key>
@@ -98,20 +98,33 @@
             <key>lose.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{921,549},{276,80}}</string>
+                <string>{{559,503},{276,80}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{276,80}}</string>
                 <key>sourceSize</key>
                 <string>{276,80}</string>
             </dict>
+            <key>plus.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{999,2},{133,18}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{133,18}}</string>
+                <key>sourceSize</key>
+                <string>{133,18}</string>
+            </dict>
             <key>shenglichong.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,914},{113,107}}</string>
+                <string>{{420,686},{113,107}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +137,7 @@
             <key>shibaichong.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{921,480},{93,67}}</string>
+                <string>{{312,503},{93,67}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +150,7 @@
             <key>win.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{935,202},{276,82}}</string>
+                <string>{{935,369},{276,82}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +163,7 @@
             <key>ziliaokuang01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{611,444},{468,308}}</string>
+                <string>{{2,503},{468,308}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -159,6 +172,32 @@
                 <string>{{0,0},{468,308}}</string>
                 <key>sourceSize</key>
                 <string>{468,308}</string>
+            </dict>
+            <key>ziliaokuang02.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{611,202},{386,165}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{386,165}}</string>
+                <key>sourceSize</key>
+                <string>{386,165}</string>
+            </dict>
+            <key>ziliaokuang03.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,457},{413,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{413,44}}</string>
+                <key>sourceSize</key>
+                <string>{413,44}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -170,7 +209,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:e032872b90569c639e870e348ed36c10$</string>
+            <string>$TexturePacker:SmartUpdate:cfcd7d51933de346d1607c17f433d077$</string>
             <key>textureFileName</key>
             <string>common3.png</string>
         </dict>

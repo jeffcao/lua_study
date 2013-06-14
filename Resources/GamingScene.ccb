@@ -842,7 +842,7 @@
 												<string>Block</string>
 												<key>value</key>
 												<array>
-													<string>onPrevUserClickedvv</string>
+													<string>onPrevUserClicked</string>
 													<integer>2</integer>
 												</array>
 											</dict>
@@ -3182,6 +3182,8 @@
 												</array>
 											</dict>
 										</array>
+										<key>selected</key>
+										<true/>
 									</dict>
 								</array>
 								<key>customClass</key>
