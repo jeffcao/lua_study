@@ -6158,7 +6158,7 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string>onStartReady</string>
+									<string>onStartReadyClicked</string>
 									<integer>2</integer>
 								</array>
 							</dict>
