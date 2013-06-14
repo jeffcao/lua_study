@@ -7,8 +7,8 @@
 #include "SimpleAudioEngine.h"
 //#include "lua++.h"
 #include "WebsocketManager_lua.h"
-#include "MySprite_lua.h"
-#include "CCEditBoxBridge_lua.h"
+//#include "MySprite_lua.h"
+//#include "CCEditBoxBridge_lua.h"
 #include "DialogLayerConvertor_lua.h"
 #include "tolua/luaopen_LuaProxy.h"
 extern "C" {
@@ -150,10 +150,10 @@ bool AppDelegate::applicationDidFinishLaunching()
     lua_State* pLuaState = pEngine->getLuaStack()->getLuaState();
 
     tolua_WebsocketManager_open(pLuaState);
-    tolua_MySprite_open(pLuaState);
-    tolua_CCEditBoxBridge_open(pLuaState);
+//    tolua_MySprite_open(pLuaState);
+//    tolua_CCEditBoxBridge_open(pLuaState);
     tolua_DialogLayerConvertor_open(pLuaState);
-    //luaopen_LuaProxy(pLuaState);
+    luaopen_LuaProxy(pLuaState);
     luaopen_lua_extensions(pLuaState);
     tolua_extensions_ccb_open(pLuaState);
 

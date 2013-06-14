@@ -1,3 +1,4 @@
+
 function scaleNode(node, scaleFactor)
 	local node = tolua.cast(node, "CCNode")
 	if node:getTag() >= 1000 then
@@ -108,4 +109,8 @@ function trim(str, char)
 		return_value = return_value:sub(1, #return_value-1)	
 	end
 	return return_value
+end
+
+function sleep(n)
+  os.execute("sleep " .. tonumber(n))
 end

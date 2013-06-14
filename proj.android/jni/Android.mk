@@ -17,12 +17,10 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/HelloWorldScene.cpp \
  	                ../../Classes/WebsocketManager.cpp \
  	                ../../Classes/WebsocketManager_lua.cpp \
- 	                ../../Classes/MySprite.cpp \
- 	                ../../Classes/MySprite_lua.cpp \
  	                ../../Classes/DialogLayerConvertor.cpp \
  	                ../../Classes/DialogLayerConvertor_lua.cpp \
- 	                ../../Classes/CCEditBoxBridge.cpp \
- 	                ../../Classes/CCEditBoxBridge_lua.cpp \
+					../../Classes/cocos2dx-LuaProxy/tolua/CCBProxy.cpp \
+					../../Classes/cocos2dx-LuaProxy/tolua/luaopen_LuaProxy.cpp \
 					../../Classes/cocos2dx-LuaProxy/tolua/LuaEventHandler.cpp \
 					../../Classes/cocos2dx-LuaProxy/tolua/LuaTableView.cpp \
 					../../Classes/cocos2dx-LuaProxy/ui/CursorTextField.cpp \

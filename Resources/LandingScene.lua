@@ -37,10 +37,13 @@ function LandingScene:onEnter()
 end
 
 function LandingScene:do_on_websocket_ready()
+	self:hide_progress_message_box()
 	local cur_user = GlobalSetting.current_user
-	if is_blank(cur_user.user_id) and is_blank(cur_user.login_token) then
+	if not is_blank(cur_user.user_id) and not is_blank(cur_user.login_token) then
+		self:show_progress_message_box("登录服务器...")
 		self:sign_in_by_token(cur_user.user_id, cur_user.login_token)
 	else
+		self:show_progress_message_box("注册用户...")
 		self:signup()
 	end
 end
@@ -77,8 +80,6 @@ end
 
 
 function LandingScene:setup_websocket()
-	--self.websocket = WebSocketRails:new("ws://login.game.170022.cn/websocket", true)
-	--self.websocket.on_open = __bind(self.do_login, self)
 	self:connect_to_login_server(GlobalSetting)
 end
 
@@ -93,8 +94,23 @@ function LandingScene:do_on_login_success()
 end
 
 function LandingScene:do_on_login_failure()
+	self:hide_progress_message_box()
+	self:show_message_box("登录失败")
+	Timer.add_timer(3, __bind(self.enter_login_scene, self))
+end
+
+function LandingScene:enter_login_scene()
+	print("[LandingScene:do_on_connection_failure()] enter into login scene.")
 	local login = createLoginScene()
 	CCDirector:sharedDirector():replaceScene(login)
+end
+	
+function LandingScene:do_on_connection_failure()
+	print("[LandingScene:do_on_connection_failure()]")
+	self:show_message_box("连接服务器失败")
+
+	Timer.add_timer(5, __bind(self.do_close, self))
+	
 end
 
 LoginServerConnectionPlugin.bind(LandingScene)

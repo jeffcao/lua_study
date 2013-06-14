@@ -67,7 +67,7 @@ local function main()
 	cclog(string.format("size.width: %d, size.height: %d;  contentScaleFactor: %f", size.width, size.height, contentScaleFactor))
 	
 	CCEGLView:sharedOpenGLView():setDesignResolutionSize(800, 480, kResolutionExactFit)
-	
+
 	local game_test = function()
 		local lg = WebSocketRails:new("ws://login.test.170022.cn:8080/websocket", true)
 		lg.on_open = function() print("lg on open") end
@@ -117,7 +117,9 @@ local function main()
 		lg:trigger("login.sign_in",  event_data, fn, fn)
 	end
 	game_test()
-	
+
+--	local ls = createLandingScene()
+--	CCDirector:sharedDirector():runWithScene(ls)
 	
 --	return true
 --	
