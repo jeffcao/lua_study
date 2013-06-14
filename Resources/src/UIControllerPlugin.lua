@@ -53,12 +53,7 @@ function UIControllerPlugin.bind(theClass)
 		
 	end
 	
-	function theClass:on_msg_layer_touched(eventType, x, y)
-		print("[UIControllerPlugin:msg_layer_on_touch]")
-		return true
-	end
-
-	function theClass:show_message_box(message)
+	function theClass:create_message_layer(message, msg_width, msg_height)
 	
 		local function on_msg_layer_touched(eventType, x, y)
 			print("[UIControllerPlugin:msg_layer_on_touch]")
@@ -67,77 +62,73 @@ function UIControllerPlugin.bind(theClass)
 		
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 		cache:addSpriteFramesWithFile(Res.dialog_plist)
-		
-		win_size = self.rootNode:getContentSize()
+
+		local win_size = self.rootNode:getContentSize()
+		print("win_size.width: ", win_size.width, "win_size.height:", win_size.height)
 		local msg_layer = CCLayerColor:create(ccc4(0, 0, 0, 0))
 		msg_layer:setOpacity(100)
 		msg_layer:setTouchEnabled(true)
 --		msg_layer:setKeypadEnabled(false)
-
 		msg_layer:registerScriptTouchHandler(on_msg_layer_touched, false, -1024, true)
+
+		local content_layer = CCLayer:create()
+		content_layer:setContentSize(CCSizeMake(msg_width, msg_height))
 		
+		msg_layer:addChild(content_layer, 999, 100)
+		content_layer:ignoreAnchorPointForPosition(false)
+		content_layer:setAnchorPoint(ccp(0.5, 0.5))
+		content_layer:setPosition(ccp(win_size.width/2, win_size.height/2))	
+
 		local msg_sprite = CCScale9Sprite:createWithSpriteFrameName("cue_a.png")
 		local msg_lb = CCLabelTTF:create(message, "default",16)
 		
 		msg_lb:setColor(ccc3(255, 255, 255))
-		msg_layer:addChild(msg_lb, 999)
+		content_layer:addChild(msg_lb, 999)
 		msg_lb:setAnchorPoint(ccp(0.5, 0.5))
-		msg_lb:setPosition(ccp(win_size.width/2, win_size.height/2))
+		msg_lb:setPosition(ccp(msg_width/2, msg_height/2))
 		
-		msg_layer:addChild(msg_sprite, 0, 1000)
-		msg_sprite:setAnchorPoint(ccp(0.5, 0.5))
-		msg_sprite:setPosition(ccp(win_size.width/2, win_size.height/2))
+		msg_sprite:setPreferredSize(CCSizeMake(msg_width, msg_height))
+		content_layer:addChild(msg_sprite, 0, 1000)
+		msg_sprite:setAnchorPoint(ccp(0, 0.5))
+		msg_sprite:setPosition(ccp(0, msg_height / 2.0 ))
 		
+		msg_layer:setAnchorPoint(ccp(0,0))
+		msg_layer:setPosition(ccp(0,0))
+		
+		return msg_layer
+	end
+	
+	function theClass:show_message_box(message, msg_width, msg_height)
+		msg_width = msg_width or 330
+		msg_height = msg_height or 50
+		local msg_layer = self:create_message_layer(message, msg_width, msg_height)
 		self.rootNode:addChild(msg_layer, 0, 901)
-		scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+		
+		scaleNode(msg_layer, GlobalSetting.content_scale_factor)
+		
 		Timer.add_timer(3, function()
 			local msg_layer = self.rootNode:getChildByTag(901)
 			self.rootNode:removeChild(msg_layer, true)
 			msg_layer = nil
 		end)
-		
-		
+
 	end
 	
-	function theClass:show_progress_message_box(message)
-	
-		local function on_msg_layer_touched(eventType, x, y)
-			print("[UIControllerPlugin:msg_layer_on_touch]")
-			return true
-		end
-		
-		local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
-		cache:addSpriteFramesWithFile(Res.dialog_plist)
-		
-		win_size = self.rootNode:getContentSize()
-		local msg_layer = CCLayerColor:create(ccc4(0, 0, 0, 0))
-		msg_layer:setOpacity(100)
-		msg_layer:setTouchEnabled(true)
---		msg_layer:setKeypadEnabled(false)
-
-		msg_layer:registerScriptTouchHandler(on_msg_layer_touched, false, -1024, true)
-		
-		local msg_sprite = CCScale9Sprite:createWithSpriteFrameName("cue_a.png")
-		msg_sprite:setPreferredSize(CCSizeMake(380, 80))
-		local msg_lb = CCLabelTTF:create(message, "default",16)
-		
-		msg_lb:setColor(ccc3(255, 255, 255))
-		msg_layer:addChild(msg_lb, 999)
-		msg_lb:setAnchorPoint(ccp(0.5, 0.5))
-		msg_lb:setPosition(ccp(win_size.width/2, win_size.height/2))
-		
+	function theClass:show_progress_message_box(message, msg_width, msg_height)
+		msg_width = msg_width or 350
+		msg_height = msg_height or 73
+		local msg_layer = self:create_message_layer(message, msg_width, msg_height)
+		local content_layer = msg_layer:getChildByTag(100)
 		local progress_sprite = CCSprite:create()
 --		progress_sprite:setScale(0.75)
-		msg_layer:addChild(progress_sprite, 999, 1)
-		progress_sprite:setAnchorPoint(ccp(0.5, 0.5))
-		progress_sprite:setPosition(ccp(win_size.width/2-120, win_size.height/2))
-		
-		msg_layer:addChild(msg_sprite, 0, 1000)
-		msg_sprite:setAnchorPoint(ccp(0.5, 0.5))
-		msg_sprite:setPosition(ccp(win_size.width/2, win_size.height/2))
+		content_layer:addChild(progress_sprite, 999, 1000)
+		progress_sprite:setAnchorPoint(ccp(0, 0.5))
+		progress_sprite:setPosition(ccp(20, msg_height/2))
 		
 		self.rootNode:addChild(msg_layer, 0, 902)
-		scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+		
+		scaleNode(msg_layer, GlobalSetting.content_scale_factor)
+		
 		self:create_progress_animation(msg_layer, progress_sprite)		
 		
 	end
@@ -147,5 +138,6 @@ function UIControllerPlugin.bind(theClass)
 		self.rootNode:removeChild(msg_layer, true)
 		msg_layer = nil
 	end
-
+	
+	
 end

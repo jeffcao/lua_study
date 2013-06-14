@@ -343,7 +343,7 @@ function GUIUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:reset_card(card) 
-		for _, poke_card in paris(card.poke_cards) do 
+		for _, poke_card in pairs(card.poke_cards) do 
 			poke_card:reset()
 		end
 	end
