@@ -478,4 +478,34 @@ function GUIUpdatePlugin.bind(theClass)
 		self.user_info_layer:setVisible(true)
 	end
 	
+	function theClass:onCloseClicked() 
+		if self._has_gaming_started then
+			self:showExit()
+	 	else 
+			self:exit()
+		end
+	end
+	
+	--[[
+	-- 弹出强退对话框
+	function theClass:showExit() 
+		if not self._has_gaming_started then
+			return
+		end
+		cclog("call exit ")
+		if exit_layer == nil  then
+			exit_layer = CCBuilderReader:load("ExitScene")
+			exit_layer.controller.delegate = this
+			exit_layer:setTouchEnabled(true)
+			ScaleUtility:scaleNode( exit_layer, contentScaleFactor )
+			self.rootNode:addChild( exit_layer, NOTIFY_ORDER)
+			exit_layer:setVisible(false)
+		end
+		if exit_layer:isVisible() then
+			return
+		end
+		exit_layer:setVisible(true)
+	end
+	]]
+	
 end
