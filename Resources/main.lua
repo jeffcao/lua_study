@@ -68,7 +68,8 @@ local function main()
 	
 	CCEGLView:sharedOpenGLView():setDesignResolutionSize(800, 480, kResolutionExactFit)
 	
-	local ls = createGamingScene()
+--	local ls = createGamingScene()
+	local ls = createLandingScene()
 	CCDirector:sharedDirector():runWithScene(ls)
 	
 --	return true

@@ -118,6 +118,7 @@ function UIControllerPlugin.bind(theClass)
 		msg_layer:registerScriptTouchHandler(on_msg_layer_touched, false, -1024, true)
 		
 		local msg_sprite = CCScale9Sprite:createWithSpriteFrameName("cue_a.png")
+		msg_sprite:setPreferredSize(CCSizeMake(380, 80))
 		local msg_lb = CCLabelTTF:create(message, "default",16)
 		
 		msg_lb:setColor(ccc3(255, 255, 255))
@@ -127,7 +128,7 @@ function UIControllerPlugin.bind(theClass)
 		
 		local progress_sprite = CCSprite:create()
 --		progress_sprite:setScale(0.75)
-		msg_layer:addChild(progress_sprite, 999, 1000)
+		msg_layer:addChild(progress_sprite, 999, 1)
 		progress_sprite:setAnchorPoint(ccp(0.5, 0.5))
 		progress_sprite:setPosition(ccp(win_size.width/2-120, win_size.height/2))
 		

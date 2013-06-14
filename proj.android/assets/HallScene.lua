@@ -36,8 +36,8 @@ HallScene = class("HallScene", function()
 	
 	self.avatar_btn:setScale(GlobalSetting.content_scale_factor * 0.45)
 	
-	local mysprite = MySprite:createMS("btn_bujiao.png")
-	self.rootNode:addChild(tolua.cast(mysprite, "CCNode"))
+--	local mysprite = MySprite:createMS("btn_bujiao.png")
+--	self.rootNode:addChild(tolua.cast(mysprite, "CCNode"))
 	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler(__bind(self.onKeypad, self))
@@ -65,7 +65,9 @@ HallScene = class("HallScene", function()
 	
 	local data = {}
 	for i = 1, 10 do
-		table.insert(data, "Data 3"..i) end
+		table.insert(data, "Data 3"..i) 
+	end
+	
 	local h = LuaEventHandler:create(function(fn, table, a1, a2)
 		local r
 		if fn == "cellSize" then
@@ -83,6 +85,7 @@ HallScene = class("HallScene", function()
 		end
 		return r
 	end)
+	
 	local t = LuaTableView:createWithHandler(h, CCSizeMake(800,480))
 	t:setDirection(kCCScrollViewDirectionHorizontal)
 	t:reloadData()
