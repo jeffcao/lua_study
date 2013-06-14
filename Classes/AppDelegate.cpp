@@ -4,6 +4,7 @@
 #include "HelloWorldScene.h"
 #include "script_support/CCScriptSupport.h"
 #include "CCLuaEngine.h"
+#include "SimpleAudioEngine.h"
 //#include "lua++.h"
 #include "WebsocketManager_lua.h"
 #include "MySprite_lua.h"
@@ -13,12 +14,17 @@
 extern "C" {
 #include "cjson/lua_extensions.h"
 }
+#include "Lua_extensions_CCB.h"
 
 #include "Lua_extensions_CCB.h"
 
 
 
 USING_NS_CC;
+
+using namespace CocosDenshion;
+
+bool _bg_music_playing = false;
 
 AppDelegate::AppDelegate()
 {
@@ -147,7 +153,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     tolua_MySprite_open(pLuaState);
     tolua_CCEditBoxBridge_open(pLuaState);
     tolua_DialogLayerConvertor_open(pLuaState);
-    luaopen_LuaProxy(pLuaState);
+    //luaopen_LuaProxy(pLuaState);
     luaopen_lua_extensions(pLuaState);
     tolua_extensions_ccb_open(pLuaState);
 
@@ -178,7 +184,10 @@ void AppDelegate::applicationDidEnterBackground()
     CCDirector::sharedDirector()->pause();
 
     // if you use SimpleAudioEngine, it must be pause
-    // SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+    _bg_music_playing = SimpleAudioEngine::sharedEngine()->isBackgroundMusicPlaying();
+    if (_bg_music_playing)
+    	SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+
 }
 
 // this function will be called when the app is active again
@@ -187,5 +196,6 @@ void AppDelegate::applicationWillEnterForeground()
     CCDirector::sharedDirector()->resume();
     
     // if you use SimpleAudioEngine, it must resume here
-    // SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+    if (_bg_music_playing)
+        SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
 }

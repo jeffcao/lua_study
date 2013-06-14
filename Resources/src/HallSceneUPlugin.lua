@@ -3,6 +3,7 @@ require "YesNoDialog2"
 require "YesNoDialog"
 require "MarketScene"
 require "MenuDialog"
+require "GamingScene"
 
 HallSceneUPlugin = {}
 
@@ -62,7 +63,8 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:doToMarket()
-		local scene = createMarketScene()
+		--local scene = createMarketScene()
+		local scene = createGamingScene()
 		CCDirector:sharedDirector():pushScene(scene)
 	end
 	

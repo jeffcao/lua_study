@@ -2,6 +2,7 @@ local json = require "cjson"
 require "src.LoginServerConnectionPlugin"
 require "src.UIControllerPlugin"
 require "LoginScene"
+require "CCBReaderLoad"
 
 LandingScene = class("LandingScene", function()
 	print("creating new landingScene")

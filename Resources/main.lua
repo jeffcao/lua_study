@@ -6,6 +6,10 @@ function __G__TRACKBACK__(msg)
     print("----------------------------------------")
 end
 
+cclog = function(...)
+    print(string.format(...))
+end
+
 print("package.path ==> " .. package.path)
 
 CONFIG_SCREEN_WIDTH = 800
@@ -24,6 +28,7 @@ require "src.UserInfo"
 require "src.GlobalFunction"
 --require "src.functions"
 require "LandingScene"
+require "GamingScene"
 require "src.resources"
 require "CCBReaderLoad"
 end
@@ -31,8 +36,12 @@ end
 local json = require "cjson"
 
 
+
+
 function __bind(fn, obj)
-	return function(...) fn(obj, ...) end
+	return function(...) 
+		return fn(obj, ...) 
+	end
 end
 
 local function main()
@@ -42,9 +51,7 @@ local function main()
     
     load_requires()
 
-    local cclog = function(...)
-        print(string.format(...))
-    end
+    
     
 	Timer.scheduler = CCDirector:sharedDirector():getScheduler()
 
@@ -61,7 +68,7 @@ local function main()
 	
 	CCEGLView:sharedOpenGLView():setDesignResolutionSize(800, 480, kResolutionExactFit)
 	
-	local ls = createLandingScene()
+	local ls = createGamingScene()
 	CCDirector:sharedDirector():runWithScene(ls)
 	
 --	return true
