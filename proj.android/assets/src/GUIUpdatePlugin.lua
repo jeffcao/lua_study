@@ -479,6 +479,7 @@ function GUIUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:onCloseClicked() 
+		self:showExit()
 		if self._has_gaming_started then
 			self:showExit()
 	 	else 
@@ -486,26 +487,27 @@ function GUIUpdatePlugin.bind(theClass)
 		end
 	end
 	
-	--[[
+	
 	-- 弹出强退对话框
 	function theClass:showExit() 
 		if not self._has_gaming_started then
-			return
+		--	return
 		end
 		cclog("call exit ")
-		if exit_layer == nil  then
-			exit_layer = CCBuilderReader:load("ExitScene")
-			exit_layer.controller.delegate = this
-			exit_layer:setTouchEnabled(true)
-			ScaleUtility:scaleNode( exit_layer, contentScaleFactor )
-			self.rootNode:addChild( exit_layer, NOTIFY_ORDER)
-			exit_layer:setVisible(false)
+		if not self.exit_layer then
+			self.exit_layer = createYesNoDialog(self.rootNode)
+			self.exit_layer:setTitle("强制退出")
+			self.exit_layer:setMessage("您正在游戏中，此时强退系统将最大输赢扣除您的豆子。")
+			self.exit_layer:setYesButton(__bind(self.exit, self))
 		end
-		if exit_layer:isVisible() then
+		if self.exit_layer:isShowing() then
 			return
 		end
-		exit_layer:setVisible(true)
+		self.exit_layer:show()
 	end
-	]]
+	
+	function theClass:exit()
+		--do nothing
+	end
 	
 end

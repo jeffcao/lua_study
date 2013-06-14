@@ -39,6 +39,7 @@ function GamingScene:ctor()
 	self.onEffectMusicClicked = __bind(self.onEffectMusicClicked, self)
 	self.onPrevUserClicked = __bind(self.onPrevUserClicked, self)
 	self.onNextUserClicked = __bind(self.onNextUserClicked, self)
+	self.onCloseClicked = __bind(self.onCloseClicked, self)
 	local node = CCBReaderLoad("GamingScene.ccbi", self.ccbproxy, true, "GamingScene")
 
 	self.rootNode = tolua.cast(node, "CCLayer")
