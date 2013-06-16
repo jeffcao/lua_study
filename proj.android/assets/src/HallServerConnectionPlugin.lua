@@ -1,25 +1,27 @@
+local json = require "cjson"
+
 HallServerConnectionPlugin = {}
 
 
 function HallServerConnectionPlugin.bind(theClass)
 
 	function theClass:on_trigger_success(data)
---		print(data, "data", true)
-		print("[HallServerConnectionPlugin.on_trigger_success] updating local user info in login scene.")
+		print("[HallServerConnectionPlugin.on_trigger_success].")
 		dump(data, "on_trigger_success data")
 
 		print("[HallServerConnectionPlugin.on_trigger_success] on_login_success.")
+		print("[HallServerConnectionPlugin.on_trigger_success] do_on_trigger_success=> "..type(self.do_on_trigger_success))
 		if "function" == type(self.do_on_trigger_success) then
-			self:do_on_trigger_success()
+			self:do_on_trigger_success(data)
 		end
 	end
 
 	function theClass:on_trigger_failure(data)
 		print("[HallServerConnectionPlugin.on_trigger_failure].")
-		dump(data, "fign_failure data")
+		dump(data, "on_trigger_failure data")
 --		print("[LoginServerConnectionPlugin.sign_failure] result code: "..data.result_code)
 		if "function" == type(self.do_on_login_failure) then
-			self:do_on_login_failure()
+			self:do_on_login_failure(json.encode(data))
 		end
 	end
 	
@@ -50,6 +52,24 @@ function HallServerConnectionPlugin.bind(theClass)
 		
 	end
 	
+	function theClass:check_connection()
+		self.failure_msg = "与服务器连接认证失败"
+		local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.hall_server_token, version="1.0"}
+		GlobalSetting.hall_server_websocket:trigger("ui.check_connection", 
+			event_data,
+			__bind(self.on_trigger_success, self),
+			__bind(self.on_trigger_failure, self))
+	end
+	
+	function theClass:get_all_rooms()
+		self.failure_msg = "获取房间列表失败"
+		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
+		GlobalSetting.hall_server_websocket:trigger("ui.get_room", 
+			event_data,
+			__bind(self.on_trigger_success, self),
+			__bind(self.on_trigger_failure, self))
+	end
+	
 	function theClass:close_hall_websocket()
 		print("[HallServerConnectionPlugin:close_hall_websocket()]")
 		if GlobalSetting.hall_server_websocket then
@@ -63,4 +83,6 @@ function HallServerConnectionPlugin.bind(theClass)
 		--print("register cleanup for LoginPlugin")
 		theClass:registerCleanup("HallServerConnectionPlugin.close_hall_websocket", theClass.close_hall_websocket)
 	end
+	
+	
 end

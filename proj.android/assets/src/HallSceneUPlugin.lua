@@ -1,3 +1,4 @@
+local json = require "cjson"
 require "UserCenterScene"
 require "YesNoDialog2"
 require "YesNoDialog"
@@ -71,5 +72,76 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:doToInfo()
 		local scene = createUserCenterScene()
 		CCDirector:sharedDirector():pushScene(scene)
+	end
+	
+	function theClass:do_on_enter()
+		print("[HallSceneUPlugin:do_on_enter]")
+		self:show_progress_message_box("连接大厅服务器...")
+		self:connect_to_hall_server()
+	end
+	
+	function theClass:ui_get_all_rooms(data)
+		print("[HallSceneUPlugin:ui_get_all_rooms]")
+		self:get_all_rooms()
+		self.after_trigger_success = __bind(self.init_room_tabview, self)
+	end
+	
+	function theClass:init_room_tabview(data)
+		print("[HallSceneUPlugin:init_room_tabview]")
+		dump(data.room, "[HallSceneUPlugin:init_room_tabview] data rooms: ")
+		local room_index = 1
+		local h = LuaEventHandler:create(function(fn, table, a1, a2)
+			local r
+			if fn == "cellSize" then
+				r = CCSizeMake(260,260)
+			elseif fn == "cellAtIndex" then
+				if not a2 then
+					a2 = CCTableViewCell:create()
+					a3 = createRoomItem()
+					a3:init_room_info(data.room[room_index])
+					room_index = room_index + 1
+					a2:addChild(a3, 0, 1)
+				end
+				r = a2
+			elseif fn == "numberOfCells" then
+				r = #(data.room)
+			elseif fn == "cellTouched" then
+			end
+			return r
+		end)
+		
+		local t = LuaTableView:createWithHandler(h, CCSizeMake(800,260))
+		t:setDirection(kCCScrollViewDirectionHorizontal)
+		t:reloadData()
+	--	t:setAnchorPoint(ccp(0.5, 0.5))
+		t:setPosition(CCPointMake(0,0))
+		self.middle_layer:addChild(t)
+		
+	end
+	
+	function theClass:do_on_websocket_ready()
+		print("[HallSceneUPlugin:do_on_websocket_ready]")
+		self:check_connection()
+		self.after_trigger_success = __bind(self.ui_get_all_rooms, self)
+	end
+	
+	
+	function theClass:do_on_trigger_success(data)
+		print("[HallSceneUPlugin:do_on_trigger_success]")
+		self:hide_progress_message_box()
+		
+		if "function" == type(self.after_trigger_success) then
+			self.after_trigger_success(data)
+		end
+		
+	end
+	
+	function theClass:do_on_trigger_failure()
+		print("[HallSceneUPlugin:do_on_trigger_failure]")
+		self:hide_progress_message_box()
+		self:show_message_box(self.failure_msg)
+		if "function" == type(self.after_trigger_failure) then
+			self.after_trigger_failure(data)
+		end
 	end
 end

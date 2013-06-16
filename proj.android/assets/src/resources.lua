@@ -7,7 +7,7 @@ Res = {
 	dialog_plist = "ccbResources/dialogs.plist",
 	info_plist = "ccbResources/info.plist",
 	s_cards_plist = "ccbResources/poke_cards.plist",
- 	
+ 	hall_plist = "ccbResources/hall.plist",
 
 -- 背景音乐
  s_music_bg = dirMusic .. "bg/bg.mp3",

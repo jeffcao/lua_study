@@ -142,11 +142,8 @@ function LoginSceneUIPlugin.bind(theClass)
 		print("[LoginScene:do_on_login_success()]")
 		self:hide_progress_message_box()
 		
-		self:show_progress_message_box("连接大厅服务器...")
-		Timer.add_timer(3, function()
-			local hall = createHallScene()
-			CCDirector:sharedDirector():replaceScene(hall)
-			end)
+		local hall = createHallScene()
+		CCDirector:sharedDirector():replaceScene(hall)
 	end
 	
 	function theClass:do_on_login_failure()

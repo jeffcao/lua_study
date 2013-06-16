@@ -1,4 +1,6 @@
 require "src.HallSceneUPlugin"
+require "src.HallServerConnectionPlugin"
+require "src.UIControllerPlugin"
 require "RoomItem"
 require "Menu"
 require "src.WidgetPlugin"
@@ -18,6 +20,8 @@ HallScene = class("HallScene", function()
  
  HallSceneUPlugin.bind(HallScene)
  WidgetPlugin.bind(HallScene)
+ HallServerConnectionPlugin.bind(HallScene)
+ UIControllerPlugin.bind(HallScene)
  
  function HallScene:ctor()
  	
@@ -58,40 +62,36 @@ HallScene = class("HallScene", function()
 	--end)
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 	cache:addSpriteFramesWithFile(Res.common_plist)
-	local scale9 = CCScale9Sprite:createWithSpriteFrameName("kuang_a.png")
-	local editbox = CCEditBox:create(CCSizeMake(320,50), scale9)
-	editbox:setText("hfdkahfla")
-	self.rootNode:addChild(editbox)
 	
-	local data = {}
-	for i = 1, 10 do
-		table.insert(data, "Data 3"..i) 
-	end
-	
-	local h = LuaEventHandler:create(function(fn, table, a1, a2)
-		local r
-		if fn == "cellSize" then
-			r = CCSizeMake(260,260)
-		elseif fn == "cellAtIndex" then
-			if not a2 then
-				a2 = CCTableViewCell:create()
-				a3 = createRoomItem()
-				a2:addChild(a3, 0, 1)
-			end
-			r = a2
-		elseif fn == "numberOfCells" then
-			r = #data
-		elseif fn == "cellTouched" then
-		end
-		return r
-	end)
-	
-	local t = LuaTableView:createWithHandler(h, CCSizeMake(800,260))
-	t:setDirection(kCCScrollViewDirectionHorizontal)
-	t:reloadData()
---	t:setAnchorPoint(ccp(0.5, 0.5))
-	t:setPosition(CCPointMake(0,0))
-	self.middle_layer:addChild(t)
+--	local room = {}
+--	for i = 1, 10 do
+--		table.insert(room, "room 3"..i) 
+--	end
+--	
+--	local h = LuaEventHandler:create(function(fn, table, a1, a2)
+--		local r
+--		if fn == "cellSize" then
+--			r = CCSizeMake(260,260)
+--		elseif fn == "cellAtIndex" then
+--			if not a2 then
+--				a2 = CCTableViewCell:create()
+--				a3 = createRoomItem()
+--				a2:addChild(a3, 0, 1)
+--			end
+--			r = a2
+--		elseif fn == "numberOfCells" then
+--			r = #room
+--		elseif fn == "cellTouched" then
+--		end
+--		return r
+--	end)
+--	
+--	local t = LuaTableView:createWithHandler(h, CCSizeMake(800,260))
+--	t:setDirection(kCCScrollViewDirectionHorizontal)
+--	t:reloadData()
+----	t:setAnchorPoint(ccp(0.5, 0.5))
+--	t:setPosition(CCPointMake(0,0))
+--	self.middle_layer:addChild(t)
 	
  end
  
@@ -110,6 +110,7 @@ HallScene = class("HallScene", function()
  
  function HallScene:onEnter() 
 	print("HallScene:onEnter()")
+	self:do_on_enter()
  end
  
  function HallScene:onExit()
