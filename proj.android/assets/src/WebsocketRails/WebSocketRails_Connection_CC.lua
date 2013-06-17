@@ -45,10 +45,8 @@ trigger = function(self, event)
     end
 end,
     
-on_message = function(self, event)
-	if GlobalSetting.debug_dump_websocket_raw and not (event:find("\"websocket_rails.") or event:find("\"server_ack")) then
-		print("[<" .. self.url .. ">.on_message] event => " , event)
-	end
+on_message = function(self, event)	
+	print("[<" .. self.url .. ">.on_message] event => " , event)
 --	
 --	if self._websocket_id ~= websocket_id then
 --		print("[WebSocketConnection.on_message] event not own by me, self._websocket_id: ", 

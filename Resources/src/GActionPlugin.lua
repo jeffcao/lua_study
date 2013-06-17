@@ -27,7 +27,6 @@ function GActionPlugin.bind(theClass)
 	
 		if not isServerAuto then
 			-- 通知服务器，出牌
-			--TODO_LUA
 			local event_data = {player_id=self.g_user_id, poke_cards=""}
 			self.g_WebSocket:trigger("g.play_card", event_data, function(data) 
 				print("========game.play return suCCss: " , data)
@@ -51,17 +50,14 @@ function GActionPlugin.bind(theClass)
 	
 	function theClass:doSendChatMessage(message) 
 		--TODO_LUA
-		local message1 = "[[\"g.on_message\",{\"id\":101472,\"channel\":\"1_513_chat\",\"data\":{\"msg\":\"" .. message .."\",\"user_id\":10006,\"__srv_seq_id\":3243059},\"success\":null,\"result\":null,\"server_token\":\"tgZBlgd7D3FZ-fZIpX3I4w\"}]]"
-		self:onEvent(message1, self.onServerChatMessage)
-		--self.c_channel:trigger("g.on_message", {msg = message, user_id = self.g_user_id})
+		self.c_channel.trigger("g.on_message", {msg = message, user_id = self.g_user_id})
 	end
 	
 	function theClass:doTuoguan(isNotServerAuto) 
 		self.menu_tuoguan:setVisible(true)
 		self._playing_timeout = 2
 		if not isNotServerAuto then
-			--TODO_LUA
-			--TODO 通知服务器托管
+			--通知服务器托管
 			local event_data = {user_id = self.g_user_id}
 			self.g_WebSocket:trigger("g.on_tuo_guan", event_data, function(data) 
 				print("========game.on_tuo_guan return succeess: " , data)
@@ -166,7 +162,6 @@ function GActionPlugin.bind(theClass)
 		
 		-- 如果不是服务器自动帮助出牌，发送出牌命令
 		if not isServerAutoPlay then
-			--TODO_LUA
 			-- 通知服务器，出牌
 			local event_data = {player_id=g_user_id, poke_cards = table.join(card:getPokeIds(), ",")}
 			self.g_WebSocket:trigger("g.play_card", event_data, function(data) 
@@ -189,7 +184,6 @@ function GActionPlugin.bind(theClass)
 		
 		-- 通知服务器叫地主的分数
 		local get_lord_event = {user_id=self.g_user_id, lord_value=lord_value}
-		--TODO
 		self.g_WebSocket:trigger("g.grab_lord", get_lord_event)
 		-- 隐藏叫地主菜单，并显示叫的分数
 		self:hideGetLordMenu()
@@ -254,7 +248,6 @@ function GActionPlugin.bind(theClass)
 		
 		if card.card_type == CardType.BOMB or card.card_type == CardType.ROCKET then
 			cclog("炸弹效果")
-			--TODO BOMB
 			Explosion.explode(self.rootNode)
 		end
 		
@@ -336,7 +329,6 @@ function GActionPlugin.bind(theClass)
 		if self.game_over_layer and self.game_over_layer:isShowing() then
 			self.game_over_layer:dismiss()
 		end
-		--TODO_LUA
 		self.g_WebSocket:trigger("g.user_change_table", event_data, function(data) 
 			dump(data, "========game.user_change_table return succss: ")
 			self.menu_huanzhuo:setVisible(true)

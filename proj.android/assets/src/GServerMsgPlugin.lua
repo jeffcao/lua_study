@@ -10,7 +10,6 @@ function GServerMsgPlugin.bind(theClass)
 	function theClass:onServerStartGame(data)
 		dump(data, "[game_start] data -> ")
 	
-		--暂时注释掉，还不知道到底需不需要这个TODO
 		--cclog("[game_start] user_id -> " .. data.user_id)
 		
 		if data.user_id ~= self.g_user_id then
@@ -78,12 +77,9 @@ function GServerMsgPlugin.bind(theClass)
 	
 	-- g_channel and c_channel
 	function theClass:onServerLeave(data)
-		--TODO_LUA_TEST
 		print("onServerLeave " .. data.user_id)
 		if (tonumber(self.g_user_id) == tonumber(data.user_id)) then
 			cclog("被踢出房间")
-			--TODO_LUA
-			--cc.WebSocketBridge.sharedWebSocketBridge().notifyGameClose()
 			self:exit()
 		else
 			cclog("其他用户被踢出房间，刷新界面")
