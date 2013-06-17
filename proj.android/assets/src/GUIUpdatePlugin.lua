@@ -28,8 +28,10 @@ function GUIUpdatePlugin.bind(theClass)
 		self.nextUserLastCard = nil
 		self.prevUserLastCard = nil
 		
+		local players = {}
+		if data and data.players then players = data.players end
 		-- 更新玩家信息
-		self:updatePlayers(data)
+		self:updatePlayers(players)
 	
 		-- 隐藏不出提示
 		self:updatePlayerBuchu(self.self_user_lord_value, false)
@@ -619,6 +621,7 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	function theClass:onCancelTuoguanClicked()
 		self:docancelTuoguan()
+		self:playButtonEffect()
 	end
 	
 	function theClass:onTuoguanClicked() 

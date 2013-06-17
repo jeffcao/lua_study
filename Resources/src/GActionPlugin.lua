@@ -361,16 +361,6 @@ function GActionPlugin.bind(theClass)
 	
 	function theClass:enter_room(room_id) 
 		local event_data = {user_id = self.g_user_id, room_id = self.g_room_id}
-		--[[
-		self.g_WebSocket:trigger("g.enter_room", event_data, 
-			function(data)
-				print("g.enter_room succ")
-				self:onEnterRoomSuccess(data)
-			end,
-			function(data) 
-				self:onEnterRoomFailure(data)
-			end)
-		]]	
 		self.g_WebSocket:trigger("g.enter_room", event_data, 
 			__bind(self.onEnterRoomSuccess, self),
 			__bind(self.onEnterRoomFailure, self))
@@ -423,13 +413,37 @@ function GActionPlugin.bind(theClass)
 		self.menu_tuoguan:setVisible(false)
 		self._playing_timeout = 0
 		if not isNotServerAuto then
-			--TODO 通知服务器取消托管
 			local event_data = {user_id = self.g_user_id}
 			self.g_WebSocket:trigger("g.off_tuo_guan", event_data, function(data) 
 				print("========game.off_tuo_guan return success: " , data)
 			end, function(data) 
 				print("========game.off_tuo_guan return failure: " , data)
 			end)
+		end
+	end
+	
+	-- 假如用户资料没有get下来，去服务器获取用户资料
+	function theClass:doGetUserProfileIfNeed(user_id) 
+		if not user_id then
+			cclog("user_id is nil")
+			return
+		end
+		user_id = tostring(user_id)
+		if not self.users[user_id] then
+			cclog("user profile " .. user_id .. " not find")
+			-- 获取用户资料
+			local event_data = {user_id = user_id}
+			self.g_WebSocket:trigger("g.get_rival_msg", event_data, function(data) 
+					print("========game:get_rival_msg return success: " , data)
+					self.users[user_id] = data
+					data.user_id = user_id
+				end, 
+				function(data) 
+					print("========game:get_rival_msg return failure: " , data) 
+				end)
+			cclog("to get user profile")
+	 	else 
+			cclog("user profile " .. self.users[user_id].nick_name)
 		end
 	end
 end

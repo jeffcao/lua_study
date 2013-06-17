@@ -67,6 +67,8 @@ function GDataPlugin.bind(theClass)
 		
 		Explosion.sharedExplosion()
 		
+		self.users = {}
+		
 		self:enter_room(self.g_room_id)
 		
 		
@@ -108,7 +110,10 @@ function GDataPlugin.bind(theClass)
 		
 		for index, _ in pairs(player_list) do
 			local player = player_list[index]
-		--TODO_LUA	self:doGetUserProfileIfNeed(player.user_id)
+			dump(player, "player_list[index]")
+			local uid = player.user_id
+			player.user_id = tonumber(uid)
+			self:doGetUserProfileIfNeed(player.user_id)
 		end
 		
 	end
