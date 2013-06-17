@@ -57,7 +57,7 @@ function RegisterSceneUIPlugin.bind(theClass)
 	function theClass:do_cancel_btn_clicked(tag, sender)
 			print("go to login in register scene")
 --			CCDirector:sharedDirector():replaceScene(createLoginScene())
-			self:dismiss()	
+			 CCDirector:sharedDirector():popScene()	
 	end
 	
 	function theClass:do_register_btn_clicked(tag, sender)
@@ -99,7 +99,7 @@ function RegisterSceneUIPlugin.bind(theClass)
 			print("go to login in register scene")
 --			local login = createLoginScene()
 --			CCDirector:sharedDirector():replaceScene(login)
-			self:dismiss()
+			CCDirector:sharedDirector():popScene()	
 		elseif key == "menuClicked" then
 			--print("websocket state => ", WebsocketManager:sharedWebsocketManager():get_websocket_state(self.websocket._conn._websocket_id) )
 		end 

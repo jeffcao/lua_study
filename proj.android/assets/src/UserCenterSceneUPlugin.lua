@@ -1,6 +1,6 @@
 require "InfoLayer"
 require "UpdatePasswordLayer"
-require "AvatarLayer"
+require "AvatarListLayer"
 UserCenterSceneUPlugin = {}
 
 function UserCenterSceneUPlugin.bind(theClass)
@@ -15,19 +15,19 @@ function UserCenterSceneUPlugin.bind(theClass)
 		CCDirector:sharedDirector():popScene()
 	end
 	
-	function theClass:onCloseClick()
+	function theClass:do_ui_close_btn_clicked(tag, sender)
 		self:doToHall()
 	end
 	
-	function theClass:onAvatarClick()
+	function theClass:do_ui_avatar_btn_clicked(tag, sender)
 		self:doSetLayer("personal_info")
 	end
 	
-	function theClass:onUpdateAvatarClick()
+	function theClass:do_ui_update_avatar_btn_clicked(tag, sender)
 		self:doSetLayer("update_avatar")
 	end
 	
-	function theClass:onUpdatePswdClick()
+	function theClass:do_ui_update_pwd_btn_clicked()
 		self:doSetLayer("update_password")
 	end
 	
@@ -36,7 +36,7 @@ function UserCenterSceneUPlugin.bind(theClass)
 			return
 		end
 		self.current_layer = name
-		self.upload_pic:setVisible(not (name == "personal_info"))
+		self.upload_pic_sprite:setVisible(not (name == "personal_info"))
 		self.container:removeAllChildrenWithCleanup(true)
 		local layer = nil
 		if name == "personal_info"  then 
@@ -44,8 +44,13 @@ function UserCenterSceneUPlugin.bind(theClass)
 		elseif name == "update_password" then
 			layer = createUpdatePasswordLayer()
 		else 
-			layer = createAvatarLayer()
+			layer = createAvatarListLayer()
 		end
+		
 		self.container:addChild(layer)
+		local container_size = self.container:getContentSize()
+		layer:ignoreAnchorPointForPosition(false)
+		layer:setAnchorPoint(ccp(0.5, 0.5))
+		layer:setPosition(ccp(container_size.width/2, container_size.height/2))	
 	end
 end
