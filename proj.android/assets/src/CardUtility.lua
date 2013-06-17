@@ -140,7 +140,7 @@ CardUtility.compare = function(card_a, card_b)
 	end
 	
 	if card_a.card_type ~= card_b.card_type then
-		cclog("[CardUtility.comapre] card_a.card_type => " + card_a.card_type + " , card_b.card_type => " + card_b.card_type)
+		print("[CardUtility.comapre] card_a.card_type => " , card_a.card_type , " , card_b.card_type => " , card_b.card_type)
 		if card_a.card_type == CardType.BOMB then
 			return true
 		end

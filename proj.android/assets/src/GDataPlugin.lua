@@ -75,6 +75,7 @@ function GDataPlugin.bind(theClass)
 	end
 
 	function theClass:retrievePlayers(player_list)
+		if not player_list then return end
 		self.self_user = nil
 		self.prev_user = nil
 		self.next_user = nil

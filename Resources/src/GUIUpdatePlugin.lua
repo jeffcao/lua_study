@@ -28,7 +28,7 @@ function GUIUpdatePlugin.bind(theClass)
 		self.nextUserLastCard = nil
 		self.prevUserLastCard = nil
 		
-		local players = {}
+		local players = nil
 		if data and data.players then players = data.players end
 		-- 更新玩家信息
 		self:updatePlayers(players)
@@ -394,7 +394,7 @@ function GUIUpdatePlugin.bind(theClass)
 		self.menu_tuoguan:setVisible(false)
 		if self.game_over_layer == nil  then
 			self.game_over_layer = createGameOver()
-			self.rootNode:addChild(self.game_over_layer)
+			self.rootNode:addChild(self.game_over_layer, self.GAME_OVER_ORDER)
 		end
 		self:retrievePlayers(data.players)
 		self.game_over_layer:initWith(self, data)
