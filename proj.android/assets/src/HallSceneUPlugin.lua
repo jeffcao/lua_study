@@ -76,14 +76,44 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:do_on_enter()
 		print("[HallSceneUPlugin:do_on_enter]")
-		self:show_progress_message_box("连接大厅服务器...")
-		self:connect_to_hall_server()
+		if GlobalSetting.hall_server_websocket == nil then
+			self:show_progress_message_box("连接大厅服务器...")
+			self:connect_to_hall_server()
+		end
+		
 	end
 	
-	function theClass:ui_get_all_rooms(data)
-		print("[HallSceneUPlugin:ui_get_all_rooms]")
+	function theClass:init_hall_info(data)
+		print("[HallSceneUPlugin:init_hall_info]")
+		
 		self:get_all_rooms()
 		self.after_trigger_success = __bind(self.init_room_tabview, self)
+		
+	end
+	
+	function theClass:init_current_player_info(data)
+		local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
+		cache:addSpriteFramesWithFile(Res.info_plist)
+		
+		print("[HallSceneUPlugin:init_current_player_info]")
+		local cur_user = GlobalSetting.current_user
+		dump(cur_user, "[HallSceneUPlugin:init_current_player_info] cur_user: ")
+		local nick_name_lb = tolua.cast(self.nick_name_lb, "CCLabelTTF")
+		nick_name_lb:setString(cur_user.nick_name)
+		
+		local player_beans_lb = tolua.cast(self.player_beans_lb, "CCLabelTTF")
+		player_beans_lb:setString(data.score)
+		
+		local avatar_btn = tolua.cast(self.avatar_btn, "CCMenuItemImage")
+		local avatar_png_index = tonumber(cur_user.avatar) < 10 and "0"..cur_user.avatar or cur_user.avatar
+		local avatar_png_index_gender = tonumber(cur_user.gender) == 1 and "m" or "f"
+		avatar_png_index = avatar_png_index == "00" and "00_"..avatar_png_index_gender or avatar_png_index
+		local avatar_png = "touxiang"..avatar_png_index..".png"
+
+		print("[HallSceneUPlugin:init_current_player_info] avatar_png: "..avatar_png)
+		avatar_btn:setNormalSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(avatar_png))
+		avatar_btn:setSelectedSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(avatar_png))
+		
 	end
 	
 	function theClass:init_room_tabview(data)
@@ -119,12 +149,15 @@ function HallSceneUPlugin.bind(theClass)
 		t:setPosition(CCPointMake(0,0))
 		self.middle_layer:addChild(t)
 		
+		self:get_user_profile()
+		self.after_trigger_success = __bind(self.init_current_player_info, self)
+		
 	end
 	
 	function theClass:do_on_websocket_ready()
 		print("[HallSceneUPlugin:do_on_websocket_ready]")
 		self:check_connection()
-		self.after_trigger_success = __bind(self.ui_get_all_rooms, self)
+		self.after_trigger_success = __bind(self.init_hall_info, self)
 	end
 	
 	

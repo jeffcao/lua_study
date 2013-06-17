@@ -70,6 +70,15 @@ function HallServerConnectionPlugin.bind(theClass)
 			__bind(self.on_trigger_failure, self))
 	end
 	
+	function theClass:get_user_profile()
+		self.failure_msg = "获取玩家信息失败"
+		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
+		GlobalSetting.hall_server_websocket:trigger("ui.get_user_profile", 
+			event_data,
+			__bind(self.on_trigger_success, self),
+			__bind(self.on_trigger_failure, self))
+	end
+
 	function theClass:close_hall_websocket()
 		print("[HallServerConnectionPlugin:close_hall_websocket()]")
 		if GlobalSetting.hall_server_websocket then
