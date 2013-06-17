@@ -28,6 +28,7 @@ function PlayerInfo:initWithInfo(gaming_layer, info)
 	self.lbl_info_gender:setString(gender)
 	self.lbl_info_beans:setString(info.score)
 	local player = nil
+	local user_id = tonumber(info.user_id)
 	if gaming_layer.next_user and user_id == gaming_layer.next_user.user_id then
 		player = gaming_layer.next_user
 	 elseif  gaming_layer.prev_user and user_id == gaming_layer.prev_user.user_id then
@@ -36,12 +37,16 @@ function PlayerInfo:initWithInfo(gaming_layer, info)
 		player = gaming_layer.self_user
 	end
 	local avatarFrame = Avatar.getUserAvatarFrame(player)
-	self.user_info_avatar:setDisplayFram(avatarFrame)
+	self.user_info_avatar:setDisplayFrame(avatarFrame)
 	local win = info.win_count
 	local lost = info.lost_count
 	local percent = 100
 	if lost > 0 then percent = 100 * win / (win + lost) end
-	self.lbl_info_achievement:setString(tonumber(percent) .. "%  " .. win .. "胜" .. lost .. "负")
+	local max_l = 4
+	if percent < 10 then max_l = 3 end
+	percent = tostring(percent)
+	if string.len(percent) > max_l then percent = string.sub(percent, 1, max_l - string.len(percent)) end
+	self.lbl_info_achievement:setString(percent .. "%  " .. win .. "胜" .. lost .. "负")
 end
 
 function PlayerInfo:onTouch(eventType, x, y)

@@ -19,7 +19,6 @@ Avatar.getUserAvatarFrame = function(player)
 			img = "touxiang0" .. avatar .. ".png"
 		end
 	end
-	cclog("avatar img name is " .. img)
 	local avatarFrame = CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(img)
 	if not avatarFrame then
 		cclog("get default avatar")
@@ -29,6 +28,7 @@ Avatar.getUserAvatarFrame = function(player)
 		end
 		avatarFrame = CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(img)
 	end
+	cclog("avatar img name is " .. img)
 	return avatarFrame
 end
 

@@ -12,6 +12,7 @@ function GDataPlugin.bind(theClass)
 		self.INSECT_ANIM_ORDER = 2000
 		self.CHAT_LAYER_ORDER = 2120--聊天板
 		self.MSG_LAYER_ORDER = 2400--聊天气泡
+		self.SET_LAYER_ORDER = 2130--设置板
 		self.winSize = CCDirector:sharedDirector():getWinSize()
 		self.y_ratio = self.winSize.height / 480.0
 		self.x_ratio = self.winSize.width / 800.0
@@ -54,8 +55,7 @@ function GDataPlugin.bind(theClass)
         self:updateLordValue(self.self_user_lord_value, -1)
 		self:updateLordValue(self.prev_user_lord_value, -1)
 		self:updateLordValue(self.next_user_lord_value, -1)
-		
-		self.menu_tuoguan:setVisible(true)
+
         
         self:loadSettings()
         
@@ -67,12 +67,15 @@ function GDataPlugin.bind(theClass)
 		
 		Explosion.sharedExplosion()
 		
+		self.users = {}
+		
 		self:enter_room(self.g_room_id)
 		
 		
 	end
 
 	function theClass:retrievePlayers(player_list)
+		if not player_list then return end
 		self.self_user = nil
 		self.prev_user = nil
 		self.next_user = nil
@@ -108,7 +111,10 @@ function GDataPlugin.bind(theClass)
 		
 		for index, _ in pairs(player_list) do
 			local player = player_list[index]
-		--TODO_LUA	self:doGetUserProfileIfNeed(player.user_id)
+			dump(player, "player_list[index]")
+			local uid = player.user_id
+			player.user_id = tonumber(uid)
+			self:doGetUserProfileIfNeed(player.user_id)
 		end
 		
 	end
