@@ -18,11 +18,6 @@ HallScene = class("HallScene", function()
  	return HallScene.new()
  end
  
- HallSceneUPlugin.bind(HallScene)
- WidgetPlugin.bind(HallScene)
- HallServerConnectionPlugin.bind(HallScene)
- UIControllerPlugin.bind(HallScene)
- 
  function HallScene:ctor()
  	
 	ccb.hall_scene = self
@@ -110,6 +105,7 @@ HallScene = class("HallScene", function()
  
  function HallScene:onEnter() 
 	print("HallScene:onEnter()")
+	self.super.onEnter(self)
 	self:do_on_enter()
  end
  
@@ -117,8 +113,18 @@ HallScene = class("HallScene", function()
  	print("HallScene:onExit()")
  end
  
+ function HallScene:onCleanup()
+	print("[HallScene:onCleanup()]")
+	self.super.onCleanup(self)
+
+end
+ 
  function HallScene:onEnterTransitionDidFinish()
  	print("HallScene:onEnterTransitionDidFinish()")
  end
  
+ HallSceneUPlugin.bind(HallScene)
+ WidgetPlugin.bind(HallScene)
+ HallServerConnectionPlugin.bind(HallScene)
+ UIControllerPlugin.bind(HallScene)
  

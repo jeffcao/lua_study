@@ -24,6 +24,7 @@ function MenuDialog:ctor()
 	
 	local function switch()
 		local scene = createLoginScene()
+		CCDirector:sharedDirector():popToRootScene()
 		CCDirector:sharedDirector():replaceScene(scene)
 	end
 	

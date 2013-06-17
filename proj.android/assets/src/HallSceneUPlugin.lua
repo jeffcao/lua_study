@@ -127,12 +127,16 @@ function HallSceneUPlugin.bind(theClass)
 			elseif fn == "cellAtIndex" then
 				if not a2 then
 					a2 = CCTableViewCell:create()
-					a3 = createRoomItem()
+					local a3 = createRoomItem()
 					print("[HallSceneUPlugin:init_room_tabview] a1: "..a1)
 					a3:init_room_info(data.room[a1], a1)
 					print("[HallSceneUPlugin:init_room_tabview] room_index: "..room_index)
 					room_index = room_index + 1
 					a2:addChild(a3, 0, 1)
+				else
+					local a3 = tolua.cast(a2:getChildByTag(1), "CCLayer")
+					local room_index = a1 + 1
+					RoomItem.init_room_info(a3, data.room[room_index], room_index)
 				end
 				r = a2
 			elseif fn == "numberOfCells" then
@@ -148,10 +152,13 @@ function HallSceneUPlugin.bind(theClass)
 	--	t:setAnchorPoint(ccp(0.5, 0.5))
 		t:setPosition(CCPointMake(0,0))
 		self.middle_layer:addChild(t)
-		
+
 		self:get_user_profile()
 		self.after_trigger_success = __bind(self.init_current_player_info, self)
-		
+
+		for index=#(data.room), 1, -1 do
+			t:updateCellAtIndex(index-1)
+		end
 	end
 	
 	function theClass:do_on_websocket_ready()

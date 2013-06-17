@@ -75,7 +75,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 	function theClass:connect_to_login_server(config)
 		print("[LoginServerConnectionPlugin:connect_to_login_server()]")
 		local function sign_failure(data)
-			print("[LoginServerConnectionPlugin.sign_failure].")
+			print("[LoginServerConnectionPlugin.connect_to_login_server].")
 			dump(data, "fign_failure data")
 	--		print("[LoginServerConnectionPlugin.sign_failure] result code: "..data.result_code)
 			if "function" == type(self.do_on_connection_failure) then
@@ -101,7 +101,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 	
 	--print("theClass.registerCleanup ==> ", theClass.registerCleanup)
 	if theClass.registerCleanup then
-		--print("register cleanup for LoginPlugin")
+		print("LoginServerConnectionPlugin register cleanup")
 		theClass:registerCleanup("LoginServerConnectionPlugin.close_login_websocket", theClass.close_login_websocket)
 	end
 end

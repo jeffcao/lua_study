@@ -31,7 +31,8 @@ function RoomItem:ctor()
         	if self.move < 3 then
 	        	if not self.rootNode:getActionByTag(10) then
 		            local sca = CCScaleBy:create(0.1, 1.2)
-		        	local seq = CCSequence:createWithTwoActions(sca, sca:reverse())
+		            local sca2 = CCScaleTo:create(0.1, 1)
+		        	local seq = CCSequence:createWithTwoActions(sca, sca2)
 		        	seq:setTag(10)
 		        	self.rootNode:runAction(seq)
 	        	end

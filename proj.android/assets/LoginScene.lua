@@ -40,7 +40,10 @@ function LoginScene:onEnter()
 	print("[LoginScene:on_enter()]")
 	self.super.onEnter(self)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
-	self:connect_to_login_server(GlobalSetting)
+	if GlobalSetting.login_server_websocket == nil then
+		self:show_progress_message_box("登录服务器...")
+		self:connect_to_login_server(GlobalSetting)
+	end
 end
 
 function LoginScene:onExit()
@@ -50,10 +53,6 @@ end
 function LoginScene:onCleanup()
 	print("[LoginScene:onCleanup()]")
 	self.super.onCleanup(self)
-
-	if self.ccproxy then
-		self.ccproxy:release()
-	end
 end
 
 function LoginScene:on_keypad_pressed(key)
