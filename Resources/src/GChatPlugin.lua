@@ -17,7 +17,8 @@ function GChatPlugin.bind(theClass)
 	end
 	
 	function theClass:onChatTouch(eventType, x, y)
-		cclog("touch event:%s,x:%d,y:%d", eventType, x, y)
+		if not self.chat_layer:isVisible() then return false end
+		cclog("onChatTouch touch event:%s,x:%d,y:%d", eventType, x, y)
 		if eventType == "began" then
 			return self:onChatToucheBegan(ccp(x, y))
 		elseif eventType == "moved" then
@@ -30,8 +31,8 @@ function GChatPlugin.bind(theClass)
 	function theClass:showChatBoard() 
 		if not self.chat_layer then
 			self.chat_layer = createGChat()
-			self.rootNode:registerScriptTouchHandler(__bind(self.onChatTouch, self))
-        	self.rootNode:setTouchEnabled(true)
+			self.chat_layer:registerScriptTouchHandler(__bind(self.onChatTouch, self))
+        	self.chat_layer:setTouchEnabled(true)
 			self.rootNode:addChild(self.chat_layer, self.CHAT_LAYER_ORDER)
 		end
 		self.chat_layer:setVisible(true)

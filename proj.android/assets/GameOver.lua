@@ -17,7 +17,6 @@ function GameOver:ctor()
 end
 
 function GameOver:initCallback(onToHall, onChangeDesk, onClose)
-	print("onToHall, " , onToHall , "onChangeDesk" , onChangeDesk ,"onClose",onClose)
 	self.onGOChangeDeskClicked = onChangeDesk
 	self.onGOCloseClicked = onClose
 	self.onGOToHallClicked = onToHall

@@ -6,7 +6,7 @@ function GTouchPlugin.bind(theClass)
 	theClass.last_check = -1
 	
 	function theClass:onTouch(eventType, x, y)
-		cclog("touch event:%s,x:%d,y:%d", eventType, x, y)
+		cclog("GTouchPlugin touch event:%s,x:%d,y:%d", eventType, x, y)
 		if eventType == "began" then
 			return self:onTouchBegan(ccp(x, y))
 		elseif eventType == "moved" then
