@@ -238,7 +238,7 @@
 						<key>memberVarAssignmentName</key>
 						<string>confirm_btn</string>
 						<key>memberVarAssignmentType</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -453,7 +453,7 @@
 						<key>memberVarAssignmentName</key>
 						<string>reject_btn</string>
 						<key>memberVarAssignmentType</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -663,7 +663,7 @@
 				<key>memberVarAssignmentName</key>
 				<string>title_text</string>
 				<key>memberVarAssignmentType</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -791,7 +791,7 @@
 				<key>memberVarAssignmentName</key>
 				<string>msg_text</string>
 				<key>memberVarAssignmentType</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -1075,9 +1075,9 @@
 		<key>jsController</key>
 		<string>YesNoDialog</string>
 		<key>memberVarAssignmentName</key>
-		<string></string>
+		<string>rootNode</string>
 		<key>memberVarAssignmentType</key>
-		<integer>0</integer>
+		<integer>1</integer>
 		<key>properties</key>
 		<array>
 			<dict>
