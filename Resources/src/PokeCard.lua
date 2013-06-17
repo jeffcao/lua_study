@@ -144,9 +144,9 @@ end
 function PokeCard:reset()
     self.state = PokeCardState.NORMAL
     self.picked = false
-    self.card_sprite.setVisible(false)
-    self.card_sprite.setPosition(cc.p(-150, -150))
-    self.card_sprite.setScale(self.scaleFactor)
+    self.card_sprite:setVisible(false)
+    self.card_sprite:setPosition(ccp(-150, -150))
+    self.card_sprite:setScale(self.scaleFactor)
 end
 
 function PokeCard:getPokeString()
@@ -187,24 +187,24 @@ end
 function Card:getPokeIds()
 	local poke_ids = {}
 	for  _, value in pairs(self.poke_cards) do
-		poke_ids.push(value.poke_id)
+		table.insert(poke_ids, value.poke_id)
 	end
 		
 	return poke_ids
 end
 
 function Card:dumpPokeValues()
-	cclog("[Card.dumpPokeValues] " .. self.getPokeValues(true).join("-"))
+	cclog("[Card.dumpPokeValues] " .. table.toString(self.getPokeValues(true)))
 end
 
 function Card:dumpPokeStrings()
-	cc.log("[Card.dumpPokeStrings] " .. self.getPokeValues(false).join("-"))
+	cclog("[Card.dumpPokeStrings] " .. table.toString(self.getPokeValues(false)))
 end
 
 function Card:toString()
-	return "Card[ " .. self.getPokeValues(true).join("-") .. 
+	return "Card[ " .. table.toString(self.getPokeValues(true)) .. 
 				" , card_type: " .. CardTypeString[self.card_type] ..
-				" , poke_length: " .. self.poke_cards.length ..
+				" , poke_length: " .. #self.poke_cards ..
 				" , max_poke_value: " .. self.max_poke_value ..
 				" ]"
 end

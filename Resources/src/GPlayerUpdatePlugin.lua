@@ -119,13 +119,12 @@ function GPlayerUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:updatePlayerPokeCounts()
-		self:updatePlayerPokeCount(self_user, self.self_user_poke_count, self.self_user_card_tag)
-		self:updatePlayerPokeCount(prev_user, self.prev_user_poke_count, self.prev_user_card_tag)
-		self:updatePlayerPokeCount(next_user, self.next_user_poke_count, self.next_user_card_tag)
+		self:updatePlayerPokeCount(self.self_user, self.self_user_poke_count, self.self_user_card_tag)
+		self:updatePlayerPokeCount(self.prev_user, self.prev_user_poke_count, self.prev_user_card_tag)
+		self:updatePlayerPokeCount(self.next_user, self.next_user_poke_count, self.next_user_card_tag)
 	end
 	
 	function theClass:updatePlayerPokeCount(player, player_poke_count_ui, player_card_tag_ui)
-		print("card tag ui " , player_card_tag_ui)
 		if player and player.poke_card_count > 0 then
 			if not player_card_tag_ui:isVisible() then
 				player_card_tag_ui:setVisible(true)

@@ -57,8 +57,6 @@ function GDataPlugin.bind(theClass)
 		
 		self.menu_tuoguan:setVisible(true)
         
-        self:enter_room(self.g_room_id)
-        
         self:loadSettings()
         
         if (SoundSettings.bg_music) then
@@ -66,6 +64,10 @@ function GDataPlugin.bind(theClass)
 		end
 		
 		self.top_panel:getParent():reorderChild(self.top_panel, self.TOP_PANEL_ORDER)
+		
+		Explosion.sharedExplosion()
+		
+		self:enter_room(self.g_room_id)
 		
 		
 	end

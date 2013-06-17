@@ -264,7 +264,7 @@ function GUIUpdatePlugin.bind(theClass)
 				end
 			end
 			
-			print("[showPlayCardMenu] lastPlayCard => " , lastPlayCard)
+			dump(self.lastPlayCard, "[showPlayCardMenu] lastPlayCard => ")
 			local last_id = nil
 			if self.lastPlayer then
 				last_id = self.lastPlayer.user_id
@@ -273,7 +273,7 @@ function GUIUpdatePlugin.bind(theClass)
 			print("[showPlayCardMenu] g_user_id => " , self.g_user_id )
 			local bSelfFirst = false
 			-- 自己是第一个出牌的人?
-			if lastPlayCard == nil or lastPlayer.user_id == self.g_user_id then
+			if self.lastPlayCard == nil or self.lastPlayer.user_id == self.g_user_id then
 				bSelfFirst = true
 			end
 			
@@ -310,9 +310,9 @@ function GUIUpdatePlugin.bind(theClass)
 			-- 延时0.5秒后显示叫地主菜单
 			local delayTime = CCDelayTime:create(0.5)
 			-- self.rootNode.ws_data = data
-			local callFunc = CCCallFunc:create(function(sender, data_param)
-				self:onGrabLordNotice(data_param)
-			end, self, data)
+			local callFunc = CCCallFunc:create(function()
+				self:onGrabLordNotice(data)
+			end)
 			local seq = CCSequence:createWithTwoActions(delayTime, callFunc)
 			self.rootNode:runAction(seq)	
 	 	else 
@@ -541,6 +541,85 @@ function GUIUpdatePlugin.bind(theClass)
 	function theClass:onStartReadyClicked() 
 		self:playButtonEffect()	
 		self:doStartReady()
+	end
+	
+	---------------------------------------------------------------------------------------------------
+	-- 响应抢地主菜单事件 参数： sender - 被点击的菜单项 选择的分数 ＝ sender.tag - 1000 0 - 不叫 1 - 叫1分 2 -
+	-- 叫2分 3 - 叫3分
+	---------------------------------------------------------------------------------------------------
+	function theClass:onGetLordClicked(tag, sender)
+		-- 取叫的分数
+		local lord_value = tag - 1000
+		cclog("[onGetLord] lord_value => " .. lord_value)
+	
+		self:doGetLord(lord_value)
+		self:playButtonEffect()	
+	end
+	
+	function theClass:onBuchuClicked() 
+		-- 如果自己是一个出牌的人，或者其他两人都选择不出，则自己必须出牌
+		if  self.lastPlayCard == nil or self.lastPlayer.user_id == self.g_user_id  then
+			return
+		end
+		self._playing_timeout = 0
+		
+		self:doBuchu()
+	end
+	
+	function theClass:onReselectClicked() 
+		local poke_cards = self:getPickedPokeCards()
+		self:unpickPokeCards(poke_cards)
+		self.menu_item_reselect:setEnabled(false)
+		self:playButtonEffect()	
+	end
+	
+	-------------------------------------------------------------------------
+	-- 出牌
+	-------------------------------------------------------------------------
+	function theClass:onChupaiClicked()
+		-- cclog("chu pai")
+		local poke_cards = {}
+		
+		-- 选取所有选中的牌
+		for index = -#self._all_cards, -1 do
+			local card = self._all_cards[-index]
+			if card.picked then
+				table.insert(poke_cards, card)
+			end
+		end
+		
+		self:playButtonEffect()	
+	
+		-- 获取牌型
+		local card = CardUtility.getCard(poke_cards)
+		
+		print("card.card_type => " , card.card_type , " , max_poke_value => " , card.max_poke_value .. ", card_length => " , card.card_length)
+		-- 无效牌型？ 返回
+		if card.card_type == CardType.NONE then
+			return
+		end
+		
+		self._playing_timeout = 0
+		
+		self:doChupai(card)
+	end
+	
+	function theClass:onCardTipClicked() 
+		local is_self_last_player = self.lastPlayer and self.lastPlayer.user_id == self.g_user_id
+		local last_play_card = self.lastPlayCard
+		local source_card = nil
+		if self._all_cards then source_card = clone_table(self._all_cards) end
+		local cards = CardUtility.tip_card(last_play_card, source_card, is_self_last_player)
+		self:playButtonEffect()
+		if #cards == 0 then
+			cclog("tip is nil")
+		--	self:onBuchuClicked()
+			return
+		end
+		self:unpickPokeCards(self._all_cards)
+		self:pickPokeCards(cards)
+		self.menu_item_reselect:setEnabled(true)
+		self:playDealCardEffect()
 	end
 	
 end

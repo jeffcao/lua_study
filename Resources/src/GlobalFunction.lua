@@ -37,6 +37,28 @@ function clone_table(array)
 	return result
 end
 
+function table.join(table, s)
+	s = tostring(s)
+	local str = ""
+	for _, _v in pairs(table) do
+		if str == "" then 
+			str = str .. tostring(_v)
+		else 
+			str = str .. s .. tostring(_v)
+		end
+	end
+	return str
+end
+
+function table.toString(table)
+	local str = "[ "
+	for _, _v in pairs(table) do
+		str = str .. tostring(_v) .. ",  "
+	end
+	str = str .. "]"
+	return str
+end
+
 function table.reverse(array)
 	local result = {}
 	for index = -#array, -1 do
@@ -94,7 +116,8 @@ function split(str, pat)
       cap = str:sub(last_end)
       table.insert(t, cap)
    end
-   return table.reverse(t)
+   
+   return t
 end
 
 function trim(str, char)

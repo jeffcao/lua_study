@@ -19,6 +19,10 @@ CardUtility.getCard = function(poke_cards)
 		return card
 	end
 	
+	table.sort(poke_cards, function(x, y)
+			return x.poke_value < y.poke_value
+		end)
+	
 	for _, poke_card in pairs(poke_cards) do
 		cclog("poke: poke_value " .. poke_card.poke_value .. " , poke_card_type: " .. 
 				poke_card.poke_card_type .. " , poke_id: " .. poke_card.poke_id )

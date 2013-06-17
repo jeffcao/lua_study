@@ -29,7 +29,7 @@ function GActionPlugin.bind(theClass)
 			-- 通知服务器，出牌
 			--TODO_LUA
 			local event_data = {player_id=self.g_user_id, poke_cards=""}
-			g_WebSocket:trigger("g:play_card", event_data, function(data) 
+			self.g_WebSocket:trigger("g.play_card", event_data, function(data) 
 				print("========game.play return suCCss: " , data)
 			end, function(data) 
 				print("----------------game.play return failure: " , data)
@@ -63,7 +63,7 @@ function GActionPlugin.bind(theClass)
 			--TODO_LUA
 			--TODO 通知服务器托管
 			local event_data = {user_id=self.g_user_id}
-			g_WebSocket:trigger("g:on_tuo_guan", event_data, function(data) 
+			self.g_WebSocket:trigger("g.on_tuo_guan", event_data, function(data) 
 				print("========game.on_tuo_guan return suCCss: " , data)
 			end, function(data) 
 				print("----------------game.on_tuo_guan return failure: " , data)
@@ -168,8 +168,8 @@ function GActionPlugin.bind(theClass)
 		if not isServerAutoPlay then
 			--TODO_LUA
 			-- 通知服务器，出牌
-			local event_data = {player_id=g_user_id, poke_cards = card:getPokeIds():join(",")}
-			g_WebSocket:trigger("g:play_card", event_data, function(data) 
+			local event_data = {player_id=g_user_id, poke_cards = table.join(card:getPokeIds(), ",")}
+			self.g_WebSocket:trigger("g.play_card", event_data, function(data) 
 				print("========game.play return suCCss: " , data)
 			end, function(data) 
 				print("----------------game.play return failure: " , data)
@@ -190,7 +190,7 @@ function GActionPlugin.bind(theClass)
 		-- 通知服务器叫地主的分数
 		local get_lord_event = {user_id=self.g_user_id, lord_value=lord_value}
 		--TODO
-		g_WebSocket:trigger("g.grab_lord", get_lord_event)
+		self.g_WebSocket:trigger("g.grab_lord", get_lord_event)
 		-- 隐藏叫地主菜单，并显示叫的分数
 		self:hideGetLordMenu()
 		self:updateLordValue(self.self_user_lord_value, lord_value)
@@ -337,7 +337,7 @@ function GActionPlugin.bind(theClass)
 			self.game_over_layer:dismiss()
 		end
 		--TODO_LUA
-		g_WebSocket:trigger("g.user_change_table", event_data, function(data) 
+		self.g_WebSocket:trigger("g.user_change_table", event_data, function(data) 
 			dump(data, "========game.user_change_table return succss: ")
 			self.menu_huanzhuo:setVisible(true)
 			self.menu_ready:setVisible(true)
@@ -361,6 +361,7 @@ function GActionPlugin.bind(theClass)
 	
 	function theClass:enter_room(room_id) 
 		local event_data = {user_id = self.g_user_id, room_id = self.g_room_id}
+		--[[
 		self.g_WebSocket:trigger("g.enter_room", event_data, 
 			function(data)
 				print("g.enter_room succ")
@@ -369,6 +370,10 @@ function GActionPlugin.bind(theClass)
 			function(data) 
 				self:onEnterRoomFailure(data)
 			end)
+		]]	
+		self.g_WebSocket:trigger("g.enter_room", event_data, 
+			__bind(self.onEnterRoomSuccess, self),
+			__bind(self.onEnterRoomFailure, self))
 	end
 	
 	function theClass:loadSettings() 
@@ -401,5 +406,16 @@ function GActionPlugin.bind(theClass)
 			self.g_WebSocket:trigger("g.ready_game", {user_id = self.g_user_id})
 		end
 			
+	end
+	
+	function theClass:doGetLord(lord_value) 
+		cclog("[onGetLord] lord_value => " .. lord_value)
+		
+		-- 通知服务器叫地主的分数
+		local get_lord_event = {user_id = self.g_user_id, lord_value = lord_value}
+		self.g_WebSocket:trigger("g.grab_lord", get_lord_event)
+		-- 隐藏叫地主菜单，并显示叫的分数
+		self:hideGetLordMenu()
+		self:updateLordValue(self.self_user_lord_value, lord_value)
 	end
 end
