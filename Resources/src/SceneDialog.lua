@@ -2,7 +2,7 @@ SceneDialog = {}
 
 function SceneDialog.bind(theClass)
 	function theClass:create(ccbi_name)
-		
+		ccb.YesNoDialog = self
 		local ccbproxy = CCBProxy:create()
  		local node = CCBReaderLoad(ccbi_name, ccbproxy, false, "")
 		self:addChild(node)

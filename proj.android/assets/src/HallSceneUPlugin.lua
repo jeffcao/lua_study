@@ -1,3 +1,4 @@
+local json = require "cjson"
 require "UserCenterScene"
 require "YesNoDialog2"
 require "YesNoDialog"
@@ -71,5 +72,111 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:doToInfo()
 		local scene = createUserCenterScene()
 		CCDirector:sharedDirector():pushScene(scene)
+	end
+	
+	function theClass:do_on_enter()
+		print("[HallSceneUPlugin:do_on_enter]")
+		if GlobalSetting.hall_server_websocket == nil then
+			self:show_progress_message_box("连接大厅服务器...")
+			self:connect_to_hall_server()
+		end
+		
+	end
+	
+	function theClass:init_hall_info(data)
+		print("[HallSceneUPlugin:init_hall_info]")
+		
+		self:get_all_rooms()
+		self.after_trigger_success = __bind(self.init_room_tabview, self)
+		
+	end
+	
+	function theClass:init_current_player_info(data)
+		local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
+		cache:addSpriteFramesWithFile(Res.info_plist)
+		
+		print("[HallSceneUPlugin:init_current_player_info]")
+		local cur_user = GlobalSetting.current_user
+		dump(cur_user, "[HallSceneUPlugin:init_current_player_info] cur_user: ")
+		local nick_name_lb = tolua.cast(self.nick_name_lb, "CCLabelTTF")
+		nick_name_lb:setString(cur_user.nick_name)
+		
+		local player_beans_lb = tolua.cast(self.player_beans_lb, "CCLabelTTF")
+		player_beans_lb:setString(data.score)
+		
+		local avatar_btn = tolua.cast(self.avatar_btn, "CCMenuItemImage")
+		local avatar_png_index = tonumber(cur_user.avatar) < 10 and "0"..cur_user.avatar or cur_user.avatar
+		local avatar_png_index_gender = tonumber(cur_user.gender) == 1 and "m" or "f"
+		avatar_png_index = avatar_png_index == "00" and "00_"..avatar_png_index_gender or avatar_png_index
+		local avatar_png = "touxiang"..avatar_png_index..".png"
+
+		print("[HallSceneUPlugin:init_current_player_info] avatar_png: "..avatar_png)
+		avatar_btn:setNormalSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(avatar_png))
+		avatar_btn:setSelectedSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(avatar_png))
+		
+	end
+	
+	function theClass:init_room_tabview(data)
+		print("[HallSceneUPlugin:init_room_tabview]")
+		dump(data.room, "[HallSceneUPlugin:init_room_tabview] data rooms: ")
+		local room_index = 1
+		local h = LuaEventHandler:create(function(fn, table, a1, a2)
+			local r
+			if fn == "cellSize" then
+				r = CCSizeMake(260,260)
+			elseif fn == "cellAtIndex" then
+				if not a2 then
+					a2 = CCTableViewCell:create()
+					a3 = createRoomItem()
+					print("[HallSceneUPlugin:init_room_tabview] a1: "..a1)
+					a3:init_room_info(data.room[a1], a1)
+					print("[HallSceneUPlugin:init_room_tabview] room_index: "..room_index)
+					room_index = room_index + 1
+					a2:addChild(a3, 0, 1)
+				end
+				r = a2
+			elseif fn == "numberOfCells" then
+				r = #(data.room)
+			elseif fn == "cellTouched" then
+			end
+			return r
+		end)
+		
+		local t = LuaTableView:createWithHandler(h, CCSizeMake(800,260))
+		t:setDirection(kCCScrollViewDirectionHorizontal)
+		t:reloadData()
+	--	t:setAnchorPoint(ccp(0.5, 0.5))
+		t:setPosition(CCPointMake(0,0))
+		self.middle_layer:addChild(t)
+		
+		self:get_user_profile()
+		self.after_trigger_success = __bind(self.init_current_player_info, self)
+		
+	end
+	
+	function theClass:do_on_websocket_ready()
+		print("[HallSceneUPlugin:do_on_websocket_ready]")
+		self:check_connection()
+		self.after_trigger_success = __bind(self.init_hall_info, self)
+	end
+	
+	
+	function theClass:do_on_trigger_success(data)
+		print("[HallSceneUPlugin:do_on_trigger_success]")
+		self:hide_progress_message_box()
+		
+		if "function" == type(self.after_trigger_success) then
+			self.after_trigger_success(data)
+		end
+		
+	end
+	
+	function theClass:do_on_trigger_failure()
+		print("[HallSceneUPlugin:do_on_trigger_failure]")
+		self:hide_progress_message_box()
+		self:show_message_box(self.failure_msg)
+		if "function" == type(self.after_trigger_failure) then
+			self.after_trigger_failure(data)
+		end
 	end
 end

@@ -22,7 +22,11 @@ GlobalSetting = {
 	-- 游戏大厅的URLs
 	game_hall_urls = {},
 	login_urls = {"ws://login.jc.170022.cn/websocket"},
-	login_server = nil,
+	login_server_websocket = nil,
+	
+	hall_server_url = "",
+	hall_server_token = "",
+	hall_server_websocket = nil,
 	
 	content_scale_factor = 1.0,
 }

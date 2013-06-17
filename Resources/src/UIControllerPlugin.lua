@@ -88,7 +88,7 @@ function UIControllerPlugin.bind(theClass)
 		msg_lb:setPosition(ccp(msg_width/2, msg_height/2))
 		
 		msg_sprite:setPreferredSize(CCSizeMake(msg_width, msg_height))
-		content_layer:addChild(msg_sprite, 0, 1000)
+		content_layer:addChild(msg_sprite, 0)
 		msg_sprite:setAnchorPoint(ccp(0, 0.5))
 		msg_sprite:setPosition(ccp(0, msg_height / 2.0 ))
 		
