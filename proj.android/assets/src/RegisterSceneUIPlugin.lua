@@ -56,7 +56,8 @@ function RegisterSceneUIPlugin.bind(theClass)
 	
 	function theClass:do_cancel_btn_clicked(tag, sender)
 			print("go to login in register scene")
-			CCDirector:sharedDirector():replaceScene(createLoginScene())	
+--			CCDirector:sharedDirector():replaceScene(createLoginScene())
+			self:dismiss()	
 	end
 	
 	function theClass:do_register_btn_clicked(tag, sender)
@@ -96,11 +97,16 @@ function RegisterSceneUIPlugin.bind(theClass)
 		print("on keypad clicked: " .. key)
 		if key == "backClicked" then
 			print("go to login in register scene")
-			local login = createLoginScene()
-			CCDirector:sharedDirector():replaceScene(login)
+--			local login = createLoginScene()
+--			CCDirector:sharedDirector():replaceScene(login)
+			self:dismiss()
 		elseif key == "menuClicked" then
 			--print("websocket state => ", WebsocketManager:sharedWebsocketManager():get_websocket_state(self.websocket._conn._websocket_id) )
 		end 
+	end
+	
+	function theClass:do_on_websocket_ready()
+		self:hide_progress_message_box()
 	end
 	
 	function theClass:do_on_login_success()

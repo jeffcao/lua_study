@@ -100,7 +100,8 @@ function LoginSceneUIPlugin.bind(theClass)
 	
 	function theClass:do_ui_register_clicked(tag, sender)
 			print("go to register in login scene")
-			CCDirector:sharedDirector():replaceScene(createRegisterScene())	
+			CCDirector:sharedDirector():pushScene(createRegisterScene())
+--			CCDirector:sharedDirector():replaceScene(createRegisterScene())	
 		end
 	
 	function theClass:do_ui_fast_game_clicked()
@@ -152,7 +153,12 @@ function LoginSceneUIPlugin.bind(theClass)
 		
 	end
 	
+	function theClass:do_on_websocket_ready()
+		self:hide_progress_message_box()
+	end
+	
 	function theClass:do_on_connection_failure()
+		print("[LoginScene:do_on_connection_failure()]")
 		self:hide_progress_message_box()
 		self:show_message_box("连接服务器失败")
 	end
