@@ -14,7 +14,6 @@
 extern "C" {
 #include "cjson/lua_extensions.h"
 }
-#include "Lua_extensions_CCB.h"
 
 #include "Lua_extensions_CCB.h"
 
