@@ -43,10 +43,8 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	function theClass:showLordCards(lord_card_ids, lord_value) 
 		--提取出扑克牌
-		cclog("showLordCards1")
 		local poke_card_ids = {}
 		if lord_card_ids ~= nil and #lord_card_ids ~=0 then
-			cclog("showLordCards2")
 			local tmp_ids = split(lord_card_ids,",")
 			for _, tmp_id in pairs(tmp_ids) do
 				if #tmp_id > 0 then
@@ -54,9 +52,7 @@ function GUIUpdatePlugin.bind(theClass)
 				end
 			end
 		end
-		cclog("showLordCards3")
 		if #poke_card_ids == 3  then
-			cclog("showLordCards4")
 			self._is_playing = true
 			
 			local poke_cards = {}
@@ -65,7 +61,6 @@ function GUIUpdatePlugin.bind(theClass)
 			end
 			table.sort(poke_cards, function(a, b) return b.index < a.index end)
 			
-			cclog("showLordCards5")
 			self:updateLordCard(self.lord_poke_card_1, poke_cards[1])
 			self:updateLordCard(self.lord_poke_card_2, poke_cards[2])
 			self:updateLordCard(self.lord_poke_card_3, poke_cards[3])
@@ -620,6 +615,19 @@ function GUIUpdatePlugin.bind(theClass)
 		self:pickPokeCards(cards)
 		self.menu_item_reselect:setEnabled(true)
 		self:playDealCardEffect()
+	end
+	
+	function theClass:onCancelTuoguanClicked()
+		self:docancelTuoguan()
+	end
+	
+	function theClass:onTuoguanClicked() 
+		if self:isTuoguan() or not self._is_playing then
+			return
+		end
+		
+		self:doTuoguan()
+		self:playButtonEffect()
 	end
 	
 end

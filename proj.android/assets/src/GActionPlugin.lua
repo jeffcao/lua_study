@@ -62,9 +62,9 @@ function GActionPlugin.bind(theClass)
 		if not isNotServerAuto then
 			--TODO_LUA
 			--TODO 通知服务器托管
-			local event_data = {user_id=self.g_user_id}
+			local event_data = {user_id = self.g_user_id}
 			self.g_WebSocket:trigger("g.on_tuo_guan", event_data, function(data) 
-				print("========game.on_tuo_guan return suCCss: " , data)
+				print("========game.on_tuo_guan return succeess: " , data)
 			end, function(data) 
 				print("----------------game.on_tuo_guan return failure: " , data)
 			end)
@@ -137,7 +137,7 @@ function GActionPlugin.bind(theClass)
 			
 			if card.card_type == CardType.BOMB or card.card_type == CardType.ROCKET then
 				cclog("炸弹效果")
-				Explosion:explode(self.rootNode) --TODO bomb
+				Explosion.explode(self.rootNode) --TODO bomb
 			end
 			
 			-- 记住本次出牌
@@ -255,7 +255,7 @@ function GActionPlugin.bind(theClass)
 		if card.card_type == CardType.BOMB or card.card_type == CardType.ROCKET then
 			cclog("炸弹效果")
 			--TODO BOMB
-			Explosion:explode(self.rootNode)
+			Explosion.explode(self.rootNode)
 		end
 		
 		-- 记住本次出牌
@@ -319,7 +319,7 @@ function GActionPlugin.bind(theClass)
 		
 		if card.card_type == CardType.BOMB or card.card_type == CardType.ROCKET then
 			cclog("炸弹效果")
-			Explosion:explode(self.rootNode)
+			Explosion.explode(self.rootNode)
 		end
 		
 		-- 记住本次出牌
@@ -417,5 +417,19 @@ function GActionPlugin.bind(theClass)
 		-- 隐藏叫地主菜单，并显示叫的分数
 		self:hideGetLordMenu()
 		self:updateLordValue(self.self_user_lord_value, lord_value)
+	end
+	
+	function theClass:docancelTuoguan(isNotServerAuto) 
+		self.menu_tuoguan:setVisible(false)
+		self._playing_timeout = 0
+		if not isNotServerAuto then
+			--TODO 通知服务器取消托管
+			local event_data = {user_id = self.g_user_id}
+			self.g_WebSocket:trigger("g.off_tuo_guan", event_data, function(data) 
+				print("========game.off_tuo_guan return success: " , data)
+			end, function(data) 
+				print("========game.off_tuo_guan return failure: " , data)
+			end)
+		end
 	end
 end

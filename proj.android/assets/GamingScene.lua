@@ -34,7 +34,8 @@ function GamingScene:ctor()
 	self.ccbproxy = CCBProxy:create()
 	self.ccbproxy:retain()
 	ccb.GamingScene = self
-	self.onTuoguan = __bind(self.onTestAnim, self)
+	self.onCancelTuoguanClicked = __bind(self.onCancelTuoguanClicked, self)
+	self.onTuoguanClicked = __bind(self.onTuoguanClicked, self)
 	self.onSelfUserClicked = __bind(self.onSelfUserClicked, self)
 	self.onBgMusicClicked = __bind(self.onBgMusicClicked, self)
 	self.onEffectMusicClicked = __bind(self.onEffectMusicClicked, self)
@@ -47,6 +48,7 @@ function GamingScene:ctor()
 	self.onChupaiClicked = __bind(self.onChupaiClicked, self)
 	self.onCardTipClicked = __bind(self.onCardTipClicked, self)
 	self.onReselectClicked = __bind(self.onReselectClicked, self)
+	self.onCancelTuoguanClicked = __bind(self.onCancelTuoguanClicked, self)
 	
 	local node = CCBReaderLoad("GamingScene.ccbi", self.ccbproxy, true, "GamingScene")
 
