@@ -16,12 +16,6 @@ function RoomItem:ctor()
  	local node = CCBReaderLoad("RoomItem.ccbi", ccbproxy, false, "")
 	self:addChild(node)
 
---	self.rootNode:ignoreAnchorPointForPosition(false)
---	self.rootNode:setAnchorPoint(ccp(0,0.5))
---	self.rootNode:setPosition(ccp(0,240))
-
-	print("room item self.rootNode ==> ", self.rootNode)
-	
 	local function onTouch(eventType, x, y)
 		print("room item touch:" .. eventType)
 		if not self.rootNode:boundingBox():containsPoint(self:convertToNodeSpace(ccp(x, y))) then
@@ -52,7 +46,7 @@ function RoomItem:ctor()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 end
 
-function RoomItem:init_room_info(room_info)
+function RoomItem:init_room_info(room_info, room_index)
 	self.ante = room_info.ante
 	self.fake_online_count = room_info.fake_online_count
 	self.limit_online_count = room_info.limit_online_count
@@ -73,15 +67,21 @@ function RoomItem:init_room_info(room_info)
 	local dizhu_lb = tolua.cast(self.dizhu_lb, "CCLabelTTF")
 	dizhu_lb:setString(self.ante)
 	local level_sprite = tolua.cast(self.level_sprite, "CCSprite")
-	if tonumber(self.room_type) == 1 then
-		level_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("xinshou.png"))
-	elseif tonumber(self.room_type) == 2 then
-		level_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("zhongshou.png"))
+	local room_leve_png = "xinshou.png"
+
+	if tonumber(self.room_type) == 2 then
+		room_leve_png = "zhongshou.png"
 	elseif tonumber(self.room_type) == 3 then
-		level_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("gaoshou.png"))
+		room_leve_png = "gaoshou.png"
 	elseif tonumber(self.room_type) == 4 then
-		level_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("dashi.png")) 
+		room_leve_png = "dashi.png" 
 	end
+	level_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(room_leve_png))
+	
+	local bg_sprite = tolua.cast(self.bg_sprite, "CCSprite")
+	local bg_sprite_png_index = (room_index % 6) > 0 and (room_index % 6) or 6
+	local bg_sprite_png = "fangjian0"..bg_sprite_png_index..".png"
+	bg_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(bg_sprite_png))
 	
 end
 

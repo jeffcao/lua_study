@@ -46,7 +46,7 @@ function RoomItem:ctor()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 end
 
-function RoomItem:init_room_info(room_info)
+function RoomItem:init_room_info(room_info, room_index)
 	self.ante = room_info.ante
 	self.fake_online_count = room_info.fake_online_count
 	self.limit_online_count = room_info.limit_online_count
@@ -77,5 +77,11 @@ function RoomItem:init_room_info(room_info)
 		room_leve_png = "dashi.png" 
 	end
 	level_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(room_leve_png))
+	
+	local bg_sprite = tolua.cast(self.bg_sprite, "CCSprite")
+	local bg_sprite_png_index = (room_index % 6) > 0 and (room_index % 6) or 6
+	local bg_sprite_png = "fangjian0"..bg_sprite_png_index..".png"
+	bg_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(bg_sprite_png))
+	
 end
 

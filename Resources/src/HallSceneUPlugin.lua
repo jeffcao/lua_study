@@ -98,7 +98,9 @@ function HallSceneUPlugin.bind(theClass)
 				if not a2 then
 					a2 = CCTableViewCell:create()
 					a3 = createRoomItem()
-					a3:init_room_info(data.room[room_index])
+					print("[HallSceneUPlugin:init_room_tabview] a1: "..a1)
+					a3:init_room_info(data.room[a1], a1)
+					print("[HallSceneUPlugin:init_room_tabview] room_index: "..room_index)
 					room_index = room_index + 1
 					a2:addChild(a3, 0, 1)
 				end
