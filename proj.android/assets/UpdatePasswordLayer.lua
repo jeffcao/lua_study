@@ -12,12 +12,17 @@ function createUpdatePasswordLayer()
 end
 
 function UpdatePasswordLayer:ctor()
-	self.ccbproxy = CCBProxy:create()
-	self.ccbproxy:create()
+
+	ccb.update_pwd_scene = self
 	
-	local node = self.ccbproxy:readCCBFromFile("UpdatePassword.ccbi")
-	self.rootNode = node
-	self:addChild(self.rootNode)
+	self.on_ui_ok_btn_clicked = __bind(self.do_ui_ok_btn_clicked, self)
+	
+	local ccbproxy = CCBProxy:create()
+ 	local node = CCBReaderLoad("UpdatePassword.ccbi", ccbproxy, false, "")
+ 	self.rootNode = tolua.cast(node, "CCLayer")
+	self:addChild(node)
+	
+	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
 	local createEditbox = function()
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
@@ -38,20 +43,21 @@ function UpdatePasswordLayer:ctor()
 		layer.editbox = createEditbox()
 		layer:addChild(layer.editbox)
 	end
+
+	add_editbox(self.old_layer)
+	self.old_layer.editbox:setPlaceHolder("输入原密码")
 	
-	local old_layer = self.ccbproxy:getNodeWithType("old_layer", "CCLayer")
-	add_editbox(old_layer)
-	old_layer.editbox:setPlaceHolder("输入原密码")
+	add_editbox(self.new_layer)
+	self.new_layer.editbox:setPlaceHolder("设置密码")
 	
-	local new_layer = self.ccbproxy:getNodeWithType("new_layer", "CCLayer")
-	add_editbox(new_layer)
-	new_layer.editbox:setPlaceHolder("设置密码")
-	
-	local confirm_layer = self.ccbproxy:getNodeWithType("confirm_layer", "CCLayer")
-	add_editbox(confirm_layer)
-	confirm_layer.editbox:setPlaceHolder("重复输入")
+	add_editbox(self.confirm_layer)
+	self.confirm_layer.editbox:setPlaceHolder("重复输入")
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+end
+
+function UpdatePasswordLayer:do_ui_ok_btn_clicked(tag, sender)
+
 end
 
 UpdatePasswordLayerUPlugin.bind(UpdatePasswordLayer)

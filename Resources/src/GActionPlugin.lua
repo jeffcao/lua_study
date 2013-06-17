@@ -62,9 +62,9 @@ function GActionPlugin.bind(theClass)
 		if not isNotServerAuto then
 			--TODO_LUA
 			--TODO 通知服务器托管
-			local event_data = {user_id=self.g_user_id}
+			local event_data = {user_id = self.g_user_id}
 			self.g_WebSocket:trigger("g.on_tuo_guan", event_data, function(data) 
-				print("========game.on_tuo_guan return suCCss: " , data)
+				print("========game.on_tuo_guan return succeess: " , data)
 			end, function(data) 
 				print("----------------game.on_tuo_guan return failure: " , data)
 			end)
@@ -137,7 +137,7 @@ function GActionPlugin.bind(theClass)
 			
 			if card.card_type == CardType.BOMB or card.card_type == CardType.ROCKET then
 				cclog("炸弹效果")
-				Explosion:explode(self.rootNode) --TODO bomb
+				Explosion.explode(self.rootNode) --TODO bomb
 			end
 			
 			-- 记住本次出牌
@@ -255,7 +255,7 @@ function GActionPlugin.bind(theClass)
 		if card.card_type == CardType.BOMB or card.card_type == CardType.ROCKET then
 			cclog("炸弹效果")
 			--TODO BOMB
-			Explosion:explode(self.rootNode)
+			Explosion.explode(self.rootNode)
 		end
 		
 		-- 记住本次出牌
@@ -319,7 +319,7 @@ function GActionPlugin.bind(theClass)
 		
 		if card.card_type == CardType.BOMB or card.card_type == CardType.ROCKET then
 			cclog("炸弹效果")
-			Explosion:explode(self.rootNode)
+			Explosion.explode(self.rootNode)
 		end
 		
 		-- 记住本次出牌
@@ -361,16 +361,6 @@ function GActionPlugin.bind(theClass)
 	
 	function theClass:enter_room(room_id) 
 		local event_data = {user_id = self.g_user_id, room_id = self.g_room_id}
-		--[[
-		self.g_WebSocket:trigger("g.enter_room", event_data, 
-			function(data)
-				print("g.enter_room succ")
-				self:onEnterRoomSuccess(data)
-			end,
-			function(data) 
-				self:onEnterRoomFailure(data)
-			end)
-		]]	
 		self.g_WebSocket:trigger("g.enter_room", event_data, 
 			__bind(self.onEnterRoomSuccess, self),
 			__bind(self.onEnterRoomFailure, self))
@@ -417,5 +407,74 @@ function GActionPlugin.bind(theClass)
 		-- 隐藏叫地主菜单，并显示叫的分数
 		self:hideGetLordMenu()
 		self:updateLordValue(self.self_user_lord_value, lord_value)
+	end
+	
+	function theClass:docancelTuoguan(isNotServerAuto) 
+		self.menu_tuoguan:setVisible(false)
+		self._playing_timeout = 0
+		if not isNotServerAuto then
+			local event_data = {user_id = self.g_user_id}
+			self.g_WebSocket:trigger("g.off_tuo_guan", event_data, function(data) 
+				print("========game.off_tuo_guan return success: " , data)
+			end, function(data) 
+				print("========game.off_tuo_guan return failure: " , data)
+			end)
+		end
+	end
+	
+	-- 假如用户资料没有get下来，去服务器获取用户资料
+	function theClass:doGetUserProfileIfNeed(user_id) 
+		if not user_id then
+			cclog("user_id is nil")
+			return
+		end
+		user_id = tostring(user_id)
+		if not self.users[user_id] then
+			cclog("user profile " .. user_id .. " not find")
+			-- 获取用户资料
+			local event_data = {user_id = user_id}
+			self.g_WebSocket:trigger("g.get_rival_msg", event_data, function(data) 
+					print("========game:get_rival_msg return success: " , data)
+					self.users[user_id] = data
+					data.user_id = user_id
+				end, 
+				function(data) 
+					print("========game:get_rival_msg return failure: " , data) 
+				end)
+			cclog("to get user profile")
+	 	else 
+			cclog("user profile " .. self.users[user_id].nick_name)
+		end
+	end
+	
+	function theClass:doChangeDesk()
+		-- 通知服务器，换桌
+		local event_data = {player_id = self.g_user_id, poke_cards = ""}
+		self.menu_huanzhuo:setTag(self.CHANGE_DESK_TAG)
+		self.menu_huanzhuo:setVisible(false)
+		self.menu_ready:setVisible(false)
+		if self.game_over_layer then
+			self.game_over_layer.gm_change_table:setVisible(false)
+		end
+		self.g_WebSocket:trigger("g.user_change_table", event_data, function(data) 
+			print("========game.user_change_table return success: " , data)
+			self.menu_huanzhuo:setVisible(true)
+			self.menu_ready:setVisible(true)
+			self.menu_huanzhuo:setTag(1000)
+			if self.game_over_layer then
+				self.game_over_layer.gm_change_table:setVisible(true)
+			end
+			self:onReturn()
+			self:onEnterRoomSuccess(data)
+		end, function(data) 
+			self.menu_huanzhuo:setVisible(true)
+			self.menu_ready:setVisible(true)
+			self.menu_huanzhuo:setTag(1000)
+			if self.game_over_layer then
+				self.game_over_layer.gm_change_table:setVisible(true)
+			end
+			print("----------------game.user_change_table return failure: " , data)
+		end)
+		cclog("MainSceneDelegate on change desk")
 	end
 end

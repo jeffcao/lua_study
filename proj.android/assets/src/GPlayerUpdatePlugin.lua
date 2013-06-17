@@ -15,7 +15,7 @@ function GPlayerUpdatePlugin.bind(theClass)
 	end
 
 	function theClass:updateTuoguan()
-		if self_user and self_user.tuo_guan == 1 and self_user.poke_card_count > 0 then
+		if self.self_user and self.self_user.tuo_guan == 1 and self.self_user.poke_card_count > 0 then
 			cclog("is tuoguan status")
 			if not self.menu_tuoguan:isVisible() then
 				cclog("show tuoguan")

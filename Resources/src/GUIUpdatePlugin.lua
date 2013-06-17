@@ -28,8 +28,10 @@ function GUIUpdatePlugin.bind(theClass)
 		self.nextUserLastCard = nil
 		self.prevUserLastCard = nil
 		
+		local players = nil
+		if data and data.players then players = data.players end
 		-- 更新玩家信息
-		self:updatePlayers(data)
+		self:updatePlayers(players)
 	
 		-- 隐藏不出提示
 		self:updatePlayerBuchu(self.self_user_lord_value, false)
@@ -43,10 +45,8 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	function theClass:showLordCards(lord_card_ids, lord_value) 
 		--提取出扑克牌
-		cclog("showLordCards1")
 		local poke_card_ids = {}
 		if lord_card_ids ~= nil and #lord_card_ids ~=0 then
-			cclog("showLordCards2")
 			local tmp_ids = split(lord_card_ids,",")
 			for _, tmp_id in pairs(tmp_ids) do
 				if #tmp_id > 0 then
@@ -54,9 +54,7 @@ function GUIUpdatePlugin.bind(theClass)
 				end
 			end
 		end
-		cclog("showLordCards3")
 		if #poke_card_ids == 3  then
-			cclog("showLordCards4")
 			self._is_playing = true
 			
 			local poke_cards = {}
@@ -65,7 +63,6 @@ function GUIUpdatePlugin.bind(theClass)
 			end
 			table.sort(poke_cards, function(a, b) return b.index < a.index end)
 			
-			cclog("showLordCards5")
 			self:updateLordCard(self.lord_poke_card_1, poke_cards[1])
 			self:updateLordCard(self.lord_poke_card_2, poke_cards[2])
 			self:updateLordCard(self.lord_poke_card_3, poke_cards[3])
@@ -387,7 +384,7 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	function theClass:onCloseClicked() 
 		if self._has_gaming_started then
-			self:showExit() --TODO
+			self:showExit()
 	 	else 
 			self:exit()
 		end
@@ -397,7 +394,11 @@ function GUIUpdatePlugin.bind(theClass)
 		self.menu_tuoguan:setVisible(false)
 		if self.game_over_layer == nil  then
 			self.game_over_layer = createGameOver()
-			self.rootNode:addChild(self.game_over_layer)
+			local change = self.onChangeDeskClicked
+			local close = function() self.game_over_layer:dismiss() end
+			local tohall = self.exit
+			self.game_over_layer:initCallback(tohall, change, close)
+			self.rootNode:addChild(self.game_over_layer, self.GAME_OVER_ORDER)
 		end
 		self:retrievePlayers(data.players)
 		self.game_over_layer:initWith(self, data)
@@ -420,7 +421,7 @@ function GUIUpdatePlugin.bind(theClass)
 		local callFunc = CCCallFunc:create(__bind(show, self))
 		local seq = CCSequence:createWithTwoActions(delayTime, callFunc)
 		self.rootNode:runAction(seq)
-		local close_seq = CCSequence:createWithTwoActions(CCDelayTime:create(7),CCCallFunc:create(function() 
+		local close_seq = CCSequence:createWithTwoActions(CCDelayTime:create(27),CCCallFunc:create(function() 
 			self:closeGameOver()
 		end))
 		close_seq:setTag(self.GAME_OVER_HIDE_ACTION_TAG)
@@ -434,7 +435,7 @@ function GUIUpdatePlugin.bind(theClass)
 	function theClass:onEffectMusicClicked()
 		if not self.set_dialog then
 			self.set_dialog = createSetDialog()
-			self.rootNode:addChild(self.set_dialog)
+			self.rootNode:addChild(self.set_dialog, self.SET_LAYER_ORDER)
 		end
 		self.set_dialog:updateVolume()
 		self.set_dialog:show()
@@ -479,7 +480,6 @@ function GUIUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:onCloseClicked() 
-		self:showExit()
 		if self._has_gaming_started then
 			self:showExit()
 	 	else 
@@ -499,6 +499,7 @@ function GUIUpdatePlugin.bind(theClass)
 			self.exit_layer:setTitle("强制退出")
 			self.exit_layer:setMessage("您正在游戏中，此时强退系统将最大输赢扣除您的豆子。")
 			self.exit_layer:setYesButton(__bind(self.exit, self))
+			self.rootNode:reorderChild(self.exit_layer, self.NOTIFY_ORDER)
 		end
 		if self.exit_layer:isShowing() then
 			return
@@ -507,7 +508,9 @@ function GUIUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:exit()
-		--do nothing
+		SimpleAudioEngine:sharedEngine():stopBackgroundMusic()
+		local scene = createHallScene()
+		CCDirector:sharedDirector():replaceScene(scene)
 	end
 	
 	function theClass:onEnterRoomSuccess(data) 
@@ -620,6 +623,24 @@ function GUIUpdatePlugin.bind(theClass)
 		self:pickPokeCards(cards)
 		self.menu_item_reselect:setEnabled(true)
 		self:playDealCardEffect()
+	end
+	
+	function theClass:onCancelTuoguanClicked()
+		self:docancelTuoguan()
+		self:playButtonEffect()
+	end
+	
+	function theClass:onTuoguanClicked() 
+		if self:isTuoguan() or not self._is_playing then
+			return
+		end
+		
+		self:doTuoguan()
+		self:playButtonEffect()
+	end
+	
+	function theClass:onChangeDeskClicked()
+		self:doChangeDesk()
 	end
 	
 end

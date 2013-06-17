@@ -6,17 +6,23 @@ GameOver = class("GameOver", function()
 	return display.newLayer("GameOver") 
 end)
 
-function createGameOver()
-	return GameOver.new()
+function createGameOver(onToHall, onChangeDesk, onClose)
+	local layer = GameOver.new(onToHall, onChangeDesk, onClose)
+	
+	return layer
 end
 
 function GameOver:ctor()
+	
+end
+
+function GameOver:initCallback(onToHall, onChangeDesk, onClose)
+	self.onGOChangeDeskClicked = onChangeDesk
+	self.onGOCloseClicked = onClose
+	self.onGOToHallClicked = onToHall
 	self.ccbproxy = CCBProxy:create()
 	self.ccbproxy:retain()
 	ccb.GameOver = self
-	self.ontohall = __bind(self.onToHallClicked, self)
-	self.onChangeDesk = __bind(self.onChangeDeskClicked, self)
-	self.onClose = __bind(self.onGameOverCloseClicked, self)
 	local node = CCBReaderLoad("GameOverScene.ccbi", self.ccbproxy, true, "GameOver")
 	self.rootNode = tolua.cast(node, "CCLayer")
 	self:addChild(self.rootNode)
