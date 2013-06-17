@@ -71,6 +71,10 @@ function WebSocketRails:new_message(data)
         --dump_table(socket_message)
         local event = WebSocketRails.Event:new(socket_message)
         --print("[WebSocketRails:new_message] event => " .. event:serialize())
+        
+        if GlobalSetting.debug_dump_websocket_event and not (event:is_ping() or event:is_server_ack()) then
+        	print("[" .. self.url .. "] got event => ", event:serialize() )
+        end
  		
  		ack_event = event:new_client_ack_event()
  		if ack_event ~= nil then
@@ -93,7 +97,7 @@ function WebSocketRails:new_message(data)
             self:dispatch_channel(event)
         elseif event:is_ping() then
             self:pong()
-        elseif event.name == "server_ack" then
+        elseif event:is_server_ack() then
         	if event.data and event.data.ack_id then
         		local req_event = self.request_event_queue[event.data.ack_id]
         		self.request_event_queue[event.data.ack_id] = nil
