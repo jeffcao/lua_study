@@ -30,10 +30,10 @@ function RegisterScene:onEnter()
 	print("[RegisterScene:on_enter()]")
 	self.super.onEnter(self)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
---	if GlobalSetting.login_server_websocket == nil then
---		self:show_progress_message_box("连接服务器...")
---		self:connect_to_login_server(GlobalSetting)
---	end
+	if GlobalSetting.login_server_websocket == nil then
+		self:show_progress_message_box("连接服务器...")
+		self:connect_to_login_server(GlobalSetting)
+	end
 end
 
 function RegisterScene:onExit()

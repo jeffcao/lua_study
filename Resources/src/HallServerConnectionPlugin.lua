@@ -78,6 +78,16 @@ function HallServerConnectionPlugin.bind(theClass)
 			__bind(self.on_trigger_success, self),
 			__bind(self.on_trigger_failure, self))
 	end
+	
+	function theClass:complete_user_info(changed_info)
+		self.failure_msg = "更新玩家信息失败"
+--		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
+		local event_data = changed_info
+		GlobalSetting.hall_server_websocket:trigger("ui.complete_user_info", 
+			event_data,
+			__bind(self.on_trigger_success, self),
+			__bind(self.on_trigger_failure, self))
+	end
 
 	function theClass:close_hall_websocket()
 		print("[HallServerConnectionPlugin:close_hall_websocket()]")

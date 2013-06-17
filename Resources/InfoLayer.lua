@@ -13,15 +13,18 @@ function createInfoLayer()
 end
 
 function InfoLayer:ctor()
-	self.ccbproxy = CCBProxy:create()
-	self.ccbproxy:retain()
+
+	ccb.info_scene = self
 	
-	local node = self.ccbproxy:readCCBFromFile("Info.ccbi")
-	self.rootNode = node
-	self:addChild(self.rootNode)
+	self.on_ui_ok_btn_clicked = __bind(self.do_ui_ok_btn_clicked, self)
 	
+	local ccbproxy = CCBProxy:create()
+ 	local node = CCBReaderLoad("Info.ccbi", ccbproxy, false, "")
+ 	self.rootNode = tolua.cast(node, "CCLayer")
+	self:addChild(node)
 	
-	local nmlayer = self.ccbproxy:getNodeWithType("nickname_layer", "CCLayer")
+	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 	cache:addSpriteFramesWithFile(Res.common_plist)
 	
@@ -32,9 +35,9 @@ function InfoLayer:ctor()
 	editbox2:setPlaceholderFont("default",16)
 	editbox2:setFont("default",16)
 	editbox2:setPlaceHolder("那一刻的风情")
-	nmlayer:addChild(editbox2)
 	
-	local gender_layer = self.ccbproxy:getNodeWithType("gender_layer", "CCLayer")
+	self.nickname_layer:addChild(editbox2)
+
 	local menu1 = CheckBox.create("男")
 	local menu2 = CheckBox.create("女")
 	menu1:setPosition(ccp(72,25))
@@ -51,8 +54,8 @@ function InfoLayer:ctor()
     menu2.toggle:registerScriptTapHandler(menuCallback)
 	menu1.toggle:setChecked(true)
     
-	gender_layer:addChild(menu1)
-	gender_layer:addChild(menu2)
+	self.gender_layer:addChild(menu1)
+	self.gender_layer:addChild(menu2)
 	
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
