@@ -56,7 +56,7 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:onAvatarClick(tag, sender)
-		self.doToInfo()
+		self:doToInfo()
 	end
 	
 	function theClass:onMarketClick(tag, sender)
@@ -70,7 +70,7 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:doToInfo()
-		local scene = createUserCenterScene()
+		local scene = createUserCenterScene(__bind(self.display_player_avatar, self))
 		CCDirector:sharedDirector():pushScene(scene)
 	end
 	
@@ -91,6 +91,15 @@ function HallSceneUPlugin.bind(theClass)
 		
 	end
 	
+	function theClass:display_player_avatar()
+		local avatar_btn = tolua.cast(self.avatar_btn, "CCMenuItemImage")
+		local avatar_png = self:get_player_avatar_png_name()
+
+		print("[HallSceneUPlugin:init_current_player_info] avatar_png: "..avatar_png)
+		avatar_btn:setNormalSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(avatar_png))
+		avatar_btn:setSelectedSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(avatar_png))
+	end
+	
 	function theClass:init_current_player_info(data)
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 		cache:addSpriteFramesWithFile(Res.info_plist)
@@ -104,15 +113,7 @@ function HallSceneUPlugin.bind(theClass)
 		local player_beans_lb = tolua.cast(self.player_beans_lb, "CCLabelTTF")
 		player_beans_lb:setString(data.score)
 		
-		local avatar_btn = tolua.cast(self.avatar_btn, "CCMenuItemImage")
-		local avatar_png_index = tonumber(cur_user.avatar) < 10 and "0"..cur_user.avatar or cur_user.avatar
-		local avatar_png_index_gender = tonumber(cur_user.gender) == 1 and "m" or "f"
-		avatar_png_index = avatar_png_index == "00" and "00_"..avatar_png_index_gender or avatar_png_index
-		local avatar_png = "touxiang"..avatar_png_index..".png"
-
-		print("[HallSceneUPlugin:init_current_player_info] avatar_png: "..avatar_png)
-		avatar_btn:setNormalSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(avatar_png))
-		avatar_btn:setSelectedSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(avatar_png))
+		self:display_player_avatar()
 		
 	end
 	
