@@ -58,7 +58,7 @@ function WebSocketRails:new(url, use_websockets)
     this_obj.session_state = WebSocketRails.SessionState.INVALID
     this_obj._self_close = false
     
-    this_obj._conn = WebSocketRails.WebSocketConnection:new(url, this_obj)
+    this_obj._conn = WebSocketRails.WebSocketConnectionCC:new(url, this_obj)
     
     return this_obj
 end
