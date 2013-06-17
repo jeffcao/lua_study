@@ -17,6 +17,10 @@ extern "C" {
 
 #include "Lua_extensions_CCB.h"
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+#include "Lua_web_socket.h"
+#endif
+
 
 
 USING_NS_CC;
@@ -155,6 +159,10 @@ bool AppDelegate::applicationDidFinishLaunching()
     luaopen_LuaProxy(pLuaState);
     luaopen_lua_extensions(pLuaState);
     tolua_extensions_ccb_open(pLuaState);
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+    tolua_web_socket_open(pLuaState);
+#endif
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     CCString* pstrFileContent = CCString::createWithContentsOfFile("main.lua");
