@@ -142,7 +142,10 @@ function LoginSceneUIPlugin.bind(theClass)
 	function theClass:do_on_login_success()
 		print("[LoginScene:do_on_login_success()]")
 		self:hide_progress_message_box()
-		
+		if GlobalSetting.hall_server_websocket ~= nil then
+			GlobalSetting.hall_server_websocket:close()
+			GlobalSetting.hall_server_websocket = nil
+		end
 		local hall = createHallScene()
 		CCDirector:sharedDirector():replaceScene(hall)
 	end
