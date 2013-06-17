@@ -446,4 +446,35 @@ function GActionPlugin.bind(theClass)
 			cclog("user profile " .. self.users[user_id].nick_name)
 		end
 	end
+	
+	function theClass:doChangeDesk()
+		-- 通知服务器，换桌
+		local event_data = {player_id = self.g_user_id, poke_cards = ""}
+		self.menu_huanzhuo:setTag(self.CHANGE_DESK_TAG)
+		self.menu_huanzhuo:setVisible(false)
+		self.menu_ready:setVisible(false)
+		if self.game_over_layer then
+			self.game_over_layer.gm_change_table:setVisible(false)
+		end
+		self.g_WebSocket:trigger("g.user_change_table", event_data, function(data) 
+			print("========game.user_change_table return success: " , data)
+			self.menu_huanzhuo:setVisible(true)
+			self.menu_ready:setVisible(true)
+			self.menu_huanzhuo:setTag(1000)
+			if self.game_over_layer then
+				self.game_over_layer.gm_change_table:setVisible(true)
+			end
+			self:onReturn()
+			self:onEnterRoomSuccess(data)
+		end, function(data) 
+			self.menu_huanzhuo:setVisible(true)
+			self.menu_ready:setVisible(true)
+			self.menu_huanzhuo:setTag(1000)
+			if self.game_over_layer then
+				self.game_over_layer.gm_change_table:setVisible(true)
+			end
+			print("----------------game.user_change_table return failure: " , data)
+		end)
+		cclog("MainSceneDelegate on change desk")
+	end
 end
