@@ -15,7 +15,7 @@
 	<key>guides</key>
 	<array/>
 	<key>jsControlled</key>
-	<false/>
+	<true/>
 	<key>nodeGraph</key>
 	<dict>
 		<key>baseClass</key>
@@ -357,9 +357,9 @@
 						<key>displayName</key>
 						<string>avatar_menu_item</string>
 						<key>memberVarAssignmentName</key>
-						<string>avatar_menu_item</string>
+						<string>avatar_btn</string>
 						<key>memberVarAssignmentType</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -421,8 +421,8 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<integer>0</integer>
+									<string>on_ui_avatar_btn_clicked</string>
+									<integer>1</integer>
 								</array>
 							</dict>
 							<dict>
@@ -567,9 +567,9 @@
 				<key>displayName</key>
 				<string>upload_pic</string>
 				<key>memberVarAssignmentName</key>
-				<string>upload_pic</string>
+				<string>upload_pic_sprite</string>
 				<key>memberVarAssignmentType</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -652,9 +652,9 @@
 						<key>displayName</key>
 						<string>update_avatar_menu_item</string>
 						<key>memberVarAssignmentName</key>
-						<string>update_avatar_menu_item</string>
+						<string>update_avatar_btn</string>
 						<key>memberVarAssignmentType</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -716,8 +716,8 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<integer>0</integer>
+									<string>on_ui_update_avatar_btn_clicked</string>
+									<integer>1</integer>
 								</array>
 							</dict>
 							<dict>
@@ -867,9 +867,9 @@
 						<key>displayName</key>
 						<string>update_pswd_menu_item</string>
 						<key>memberVarAssignmentName</key>
-						<string>update_pswd_menu_item</string>
+						<string>update_pwd_btn</string>
 						<key>memberVarAssignmentType</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -931,8 +931,8 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<integer>0</integer>
+									<string>on_ui_update_pwd_btn_clicked</string>
+									<integer>1</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1082,9 +1082,9 @@
 						<key>displayName</key>
 						<string>prop_menu_item</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>player_cats_btn</string>
 						<key>memberVarAssignmentType</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -1146,8 +1146,8 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<integer>0</integer>
+									<string>on_player_cats_btn_clicked</string>
+									<integer>1</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1457,9 +1457,9 @@
 						<key>displayName</key>
 						<string>close_menu_item</string>
 						<key>memberVarAssignmentName</key>
-						<string>close_menu_item</string>
+						<string>close_btn</string>
 						<key>memberVarAssignmentType</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -1521,8 +1521,8 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string></string>
-									<integer>0</integer>
+									<string>on_ui_close_btn_clicked</string>
+									<integer>1</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1745,11 +1745,11 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>title</string>
+				<string>title_sprite</string>
 				<key>memberVarAssignmentName</key>
-				<string>title</string>
+				<string>title_sprite</string>
 				<key>memberVarAssignmentType</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -1825,13 +1825,37 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCLayer</string>
+				<string>container</string>
 				<key>memberVarAssignmentName</key>
 				<string>container</string>
 				<key>memberVarAssignmentType</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>268</real>
+							<real>59</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>contentSize</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>480</real>
+							<real>330</real>
+							<integer>0</integer>
+						</array>
+					</dict>
 					<dict>
 						<key>name</key>
 						<string>anchorPoint</string>
@@ -1885,8 +1909,6 @@
 						<true/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -1894,11 +1916,11 @@
 		<key>displayName</key>
 		<string>CCLayer</string>
 		<key>jsController</key>
-		<string>MainScene</string>
+		<string>user_center_scene</string>
 		<key>memberVarAssignmentName</key>
-		<string></string>
+		<string>rootNode</string>
 		<key>memberVarAssignmentType</key>
-		<integer>0</integer>
+		<integer>1</integer>
 		<key>properties</key>
 		<array>
 			<dict>
