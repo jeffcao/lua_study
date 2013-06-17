@@ -394,6 +394,10 @@ function GUIUpdatePlugin.bind(theClass)
 		self.menu_tuoguan:setVisible(false)
 		if self.game_over_layer == nil  then
 			self.game_over_layer = createGameOver()
+			local change = self.onChangeDeskClicked
+			local close = function() self.game_over_layer:dismiss() end
+			local tohall = self.exit
+			self.game_over_layer:initCallback(tohall, change, close)
 			self.rootNode:addChild(self.game_over_layer, self.GAME_OVER_ORDER)
 		end
 		self:retrievePlayers(data.players)
@@ -417,7 +421,7 @@ function GUIUpdatePlugin.bind(theClass)
 		local callFunc = CCCallFunc:create(__bind(show, self))
 		local seq = CCSequence:createWithTwoActions(delayTime, callFunc)
 		self.rootNode:runAction(seq)
-		local close_seq = CCSequence:createWithTwoActions(CCDelayTime:create(7),CCCallFunc:create(function() 
+		local close_seq = CCSequence:createWithTwoActions(CCDelayTime:create(27),CCCallFunc:create(function() 
 			self:closeGameOver()
 		end))
 		close_seq:setTag(self.GAME_OVER_HIDE_ACTION_TAG)
@@ -633,6 +637,10 @@ function GUIUpdatePlugin.bind(theClass)
 		
 		self:doTuoguan()
 		self:playButtonEffect()
+	end
+	
+	function theClass:onChangeDeskClicked()
+		self:doChangeDesk()
 	end
 	
 end

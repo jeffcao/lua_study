@@ -34,8 +34,9 @@ function GamingScene:ctor()
 	self.ccbproxy = CCBProxy:create()
 	self.ccbproxy:retain()
 	ccb.GamingScene = self
+	self.onTuoguanClicked = __bind(self.onTestAnim, self)
 	self.onCancelTuoguanClicked = __bind(self.onCancelTuoguanClicked, self)
-	self.onTuoguanClicked = __bind(self.onTuoguanClicked, self)
+	--self.onTuoguanClicked = __bind(self.onTuoguanClicked, self)
 	self.onSelfUserClicked = __bind(self.onSelfUserClicked, self)
 	self.onBgMusicClicked = __bind(self.onBgMusicClicked, self)
 	self.onEffectMusicClicked = __bind(self.onEffectMusicClicked, self)
@@ -49,6 +50,7 @@ function GamingScene:ctor()
 	self.onCardTipClicked = __bind(self.onCardTipClicked, self)
 	self.onReselectClicked = __bind(self.onReselectClicked, self)
 	self.onCancelTuoguanClicked = __bind(self.onCancelTuoguanClicked, self)
+	self.onChangeDeskClicked = __bind(self.onChangeDeskClicked, self)
 	
 	local node = CCBReaderLoad("GamingScene.ccbi", self.ccbproxy, true, "GamingScene")
 
@@ -74,6 +76,8 @@ end
 function GamingScene:onTestAnim()
 	print("onTestAnim")
 	Explosion.explode(self.rootNode)
+	local game_over = "{\"game_result\":{\"winner_player_id\":\"10006\",\"bombs\":\"0\",\"spring\":\"0\",\"anti_spring\":\"0\",\"base\":20,\"lord_value\":\"3\",\"total\":120,\"balance\":{\"10006\":60,\"40188\":60,\"40189\":-120}},\"players\":[{\"user_id\":10006,\"avatar\":\"0\",\"nick_name\":\"10006\",\"gender\":\"1\",\"is_robot\":\"0\",\"state\":1,\"tuo_guan\":0,\"lord_value\":-1,\"grab_lord\":0,\"player_role\":1,\"poke_card_count\":0},{\"user_id\":40188,\"avatar\":\"1\",\"nick_name\":\"4e664e66\",\"gender\":\"1\",\"is_robot\":\"1\",\"state\":1,\"tuo_guan\":1,\"lord_value\":0,\"grab_lord\":1,\"player_role\":1,\"poke_card_count\":15},{\"user_id\":40189,\"avatar\":\"0\",\"nick_name\":\"82cf582466256653\",\"gender\":\"1\",\"is_robot\":\"1\",\"state\":1,\"tuo_guan\":1,\"lord_value\":3,\"grab_lord\":0,\"player_role\":2,\"poke_card_count\":8}],\"notify_id\":30,\"__srv_seq_id\":5099984}"
+	self:showGameOver(game_over)
 end
 
 function GamingScene:onTest()
