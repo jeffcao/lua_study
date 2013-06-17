@@ -20,6 +20,7 @@ require "src.WebsocketRails.Timer"
 require "src.GTriggerCallback"
 require "src.GConnectionPlugin"
 require "src.GChatPlugin"
+require "src.GAnimationPlugin"
 
 GamingScene = class("GamingScene", function()
 	return display.newScene("GamingScene")
@@ -33,7 +34,7 @@ function GamingScene:ctor()
 	self.ccbproxy = CCBProxy:create()
 	self.ccbproxy:retain()
 	ccb.GamingScene = self
-	self.onTuoguan = __bind(self.onTest, self)
+	self.onTuoguan = __bind(self.onTestAnim, self)
 	self.onSelfUserClicked = __bind(self.onSelfUserClicked, self)
 	self.onBgMusicClicked = __bind(self.onBgMusicClicked, self)
 	self.onEffectMusicClicked = __bind(self.onEffectMusicClicked, self)
@@ -41,6 +42,11 @@ function GamingScene:ctor()
 	self.onNextUserClicked = __bind(self.onNextUserClicked, self)
 	self.onCloseClicked = __bind(self.onCloseClicked, self)
 	self.onStartReadyClicked = __bind(self.onStartReadyClicked, self)
+	self.onGetLordClicked = __bind(self.onGetLordClicked, self)
+	self.onBuchuClicked = __bind(self.onBuchuClicked, self)
+	self.onChupaiClicked = __bind(self.onChupaiClicked, self)
+	self.onCardTipClicked = __bind(self.onCardTipClicked, self)
+	self.onReselectClicked = __bind(self.onReselectClicked, self)
 	
 	local node = CCBReaderLoad("GamingScene.ccbi", self.ccbproxy, true, "GamingScene")
 
@@ -56,11 +62,16 @@ function GamingScene:ctor()
 	self.prev_user_avatar:setScale(0.65 * GlobalSetting.content_scale_factor)
 	
 	self.json = require "cjson"
-	
+	self.g_WebSocket.on_open = function() print("websockt on open after gaming") end
 end
 
 function GamingScene:onNextUserClicked()
 	print("onNextUserClicked")
+end
+
+function GamingScene:onTestAnim()
+	print("onTestAnim")
+	Explosion.explode(self.rootNode)
 end
 
 function GamingScene:onTest()

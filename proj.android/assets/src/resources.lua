@@ -1,4 +1,5 @@
 local dirMusic = "res/Music/"
+local dirImage = "ccbResources/"
 Res = {
 	s_landing_scene = "LandingScene.ccbi",
 	common_plist = "ccbResources/common.plist",
@@ -11,6 +12,8 @@ Res = {
 
 -- 背景音乐
  s_music_bg = dirMusic .. "bg/bg.mp3",
+ 
+ s_anim_plist = dirImage .. "animation.plist",
 
 -- 背景音乐列表
  s_music_bg_arr = {dirMusic .. "bg/bg01.mp3", dirMusic .. "bg/bg02.mp3",dirMusic .. "bg/bg03.ogg",dirMusic .. "bg/bg04.mp3"},
