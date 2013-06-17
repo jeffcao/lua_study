@@ -84,9 +84,7 @@ function GServerMsgPlugin.bind(theClass)
 			cclog("被踢出房间")
 			--TODO_LUA
 			--cc.WebSocketBridge.sharedWebSocketBridge().notifyGameClose()
-			SimpleAudioEngine:sharedEngine():stopBackgroundMusic()
-			local scene = createHallScene()
-			CCDirector:sharedDirector():replaceScene(scene)
+			self:exit()
 		else
 			cclog("其他用户被踢出房间，刷新界面")
 			if (data.players) then

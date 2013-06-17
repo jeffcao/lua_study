@@ -384,7 +384,7 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	function theClass:onCloseClicked() 
 		if self._has_gaming_started then
-			self:showExit() --TODO
+			self:showExit()
 	 	else 
 			self:exit()
 		end
@@ -431,7 +431,7 @@ function GUIUpdatePlugin.bind(theClass)
 	function theClass:onEffectMusicClicked()
 		if not self.set_dialog then
 			self.set_dialog = createSetDialog()
-			self.rootNode:addChild(self.set_dialog)
+			self.rootNode:addChild(self.set_dialog, self.SET_LAYER_ORDER)
 		end
 		self.set_dialog:updateVolume()
 		self.set_dialog:show()
@@ -476,7 +476,6 @@ function GUIUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:onCloseClicked() 
-		self:showExit()
 		if self._has_gaming_started then
 			self:showExit()
 	 	else 
@@ -496,6 +495,7 @@ function GUIUpdatePlugin.bind(theClass)
 			self.exit_layer:setTitle("强制退出")
 			self.exit_layer:setMessage("您正在游戏中，此时强退系统将最大输赢扣除您的豆子。")
 			self.exit_layer:setYesButton(__bind(self.exit, self))
+			self.rootNode:reorderChild(self.exit_layer, self.NOTIFY_ORDER)
 		end
 		if self.exit_layer:isShowing() then
 			return
@@ -504,7 +504,9 @@ function GUIUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:exit()
-		--do nothing
+		SimpleAudioEngine:sharedEngine():stopBackgroundMusic()
+		local scene = createHallScene()
+		CCDirector:sharedDirector():replaceScene(scene)
 	end
 	
 	function theClass:onEnterRoomSuccess(data) 

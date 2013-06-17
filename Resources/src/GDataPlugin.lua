@@ -12,6 +12,7 @@ function GDataPlugin.bind(theClass)
 		self.INSECT_ANIM_ORDER = 2000
 		self.CHAT_LAYER_ORDER = 2120--聊天板
 		self.MSG_LAYER_ORDER = 2400--聊天气泡
+		self.SET_LAYER_ORDER = 2130--设置板
 		self.winSize = CCDirector:sharedDirector():getWinSize()
 		self.y_ratio = self.winSize.height / 480.0
 		self.x_ratio = self.winSize.width / 800.0
@@ -54,8 +55,7 @@ function GDataPlugin.bind(theClass)
         self:updateLordValue(self.self_user_lord_value, -1)
 		self:updateLordValue(self.prev_user_lord_value, -1)
 		self:updateLordValue(self.next_user_lord_value, -1)
-		
-		self.menu_tuoguan:setVisible(true)
+
         
         self:loadSettings()
         
