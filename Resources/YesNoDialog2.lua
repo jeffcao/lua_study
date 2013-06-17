@@ -13,10 +13,10 @@ end
 function YesNoDialog2:ctor()
 	self:create("ExitLayer.ccbi")
 	
-	self.msg = self.ccbproxy:getNodeWithType("msg_text", "CCLabelTTF")
-	self.title = self.ccbproxy:getNodeWithType("title_text", "CCLabelTTF")
-	self.confirm = self.ccbproxy:getNodeWithType("confirm_btn", "CCMenuItemImage")
-	self.reject = self.ccbproxy:getNodeWithType("reject_btn", "CCMenuItemImage")
+	self.msg = tolua.cast(self.msg_text, "CCLabelTTF")
+	self.title = tolua.cast(self.title_text, "CCLabelTTF")
+	self.confirm = tolua.cast(self.confirm_btn, "CCMenuItemImage")
+	self.reject = tolua.cast(self.reject_btn, "CCMenuItemImage")
 	
 	self:setNoButton(function()
 		self:dismiss()
