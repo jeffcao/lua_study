@@ -3934,7 +3934,7 @@
 										<string>Block</string>
 										<key>value</key>
 										<array>
-											<string>onTuoguan</string>
+											<string>onTuoguanClicked</string>
 											<integer>2</integer>
 										</array>
 									</dict>
@@ -5492,8 +5492,6 @@
 						<true/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -6941,7 +6939,7 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string>onCancelTuoguan</string>
+									<string>onCancelTuoguanClicked</string>
 									<integer>2</integer>
 								</array>
 							</dict>
