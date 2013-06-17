@@ -9,12 +9,12 @@ UserCenterScene = class("UserCenterScene", function()
 	end
 )
 
-function createUserCenterScene()
+function createUserCenterScene(avatar_call_back)
 	print("create UserCenterScene")
-	return UserCenterScene.new()
+	return UserCenterScene.new(avatar_call_back)
 end
 
-function UserCenterScene:ctor()
+function UserCenterScene:ctor(avatar_call_back)
 	
 	ccb.user_center_scene = self
 	
@@ -30,14 +30,15 @@ function UserCenterScene:ctor()
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
-	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler(__bind(self.onKeypad, self))
-
-
-	self:doSetLayer("personal_info")
+	
+	self.avatar_call_back = avatar_call_back
+	
+	self:init_controller()
 	
 end
 
 
 UserCenterSceneUPlugin.bind(UserCenterScene)
+UIControllerPlugin.bind(UserCenterScene)

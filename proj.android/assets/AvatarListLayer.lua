@@ -6,11 +6,11 @@ AvatarListLayer = class("AvatarListLayer", function()
 end
 )
 
-function createAvatarListLayer()
-	return AvatarListLayer.new()
+function createAvatarListLayer(avatar_callback)
+	return AvatarListLayer.new(avatar_callback)
 end
 
-function AvatarListLayer:ctor()
+function AvatarListLayer:ctor(avatar_callback)
 
 	ccb.avatar_list_scene = self
 	
@@ -20,6 +20,7 @@ function AvatarListLayer:ctor()
  	local node = CCBReaderLoad("AvatarList.ccbi", ccbproxy, false, "")
  	self.rootNode = tolua.cast(node, "CCLayer")
 	self:addChild(node)
+	self.avatar_callback = avatar_callback
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
@@ -36,8 +37,8 @@ function AvatarListLayer:do_on_trigger_success(data)
 	print("[AvatarListLayer:do_on_trigger_success]")
 	self:hide_progress_message_box()
 	
-	if "function" == type(self.after_trigger_success) then
-		self.after_trigger_success(data)
+	if "function" == type(self.avatar_callback) then
+		self.avatar_callback(data)
 	end
 		
 end

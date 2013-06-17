@@ -19,6 +19,7 @@ local function load_requires()
 require("src/WebsocketRails/WebSocketRails")
 require "src/WebsocketRails/WebSocketRails_Event"
 require "src/WebsocketRails/WebSocketRails_Connection"
+require "src/WebsocketRails/WebSocketRails_Connection_CC"
 require "src/WebsocketRails/WebSocketRails_Channel"
 require "src.WebsocketRails.Timer"
 require "framework.init"
@@ -119,10 +120,10 @@ local function main()
 		end
 		lg:trigger("login.sign_in",  event_data, fn, fn)
 	end
-	game_test()
+--	game_test()
 
---	local ls = createLandingScene()
---	CCDirector:sharedDirector():runWithScene(ls)
+	local ls = createLandingScene()
+	CCDirector:sharedDirector():runWithScene(ls)
 	
 --	return true
 --	
