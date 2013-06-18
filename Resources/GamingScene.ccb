@@ -7510,7 +7510,7 @@
 								<string>Block</string>
 								<key>value</key>
 								<array>
-									<string>onChangeDesk</string>
+									<string>onChangeDeskClicked</string>
 									<integer>2</integer>
 								</array>
 							</dict>
