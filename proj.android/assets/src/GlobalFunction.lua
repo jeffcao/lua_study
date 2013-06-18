@@ -137,3 +137,31 @@ end
 function sleep(n)
   os.execute("sleep " .. tonumber(n))
 end
+
+function isnan(x) 
+    if (x ~= x) then
+        --print(string.format("NaN: %s ~= %s", x, x));
+        return true; --only NaNs will have the property of not being equal to themselves
+    end;
+
+    --but not all NaN's will have the property of not being equal to themselves
+
+    --only a number can not be a number
+    if type(x) ~= "number" then
+       return false; 
+    end;
+
+    --fails in cultures other than en-US, and sometimes fails in enUS depending on the compiler
+--  if tostring(x) == "-1.#IND" then
+
+    --Slower, but works around the three above bugs in LUA
+    if tostring(x) == tostring((-1)^0.5) then
+        --print("NaN: x = sqrt(-1)");
+        return true; 
+    end;
+
+    --i really can't help you anymore. 
+    --You're just going to have to live with the exception
+
+    return false;
+end

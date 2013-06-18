@@ -70,7 +70,7 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:doToInfo()
-		local scene = createUserCenterScene(__bind(self.display_player_avatar, self))
+		local scene = createUserCenterScene(__bind(self.init_current_player_info, self))
 		CCDirector:sharedDirector():pushScene(scene)
 	end
 	
@@ -95,7 +95,7 @@ function HallSceneUPlugin.bind(theClass)
 		local avatar_btn = tolua.cast(self.avatar_btn, "CCMenuItemImage")
 		local avatar_png = self:get_player_avatar_png_name()
 
-		print("[HallSceneUPlugin:init_current_player_info] avatar_png: "..avatar_png)
+		print("[HallSceneUPlugin:display_player_avatar] avatar_png: "..avatar_png)
 		avatar_btn:setNormalSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(avatar_png))
 		avatar_btn:setSelectedSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(avatar_png))
 	end
@@ -105,16 +105,23 @@ function HallSceneUPlugin.bind(theClass)
 		cache:addSpriteFramesWithFile(Res.info_plist)
 		
 		print("[HallSceneUPlugin:init_current_player_info]")
+		
 		local cur_user = GlobalSetting.current_user
 		dump(cur_user, "[HallSceneUPlugin:init_current_player_info] cur_user: ")
 		local nick_name_lb = tolua.cast(self.nick_name_lb, "CCLabelTTF")
 		nick_name_lb:setString(cur_user.nick_name)
-		
-		local player_beans_lb = tolua.cast(self.player_beans_lb, "CCLabelTTF")
-		player_beans_lb:setString(data.score)
-		
+
 		self:display_player_avatar()
 		
+		if data.score then
+			local player_beans_lb = tolua.cast(self.player_beans_lb, "CCLabelTTF")
+			player_beans_lb:setString(data.score)
+			
+			GlobalSetting.current_user.socre = data.score
+			GlobalSetting.current_user.win_count = data.win_count
+			GlobalSetting.current_user.lost_count = data.lost_count
+		end
+
 	end
 	
 	function theClass:init_room_tabview(data)

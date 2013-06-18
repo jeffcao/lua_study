@@ -24,6 +24,7 @@ function UIControllerPlugin.bind(theClass)
 	function theClass:addEditbox(layer, width, height, is_password, tag)
 		layer.editbox = self:createEditbox(width, height, is_password)
 		layer:addChild(layer.editbox, 0, tag)
+		return layer.editbox
 	end
 	
 	function theClass:create_progress_animation(layer, sprite)
