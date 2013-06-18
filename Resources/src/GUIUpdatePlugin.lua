@@ -516,7 +516,6 @@ function GUIUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:onEnterRoomSuccess(data) 
-		--TODO 
 		self.g_WebSocket:clear_notify_id()
 		dump(data, "[onEnterRoomSuccess] data => ")
 		local game_info = data.game_info

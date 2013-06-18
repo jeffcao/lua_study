@@ -126,7 +126,6 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:init_room_tabview(data)
 		print("[HallSceneUPlugin:init_room_tabview]")
-		dump(data.room, "[HallSceneUPlugin:init_room_tabview] data rooms: ")
 		local h = LuaEventHandler:create(function(fn, table, a1, a2)
 			local r
 			if fn == "cellSize" then
