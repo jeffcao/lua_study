@@ -1,4 +1,5 @@
 require "src.InfoLayerUPlugin"
+require "src.UIControllerPlugin"
 require "src.CheckBox"
 
 InfoLayer = class("InfoLayer", function()
@@ -25,18 +26,21 @@ function InfoLayer:ctor()
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 
-	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
-	cache:addSpriteFramesWithFile(Res.common_plist)
+--	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
+--	cache:addSpriteFramesWithFile(Res.common_plist)
+--	
+--	local scale9_2 = CCScale9Sprite:createWithSpriteFrameName("kuang_a.png")
+--	local editbox2 = CCEditBox:create(CCSizeMake(320,40), scale9_2)
+--	editbox2:setPosition(ccp(72,25))
+--	editbox2:setAnchorPoint(ccp(0,0.5))
+--	editbox2:setPlaceholderFont("default",16)
+--	editbox2:setFont("default",16)
+--	editbox2:setPlaceHolder("那一刻的风情")
+--	
+--	self.nickname_layer:addChild(editbox2)
 	
-	local scale9_2 = CCScale9Sprite:createWithSpriteFrameName("kuang_a.png")
-	local editbox2 = CCEditBox:create(CCSizeMake(320,40), scale9_2)
-	editbox2:setPosition(ccp(72,25))
-	editbox2:setAnchorPoint(ccp(0,0.5))
-	editbox2:setPlaceholderFont("default",16)
-	editbox2:setFont("default",16)
-	editbox2:setPlaceHolder("那一刻的风情")
-	
-	self.nickname_layer:addChild(editbox2)
+	self.input_png = "kuang_a.png"
+	self:addEditbox(self.nick_name_edit_layer, 225, 30, false, 101)
 
 	local menu1 = CheckBox.create("男")
 	local menu2 = CheckBox.create("女")
@@ -60,3 +64,5 @@ function InfoLayer:ctor()
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 end
+
+UIControllerPlugin.bind(InfoLayer)

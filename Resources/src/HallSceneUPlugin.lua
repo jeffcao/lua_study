@@ -52,7 +52,7 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:onInfoClick(tag, sender)
-		self.doToInfo()
+		self:doToInfo()
 	end
 	
 	function theClass:onAvatarClick(tag, sender)
@@ -60,7 +60,7 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:onMarketClick(tag, sender)
-		self.doToMarket()
+		self:doToMarket()
 	end
 	
 	function theClass:doToMarket()
