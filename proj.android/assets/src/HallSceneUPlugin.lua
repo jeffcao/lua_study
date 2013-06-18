@@ -178,20 +178,6 @@ function HallSceneUPlugin.bind(theClass)
 		self.after_trigger_success = __bind(self.do_connect_game_server, self)
 	end
 	
-	function theClass:do_connect_game_server(room_info)
-		print("[HallSceneUPlugin:enter_game_room]")
-		dump(room_info, "[HallSceneUPlugin:enter_game_room] room_info: ")
-		GlobalSetting.game_server_url = room_info.urls[1]
-		GlobalSetting.game_info = room_info
-		self:show_progress_message_box("进入房间...")
-		if GlobalSetting.g_WebSocket == nil then
-			self:connect_to_game_server()
-		else
-			self:do_on_websocket_ready()
-		end
-		
-	end
-	
 	function theClass:do_on_websocket_ready()
 		print("[HallSceneUPlugin:do_on_websocket_ready]")
 		self:check_connection()
@@ -218,11 +204,6 @@ function HallSceneUPlugin.bind(theClass)
 		end
 	end
 	
-	function theClass:do_on_game_server_websocket_ready()
-		print("[HallSceneUPlugin:do_on_websocket_ready]")
-		self:check_connection_game_server()
-		self.after_trigger_success = __bind(self.enter_game_room, self)
-	end
 	
 	function theClass:enter_game_room()
 		local game = createGamingScene()
