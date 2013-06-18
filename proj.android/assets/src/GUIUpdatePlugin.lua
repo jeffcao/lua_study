@@ -395,7 +395,7 @@ function GUIUpdatePlugin.bind(theClass)
 		if self.game_over_layer == nil  then
 			self.game_over_layer = createGameOver()
 			local change = __bind(self.onChangeDeskClicked, self)
-			local close = function() self.game_over_layer:dismiss() end
+			local close = __bind(self.closeGameOver, self)
 			local tohall = __bind(self.exit, self)
 			self.game_over_layer:initCallback(tohall, change, close)
 			self.rootNode:addChild(self.game_over_layer, self.GAME_OVER_ORDER)
@@ -516,7 +516,8 @@ function GUIUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:onEnterRoomSuccess(data) 
-		--TODO self.g_WebSocket:clear_notify_id()
+		--TODO 
+		self.g_WebSocket:clear_notify_id()
 		dump(data, "[onEnterRoomSuccess] data => ")
 		local game_info = data.game_info
 		
@@ -643,6 +644,11 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	function theClass:onChangeDeskClicked()
 		self:doChangeDesk()
+	end
+	
+	function theClass:updateSocket(status)
+		cclog("update socket status to " .. status)
+		self.socket_label:setString(status)
 	end
 	
 end

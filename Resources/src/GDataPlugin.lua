@@ -73,6 +73,7 @@ function GDataPlugin.bind(theClass)
 		
 		self.users = {}
 		
+		self.socket_label:setVisible(true)
 		
 		
 		self:enter_room(self.g_room_id)

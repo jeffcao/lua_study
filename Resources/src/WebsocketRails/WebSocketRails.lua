@@ -63,6 +63,16 @@ function WebSocketRails:new(url, use_websockets)
     return this_obj
 end
 
+function WebSocketRails:clear_notify_id()
+	cclog("clear_notify_id")
+	self.last_notify_id = -1
+end
+
+function WebSocketRails:get_notify_id()
+	cclog("get_notify_id")
+	return self.last_notify_id
+end
+
 function WebSocketRails:new_message(data)
     local results = {}
     for _i = 1, #data do
@@ -74,6 +84,19 @@ function WebSocketRails:new_message(data)
         
         if GlobalSetting.debug_dump_websocket_event and not (event:is_ping() or event:is_server_ack()) then
         	print("[" .. self.url .. "] got event => ", event:serialize() )
+        end
+        
+        -- check notify id
+        local last_notify_id = self.last_notify_id or -1
+        local cur_id = nil
+        local has_notify_id = type(data) == "table" and #data > 0 and type(data[1]) == "table" and #data[1] > 1 and data[1][2].data and type(data[1][2].data) == "table"
+        if has_notify_id then cur_id = data[1][2].data.notify_id end
+        if cur_id and cur_id > last_notify_id then
+        	self.last_notify_id = cur_id
+        	cclog("change notify id from %d to %d", last_notify_id, cur_id)
+        elseif cur_id then
+        	cclog("current notify id %d is not bigger than last notify id%d", cur_id, last_notify_id)
+        	return
         end
  		
  		ack_event = event:new_client_ack_event()

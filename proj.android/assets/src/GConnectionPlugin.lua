@@ -20,6 +20,8 @@ function GConnectionPlugin.bind(theClass)
 		end)
 		self:bind_channel(self.g_channel)
 		self:bind_channel(self.m_channel)
+		
+		self:initSocket()
 	end
 	
 	function theClass:bind_channel(channel) 
@@ -49,6 +51,76 @@ function GConnectionPlugin.bind(theClass)
 			GlobalSetting.g_WebSocket:close()
 			GlobalSetting.g_WebSocket = nil
 		end
+	end
+	
+	function theClass:initSocket()
+		self.g_WebSocket.on_open = __bind(self.onSocketReopened, self)
+		self.g_WebSocket:bind("connection_closed", function(data) self:onSocketProblem(data, "connection_closed") end)
+		self.g_WebSocket:bind("connection_error", function(data) self:onSocketProblem(data, "connection_error") end)
+	end
+	
+	function theClass:onSocketProblem(data, event_name)
+		dump(data, "onSocketProblem:" .. event_name)
+		if data.self_close then return end
+		if data.retry_excceed then
+			self:onSocketReopenFail()
+		else
+			self:onSocketReopening()
+		end
+	end
+	
+	--正在重连网络
+	function theClass:onSocketReopening()
+		cclog("game onSocketReopening")
+		self:updateSocket("socket: reopening")
+	end
+	
+	--网络已重新连接上
+	function theClass:onSocketReopened()
+		cclog("game onSocketReopened")
+		self:restoreConnection()
+		self:updateSocket("socket: reopened, restoring")
+	end
+	
+	--网络重连失败
+	function theClass:onSocketReopenFail()
+		cclog("game onSocketReopenFail")
+		self:exit()
+	end
+	
+	--restore connection失败，退出游戏
+	function theClass:onSocketRestoreFail()
+		cclog("game onSocketRestoreFail")
+		self:exit()
+	end
+	
+	--restore connection成功
+	function theClass:onSocketRestored(data)
+		--TODO
+		cclog("game onSocketRestored")
+		self:updateSocket("socket: restored")
+		local game_info = data.game_info
+		self:init_channel(game_info)
+		
+		local game_channel = game_info.channel_name
+		for _, event in pairs(data.events) do
+			local name = event.notify_name
+			local channel = "null"
+			if event.is_channel == 1 then
+				channel = "\"" .. game_channel .. "\""
+			end
+			local template = "[[\"event_name\",{\"id\":null, \"success\":null, \"channel\":%s, \"data\":%s}]]"
+			local event_msg = string.format(template, channel, event.notify_data)
+			self.g_WebSocket:new_message(event_msg)
+		end
+		self:updateTuoguan()
+	end
+	
+	--restore connection
+	function theClass:restoreConnection()
+		--TODO
+		local event_data = {user_id = self.g_user_id, token = GlobalSetting.current_user.login_token, notify_id = self.g_WebSocket:get_notify_id()}
+		self.g_WebSocket:trigger("g.restore_connection", event_data, __bind(self.onSocketRestored, self), __bind(self.onSocketRestoreFail, self))
 	end
 	
 	--print("theClass.registerCleanup ==> ", theClass.registerCleanup)

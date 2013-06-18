@@ -108,9 +108,16 @@ local function main()
 								print("gw.on_open")
 								gw:trigger("g.check_connection", oauth, gw_oauth_fn, gw_oauth_fail)
 							end
-							gw.on_close = function()
+							local on_close = function(data)
 								print("gw.on_close")
+								if data then dump(data, "data is") else print("data is nil") end
 							end
+							local on_error = function(data)
+								print("gw.on_error")
+								if data then dump(data, "data is") else print("data is nil") end
+							end
+							gw:bind("connection_closed", on_close)
+							gw:bind("connection_error", on_error)
 						end
 						local go_game = {retry = "0", user_id = "10004", room_id = data.room[1].room_id}
 						hl:trigger("ui.request_enter_room", go_game, go_game_fn)
@@ -123,10 +130,10 @@ local function main()
 		end
 		lg:trigger("login.sign_in",  event_data, fn, fn)
 	end
---	game_test()
+	game_test()
 
-	local ls = createLandingScene()
-	CCDirector:sharedDirector():runWithScene(ls)
+--	local ls = createLandingScene()
+--	CCDirector:sharedDirector():runWithScene(ls)
 	
 --	return true
 --	

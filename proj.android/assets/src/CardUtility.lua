@@ -483,7 +483,7 @@ CardUtility.isPlaneWithWing = function(card)
 	
 	-- 剔除重复的牌
 	three_cards = table.unique(three_cards, function(obj) return obj.poke_value end)
-	pairs_cards = tale.unique(pairs_cards, function(obj) return obj.poke_value end)
+	pairs_cards = table.unique(pairs_cards, function(obj) return obj.poke_value end)
 	-- 三张的个数和对子的个数必须等于牌数整除5,
 	if ( (#three_cards ~= (#poke_cards / 5)) or
 			(#pairs_cards ~= (#poke_cards / 5) ) ) then

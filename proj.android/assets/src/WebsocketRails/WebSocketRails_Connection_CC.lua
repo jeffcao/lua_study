@@ -8,6 +8,15 @@ local function __bind(fn, obj)
     end
 end
 
+local wrap_err = function(self, data)
+	data = data or {}
+	local self_close = self._self_close or false
+    local retry_excceed = self._connection_retries >= WebSocketRails.config.CONNECTION_MAX_RETRIES
+    data.self_close = self_close
+    data.retry_excceed = retry_excceed
+    return data
+end
+
 local json = require "cjson"
 --local json = cjson_safe.new
 
@@ -83,7 +92,7 @@ on_close = function(self, event)
 --	end
 
     local close_event = nil
-    close_event = WebSocketRails.Event:new({ "connection_closed", {} })
+    close_event = WebSocketRails.Event:new({ "connection_closed", wrap_err(self, {})})
     self.dispatcher:dispatch(close_event)
 	self.dispatcher.state = "closed"
     
@@ -111,7 +120,8 @@ on_error = function(self, event)
     if event ~= nil then
         error_data = event.data
     end
-    error_event = WebSocketRails.Event:new({"connection_error", error_data})
+
+    error_event = WebSocketRails.Event:new({"connection_error", wrap_err(self,error_data)})
     
 	self.dispatcher:dispatch(error_event)
 	self.dispatcher.state = "closed"
@@ -208,7 +218,7 @@ connect = function(self)
 		--WebsocketManager:sharedWebsocketManager():close(self._websocket_id)
 		self._websocket_id = 0
 	    
-	    local error_event = WebSocketRails.Event:new({"connection_error", {message="Connection failed!"} })
+	    local error_event = WebSocketRails.Event:new({"connection_error", wrap_err(self, {message="Connection failed!"}) })
 	    self.dispatcher:dispatch(error_event)
 	    self.dispatcher.state = "closed"
 		

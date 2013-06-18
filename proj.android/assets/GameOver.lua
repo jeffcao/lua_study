@@ -27,6 +27,7 @@ function GameOver:initCallback(onToHall, onChangeDesk, onClose)
 	self.rootNode = tolua.cast(node, "CCLayer")
 	self:addChild(self.rootNode)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+	self:setVisible(false)
 	
 	local menus = CCArray:create()
 	menus:addObject(self.to_hall_btn:getParent())

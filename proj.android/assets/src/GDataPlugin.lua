@@ -43,7 +43,6 @@ function GDataPlugin.bind(theClass)
 		self.rootNode:registerScriptKeypadHandler(key_fn)
         
         --TODO bind onPause和onResume事件
-        --TODO 加入虫子动画
         GAnimationPlugin.sharedAnimation()
         local butterfly = createButterFly()
         self.rootNode:addChild(butterfly, self.BUTTERFLY_ANIM_ORDER)
@@ -74,6 +73,7 @@ function GDataPlugin.bind(theClass)
 		
 		self.users = {}
 		
+		self.socket_label:setVisible(true)
 		
 		
 		self:enter_room(self.g_room_id)
