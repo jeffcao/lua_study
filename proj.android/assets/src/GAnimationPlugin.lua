@@ -154,7 +154,7 @@ function Insects:ctor()
 	self:setDisplayFrame(pFrame)
 	self:setScale(GlobalSetting.content_scale_factor)
 	
-	self.INSECT_DELAY = 10
+	self.INSECT_DELAY = 120
 	self.action_tag = 3000
 	
 	local contentSize = self:getContentSize() 
