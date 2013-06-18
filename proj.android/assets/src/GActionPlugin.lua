@@ -49,7 +49,6 @@ function GActionPlugin.bind(theClass)
 	end
 	
 	function theClass:doSendChatMessage(message) 
-		--TODO_LUA
 		self.c_channel:trigger("g.on_message", {msg = message, user_id = self.g_user_id})
 	end
 	
@@ -133,7 +132,7 @@ function GActionPlugin.bind(theClass)
 			
 			if card.card_type == CardType.BOMB or card.card_type == CardType.ROCKET then
 				cclog("炸弹效果")
-				Explosion.explode(self.rootNode) --TODO bomb
+				Explosion.explode(self.rootNode)
 			end
 			
 			-- 记住本次出牌
@@ -342,7 +341,7 @@ function GActionPlugin.bind(theClass)
 		end, function(data) 
 			self.menu_huanzhuo:setVisible(true)
 			self.menu_ready:setVisible(true)
-			self.menu_huanzhuo:setTag(ScaleUtility.NODE_SCALE_TAG_BASE) --TODO
+			self.menu_huanzhuo:setTag(1000) 
 			if self.game_over_layer and self.game_over_layer:isShowing() then
 				self.game_over_layer:dismiss()
 			end
