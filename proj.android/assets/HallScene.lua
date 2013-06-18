@@ -1,5 +1,6 @@
 require "src.HallSceneUPlugin"
 require "src.HallServerConnectionPlugin"
+require "src.HallGameConnectionPlugin"
 require "src.UIControllerPlugin"
 require "RoomItem"
 require "Menu"
@@ -126,5 +127,6 @@ end
  HallSceneUPlugin.bind(HallScene)
  WidgetPlugin.bind(HallScene)
  HallServerConnectionPlugin.bind(HallScene)
+ HallGameConnectionPlugin.bind(HallScene)
  UIControllerPlugin.bind(HallScene)
  

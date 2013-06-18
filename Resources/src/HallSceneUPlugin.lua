@@ -70,7 +70,7 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:doToInfo()
-		local scene = createUserCenterScene(__bind(self.display_player_avatar, self))
+		local scene = createUserCenterScene(__bind(self.init_current_player_info, self))
 		CCDirector:sharedDirector():pushScene(scene)
 	end
 	
@@ -95,7 +95,7 @@ function HallSceneUPlugin.bind(theClass)
 		local avatar_btn = tolua.cast(self.avatar_btn, "CCMenuItemImage")
 		local avatar_png = self:get_player_avatar_png_name()
 
-		print("[HallSceneUPlugin:init_current_player_info] avatar_png: "..avatar_png)
+		print("[HallSceneUPlugin:display_player_avatar] avatar_png: "..avatar_png)
 		avatar_btn:setNormalSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(avatar_png))
 		avatar_btn:setSelectedSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(avatar_png))
 	end
@@ -105,22 +105,28 @@ function HallSceneUPlugin.bind(theClass)
 		cache:addSpriteFramesWithFile(Res.info_plist)
 		
 		print("[HallSceneUPlugin:init_current_player_info]")
+		
 		local cur_user = GlobalSetting.current_user
 		dump(cur_user, "[HallSceneUPlugin:init_current_player_info] cur_user: ")
 		local nick_name_lb = tolua.cast(self.nick_name_lb, "CCLabelTTF")
 		nick_name_lb:setString(cur_user.nick_name)
-		
-		local player_beans_lb = tolua.cast(self.player_beans_lb, "CCLabelTTF")
-		player_beans_lb:setString(data.score)
-		
+
 		self:display_player_avatar()
 		
+		if data.score then
+			local player_beans_lb = tolua.cast(self.player_beans_lb, "CCLabelTTF")
+			player_beans_lb:setString(data.score)
+			
+			GlobalSetting.current_user.socre = data.score
+			GlobalSetting.current_user.win_count = data.win_count
+			GlobalSetting.current_user.lost_count = data.lost_count
+		end
+
 	end
 	
 	function theClass:init_room_tabview(data)
 		print("[HallSceneUPlugin:init_room_tabview]")
 		dump(data.room, "[HallSceneUPlugin:init_room_tabview] data rooms: ")
-		local room_index = 1
 		local h = LuaEventHandler:create(function(fn, table, a1, a2)
 			local r
 			if fn == "cellSize" then
@@ -131,18 +137,20 @@ function HallSceneUPlugin.bind(theClass)
 					local a3 = createRoomItem()
 					print("[HallSceneUPlugin:init_room_tabview] a1: "..a1)
 					a3:init_room_info(data.room[a1], a1)
-					print("[HallSceneUPlugin:init_room_tabview] room_index: "..room_index)
-					room_index = room_index + 1
 					a2:addChild(a3, 0, 1)
 				else
 					local a3 = tolua.cast(a2:getChildByTag(1), "CCLayer")
 					local room_index = a1 + 1
-					RoomItem.init_room_info(a3, data.room[room_index], room_index)
+					a3:init_room_info(data.room[room_index], room_index)
 				end
 				r = a2
 			elseif fn == "numberOfCells" then
 				r = #(data.room)
 			elseif fn == "cellTouched" then
+				print("[HallSceneUPlugin:init_room_tabview] room_cell_couched")
+				local a3 = tolua.cast(a1:getChildByTag(1), "CCLayer")
+				dump(a3.room_info, "[HallSceneUPlugin:init_room_tabview] room_cell_couched, room_info: ")
+				self:do_on_room_touched(a3.room_info)
 			end
 			return r
 		end)
@@ -162,6 +170,14 @@ function HallSceneUPlugin.bind(theClass)
 		end
 	end
 	
+	function theClass:do_on_room_touched(room_info)
+		print("[HallSceneUPlugin:do_on_room_touched]")
+		local enter_info = {user_id=GlobalSetting.current_user.user_id, room_id=room_info.room_id}
+		self:show_progress_message_box("请求房间信息...")
+		self:request_enter_room(enter_info)
+		self.after_trigger_success = __bind(self.do_connect_game_server, self)
+	end
+	
 	function theClass:do_on_websocket_ready()
 		print("[HallSceneUPlugin:do_on_websocket_ready]")
 		self:check_connection()
@@ -179,12 +195,18 @@ function HallSceneUPlugin.bind(theClass)
 		
 	end
 	
-	function theClass:do_on_trigger_failure()
+	function theClass:do_on_trigger_failure(data)
 		print("[HallSceneUPlugin:do_on_trigger_failure]")
 		self:hide_progress_message_box()
 		self:show_message_box(self.failure_msg)
 		if "function" == type(self.after_trigger_failure) then
 			self.after_trigger_failure(data)
 		end
+	end
+	
+	
+	function theClass:enter_game_room()
+		local game = createGamingScene()
+		CCDirector:sharedDirector():replaceScene(game)
 	end
 end

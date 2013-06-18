@@ -25,8 +25,10 @@ GlobalSetting = {
 	login_server_websocket = nil,
 	
 	hall_server_url = "",
-	hall_server_token = "",
+--	hall_server_token = "",
 	hall_server_websocket = nil,
+	
+	game_server_url = "",
 	
 	content_scale_factor = 1.0,
 	

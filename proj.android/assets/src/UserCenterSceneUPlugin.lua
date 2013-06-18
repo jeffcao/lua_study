@@ -19,30 +19,39 @@ function UserCenterSceneUPlugin.bind(theClass)
 		self:doToHall()
 	end
 	
+	function theClass:set_title(tile_png)
+		local title_sprite = tolua.cast(self.title_sprite, "CCSprite")
+		title_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(tile_png))
+	end
+	
 	function theClass:do_ui_avatar_btn_clicked(tag, sender)
+		self:set_title("biaoti02.png")
 		self:doSetLayer("personal_info")
 	end
 	
 	function theClass:do_ui_update_avatar_btn_clicked(tag, sender)
+		self:set_title("biaoti04.png")
 		self:doSetLayer("update_avatar")
 	end
 	
 	function theClass:do_ui_update_pwd_btn_clicked()
+		self:set_title("biaoti01.png")
 		self:doSetLayer("update_password")
 	end
 	
 	function theClass:init_controller()
-		
+		self:set_title("biaoti02.png")
 		self:display_avatar()
 		self:doSetLayer("personal_info")
 	end
 	
-	function theClass:after_update_avatar(data)
+	function theClass:after_player_info_changed(data)
 		print("[theClass:after_update_avatar] data => ", data)
 		self:update_current_user(data)
 		self:display_avatar()
-		self.avatar_call_back()
+		self.avatar_call_back(data)
 	end
+
 	
 	function theClass:display_avatar()
 	
@@ -70,11 +79,11 @@ function UserCenterSceneUPlugin.bind(theClass)
 		self.container:removeAllChildrenWithCleanup(true)
 		local layer = nil
 		if name == "personal_info"  then 
-			layer = createInfoLayer()
+			layer = createInfoLayer(__bind(self.after_player_info_changed, self))
 		elseif name == "update_password" then
 			layer = createUpdatePasswordLayer()
 		else 
-			layer = createAvatarListLayer(__bind(self.after_update_avatar, self))
+			layer = createAvatarListLayer(__bind(self.after_player_info_changed, self))
 		end
 		
 		self.container:addChild(layer)
