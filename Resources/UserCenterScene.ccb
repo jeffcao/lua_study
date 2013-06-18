@@ -101,6 +101,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -1812,7 +1814,7 @@
 						<key>value</key>
 						<array>
 							<string>ccbResources/common.plist</string>
-							<string>biaoti07.png</string>
+							<string>biaoti02.png</string>
 						</array>
 					</dict>
 				</array>

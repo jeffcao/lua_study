@@ -156,9 +156,9 @@
 								<key>customClass</key>
 								<string></string>
 								<key>displayName</key>
-								<string>account_text</string>
+								<string>account_lb</string>
 								<key>memberVarAssignmentName</key>
-								<string>account_text</string>
+								<string>account_lb</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -562,8 +562,6 @@
 										<true/>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 							<dict>
 								<key>baseClass</key>
@@ -1333,9 +1331,9 @@
 								<key>customClass</key>
 								<string></string>
 								<key>displayName</key>
-								<string>scores_text</string>
+								<string>scores_lb</string>
 								<key>memberVarAssignmentName</key>
-								<string>scores_text</string>
+								<string>scores_lb</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -1762,6 +1760,8 @@
 										<string>胜率：</string>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 							<dict>
 								<key>baseClass</key>
@@ -1771,9 +1771,9 @@
 								<key>customClass</key>
 								<string></string>
 								<key>displayName</key>
-								<string>stats_text</string>
+								<string>stas_lb</string>
 								<key>memberVarAssignmentName</key>
-								<string>stas_text</string>
+								<string>stas_lb</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
