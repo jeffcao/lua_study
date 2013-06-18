@@ -77,7 +77,6 @@ function GAlarmPlugin.bind(theClass)
 		local callback = function()
 			local id = self.prev_user.user_id
 			cclog("player over time " .. id)
-			--TODO
 			self.g_WebSocket:trigger("g.player_timeout",{user_id = self.self_user.user_id, timeout_user_id = id})
 			if callbackFunc then
 				callbackFunc()
@@ -93,7 +92,6 @@ function GAlarmPlugin.bind(theClass)
 		local callback = function()
 			local id = self.next_user.user_id
 			cclog("player over time " .. id)
-			--TODO_LUA
 			self.g_WebSocket:trigger("g.player_timeout",{user_id = self.self_user.user_id, timeout_user_id = id})
 			if callbackFunc then
 				callbackFunc()

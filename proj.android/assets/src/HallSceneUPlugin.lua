@@ -127,7 +127,6 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:init_room_tabview(data)
 		print("[HallSceneUPlugin:init_room_tabview]")
 		dump(data.room, "[HallSceneUPlugin:init_room_tabview] data rooms: ")
-		local room_index = 1
 		local h = LuaEventHandler:create(function(fn, table, a1, a2)
 			local r
 			if fn == "cellSize" then
@@ -138,18 +137,20 @@ function HallSceneUPlugin.bind(theClass)
 					local a3 = createRoomItem()
 					print("[HallSceneUPlugin:init_room_tabview] a1: "..a1)
 					a3:init_room_info(data.room[a1], a1)
-					print("[HallSceneUPlugin:init_room_tabview] room_index: "..room_index)
-					room_index = room_index + 1
 					a2:addChild(a3, 0, 1)
 				else
 					local a3 = tolua.cast(a2:getChildByTag(1), "CCLayer")
 					local room_index = a1 + 1
-					RoomItem.init_room_info(a3, data.room[room_index], room_index)
+					a3:init_room_info(data.room[room_index], room_index)
 				end
 				r = a2
 			elseif fn == "numberOfCells" then
 				r = #(data.room)
 			elseif fn == "cellTouched" then
+				print("[HallSceneUPlugin:init_room_tabview] room_cell_couched")
+				local a3 = tolua.cast(a1:getChildByTag(1), "CCLayer")
+				dump(a3.room_info, "[HallSceneUPlugin:init_room_tabview] room_cell_couched, room_info: ")
+				self:do_on_room_touched(a3.room_info)
 			end
 			return r
 		end)
@@ -169,6 +170,28 @@ function HallSceneUPlugin.bind(theClass)
 		end
 	end
 	
+	function theClass:do_on_room_touched(room_info)
+		print("[HallSceneUPlugin:do_on_room_touched]")
+		local enter_info = {user_id=GlobalSetting.current_user.user_id, room_id=room_info.room_id}
+		self:show_progress_message_box("请求房间信息...")
+		self:request_enter_room(enter_info)
+		self.after_trigger_success = __bind(self.do_connect_game_server, self)
+	end
+	
+	function theClass:do_connect_game_server(room_info)
+		print("[HallSceneUPlugin:enter_game_room]")
+		dump(room_info, "[HallSceneUPlugin:enter_game_room] room_info: ")
+		GlobalSetting.game_server_url = room_info.urls[1]
+		GlobalSetting.game_info = room_info
+		self:show_progress_message_box("进入房间...")
+		if GlobalSetting.g_WebSocket == nil then
+			self:connect_to_game_server()
+		else
+			self:do_on_websocket_ready()
+		end
+		
+	end
+	
 	function theClass:do_on_websocket_ready()
 		print("[HallSceneUPlugin:do_on_websocket_ready]")
 		self:check_connection()
@@ -186,12 +209,23 @@ function HallSceneUPlugin.bind(theClass)
 		
 	end
 	
-	function theClass:do_on_trigger_failure()
+	function theClass:do_on_trigger_failure(data)
 		print("[HallSceneUPlugin:do_on_trigger_failure]")
 		self:hide_progress_message_box()
 		self:show_message_box(self.failure_msg)
 		if "function" == type(self.after_trigger_failure) then
 			self.after_trigger_failure(data)
 		end
+	end
+	
+	function theClass:do_on_game_server_websocket_ready()
+		print("[HallSceneUPlugin:do_on_websocket_ready]")
+		self:check_connection_game_server()
+		self.after_trigger_success = __bind(self.enter_game_room, self)
+	end
+	
+	function theClass:enter_game_room()
+		local game = createGamingScene()
+		CCDirector:sharedDirector():replaceScene(game)
 	end
 end

@@ -11,12 +11,13 @@ function LoginServerConnectionPlugin.bind(theClass)
 		local cur_user = GlobalSetting.current_user
 		--cur_user.user_id = data.user_id
 		cur_user.login_token = data.token
+		print("LoginServerConnectionPlugin.sign_success, login_token=> "..cur_user.login_token)
 		cur_user:save(CCUserDefault:sharedUserDefault())
 		
 		GlobalSetting.hall_server_url = data.system_settings.ddz_hall_url
 		print("LoginServerConnectionPlugin.sign_success, hall_server_url=> "..GlobalSetting.hall_server_url)
-		GlobalSetting.hall_server_token = data.token
-		print("LoginServerConnectionPlugin.sign_success, hall_server_token=> "..GlobalSetting.hall_server_token)
+--		GlobalSetting.hall_server_token = data.token
+		
 		print("[LoginServerConnectionPlugin.sign_success] on_login_success.")
 		if "function" == type(self.do_on_login_success) then
 			self:do_on_login_success()
