@@ -84,6 +84,12 @@ function HallServerConnectionPlugin.bind(theClass)
 		self:call_server_method("request_enter_room", enter_info)
 	end
 	
+	function theClass:fast_begin_game()
+		self.failure_msg = "请求房间失败"
+		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
+		self:call_server_method("fast_begin_game", event_data)
+	end
+	
 	function theClass:call_server_method(method_name, pass_data)
 --		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
 		GlobalSetting.hall_server_websocket:trigger("ui."..method_name, 

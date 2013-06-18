@@ -132,7 +132,7 @@ function WebSocketRails:new_message(data)
             self:dispatch(event)
         end
         
-        if self.state == 'connecting' and event.name == 'client_connected' then
+        if (self.state == 'connecting' or self.state == 'closed') and event.name == 'client_connected' then
             table.insert(results, #results + 1, self:connection_established(event.data) )
         else
             table.insert(results, #results + 1, 0)
@@ -180,7 +180,7 @@ function WebSocketRails:trigger_event(event)
         self.request_event_queue[event.id].timer_handler = Timer.add_repeat_timer(WebSocketRails.config.EVENT_RESEND_TIMEFRAME, function()
         	local pending_request = self.request_event_queue[event_id]
         	resend_times = resend_times + 1
-        	if resend_times >= WebSocketRails.config.EVENT_MAX_RESEND or not pending_request then
+        	if resend_times >= WebSocketRails.config.EVENT_MAX_RESEND or not pending_request or self.state ~= "connected" then
         		if pending_request then
 	        		self.request_event_queue[event_id] = nil
         		end
@@ -251,4 +251,5 @@ end
 function WebSocketRails:close()
 	self._self_close = true
 	self._conn:close(true)
+	self.state = 'closed'
 end
