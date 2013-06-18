@@ -27,6 +27,7 @@ HallScene = class("HallScene", function()
 	self.on_info_btn_clicked = __bind(self.onInfoClick, self)
 	self.on_avatar_btn_clicked = __bind(self.onAvatarClick, self) 
 	self.on_market_btn_clicked = __bind(self.onMarketClick, self)
+	self.on_ui_quick_game_btn_clicked = __bind(self.do_quick_game_btn_clicked, self)
 	
 	local ccbproxy = CCBProxy:create()
  	local node = CCBReaderLoad("HallScene.ccbi", ccbproxy, false, "")

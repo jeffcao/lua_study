@@ -170,6 +170,13 @@ function HallSceneUPlugin.bind(theClass)
 		end
 	end
 	
+	function theClass:do_quick_game_btn_clicked(tag, sender)
+		print("[HallSceneUPlugin:do_quick_game_btn_clicked]")
+		self:show_progress_message_box("请求房间信息...")
+		self:fast_begin_game()
+		self.after_trigger_success = __bind(self.do_connect_game_server, self)
+	end
+	
 	function theClass:do_on_room_touched(room_info)
 		print("[HallSceneUPlugin:do_on_room_touched]")
 		local enter_info = {user_id=GlobalSetting.current_user.user_id, room_id=room_info.room_id}

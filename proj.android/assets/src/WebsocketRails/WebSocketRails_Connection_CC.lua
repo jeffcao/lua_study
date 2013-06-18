@@ -36,7 +36,17 @@ new = function(self, url, dispatcher)
 end,
 
 trigger = function(self, event)
-    if self.dispatcher.state ~= "connected" then
+
+	if GlobalSetting.debug_dump_outgoing_event then
+		if (not GlobalSetting.debug_dump_internal_event and event:is_internal_event()) then
+    		return nil
+    	end
+    	
+    	print("[<" .. self.url .. ">.trigger] sending event => ", event:serialize())
+	end
+
+    if self.dispatcher.state ~= "connected" or self.websocket == nil then
+    	print("[<" .. self.url .. ">.trigger] websocket not ready. enqueue event => ", event:serialize())
         table.insert(self.message_queue, #self.message_queue + 1, event)
     else
     	self.websocket:sendTextMsg(event:serialize())
@@ -203,7 +213,7 @@ connect = function(self)
 	
 	if self._connection_retries >= WebSocketRails.config.CONNECTION_MAX_RETRIES then
 		self.state = wsClosed
-		print("****ERROR: failed to connect to ", self.url , " after " , WebSocketRails.config.CONNECTION_MAX_RETRIES , "retries !!!!!")
+		print("****ERROR: failed to connect to <", self.url , "> after " , WebSocketRails.config.CONNECTION_MAX_RETRIES , "retries !!!!!")
 		self:close()
 		--WebsocketManager:sharedWebsocketManager():close(self._websocket_id)
 		self._websocket_id = 0

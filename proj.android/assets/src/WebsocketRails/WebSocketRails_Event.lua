@@ -98,6 +98,18 @@ WebSocketRails.Event = {
     	return self.name == "server_ack"
     end,
     
+    is_pong = function(self)
+    	return self.name == "websocket_rails.pong"
+    end,
+    
+    is_client_ack = function(self)
+    	return self.name == "client_ack"
+    end,
+    
+    is_internal_event = function(self)
+    	return self:is_server_ack() or self:is_ping() or self:is_pong() or self:is_client_ack()
+    end,
+    
     has_srv_seq_id = function(self)
     	return self.__srv_seq_id ~= nil
     end,
