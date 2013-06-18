@@ -108,6 +108,9 @@ local function main()
 								print("gw.on_open")
 								gw:trigger("g.check_connection", oauth, gw_oauth_fn, gw_oauth_fail)
 							end
+							gw.on_close = function()
+								print("gw.on_close")
+							end
 						end
 						local go_game = {retry = "0", user_id = "10006", room_id = data.room[1].room_id}
 						hl:trigger("ui.request_enter_room", go_game, go_game_fn)

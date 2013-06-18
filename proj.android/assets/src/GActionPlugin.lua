@@ -50,7 +50,7 @@ function GActionPlugin.bind(theClass)
 	
 	function theClass:doSendChatMessage(message) 
 		--TODO_LUA
-		self.c_channel.trigger("g.on_message", {msg = message, user_id = self.g_user_id})
+		self.c_channel:trigger("g.on_message", {msg = message, user_id = self.g_user_id})
 	end
 	
 	function theClass:doTuoguan(isNotServerAuto) 

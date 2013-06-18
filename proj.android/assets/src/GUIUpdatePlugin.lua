@@ -394,9 +394,9 @@ function GUIUpdatePlugin.bind(theClass)
 		self.menu_tuoguan:setVisible(false)
 		if self.game_over_layer == nil  then
 			self.game_over_layer = createGameOver()
-			local change = self.onChangeDeskClicked
+			local change = __bind(self.onChangeDeskClicked, self)
 			local close = function() self.game_over_layer:dismiss() end
-			local tohall = self.exit
+			local tohall = __bind(self.exit, self)
 			self.game_over_layer:initCallback(tohall, change, close)
 			self.rootNode:addChild(self.game_over_layer, self.GAME_OVER_ORDER)
 		end
@@ -508,6 +508,8 @@ function GUIUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:exit()
+		local event_data = {user_id = self.g_user_id}
+		self.g_WebSocket:trigger("g.leave_game", event_data)
 		SimpleAudioEngine:sharedEngine():stopBackgroundMusic()
 		local scene = createHallScene()
 		CCDirector:sharedDirector():replaceScene(scene)

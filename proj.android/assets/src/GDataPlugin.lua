@@ -74,6 +74,8 @@ function GDataPlugin.bind(theClass)
 		
 		self.users = {}
 		
+		
+		
 		self:enter_room(self.g_room_id)
 		
 		
