@@ -6,6 +6,31 @@ function GAnimationPlugin.sharedAnimation()
 	cache:addSpriteFramesWithFile(Res.s_anim_plist)
 	Explosion.sharedExplosion()
 	ButterFly.sharedButterFly()
+	Insects.sharedInsects()
+end
+
+function GAnimationPlugin.share(frames, name)
+	local animFrames = CCArray:create()
+	for _, _v in pairs(frames) do
+		local frame = cache:spriteFrameByName(_v)
+		animFrames:addObject(frame)
+	end
+	local animation = CCAnimation:createWithSpriteFrames(animFrames, 0.5)
+	CCAnimationCache:sharedAnimationCache():addAnimation(animation, name)
+end
+
+function GAnimationPlugin.getAnimate(name)
+	local animation = CCAnimationCache:sharedAnimationCache():animationByName(name)
+	return CCAnimate:create(animation)
+end
+
+function GAnimationPlugin.tabletoarray(table)
+	local array = CCArray:create()
+	if not table then return array end
+	for _, _v in pairs(table) do
+		array:addObject(_v)
+	end
+	return array
 end
 
 Explosion = class("Explosion", function()
@@ -111,25 +136,135 @@ function ButterFly:randomPosition()
 end
 
 function ButterFly.sharedButterFly()
-	ButterFly.share({"hu die 001.png", "hu die 002.png"},"fly")
+	GAnimationPlugin.share({"hu die 001.png", "hu die 002.png"},"fly")
 end
 
-function ButterFly.share(frames, name)
-	local animFrames = CCArray:create()
-	for _, _v in pairs(frames) do
-		local frame = cache:spriteFrameByName(_v)
-		animFrames:addObject(frame)
+
+Insects = class("Insects", function()
+	return display.newSprite()
+end)
+
+function createInsects()
+	return Insects.new()
+end
+
+function Insects:ctor()
+	local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+	local pFrame = cache:spriteFrameByName("chong zi01.png")
+	self:setDisplayFrame(pFrame)
+	self:setScale(GlobalSetting.content_scale_factor)
+	
+	self.INSECT_DELAY = 120
+	self.action_tag = 3000
+	
+	local contentSize = self:getContentSize() 
+	self.half_w = (contentSize.width / 2) * GlobalSetting.content_scale_factor
+	
+	self:setPosition(ccp(800 + self.half_w, 295))
+	self:scheduleUpdateWithPriorityLua(__bind(self.creep, self), 1)
+end
+
+function Insects:creep()
+	local actions = self:numberOfRunningActions()
+	if (actions == 0) then
+		local action = self:rightScreenAction()
+		self:runAction(action)
 	end
-	local animation = CCAnimation:createWithSpriteFrames(animFrames, 0.5)
-	CCAnimationCache:sharedAnimationCache():addAnimation(animation, name)
 end
 
+function Insects:rightScreenAction()
+	local d_x = 720 + self.half_w
+	local o_x = 800 + self.half_w
+	local creepToDx = self:creepByX(d_x - o_x)
+	local turnRight = self:addTurn(1)
+	local creepToOx = self:creepByX(o_x - d_x)
+	local delay = CCDelayTime:create(self.INSECT_DELAY)
+	local reset = CCCallFunc:create(function()
+		self:setPosition(ccp(800 + self.half_w,295))
+	end)
+	
+	local anims = {creepToDx, turnRight, creepToOx, delay, reset}
+	local action = CCSequence:create(GAnimationPlugin.tabletoarray(anims))
+	return action
+end
 
+-- direction then1:creep left, -1:creep rightend
+function Insects:creepByX(x)
+	local direction = x / math.abs(x)
+	local times = x / (direction * 5)
+	cclog("times is" .. times)
+	local creeps = {}
+	for i = 1, times do
+		table.insert(creeps, self:addCreep(direction))
+	end
+	
+	local seq = CCSequence:create(GAnimationPlugin.tabletoarray(creeps))
+	return seq
+end
 
+-- direction then1:creep left, -1:creep rightend
+function Insects:addCreep(direction)
+	local name = "creep_left"
+	if (direction == 1) then
+		name = "creep_right"
+	else
+		direction = -1
+	end
+	local animate = GAnimationPlugin.getAnimate(name)
+	local delay = CCDelayTime:create(0.5)
+	local move = CCMoveBy:create(0.5, ccp(5 * direction, 0))
+	local seq = CCSequence:createWithTwoActions(delay, move)
+	local action = CCSpawn:createWithTwoActions(animate, seq)
+	action:setTag(self.action_tag)
+	return action
+end
 
+-- direction then1:up left, -1:up rightend
+function Insects:addUp(direction)
+	local name = "up_left"
+	if (direction == 1) then
+		name = "up_right"
+	end
+	local animate = GAnimationPlugin.getAnimate(name)
+	animate:setTag(self.action_tag)
+	return animate
+end
 
+-- direction then1:left turn right, -1:right turn leftend
+function Insects:addTurn(direction)
+	local name = "turn_right"
+	local animate = GAnimationPlugin.getAnimate(name)
+	local anims = {CCDelayTime:create(2 * 0.5), CCMoveBy
+			:create(0, ccp(20, 0)), CCDelayTime:create(0.5), CCMoveBy
+			:create(0, ccp(10, 0)), CCDelayTime:create(2 * 0.5)}
+	local seq = CCSequence:create(GAnimationPlugin.tabletoarray(anims))
+	local action = CCSpawn:createWithTwoActions(animate, seq)
+	if (direction == -1) then
+		action = action:reverse()
+	end
+	action:setTag(self.action_tag)
+	return action
+end
 
+Insects.sharedInsects = function()
+	local turn_right_frames = { "chong zi04.png", "chong zi03.png",
+			"chong zi06.png", "chong zi07.png", "chong zi08.png" }
+	GAnimationPlugin.share(turn_right_frames, "turn_right")
+	
+	local creep_left_frames = { "chong zi01.png", "chong zi02.png" }
+	GAnimationPlugin.share(creep_left_frames, "creep_left")
+	
+	local creep_right_frames = { "chong zi10.png", "chong zi11.png" }
+	GAnimationPlugin.share(creep_right_frames, "creep_right")
+	
+	local up_left_frames = { "chong zi04.png", "chong zi03.png", "chong zi04.png" }
+	GAnimationPlugin.share(up_left_frames, "up_left")
+	
+	local up_right_frames = { "chong zi08.png", "chong zi09.png",
+			"chong zi08.png" }
+	GAnimationPlugin.share(up_right_frames, "up_right")
 
+end
 
 
 

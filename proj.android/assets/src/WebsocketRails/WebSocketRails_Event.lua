@@ -94,6 +94,10 @@ WebSocketRails.Event = {
         return ping_result
     end,
     
+    is_server_ack = function(self)
+    	return self.name == "server_ack"
+    end,
+    
     has_srv_seq_id = function(self)
     	return self.__srv_seq_id ~= nil
     end,
