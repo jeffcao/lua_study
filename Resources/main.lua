@@ -72,7 +72,7 @@ local function main()
 	local game_test = function()
 		local lg = WebSocketRails:new("ws://login.test.170022.cn:8080/websocket", true)
 		lg.on_open = function() print("lg on open") end
-		local event_data = {retry="0", login_type="103", user_id = "10006", password = "12345678", version="1.0"}
+		local event_data = {retry="0", login_type="103", user_id = "10004", password = "12345678", version="1.0"}
 		local fn = function(data) 
 			GlobalSetting.current_user:load_from_json(data.user_profile)
 			local cur_user = GlobalSetting.current_user
@@ -81,11 +81,11 @@ local function main()
 			local url = "ws://" .. data.url[1] .. "/websocket"
 			local hl = WebSocketRails:new(url, true)
 			hl.on_open = function()
-				local oauth = {retry = "0", token = cur_user.login_token, user_id = "10006"}
+				local oauth = {retry = "0", token = cur_user.login_token, user_id = "10004"}
 				local oauth_fn = function(data)
 					lg:close()
 					print("hall on open")
-					local get_room = {retry = "0", user_id = "10006"}
+					local get_room = {retry = "0", user_id = "10004"}
 					local fnc = function(data) 
 						print("get_room succ") 
 						local go_game_fn = function(data2)
@@ -108,8 +108,11 @@ local function main()
 								print("gw.on_open")
 								gw:trigger("g.check_connection", oauth, gw_oauth_fn, gw_oauth_fail)
 							end
+							gw.on_close = function()
+								print("gw.on_close")
+							end
 						end
-						local go_game = {retry = "0", user_id = "10006", room_id = data.room[1].room_id}
+						local go_game = {retry = "0", user_id = "10004", room_id = data.room[1].room_id}
 						hl:trigger("ui.request_enter_room", go_game, go_game_fn)
 					end
 					hl:trigger("ui.get_room", get_room, fnc, fnc)

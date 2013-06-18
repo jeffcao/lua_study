@@ -42,4 +42,18 @@ function GConnectionPlugin.bind(theClass)
 			self:onServerLeave(data)
 		end)
 	end
+	
+	function theClass:close_game_websocket()
+		print("[GConnectionPlugin:close_game_websocket()]")
+		if GlobalSetting.g_WebSocket then
+			GlobalSetting.g_WebSocket:close()
+			GlobalSetting.g_WebSocket = nil
+		end
+	end
+	
+	--print("theClass.registerCleanup ==> ", theClass.registerCleanup)
+	if theClass.registerCleanup then
+		print("GConnectionPlugin register cleanup")
+		theClass:registerCleanup("GConnectionPlugin.close_game_websocket", theClass.close_game_websocket)
+	end
 end

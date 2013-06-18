@@ -47,6 +47,8 @@ function GDataPlugin.bind(theClass)
         GAnimationPlugin.sharedAnimation()
         local butterfly = createButterFly()
         self.rootNode:addChild(butterfly, self.BUTTERFLY_ANIM_ORDER)
+        local insect = createInsects()
+		self.rootNode:addChild(insect, self.INSECT_ANIM_ORDER)
         self.g_WebSocket = GlobalSetting.g_WebSocket
         self.self_user = GlobalSetting.current_user
         self.g_user_id = self.self_user.user_id
@@ -71,6 +73,8 @@ function GDataPlugin.bind(theClass)
 		--Explosion.sharedExplosion()
 		
 		self.users = {}
+		
+		
 		
 		self:enter_room(self.g_room_id)
 		

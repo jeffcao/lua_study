@@ -43,10 +43,11 @@ function GDataPlugin.bind(theClass)
 		self.rootNode:registerScriptKeypadHandler(key_fn)
         
         --TODO bind onPause和onResume事件
-        --TODO 加入虫子动画
         GAnimationPlugin.sharedAnimation()
         local butterfly = createButterFly()
         self.rootNode:addChild(butterfly, self.BUTTERFLY_ANIM_ORDER)
+        local insect = createInsects()
+		self.rootNode:addChild(insect, self.INSECT_ANIM_ORDER)
         self.g_WebSocket = GlobalSetting.g_WebSocket
         self.self_user = GlobalSetting.current_user
         self.g_user_id = self.self_user.user_id
@@ -71,6 +72,8 @@ function GDataPlugin.bind(theClass)
 		--Explosion.sharedExplosion()
 		
 		self.users = {}
+		
+		
 		
 		self:enter_room(self.g_room_id)
 		

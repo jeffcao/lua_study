@@ -69,6 +69,21 @@ function GamingScene:ctor()
 	self.g_WebSocket.on_open = function() print("websockt on open after gaming") end
 end
 
+function GamingScene:onEnter()
+	self.super.onEnter(self)
+	--self:registerCleanup()
+end
+
+function GamingScene:onExit()
+	self.super.onExit(self)
+	print("[GamingScene:on_exit()]")
+end
+
+function GamingScene:onCleanup()
+	print("[GamingScene:onCleanup()]")
+	self.super.onCleanup(self)
+end
+
 function GamingScene:onNextUserClicked()
 	print("onNextUserClicked")
 end
