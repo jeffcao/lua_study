@@ -88,31 +88,31 @@ function GPlayerUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:updatePlayerRoles()
-		self:updatePlayerRole(self_user, self.self_user_role, true)
-		self:updatePlayerRole(prev_user, self.prev_user_role, true) 
-		self:updatePlayerRole(next_user, self.next_user_role, false)
+		self:updatePlayerRole(self.self_user, self.self_user_role, true)
+		self:updatePlayerRole(self.prev_user, self.prev_user_role, true) 
+		self:updatePlayerRole(self.next_user, self.next_user_role, false)
 	end
 	
 	function theClass:updatePlayerRole(player, role_ui, flip_x)
-		if not player or player.player_role < ROLE_FARMER then
+		if not (player and player.player_role and player.player_role >= self.ROLE_FARMER) then
 			role_ui:setVisible(false)
 			return
 		end
 		
 		cclog("[updatePlayerRole] player.player_role => " .. player.player_role)
 		
-		local farmerFrame = CCSpriteFrameCache.getInstance().getSpriteFrame("role_farmer.png")
-		local lordFrame = CCSpriteFrameCache.getInstance().getSpriteFrame("role_lord.png")
+		local farmerFrame = CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("role_farmer.png")
+		local lordFrame = CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("role_lord.png")
 		
-		if player.player_role == ROLE_FARMER then
-			role_ui:initWithSpriteFrame(farmerFrame)
+		if player.player_role == self.ROLE_FARMER then
+			role_ui:setDisplayFrame(farmerFrame)
 		else 
-			role_ui:initWithSpriteFrame(lordFrame)
+			role_ui:setDisplayFrame(lordFrame)
 		end
 	
-		role_ui:setScale(contentScaleFactor)
-		role_ui:setAnchorPoint(cc.p(0, 0.5)) 	
-		if player.player_role == ROLE_FARMER then
+		role_ui:setScale(GlobalSetting.content_scale_factor)
+		role_ui:setAnchorPoint(ccp(0, 0.5)) 	
+		if player.player_role == self.ROLE_FARMER then
 			role_ui:setFlipX(flip_x)
 		end
 		role_ui:setVisible(true)

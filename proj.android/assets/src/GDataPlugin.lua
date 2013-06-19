@@ -20,6 +20,8 @@ function GDataPlugin.bind(theClass)
 		self.CHANGE_DESK_TAG  = 1001
 		self.GAME_OVER_HIDE_ACTION_TAG = 1232
 		self.DISPLAY_CHAT_ACTION_TAG = 1230
+		self.ROLE_FARMER = 1
+		self.ROLE_LORD = 2
 		PokeCard.sharedPokeCard(self.rootNode)
 		print(g_shared_cards, #g_shared_cards)
 		self.cardContentSize = 
