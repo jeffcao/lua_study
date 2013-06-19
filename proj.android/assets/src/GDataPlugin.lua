@@ -22,7 +22,9 @@ function GDataPlugin.bind(theClass)
 		self.DISPLAY_CHAT_ACTION_TAG = 1230
 		PokeCard.sharedPokeCard(self.rootNode)
 		print(g_shared_cards, #g_shared_cards)
-		self.cardContentSize = g_shared_cards[1].card_sprite:getContentSize()
+		self.cardContentSize = 
+			g_shared_cards[1].
+			card_sprite:getContentSize()
 		self.CHAT_MSGS = {"快点吧，我等到花儿也谢了。",
                  "你的牌打得太好了！         ",
                  "别走，我们战斗到天亮。     ",

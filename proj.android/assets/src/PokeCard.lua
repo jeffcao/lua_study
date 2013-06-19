@@ -232,7 +232,8 @@ end
 PokeCard.sharedPokeCard = function(parent) 
 	
 	if #g_shared_cards > 0 then
-		return
+		-- return
+		g_shared_cards = {}
 	end
 	
 	CCSpriteFrameCache:sharedSpriteFrameCache():addSpriteFramesWithFile(Res.s_cards_plist)
