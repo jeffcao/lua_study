@@ -16,6 +16,7 @@ extern "C" {
 }
 
 #include "Lua_extensions_CCB.h"
+#include "support/CCNotificationCenter.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 #include "Lua_web_socket.h"
@@ -189,7 +190,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 void AppDelegate::applicationDidEnterBackground()
 {
     CCDirector::sharedDirector()->pause();
-
+    CCNotificationCenter::sharedNotificationCenter()->postNotification("on_pause", new CCString("n_pause_data}"));
     // if you use SimpleAudioEngine, it must be pause
     _bg_music_playing = SimpleAudioEngine::sharedEngine()->isBackgroundMusicPlaying();
     if (_bg_music_playing)
@@ -201,7 +202,7 @@ void AppDelegate::applicationDidEnterBackground()
 void AppDelegate::applicationWillEnterForeground()
 {
     CCDirector::sharedDirector()->resume();
-    
+    CCNotificationCenter::sharedNotificationCenter()->postNotification("on_resume");
     // if you use SimpleAudioEngine, it must resume here
     if (_bg_music_playing)
         SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();

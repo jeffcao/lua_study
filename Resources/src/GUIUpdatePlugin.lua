@@ -498,7 +498,11 @@ function GUIUpdatePlugin.bind(theClass)
 			self.exit_layer = createYesNoDialog(self.rootNode)
 			self.exit_layer:setTitle("强制退出")
 			self.exit_layer:setMessage("您正在游戏中，此时强退系统将最大输赢扣除您的豆子。")
-			self.exit_layer:setYesButton(__bind(self.exit, self))
+			local yes_fn = function()
+				self.exit_layer:dismiss()
+				self:exit()
+			end
+			self.exit_layer:setYesButton(yes_fn)
 			self.rootNode:reorderChild(self.exit_layer, self.NOTIFY_ORDER)
 		end
 		if self.exit_layer:isShowing() then

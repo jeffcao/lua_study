@@ -20,9 +20,13 @@ function GDataPlugin.bind(theClass)
 		self.CHANGE_DESK_TAG  = 1001
 		self.GAME_OVER_HIDE_ACTION_TAG = 1232
 		self.DISPLAY_CHAT_ACTION_TAG = 1230
+		self.ROLE_FARMER = 1
+		self.ROLE_LORD = 2
 		PokeCard.sharedPokeCard(self.rootNode)
 		print(g_shared_cards, #g_shared_cards)
-		self.cardContentSize = g_shared_cards[1].card_sprite:getContentSize()
+		self.cardContentSize = 
+			g_shared_cards[1].
+			card_sprite:getContentSize()
 		self.CHAT_MSGS = {"快点吧，我等到花儿也谢了。",
                  "你的牌打得太好了！         ",
                  "别走，我们战斗到天亮。     ",
@@ -75,6 +79,9 @@ function GDataPlugin.bind(theClass)
 		
 		self.socket_label:setVisible(true)
 		
+		local notify_center = CCNotificationCenter:sharedNotificationCenter()
+		notify_center:registerScriptObserver(self.rootNode, __bind(self.on_resume, self),"on_resume")
+		notify_center:registerScriptObserver(self.rootNode, __bind(self.on_pause, self),"on_pause")
 		
 		self:enter_room(self.g_room_id)
 		

@@ -21,7 +21,7 @@ GlobalSetting = {
 	current_user = {},
 	-- 游戏大厅的URLs
 	game_hall_urls = {},
-	login_urls = {"ws://login.jc.170022.cn/websocket"},
+	login_urls = {"ws://login.jc.170022.cn/websocket", "ws://login.test.170022.cn:8080/websocket"},
 	login_server_websocket = nil,
 	
 	hall_server_url = "",
@@ -35,6 +35,6 @@ GlobalSetting = {
 	debug_dump_websocket_raw = false,
 	debug_dump_websocket_event = true,
 	debug_dump_outgoing_event = true,
-	debug_dump_internal_event = false,
+	debug_dump_internal_event = true,
 }
 
