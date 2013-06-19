@@ -116,6 +116,25 @@ function GConnectionPlugin.bind(theClass)
 		self:updateTuoguan()
 	end
 	
+	-- activity onPause
+	function theClass:on_pause()
+		cclog("theClass:on_pause")
+		self:op_websocket(true)
+	end
+	
+	-- activity onResume
+	function theClass:on_resume()
+		cclog("theClass:on_resume")
+		local delay_time = CCDelayTime:create(1.5)
+		local fn = CCCallFunc:create(function() self:op_websocket(false) end)
+		local seq = CCSequence:createWithTwoActions(delay_time, fn)
+		self.rootNode:runAction(seq)
+	end
+	
+	function theClass:op_websocket(pause)
+		self.g_WebSocket:pause_event(pause)
+	end
+	
 	--restore connection
 	function theClass:restoreConnection()
 		--TODO

@@ -79,6 +79,9 @@ function GDataPlugin.bind(theClass)
 		
 		self.socket_label:setVisible(true)
 		
+		local notify_center = CCNotificationCenter:sharedNotificationCenter()
+		notify_center:registerScriptObserver(self.rootNode, __bind(self.on_resume, self),"on_resume")
+		notify_center:registerScriptObserver(self.rootNode, __bind(self.on_pause, self),"on_pause")
 		
 		self:enter_room(self.g_room_id)
 		
