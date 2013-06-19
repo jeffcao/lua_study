@@ -82,7 +82,7 @@ function HallServerConnectionPlugin.bind(theClass)
 	function theClass:reset_password(old_pwd, new_pwd)
 		self.failure_msg = "更改密码失败"
 		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, oldpassword=old_pwd, newpassword=new_pwd, version="1.0"}
-		self:call_server_method("reset_password", enter_info)
+		self:call_server_method("reset_password", event_data)
 	
 	end
 		
