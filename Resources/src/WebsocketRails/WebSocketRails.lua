@@ -57,6 +57,8 @@ function WebSocketRails:new(url, use_websockets)
     
     this_obj.session_state = WebSocketRails.SessionState.INVALID
     this_obj._self_close = false
+    this_obj._pause = false
+    this_obj._event_queue = {}
     
     this_obj._conn = WebSocketRails.WebSocketConnectionCC:new(url, this_obj)
     
@@ -75,8 +77,20 @@ end
 
 function WebSocketRails:new_message(data)
     local results = {}
-    for _i = 1, #data do
-        local socket_message = data[_i]
+    
+    for _, ev in ipairs(data) do
+    	table.insert(self._event_queue, #(self._event_queue) + 1, ev)
+    end
+    
+    if self._pause then
+    	return results
+    end
+    
+    --for _i = 1, #data do
+    while #(self._event_queue) > 0 do
+        --local socket_message = data[_i]
+        local socket_message = self._event_queue[1]
+        table.remove(self._event_queue, 1)
         --print("[WebSocketRails:new_message] socket_message => ")
         --dump_table(socket_message)
         local event = WebSocketRails.Event:new(socket_message)
@@ -252,4 +266,8 @@ function WebSocketRails:close()
 	self._self_close = true
 	self._conn:close(true)
 	self.state = 'closed'
+end
+
+function WebSocketRails:pause_event(pause)
+	self._pause = pause
 end
