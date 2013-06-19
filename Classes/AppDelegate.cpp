@@ -190,7 +190,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 void AppDelegate::applicationDidEnterBackground()
 {
     CCDirector::sharedDirector()->pause();
-    CCNotificationCenter::sharedNotificationCenter()->postNotification("on_pause");
+    CCNotificationCenter::sharedNotificationCenter()->postNotification("on_pause", new CCString("n_pause_data}"));
     // if you use SimpleAudioEngine, it must be pause
     _bg_music_playing = SimpleAudioEngine::sharedEngine()->isBackgroundMusicPlaying();
     if (_bg_music_playing)

@@ -104,20 +104,21 @@ function GConnectionPlugin.bind(theClass)
 		
 		local game_channel = game_info.channel_name
 		for _, event in pairs(data.events) do
-			local name = event.notify_name
-			local channel = "null"
-			if event.is_channel == 1 then
-				channel = "\"" .. game_channel .. "\""
-			end
-			local template = "[[\"event_name\",{\"id\":null, \"success\":null, \"channel\":%s, \"data\":%s}]]"
-			local event_msg = string.format(template, channel, event.notify_data)
-			self.g_WebSocket:new_message(event_msg)
+			local msg = {}
+			msg[1] = event.notify_name
+			local attr = {}
+			attr.channel = game_channel
+			attr.data = event.notify_data
+			msg[2] = attr
+			dump(msg, "event_msg is ")
+			self.g_WebSocket:new_message({msg})
 		end
 		self:updateTuoguan()
 	end
 	
 	-- activity onPause
-	function theClass:on_pause()
+	function theClass:on_pause(data, data2)
+		if data then dump(data, "on_pause:") else print("on_pause no data") end
 		cclog("theClass:on_pause")
 		self:op_websocket(true)
 	end
@@ -126,16 +127,6 @@ function GConnectionPlugin.bind(theClass)
 	function theClass:on_resume()
 		cclog("theClass:on_resume")
 		Timer.add_timer(1.5, function() self:op_websocket(false) end)
-		--[[
-		local delay_time = CCDelayTime:create(1.5)
-		local fn = CCCallFunc:create(function() self:op_websocket(false) end)
-		local seq = CCSequence:createWithTwoActions(delay_time, fn)
-		if self.rootNode then
-			self.rootNode:runAction(seq)
-		else
-			self:runAction(seq)
-		end
-		]]
 	end
 	
 	function theClass:op_websocket(pause)
