@@ -125,10 +125,17 @@ function GConnectionPlugin.bind(theClass)
 	-- activity onResume
 	function theClass:on_resume()
 		cclog("theClass:on_resume")
+		Timer.add_timer(1.5, function() self:op_websocket(false) end)
+		--[[
 		local delay_time = CCDelayTime:create(1.5)
 		local fn = CCCallFunc:create(function() self:op_websocket(false) end)
 		local seq = CCSequence:createWithTwoActions(delay_time, fn)
-		self.rootNode:runAction(seq)
+		if self.rootNode then
+			self.rootNode:runAction(seq)
+		else
+			self:runAction(seq)
+		end
+		]]
 	end
 	
 	function theClass:op_websocket(pause)
