@@ -44,8 +44,7 @@ new = function(self, url, dispatcher)
     return this_obj
 end,
 
-trigger = function(self, event)
-
+debug_dump_event = function(self, event)
 	if GlobalSetting.debug_dump_outgoing_event then
 		if (not GlobalSetting.debug_dump_internal_event and event:is_internal_event()) then
     		return nil
@@ -53,7 +52,11 @@ trigger = function(self, event)
     	
     	print("[<" .. self.url .. ">.trigger] sending event => ", event:serialize())
 	end
+end,
 
+trigger = function(self, event)
+	self:debug_dump_event(event)
+	
     if self.dispatcher.state ~= "connected" or self.websocket == nil then
     	print("[<" .. self.url .. ">.trigger] websocket not ready. enqueue event => ", event:serialize())
         table.insert(self.message_queue, #self.message_queue + 1, event)
