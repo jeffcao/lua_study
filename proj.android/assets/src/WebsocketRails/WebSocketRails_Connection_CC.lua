@@ -55,7 +55,7 @@ debug_dump_event = function(self, event)
 end,
 
 trigger = function(self, event)
-	self:debug_dump_event(self, event)
+	self:debug_dump_event(event)
 	
     if self.dispatcher.state ~= "connected" or self.websocket == nil then
     	print("[<" .. self.url .. ">.trigger] websocket not ready. enqueue event => ", event:serialize())

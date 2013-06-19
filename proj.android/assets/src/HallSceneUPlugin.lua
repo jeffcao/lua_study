@@ -5,6 +5,7 @@ require "YesNoDialog"
 require "MarketScene"
 require "MenuDialog"
 require "GamingScene"
+require "InitPlayerInfoLayer"
 
 HallSceneUPlugin = {}
 
@@ -91,6 +92,15 @@ function HallSceneUPlugin.bind(theClass)
 		
 	end
 	
+	function theClass:init_player_info_callback(need_refresh_player_info)
+		local layer = self.rootNode:getChildByTag(909)
+		self.rootNode:removeChild(layer, true)
+		layer = nil
+		if need_refresh_player_info then
+			self:init_current_player_info()
+		end
+	end
+	
 	function theClass:display_player_avatar()
 		local avatar_btn = tolua.cast(self.avatar_btn, "CCMenuItemImage")
 		local avatar_png = self:get_player_avatar_png_name()
@@ -100,7 +110,16 @@ function HallSceneUPlugin.bind(theClass)
 		avatar_btn:setSelectedSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(avatar_png))
 	end
 	
-	function theClass:init_current_player_info(data)
+	function theClass:display_player_info(data)
+		self:init_current_player_info()
+		self:update_global_player_score_ifno(data)
+--		if tonumber(GlobalSetting.current_user.flag) == 0 then
+--			local init_player_info_layer = createInitPlayerInfoLayer(__bind(self.init_player_info_callback, self))
+--			self.rootNode:addChild(init_player_info_layer, 1001, 909)
+--		end
+	end
+	
+	function theClass:init_current_player_info()
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 		cache:addSpriteFramesWithFile(Res.info_plist)
 		
@@ -113,15 +132,16 @@ function HallSceneUPlugin.bind(theClass)
 
 		self:display_player_avatar()
 		
-		if data.score then
-			local player_beans_lb = tolua.cast(self.player_beans_lb, "CCLabelTTF")
-			player_beans_lb:setString(data.score)
-			
-			GlobalSetting.current_user.socre = data.score
-			GlobalSetting.current_user.win_count = data.win_count
-			GlobalSetting.current_user.lost_count = data.lost_count
-		end
-
+	end
+	
+	function theClass:update_global_player_score_ifno(score_info)
+	
+		local player_beans_lb = tolua.cast(self.player_beans_lb, "CCLabelTTF")
+		player_beans_lb:setString(score_info.score)
+		
+		GlobalSetting.current_user.socre = score_info.score
+		GlobalSetting.current_user.win_count = score_info.win_count
+		GlobalSetting.current_user.lost_count = score_info.lost_count	
 	end
 	
 	function theClass:init_room_tabview(data)
@@ -160,13 +180,14 @@ function HallSceneUPlugin.bind(theClass)
 	--	t:setAnchorPoint(ccp(0.5, 0.5))
 		t:setPosition(CCPointMake(0,0))
 		self.middle_layer:addChild(t)
-
-		self:get_user_profile()
-		self.after_trigger_success = __bind(self.init_current_player_info, self)
-
+		
 		for index=#(data.room), 1, -1 do
 			t:updateCellAtIndex(index-1)
 		end
+
+		self:get_user_profile()
+		self.after_trigger_success = __bind(self.display_player_info, self)
+		
 	end
 	
 	function theClass:do_quick_game_btn_clicked(tag, sender)
