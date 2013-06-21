@@ -31,6 +31,7 @@ public class DouDiZhu_Lua extends Cocos2dxActivity{
 
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		DDZJniHelper.messageCpp("game_jni");
 	}
 	
     static {
