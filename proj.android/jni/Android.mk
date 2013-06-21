@@ -28,6 +28,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
 					../../Classes/cjson/fpconv.c \
 					../../Classes/cjson/lua_cjson.c \
 					../../Classes/cjson/strbuf.c \
+					../../Classes/DDZJniHelper.cpp \
 
 
 #					$(LWS_LIB_PATH)/base64-decode.c \
