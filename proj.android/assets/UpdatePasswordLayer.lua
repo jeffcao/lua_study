@@ -27,9 +27,9 @@ function UpdatePasswordLayer:ctor()
 --	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 --	
 	self.input_png = "kuang_a.png"
-	self.old_pwd_box = self:addEditbox(self.old_pwd_box_layer, 225, 30, false, 101)
-	self.new_pwd_box = self:addEditbox(self.new_pwd_box_layer, 225, 30, false, 101)
-	self.cfm_pwd_box = self:addEditbox(self.cfm_pwd_box_layer, 225, 30, false, 101)
+	self.old_pwd_box = self:addEditbox(self.old_pwd_box_layer, 225, 30, true, 101)
+	self.new_pwd_box = self:addEditbox(self.new_pwd_box_layer, 225, 30, true, 101)
+	self.cfm_pwd_box = self:addEditbox(self.cfm_pwd_box_layer, 225, 30, true, 101)
 	
 	self.old_pwd_box:setPlaceHolder("输入原密码")
 	self.new_pwd_box:setPlaceHolder("设置密码")

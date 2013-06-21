@@ -17,6 +17,8 @@ function UIControllerPlugin.bind(theClass)
 		editbox2:setFontColor(ccc3(0, 0, 0))
 		if is_password then
 			editbox2:setInputFlag(kEditBoxInputFlagPassword)
+		else
+			editbox2:setInputFlag(kEditBoxInputFlagSensitive)
 		end
 		return editbox2
 	end
@@ -54,12 +56,16 @@ function UIControllerPlugin.bind(theClass)
 		
 	end
 	
-	function theClass:create_message_layer(message, msg_width, msg_height)
-	
-		local function on_msg_layer_touched(eventType, x, y)
+	function theClass:on_msg_layer_touched(eventType, x, y)
 			print("[UIControllerPlugin:msg_layer_on_touch]")
 			return true
 		end
+	function theClass:create_message_layer(message, msg_width, msg_height)
+	
+--		local function on_msg_layer_touched(eventType, x, y)
+--			print("[UIControllerPlugin:msg_layer_on_touch]")
+--			return true
+--		end
 		
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 		cache:addSpriteFramesWithFile(Res.dialog_plist)
@@ -70,7 +76,7 @@ function UIControllerPlugin.bind(theClass)
 		msg_layer:setOpacity(100)
 		msg_layer:setTouchEnabled(true)
 --		msg_layer:setKeypadEnabled(false)
-		msg_layer:registerScriptTouchHandler(on_msg_layer_touched, false, -1024, true)
+		msg_layer:registerScriptTouchHandler(__bind(self.on_msg_layer_touched, self), false, -1024, true)
 
 		local content_layer = CCLayer:create()
 		content_layer:setContentSize(CCSizeMake(msg_width, msg_height))
@@ -97,6 +103,19 @@ function UIControllerPlugin.bind(theClass)
 		msg_layer:setPosition(ccp(0,0))
 		
 		return msg_layer
+	end
+	
+	function theClass:load_untouched_layer()
+		local msg_layer = self:create_message_layer("", 0, 0)
+		self.rootNode:addChild(msg_layer, 0, 904)
+
+		scaleNode(msg_layer, GlobalSetting.content_scale_factor)	
+	end
+	
+	function theClass:unload_untouched_layer()
+		local msg_layer = self.rootNode:getChildByTag(904)
+		self.rootNode:removeChild(msg_layer, true)
+		msg_layer = nil
 	end
 	
 	function theClass:show_message_box(message, msg_width, msg_height)
