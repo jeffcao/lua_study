@@ -1463,7 +1463,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>138</real>
+									<real>125</real>
 									<real>174</real>
 									<integer>0</integer>
 								</array>
@@ -1556,6 +1556,8 @@
 								<string></string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -1742,8 +1744,6 @@
 								<true/>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
