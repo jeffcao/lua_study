@@ -74,3 +74,8 @@ const char* DDZJniHelper::get(const char* text) {
 			myText.c_str());
 	return myText.c_str();
 }
+
+DDZJniHelper* DDZJniHelper::create() {
+	DDZJniHelper* helper = new DDZJniHelper();
+	return helper;
+}
