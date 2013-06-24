@@ -11,14 +11,17 @@ function createAboutScene()
 end
 
 function AboutScene:ctor()
+
+	ccb.about_scene = self
+	
+	local ccbproxy = CCBProxy:create()
+ 	local node = CCBReaderLoad("About.ccbi", ccbproxy, false, "")
+	
 	local layer = createFullMubanStyleLayer()
 	self:addChild(layer)
-	self.rootNode = layer
 	layer:setTitle("biaoti07.png")
-	self.ccbproxy = CCBProxy:create()
-	self.ccbproxy:retain()
 	
-	local node = self.ccbproxy:readCCBFromFile("About.ccbi")
 	layer:setContent(node)
+
 end
 

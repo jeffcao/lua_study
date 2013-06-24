@@ -9,24 +9,23 @@ Menu = class("Menu", function()
 end
 )
 
-function createMenu(container)
+function createMenu(menu_dismiss_callback, show_set_fn)
 	print("create menu")
-	local menu = Menu.new()
-	menu.container = container
-	menu.container:addChild(menu)
+	local menu = Menu.new(menu_dismiss_callback, show_set_fn)
 	return menu
 end
 
-function Menu:ctor()
+function Menu:ctor(menu_dismiss_callback, show_set_fn)
 
 	ccb.menu_scene = self
 	
 	local function dismiss()
-		if self then
+		if self:isShowing() then
 			self:dismiss()
+			self.menu_dismiss_callback()
 		end
+		
 	end
-	
 	local function about(tag, sender)
 		dismiss()
 		local scene = createAboutScene()
@@ -39,19 +38,17 @@ function Menu:ctor()
 	end
 	
 	local function switch(tag, sender)
+		dismiss()
 		local scene = createLoginScene()
 		CCDirector:sharedDirector():replaceScene(scene)
 	end
 	
 	local function set(tag, sender)
-		if not self.set_dialog then
-			self.set_dialog = createSetDialog()
-			self.container:addChild(self.set_dialog)
-		end
-		self.set_dialog:show()
 		dismiss()
+		self.show_set_fn()
 	end
-	
+	self.show_set_fn = show_set_fn
+	self.menu_dismiss_callback = menu_dismiss_callback
 	self.on_help_item_clicked = help
 	self.on_about_item_clicked = about
 	self.on_switch_item_clicked = switch
@@ -65,10 +62,10 @@ function Menu:ctor()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
 	local menus = CCArray:create()
-	menus:addObject(self.set:getParent())
-	menus:addObject(self.switch:getParent())
-	menus:addObject(self.help:getParent())
-	menus:addObject(self.about:getParent())
+	menus:addObject(tolua.cast(self.set, "CCLayerRGBA"))
+	menus:addObject(tolua.cast(self.switch, "CCLayerRGBA"))
+	menus:addObject(tolua.cast(self.help, "CCLayerRGBA"))
+	menus:addObject(tolua.cast(self.about, "CCLayerRGBA"))
 	self:swallowOnTouch(menus)
 	self:swallowOnKeypad()
 	self:setOnKeypad(function()

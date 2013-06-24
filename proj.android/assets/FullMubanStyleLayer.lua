@@ -11,17 +11,16 @@ function createFullMubanStyleLayer()
 end
 
 function FullMubanStyleLayer:ctor()
-	self.ccbproxy = CCBProxy:create()
- 	self.ccbproxy:retain()
+	ccb.muban_scene = self
+	
+	local ccbproxy = CCBProxy:create()
+ 	local node = CCBReaderLoad("FullMubanStyleLayer.ccbi", ccbproxy, false, "")
+	self:addChild(node)
  	
- 	local node = self.ccbproxy:readCCBFromFile("FullMubanStyleLayer.ccbi")
-	assert(node, "failed to load full muban style layer")
-	self.rootNode = tolua.cast(node, "CCLayer")
-	self:addChild(self.rootNode)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
-	self.title = self.ccbproxy:getNodeWithType("title", "CCSprite")
-	self.close = self.ccbproxy:getNodeWithType("close_menu_item", "CCMenuItemImage")
+	self.title = tolua.cast(self.title_sprite, "CCSprite")
+	self.close = tolua.cast(self.close_btn, "CCMenuItemImage")
 	local to_hall = function()
 		--local scene = createHallScene()
 		--CCDirector:sharedDirector():replaceScene(scene)
