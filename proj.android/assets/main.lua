@@ -135,10 +135,6 @@ local function main()
 	local ls = createLandingScene()
 	CCDirector:sharedDirector():runWithScene(ls)
 	
-	local hlp = DDZJniHelper:create()
-	hlp:get("IsNetworkConnected")
-	hlp:get("hallo")
-	
 --	return true
 --	
 --	local proxy = CCBProxy:create()

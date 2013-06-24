@@ -654,4 +654,11 @@ function GUIUpdatePlugin.bind(theClass)
 		self.socket_label:setString(status)
 	end
 	
+	function theClass:updateReady()
+		if self._is_playing then
+			self.menu_ready:setVisible(false)
+			self.menu_huanzhuo:setVisible(false)
+		end
+	end
+	
 end
