@@ -6,9 +6,9 @@ SetDialog = class("SetDialog", function()
 end
 )
 
-function createSetDialog(menu_layer)
+function createSetDialog()
 	print("new SetDialog")
-	return SetDialog.new(menu_layer)
+	return SetDialog.new()
 end
 
 function SetDialog:updateVolume()
@@ -21,14 +21,13 @@ function SetDialog:updateVolume()
 	self.effect_silder:setValue(effect_volume)
 end
 
-function SetDialog:ctor(menu_layer)
+function SetDialog:ctor()
 
 	ccb.set_scene = self
 	local ccbproxy = CCBProxy:create()
 	local node = CCBReaderLoad("Set.ccbi", ccbproxy, false, "")
 	self:addChild(node)
 
-	self.menu_layer = menu_layer
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	--self.music_slider_layer = self.ccbproxy:getNodeWithType("music_slider_layer", "CCLayer")
 	--self.effect_slider_layer = self.ccbproxy:getNodeWithType("effect_slider_layer", "CCLayer")
@@ -105,11 +104,6 @@ function SetDialog:ctor(menu_layer)
 			print("set dialog on key pad")
 			if self:isShowing()  then
 				self:dismiss()
-				if self.menu_layer then
-					self.menu_layer:setVisible(true)
-					self.menu_layer:dismiss()
-				end
-				
 			end
 		end
 	end)
