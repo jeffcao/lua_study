@@ -239,9 +239,9 @@
 						<key>displayName</key>
 						<string>menu_set</string>
 						<key>memberVarAssignmentName</key>
-						<string>menu_set</string>
+						<string>set</string>
 						<key>memberVarAssignmentType</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -454,9 +454,9 @@
 						<key>displayName</key>
 						<string>menu_help</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>help</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -669,9 +669,9 @@
 						<key>displayName</key>
 						<string>menu_about</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>about</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -884,9 +884,9 @@
 						<key>displayName</key>
 						<string>menu_switch</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>switch</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
