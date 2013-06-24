@@ -17,6 +17,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 		GlobalSetting.hall_server_url = data.system_settings.ddz_hall_url
 		print("LoginServerConnectionPlugin.sign_success, hall_server_url=> "..GlobalSetting.hall_server_url)
 --		GlobalSetting.hall_server_token = data.token
+		GlobalSetting.show_init_player_info_box = 1
 		
 		print("[LoginServerConnectionPlugin.sign_success] on_login_success.")
 		if "function" == type(self.do_on_login_success) then

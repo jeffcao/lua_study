@@ -53,7 +53,7 @@ end
 function InfoLayer:editBoxTextEventHandle(strEventName,pSender)
 	print("[InfoLayer:do_gender_checkbox_selected] ")
 	if strEventName == "ended" then
-		local cur_nick_name = self.nick_name_box:getText()
+		local cur_nick_name = trim_blank(self.nick_name_box:getText())
 		if is_blank(cur_nick_name) then
 			self:show_message_box("昵称不能为空")
 			self.nick_name_box:setText(GlobalSetting.current_user.nick_name)

@@ -24,7 +24,17 @@ function InitPlayerInfoLayer:ctor(init_player_info_callback)
  	local node = CCBReaderLoad("InitPlayerInfo.ccbi", ccbproxy, false, "")
 
 	self:addChild(node)
---	
+	
+	self.init_player_info_callback = init_player_info_callback
+	
+	self:init_input_controller()
+	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+	
+	self:show_player_info()
+end
+
+function InitPlayerInfoLayer:init_input_controller()
+	print("[InitPlayerInfoLayer:init_input_controller]")
 	self.input_png = "kuang_a.png"
 	self.nick_name_box = self:addEditbox(self.nick_name_box_layer, 225, 30, false, 101)
 	self.password_box = self:addEditbox(self.pwd_box_layer, 225, 30, true, 101)
@@ -47,9 +57,6 @@ function InitPlayerInfoLayer:ctor(init_player_info_callback)
 	self.gender_box_layer:addChild(self.f_checkbox )
 	
 	
-	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
-	
-	self.init_player_info_callback = init_player_info_callback
 	
 	local menus = CCArray:create()
 
@@ -68,30 +75,61 @@ function InitPlayerInfoLayer:ctor(init_player_info_callback)
 		if key == "backClicked" then
 			if self:isShowing()  then
 				self:dismiss()
+				self.init_player_info_callback(false)
 			end
 		end
 	end)
-	
+end
+
+function InitPlayerInfoLayer:show_player_info()
+	print("[InitPlayerInfoLayer:show_player_info]")
+	local user_id_lb = tolua.cast(self.user_id_lb, "CCLabelTTF")
+    user_id_lb:setString(GlobalSetting.current_user.user_id)
+    self.nick_name_box:setText(GlobalSetting.current_user.nick_name)
+    self.m_checkbox.toggle:setChecked(tonumber(GlobalSetting.current_user.gender) == 1)
+	self.f_checkbox.toggle:setChecked(tonumber(GlobalSetting.current_user.gender) == 2)
+
 end
 
 function InitPlayerInfoLayer:do_ui_commit_btn_clicked(tag, sender)
-	print("[InitPlayerInfoLayer:do_on_trigger_success]")
+	print("[InitPlayerInfoLayer:do_ui_commit_btn_clicked]")
+	local nick_name = trim_blank(self.nick_name_box:getText())
+	if is_blank(nick_name) then
+		self:show_message_box("昵称不能为空")
+		return
+	end
+	local password = trim_blank(self.password_box:getText())
+	if is_blank(password) then
+		self:show_message_box("密码不能为空")
+		return
+	end
+	local gender =  self.m_checkbox.toggle:isChecked() and 1 or 2
 	
 	self:show_progress_message_box("更新资料...")
---	self:reset_password(old_pwd, new_pwd)
+	
+	self.failure_msg = "更新资料失败"
+	local changed_info = {retry="0", user_id = GlobalSetting.current_user.user_id, gender = gender, 
+	nick_name = nick_name, password = password, version="1.0"}
+	self:complete_user_info(changed_info)
 end
 
 function InitPlayerInfoLayer:do_ui_close_btn_clicked(tag, sender)
-	print("[InitPlayerInfoLayer:do_on_trigger_success]")
---	self.init_player_info_callback(false)
+	print("[InitPlayerInfoLayer:do_ui_close_btn_clicked]")
+	self:hide_progress_message_box()
 	self:dismiss()
+	self.init_player_info_callback(false)
 end
 
 function InitPlayerInfoLayer:do_on_trigger_success(data)
 	print("[InitPlayerInfoLayer:do_on_trigger_success]")
+	GlobalSetting.current_user.nick_name = data.nick_name
+	GlobalSetting.current_user.gender = data.gender
+
 	self:hide_progress_message_box()
 	self:show_message_box("更新资料成功")
+	self:dismiss()
 	self.init_player_info_callback(true)
+	
 end
 
 function InitPlayerInfoLayer:do_on_trigger_failure(data)
@@ -100,6 +138,7 @@ function InitPlayerInfoLayer:do_on_trigger_failure(data)
 	self:show_message_box(self.failure_msg)
 
 end
+
 
 UIControllerPlugin.bind(InitPlayerInfoLayer)
 HallServerConnectionPlugin.bind(InitPlayerInfoLayer)
