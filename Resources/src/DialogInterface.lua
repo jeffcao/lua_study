@@ -27,11 +27,13 @@ function DialogInterface.bind(theClass)
 		self:setVisible(false)
 		print("dismiss before")
 		if self.swallow_keypad then
-			Timer.add_timer(0.7, function()
+--			Timer.add_timer(0.7, function()
+--			self.rootNode:setKeypadEnabled(false)
+--			self:getParent():setKeypadEnabled(true)
+--			print("exceute function")
+--			end)
 			self.rootNode:setKeypadEnabled(false)
 			self:getParent():setKeypadEnabled(true)
-			print("exceute function")
-			end)
 		end
 		print("dismiss after")
 	end
