@@ -1697,9 +1697,9 @@
 										<key>displayName</key>
 										<string>feed_back_btn</string>
 										<key>memberVarAssignmentName</key>
-										<string></string>
+										<string>feedback_btn</string>
 										<key>memberVarAssignmentType</key>
-										<integer>0</integer>
+										<integer>1</integer>
 										<key>properties</key>
 										<array>
 											<dict>
@@ -1761,8 +1761,8 @@
 												<string>Block</string>
 												<key>value</key>
 												<array>
-													<string></string>
-													<integer>0</integer>
+													<string>on_ui_feedback_btn_clicked</string>
+													<integer>1</integer>
 												</array>
 											</dict>
 											<dict>
@@ -2852,8 +2852,6 @@
 								<true/>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
