@@ -1,0 +1,5 @@
+class DDZJniHelper : public cocos2d::Object {
+	void messageJava(const char* text);
+	const char* get(const char* func);
+	static DDZJniHelper* create();
+};
