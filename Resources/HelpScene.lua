@@ -11,14 +11,15 @@ function createHelpScene()
 end
 
 function HelpScene:ctor()
-	self.ccbproxy = CCBProxy:create()
-	self.ccbproxy:retain()
+	ccb.about_scene = self
+	
+	local ccbproxy = CCBProxy:create()
 	
 	local layer = createFullMubanStyleLayer()
-	self.rootNode = layer
 	self:addChild(layer)
 	
 	layer:setTitle("biaoti05.png")
+	
 	local scroll_view = self:createScrollView()
 	layer:setContent(scroll_view)
 end

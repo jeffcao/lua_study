@@ -22,14 +22,13 @@ function SetDialog:updateVolume()
 end
 
 function SetDialog:ctor()
-	self.ccbproxy = CCBProxy:create()
-	self.ccbproxy:retain()
-	ccb.Set = self
-	local node = CCBReaderLoad("Set.ccbi", self.ccbproxy, true, "Set")
-	assert(node, "failed to load hall scene")
-	self.rootNode = tolua.cast(node, "CCLayer")
+
+	ccb.set_scene = self
+	local ccbproxy = CCBProxy:create()
+	local node = CCBReaderLoad("Set.ccbi", ccbproxy, false, "")
+	self:addChild(node)
+
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
-	self:addChild(self.rootNode)
 	--self.music_slider_layer = self.ccbproxy:getNodeWithType("music_slider_layer", "CCLayer")
 	--self.effect_slider_layer = self.ccbproxy:getNodeWithType("effect_slider_layer", "CCLayer")
 	
@@ -97,8 +96,12 @@ function SetDialog:ctor()
 	self:swallowOnKeypad()
 
 	self:setOnKeypad(function(key)
-		print("yesno dialog on key pad")
+		if key == "menuClicked" then
+			print("set dialog on key pad")
+			return true
+		end
 		if key == "backClicked" then
+			print("set dialog on key pad")
 			if self:isShowing()  then
 				self:dismiss()
 			end

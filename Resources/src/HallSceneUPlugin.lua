@@ -13,16 +13,21 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:onKeypad(key)
 		print("hall scene on key pad")
 		if key == "menuClicked" then
-			if self.pop_menu and self.pop_menu:isAlive() then
-				self.pop_menu:show()
-			else
-				 --self.pop_menu = createMenu(self.rootNode)
-				 self.pop_menu = createMenuDialog()
-				 self.pop_menu:show()
-			end
+--			if self.pop_menu and self.pop_menu:isAlive() then
+--				self.pop_menu:show()
+--			else
+--				 --self.pop_menu = createMenu(self.rootNode)
+--				 self.pop_menu = createMenuDialog()
+--				 self.pop_menu:show()
+--			end
+			self.menu_layer = createMenu(__bind(self.menu_dismiss_callback, self), __bind(self.show_set_dialog, self))
+			self.rootNode:addChild(self.menu_layer, 1001, 908)
+			print("[HallSceneUPlugin:display_player_info] menu_layer:show")
+			self.menu_layer:show()
+
 		elseif key == "backClicked" then
-			if self.pop_menu and self.pop_menu:isShowing() then
-				self.pop_menu:dismiss()
+			if self.menu_layer and self.menu_layer:isShowing() then
+				self.menu_layer:dismiss()
 			else
 				self:doShowExitDialog()
 			end
@@ -48,6 +53,23 @@ function HallSceneUPlugin.bind(theClass)
 		end
 	end
 	
+	function theClass:menu_dismiss_callback()
+		self.rootNode:removeChild(self.menu_layer, true)
+		self.menu_layer = nil
+	end
+	
+	function theClass:set_dialog_dismiss_callback()
+		self.rootNode:removeChild(self.set_dialog_layer, true)
+		self.set_dialog_layer = nil
+	end
+	
+	function theClass:show_set_dialog()
+		self.set_dialog_layer = createSetDialog(__bind(self.set_dialog_dismiss_callback, self))
+		self.rootNode:addChild(self.set_dialog_layer, 1001, 907)
+		print("[HallSceneUPlugin:show_set_dialog] set_dialog_layer:show")
+		self.set_dialog_layer:show()
+	end
+	
 	function theClass:onMenuClick(tag, sender)
 		self:onKeypad("menuClicked")
 	end
@@ -66,8 +88,8 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:doToMarket()
 		--local scene = createMarketScene()
-		local scene = createGamingScene()
-		CCDirector:sharedDirector():pushScene(scene)
+--		local scene = createGamingScene()
+--		CCDirector:sharedDirector():pushScene(scene)
 	end
 	
 	function theClass:doToInfo()
