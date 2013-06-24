@@ -113,10 +113,13 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:display_player_info(data)
 		self:init_current_player_info()
 		self:update_global_player_score_ifno(data)
---		if tonumber(GlobalSetting.current_user.flag) == 0 then
---			local init_player_info_layer = createInitPlayerInfoLayer(__bind(self.init_player_info_callback, self))
---			self.rootNode:addChild(init_player_info_layer, 1001, 909)
---		end
+		if tonumber(GlobalSetting.current_user.flag) == 0 and GlobalSetting.show_init_player_info_box == 1 then
+			local init_player_info_layer = createInitPlayerInfoLayer(__bind(self.init_player_info_callback, self))
+			self.rootNode:addChild(init_player_info_layer, 1001, 909)
+			print("[HallSceneUPlugin:display_player_info] init_player_info_layer:show")
+			init_player_info_layer:show()
+			GlobalSetting.show_init_player_info_box = 0
+		end
 	end
 	
 	function theClass:init_current_player_info()
