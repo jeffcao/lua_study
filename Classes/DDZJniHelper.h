@@ -6,7 +6,7 @@
 class CC_DLL DDZJniHelper : public cocos2d::CCObject {
 public:
 	virtual void messageJava(const char* text);
-	virtual char* get(const char* text);
+	virtual const char* get(const char* text);
 };
 
 #endif
