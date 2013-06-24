@@ -102,7 +102,9 @@ function GConnectionPlugin.bind(theClass)
 		self:init_channel(game_info)
 		
 		local game_channel = game_info.channel_name
-		for _, event in pairs(data.events) do
+		cclog("restore events length is " .. #data.events)
+		for index = -#data.events, -1 do
+			local event = data.events[-index]
 			local msg = {}
 			msg[1] = event.notify_name
 			local attr = {}
@@ -124,7 +126,7 @@ function GConnectionPlugin.bind(theClass)
 	-- activity onResume
 	function theClass:on_resume()
 		cclog("theClass:on_resume")
-		Timer.add_timer(1.5, function() self:op_websocket(false) end)
+		Timer.add_timer(2.5, function() self:op_websocket(false) end)
 	end
 	
 	function theClass:op_websocket(pause)

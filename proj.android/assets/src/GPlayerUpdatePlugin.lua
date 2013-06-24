@@ -6,6 +6,7 @@ function GPlayerUpdatePlugin.bind(theClass)
 			self:retrievePlayers(player_list)
 		end
 	
+		self:updateReady()
 		self:updateTuoguan()
 		self:updatePlayerNames()
 		self:updatePlayerStates()
