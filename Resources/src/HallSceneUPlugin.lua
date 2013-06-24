@@ -267,4 +267,10 @@ function HallSceneUPlugin.bind(theClass)
 		local game = createGamingScene()
 		CCDirector:sharedDirector():replaceScene(game)
 	end
+	
+	--print("theClass.registerCleanup ==> ", theClass.registerCleanup)
+	if theClass.registerCleanup then
+		print("HallServerConnectionPlugin register cleanup")
+		theClass:registerCleanup("HallServerConnectionPlugin.close_hall_websocket", theClass.close_hall_websocket)
+	end
 end

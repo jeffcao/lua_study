@@ -1,7 +1,9 @@
 require "src.UIControllerPlugin"
 require "src.HallServerConnectionPlugin"
 
-FeedbackScene = class("FeedbackScene", function() return display.newScene("FeedbackScene") end)
+FeedbackScene = class("FeedbackScene", function() 
+		return display.newScene("FeedbackScene") 
+	end)
 
 function createFeedbackScene() return FeedbackScene.new() end
 
@@ -25,17 +27,6 @@ function FeedbackScene:ctor()
 
 end
 
---function FeedbackScene:onKeypad(key)
---	if key == "backClicked" then
---		self:doToHall()
---	end
---end
-
---function FeedbackScene:doToHall()
---	--local scene = createHallScene()
---	CCDirector:sharedDirector():popScene()
---end
-
 function FeedbackScene:do_ui_commit_btn_clicked(tag, sender)
 	print("[FeedbackScene:do_ui_commit_btn_clicked]")
 	
@@ -43,4 +34,4 @@ function FeedbackScene:do_ui_commit_btn_clicked(tag, sender)
 end
 
 UIControllerPlugin.bind(FeedbackScene)
---HallServerConnectionPlugin.bind(FeedbackScene)
+HallServerConnectionPlugin.bind(FeedbackScene)
