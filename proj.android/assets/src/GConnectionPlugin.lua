@@ -96,7 +96,6 @@ function GConnectionPlugin.bind(theClass)
 	
 	--restore connection成功
 	function theClass:onSocketRestored(data)
-		--TODO
 		cclog("game onSocketRestored")
 		self:updateSocket("socket: restored")
 		local game_info = data.game_info
@@ -117,8 +116,7 @@ function GConnectionPlugin.bind(theClass)
 	end
 	
 	-- activity onPause
-	function theClass:on_pause(data, data2)
-		if data then dump(data, "on_pause:") else print("on_pause no data") end
+	function theClass:on_pause()
 		cclog("theClass:on_pause")
 		self:op_websocket(true)
 	end
@@ -135,7 +133,6 @@ function GConnectionPlugin.bind(theClass)
 	
 	--restore connection
 	function theClass:restoreConnection()
-		--TODO
 		local event_data = {user_id = self.g_user_id, token = GlobalSetting.current_user.login_token, notify_id = self.g_WebSocket:get_notify_id()}
 		self.g_WebSocket:trigger("g.restore_connection", event_data, __bind(self.onSocketRestored, self), __bind(self.onSocketRestoreFail, self))
 	end
