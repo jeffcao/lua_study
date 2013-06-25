@@ -7,7 +7,6 @@
 #include "SimpleAudioEngine.h"
 //#include "lua++.h"
 #include "WebsocketManager_lua.h"
-//#include "MySprite_lua.h"
 //#include "CCEditBoxBridge_lua.h"
 #include "DialogLayerConvertor_lua.h"
 #include "DDZJniHelper_lua.h"
@@ -156,8 +155,6 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     tolua_WebsocketManager_open(pLuaState);
     tolua_DDZJniHelper_open(pLuaState);
-//    tolua_MySprite_open(pLuaState);
-//    tolua_CCEditBoxBridge_open(pLuaState);
     tolua_DialogLayerConvertor_open(pLuaState);
     luaopen_LuaProxy(pLuaState);
     luaopen_lua_extensions(pLuaState);

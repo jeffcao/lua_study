@@ -1,5 +1,8 @@
 ConnectivityPlugin = {}
 
+--require and bind this, and call function init_connectivity in ctor()
+--ConnectivityPlugin.bind(GamingScene)
+--in GamingScene:ctor() self:init_connectivity()
 function ConnectivityPlugin.bind(theClass)
 	
 	function theClass:network_check()
