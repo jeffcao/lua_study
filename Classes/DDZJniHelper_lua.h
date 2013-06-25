@@ -1,6 +1,6 @@
 /*
 ** Lua binding: DDZJniHelper
-** Generated automatically by tolua++-1.0.93 on Mon Jun 24 15:11:05 2013.
+** Generated automatically by tolua++-1.0.93 on Tue Jun 25 11:45:01 2013.
 */
 extern "C" {
 #include "tolua++.h"

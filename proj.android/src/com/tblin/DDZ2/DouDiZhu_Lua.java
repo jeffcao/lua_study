@@ -24,6 +24,7 @@ THE SOFTWARE.
 package com.tblin.DDZ2;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
+import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
 import android.os.Bundle;
 

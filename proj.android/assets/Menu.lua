@@ -12,8 +12,6 @@ end
 function createMenu(menu_dismiss_callback, show_set_fn)
 	print("create menu")
 	local menu = Menu.new(menu_dismiss_callback, show_set_fn)
---	menu.container = container
---	menu.container:addChild(menu)
 	return menu
 end
 
@@ -46,14 +44,8 @@ function Menu:ctor(menu_dismiss_callback, show_set_fn)
 	end
 	
 	local function set(tag, sender)
---		if not self.set_dialog then
---			self.set_dialog = createSetDialog(self)
---			self.container:addChild(self.set_dialog)
---		end
---		self.set_dialog:show()
 		dismiss()
 		self.show_set_fn()
---		self:setVisible(false)
 	end
 	self.show_set_fn = show_set_fn
 	self.menu_dismiss_callback = menu_dismiss_callback
