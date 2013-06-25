@@ -1,6 +1,11 @@
 package com.tblin.DDZ2;
 
+import java.util.List;
+
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningTaskInfo;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -30,7 +35,11 @@ public class NetworkListener extends BroadcastReceiver {
 		if (is_connected) {
 			str = "on_network_change_available";
 		}
-		DDZJniHelper.messageToCpp(str);
+		if (isAppForeground(context)) {
+			DDZJniHelper.messageToCpp(str);
+		} else {
+			System.out.println("app is in background, do not message network change");
+		}
 	}
 	
 	public static boolean isNetworkConnected(Context context) {
@@ -57,6 +66,23 @@ public class NetworkListener extends BroadcastReceiver {
 		if (1 == type || 2 == type || 4 == type)
 			ntype = "2G";
 		return ntype;
+	}
+	
+	public static boolean isAppForeground(Context context) {
+		String top_activity_name = getTopActivityName(context);
+		System.out.println("top_activity_name:" + top_activity_name);
+		return top_activity_name.startsWith("com.tblin.DDZ2");
+	}
+	
+	public static String getTopActivityName(Context context) {
+		ActivityManager mgr = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+		List<RunningTaskInfo> tasksInfo = mgr.getRunningTasks(1);
+		if (tasksInfo.size() > 0) {
+		   ComponentName component = tasksInfo.get(0).topActivity;
+		   String name = component.getClassName();
+		   return name;
+		}
+		return "";
 	}
 	
 	private class NetworkState {
