@@ -15,7 +15,7 @@
 	<key>guides</key>
 	<array/>
 	<key>jsControlled</key>
-	<false/>
+	<true/>
 	<key>nodeGraph</key>
 	<dict>
 		<key>baseClass</key>
@@ -35,11 +35,11 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>baoxiang</string>
+						<string>icon_sprite</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>icon_sprite</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -115,11 +115,11 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>box_text</string>
+						<string>name_lb</string>
 						<key>memberVarAssignmentName</key>
-						<string>box_text</string>
+						<string>name_lb</string>
 						<key>memberVarAssignmentType</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -231,11 +231,11 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>spec_text</string>
+						<string>note_lb</string>
 						<key>memberVarAssignmentName</key>
-						<string>spec_text</string>
+						<string>note_lb</string>
 						<key>memberVarAssignmentType</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -347,11 +347,11 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>price_text</string>
+						<string>price_lb</string>
 						<key>memberVarAssignmentName</key>
-						<string>price_text</string>
+						<string>price_lb</string>
 						<key>memberVarAssignmentType</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -480,11 +480,11 @@
 								<key>customClass</key>
 								<string></string>
 								<key>displayName</key>
-								<string>buy_menu_item</string>
+								<string>buy_btn</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>buy_btn</string>
 								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
+								<integer>1</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -546,8 +546,8 @@
 										<string>Block</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<integer>0</integer>
+											<string>on_ui_buy_btn_clicked</string>
+											<integer>1</integer>
 										</array>
 									</dict>
 									<dict>
@@ -592,8 +592,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -601,9 +599,9 @@
 						<key>displayName</key>
 						<string>buy_menu</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>by_menu</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -683,6 +681,8 @@
 								<true/>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -810,13 +810,13 @@
 					</dict>
 				</array>
 				<key>customClass</key>
-				<string></string>
+				<string>market_item_scene</string>
 				<key>displayName</key>
 				<string>CCLayer</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -903,11 +903,11 @@
 		<key>displayName</key>
 		<string>CCLayer</string>
 		<key>jsController</key>
-		<string>MainScene</string>
+		<string>matket_item_scene</string>
 		<key>memberVarAssignmentName</key>
-		<string></string>
+		<string>rootNode</string>
 		<key>memberVarAssignmentType</key>
-		<integer>0</integer>
+		<integer>1</integer>
 		<key>properties</key>
 		<array>
 			<dict>
