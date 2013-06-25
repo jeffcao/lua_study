@@ -101,7 +101,7 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string>ccbResources/common.plist</string>
+									<string>ccbResources/props.plist</string>
 									<string>common_jewelry_box_01.png</string>
 								</array>
 							</dict>
@@ -681,8 +681,6 @@
 								<true/>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -975,6 +973,8 @@
 				<true/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
