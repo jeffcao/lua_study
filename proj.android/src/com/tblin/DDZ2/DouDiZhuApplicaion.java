@@ -11,4 +11,5 @@ public class DouDiZhuApplicaion extends Application {
 		APP_CONTEXT = this;
 		super.onCreate();
 	}
+
 }

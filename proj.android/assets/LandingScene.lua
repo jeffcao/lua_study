@@ -71,7 +71,7 @@ function LandingScene:on_keypad_pressed(key)
 end
 
 function LandingScene:do_close()
-	CCDirector:sharedDirector():endToLua()
+	endtolua()
 end
 
 function LandingScene:on_server_test(data)

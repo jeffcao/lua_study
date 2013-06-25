@@ -143,6 +143,17 @@ local function main()
 		notify_center:registerScriptObserver(node, NotificationProxy.on_event, event)
 	end
 	
+	local audio = SimpleAudioEngine:sharedEngine()
+	local user_default = CCUserDefault:sharedUserDefault()
+	local music_volume = user_default:getFloatForKey("bg_music_volume")
+	local effect_volume = user_default:getFloatForKey("effect_volume")
+	if music_volume > 0 then
+		audio:setBackgroundMusicVolume(music_volume)
+	end
+	if effect_volume > 0 then
+		audio:setEffectsVolume(effect_volume)
+	end
+	
 --	return true
 --	
 --	local proxy = CCBProxy:create()

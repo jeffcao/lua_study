@@ -15,6 +15,12 @@ function scaleNode(node, scaleFactor)
 	
 end
 
+function endtolua()
+	local jni_helper = DDZJniHelper:create()
+	jni_helper:messageJava("RecoveryMusicVolume")
+	CCDirector:sharedDirector():endToLua()
+end
+
 function table.filter(src, fn)
 	local result = {}
 	for _,v in pairs(src) do
