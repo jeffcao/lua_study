@@ -67,6 +67,7 @@ const char* DDZJniHelper::get(const char* text) {
 	//cast object
 	jstring js = (jstring) result;
 	std::string myText = JniHelper::jstring2string(js);
+	myText.append("\0");
 
 	//delete refrence
 	DDZJniHelper_func_name.env->DeleteLocalRef(js);

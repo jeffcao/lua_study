@@ -1,12 +1,20 @@
 ConnectivityPlugin = {}
 
+--require and bind this, and call function init_connectivity in ctor()
+--ConnectivityPlugin.bind(GamingScene)
+--in GamingScene:ctor() self:init_connectivity()
 function ConnectivityPlugin.bind(theClass)
 	
 	function theClass:network_check()
+		Timer.add_timer(0, __bind(self.do_network_check, self))
+	end
+	
+	function theClass:do_network_check()
 		local jni_helper = DDZJniHelper:create()
 		local network_state = jni_helper:get("IsNetworkConnected")
 		print("network_state=> ", network_state, string.len(network_state))
-		if network_state == "true" then
+		network_state = string.sub(network_state, 1, 1)
+		if network_state == "t" then
 			cclog("resume_check network is connected")
 			if self.network_disconnected_dialog and self.network_disconnected_dialog:isShowing() then
 				self.network_disconnected_dialog:dismiss()
@@ -34,8 +42,9 @@ function ConnectivityPlugin.bind(theClass)
 			jni_helper:messageJava("on_set_network_intent")
 		end)
 		dialog:setNoButton(function() 
-			CCDirector:sharedDirector():endToLua()
+			endtolua()
 		end)
+		dialog:setOnKeypad(function(key) end)
 		dialog:show()
 		self.network_disconnected_dialog = dialog
 	end

@@ -65,7 +65,7 @@ function LoginScene:on_keypad_pressed(key)
 end
 
 function LoginScene:do_close()
-	CCDirector:sharedDirector():endToLua()
+	endtolua()
 end
 
 UIControllerPlugin.bind(LoginScene)

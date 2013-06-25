@@ -48,7 +48,7 @@ function HallSceneUPlugin.bind(theClass)
 			self.exit_dialog:setTitle("退出")
 			self.exit_dialog:setMessage("您是否退出游戏?")
 			self.exit_dialog:setYesButton(function()
-				CCDirector:sharedDirector():endToLua()
+				endtolua()
 			end)
 			self.exit_dialog:show()
 		end

@@ -47,7 +47,7 @@ function RegisterScene:onCleanup()
 end
 
 function RegisterScene:do_close()
-	CCDirector:sharedDirector():endToLua()
+	endtolua()
 end
 
 UIControllerPlugin.bind(RegisterScene)

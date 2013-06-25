@@ -36,6 +36,8 @@ function SetDialog:ctor()
 	cache:addSpriteFramesWithFile(Res.dialog_plist);
 	local audio = SimpleAudioEngine:sharedEngine()
 	
+	local user_default = CCUserDefault:sharedUserDefault()
+	
 	local function valueChanged(strEventName,pSender)
         if nil == pSender then
         	return
@@ -43,9 +45,11 @@ function SetDialog:ctor()
         local pControl = tolua.cast(pSender,"CCControlSlider")
         local strFmt = nil
         if pControl:getTag() == 1001 then
+        	user_default:setFloatForKey("bg_music_volume", pControl:getValue())
         	audio:setBackgroundMusicVolume(pControl:getValue())
         	strFmt = string.format("Upper slider value = %.02f",pControl:getValue())
         elseif pControl:getTag() == 1002 then
+        	user_default:setFloatForKey("effect_volume", pControl:getValue())
         	audio:setEffectsVolume(pControl:getValue())
         	strFmt = string.format("Lower slider value = %.02f",pControl:getValue())
         end
@@ -67,6 +71,7 @@ function SetDialog:ctor()
     pSlider:setMinimumValue(0) 
     pSlider:setMaximumValue(1) 
 	pSlider:setTag(1001)
+	pSlider:setValue(user_default:getFloatForKey("bg_music_volume"))
 	pSlider:setPosition(ccp(0,self.music_slider_layer:getContentSize().height/2))
 	self.music_slider_layer:addChild(pSlider)
 	pSlider:addHandleOfControlEvent(valueChanged, CCControlEventValueChanged)
@@ -83,6 +88,7 @@ function SetDialog:ctor()
 	pSlider_e:setTag(1002)
 	pSlider_e:setPosition(ccp(0,self.effect_slider_layer:getContentSize().height/2))
 	self.effect_silder = pSlider_e
+	pSlider_e:setValue(user_default:getFloatForKey("effect_volume"))
 	self.effect_slider_layer:addChild(pSlider_e)
 	pSlider_e:addHandleOfControlEvent(valueChanged, CCControlEventValueChanged)
 	scaleNode(pSlider_e, GlobalSetting.content_scale_factor * 0.90)
