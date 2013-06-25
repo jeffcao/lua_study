@@ -88,9 +88,8 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:doToMarket()
-		--local scene = createMarketScene()
---		local scene = createGamingScene()
---		CCDirector:sharedDirector():pushScene(scene)
+		local scene = createMarketScene()
+		CCDirector:sharedDirector():pushScene(scene)
 	end
 	
 	function theClass:doToInfo()

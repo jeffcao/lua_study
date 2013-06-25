@@ -3,11 +3,11 @@ MarketSceneUPlugin = {}
 
 function MarketSceneUPlugin.bind(theClass)
 
-	function theClass:createListView()
-		local data = {}
-		for i = 1, 10 do
-		table.insert(data, "Data 3"..i) end
-	
+	function theClass:create_product_list(product_list)
+		if product_list == nil then
+			return
+		end
+
 		local h = LuaEventHandler:create(function(fn, table, a1, a2)
 			local r
 			if fn == "cellSize" then
@@ -16,17 +16,61 @@ function MarketSceneUPlugin.bind(theClass)
 				if not a2 then
 					a2 = CCTableViewCell:create()
 					a3 = createMarketItem()
+					print("[MarketSceneUPlugin.create_product_list] a1 =>"..a1)
+					a3:init_item(product_list[a1+1])
 					a2:addChild(a3, 0, 1)
+				else
+					local a3 = tolua.cast(a2:getChildByTag(1), "CCLayer")
+					a3:init_item(product_list[a1 + 1])
 				end
 				r = a2
 			elseif fn == "numberOfCells" then
-				r = #data
+				r = #product_list
 			elseif fn == "cellTouched" then
 			end
 			return r
 		end)
 		local t = LuaTableView:createWithHandler(h, CCSizeMake(800,300))
 		t:setPosition(CCPointMake(0,70))
+		
+		for index=#(product_list), 1, -1 do
+			t:updateCellAtIndex(index-1)
+		end
+		
 		return t
+	end
+	
+	function theClass:show_product_list(data)
+		local product_view = self:create_product_list(data.commodity)
+		self.rootNode:setContent(product_view)
+	end
+	
+	
+	function theClass:init_product_list()
+		print("[MarketSceneUPlugin:do_on_trigger_success]")
+		
+		self:show_progress_message_box("获取商品列表")
+		self:shop_prop_list()
+		self.after_trigger_success = __bind(self.show_product_list, self)
+		
+	end
+	
+	function theClass:do_on_trigger_success(data)
+		print("[MarketSceneUPlugin:do_on_trigger_success]")
+		self:hide_progress_message_box()
+		
+		if "function" == type(self.after_trigger_success) then
+			self.after_trigger_success(data)
+		end
+		
+	end
+	
+	function theClass:do_on_trigger_failure(data)
+		print("[MarketSceneUPlugin:do_on_trigger_failure]")
+		self:hide_progress_message_box()
+		self:show_message_box(self.failure_msg)
+		if "function" == type(self.after_trigger_failure) then
+			self.after_trigger_failure(data)
+		end
 	end
 end
