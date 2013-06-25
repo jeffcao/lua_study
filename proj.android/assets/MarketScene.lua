@@ -1,4 +1,7 @@
 require "src.MarketSceneUPlugin"
+require "src.UIControllerPlugin"
+require "src.HallServerConnectionPlugin"
+
 MarketScene = class("MarketScene", function()
 	print("new market scene")
 	return display.newScene("MarketScene")	
@@ -11,15 +14,19 @@ function createMarketScene()
 end
 
 function MarketScene:ctor()
-	self.ccbproxy = CCBProxy:create()
-	self.ccbproxy:retain()
+	
+	local ccbproxy = CCBProxy:create()
 	
 	local layer = createFullMubanStyleLayer()
 	self.rootNode = layer
 	self:addChild(layer)
 	
 	layer:setTitle("biaoti06.png")
-	local list_view = self:createListView()
-	layer:setContent(list_view)
+	
+	self:init_product_list()
+	
 end
+
 MarketSceneUPlugin.bind(MarketScene)
+UIControllerPlugin.bind(MarketScene)
+HallServerConnectionPlugin.bind(MarketScene)
