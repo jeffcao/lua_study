@@ -26,6 +26,11 @@ public class NetworkListener extends BroadcastReceiver {
 		System.out.println("process network connected state change");
 		last_state.is_connected = is_connected;
 		last_state.type = type;
+		String str = "on_network_change_disable";
+		if (is_connected) {
+			str = "on_network_change_available";
+		}
+		DDZJniHelper.messageToCpp(str);
 	}
 	
 	public static boolean isNetworkConnected(Context context) {

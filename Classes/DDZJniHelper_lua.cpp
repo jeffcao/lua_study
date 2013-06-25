@@ -1,6 +1,6 @@
 /*
 ** Lua binding: DDZJniHelper
-** Generated automatically by tolua++-1.0.93 on Mon Jun 24 15:11:05 2013.
+** Generated automatically by tolua++-1.0.93 on Tue Jun 25 11:45:01 2013.
 */
 
 /****************************************************************************
@@ -52,7 +52,7 @@ TOLUA_API int  tolua_DDZJniHelper_open (lua_State* tolua_S);
 /* function to register type */
 static void tolua_reg_types (lua_State* tolua_S)
 {
- tolua_usertype(tolua_S,"cocos2d::Object");
+ tolua_usertype(tolua_S,"cocos2d::CCObject");
  tolua_usertype(tolua_S,"DDZJniHelper");
 }
 
@@ -111,7 +111,13 @@ static int tolua_DDZJniHelper_DDZJniHelper_get00(lua_State* tolua_S)
 #endif
   {
    const char* tolua_ret = (const char*)  self->get(func);
-   tolua_pushstring(tolua_S,(const char*)tolua_ret);
+   char buf[512];
+   memset(buf, 0, sizeof(buf));
+   sprintf(buf, "self->get('%s') returned: '%s', length: %d", func, tolua_ret, strlen(tolua_ret) );
+   CCLOG(buf);
+   memset(buf, 0 , sizeof(buf));
+   strncpy(buf, tolua_ret, strlen(tolua_ret));
+   tolua_pushstring(tolua_S,(const char*)buf);
   }
  }
  return 1;
@@ -158,7 +164,7 @@ TOLUA_API int tolua_DDZJniHelper_open (lua_State* tolua_S)
  tolua_reg_types(tolua_S);
  tolua_module(tolua_S,NULL,0);
  tolua_beginmodule(tolua_S,NULL);
-  tolua_cclass(tolua_S,"DDZJniHelper","DDZJniHelper","cocos2d::Object",NULL);
+  tolua_cclass(tolua_S,"DDZJniHelper","DDZJniHelper","cocos2d::CCObject",NULL);
   tolua_beginmodule(tolua_S,"DDZJniHelper");
    tolua_function(tolua_S,"messageJava",tolua_DDZJniHelper_DDZJniHelper_messageJava00);
    tolua_function(tolua_S,"get",tolua_DDZJniHelper_DDZJniHelper_get00);

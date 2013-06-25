@@ -1,6 +1,7 @@
 #include "DDZJniHelper.h"
 #include "platform/android/jni/JniHelper.h"
 #include <jni.h>
+#include "support/CCNotificationCenter.h"
 
 using namespace cocos2d;
 
@@ -12,6 +13,7 @@ void Java_com_tblin_DDZ2_DDZJniHelper_messageCpp(JNIEnv* env, jobject thiz,
 
 	std::string myText = JniHelper::jstring2string(text);
 
+	CCNotificationCenter::sharedNotificationCenter()->postNotification(myText.c_str());
 	/*DDZJniHelper* h = new DDZJniHelper();
 	const char* is_connected = h->get("IsNetworkConnected");*/
 
@@ -42,9 +44,9 @@ void DDZJniHelper::messageJava(const char* text) {
 }
 
 const char* DDZJniHelper::get(const char* text) {
-	std::string* func_name = new std::string("get");
-	func_name->append(text);
-	CCLog("[DDZJniHelper::get] func_name => %s", func_name->c_str());
+	std::string func_name = "get";
+	func_name.append(text);
+	CCLog("[DDZJniHelper::get] func_name => %s", func_name.c_str());
 
 	// init function
 	static JniMethodInfo DDZJniHelper_func_name;
@@ -70,8 +72,8 @@ const char* DDZJniHelper::get(const char* text) {
 	DDZJniHelper_func_name.env->DeleteLocalRef(js);
 	DDZJniHelper_func_name.env->DeleteLocalRef(jstx);
 
-	CCLog("[DDZJniHelper::%s] result => %s", func_name->c_str(),
-			myText.c_str());
+	CCLog("[DDZJniHelper::%s] result => %s, length => %d", func_name.c_str(),
+			myText.c_str(), myText.length());
 	return myText.c_str();
 }
 

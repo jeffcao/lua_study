@@ -22,6 +22,7 @@ require "src.GTriggerCallback"
 require "src.GConnectionPlugin"
 require "src.GChatPlugin"
 require "src.GAnimationPlugin"
+require "src.ConnectivityPlugin"
 
 GamingScene = class("GamingScene", function()
 	return display.newScene("GamingScene")
@@ -68,6 +69,11 @@ function GamingScene:ctor()
 	
 	self.json = require "cjson"
 	self.g_WebSocket.on_open = function() print("websockt on open after gaming") end
+	
+	local str = "GamingScene root node is nil"
+	if self.rootNode then str = "GamingScene root node is not nil" end
+	print(str)
+	self:init_connectivity()
 end
 
 function GamingScene:onEnter()
@@ -148,3 +154,4 @@ GActionPlugin.bind(GamingScene)
 GTriggerCallback.bind(GamingScene)
 GConnectionPlugin.bind(GamingScene)
 GChatPlugin.bind(GamingScene)
+ConnectivityPlugin.bind(GamingScene)

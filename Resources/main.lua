@@ -27,6 +27,7 @@ require "framework.client.init"
 require "src.GlobalSetting"
 require "src.UserInfo"
 require "src.GlobalFunction"
+require "src.NotificationProxy"
 --require "src.functions"
 require "LandingScene"
 require "GamingScene"
@@ -134,6 +135,13 @@ local function main()
 
 	local ls = createLandingScene()
 	CCDirector:sharedDirector():runWithScene(ls)
+	
+	local notify_center = CCNotificationCenter:sharedNotificationCenter()
+	local node = display.newSprite()
+	local events = {"on_resume", "on_pause", "on_network_change_disable", "on_network_change_available"}
+	for _,event in pairs(events) do
+		notify_center:registerScriptObserver(node, NotificationProxy.on_event, event)
+	end
 	
 --	return true
 --	
