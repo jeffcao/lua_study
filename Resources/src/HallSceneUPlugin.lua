@@ -6,6 +6,7 @@ require "MarketScene"
 require "MenuDialog"
 require "GamingScene"
 require "InitPlayerInfoLayer"
+require "FeedbackScene"
 
 HallSceneUPlugin = {}
 
@@ -104,6 +105,11 @@ function HallSceneUPlugin.bind(theClass)
 			self:connect_to_hall_server()
 		end
 		
+	end
+	
+	function theClass:do_ui_feedback_btn_clicked()
+		local scene = createFeedbackScene()
+		CCDirector:sharedDirector():pushScene(scene)
 	end
 	
 	function theClass:init_hall_info(data)
@@ -260,5 +266,12 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:enter_game_room()
 		local game = createGamingScene()
 		CCDirector:sharedDirector():replaceScene(game)
+		self:close_hall_websocket()
+	end
+	
+	--print("theClass.registerCleanup ==> ", theClass.registerCleanup)
+	if theClass.registerCleanup then
+		print("HallServerConnectionPlugin register cleanup")
+		theClass:registerCleanup("HallServerConnectionPlugin.close_hall_websocket", theClass.close_hall_websocket)
 	end
 end
