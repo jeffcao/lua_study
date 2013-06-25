@@ -97,6 +97,12 @@ function HallServerConnectionPlugin.bind(theClass)
 		self:call_server_method("fast_begin_game", event_data)
 	end
 	
+	function theClass:feedback(content)
+		self.failure_msg = "保存反馈信息失败"
+		local event_data = {user_id =  GlobalSetting.current_user.user_id, content = content}
+		self:call_server_method("feedback", event_data)
+	end
+	
 	function theClass:call_server_method(method_name, pass_data)
 --		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
 		GlobalSetting.hall_server_websocket:trigger("ui."..method_name, 
@@ -112,8 +118,6 @@ function HallServerConnectionPlugin.bind(theClass)
 			GlobalSetting.hall_server_websocket = nil
 		end
 	end
-	
-	
-	
+
 	
 end
