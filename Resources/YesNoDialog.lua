@@ -1,5 +1,4 @@
 require "src.YesNoDialogUPlugin"
-require "CCBReaderLoad"
 require "src.DialogInterface"
 
 YesNoDialog = class("YesNoDialog", function()
@@ -8,43 +7,45 @@ YesNoDialog = class("YesNoDialog", function()
 end
 )
 
-function createYesNoDialog(container)
+function createYesNoDialog(yes_no_dialog_dismiss_callback)
 	print("create YesNoDialog")
-	local dialog = YesNoDialog.new()
-	container:addChild(dialog)
+	local dialog = YesNoDialog.new(yes_no_dialog_dismiss_callback)
+--	container:addChild(dialog)
 	return dialog
 end
 
-function YesNoDialog:ctor()
-	self.ccbproxy = CCBProxy:create()
- 	self.ccbproxy:retain()
- 	
+function YesNoDialog:ctor(yes_no_dialog_dismiss_callback)
+	local ccbproxy = CCBProxy:create()
+
  	ccb.YesNoDialog = self
- 	--local node = self.ccbproxy:readCCBFromFile("ExitLayer.ccbi")
- 	local node = CCBReaderLoad("ExitLayer.ccbi", self.ccbproxy, true, "YesNoDialog")
-	assert(node, "failed to load hall scene")
-	self.rootNode = tolua.cast(node, "CCLayer")
-	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
-	self:addChild(self.rootNode)
+
+ 	local node = CCBReaderLoad("ExitLayer.ccbi", ccbproxy, true, "YesNoDialog")
+	self:addChild(node)
 	
-	self.msg = self.msg_text --self.ccbproxy:getNodeWithType("msg_text", "CCLabelTTF")
-	self.title = self.title_text --ccbproxy:getNodeWithType("title_text", "CCLabelTTF")
-	self.confirm = self.confirm_btn --ccbproxy:getNodeWithType("confirm_btn", "CCMenuItemImage")
-	self.reject = self.reject_btn --ccbproxy:getNodeWithType("reject_btn", "CCMenuItemImage")
+	self.msg = tolua.cast(self.msg_text, "CCLabelTTF") 
+	self.title = tolua.cast(self.title_text, "CCLabelTTF")
+	self.confirm = tolua.cast(self.confirm_btn, "CCMenuItemImage") 
+	self.reject = tolua.cast(self.reject_btn, "CCMenuItemImage") 
+	
+	self:create_scroll_view(self.scroll_layer, self.msg)
+	
+	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+	
 	self:setVisible(false)
 	
-	self:setYesButton(function()
-		self:dismiss()
-	end)
+--	self:setYesButton(function()
+--		self:dismiss()
+--	end)
 	self:setNoButton(function()
 		self:dismiss()
+		self:do_callback()
 	end)
 	
+	self.yes_no_dialog_dismiss_callback = yes_no_dialog_dismiss_callback
 	local menus = CCArray:create()
-	self.reject_menu = self.reject_menu --ccbproxy:getNodeWithType("reject_menu", "CCMenu")
-	self.confirm_menu = self.confirm_menu --ccbproxy:getNodeWithType("confirm_menu", "CCMenu")
-	menus:addObject(self.reject_menu)
-	menus:addObject(self.confirm_menu)
+
+	menus:addObject(tolua.cast(self.reject_menu, "CCLayerRGBA"))
+	menus:addObject(tolua.cast(self.confirm_menu, "CCLayerRGBA"))
 	self:swallowOnTouch(menus)
 	self:swallowOnKeypad()
 
@@ -53,10 +54,36 @@ function YesNoDialog:ctor()
 		if key == "backClicked" then
 			if self:isShowing()  then
 				self:dismiss()
+				self:do_callback()
 			end
 		end
 	end)
 	
+end
+
+function YesNoDialog:do_callback()
+	if "function" == type(self.yes_no_dialog_dismiss_callback) then
+		self.yes_no_dialog_dismiss_callback()
+	end
+end
+
+function YesNoDialog:create_scroll_view(p_layer, msg_lb)
+	local scroll_view = CCScrollView:create()
+	scroll_view:setViewSize(CCSizeMake(285,125))
+	scroll_view:setContainer(help)
+	scroll_view:setContentOffset(ccp(0,-210))
+
+	scroll_view:setDirection(kCCScrollViewDirectionVertical)
+	scroll_view:setBounceable(true)
+	
+	p_layer:addChild(scroll_view, 0, -1)
+	scroll_view:ignoreAnchorPointForPosition(false)
+	scroll_view:setAnchorPoint(ccp(0,0))
+	scroll_view:setPosition(ccp(0,0))
+	self.rootNode:removeChild(msg_lb, true)
+	scroll_view:addChild(msg_lb, 0, -1)
+	scroll_view:setAnchorPoint(ccp(0.5,0.5))
+	scroll_view:setPosition(ccp(50,50))
 end
 YesNoDialogUPlugin.bind(YesNoDialog)
 DialogInterface.bind(YesNoDialog)

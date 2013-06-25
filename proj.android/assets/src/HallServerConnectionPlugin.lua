@@ -110,6 +110,13 @@ function HallServerConnectionPlugin.bind(theClass)
 	
 	end
 	
+	function theClass:buy_prop(product_id)
+		self.failure_msg = "购买道具失败"
+		local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, version="1.0"}
+		self:call_server_method("buy_prop", event_data)
+	
+	end
+	
 	function theClass:call_server_method(method_name, pass_data)
 --		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
 		GlobalSetting.hall_server_websocket:trigger("ui."..method_name, 
