@@ -358,12 +358,14 @@ function GActionPlugin.bind(theClass)
 	end
 	
 	function theClass:loadSettings() 
+		--[[
 		local ls = CCUserDefault:sharedUserDefault()
 		SoundSettings.bg_music = ls:getStringForKey("bg_music") ~= "0"
 		SoundSettings.effect_music = ls:getStringForKey("effect_music") ~= "0"
 		
 		print("[MainSceneDelegate.loadSettings] SoundSettings.bg_music => " , SoundSettings.bg_music)
 		print("[MainSceneDelegate.loadSettings] SoundSettings.effect_music => " , SoundSettings.effect_music)
+		]]
 	end
 	
 	function theClass:saveSettings() 
