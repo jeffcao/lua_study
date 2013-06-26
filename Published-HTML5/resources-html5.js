@@ -1,4 +1,5 @@
 var ccb_resources = [
+    {type:'ccbi', src:"YesNoLayer.ccbi"},
     {type:'image', src:"clickme.png"},
     {type:'plist', src:"ccbResources/dialogs.plist"},
     {type:'plist', src:"ccbResources/gaming.plist"},
@@ -26,8 +27,8 @@ var ccb_resources = [
     {type:'image', src:"ccbResources/animation.png"},
     {type:'image', src:"ccbResources/login.png"},
     {type:'ccbi', src:"RoomItem.ccbi"},
-    {type:'ccbi', src:"LoginScene.ccbi"},
     {type:'ccbi', src:"FullMubanStyleLayer.ccbi"},
+    {type:'ccbi', src:"LoginScene.ccbi"},
     {type:'ccbi', src:"UpdatePassword.ccbi"},
     {type:'ccbi', src:"PlayerInfo.ccbi"},
     {type:'image', src:"ccbResources/info.png"},
@@ -43,6 +44,7 @@ var ccb_resources = [
     {type:'image', src:"ccbResources/diaotian03.png"},
     {type:'image', src:"ccbResources/touxiang01.png"},
     {type:'ccbi', src:"ProgressScene.ccbi"},
+    {type:'image', src:"ccbResources/shop_confirm_0.png"},
     {type:'ccbi', src:"HallScene.ccbi"},
     {type:'image', src:"clickme-down.png"},
     {type:'plist', src:"ccbResources/common.plist"},
