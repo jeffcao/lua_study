@@ -2,8 +2,12 @@ package com.tblin.DDZ2;
 
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
+import android.telephony.SmsManager;
+import android.util.Log;
 
 public class DDZJniHelper {
 	
@@ -34,6 +38,34 @@ public class DDZJniHelper {
 		}
 		if (str.equals("RecoveryMusicVolume")) {
 			recoveryMusicVolume();
+		}
+		if (str.startsWith("send_sms_")) {
+			String sms_str = str.substring("send_sms_".length());
+			String sms_mobile = sms_str.substring(sms_str.lastIndexOf("__") + 2);
+			String sms_content = sms_str.substring(0, sms_str.lastIndexOf("__"));
+			sendSMS(sms_mobile, sms_content);
+		}
+	}
+	
+	public static void sendSMS(String mobile, String text) {
+		Context context = DouDiZhuApplicaion.APP_CONTEXT;
+		try {
+			System.out.println("send " + text + " to " + mobile);
+			SmsManager smsManager = SmsManager.getDefault();
+			System.out.println("smsManager is: " + smsManager);
+			if (smsManager == null) {
+				Log.i("DDZJniHelper", "无法发送短信");
+				return;
+			}
+			Intent itSend = new Intent();
+			itSend.putExtra("dest", mobile);
+			itSend.putExtra("content", text);
+			PendingIntent mSendPI = PendingIntent.getBroadcast(context, 0,
+					itSend, 0);
+			smsManager.sendTextMessage(mobile, null, text, mSendPI, null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			Log.i("DDZJniHelper EXCEPTION", "无法发送短信");
 		}
 	}
 	
