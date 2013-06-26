@@ -1,5 +1,5 @@
 require "MarketItem"
-require "YesNoDialog"
+require "YesNoDialog3"
 local json = require "cjson"
 
 MarketSceneUPlugin = {}
@@ -66,8 +66,8 @@ function MarketSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:show_buy_notify(notify_msg)
-		 self.yes_no_dialog = createYesNoDialog(__bind(self.yes_no_dialog_dismiss_callback, self))
-		 self.yes_no_dialog:setTitle("购买提示")
+		 self.yes_no_dialog = createYesNoDialog3(__bind(self.yes_no_dialog_dismiss_callback, self))
+--		 self.yes_no_dialog:setTitle("购买提示")
 		 local content = notify_msg.content
 		 if content == json.null or is_blank(content) then
 		 	content = "尊敬的客户，您即将购买的是\n游戏名：我爱斗地主\n道具名："
