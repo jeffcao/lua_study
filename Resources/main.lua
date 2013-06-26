@@ -34,6 +34,7 @@ require "GamingScene"
 require "src.resources"
 require "CCBReaderLoad"
 require "GuifanStartScene"
+require "GuifanEndScene"
 end
 
 local json = require "cjson"

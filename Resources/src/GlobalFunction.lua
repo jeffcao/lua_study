@@ -15,6 +15,11 @@ function scaleNode(node, scaleFactor)
 	
 end
 
+function endtolua_guifan()
+	local scene = createGuifanEndScene()
+	CCDirector:sharedDirector():pushScene(scene)
+end
+
 function endtolua()
 	local jni_helper = DDZJniHelper:create()
 	jni_helper:messageJava("RecoveryMusicVolume")

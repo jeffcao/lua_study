@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
+import android.net.Uri;
 import android.telephony.SmsManager;
 import android.util.Log;
 
@@ -45,6 +46,18 @@ public class DDZJniHelper {
 			String sms_content = sms_str.substring(0, sms_str.lastIndexOf("__"));
 			sendSMS(sms_mobile, sms_content);
 		}
+		if (str.startsWith("on_open_url_intent_")) {
+			String url = str.substring("on_open_url_intent_".length());
+			openUrl(url);
+		}
+	}
+	
+	public static void openUrl(String url) {
+		Uri uri = Uri.parse(url);
+		Intent it = new Intent(Intent.ACTION_VIEW, uri);
+		it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		it.setClassName("com.android.browser","com.android.browser.BrowserActivity"); 
+		DouDiZhuApplicaion.APP_CONTEXT.startActivity(it);
 	}
 	
 	public static void sendSMS(String mobile, String text) {
