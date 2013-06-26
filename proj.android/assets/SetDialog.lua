@@ -45,13 +45,21 @@ function SetDialog:ctor()
         local pControl = tolua.cast(pSender,"CCControlSlider")
         local strFmt = nil
         if pControl:getTag() == 1001 then
-        	user_default:setFloatForKey("bg_music_volume", pControl:getValue())
-        	audio:setBackgroundMusicVolume(pControl:getValue())
-        	strFmt = string.format("Upper slider value = %.02f",pControl:getValue())
+        	if self:isShowing() then
+	        	user_default:setFloatForKey("bg_music_volume", pControl:getValue())
+	        	audio:setBackgroundMusicVolume(pControl:getValue())
+	        	strFmt = string.format("Upper slider value = %.02f",pControl:getValue())
+	        else
+	        --	pControl:setValue(user_default:getFloatForKey("bg_music_volume"))
+        	end
         elseif pControl:getTag() == 1002 then
-        	user_default:setFloatForKey("effect_volume", pControl:getValue())
-        	audio:setEffectsVolume(pControl:getValue())
-        	strFmt = string.format("Lower slider value = %.02f",pControl:getValue())
+        	if self:isShowing() then
+	        	user_default:setFloatForKey("effect_volume", pControl:getValue())
+	        	audio:setEffectsVolume(pControl:getValue())
+	        	strFmt = string.format("Lower slider value = %.02f",pControl:getValue())
+        	else
+	        --	pControl:setValue(user_default:getFloatForKey("effect_volume"))
+        	end
         end
         	
         if nil ~= strFmt then

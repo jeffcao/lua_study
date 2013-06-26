@@ -1,5 +1,6 @@
 require "MarketItem"
 require "YesNoDialog3"
+
 local json = require "cjson"
 
 MarketSceneUPlugin = {}
