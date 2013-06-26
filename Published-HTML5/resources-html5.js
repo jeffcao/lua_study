@@ -24,6 +24,7 @@ var ccb_resources = [
     {type:'ccbi', src:"Menu.ccbi"},
     {type:'ccbi', src:"LandingScene.ccbi"},
     {type:'plist', src:"ccbResources/animation.plist"},
+    {type:'ccbi', src:"GuifanEndScene.ccbi"},
     {type:'image', src:"ccbResources/animation.png"},
     {type:'image', src:"ccbResources/login.png"},
     {type:'ccbi', src:"RoomItem.ccbi"},
