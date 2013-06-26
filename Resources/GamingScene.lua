@@ -74,6 +74,7 @@ function GamingScene:ctor()
 	if self.rootNode then str = "GamingScene root node is not nil" end
 	print(str)
 	self:init_connectivity()
+	
 end
 
 function GamingScene:onEnter()
