@@ -1,4 +1,5 @@
 require "MarketItem"
+require "YesNoDialog"
 MarketSceneUPlugin = {}
 
 function MarketSceneUPlugin.bind(theClass)
@@ -17,11 +18,11 @@ function MarketSceneUPlugin.bind(theClass)
 					a2 = CCTableViewCell:create()
 					a3 = createMarketItem()
 					print("[MarketSceneUPlugin.create_product_list] a1 =>"..a1)
-					a3:init_item(product_list[a1+1])
+					a3:init_item(product_list[a1+1], __bind(self.do_buy_product, self))
 					a2:addChild(a3, 0, 1)
 				else
 					local a3 = tolua.cast(a2:getChildByTag(1), "CCLayer")
-					a3:init_item(product_list[a1 + 1])
+					a3:init_item(product_list[a1 + 1],  __bind(self.do_buy_product, self))
 				end
 				r = a2
 			elseif fn == "numberOfCells" then
@@ -53,6 +54,26 @@ function MarketSceneUPlugin.bind(theClass)
 		self:shop_prop_list()
 		self.after_trigger_success = __bind(self.show_product_list, self)
 		
+	end
+	
+	function theClass:do_buy_product(product)
+		self:show_progress_message_box("购买道具")
+		self:buy_prop(product.id)
+		self.after_trigger_success = __bind(self.show_buy_notify, self)
+	end
+	
+	function theClass:show_buy_notify(notify_msg)
+		 self.yes_no_dialog = createYesNoDialog(__bind(self.yes_no_dialog_dismiss_callback, self))
+		 self.yes_no_dialog:setTitle("购买提示")
+--		 self.yes_no_dialog:setMessage(notify_msg.content)
+		 self.yes_no_dialog:setMessage("获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n ")
+		 self.rootNode:addChild(self.yes_no_dialog)
+		 self.yes_no_dialog:show()
+	end
+	
+	function theClass:yes_no_dialog_dismiss_callback()
+		self.rootNode:removeChild(self.yes_no_dialog, true)
+		self.yes_no_dialog = nil
 	end
 	
 	function theClass:do_on_trigger_success(data)
