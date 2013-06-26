@@ -43,7 +43,8 @@ function YesNoDialog:ctor(yes_no_dialog_dismiss_callback)
 	
 	self.yes_no_dialog_dismiss_callback = yes_no_dialog_dismiss_callback
 	local menus = CCArray:create()
-
+	
+--	menus:addObject(tolua.cast(self.scroll_layer, "CCLayerRGBA"))
 	menus:addObject(tolua.cast(self.reject_menu, "CCLayerRGBA"))
 	menus:addObject(tolua.cast(self.confirm_menu, "CCLayerRGBA"))
 	self:swallowOnTouch(menus)
@@ -68,22 +69,28 @@ function YesNoDialog:do_callback()
 end
 
 function YesNoDialog:create_scroll_view(p_layer, msg_lb)
-	local scroll_view = CCScrollView:create()
-	scroll_view:setViewSize(CCSizeMake(285,125))
-	scroll_view:setContainer(help)
-	scroll_view:setContentOffset(ccp(0,-210))
-
-	scroll_view:setDirection(kCCScrollViewDirectionVertical)
-	scroll_view:setBounceable(true)
-	
-	p_layer:addChild(scroll_view, 0, -1)
-	scroll_view:ignoreAnchorPointForPosition(false)
-	scroll_view:setAnchorPoint(ccp(0,0))
-	scroll_view:setPosition(ccp(0,0))
 	self.rootNode:removeChild(msg_lb, true)
-	scroll_view:addChild(msg_lb, 0, -1)
-	scroll_view:setAnchorPoint(ccp(0.5,0.5))
-	scroll_view:setPosition(ccp(50,50))
+	msg_lb:setDimensions(CCSizeMake(285, 200))
+	self.scroll_view = CCScrollView:create()
+	self.scroll_view:setViewSize(CCSizeMake(285,125))
+	self.scroll_view:setContainer(msg_lb)
+	self.scroll_view:setContentOffset(ccp(0,-25))
+
+	self.scroll_view:setDirection(kCCScrollViewDirectionVertical)
+	self.scroll_view:setBounceable(true)
+	
+	
+--	scroll_view:addChild(msg_lb, 999, -1)
+--	msg_lb:setOrderOfArrival(999)
+--	msg_lb:setAnchorPoint(ccp(0.5,0.5))
+--	msg_lb:setPosition(ccp(50,50))
+	
+	p_layer:addChild(self.scroll_view, 998, -1)
+	self.scroll_view:ignoreAnchorPointForPosition(false)
+	self.scroll_view:setAnchorPoint(ccp(0,0))
+	self.scroll_view:setPosition(ccp(0,0))
+
+	
 end
 YesNoDialogUPlugin.bind(YesNoDialog)
 DialogInterface.bind(YesNoDialog)

@@ -1,5 +1,7 @@
 require "MarketItem"
 require "YesNoDialog"
+local json = require "cjson"
+
 MarketSceneUPlugin = {}
 
 function MarketSceneUPlugin.bind(theClass)
@@ -57,6 +59,7 @@ function MarketSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:do_buy_product(product)
+		self.cur_product = product
 		self:show_progress_message_box("购买道具")
 		self:buy_prop(product.id)
 		self.after_trigger_success = __bind(self.show_buy_notify, self)
@@ -65,8 +68,15 @@ function MarketSceneUPlugin.bind(theClass)
 	function theClass:show_buy_notify(notify_msg)
 		 self.yes_no_dialog = createYesNoDialog(__bind(self.yes_no_dialog_dismiss_callback, self))
 		 self.yes_no_dialog:setTitle("购买提示")
---		 self.yes_no_dialog:setMessage(notify_msg.content)
-		 self.yes_no_dialog:setMessage("获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n ")
+		 local content = notify_msg.content
+		 if content == json.null or is_blank(content) then
+		 	content = "尊敬的客户，您即将购买的是\n游戏名：我爱斗地主\n道具名："
+		 	content = content..self.cur_product.name.."道具数量：1\n服务提供商：新中南\n资费说明：\n" 	
+		 	content = content..self.cur_product.price.." 点（即消费"..self.cur_product.rmb.."元人民币）\n点击确认按钮确认购买，中国移动"
+			print("[MarketSceneUPlugin:show_buy_notify] notify content=> "..content)
+		 end
+		 self.yes_no_dialog:setMessage(content)
+--		 self.yes_no_dialog:setMessage("获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n ")
 		 self.rootNode:addChild(self.yes_no_dialog)
 		 self.yes_no_dialog:show()
 	end
