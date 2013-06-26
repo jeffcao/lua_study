@@ -42,7 +42,6 @@ function DialogInterface.bind(theClass)
 	end
 	
 	function theClass:swallowOnTouch(menus)
-	
 		self.convertor = DialogLayerConvertor:create(menus)
     end
     
