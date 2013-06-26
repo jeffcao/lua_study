@@ -66,7 +66,7 @@ function MarketSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:show_buy_notify(notify_msg)
-		 self.yes_no_dialog = createYesNoDialog3(__bind(self.yes_no_dialog_dismiss_callback, self))
+		 self.yes_no_dialog = createYesNoDialog3()
 --		 self.yes_no_dialog:setTitle("购买提示")
 		 local content = notify_msg.content
 		 if content == json.null or is_blank(content) then
@@ -76,12 +76,24 @@ function MarketSceneUPlugin.bind(theClass)
 			print("[MarketSceneUPlugin:show_buy_notify] notify content=> "..content)
 		 end
 		 self.yes_no_dialog:setMessage(content)
---		 self.yes_no_dialog:setMessage("获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n 获取商品列表 \n ")
+		 
+		 self.yes_no_dialog:setYesButton(__bind(self.do_confirm_buy, self))
+		 self.yes_no_dialog:setNoButton(__bind(self.do_cancel_buy, self))
+		 
 		 self.rootNode:addChild(self.yes_no_dialog)
 		 self.yes_no_dialog:show()
 	end
 	
-	function theClass:yes_no_dialog_dismiss_callback()
+	function theClass:do_confirm_buy()
+		print("[MarketSceneUPlugin:do_confirm_buy]")
+		self.yes_no_dialog:dismiss()
+		self.rootNode:removeChild(self.yes_no_dialog, true)
+		self.yes_no_dialog = nil
+	end
+	
+	function theClass:do_cancel_buy()
+		print("[MarketSceneUPlugin:do_cancel_buy]")
+		self.yes_no_dialog:dismiss()
 		self.rootNode:removeChild(self.yes_no_dialog, true)
 		self.yes_no_dialog = nil
 	end

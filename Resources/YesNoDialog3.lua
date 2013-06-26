@@ -7,14 +7,14 @@ YesNoDialog3 = class("YesNoDialog", function()
 end
 )
 
-function createYesNoDialog3(yes_no_dialog_dismiss_callback)
+function createYesNoDialog3()
 	print("create YesNoDialog")
-	local dialog = YesNoDialog3.new(yes_no_dialog_dismiss_callback)
+	local dialog = YesNoDialog3.new()
 --	container:addChild(dialog)
 	return dialog
 end
 
-function YesNoDialog3:ctor(yes_no_dialog_dismiss_callback)
+function YesNoDialog3:ctor()
 	local ccbproxy = CCBProxy:create()
 
  	ccb.YesNoDialog = self
@@ -38,10 +38,9 @@ function YesNoDialog3:ctor(yes_no_dialog_dismiss_callback)
 --	end)
 	self:setNoButton(function()
 		self:dismiss()
-		self:do_callback()
 	end)
 	
-	self.yes_no_dialog_dismiss_callback = yes_no_dialog_dismiss_callback
+
 	local menus = CCArray:create()
 	
 	menus:addObject(tolua.cast(self.scroll_view, "CCLayer"))
@@ -55,18 +54,12 @@ function YesNoDialog3:ctor(yes_no_dialog_dismiss_callback)
 		if key == "backClicked" then
 			if self:isShowing()  then
 				self:dismiss()
-				self:do_callback()
 			end
 		end
 	end)
 	
 end
 
-function YesNoDialog3:do_callback()
-	if "function" == type(self.yes_no_dialog_dismiss_callback) then
-		self.yes_no_dialog_dismiss_callback()
-	end
-end
 
 function YesNoDialog3:create_scroll_view(p_layer, msg_lb)
 	self.rootNode:removeChild(msg_lb, true)
