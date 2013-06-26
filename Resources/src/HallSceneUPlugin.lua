@@ -36,6 +36,8 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:doShowExitDialog()
+		endtolua_guifan()
+		--[[	
 		if self.exit_dialog and self.exit_dialog:isAlive() then
 			if self.exit_dialog:isShowing() then
 				self.exit_dialog:dismiss()
@@ -53,6 +55,7 @@ function HallSceneUPlugin.bind(theClass)
 			end)
 			self.exit_dialog:show()
 		end
+		]]
 	end
 	
 	function theClass:menu_dismiss_callback()
