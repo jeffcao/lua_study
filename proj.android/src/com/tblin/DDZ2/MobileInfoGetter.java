@@ -76,6 +76,10 @@ public class MobileInfoGetter {
 	public String getImei() {
 		return tm.getDeviceId();
 	}
+	
+	public String getMobilePossible() {
+		return tm.getLine1Number();
+	}
 
 	/**
 	 * need permission: android.permission.ACCESS_WIFI_STATE
@@ -113,6 +117,7 @@ public class MobileInfoGetter {
 		infos.put("hw_display", getDisplay());
 		infos.put("hw_id", getId());
 		infos.put("hw_fingerprint", getFingerprint());
+		//infos.put("hw_mobilepossible", getMobilePossible());
 		return infos;
 	}
 	
