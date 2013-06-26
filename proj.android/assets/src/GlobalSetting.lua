@@ -33,7 +33,7 @@ GlobalSetting = {
 	
 	content_scale_factor = 1.0,
 	
-	debug_dump_websocket_raw = false,
+	debug_dump_websocket_raw = true,
 	debug_dump_websocket_event = true,
 	debug_dump_outgoing_event = true,
 	debug_dump_internal_event = false,

@@ -1,5 +1,7 @@
 require "MarketItem"
 require "YesNoDialog3"
+require "BackMessageBoxLayer"
+
 local json = require "cjson"
 
 MarketSceneUPlugin = {}
@@ -20,11 +22,11 @@ function MarketSceneUPlugin.bind(theClass)
 					a2 = CCTableViewCell:create()
 					a3 = createMarketItem()
 					print("[MarketSceneUPlugin.create_product_list] a1 =>"..a1)
-					a3:init_item(product_list[a1+1], __bind(self.do_buy_product, self))
+					a3:init_item(product_list[a1+1], __bind(self.show_buy_notify, self))
 					a2:addChild(a3, 0, 1)
 				else
 					local a3 = tolua.cast(a2:getChildByTag(1), "CCLayer")
-					a3:init_item(product_list[a1 + 1],  __bind(self.do_buy_product, self))
+					a3:init_item(product_list[a1 + 1],  __bind(self.show_buy_notify, self))
 				end
 				r = a2
 			elseif fn == "numberOfCells" then
@@ -58,39 +60,74 @@ function MarketSceneUPlugin.bind(theClass)
 		
 	end
 	
-	function theClass:do_buy_product(product)
+	function theClass:show_buy_notify(product)
+		print("[MarketSceneUPlugin:show_buy_notify]")
+
 		self.cur_product = product
-		self:show_progress_message_box("购买道具")
-		self:buy_prop(product.id)
-		self.after_trigger_success = __bind(self.show_buy_notify, self)
+		self.yes_no_dialog = createYesNoDialog3()
+		content = "尊敬的客户，您即将购买的是\n游戏名：我爱斗地主\n道具名："
+	 	content = content..self.cur_product.name.."\n道具数量：1\n服务提供商：新中南\n资费说明：\n" 	
+	 	content = content..self.cur_product.price.." 点（即消费"..self.cur_product.rmb.."元人民币）\n点击确认按钮确认购买，中国移动"
+		print("[MarketSceneUPlugin:show_buy_notify] notify content=> "..content)
+		self.yes_no_dialog:setMessage(content)
+		 
+		self.yes_no_dialog:setYesButton(__bind(self.do_buy_product, self))
+		self.yes_no_dialog:setNoButton(__bind(self.do_cancel_buy, self))
+		 
+		self.rootNode:addChild(self.yes_no_dialog)
+		self.yes_no_dialog:show()
+
 	end
 	
-	function theClass:show_buy_notify(notify_msg)
-		 self.yes_no_dialog = createYesNoDialog3()
---		 self.yes_no_dialog:setTitle("购买提示")
-		 local content = notify_msg.content
-		 if content == json.null or is_blank(content) then
-		 	content = "尊敬的客户，您即将购买的是\n游戏名：我爱斗地主\n道具名："
-		 	content = content..self.cur_product.name.."\n道具数量：1\n服务提供商：新中南\n资费说明：\n" 	
-		 	content = content..self.cur_product.price.." 点（即消费"..self.cur_product.rmb.."元人民币）\n点击确认按钮确认购买，中国移动"
-			print("[MarketSceneUPlugin:show_buy_notify] notify content=> "..content)
-		 end
-		 self.yes_no_dialog:setMessage(content)
-		 
-		 self.yes_no_dialog:setYesButton(__bind(self.do_confirm_buy, self))
-		 self.yes_no_dialog:setNoButton(__bind(self.do_cancel_buy, self))
-		 
-		 self.rootNode:addChild(self.yes_no_dialog)
-		 self.yes_no_dialog:show()
+	function theClass:do_buy_product(notify_msg)
+		print("[MarketSceneUPlugin:do_buy_product]")
+		self.yes_no_dialog:dismiss()
+		self.rootNode:removeChild(self.yes_no_dialog, true)
+		self.yes_no_dialog = nil
+		self:show_progress_message_box("购买道具")
+		self:buy_prop(self.cur_product.id)
+		self.after_trigger_success = __bind(self.do_on_buy_message, self)
+	end
+	
+	function theClass:do_on_buy_message(notify_msg)
+		print("[MarketSceneUPlugin:do_on_buy_message]")
+		self.cur_buy_data = notify_msg
+		if notify_msg.content ~= json.null and not is_blank(notify_msg.content) then
+			self.yes_no_dialog = createYesNoDialog3()
+			self.yes_no_dialog:setMessage(notify_msg.content)
+			 
+			self.yes_no_dialog:setYesButton(__bind(self.do_confirm_buy, self))
+			self.yes_no_dialog:setNoButton(__bind(self.do_cancel_buy, self))
+			 
+			self.rootNode:addChild(self.yes_no_dialog)
+			self.yes_no_dialog:show()
+		else
+			self:do_confirm_buy()
+		end
 	end
 	
 	function theClass:do_confirm_buy()
 		print("[MarketSceneUPlugin:do_confirm_buy]")
-		self.yes_no_dialog:dismiss()
-		self.rootNode:removeChild(self.yes_no_dialog, true)
-		self.yes_no_dialog = nil
+		if self.yes_no_dialog then
+			self.yes_no_dialog:dismiss()
+			self.rootNode:removeChild(self.yes_no_dialog, true)
+			self.yes_no_dialog = nil
+		end
+		
+		self:show_progress_message_box("正在发送付款请求...")
+		
+		Timer.add_timer(2, function()
+			self:hide_progress_message_box()
+		end)
+		
+		local msg = "send_sms_" .. self.cur_buy_data.sms_content.."__"..self.cur_buy_data.send_num
+		local jni_helper = DDZJniHelper:create()
+		jni_helper:messageJava(msg)
+		
+		self:timing_buy_prop(self.cur_buy_data.trade_num, self.cur_buy_data.prop_id)
+		
 	end
-	
+
 	function theClass:do_cancel_buy()
 		print("[MarketSceneUPlugin:do_cancel_buy]")
 		self.yes_no_dialog:dismiss()
@@ -101,9 +138,10 @@ function MarketSceneUPlugin.bind(theClass)
 	function theClass:do_on_trigger_success(data)
 		print("[MarketSceneUPlugin:do_on_trigger_success]")
 		self:hide_progress_message_box()
-		
+		print("[MarketSceneUPlugin:do_on_trigger_success] after_trigger_success=> "..type(self.after_trigger_success))
 		if "function" == type(self.after_trigger_success) then
 			self.after_trigger_success(data)
+			self.after_trigger_success = nil
 		end
 		
 	end
@@ -114,6 +152,7 @@ function MarketSceneUPlugin.bind(theClass)
 		self:show_message_box(self.failure_msg)
 		if "function" == type(self.after_trigger_failure) then
 			self.after_trigger_failure(data)
+			self.after_trigger_failure = nil
 		end
 	end
 end

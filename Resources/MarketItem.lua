@@ -29,11 +29,11 @@ function MarketItem:ctor()
 		
 end
 
-function MarketItem:init_item(product, do_buy_product)
+function MarketItem:init_item(product, show_buy_notify)
 
 	print("[MarketItem:init_item]")
 	
-	self.do_buy_product = do_buy_product
+	self.show_buy_notify = show_buy_notify
 	self.product = product
 	local name_lb = tolua.cast(self.name_lb, "CCLabelTTF")
 	name_lb:setString(product.name)
@@ -52,6 +52,6 @@ end
 
 function MarketItem:do_ui_buy_btn_clicked(tag, sender)
 	print("[MarketItem:do_ui_buy_btn_clicked]")
-	self.do_buy_product(self.product)
+	self.show_buy_notify(self.product)
 end
 

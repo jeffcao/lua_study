@@ -9,7 +9,6 @@ function HallServerConnectionPlugin.bind(theClass)
 		print("[HallServerConnectionPlugin.on_trigger_success].")
 		dump(data, "on_trigger_success data")
 
-		print("[HallServerConnectionPlugin.on_trigger_success] on_login_success.")
 		print("[HallServerConnectionPlugin.on_trigger_success] do_on_trigger_success=> "..type(self.do_on_trigger_success))
 		if "function" == type(self.do_on_trigger_success) then
 			self:do_on_trigger_success(data)
@@ -27,7 +26,7 @@ function HallServerConnectionPlugin.bind(theClass)
 	
 	function theClass:on_websocket_ready()
 		print("[HallServerConnectionPlugin:on_websocket_ready()]")
-		
+		self:init_channel()
 		if "function" == type(self.do_on_websocket_ready) then
 			self:do_on_websocket_ready()
 		end
@@ -117,6 +116,14 @@ function HallServerConnectionPlugin.bind(theClass)
 	
 	end
 	
+	function theClass:timing_buy_prop(trad_seq, product_id)
+		self.failure_msg = "购买道具失败"
+		local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, trade_id = trad_seq, version="1.0"}
+		self:call_server_method("timing_buy_prop", event_data)
+		
+	end
+	
+	
 	function theClass:call_server_method(method_name, pass_data)
 --		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
 		GlobalSetting.hall_server_websocket:trigger("ui."..method_name, 
@@ -124,7 +131,30 @@ function HallServerConnectionPlugin.bind(theClass)
 			__bind(self.on_trigger_success, self),
 			__bind(self.on_trigger_failure, self))
 	end
-
+	
+	function theClass:on_buy_product_message(data)
+		print("[HallServerConnectionPlugin:on_buy_product_message()]")
+		dump(data, "on_buy_product_message, data=>")
+		if "function" == type(self.do_on_buy_produce_message) then
+			self:do_on_buy_produce_message(data)
+		end
+	end
+	
+	function theClass:init_channel() 
+		print("[HallServerConnectionPlugin:init_channel()]")
+		local user_channel_name = GlobalSetting.current_user.user_id.."_hall_channel"
+		print("[HallServerConnectionPlugin:init_channel()] channel_name=> "..user_channel_name)
+		GlobalSetting.hall_server_websocket.channels[user_channel_name] = nil
+		self.hall_channel = GlobalSetting.hall_server_websocket:subscribe(user_channel_name)
+		
+		self.hall_channel:bind("ui.buy_prop", function(data) 
+			print("ui.buy_prop  aaaa")
+			self:on_buy_product_message(data)
+		end)
+		
+--		self:initSocket()
+	end
+	
 	function theClass:close_hall_websocket()
 		print("[HallServerConnectionPlugin:close_hall_websocket()]")
 		if GlobalSetting.hall_server_websocket then

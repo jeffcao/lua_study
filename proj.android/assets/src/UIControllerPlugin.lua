@@ -168,4 +168,23 @@ function UIControllerPlugin.bind(theClass)
 		return avatar_png
 	end
 	
+	function theClass:show_back_message_box(message)
+		self.back_message_box = createBackMessageBoxLayer(self.rootNode)
+		self.back_message_box:setMessage(message)
+
+		self.back_message_box:setNoButton(__bind(self.do_back_message_box, self))
+		 
+		self.rootNode:reorderChild(self.back_message_box, 9999)
+		self.back_message_box:show()
+	end
+	
+	function theClass:do_back_message_box(tag, sender)
+		print("[MarketSceneUPlugin:do_back_message_box]")
+		sender.rootNode:dismiss()
+		
+	end
+	
+	function theClass:do_on_buy_produce_message(data)
+		self:show_back_message_box("非移动用户无法购买道具")
+	end
 end
