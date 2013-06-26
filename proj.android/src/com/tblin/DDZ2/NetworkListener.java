@@ -1,6 +1,7 @@
 package com.tblin.DDZ2;
 
 import java.util.List;
+import java.util.Locale;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
@@ -54,7 +55,8 @@ public class NetworkListener extends BroadcastReceiver {
 		NetworkInfo ni = cm.getActiveNetworkInfo();
 		if (null == ni) return "no_network";
 		String type = ni.getTypeName();
-		if (type.equalsIgnoreCase("MOBILE"))
+		type = type.toLowerCase(Locale.US);
+		if (type.equalsIgnoreCase("mobile"))
 			type = type + ":" + getMobileNetworkType(context);
 		return type;
 	}
@@ -62,9 +64,9 @@ public class NetworkListener extends BroadcastReceiver {
 	public static String getMobileNetworkType(Context context) {
 		TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 		int type = tm.getNetworkType();
-		String ntype = "3G";
+		String ntype = "3g";
 		if (1 == type || 2 == type || 4 == type)
-			ntype = "2G";
+			ntype = "2g";
 		return ntype;
 	}
 	
