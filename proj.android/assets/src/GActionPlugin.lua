@@ -416,13 +416,13 @@ function GActionPlugin.bind(theClass)
 	end
 	
 	-- 假如用户资料没有get下来，去服务器获取用户资料
-	function theClass:doGetUserProfileIfNeed(user_id) 
+	function theClass:doGetUserProfileIfNeed(user_id, mandantory) 
 		if not user_id then
 			cclog("user_id is nil")
 			return
 		end
 		user_id = tostring(user_id)
-		if not self.users[user_id] then
+		if not self.users[user_id] or mandantory then
 			cclog("user profile " .. user_id .. " not find")
 			-- 获取用户资料
 			local event_data = {user_id = user_id}

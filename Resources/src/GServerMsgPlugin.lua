@@ -226,11 +226,13 @@ function GServerMsgPlugin.bind(theClass)
 					if self.self_user.tuo_guan == 1 and not self:isTuoguan() then
 						self:doTuoguan(true)
 					end
-					---- 隐藏上一手出的牌
+					--[[
+					-- 隐藏上一手出的牌
 					if self.prevUserLastCard  then
 						self:reset_card(self.prevUserLastCard)
 						self.prevUserLastCard = nil
 					end
+					]]
 				self:startNextUserAlarm(30, nil)
 				-- 隐藏下家不出标签
 				self:updatePlayerBuchu(self.next_user_lord_value, false)
@@ -285,6 +287,14 @@ function GServerMsgPlugin.bind(theClass)
 		cclog("onServerGameOver gaming to false")
 		self:setHasGamingStarted(false)
 		self:showGameOver(data)
+		--每局打完之后刷新所有玩家的资料
+		self:doGetUserProfileIfNeed(self.g_user_id, true)
+		if self.prev_user then
+			self:doGetUserProfileIfNeed(self.prev_user.user_id, true)
+		end
+		if self.next_user then
+			self:doGetUserProfileIfNeed(self.next_user.user_id, true)
+		end
 	end
 	
 	--c_channel
