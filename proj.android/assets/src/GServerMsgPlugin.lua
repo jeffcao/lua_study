@@ -285,6 +285,13 @@ function GServerMsgPlugin.bind(theClass)
 		cclog("onServerGameOver gaming to false")
 		self:setHasGamingStarted(false)
 		self:showGameOver(data)
+		self:doGetUserProfileIfNeed(self.g_user_id, true)
+		if self.prev_user then
+			self:doGetUserProfileIfNeed(self.prev_user.user_id, true)
+		end
+		if self.next_user then
+			self:doGetUserProfileIfNeed(self.next_user.user_id, true)
+		end
 	end
 	
 	--c_channel

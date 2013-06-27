@@ -47,7 +47,7 @@ function YesNoDialog3:ctor()
 	menus:addObject(tolua.cast(self.reject_menu, "CCLayerRGBA"))
 	menus:addObject(tolua.cast(self.confirm_menu, "CCLayerRGBA"))
 	self:swallowOnTouch(menus)
---	self:swallowOnKeypad()
+	self:swallowOnKeypad()
 
 	self:setOnKeypad(function(key)
 		print("yesno dialog on key pad")

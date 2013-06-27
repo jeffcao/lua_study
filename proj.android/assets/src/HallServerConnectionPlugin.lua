@@ -136,7 +136,7 @@ function HallServerConnectionPlugin.bind(theClass)
 		print("[HallServerConnectionPlugin:on_buy_product_message()]")
 		dump(data, "on_buy_product_message, data=>")
 		if "function" == type(self.do_on_buy_produce_message) then
-			print("HallServerConnectionPlugin, class name=> "..self.cls.__cname)
+--			print("HallServerConnectionPlugin, class name=> "..self.cls.__cname)
 			self:do_on_buy_produce_message(data)
 		end
 	end
