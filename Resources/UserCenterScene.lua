@@ -22,6 +22,7 @@ function UserCenterScene:ctor(avatar_call_back)
 	self.on_ui_avatar_btn_clicked = __bind(self.do_ui_avatar_btn_clicked, self)
 	self.on_ui_update_avatar_btn_clicked = __bind(self.do_ui_update_avatar_btn_clicked, self) 
 	self.on_ui_update_pwd_btn_clicked = __bind(self.do_ui_update_pwd_btn_clicked, self)
+	self.on_player_cats_btn_clicked = __bind(self.do_player_cats_btn_clicked, self)
 	
 	local ccbproxy = CCBProxy:create()
  	local node = CCBReaderLoad("UserCenterScene.ccbi", ccbproxy, false, "")

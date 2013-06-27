@@ -39,6 +39,11 @@ function UserCenterSceneUPlugin.bind(theClass)
 		self:doSetLayer("update_password")
 	end
 	
+	function theClass:do_player_cats_btn_clicked()
+		self:set_title("biaoti03.png")
+		self:doSetLayer("player_cats")
+	end
+	
 	function theClass:init_controller()
 		self:set_title("biaoti02.png")
 		self:display_avatar()
@@ -82,6 +87,8 @@ function UserCenterSceneUPlugin.bind(theClass)
 			layer = createInfoLayer(__bind(self.after_player_info_changed, self))
 		elseif name == "update_password" then
 			layer = createUpdatePasswordLayer()
+		elseif name == "player_cats" then
+			layer = createPlayerProductsLayer()
 		else 
 			layer = createAvatarListLayer(__bind(self.after_player_info_changed, self))
 		end

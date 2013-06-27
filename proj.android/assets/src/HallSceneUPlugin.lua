@@ -7,6 +7,7 @@ require "MenuDialog"
 require "GamingScene"
 require "InitPlayerInfoLayer"
 require "FeedbackScene"
+require "PlayerProductsScene"
 
 HallSceneUPlugin = {}
 
@@ -89,6 +90,11 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:onMarketClick(tag, sender)
 		self:doToMarket()
+	end
+	
+	function theClass:do_ui_prop_btn_clicked(tag, sender)
+		local scene = createPlayerProductsScene()
+		CCDirector:sharedDirector():pushScene(scene)
 	end
 	
 	function theClass:doToMarket()

@@ -123,6 +123,14 @@ function HallServerConnectionPlugin.bind(theClass)
 		
 	end
 	
+	function theClass:cate_list()
+		self.failure_msg = "获取道具列表失败"
+		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
+		self:call_server_method("cate_list", event_data)
+		
+	end
+	
+	
 	
 	function theClass:call_server_method(method_name, pass_data)
 --		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
