@@ -154,9 +154,11 @@ function UIControllerPlugin.bind(theClass)
 	end
 	
 	function theClass:hide_progress_message_box()
-		local msg_layer = self.rootNode:getChildByTag(902)
-		self.rootNode:removeChild(msg_layer, true)
-		msg_layer = nil
+		if self then
+			local msg_layer = self.rootNode:getChildByTag(902)
+			self.rootNode:removeChild(msg_layer, true)
+			msg_layer = nil
+		end
 	end
 	
 	function theClass:get_player_avatar_png_name()
@@ -185,6 +187,13 @@ function UIControllerPlugin.bind(theClass)
 	end
 	
 	function theClass:do_on_buy_produce_message(data)
-		self:show_back_message_box(data.content)
+		print("[MarketSceneUPlugin:do_back_message_box]")
+		if self.matket_scene then
+			print("[MarketSceneUPlugin:matket_scene:show_back_message_box]")
+			self.matket_scene:show_back_message_box(data.content)
+		else
+			self:show_back_message_box(data.content)
+		end
 	end
+	
 end

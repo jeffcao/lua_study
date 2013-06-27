@@ -22,8 +22,10 @@ function FullMubanStyleLayer:ctor()
 	self.title = tolua.cast(self.title_sprite, "CCSprite")
 	self.close = tolua.cast(self.close_btn, "CCMenuItemImage")
 	local to_hall = function()
-		--local scene = createHallScene()
-		--CCDirector:sharedDirector():replaceScene(scene)
+		if type(self.inactive_market_scene_fn) == "function" then
+			print("[FullMubanStyleLayer] call inactive_market_scene_fn")
+			self.inactive_market_scene_fn()
+		end 
 		CCDirector:sharedDirector():popScene()
 	end
 	self:setOnClose(to_hall)
