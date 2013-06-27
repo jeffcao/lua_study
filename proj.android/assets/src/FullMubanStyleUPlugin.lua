@@ -25,7 +25,9 @@ function FullMubanStyleUPlugin.bind(theClass)
 				fn()
 			end
 		end
-		self.rootNode:setKeypadEnabled(true)
-		self.rootNode:registerScriptKeypadHandler(keypad_fn)
+		self:setKeypadEnabled(true)
+		self:registerScriptKeypadHandler(keypad_fn)
+	--	self.rootNode:setKeypadEnabled(true)
+	--	self.rootNode:registerScriptKeypadHandler(keypad_fn)
 	end
 end
