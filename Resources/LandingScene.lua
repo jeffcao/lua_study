@@ -1,5 +1,6 @@
 local json = require "cjson"
 require "src.LoginServerConnectionPlugin"
+require "src.LoginHallConnectionPlugin"
 require "src.UIControllerPlugin"
 require "LoginScene"
 require "CCBReaderLoad"
@@ -88,9 +89,25 @@ function LandingScene:do_ui_clickme(tag, sender)
 	print("[LandingScene:do_ui_clickme] tag: ", tag, ", sender: ", sender)
 end
 
+--function LandingScene:do_on_login_success()
+--	local hall = createHallScene()
+--	CCDirector:sharedDirector():replaceScene(hall)
+--end
+
 function LandingScene:do_on_login_success()
-	local hall = createHallScene()
-	CCDirector:sharedDirector():replaceScene(hall)
+	print("[LoginScene:do_on_login_success()]")
+	self:hide_progress_message_box()
+	if GlobalSetting.hall_server_websocket ~= nil then
+		GlobalSetting.hall_server_websocket:close()
+		GlobalSetting.hall_server_websocket = nil
+	end
+	self:do_connect_hall_server()
+end
+
+function LandingScene:enter_hall()
+	local game = createHallScene()
+	CCDirector:sharedDirector():replaceScene(game)
+	self:close_login_websocket()
 end
 
 function LandingScene:do_on_login_failure()
@@ -99,8 +116,15 @@ function LandingScene:do_on_login_failure()
 	Timer.add_timer(3, __bind(self.enter_login_scene, self))
 end
 
+function LandingScene:do_on_connection_hall_server_failure()
+	print("[LandingScene:do_on_connection_hall_server_failure()]")
+	self:hide_progress_message_box()
+	self:show_message_box("连接大厅服务器失败")
+	Timer.add_timer(3, __bind(self.enter_login_scene, self))
+end
+
 function LandingScene:enter_login_scene()
-	print("[LandingScene:do_on_connection_failure()] enter into login scene.")
+	print("[LandingScene:enter_login_scene()] enter into login scene.")
 	local login = createLoginScene()
 	CCDirector:sharedDirector():replaceScene(login)
 end
@@ -114,6 +138,7 @@ function LandingScene:do_on_connection_failure()
 end
 
 LoginServerConnectionPlugin.bind(LandingScene)
+LoginHallConnectionPlugin.bind(LandingScene)
 UIControllerPlugin.bind(LandingScene)
 
 function createLandingScene()

@@ -118,6 +118,10 @@ function HallSceneUPlugin.bind(theClass)
 		if GlobalSetting.hall_server_websocket == nil then
 			self:show_progress_message_box("连接大厅服务器...")
 			self:connect_to_hall_server()
+		else
+			if GlobalSetting.need_init_hall_rooms == 1 then
+				self:init_hall_info()
+			end
 		end
 		
 	end
@@ -129,7 +133,7 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:init_hall_info(data)
 		print("[HallSceneUPlugin:init_hall_info]")
-		
+		GlobalSetting.need_init_hall_rooms = 0
 		self:get_all_rooms()
 		self.after_trigger_success = __bind(self.init_room_tabview, self)
 		

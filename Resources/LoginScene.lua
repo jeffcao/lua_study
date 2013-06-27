@@ -3,6 +3,7 @@ require "RegisterScene"
 require "HallScene"
 require "src.UIControllerPlugin"
 require "src.LoginServerConnectionPlugin"
+require "src.LoginHallConnectionPlugin"
 require "src.LoginSceneUIPlugin"
 require "YesNoDialog2"
 
@@ -70,6 +71,7 @@ end
 
 UIControllerPlugin.bind(LoginScene)
 LoginServerConnectionPlugin.bind(LoginScene)
+LoginHallConnectionPlugin.bind(LoginScene)
 LoginSceneUIPlugin.bind(LoginScene)
 
 function createLoginScene()

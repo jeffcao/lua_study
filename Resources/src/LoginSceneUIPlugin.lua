@@ -146,8 +146,13 @@ function LoginSceneUIPlugin.bind(theClass)
 			GlobalSetting.hall_server_websocket:close()
 			GlobalSetting.hall_server_websocket = nil
 		end
-		local hall = createHallScene()
-		CCDirector:sharedDirector():replaceScene(hall)
+		self:do_connect_hall_server()
+	end
+	
+	function theClass:enter_hall()
+		local game = createHallScene()
+		CCDirector:sharedDirector():replaceScene(game)
+		self:close_login_websocket()
 	end
 	
 	function theClass:do_on_login_failure()
@@ -164,6 +169,12 @@ function LoginSceneUIPlugin.bind(theClass)
 		print("[LoginScene:do_on_connection_failure()]")
 		self:hide_progress_message_box()
 		self:show_message_box("连接服务器失败")
+	end
+	
+	function theClass:do_on_connection_hall_server_failure()
+		print("[LoginScene:do_on_connection_hall_server_failure()]")
+		self:hide_progress_message_box()
+		self:show_message_box("连接大厅服务器失败")
 	end
 	
 	function theClass:show_message(message)
