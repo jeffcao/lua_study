@@ -226,11 +226,13 @@ function GServerMsgPlugin.bind(theClass)
 					if self.self_user.tuo_guan == 1 and not self:isTuoguan() then
 						self:doTuoguan(true)
 					end
-					---- 隐藏上一手出的牌
+					--[[
+					-- 隐藏上一手出的牌
 					if self.prevUserLastCard  then
 						self:reset_card(self.prevUserLastCard)
 						self.prevUserLastCard = nil
 					end
+					]]
 				self:startNextUserAlarm(30, nil)
 				-- 隐藏下家不出标签
 				self:updatePlayerBuchu(self.next_user_lord_value, false)
