@@ -28,7 +28,7 @@ function HallSceneUPlugin.bind(theClass)
 
 		elseif key == "backClicked" then
 			if self.menu_layer and self.menu_layer:isShowing() then
-				self.menu_layer:dismiss()
+				self.menu_layer:dismiss(true)
 			else
 				self:doShowExitDialog()
 			end

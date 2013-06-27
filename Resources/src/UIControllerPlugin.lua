@@ -180,11 +180,11 @@ function UIControllerPlugin.bind(theClass)
 	
 	function theClass:do_back_message_box(tag, sender)
 		print("[MarketSceneUPlugin:do_back_message_box]")
-		sender.rootNode:dismiss()
+		sender.rootNode:dismiss(true)
 		
 	end
 	
 	function theClass:do_on_buy_produce_message(data)
-		self:show_back_message_box("非移动用户无法购买道具")
+		self:show_back_message_box(data.content)
 	end
 end

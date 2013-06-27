@@ -79,9 +79,9 @@ function MarketSceneUPlugin.bind(theClass)
 
 	end
 	
-	function theClass:do_buy_product(notify_msg)
+	function theClass:do_buy_product()
 		print("[MarketSceneUPlugin:do_buy_product]")
-		self.yes_no_dialog:dismiss()
+		self.yes_no_dialog:dismiss(true)
 		self.rootNode:removeChild(self.yes_no_dialog, true)
 		self.yes_no_dialog = nil
 		self:show_progress_message_box("购买道具")
@@ -92,7 +92,7 @@ function MarketSceneUPlugin.bind(theClass)
 	function theClass:do_on_buy_message(notify_msg)
 		print("[MarketSceneUPlugin:do_on_buy_message]")
 		self.cur_buy_data = notify_msg
-		if notify_msg.content ~= json.null and not is_blank(notify_msg.content) then
+		if tostring(notify_msg.result_code) == "1" then
 			self.yes_no_dialog = createYesNoDialog3()
 			self.yes_no_dialog:setMessage(notify_msg.content)
 			 
@@ -109,7 +109,7 @@ function MarketSceneUPlugin.bind(theClass)
 	function theClass:do_confirm_buy()
 		print("[MarketSceneUPlugin:do_confirm_buy]")
 		if self.yes_no_dialog then
-			self.yes_no_dialog:dismiss()
+			self.yes_no_dialog:dismiss(true)
 			self.rootNode:removeChild(self.yes_no_dialog, true)
 			self.yes_no_dialog = nil
 		end
@@ -130,7 +130,7 @@ function MarketSceneUPlugin.bind(theClass)
 
 	function theClass:do_cancel_buy()
 		print("[MarketSceneUPlugin:do_cancel_buy]")
-		self.yes_no_dialog:dismiss()
+		self.yes_no_dialog:dismiss(true)
 		self.rootNode:removeChild(self.yes_no_dialog, true)
 		self.yes_no_dialog = nil
 	end

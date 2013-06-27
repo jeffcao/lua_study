@@ -37,7 +37,7 @@ function YesNoDialog3:ctor()
 --		self:dismiss()
 --	end)
 	self:setNoButton(function()
-		self:dismiss()
+		self:dismiss(true)
 	end)
 	
 
@@ -53,7 +53,7 @@ function YesNoDialog3:ctor()
 		print("yesno dialog on key pad")
 		if key == "backClicked" then
 			if self:isShowing()  then
-				self:dismiss()
+				self:dismiss(true)
 			end
 		end
 	end)

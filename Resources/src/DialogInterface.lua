@@ -19,10 +19,13 @@ function DialogInterface.bind(theClass)
 		end
 	end
 	
-	function theClass:dismiss()
+	function theClass:dismiss(need_remove_self)
 		if not self:isShowing() then
 			return
 		end
+		need_remove_self = need_remove_self or false
+		
+		
 		self.convertor:unconvert()
 		self:setVisible(false)
 		local parent = self:getParent()
@@ -37,7 +40,9 @@ function DialogInterface.bind(theClass)
 			--self.rootNode:setKeypadEnabled(false)
 			--self:getParent():setKeypadEnabled(true)
 		end
-		parent:removeChild(self, true)
+		if need_remove_self then
+			parent:removeChild(self, true)
+		end
 		print("dismiss after")
 	end
 	

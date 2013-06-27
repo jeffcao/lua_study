@@ -37,7 +37,7 @@ function YesNoDialog3:ctor()
 --		self:dismiss()
 --	end)
 	self:setNoButton(function()
-		self:dismiss()
+		self:dismiss(true)
 	end)
 	
 
@@ -47,13 +47,13 @@ function YesNoDialog3:ctor()
 	menus:addObject(tolua.cast(self.reject_menu, "CCLayerRGBA"))
 	menus:addObject(tolua.cast(self.confirm_menu, "CCLayerRGBA"))
 	self:swallowOnTouch(menus)
-	self:swallowOnKeypad()
+--	self:swallowOnKeypad()
 
 	self:setOnKeypad(function(key)
 		print("yesno dialog on key pad")
 		if key == "backClicked" then
 			if self:isShowing()  then
-				self:dismiss()
+				self:dismiss(true)
 			end
 		end
 	end)
