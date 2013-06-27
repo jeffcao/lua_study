@@ -92,8 +92,14 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:doToMarket()
-		local scene = createMarketScene()
+		local scene = createMarketScene(__bind(self.inactive_market_scene, self))
+		self.matket_scene = scene
 		CCDirector:sharedDirector():pushScene(scene)
+	end
+	
+	function theClass:inactive_market_scene()
+		print("[HallSceneUPlugin:inactive_market_scene]")
+		self.matket_scene = nil
 	end
 	
 	function theClass:doToInfo()

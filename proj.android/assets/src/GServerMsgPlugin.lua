@@ -285,6 +285,7 @@ function GServerMsgPlugin.bind(theClass)
 		cclog("onServerGameOver gaming to false")
 		self:setHasGamingStarted(false)
 		self:showGameOver(data)
+		--每局打完之后刷新所有玩家的资料
 		self:doGetUserProfileIfNeed(self.g_user_id, true)
 		if self.prev_user then
 			self:doGetUserProfileIfNeed(self.prev_user.user_id, true)
