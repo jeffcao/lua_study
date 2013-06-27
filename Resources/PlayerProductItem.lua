@@ -1,18 +1,18 @@
 
-PlayerProductItem = class("MarketItem", function() 
-	print("new Market item")
-	return display.newLayer("MarketItem")
+PlayerProductItem = class("PlayerProductItem", function() 
+	print("new PlayerProductItem")
+	return display.newLayer("PlayerProductItem")
 	end
 )
 
 function createPlayerProductItem()
-	print("create Market item")
-	return MarketItem.new()
+	print("create PlayerProductItem")
+	return PlayerProductItem.new()
 end
 
 function PlayerProductItem:ctor()
 
-	ccb.matket_item_scene = self
+	ccb.product_item_scene = self
 	self.on_ui_use_btn_clicked = __bind(self.do_ui_use_btn_clicked, self)
 
 	local ccbproxy = CCBProxy:create()
@@ -36,14 +36,14 @@ function PlayerProductItem:init_item(product, show_use_notify)
 	self.show_use_notify = show_use_notify
 	self.product = product
 	local name_lb = tolua.cast(self.name_lb, "CCLabelTTF")
-	name_lb:setString(product.name)
+	name_lb:setString(product.prop_name)
 	
 	local note_lb = tolua.cast(self.note_lb, "CCLabelTTF")
-	note_lb:setString(product.note)
+	note_lb:setString(product.prop_note)
 
 	local icon_sprite = tolua.cast(self.icon_sprite, "CCSprite")
-	icon_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(product.icon))
-	print("[PlayerProductItem:init_item] name=> "..product.name.." icon=> "..product.icon)
+	icon_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(product.prop_icon))
+	print("[PlayerProductItem:init_item] name=> "..product.prop_name.." icon=> "..product.prop_icon)
 	
 end
 

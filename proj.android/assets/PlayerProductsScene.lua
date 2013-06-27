@@ -1,5 +1,6 @@
 require "src.UIControllerPlugin"
 require "src.HallServerConnectionPlugin"
+require "PlayerProductItem"
 
 PlayerProductsScene = class("PlayerProductsScene", function()
 	print("new Player Products Scene")
@@ -66,7 +67,7 @@ end
 
 function PlayerProductsScene:show_product_list(data)
 	print("[PlayerProductsScene:show_product_list]")
-	local product_view = self:create_product_list(data)
+	local product_view = self:create_product_list(data.cats)
 	self.rootNode:setContent(product_view)
 end
 
