@@ -24,32 +24,7 @@ function HallServerConnectionPlugin.bind(theClass)
 		end
 	end
 	
-	function theClass:on_websocket_ready()
-		print("[HallServerConnectionPlugin:on_websocket_ready()]")
-		self:init_channel()
-		if "function" == type(self.do_on_websocket_ready) then
-			self:do_on_websocket_ready()
-		end
-	end
 	
-	function theClass:connect_to_hall_server()
-		print("[HallServerConnectionPlugin:connect_to_hall_server()]")
-		local function connection_failure(data)
-			print("[HallServerConnectionPlugin.connection_failure].")
-			dump(data, "connection_failure data")
-	--		print("[LoginServerConnectionPlugin.sign_failure] result code: "..data.result_code)
-			if "function" == type(self.do_on_connection_failure) then
-				self:do_on_connection_failure()
-			end
-		end
-		if GlobalSetting.hall_server_websocket == nil then
-			print("[HallServerConnectionPlugin:connect_to_hall_server()] hall_server_websocket is nil, init it.")
-			GlobalSetting.hall_server_websocket = WebSocketRails:new("ws://"..GlobalSetting.hall_server_url.."/websocket", true)
-			GlobalSetting.hall_server_websocket.on_open = __bind(self.on_websocket_ready, self)
-			GlobalSetting.hall_server_websocket:bind("connection_error", connection_failure)
-		end
-		
-	end
 	
 	function theClass:check_connection()
 		self.failure_msg = "与服务器连接认证失败"
@@ -136,10 +111,7 @@ function HallServerConnectionPlugin.bind(theClass)
 		self:call_server_method("use_cate", event_data)
 		
 	end
-	
-	
-	
-	
+
 	function theClass:call_server_method(method_name, pass_data)
 --		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
 		GlobalSetting.hall_server_websocket:trigger("ui."..method_name, 
@@ -157,6 +129,33 @@ function HallServerConnectionPlugin.bind(theClass)
 		end
 	end
 	
+	function theClass:on_websocket_ready()
+		print("[HallServerConnectionPlugin:on_websocket_ready()]")
+		self:init_channel()
+		if "function" == type(self.do_on_websocket_ready) then
+			self:do_on_websocket_ready()
+		end
+	end
+	
+	function theClass:connect_to_hall_server()
+		print("[HallServerConnectionPlugin:connect_to_hall_server()]")
+		local function connection_failure(data)
+			print("[HallServerConnectionPlugin.connection_failure].")
+			dump(data, "connection_failure data")
+	--		print("[LoginServerConnectionPlugin.sign_failure] result code: "..data.result_code)
+			if "function" == type(self.do_on_connection_failure) then
+				self:do_on_connection_failure()
+			end
+		end
+		if GlobalSetting.hall_server_websocket == nil then
+			print("[HallServerConnectionPlugin:connect_to_hall_server()] hall_server_websocket is nil, init it.")
+			GlobalSetting.hall_server_websocket = WebSocketRails:new("ws://"..GlobalSetting.hall_server_url.."/websocket", true)
+			GlobalSetting.hall_server_websocket.on_open = __bind(self.on_websocket_ready, self)
+			GlobalSetting.hall_server_websocket:bind("connection_error", connection_failure)
+		end
+		
+	end
+	
 	function theClass:init_channel() 
 		print("[HallServerConnectionPlugin:init_channel()]")
 		local user_channel_name = GlobalSetting.current_user.user_id.."_hall_channel"
@@ -169,7 +168,57 @@ function HallServerConnectionPlugin.bind(theClass)
 			self:on_buy_product_message(data)
 		end)
 		
---		self:initSocket()
+		self:initSocket(GlobalSetting.hall_server_websocket, "ui.restore_connection")
+	end
+	
+	--正在重连网络
+	function theClass:onSocketReopening()
+		print("HallServerConnectionPlugin onSocketReopening")
+		self:updateSocket("socket: reopening")
+	end
+	
+	--网络已重新连接上
+	function theClass:onSocketReopened()
+		print("HallServerConnectionPlugin onSocketReopened")
+		self:restoreConnection()
+		self:updateSocket("socket: reopened, restoring")
+	end
+	
+	--网络重连失败
+	function theClass:onSocketReopenFail()
+		print("HallServerConnectionPlugin onSocketReopenFail")
+		self:exit()
+	end
+	
+	--restore connection失败，退出游戏
+	function theClass:onSocketRestoreFail()
+		print("HallServerConnectionPlugin onSocketRestoreFail")
+		self:exit()
+	end
+	
+	--restore connection成功
+	function theClass:onSocketRestored(data)
+		print("HallServerConnectionPlugin onSocketRestored")
+		self:updateSocket("socket: restored")
+		self:init_channel()
+
+	end
+
+	-- activity onPause
+	function theClass:on_pause()
+		print("HallServerConnectionPlugin:on_pause")
+		self:op_websocket(true)
+	end
+	
+	-- activity onResume
+	function theClass:on_resume()
+		print("HallServerConnectionPlugin:on_resume")
+		Timer.add_timer(2.5, function() self:op_websocket(false) end)
+	end
+	
+	function theClass:op_websocket(pause)
+		print("HallServerConnectionPlugin:op_websocket")
+		GlobalSetting.hall_server_websocket:pause_event(pause)
 	end
 	
 	function theClass:close_hall_websocket()
@@ -182,3 +231,4 @@ function HallServerConnectionPlugin.bind(theClass)
 
 	
 end
+

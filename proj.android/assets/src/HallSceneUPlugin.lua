@@ -15,13 +15,7 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:onKeypad(key)
 		print("hall scene on key pad")
 		if key == "menuClicked" then
---			if self.pop_menu and self.pop_menu:isAlive() then
---				self.pop_menu:show()
---			else
---				 --self.pop_menu = createMenu(self.rootNode)
---				 self.pop_menu = createMenuDialog()
---				 self.pop_menu:show()
---			end
+
 			self.menu_layer = createMenu(__bind(self.menu_dismiss_callback, self), __bind(self.show_set_dialog, self))
 			self.rootNode:addChild(self.menu_layer, 1001, 908)
 			print("[HallSceneUPlugin:display_player_info] menu_layer:show")
@@ -38,25 +32,7 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:doShowExitDialog()
 		endtolua_guifan()
-		--[[	
-		if self.exit_dialog and self.exit_dialog:isAlive() then
-			if self.exit_dialog:isShowing() then
-				self.exit_dialog:dismiss()
-			else
-				self.exit_dialog:show()
-			end
-		else
-		--	self.exit_dialog = createYesNoDialog(self.rootNode)
-			self.exit_dialog = createYesNoDialog2()
-			self.exit_dialog:setTitle("退出")
-			self.exit_dialog:setMessage("您是否退出游戏?")
-			self.exit_dialog:setYesButton(function()
-				self.exit_dialog:dismiss()
-				endtolua_guifan()
-			end)
-			self.exit_dialog:show()
-		end
-		]]
+		
 	end
 	
 	function theClass:menu_dismiss_callback()
@@ -93,6 +69,7 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:do_ui_prop_btn_clicked(tag, sender)
+		print("[HallSceneUPlugin:do_ui_prop_btn_clicked]")
 		local scene = createPlayerProductsScene()
 		CCDirector:sharedDirector():pushScene(scene)
 	end
@@ -279,7 +256,7 @@ function HallSceneUPlugin.bind(theClass)
 		if not is_blank(data.result_message) then
 			self.failure_msg = data.result_message
 		end 
-		self:show_message_box(self.failure_msg)
+		self:show_back_message_box(self.failure_msg)
 		if "function" == type(self.after_trigger_failure) then
 			self.after_trigger_failure(data)
 		end
@@ -290,6 +267,18 @@ function HallSceneUPlugin.bind(theClass)
 		local game = createGamingScene()
 		CCDirector:sharedDirector():replaceScene(game)
 		self:close_hall_websocket()
+	end
+	
+	function theClass:updateSocket(status)
+		print("update socket status to " .. status)
+		self.socket_label:setString(status)
+	end
+	
+	function theClass:exit()
+		local exit_hall_scene = function()
+			endtolua()
+		end
+		Timer.add_timer(1, exit_gaming_scene)
 	end
 	
 	--print("theClass.registerCleanup ==> ", theClass.registerCleanup)
