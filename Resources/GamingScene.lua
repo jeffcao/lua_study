@@ -23,6 +23,7 @@ require "src.GConnectionPlugin"
 require "src.GChatPlugin"
 require "src.GAnimationPlugin"
 require "src.ConnectivityPlugin"
+require "src.SocketStatePlugin"
 
 GamingScene = class("GamingScene", function()
 	return display.newScene("GamingScene")
@@ -156,3 +157,4 @@ GTriggerCallback.bind(GamingScene)
 GConnectionPlugin.bind(GamingScene)
 GChatPlugin.bind(GamingScene)
 ConnectivityPlugin.bind(GamingScene)
+SocketStatePlugin.bind(GamingScene)
