@@ -1,6 +1,7 @@
 require "InfoLayer"
 require "UpdatePasswordLayer"
 require "AvatarListLayer"
+require "PlayerProductsLayer"
 UserCenterSceneUPlugin = {}
 
 function UserCenterSceneUPlugin.bind(theClass)

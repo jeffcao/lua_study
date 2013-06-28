@@ -32,11 +32,17 @@ end
 function PlayerProductItem:use_product_callback(count)
 	print("[PlayerProductItem:init_item]")
 	print("[PlayerProductItem:init_item] parameter count =>"..count)
-	local count_lb = tolua.cast(self.count_lb, "CCLabelTTF")
-	count_lb:setString("x"..count)
+	if tostring(count) == "0" then
+		self:getParent():removeChild(self, true)
+	else
+		local count_lb = tolua.cast(self.count_lb, "CCLabelTTF")
+		count_lb:setString("x"..count)
+	end
+	
 end
 
-function PlayerProductItem:init_item(product, show_use_notify)
+function PlayerProductItem:init_item(product, show_use_notify, small)
+	small = small or false
 	
 	print("[PlayerProductItem:init_item]")
 	
@@ -46,14 +52,22 @@ function PlayerProductItem:init_item(product, show_use_notify)
 	name_lb:setString(product.prop_name)
 	
 	local note_lb = tolua.cast(self.note_lb, "CCLabelTTF")
+	if small then
+		note_lb:setDimensions(CCSizeMake(270,42))
+	end
 	note_lb:setString(product.prop_note)
+	
 	
 	local count_lb = tolua.cast(self.count_lb, "CCLabelTTF")
 	count_lb:setString("x"..product.prop_count)
-
+	
 	local icon_sprite = tolua.cast(self.icon_sprite, "CCSprite")
 	icon_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(product.prop_icon))
 	print("[PlayerProductItem:init_item] name=> "..product.prop_name.." icon=> "..product.prop_icon)
+	
+	if small then
+		self.use_menu:setPosition(CCPointMake(420,34))
+	end
 	
 end
 
