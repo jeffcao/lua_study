@@ -21,7 +21,7 @@ function GConnectionPlugin.bind(theClass)
 		self:bind_channel(self.g_channel)
 		self:bind_channel(self.m_channel)
 		
-		self:initSocket()
+		self:initSocket(self.g_WebSocket, "g.restore_connection")
 	end
 	
 	function theClass:bind_channel(channel) 
@@ -53,6 +53,7 @@ function GConnectionPlugin.bind(theClass)
 		end
 	end
 	
+	--[[
 	function theClass:initSocket()
 		self.g_WebSocket.on_open = __bind(self.onSocketReopened, self)
 		self.g_WebSocket:bind("connection_closed", function(data) self:onSocketProblem(data, "connection_closed") end)
@@ -68,6 +69,7 @@ function GConnectionPlugin.bind(theClass)
 			self:onSocketReopening()
 		end
 	end
+	]]
 	
 	--正在重连网络
 	function theClass:onSocketReopening()
@@ -87,6 +89,14 @@ function GConnectionPlugin.bind(theClass)
 		cclog("game onSocketReopenFail")
 		self:exit()
 	end
+	
+	--[[
+	--restore connection
+	function theClass:restoreConnection()
+		local event_data = {user_id = self.g_user_id, token = GlobalSetting.current_user.login_token, notify_id = self.g_WebSocket:get_notify_id()}
+		self.g_WebSocket:trigger("g.restore_connection", event_data, __bind(self.onSocketRestored, self), __bind(self.onSocketRestoreFail, self))
+	end
+	]]
 	
 	--restore connection失败，退出游戏
 	function theClass:onSocketRestoreFail()
@@ -116,7 +126,7 @@ function GConnectionPlugin.bind(theClass)
 		end
 		self:updateTuoguan()
 	end
-	
+
 	-- activity onPause
 	function theClass:on_pause()
 		cclog("theClass:on_pause")
@@ -132,13 +142,7 @@ function GConnectionPlugin.bind(theClass)
 	function theClass:op_websocket(pause)
 		self.g_WebSocket:pause_event(pause)
 	end
-	
-	--restore connection
-	function theClass:restoreConnection()
-		local event_data = {user_id = self.g_user_id, token = GlobalSetting.current_user.login_token, notify_id = self.g_WebSocket:get_notify_id()}
-		self.g_WebSocket:trigger("g.restore_connection", event_data, __bind(self.onSocketRestored, self), __bind(self.onSocketRestoreFail, self))
-	end
-	
+
 	--print("theClass.registerCleanup ==> ", theClass.registerCleanup)
 	if theClass.registerCleanup then
 		print("GConnectionPlugin register cleanup")
