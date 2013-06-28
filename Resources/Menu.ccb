@@ -984,7 +984,7 @@
 								<key>memberVarAssignmentName</key>
 								<string></string>
 								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
+								<integer>2</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -1046,8 +1046,8 @@
 										<string>Block</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<integer>0</integer>
+											<string>on_more_item_clicked</string>
+											<integer>1</integer>
 										</array>
 									</dict>
 									<dict>
@@ -1092,6 +1092,8 @@
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -1099,9 +1101,9 @@
 						<key>displayName</key>
 						<string>menu_more</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>more</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -1429,8 +1431,6 @@
 				<true/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
