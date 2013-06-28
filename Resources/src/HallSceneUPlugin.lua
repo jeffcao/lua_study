@@ -275,6 +275,9 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:do_on_trigger_failure(data)
 		print("[HallSceneUPlugin:do_on_trigger_failure]")
 		self:hide_progress_message_box()
+		if not is_blank(data.result_message) then
+			self.failure_msg = data.result_message
+		end 
 		self:show_message_box(self.failure_msg)
 		if "function" == type(self.after_trigger_failure) then
 			self.after_trigger_failure(data)
