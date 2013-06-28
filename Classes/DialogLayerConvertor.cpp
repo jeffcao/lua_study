@@ -19,10 +19,17 @@ void DialogLayerConvertor::convert() {
 	dispatcher->addTargetedDelegate(this->delegater, kCCMenuHandlerPriority - 1,
 			true);
 }
+
 void DialogLayerConvertor::unconvert() {
 	CCTouchDispatcher* dispatcher =
 			CCDirector::sharedDirector()->getTouchDispatcher();
 	dispatcher->removeDelegate(this->delegater);
+}
+
+void DialogLayerConvertor::purgeTouchDispatcher() {
+	CCTouchDispatcher* dispatcher =
+				CCDirector::sharedDirector()->getTouchDispatcher();
+	dispatcher->removeAllDelegates();
 }
 
 bool TouchDelegater::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent) {

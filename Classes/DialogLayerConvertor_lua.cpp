@@ -1,6 +1,6 @@
 /*
 ** Lua binding: DialogLayerConvertor
-** Generated automatically by tolua++-1.0.93 on Fri May 24 14:12:20 2013.
+** Generated automatically by tolua++-1.0.93 on Fri Jun 28 10:11:43 2013.
 */
 
 /****************************************************************************
@@ -26,12 +26,25 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
+
 extern "C" {
 #include "tolua++.h"
 #include "tolua_fix.h"
 }
 
 #include "DialogLayerConvertor.h"
+
+#include <map>
+#include <string>
+#include "cocos2d.h"
+#include "CCLuaEngine.h"
+#include "SimpleAudioEngine.h"
+#include "cocos-ext.h"
+
+using namespace cocos2d;
+using namespace cocos2d::extension;
+using namespace CocosDenshion;
+
 /* Exported function */
 TOLUA_API int  tolua_DialogLayerConvertor_open (lua_State* tolua_S);
 
@@ -136,6 +149,33 @@ static int tolua_DialogLayerConvertor_DialogLayerConvertor_unconvert00(lua_State
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: purgeTouchDispatcher of class  DialogLayerConvertor */
+#ifndef TOLUA_DISABLE_tolua_DialogLayerConvertor_DialogLayerConvertor_purgeTouchDispatcher00
+static int tolua_DialogLayerConvertor_DialogLayerConvertor_purgeTouchDispatcher00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertable(tolua_S,1,"DialogLayerConvertor",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  {
+   DialogLayerConvertor::purgeTouchDispatcher();
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'purgeTouchDispatcher'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* Open function */
 TOLUA_API int tolua_DialogLayerConvertor_open (lua_State* tolua_S)
 {
@@ -148,6 +188,7 @@ TOLUA_API int tolua_DialogLayerConvertor_open (lua_State* tolua_S)
    tolua_function(tolua_S,"create",tolua_DialogLayerConvertor_DialogLayerConvertor_create00);
    tolua_function(tolua_S,"convert",tolua_DialogLayerConvertor_DialogLayerConvertor_convert00);
    tolua_function(tolua_S,"unconvert",tolua_DialogLayerConvertor_DialogLayerConvertor_unconvert00);
+   tolua_function(tolua_S,"purgeTouchDispatcher",tolua_DialogLayerConvertor_DialogLayerConvertor_purgeTouchDispatcher00);
   tolua_endmodule(tolua_S);
  tolua_endmodule(tolua_S);
  return 1;

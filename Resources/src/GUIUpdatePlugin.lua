@@ -513,10 +513,19 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	function theClass:exit()
 		local event_data = {user_id = self.g_user_id}
-		self.g_WebSocket:trigger("g.leave_game", event_data)
-		SimpleAudioEngine:sharedEngine():stopBackgroundMusic()
-		local scene = createHallScene()
-		CCDirector:sharedDirector():replaceScene(scene)
+		local exit_gaming_scene = function()
+			local running_scene = CCDirector:sharedDirector():getRunningScene()
+			if running_scene == self then 
+				SimpleAudioEngine:sharedEngine():stopBackgroundMusic()
+				local scene = createHallScene()
+				DialogLayerConvertor:purgeTouchDispatcher()
+				CCDirector:sharedDirector():replaceScene(scene)
+			else
+				print("running scene is not self")
+			end
+		end
+		Timer.add_timer(1, exit_gaming_scene)
+		self.g_WebSocket:trigger("g.leave_game", event_data, exit_gaming_scene, exit_gaming_scene)
 	end
 	
 	function theClass:onEnterRoomSuccess(data) 
