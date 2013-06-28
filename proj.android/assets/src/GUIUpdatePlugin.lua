@@ -516,6 +516,7 @@ function GUIUpdatePlugin.bind(theClass)
 		self.g_WebSocket:trigger("g.leave_game", event_data)
 		SimpleAudioEngine:sharedEngine():stopBackgroundMusic()
 		local scene = createHallScene()
+		DialogLayerConvertor:purgeTouchDispatcher()
 		CCDirector:sharedDirector():replaceScene(scene)
 	end
 	

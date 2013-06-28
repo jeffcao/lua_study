@@ -30,6 +30,7 @@ public:
 	static DialogLayerConvertor* create(CCArray* menus);
 	void convert();
 	void unconvert();
+	static void purgeTouchDispatcher();
 
 private:
 	TouchDelegater* delegater;

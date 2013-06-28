@@ -2,4 +2,5 @@ class DialogLayerConvertor: public cocos2d::Object {
 	static DialogLayerConvertor* create(CCArray* menus);
 	void convert();
 	void unconvert();
+	static void purgeTouchDispatcher();
 };

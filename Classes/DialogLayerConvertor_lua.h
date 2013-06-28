@@ -1,6 +1,6 @@
 /*
 ** Lua binding: DialogLayerConvertor
-** Generated automatically by tolua++-1.0.93 on Fri May 24 14:12:20 2013.
+** Generated automatically by tolua++-1.0.93 on Fri Jun 28 10:11:43 2013.
 */
 extern "C" {
 #include "tolua++.h"
