@@ -187,7 +187,7 @@ end,
 
 close = function(self, self_close)
 	self._self_close = self_close or false
-	print("[WebSocketRails.WebSocketConnection] close")
+	print("[<" .. self.url .. ">.close] self._self_close => ", self._self_close)
 	self:unbind_websocket_handlers()
 	if self.websocket ~= nil then
 		self.websocket:close()

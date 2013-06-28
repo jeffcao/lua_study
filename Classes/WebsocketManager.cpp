@@ -358,13 +358,13 @@ callback_dumb_increment(struct libwebsocket_context *context,
 
 	case LWS_CALLBACK_CLIENT_RECEIVE:
 		((char *)in)[len] = '\0';
-		CCLOG("[callback_dumb_increment] rx %d '%s'\n", (int)len, (char *)in);
+		// CCLOG("[callback_dumb_increment] rx %d '%s'\n", (int)len, (char *)in);
 		wsHandler->_receiving_msg.append((const char *)in);
 		remaining_payload = libwebsockets_remaining_packet_payload(wsi);
 		if (remaining_payload == 0) {
 			std::string msg = wsHandler->_receiving_msg;
 			wsHandler->_receiving_msg = "";
-			CCLOG("[callback_dumb_increment] complete frame [%d]: '%s'", msg.size(), msg.c_str());
+			//CCLOG("[callback_dumb_increment] complete frame [%d]: '%s'", msg.size(), msg.c_str());
 			websocketManager->on_websocket_event(wsHandler->_websocket_id, WEBSOCKET_EVENT_MESSAGE, msg);
 		} else {
 			CCLOG("[callback_dumb_increment] still remain payload %d", remaining_payload);
@@ -400,7 +400,7 @@ callback_dumb_increment(struct libwebsocket_context *context,
 					send_msg.c_str() );
 
 			//l++;
-			CCLOG("[callback_dumb_increment] send data (l=> %d) => %s", l, send_msg.c_str());
+			//CCLOG("[callback_dumb_increment] send data (l=> %d) => %s", l, send_msg.c_str());
 			n = libwebsocket_write(wsi, &buf[LWS_SEND_BUFFER_PRE_PADDING+1], l, LWS_WRITE_TEXT);
 
 			if (n < 0)
