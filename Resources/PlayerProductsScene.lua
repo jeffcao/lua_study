@@ -36,7 +36,7 @@ function PlayerProductsScene:create_product_list(product_list)
 	local h = LuaEventHandler:create(function(fn, table, a1, a2)
 		local r
 		if fn == "cellSize" then
-			r = CCSizeMake(800,73)
+			r = CCSizeMake(800,80)
 		elseif fn == "cellAtIndex" then
 			if not a2 then
 				a2 = CCTableViewCell:create()
@@ -75,14 +75,23 @@ end
 function PlayerProductsScene:init_product_list()
 	print("[PlayerProductsScene:do_on_trigger_success]")
 	
-	self:show_progress_message_box("获取道具列表")
+	self:show_progress_message_box("获取道具列表...")
 	self:cate_list()
 	self.after_trigger_success = __bind(self.show_product_list, self)
 	
 end
 
-function PlayerProductsScene:show_use_notify()
+function PlayerProductsScene:after_use_product(data)
+	print("[PlayerProductsScene:after_use_product]")
+	self.use_prop_callback(data.prop.prop_count)
+end
+
+function PlayerProductsScene:show_use_notify(product, use_prop_callback)
 	print("[PlayerProductsScene:do_on_trigger_success]")
+	self.use_prop_callback = use_prop_callback
+	self:show_progress_message_box("发送道具使用请求...")
+	self:use_cate(product.prop_id)
+	self.after_trigger_success = __bind(self.after_use_product, self)
 end
 
 

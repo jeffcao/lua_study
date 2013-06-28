@@ -29,8 +29,15 @@ function PlayerProductItem:ctor()
 		
 end
 
-function PlayerProductItem:init_item(product, show_use_notify)
+function PlayerProductItem:use_product_callback(count)
+	print("[PlayerProductItem:init_item]")
+	print("[PlayerProductItem:init_item] parameter count =>"..count)
+	local count_lb = tolua.cast(self.count_lb, "CCLabelTTF")
+	count_lb:setString("x"..count)
+end
 
+function PlayerProductItem:init_item(product, show_use_notify)
+	
 	print("[PlayerProductItem:init_item]")
 	
 	self.show_use_notify = show_use_notify
@@ -40,6 +47,9 @@ function PlayerProductItem:init_item(product, show_use_notify)
 	
 	local note_lb = tolua.cast(self.note_lb, "CCLabelTTF")
 	note_lb:setString(product.prop_note)
+	
+	local count_lb = tolua.cast(self.count_lb, "CCLabelTTF")
+	count_lb:setString("x"..product.prop_count)
 
 	local icon_sprite = tolua.cast(self.icon_sprite, "CCSprite")
 	icon_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(product.prop_icon))
@@ -49,6 +59,6 @@ end
 
 function PlayerProductItem:do_ui_use_btn_clicked(tag, sender)
 	print("[PlayerProductItem:do_ui_buy_btn_clicked]")
-	self.show_use_notify(self.product)
+	self.show_use_notify(self.product, __bind(self.use_product_callback, self))
 end
 
