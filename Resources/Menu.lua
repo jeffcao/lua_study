@@ -47,12 +47,20 @@ function Menu:ctor(menu_dismiss_callback, show_set_fn)
 		dismiss()
 		self.show_set_fn()
 	end
+	
+	local function game_center()
+		dismiss()
+		local jni = DDZJniHelper:create()
+		jni:messageJava("on_open_url_intent_g.10086.cn")
+	end
+	
 	self.show_set_fn = show_set_fn
 	self.menu_dismiss_callback = menu_dismiss_callback
 	self.on_help_item_clicked = help
 	self.on_about_item_clicked = about
 	self.on_switch_item_clicked = switch
 	self.on_set_item_clicked = set
+	self.on_more_item_clicked = game_center
 
 	local ccbproxy = CCBProxy:create()
  	local node = CCBReaderLoad("Menu.ccbi", ccbproxy, false, "")
@@ -66,6 +74,7 @@ function Menu:ctor(menu_dismiss_callback, show_set_fn)
 	menus:addObject(tolua.cast(self.switch, "CCLayerRGBA"))
 	menus:addObject(tolua.cast(self.help, "CCLayerRGBA"))
 	menus:addObject(tolua.cast(self.about, "CCLayerRGBA"))
+	menus:addObject(tolua.cast(self.more, "CCLayerRGBA"))
 	self:swallowOnTouch(menus)
 	self:swallowOnKeypad()
 	self:setOnKeypad(function()
