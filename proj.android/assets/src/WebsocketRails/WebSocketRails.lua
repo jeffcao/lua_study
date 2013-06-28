@@ -163,6 +163,7 @@ function WebSocketRails:connection_established(data)
     self:reset_channels()
     self.request_event_queue = {}
     if type(self.on_open) == "function" then
+    	print("[WebSocketRails<" .. self.url .. ">.connection_established] invoke self.on_open")
         return self.on_open(data)
     end
 end
