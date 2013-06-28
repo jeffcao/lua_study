@@ -3,7 +3,18 @@ WebSocketRails = WebSocketRails or {}
 --require "CCWebSocketBridge"
 
 local function __bind(fn, obj)
-    return function(websocket_id, event) fn(obj, websocket_id, event) end
+    return function(...) 
+    	return fn(obj, ...) 
+    end
+end
+
+local wrap_err = function(self, data)
+	data = data or {}
+	local self_close = self._self_close or false
+    local retry_excceed = self._connection_retries >= WebSocketRails.config.CONNECTION_MAX_RETRIES
+    data.self_close = self_close
+    data.retry_excceed = retry_excceed
+    return data
 end
 
 local json = require "cjson"
@@ -31,8 +42,21 @@ new = function(self, url, dispatcher)
     return this_obj
 end,
 
+debug_dump_event = function(self, event)
+	if GlobalSetting.debug_dump_outgoing_event then
+		if (not GlobalSetting.debug_dump_internal_event and event:is_internal_event()) then
+    		return nil
+    	end
+    	
+    	print("[<" .. self.url .. ">.trigger] sending event => ", event:serialize())
+	end
+end,
+
 trigger = function(self, event)
+	self:debug_dump_event(event)
+	
     if self.dispatcher.state ~= "connected" then
+    	print("[<" .. self.url .. ">.trigger] websocket not ready. enqueue event => ", event:serialize())
         table.insert(self.message_queue, #self.message_queue + 1, event)
     else
         --self._conn.send(event:serialize())
@@ -43,20 +67,24 @@ end,
 on_message = function(self, websocket_id, event)	
 	--print("[WebSocketConnection.on_message] websocket_id => ", websocket_id, " , event => " , event)
 	if self._websocket_id ~= websocket_id then
-		print("[WebSocketConnection.on_message] event not own by me, self._websocket_id: ", 
+		print("[<" .. self.url .. ">.on_message] event not own by me, self._websocket_id: ", 
 			self._websocket_id, " , event.websocket: " , websocket_id)
 		return
 	end
 	
+	if GlobalSetting.debug_dump_websocket_raw and not (event:find("\"websocket_rails.") or event:find("\"server_ack")) then
+		print("[<" .. self.url .. ">.on_message] event => " , event)
+	end
+
     local data = json.decode(event)
     --data = self:fix_json_data(data)
     self.dispatcher:new_message(data)
 end,
 
 on_open = function(self, websocket_id, event)
-	print("[WebSocketConnection.on_open] " , event)
+	print("[<" .. self.url .. ">.on_open] " , event)
 	if self._websocket_id ~= websocket_id then
-		print("[WebSocketConnection.on_open] event not own by me, self._websocket_id: ", 
+		print("[<" .. self.url .. ">.on_open] event not own by me, self._websocket_id: ", 
 			self._websocket_id, " , event.websocket: " , websocket_id)
 		return
 	end
@@ -67,15 +95,15 @@ on_open = function(self, websocket_id, event)
 end,
 
 on_close = function(self, websocket_id, event)
-	print("[WebSocketConnection.on_close] " , event)
+	print("[<" .. self.url .. ">.on_close] " , event)
 	if self._websocket_id ~= websocket_id then
-		print("[WebSocketConnection.on_close] event not own by me, self._websocket_id: ", 
+		print("[<" .. self.url .. ">.on_close] event not own by me, self._websocket_id: ", 
 			self._websocket_id, " , event.websocket: " , websocket_id)
 		return
 	end
 
     local close_event = nil
-    close_event = WebSocketRails.Event:new({ "connection_closed", {} })
+    close_event = WebSocketRails.Event:new({ "connection_closed", wrap_err(self, {}) })
     self.dispatcher:dispatch(close_event)
 	self.dispatcher.state = "closed"
     
@@ -91,9 +119,9 @@ on_close = function(self, websocket_id, event)
 end,
 
 on_error = function(self, websocket_id, event)
-	print("[WebSocketConnection.on_error] ", event)
+	print("[<" .. self.url .. ">.on_error] ", event)
 	if self._websocket_id ~= websocket_id then
-		print("[WebSocketConnection.on_error] event not own by me, self._websocket_id: ", 
+		print("[<" .. self.url .. ">.on_error] event not own by me, self._websocket_id: ", 
 			self._websocket_id, " , event.websocket: " , websocket_id)
 		return
 	end
@@ -103,7 +131,7 @@ on_error = function(self, websocket_id, event)
     if event ~= nil then
         error_data = event.data
     end
-    error_event = WebSocketRails.Event:new({"connection_error", error_data})
+    error_event = WebSocketRails.Event:new({"connection_error", wrap_err(self,error_data)})
     
 	self.dispatcher:dispatch(error_event)
 	self.dispatcher.state = "closed"
@@ -153,7 +181,7 @@ end,
 
 close = function(self, self_close)
 	self._self_close = self_close or false
-	print("[WebSocketRails.WebSocketConnection] close")
+	print("[<" .. self.url .. ">.close] self._self_close => ", self._self_close)
 	WebsocketManager:sharedWebsocketManager():close(self._websocket_id)
 end,
 

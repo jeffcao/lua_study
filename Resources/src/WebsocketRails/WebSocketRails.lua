@@ -60,7 +60,7 @@ function WebSocketRails:new(url, use_websockets)
     this_obj._pause = false
     this_obj._event_queue = {}
     
-    this_obj._conn = WebSocketRails.WebSocketConnectionCC:new(url, this_obj)
+    this_obj._conn = WebSocketRails.WebSocketConnection:new(url, this_obj)
     
     return this_obj
 end
@@ -163,6 +163,7 @@ function WebSocketRails:connection_established(data)
     self:reset_channels()
     self.request_event_queue = {}
     if type(self.on_open) == "function" then
+    	print("[WebSocketRails<" .. self.url .. ">.connection_established] invoke self.on_open")
         return self.on_open(data)
     end
 end
