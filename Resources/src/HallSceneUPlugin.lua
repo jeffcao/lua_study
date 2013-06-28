@@ -120,6 +120,7 @@ function HallSceneUPlugin.bind(theClass)
 			self:connect_to_hall_server()
 		else
 			if GlobalSetting.need_init_hall_rooms == 1 then
+				self:init_channel()
 				self:init_hall_info()
 			end
 		end

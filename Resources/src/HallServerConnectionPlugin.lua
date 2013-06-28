@@ -130,6 +130,14 @@ function HallServerConnectionPlugin.bind(theClass)
 		
 	end
 	
+	function theClass:use_cate(product_id)
+		self.failure_msg = "使用道具失败"
+		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, prop_id = product_id, version="1.0"}
+		self:call_server_method("use_cate", event_data)
+		
+	end
+	
+	
 	
 	
 	function theClass:call_server_method(method_name, pass_data)

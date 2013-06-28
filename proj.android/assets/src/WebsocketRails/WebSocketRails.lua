@@ -60,7 +60,7 @@ function WebSocketRails:new(url, use_websockets)
     this_obj._pause = false
     this_obj._event_queue = {}
     
-    this_obj._conn = WebSocketRails.WebSocketConnectionCC:new(url, this_obj)
+    this_obj._conn = WebSocketRails.WebSocketConnection:new(url, this_obj)
     
     return this_obj
 end
