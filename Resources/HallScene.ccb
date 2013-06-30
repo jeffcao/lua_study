@@ -227,8 +227,6 @@
 										<string></string>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -2508,7 +2506,7 @@
 										<key>value</key>
 										<array>
 											<real>50</real>
-											<real>30</real>
+											<real>34</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -2601,6 +2599,8 @@
 </string>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 							<dict>
 								<key>baseClass</key>
@@ -2625,7 +2625,7 @@
 										<key>value</key>
 										<array>
 											<real>25</real>
-											<real>10</real>
+											<real>12</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -2696,7 +2696,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>55</real>
+											<real>63</real>
 											<real>12</real>
 											<integer>0</integer>
 										</array>
