@@ -60,8 +60,39 @@ function MarketSceneUPlugin.bind(theClass)
 		
 	end
 	
+	function theClass:is_cm_sim_card()
+		print("[MarketSceneUPlugin:is_cm_sim_card]")
+		local imsi = CCUserDefault:sharedUserDefault():getStringForKey("hw_imsi")
+		print("[MarketSceneUPlugin:show_buy_notify] imsi=> "..imsi)
+		local is_cm_sim_card = false
+		if not is_blank(GlobalSetting.cm_sim_card_prefix) and not is_blank(imsi) then
+			print("[MarketSceneUPlugin:is_cm_sim_card] GlobalSetting.cm_sim_card_prefix=> "..GlobalSetting.cm_sim_card_prefix)
+			local cm_sim_card_flags = split(GlobalSetting.cm_sim_card_prefix, ",")
+			for k, v in pairs(cm_sim_card_flags) do
+				local f_index = string.find(imsi, v)
+				if f_index ~= nil and f_index == 1 then
+					is_cm_sim_card = true
+					break
+				end
+			end	
+		end
+		return is_cm_sim_card
+	end
+	
 	function theClass:show_buy_notify(product)
 		print("[MarketSceneUPlugin:show_buy_notify]")
+		
+		if is_blank(product.consume_code) then
+			self:show_back_message_box("此道具无消息代码，无法完成购买.")
+			do return end
+		end
+		
+		is_cm_sim_card = self:is_cm_sim_card()
+		print("[MarketSceneUPlugin:show_buy_notify] is_cm_sim_card=> "..tostring(is_cm_sim_card))
+		if not is_cm_sim_card then
+--			self:show_back_message_box("尊敬的客户，非中国移动客户暂不支持购买道具.")
+--			do return end
+		end
 
 		self.cur_product = product
 		self.yes_no_dialog = createYesNoDialog3()

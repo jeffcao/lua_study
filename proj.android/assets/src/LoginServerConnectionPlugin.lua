@@ -14,6 +14,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 		print("LoginServerConnectionPlugin.sign_success, login_token=> "..cur_user.login_token)
 		cur_user:save(CCUserDefault:sharedUserDefault())
 		
+		GlobalSetting.cm_sim_card_prefix = data.system_settings.cm_sim_card_prefix
 		GlobalSetting.hall_server_url = data.system_settings.ddz_hall_url
 		print("LoginServerConnectionPlugin.sign_success, hall_server_url=> "..GlobalSetting.hall_server_url)
 --		GlobalSetting.hall_server_token = data.token

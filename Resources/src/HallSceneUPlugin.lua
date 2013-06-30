@@ -218,6 +218,8 @@ function HallSceneUPlugin.bind(theClass)
 		
 	end
 	
+	
+	
 	function theClass:do_quick_game_btn_clicked(tag, sender)
 		print("[HallSceneUPlugin:do_quick_game_btn_clicked]")
 		self:show_progress_message_box("请求房间信息...")
@@ -262,6 +264,11 @@ function HallSceneUPlugin.bind(theClass)
 		end
 	end
 	
+	function theClass:do_on_connection_game_server_failure()
+		print("[HallSceneUPlugin:do_on_connection_game_server_failure]")
+		self:hide_progress_message_box()
+		self:show_messagae_box("连接游戏服务器失败.")
+	end
 	
 	function theClass:enter_game_room()
 		local game = createGamingScene()

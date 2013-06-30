@@ -4,20 +4,27 @@ HallGameConnectionPlugin = {}
 function HallGameConnectionPlugin.bind(theClass)
 
 	function theClass:connect_to_game_server()
-		print("[HallServerConnectionPlugin:connect_to_game_server()]")
+		print("[HallGameConnectionPlugin:connect_to_game_server()]")
 		local function connection_failure(data)
-			print("[HallServerConnectionPlugin.connection_failure].")
+			print("[HallGameConnectionPlugin.connection_failure].")
 			dump(data, "connection_failure data")
 	--		print("[LoginServerConnectionPlugin.sign_failure] result code: "..data.result_code)
-			if "function" == type(self.do_on_connection_game_server_failure) then
-				self:do_on_connection_game_server_failure()
+			if data.retry_excceed then
+				print("[HallGameConnectionPlugin.connection_failure]  and end.")
+				if "function" == type(self.do_on_connection_game_server_failure) then
+					self:do_on_connection_game_server_failure()
+				end
+			else
+				print("[HallGameConnectionPlugin.connection_failure]  try again.")
 			end
+			
 		end
 		if GlobalSetting.g_WebSocket == nil then
 			print("[HallServerConnectionPlugin:connect_to_game_server()] game_server_websocket is nil, init it.")
 			GlobalSetting.g_WebSocket = WebSocketRails:new(GlobalSetting.game_server_url, true)
 			GlobalSetting.g_WebSocket.on_open = __bind(self.on_game_server_websocket_ready, self)
 			GlobalSetting.g_WebSocket:bind("connection_error", connection_failure)
+			GlobalSetting.g_WebSocket:bind("connection_closed", connection_failure)
 		end
 		
 	end
