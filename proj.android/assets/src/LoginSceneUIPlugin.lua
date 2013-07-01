@@ -7,25 +7,6 @@ function LoginSceneUIPlugin.bind(theClass)
 		self:addEditbox(self.register_account_layer, 145, 35, false, 101)
 		self:addEditbox(self.forget_password_layer, 165, 35, true, 102)
 		
---		local createUserIdMenue = function(lb_text)
---			local menu_lb = CCLabelTTF:create(lb_text, "default",16)
---			menu_lb:setColor(ccc3(0, 0, 0))
---			
---			local menu_item = CCMenuItemImage:create()
---			menu_item:setNormalSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("xiankuang02.png"))
---			menu_item:setSelectedSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("xiankuang01.png"))
---			
---			menu_item:setContentSize(CCSizeMake(168, 22))
---			menu_item:setAnchorPoint(ccp(0, 0.5))
---			menu_item:addChild(menu_lb, 999, 201)
---			
---			menu_lb:setAnchorPoint(ccp(0.5, 0.5))
---			menu_lb:setPosition(ccp(25, 15))
---			menu_item:registerScriptTapHandler(__bind(self.do_user_id_selected, self))
---	
---			return menu_item
---		end
-		
 		local createUserIdMenue = function(lb_text)
 			local menu_lb = CCLabelTTF:create(lb_text, "default",16)
 			menu_lb:setColor(ccc3(0, 0, 0))
@@ -34,10 +15,7 @@ function LoginSceneUIPlugin.bind(theClass)
 
 			menu_item:setContentSize(CCSizeMake(168, 22))
 			menu_item:setAnchorPoint(ccp(0, 0.5))
---			menu_item:setLabel(menu_lb)
-			
---			menu_lb:setAnchorPoint(ccp(0.5, 0.5))
---			menu_lb:setPosition(ccp(25, 15))
+
 			menu_item:registerScriptTapHandler(__bind(self.do_user_id_selected, self))
 	
 			return menu_item
