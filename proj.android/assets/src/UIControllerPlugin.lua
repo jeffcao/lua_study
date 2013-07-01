@@ -60,8 +60,13 @@ function UIControllerPlugin.bind(theClass)
 			print("[UIControllerPlugin:msg_layer_on_touch]")
 			return true
 		end
-	function theClass:create_message_layer(message, msg_width, msg_height)
+		
+	function theClass:set_message_box_contener(msg_box_container)
+		self.msg_box_container = msg_box_container
+	end
 	
+	function theClass:create_message_layer(message, msg_width, msg_height)
+		self.msg_box_container = self.msg_box_container or self.rootNode
 --		local function on_msg_layer_touched(eventType, x, y)
 --			print("[UIControllerPlugin:msg_layer_on_touch]")
 --			return true
@@ -122,15 +127,13 @@ function UIControllerPlugin.bind(theClass)
 		msg_width = msg_width or 330
 		msg_height = msg_height or 50
 		local msg_layer = self:create_message_layer(message, msg_width, msg_height)
-		local running_scene = CCDirector:sharedDirector():getRunningScene()
-		running_scene.rootNode:addChild(msg_layer, 0, 901)
-		
-		
+		self.msg_box_container:addChild(msg_layer, 0, 901)
+
 		scaleNode(msg_layer, GlobalSetting.content_scale_factor)
 		
 		Timer.add_timer(3, function()
-			local msg_layer = running_scene.rootNode:getChildByTag(901)
-			running_scene.rootNode:removeChild(msg_layer, true)
+			local msg_layer = self.msg_box_container:getChildByTag(901)
+			self.msg_box_container:removeChild(msg_layer, true)
 			msg_layer = nil
 		end)
 
@@ -146,8 +149,8 @@ function UIControllerPlugin.bind(theClass)
 		content_layer:addChild(progress_sprite, 999, 1000)
 		progress_sprite:setAnchorPoint(ccp(0, 0.5))
 		progress_sprite:setPosition(ccp(20, msg_height/2))
-		local running_scene = CCDirector:sharedDirector():getRunningScene()
-		running_scene.rootNode:addChild(msg_layer, 0, 902)
+		
+		self.msg_box_container:addChild(msg_layer, 0, 902)
 		
 		scaleNode(msg_layer, GlobalSetting.content_scale_factor)
 		
@@ -156,10 +159,9 @@ function UIControllerPlugin.bind(theClass)
 	end
 	
 	function theClass:hide_progress_message_box()
-		local running_scene = CCDirector:sharedDirector():getRunningScene()
-		if running_scene then
-			local msg_layer = running_scene.rootNode:getChildByTag(902)
-			running_scene.rootNode:removeChild(msg_layer, true)
+		if self.msg_box_container then
+			local msg_layer = self.msg_box_container:getChildByTag(902)
+			self.msg_box_container:removeChild(msg_layer, true)
 			msg_layer = nil
 		end
 	end

@@ -89,11 +89,11 @@ function UserCenterSceneUPlugin.bind(theClass)
 		elseif name == "update_password" then
 			layer = createUpdatePasswordLayer()
 		elseif name == "player_cats" then
-			layer = createPlayerProductsLayer()
+			layer = createPlayerProductsLayer(self.rootNode)
 		else 
 			layer = createAvatarListLayer(__bind(self.after_player_info_changed, self))
 		end
-		
+		layer:set_message_box_contener(self.rootNode)
 		self.container:addChild(layer)
 		local container_size = self.container:getContentSize()
 		layer:ignoreAnchorPointForPosition(false)

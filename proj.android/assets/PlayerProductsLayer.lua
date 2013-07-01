@@ -10,13 +10,14 @@ PlayerProductsLayer = class("PlayerProductsLayer", function()
 end
 )
 
-function createPlayerProductsLayer()
+function createPlayerProductsLayer(msg_box_container)
 	print("create PlayerProductsLayer")
-	return PlayerProductsLayer.new()
+	return PlayerProductsLayer.new(msg_box_container)
 end
 
-function PlayerProductsLayer:ctor()
+function PlayerProductsLayer:ctor(msg_box_container)
 	self.rootNode = self
+	self:set_message_box_contener(msg_box_container)
 	self:init_product_list()
 end
 
