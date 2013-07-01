@@ -27,6 +27,7 @@ function FeedbackScene:ctor()
 	self.feedback_box:setInputMode(kEditBoxInputModeAny)
 	self.feedback_box:registerScriptEditBoxHandler(editBoxTextEventHandle)
 	self.feedback_box:setFontColor(display.COLOR_WHITE)
+	self.feedback_box:setMaxLength(100)
 	--self.feedback_ttf:setDimensions(CCSizeMake(460,160))
 	
 	local layer = createFullMubanStyleLayer()
