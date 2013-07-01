@@ -44,7 +44,7 @@ function Menu:ctor(menu_dismiss_callback, show_set_fn)
 	end
 	
 	local function set(tag, sender)
---		dismiss()
+		dismiss()
 		self.show_set_fn()
 	end
 	

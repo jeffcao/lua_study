@@ -36,6 +36,7 @@ HallScene = class("HallScene", function()
 	
 	local ccbproxy = CCBProxy:create()
  	local node = CCBReaderLoad("HallScene.ccbi", ccbproxy, false, "")
+ 	self.rootNode = node
 	self:addChild(node)
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)

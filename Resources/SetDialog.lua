@@ -122,6 +122,7 @@ function SetDialog:ctor()
 	menus:addObject(pSlider)
 	menus:addObject(pSlider_e)
 	menus:addObject(toggle)
+	menus:addObject(self.rootNode)
 	self:swallowOnTouch(menus)
 	self:swallowOnKeypad()
 
@@ -138,7 +139,33 @@ function SetDialog:ctor()
 		end
 	end)
 	
-	
+	self.rootNode:registerScriptTouchHandler(__bind(self.onTouch, self))
+    self.rootNode:setTouchEnabled(true)
+end
+
+function SetDialog:onTouch(eventType, x, y)
+	cclog("touch event PlayerInfo:%s,x:%d,y:%d", eventType, x, y)
+	if eventType == "began" then
+		return self:onTouchBegan(ccp(x, y))
+	elseif eventType == "moved" then
+		return self:onTouchMoved(ccp(x, y))
+	else
+		return self:onTouchEnded(ccp(x, y))
+	end
+end
+
+function SetDialog:onTouchBegan(loc)
+	return true
+end
+
+function SetDialog:onTouchMoved(loc)
+end
+
+function SetDialog:onTouchEnded(loc)
+	--loc = self.bg:convertToNodeSpace(loc)
+	if not self.container_layer:boundingBox():containsPoint(loc) then
+		self:dismiss()
+	end
 end
 
 DialogInterface.bind(SetDialog)

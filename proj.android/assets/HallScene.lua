@@ -36,6 +36,7 @@ HallScene = class("HallScene", function()
 	
 	local ccbproxy = CCBProxy:create()
  	local node = CCBReaderLoad("HallScene.ccbi", ccbproxy, false, "")
+ 	self.rootNode = node
 	self:addChild(node)
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
@@ -53,7 +54,7 @@ HallScene = class("HallScene", function()
 	
 	self:init_connectivity()
 	
-	self.music_update = Timer.add_repeat_timer(5, __bind(self.playMusic, self))
+	self.music_update = Timer.add_repeat_timer(30, __bind(self.playMusic, self))
  end
  
 
