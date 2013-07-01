@@ -16,7 +16,7 @@ function MarketSceneUPlugin.bind(theClass)
 		local h = LuaEventHandler:create(function(fn, table, a1, a2)
 			local r
 			if fn == "cellSize" then
-				r = CCSizeMake(800,73)
+				r = CCSizeMake(800,80)
 			elseif fn == "cellAtIndex" then
 				if not a2 then
 					a2 = CCTableViewCell:create()

@@ -34,6 +34,7 @@ function LandingScene:onEnter()
 	print("[LandingScene:on_enter()]")
 	self.super.onEnter(self)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+	self:show_progress_message_box("连接服务器...")
 	self:setup_websocket()
 end
 
