@@ -39,7 +39,7 @@ function MarketItem:init_item(product, show_buy_notify)
 	name_lb:setString(product.name)
 	
 	local note_lb = tolua.cast(self.note_lb, "CCLabelTTF")
-	note_lb:setDimensions(CCSizeMake(350,42))
+--	note_lb:setDimensions(CCSizeMake(350,42))
 	note_lb:setString(product.note)
 
 	local price_lb = tolua.cast(self.price_lb, "CCLabelTTF")
