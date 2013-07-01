@@ -309,11 +309,7 @@
 								<key>value</key>
 								<array>
 									<real>350</real>
-<<<<<<< HEAD
 									<real>50</real>
-=======
-									<real>40</real>
->>>>>>> 3c41bbe19c17419b16ec15fadfa56160e327dd8e
 									<integer>0</integer>
 								</array>
 							</dict>
