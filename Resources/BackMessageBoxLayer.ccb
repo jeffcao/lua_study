@@ -140,8 +140,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -1105,7 +1103,7 @@
 								<string>FloatScale</string>
 								<key>value</key>
 								<array>
-									<real>18</real>
+									<real>20</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1128,8 +1126,8 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>350</real>
-									<real>130</real>
+									<real>330</real>
+									<real>120</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1158,6 +1156,8 @@
 								<string>您正在游戏中，此时强退系统将最大输赢扣初您的豆子。</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
