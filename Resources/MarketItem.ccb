@@ -130,7 +130,7 @@
 								<key>value</key>
 								<array>
 									<real>89</real>
-									<real>55</real>
+									<real>57</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -338,8 +338,6 @@
 								<string>购买白银宝箱将获得240000豆子，其中赠送2000豆子</string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
