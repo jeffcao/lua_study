@@ -4,14 +4,14 @@ SoundSettings = {effect_music = 1, bg_music = 1}
 function SoundEffect.bind(theClass)
 
 	function theClass:playDealCardEffect()
-		if not SoundSettings.effect_music then
+		if not SoundSettings.bg_music then
 			return
 		end
 		SimpleAudioEngine:sharedEngine():playEffect(Res.s_effect_pick_card)
 	end
 
 	function theClass:playButtonEffect()
-		if not SoundSettings.effect_music then
+		if not SoundSettings.bg_music then
 			return
 		end
 		SimpleAudioEngine:sharedEngine():playEffect(Res.s_music_button_click)
@@ -19,21 +19,21 @@ function SoundEffect.bind(theClass)
 
 
 	function theClass:playPlayCardEffect() 
-		if not SoundSettings.effect_music then
+		if not SoundSettings.bg_music then
 			return
 		end
 		SimpleAudioEngine:sharedEngine():playEffect("res/Music/back_sendpoker.mp3")
 	end
 
 	function theClass:playStraightEffect()
-		if not SoundSettings.effect_music then
+		if not SoundSettings.bg_music then
 			return
 		end
 		SimpleAudioEngine:sharedEngine():playEffect("res/Music/straight_sound.mp3")
 	end
 
 	function theClass:playBombEffect(male)
-		if not SoundSettings.effect_music then
+		if not SoundSettings.bg_music then
 			return
 		end
 		SimpleAudioEngine:sharedEngine():playEffect(Res.s_effect_boom)
@@ -45,7 +45,7 @@ function SoundEffect.bind(theClass)
 	end
 
 	function theClass:playRocketEffect(male)
-		if not SoundSettings.effect_music then
+		if not SoundSettings.bg_music then
 			return
 		end
 		
@@ -59,14 +59,14 @@ function SoundEffect.bind(theClass)
 	end
 
 	function theClass:playCountdownEffect()
-		if not SoundSettings.effect_music then
+		if not SoundSettings.bg_music then
 			return
 		end
 		SimpleAudioEngine:sharedEngine():playEffect("res/Music/countdown_sound.mp3")
 	end
 
 	function theClass:playWarningEffect()
-		if not SoundSettings.effect_music then
+		if not SoundSettings.bg_music then
 			return
 		end
 		
@@ -74,7 +74,7 @@ function SoundEffect.bind(theClass)
 	end
 
 	function theClass:playLoseEffect()
-		if not SoundSettings.effect_music then
+		if not SoundSettings.bg_music then
 			return
 		end
 		
@@ -82,7 +82,7 @@ function SoundEffect.bind(theClass)
 	end
 
 	function theClass:playWinEffect()
-		if not SoundSettings.effect_music then
+		if not SoundSettings.bg_music then
 			return
 		end
 		
@@ -104,7 +104,7 @@ function SoundEffect.bind(theClass)
 	end
 
 	function theClass:playDeliverCardsEffect()
-		if not SoundSettings.effect_music then
+		if not SoundSettings.bg_music then
 			return
 		end
 		
@@ -112,7 +112,7 @@ function SoundEffect.bind(theClass)
 	end
 
 	function theClass:playGrabLordEffect(lord_value, male)
-		if not SoundSettings.effect_music then
+		if not SoundSettings.bg_music then
 			return
 		end
 			
@@ -125,7 +125,7 @@ function SoundEffect.bind(theClass)
 	end
 
 	function theClass:playSingleCardEffect(poke_value, male)
-		if not SoundSettings.effect_music then
+		if not SoundSettings.bg_music then
 			return
 		end
 		
@@ -137,7 +137,7 @@ function SoundEffect.bind(theClass)
 	end
 
 	function theClass:playPassEffect(male)
-		if not SoundSettings.effect_music then
+		if not SoundSettings.bg_music then
 			return
 		end
 		local n = math.random(3)
@@ -150,7 +150,7 @@ function SoundEffect.bind(theClass)
 	end
 
 	function theClass:playPairsEffect(poke_value, male)
-		if not SoundSettings.effect_music then
+		if not SoundSettings.bg_music then
 			return
 		end
 	
@@ -163,7 +163,7 @@ function SoundEffect.bind(theClass)
 	end
 
 	function theClass:playCardTypeEffect(card_type, male)
-		if not SoundSettings.effect_music then
+		if not SoundSettings.bg_music then
 			return
 		end
 		
@@ -218,7 +218,7 @@ function SoundEffect.bind(theClass)
 	end
 
 	function theClass:playCardTips(card_count, male)
-		if (not SoundSettings.effect_music) or card_count > 2 or card_count < 1 then
+		if (not SoundSettings.bg_music) or card_count > 2 or card_count < 1 then
 			return
 		end
 		

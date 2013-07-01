@@ -4,10 +4,11 @@ require "src.HallGameConnectionPlugin"
 require "src.UIControllerPlugin"
 require "src.ConnectivityPlugin"
 require "src.SocketStatePlugin"
+require "src/WebsocketRails/Timer"
 require "RoomItem"
 require "Menu"
 require "src.WidgetPlugin"
-
+require "src.SoundEffect"
 
 
 HallScene = class("HallScene", function() 
@@ -51,7 +52,8 @@ HallScene = class("HallScene", function()
 	self.socket_label = tolua.cast(self.socket_label, "CCLabelTTF")
 	
 	self:init_connectivity()
-		
+	
+	self.music_update = Timer.add_repeat_timer(5, __bind(self.playMusic, self))
  end
  
 
@@ -64,16 +66,31 @@ HallScene = class("HallScene", function()
 	print("HallScene:onEnter()")
 	self.super.onEnter(self)
 	self:do_on_enter()
+	local is_playing = SimpleAudioEngine:sharedEngine():isBackgroundMusicPlaying()
+	if SoundSettings.bg_music and not is_playing then
+		self:playBackgroundMusic()
+	end
+ end
+ 
+ function HallScene:playMusic()
+ 	print("playMusic")
+ 	if not SoundSettings.bg_music then return true end
+ 	local running_scene = CCDirector:sharedDirector():getRunningScene()
+	if running_scene == self then 
+ 		self:playBackgroundMusic()
+ 	end
+ 	return true
  end
  
  function HallScene:onExit()
  	print("HallScene:onExit()")
+ 	
  end
  
  function HallScene:onCleanup()
 	print("[HallScene:onCleanup()]")
 	self.super.onCleanup(self)
-
+	Timer.cancel_timer(self.music_update)
 end
  
  function HallScene:onEnterTransitionDidFinish()
@@ -87,4 +104,4 @@ end
  UIControllerPlugin.bind(HallScene)
  ConnectivityPlugin.bind(HallScene)
  SocketStatePlugin.bind(HallScene)
- 
+ SoundEffect.bind(HallScene)

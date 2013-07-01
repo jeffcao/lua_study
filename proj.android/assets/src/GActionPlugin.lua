@@ -369,6 +369,8 @@ function GActionPlugin.bind(theClass)
 	end
 	
 	function theClass:saveSettings() 
+	
+	--[[
 		local ls = CCUserDefault:sharedUserDefault()
 		local bg = "0"
 		if SoundSettings.bg_music then bg = "1" end
@@ -376,7 +378,7 @@ function GActionPlugin.bind(theClass)
 		if SoundSettings.effect_music then effect = "1" end
 		ls:setStringForKey("bg_music", bg)
 		ls:setStringForKey("effect_music", effect)
-		
+	]]
 	end
 	
 	function theClass:doStartReady(isServer) 
