@@ -246,7 +246,7 @@
 								<key>value</key>
 								<array>
 									<real>90</real>
-									<real>21</real>
+									<real>24</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -309,7 +309,7 @@
 								<key>value</key>
 								<array>
 									<real>450</real>
-									<real>42</real>
+									<real>45</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -327,7 +327,7 @@
 								<key>type</key>
 								<string>IntegerLabeled</string>
 								<key>value</key>
-								<integer>0</integer>
+								<integer>1</integer>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -338,6 +338,8 @@
 								<string>购买白银宝箱将获得240000豆子，其中赠送2000豆子</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -793,8 +795,6 @@
 								<string>x3</string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
