@@ -192,7 +192,9 @@ function HallSceneUPlugin.bind(theClass)
 				end
 				r = a2
 			elseif fn == "numberOfCells" then
-				r = #(data.room)
+				if data and data.room then
+					r = #(data.room)
+				end
 			elseif fn == "cellTouched" then
 				print("[HallSceneUPlugin:init_room_tabview] room_cell_couched")
 				local a3 = tolua.cast(a1:getChildByTag(1), "CCLayer")
@@ -267,7 +269,7 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:do_on_connection_game_server_failure()
 		print("[HallSceneUPlugin:do_on_connection_game_server_failure]")
 		self:hide_progress_message_box()
-		self:show_messagae_box("连接游戏服务器失败.")
+		self:show_message_box("连接游戏服务器失败.")
 	end
 	
 	function theClass:enter_game_room()

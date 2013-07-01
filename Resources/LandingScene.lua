@@ -26,6 +26,9 @@ function LandingScene:ctor()
 --	self.sprite_loading = self.ccbproxy:getNodeWithType("sprite_loading", "CCSprite")
 	self:create_progress_animation(self.rootNode, self.sprite_loading)
 	
+	local bg_color = tolua.cast(self.bg_color, "CCLayerColor")
+	bg_color:setColor(ccc3(0, 83, 121))
+	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler( __bind(self.on_keypad_pressed, self) )
 end
@@ -34,6 +37,7 @@ function LandingScene:onEnter()
 	print("[LandingScene:on_enter()]")
 	self.super.onEnter(self)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+	self:show_progress_message_box("连接服务器...")
 	self:setup_websocket()
 end
 

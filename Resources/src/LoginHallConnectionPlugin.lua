@@ -8,6 +8,7 @@ function LoginHallConnectionPlugin.bind(theClass)
 		local function connection_failure(data)
 			print("[LoginHallConnectionPlugin.connection_failure].")
 			dump(data, "connection_failure data")
+			GlobalSetting.hall_server_websocket = nil
 	--		print("[LoginServerConnectionPlugin.sign_failure] result code: "..data.result_code)
 			if "function" == type(self.do_on_connection_hall_server_failure) then
 				self:do_on_connection_hall_server_failure()

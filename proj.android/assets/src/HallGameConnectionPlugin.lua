@@ -11,6 +11,7 @@ function HallGameConnectionPlugin.bind(theClass)
 	--		print("[LoginServerConnectionPlugin.sign_failure] result code: "..data.result_code)
 			if data.retry_excceed then
 				print("[HallGameConnectionPlugin.connection_failure]  and end.")
+				GlobalSetting.g_WebSocket = nil
 				if "function" == type(self.do_on_connection_game_server_failure) then
 					self:do_on_connection_game_server_failure()
 				end
