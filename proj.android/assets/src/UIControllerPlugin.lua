@@ -75,7 +75,7 @@ function UIControllerPlugin.bind(theClass)
 		local msg_layer = CCLayerColor:create(ccc4(0, 0, 0, 0))
 		msg_layer:setOpacity(100)
 		msg_layer:setTouchEnabled(true)
-		msg_layer:setContentSize(CCSizeMake(msg_width, msg_height))
+--		msg_layer:setContentSize(CCSizeMake(win_size.width, win_size.height))
 --		msg_layer:setKeypadEnabled(false)
 		msg_layer:registerScriptTouchHandler(__bind(self.on_msg_layer_touched, self), false, -1024, true)
 
@@ -99,10 +99,9 @@ function UIControllerPlugin.bind(theClass)
 		content_layer:addChild(msg_sprite, 0)
 		msg_sprite:setAnchorPoint(ccp(0, 0.5))
 		msg_sprite:setPosition(ccp(0, msg_height / 2.0 ))
-		
-		msg_layer:setAnchorPoint(ccp(0,0))
-		msg_layer:setPosition(ccp(0,0))
-		
+--		msg_layer:ignoreAnchorPointForPosition(false)
+--		msg_layer:setAnchorPoint(ccp(0,0))
+--		msg_layer:setPosition(ccp(0,0))
 		return msg_layer
 	end
 	
@@ -123,13 +122,15 @@ function UIControllerPlugin.bind(theClass)
 		msg_width = msg_width or 330
 		msg_height = msg_height or 50
 		local msg_layer = self:create_message_layer(message, msg_width, msg_height)
-		self.rootNode:addChild(msg_layer, 0, 901)
+		local running_scene = CCDirector:sharedDirector():getRunningScene()
+		running_scene.rootNode:addChild(msg_layer, 0, 901)
+		
 		
 		scaleNode(msg_layer, GlobalSetting.content_scale_factor)
 		
 		Timer.add_timer(3, function()
-			local msg_layer = self.rootNode:getChildByTag(901)
-			self.rootNode:removeChild(msg_layer, true)
+			local msg_layer = running_scene.rootNode:getChildByTag(901)
+			running_scene.rootNode:removeChild(msg_layer, true)
 			msg_layer = nil
 		end)
 
@@ -145,8 +146,8 @@ function UIControllerPlugin.bind(theClass)
 		content_layer:addChild(progress_sprite, 999, 1000)
 		progress_sprite:setAnchorPoint(ccp(0, 0.5))
 		progress_sprite:setPosition(ccp(20, msg_height/2))
-		
-		self.rootNode:addChild(msg_layer, 0, 902)
+		local running_scene = CCDirector:sharedDirector():getRunningScene()
+		running_scene.rootNode:addChild(msg_layer, 0, 902)
 		
 		scaleNode(msg_layer, GlobalSetting.content_scale_factor)
 		
@@ -155,9 +156,10 @@ function UIControllerPlugin.bind(theClass)
 	end
 	
 	function theClass:hide_progress_message_box()
-		if self then
-			local msg_layer = self.rootNode:getChildByTag(902)
-			self.rootNode:removeChild(msg_layer, true)
+		local running_scene = CCDirector:sharedDirector():getRunningScene()
+		if running_scene then
+			local msg_layer = running_scene.rootNode:getChildByTag(902)
+			running_scene.rootNode:removeChild(msg_layer, true)
 			msg_layer = nil
 		end
 	end
