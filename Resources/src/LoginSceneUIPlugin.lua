@@ -11,16 +11,11 @@ function LoginSceneUIPlugin.bind(theClass)
 			local menu_lb = CCLabelTTF:create(lb_text, "default",16)
 			menu_lb:setColor(ccc3(0, 0, 0))
 			
-			local menu_item = CCMenuItemImage:create()
-			menu_item:setNormalSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("xiankuang02.png"))
-			menu_item:setSelectedSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("xiankuang01.png"))
-			
+			local menu_item = CCMenuItemLabel:create(menu_lb)
+
 			menu_item:setContentSize(CCSizeMake(168, 22))
 			menu_item:setAnchorPoint(ccp(0, 0.5))
-			menu_item:addChild(menu_lb, 999, 201)
-			
-			menu_lb:setAnchorPoint(ccp(0.5, 0.5))
-			menu_lb:setPosition(ccp(25, 15))
+
 			menu_item:registerScriptTapHandler(__bind(self.do_user_id_selected, self))
 	
 			return menu_item
@@ -44,12 +39,13 @@ function LoginSceneUIPlugin.bind(theClass)
 	
 		if user_ids ~= nil then
 			for _index, _user_id in pairs(user_ids) do
-				self.user_id_list_menu:addChild(createUserIdMenue(_user_id), 999, 1000)
+				self.user_id_list_menu:addChild(createUserIdMenue(_user_id), 999)
 			end
 		end
 		self.user_id_list_menu:alignItemsVerticallyWithPadding(2.5)
 		self.user_id_list_menu:setPosition(ccp(3, self.user_id_list_layer:getContentSize().height / 2-5 ))
 		self.user_id_list_sprite:setPosition(ccp(0, self.user_id_list_layer:getContentSize().height / 2 ))
+		
 		dump(GlobalSetting.current_user, "[LoginScene:init_input_controll()] current_user")
 		if GlobalSetting.current_user ~= nil then
 			self:setUserInfo(GlobalSetting.current_user.user_id)
@@ -60,8 +56,10 @@ function LoginSceneUIPlugin.bind(theClass)
 	function theClass:do_user_id_selected(tag, sender)
 		self.user_id_list_layer:setVisible(false)
 		print(dump(sender, "callback sender", true))
-		local user_id_item = tolua.cast(sender, "CCMenuItemImage")
-		local user_id_label = tolua.cast(user_id_item:getChildByTag(201), "CCLabelTTF")
+--		local user_id_item = tolua.cast(sender, "CCMenuItemImage")
+		local user_id_item = tolua.cast(sender, "CCMenuItemLabel")
+--		local user_id_label = tolua.cast(user_id_item:getChildByTag(201), "CCLabelTTF")
+		local user_id_label = tolua.cast(user_id_item:getLabel(), "CCLabelTTF")
 		local user_id = user_id_label:getString()
 		print("[LoginScene:do_user_id_selected()] user id: "..user_id)
 		self:setUserInfo(user_id)
