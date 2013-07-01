@@ -12,12 +12,22 @@ function FeedbackScene:ctor()
 	
 	self.on_ui_commit_btn_clicked = __bind(self.do_ui_commit_btn_clicked, self)
 	
+	local function editBoxTextEventHandle(strEventName,pSender)
+		local edit = tolua.cast(pSender,"CCEditBox")
+		if strEventName == "changed" then
+			self.feedback_ttf:setString(edit:getText())
+		end
+	end
+	
 	local ccbproxy = CCBProxy:create()
  	local node = CCBReaderLoad("FeedbackScene.ccbi", ccbproxy, false, "")
  	
  	self.input_png = "kuang11.png"
 	self.feedback_box = self:addEditbox(self.feed_layer, 500, 200, false, 101)
 	self.feedback_box:setInputMode(kEditBoxInputModeAny)
+	self.feedback_box:registerScriptEditBoxHandler(editBoxTextEventHandle)
+	self.feedback_box:setFontColor(display.COLOR_WHITE)
+	self.feedback_ttf:setDimensions(CCSizeMake(460,160))
 	
 	local layer = createFullMubanStyleLayer()
 	self:addChild(layer)
