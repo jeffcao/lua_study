@@ -32,7 +32,6 @@ end
 
 function GuifanStartScene:doEffect(open)
 	SoundSettings.bg_music = open
-	SoundSettings.effect_music = open
 	self.layer_volume:setVisible(false)
 	self.layer_anim:setVisible(true)
 	Timer.add_timer(0.5, function() self:playAnim(1) end)

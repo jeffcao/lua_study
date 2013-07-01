@@ -1,7 +1,7 @@
 CheckBox = {}
 
 CheckBox.create = function(name, plist_name, selected_image, unselected_image)
-	name = name or ""
+	name = name or " "
 	plist_name = plist_name or Res.common_plist
 	selected_image = selected_image or "kuang_c.png"
 	unselected_image = unselected_image or "kuang_d.png"

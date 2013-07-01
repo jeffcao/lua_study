@@ -1,5 +1,6 @@
 require "src.DialogInterface"
 require "CCBReaderLoad"
+require "src.SoundEffect"
 SetDialog = class("SetDialog", function()
 	print("create SetDialog")
 	return display.newLayer("SetDialog")
@@ -102,10 +103,25 @@ function SetDialog:ctor()
 	scaleNode(pSlider_e, GlobalSetting.content_scale_factor * 0.90)
 	scaleNode(pSlider, GlobalSetting.content_scale_factor * 0.90)
 	self:setVisible(false)
+
+    local toggle = CheckBox.create()
+    toggle:setPosition(ccp(0,15))
+    toggle.toggle:setChecked(SoundSettings.bg_music)
+	self.toggle_layer:addChild(toggle)
+	local function menuCallback(tag, sender)
+		SoundSettings.bg_music = toggle.toggle:isChecked()
+		if toggle.toggle:isChecked() then
+			self:playBackgroundMusic()
+		else
+			self:stopBackgroundMusic()
+		end
+    end
+  	toggle.toggle:registerScriptTapHandler(menuCallback)
 	
 	local menus = CCArray:create()
 	menus:addObject(pSlider)
 	menus:addObject(pSlider_e)
+	menus:addObject(toggle)
 	self:swallowOnTouch(menus)
 	self:swallowOnKeypad()
 
@@ -121,6 +137,9 @@ function SetDialog:ctor()
 			end
 		end
 	end)
+	
+	
 end
 
 DialogInterface.bind(SetDialog)
+SoundEffect.bind(SetDialog)
