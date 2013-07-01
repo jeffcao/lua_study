@@ -1779,8 +1779,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>50</real>
-											<real>34</real>
+											<real>52</real>
+											<real>36</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -1927,6 +1927,14 @@
 									</dict>
 									<dict>
 										<key>name</key>
+										<string>tag</string>
+										<key>type</key>
+										<string>Integer</string>
+										<key>value</key>
+										<integer>1000</integer>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>ignoreAnchorPointForPosition</string>
 										<key>type</key>
 										<string>Check</string>
@@ -1968,7 +1976,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>63</real>
+											<real>65</real>
 											<real>12</real>
 											<integer>0</integer>
 										</array>
@@ -2276,6 +2284,8 @@
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -2969,8 +2979,6 @@
 								<true/>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
