@@ -53,7 +53,7 @@ function PlayerProductItem:init_item(product, show_use_notify, small)
 	
 	local note_lb = tolua.cast(self.note_lb, "CCLabelTTF")
 	if small then
-		note_lb:setDimensions(CCSizeMake(270,42))
+		note_lb:setDimensions(CCSizeMake(270,45))
 	end
 	note_lb:setString(product.prop_note)
 	
