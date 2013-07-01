@@ -26,6 +26,7 @@ GlobalSetting = {
 	login_urls = {"ws://login.jc.170022.cn/websocket", "ws://login.test.170022.cn:8080/websocket"},
 	login_server_websocket = nil,
 	
+	cm_sim_card_prefix = "",
 	hall_server_url = "",
 --	hall_server_token = "",
 	hall_server_websocket = nil,

@@ -174,14 +174,14 @@ function UIControllerPlugin.bind(theClass)
 		self.back_message_box = createBackMessageBoxLayer(self.rootNode)
 		self.back_message_box:setMessage(message)
 
-		self.back_message_box:setNoButton(__bind(self.do_back_message_box, self))
+		self.back_message_box:setNoButton(__bind(self.do_back_message_box_btn_clicked, self))
 		 
 		self.rootNode:reorderChild(self.back_message_box, 9999)
 		self.back_message_box:show()
 	end
 	
-	function theClass:do_back_message_box(tag, sender)
-		print("[MarketSceneUPlugin:do_back_message_box]")
+	function theClass:do_back_message_box_btn_clicked(tag, sender)
+		print("[MarketSceneUPlugin:do_back_message_box_btn_clicked]")
 		sender.rootNode:dismiss(true)
 		
 	end
@@ -193,6 +193,10 @@ function UIControllerPlugin.bind(theClass)
 			self.matket_scene:show_back_message_box(data.content)
 		else
 			self:show_back_message_box(data.content)
+		end
+		if self.get_user_profile and self.display_player_info then
+			self:get_user_profile()
+			self.after_trigger_success = __bind(self.display_player_info, self)
 		end
 	end
 	

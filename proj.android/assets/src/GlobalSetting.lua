@@ -23,9 +23,10 @@ GlobalSetting = {
 	show_init_player_info_box = 1,
 	need_init_hall_rooms = 0,
 	game_hall_urls = {},
-	login_urls = {"ws://login.jc.170022.cn/websocket", "ws://login.test.170022.cn:8080/websocket"},
+	login_urls = {"ws://192.168.2.2:5001/websocket", "ws://login.jc.170022.cn/websocket", "ws://login.test.170022.cn:8080/websocket"},
 	login_server_websocket = nil,
 	
+	cm_sim_card_prefix = "",
 	hall_server_url = "",
 --	hall_server_token = "",
 	hall_server_websocket = nil,

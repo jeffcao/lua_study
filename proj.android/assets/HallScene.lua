@@ -2,6 +2,8 @@ require "src.HallSceneUPlugin"
 require "src.HallServerConnectionPlugin"
 require "src.HallGameConnectionPlugin"
 require "src.UIControllerPlugin"
+require "src.ConnectivityPlugin"
+require "src.SocketStatePlugin"
 require "RoomItem"
 require "Menu"
 require "src.WidgetPlugin"
@@ -39,69 +41,20 @@ HallScene = class("HallScene", function()
 	
 	self.avatar_btn:setScale(GlobalSetting.content_scale_factor * 0.45)
 	
---	local mysprite = MySprite:createMS("btn_bujiao.png")
---	self.rootNode:addChild(tolua.cast(mysprite, "CCNode"))
-	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler(__bind(self.onKeypad, self))
 	
-	--local editbox = CCEditBoxBridge:create(Res.common_plist, "kuang_a.png", 320, 50)
-	--editbox:addTo(tolua.cast(self.rootNode, "CCNode"), 400, 120)
-	--local editbox = self:createEditBoxOn(self.rootNode, 400, 120)
-	--editbox:setHintSize(10)
-	--editbox:setText("hfdkahfla")
-	--editbox:setTextSize(40)
-	--editbox:setTextColor(255,0,0)
-	--editbox:setMaxLength(10)
-	--editbox:setInputFlag(0)
-	--local tx = editbox:getText()
-	--print("tx is " .. tx)
-	--editbox:registerOnTextChange(function(before_text, cur_text)
-	--	print("tx change from " .. before_text .. " to " .. cur_text)
-	--end)
+
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 	cache:addSpriteFramesWithFile(Res.common_plist)
 	
---	local room = {}
---	for i = 1, 10 do
---		table.insert(room, "room 3"..i) 
---	end
---	
---	local h = LuaEventHandler:create(function(fn, table, a1, a2)
---		local r
---		if fn == "cellSize" then
---			r = CCSizeMake(260,260)
---		elseif fn == "cellAtIndex" then
---			if not a2 then
---				a2 = CCTableViewCell:create()
---				a3 = createRoomItem()
---				a2:addChild(a3, 0, 1)
---			end
---			r = a2
---		elseif fn == "numberOfCells" then
---			r = #room
---		elseif fn == "cellTouched" then
---		end
---		return r
---	end)
---	
---	local t = LuaTableView:createWithHandler(h, CCSizeMake(800,260))
---	t:setDirection(kCCScrollViewDirectionHorizontal)
---	t:reloadData()
-----	t:setAnchorPoint(ccp(0.5, 0.5))
---	t:setPosition(CCPointMake(0,0))
---	self.middle_layer:addChild(t)
+	self.socket_label = tolua.cast(self.socket_label, "CCLabelTTF")
 	
+	self:init_connectivity()
+		
  end
  
 
- 
- --[[
- function HallScene:onMenuClick(tag)
- 	local menu = createMenu()
- 	self.rootNode.addChild(menu)
- end
- ]]
  
  function HallScene:init()
  	print("HallScene:init()")
@@ -132,4 +85,6 @@ end
  HallServerConnectionPlugin.bind(HallScene)
  HallGameConnectionPlugin.bind(HallScene)
  UIControllerPlugin.bind(HallScene)
+ ConnectivityPlugin.bind(HallScene)
+ SocketStatePlugin.bind(HallScene)
  
