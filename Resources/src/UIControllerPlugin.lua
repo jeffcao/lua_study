@@ -75,6 +75,7 @@ function UIControllerPlugin.bind(theClass)
 		local msg_layer = CCLayerColor:create(ccc4(0, 0, 0, 0))
 		msg_layer:setOpacity(100)
 		msg_layer:setTouchEnabled(true)
+		msg_layer:setContentSize(CCSizeMake(msg_width, msg_height))
 --		msg_layer:setKeypadEnabled(false)
 		msg_layer:registerScriptTouchHandler(__bind(self.on_msg_layer_touched, self), false, -1024, true)
 
