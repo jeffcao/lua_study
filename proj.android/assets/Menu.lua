@@ -2,6 +2,7 @@ require "AboutScene"
 require "HelpScene"
 require "SetDialog"
 require "src.DialogInterface"
+require "src.HallServerConnectionPlugin"
 
 Menu = class("Menu", function() 
 	print("new menu")
@@ -41,6 +42,7 @@ function Menu:ctor(menu_dismiss_callback, show_set_fn)
 		dismiss()
 		local scene = createLoginScene()
 		CCDirector:sharedDirector():replaceScene(scene)
+		self:close_hall_websocket()
 	end
 	
 	local function set(tag, sender)
@@ -85,3 +87,4 @@ function Menu:ctor(menu_dismiss_callback, show_set_fn)
 end
 
 DialogInterface.bind(Menu)
+HallServerConnectionPlugin.bind(Menu)
