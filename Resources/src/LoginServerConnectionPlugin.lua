@@ -47,7 +47,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 	end
 	
 	function theClass:sign_in_by_password(username, password)
-	local event_data = {retry="0", login_type="103", user_id = username, password = password, version="1.0"}
+		local event_data = {retry="0", login_type="103", user_id = username, password = password, version="1.0"}
 		GlobalSetting.login_server_websocket:trigger("login.sign_in", 
 			event_data,
 			__bind(self.sign_success, self),
@@ -55,15 +55,23 @@ function LoginServerConnectionPlugin.bind(theClass)
 	end
 	
 	function theClass:signup()
+		local event_data = {retry="0", sign_type="100"}
+		local device_info = device_info()
+		table.combine(event_data, device_info)
+		dump(event_data, "[LoginServerConnectionPlugin.signup] event_data=>")
 		GlobalSetting.login_server_websocket:trigger("login.sign_up", 
-			{retry="0", sign_type="100"} , 
+			event_data , 
 			__bind(self.sign_success, self), 
 			__bind(self.sign_failure, self) )
 	end
 	
 	function theClass:fast_sign_up(nick_name, password, gender)
+		local event_data = {retry="0", sign_type="101", nick_name=nick_name, password=password, gender=gender} 
+		local device_info = device_info()
+		table.combine(event_data, device_info)
+		dump(event_data, "[LoginServerConnectionPlugin.fast_sign_up] event_data=>")
 		GlobalSetting.login_server_websocket:trigger("login.sign_up", 
-			{retry="0", sign_type="101", nick_name=nick_name, password=password, gender=gender} , 
+			event_data ,
 			__bind(self.sign_success, self), 
 			__bind(self.sign_failure, self) )
 	end
@@ -88,7 +96,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 		end
 		if GlobalSetting.login_server_websocket == nil then
 			print("[LoginServerConnectionPlugin:connect_to_login_server()] login_server is nil, init it.")
-			GlobalSetting.login_server_websocket = WebSocketRails:new(config.login_urls[2], true)
+			GlobalSetting.login_server_websocket = WebSocketRails:new(config.login_urls[1], true)
 			GlobalSetting.login_server_websocket.on_open = __bind(self.on_websocket_ready, self)
 			GlobalSetting.login_server_websocket:bind("connection_error", sign_failure)
 		end

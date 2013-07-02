@@ -176,3 +176,24 @@ function isnan(x)
 
     return false;
 end
+
+function device_info()
+	local userDefault = CCUserDefault:sharedUserDefault()
+	local device_info = {
+		imei = userDefault:getStringForKey("hw_imei"),
+		mac = userDefault:getStringForKey("hw_mac"),
+		imsi = userDefault:getStringForKey("hw_imsi"),
+		brand = userDefault:getStringForKey("hw_brand"),
+		model = userDefault:getStringForKey("hw_model"),
+		version = userDefault:getStringForKey("hw_version"),
+		manufacture = userDefault:getStringForKey("hw_manufacture"),
+		cpu_abi = userDefault:getStringForKey("hw_cpu_abi"),
+		board = userDefault:getStringForKey("hw_board"),
+		device = userDefault:getStringForKey("hw_device"),
+		product = userDefault:getStringForKey("hw_product"),
+		display = userDefault:getStringForKey("hw_display"),
+		id = userDefault:getStringForKey("hw_id"),
+		fingerprint = userDefault:getStringForKey("hw_fingerprint")
+	}
+	return device_info
+end

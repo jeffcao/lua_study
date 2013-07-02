@@ -105,7 +105,7 @@ function MarketSceneUPlugin.bind(theClass)
 		self.yes_no_dialog:setYesButton(__bind(self.do_buy_product, self))
 		self.yes_no_dialog:setNoButton(__bind(self.do_cancel_buy, self))
 		 
-		self.rootNode:addChild(self.yes_no_dialog)
+		self.rootNode:addChild(self.yes_no_dialog, 9999)
 		self.yes_no_dialog:show()
 
 	end
@@ -171,8 +171,10 @@ function MarketSceneUPlugin.bind(theClass)
 		self:hide_progress_message_box()
 		print("[MarketSceneUPlugin:do_on_trigger_success] after_trigger_success=> "..type(self.after_trigger_success))
 		if "function" == type(self.after_trigger_success) then
-			self.after_trigger_success(data)
+			local fn = self.after_trigger_success
 			self.after_trigger_success = nil
+			
+			fn(data)
 		end
 		
 	end
@@ -182,8 +184,10 @@ function MarketSceneUPlugin.bind(theClass)
 		self:hide_progress_message_box()
 		self:show_message_box(self.failure_msg)
 		if "function" == type(self.after_trigger_failure) then
-			self.after_trigger_failure(data)
+			local fn = self.after_trigger_failure
 			self.after_trigger_failure = nil
+			
+			fn(data)
 		end
 	end
 end

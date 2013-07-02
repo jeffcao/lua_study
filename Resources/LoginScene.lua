@@ -66,7 +66,7 @@ function LoginScene:on_keypad_pressed(key)
 end
 
 function LoginScene:do_close()
-	endtolua()
+	endtolua_guifan()
 end
 
 UIControllerPlugin.bind(LoginScene)
