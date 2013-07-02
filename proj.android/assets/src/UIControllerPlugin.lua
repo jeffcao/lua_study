@@ -20,6 +20,8 @@ function UIControllerPlugin.bind(theClass)
 		else
 			editbox2:setInputFlag(kEditBoxInputFlagSensitive)
 		end
+		editbox2:setInputMode(kEditBoxInputModeSingleLine)
+		editbox2:setReturnType(kKeyboardReturnTypeDone)
 		return editbox2
 	end
 	
