@@ -1534,7 +1534,7 @@
 										<key>type</key>
 										<string>Text</string>
 										<key>value</key>
-										<string>密码:</string>
+										<string>帐号:</string>
 									</dict>
 								</array>
 							</dict>
@@ -1662,9 +1662,11 @@
 										<key>type</key>
 										<string>Text</string>
 										<key>value</key>
-										<string>账号:</string>
+										<string>密码:</string>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 							<dict>
 								<key>baseClass</key>
@@ -2102,8 +2104,6 @@
 												<real>0.0</real>
 											</dict>
 										</array>
-										<key>selected</key>
-										<true/>
 									</dict>
 									<dict>
 										<key>baseClass</key>
