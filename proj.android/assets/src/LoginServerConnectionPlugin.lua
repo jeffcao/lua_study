@@ -96,7 +96,11 @@ function LoginServerConnectionPlugin.bind(theClass)
 		end
 		if GlobalSetting.login_server_websocket == nil then
 			print("[LoginServerConnectionPlugin:connect_to_login_server()] login_server is nil, init it.")
+<<<<<<< HEAD
 			GlobalSetting.login_server_websocket = WebSocketRails:new(config.login_urls[1], true)
+=======
+			GlobalSetting.login_server_websocket = WebSocketRails:new(config.login_urls[3], true)
+>>>>>>> b18d919ac3769cafff8f1ccfd9e177f9b60379a3
 			GlobalSetting.login_server_websocket.on_open = __bind(self.on_websocket_ready, self)
 			GlobalSetting.login_server_websocket:bind("connection_error", sign_failure)
 		end

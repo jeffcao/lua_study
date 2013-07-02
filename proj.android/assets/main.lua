@@ -151,11 +151,20 @@ local function main()
 	local user_default = CCUserDefault:sharedUserDefault()
 	local music_volume = user_default:getFloatForKey("bg_music_volume")
 	local effect_volume = user_default:getFloatForKey("effect_volume")
+	print("music_volume=> ", music_volume)
 	if music_volume > 0 then
 		audio:setBackgroundMusicVolume(music_volume)
 	end
 	if effect_volume > 0 then
 		audio:setEffectsVolume(effect_volume)
+	end
+	local has_volume_set = user_default:getBoolForKey("volume_set")
+	if not has_volume_set then
+		user_default:setBoolForKey("volume_set", true)
+		audio:setBackgroundMusicVolume(0.1)
+		audio:setEffectsVolume(0.1)
+		user_default:setFloatForKey("bg_music_volume", 0.1)
+		user_default:setFloatForKey("effect_volume", 0.1)
 	end
 	
 --	return true
