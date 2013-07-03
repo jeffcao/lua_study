@@ -21,8 +21,8 @@ function endtolua_guifan()
 end
 
 function endtolua()
-	local jni_helper = DDZJniHelper:create()
-	jni_helper:messageJava("RecoveryMusicVolume")
+	--local jni_helper = DDZJniHelper:create()
+	--jni_helper:messageJava("RecoveryMusicVolume")
 	CCDirector:sharedDirector():endToLua()
 end
 
