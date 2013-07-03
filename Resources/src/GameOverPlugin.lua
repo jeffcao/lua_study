@@ -36,22 +36,27 @@ function GameOverPlugin.bind(theClass)
 		self.lbl_self_user_name:setString(self_name)
 		self.lbl_self_user_win_value:setString("" ..  self_user_win_value)
 		
+		local next_balance = game_result.balance[tostring(gaming_layer.next_user.user_id)]
 		local next_user_name = gaming_layer.next_user.nick_name .. "[" .. gaming_layer.next_user.user_id .. "]"
 		self.lbl_next_user_name:setString(next_user_name)
 		local next_user_win = "胜利"
-		if gaming_layer.next_user.user_id ~= game_result.winner_player_id then
+		--if tonumber(gaming_layer.next_user.user_id) ~= tonumber(game_result.winner_player_id) then
+		if next_balance <= 0 then
 			next_user_win = "失败"
 		end
 		self.lbl_next_user_win:setString(next_user_win)
-		self.lbl_next_user_win_value:setString("" .. game_result.balance[tostring(gaming_layer.next_user.user_id)])
+		self.lbl_next_user_win_value:setString("" .. next_balance)
+		
 		local prev_user_name = gaming_layer.prev_user.nick_name .. "[" .. gaming_layer.prev_user.user_id .. "]"
+		local prev_balance = game_result.balance[tostring(gaming_layer.prev_user.user_id)]
 		self.lbl_prev_user_name:setString(prev_user_name)
 		local prev_user_win = "胜利"
-		if gaming_layer.prev_user.user_id ~= game_result.winner_player_id then
+		--if tonumber(gaming_layer.prev_user.user_id) ~= tonumber(game_result.winner_player_id) then
+		if prev_balance <= 0 then
 			prev_user_win = "失败"
 		end
 		self.lbl_prev_user_win:setString(prev_user_win)
-		self.lbl_prev_user_win_value:setString("" .. game_result.balance[tostring(gaming_layer.prev_user.user_id)])
+		self.lbl_prev_user_win_value:setString("" .. prev_balance)
 	
 		local avatarFrame = Avatar.getUserAvatarFrame(gaming_layer.self_user)
 		self.game_over_avatar:setDisplayFrame(avatarFrame)
