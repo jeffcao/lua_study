@@ -15,9 +15,7 @@ function createSetDialog()
 end
 
 function SetDialog:updateVolume()
-	print("updateVolume")
 	local volume = jni:get("MusicVolume")
-	print("updateVolume to=>", volume)
 	self.music_slider:setValue(tonumber(volume))
 end
 
@@ -61,7 +59,7 @@ function SetDialog:ctor()
 	self.music_slider = pSlider
 	
 	scaleNode(pSlider, GlobalSetting.content_scale_factor * 0.90)
-	self:setVisible(false)
+	
 
     local music_toggle = CheckBox.create()
     music_toggle:setPosition(ccp(0,15))
@@ -70,6 +68,9 @@ function SetDialog:ctor()
 	local function menuCallback(tag, sender)
 		SoundSettings.bg_music = music_toggle.toggle:isChecked()
 		if music_toggle.toggle:isChecked() then
+			local user_default = CCUserDefault:sharedUserDefault()
+			local jni = DDZJniHelper:create()
+			jni:messageJava("set_music_volume_" .. user_default:getFloatForKey("music_volume"))
 			self:playBackgroundMusic()
 		else
 			self:stopBackgroundMusic()
@@ -109,6 +110,7 @@ function SetDialog:ctor()
 	
 	self.rootNode:registerScriptTouchHandler(__bind(self.onTouch, self))
     self.rootNode:setTouchEnabled(true)
+    self:setVisible(false)
 end
 
 function SetDialog:onTouch(eventType, x, y)
