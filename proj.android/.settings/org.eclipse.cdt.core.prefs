@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
+environment/project/0.143224128/LUA_COMPILER/delimiter=\:
+environment/project/0.143224128/LUA_COMPILER/operation=append
+environment/project/0.143224128/LUA_COMPILER/value=/usr/bin/luajit
 environment/project/0.143224128/NDK_ROOT/delimiter=\:
 environment/project/0.143224128/NDK_ROOT/operation=append
 environment/project/0.143224128/NDK_ROOT/value=/home/qy/develop/android-ndk-r8d
