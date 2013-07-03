@@ -101,16 +101,22 @@ function WebSocketRails:new_message(data)
         end
         
         -- check notify id
+        local data = event.data
         local last_notify_id = self.last_notify_id or -1
         local cur_id = nil
-        local has_notify_id = type(data) == "table" and #data > 0 and type(data[1]) == "table" and #data[1] > 1 and data[1][2].data and type(data[1][2].data) == "table"
-        if has_notify_id then cur_id = data[1][2].data.notify_id end
+        --local has_notify_id = type(data) == "table" and #data > 0 and type(data[1]) == "table" and #data[1] > 1 and data[1][2].data and type(data[1][2].data) == "table"
+       -- if has_notify_id then cur_id = data[1][2].data.notify_id end
+        local has_notify_id = data and data.notify_id
+        if has_notify_id then cur_id = data.notify_id end
         if cur_id and cur_id > last_notify_id then
         	self.last_notify_id = cur_id
         	cclog("change notify id from %d to %d", last_notify_id, cur_id)
-        elseif cur_id then
-        	cclog("current notify id %d is not bigger than last notify id%d", cur_id, last_notify_id)
-        	return
+        else
+        	dump(data, "notify id not change, data is=>")
+        	if cur_id then
+        		cclog("current notify id %d is not bigger than last notify id%d", cur_id, last_notify_id)
+        		return
+        	end
         end
  		
  		ack_event = event:new_client_ack_event()
