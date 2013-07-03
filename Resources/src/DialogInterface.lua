@@ -32,7 +32,7 @@ function DialogInterface.bind(theClass)
 		
 		print("dismiss before")
 		if self.swallow_keypad then
-			Timer.add_timer(1, function()
+			Timer.add_timer(0.3, function()
 			self.rootNode:setKeypadEnabled(false)
 			parent:setKeypadEnabled(true)
 			print("exceute function")
