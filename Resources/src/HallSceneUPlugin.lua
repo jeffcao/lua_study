@@ -25,7 +25,9 @@ function HallSceneUPlugin.bind(theClass)
 			if self.menu_layer and self.menu_layer:isShowing() then
 				self.menu_layer:dismiss(true)
 			elseif self.set_dialog_layer then
-				
+				if not self.set_dialog_layer:isShowing() then
+					self.set_dialog_layer = nil
+				end
 			else
 				self:doShowExitDialog()
 			end

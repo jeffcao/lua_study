@@ -30,6 +30,7 @@ function DialogInterface.bind(theClass)
 		self:setVisible(false)
 		local parent = self:getParent()
 		
+		--[[
 		print("dismiss before")
 		if self.swallow_keypad then
 			Timer.add_timer(0.3, function()
@@ -40,6 +41,10 @@ function DialogInterface.bind(theClass)
 			--self.rootNode:setKeypadEnabled(false)
 			--self:getParent():setKeypadEnabled(true)
 		end
+		]]
+		
+		self.rootNode:setKeypadEnabled(false)
+		parent:setKeypadEnabled(true)
 		if need_remove_self then
 			parent:removeChild(self, true)
 		end
