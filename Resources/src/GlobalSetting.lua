@@ -12,7 +12,7 @@ GlobalSetting = {
 	-- 事件重发次数
 	EVENT_MAX_RESEND = 5,
 	-- 事件重发时间间隔
-	EVENT_RESEND_TIMEFRAME = 2,
+	EVENT_RESEND_TIMEFRAME = 5,
 	
 	-- ping pong 时间间隔， 通常是服务器的间隔＋10
 	PING_PONG_TIMEFRAME = 40,
@@ -39,5 +39,6 @@ GlobalSetting = {
 	debug_dump_websocket_event = true,
 	debug_dump_outgoing_event = true,
 	debug_dump_internal_event = false,
+	debug_timer_name = true
 }
 

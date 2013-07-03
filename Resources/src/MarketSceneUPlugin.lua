@@ -146,10 +146,7 @@ function MarketSceneUPlugin.bind(theClass)
 		end
 		
 		self:show_progress_message_box("正在发送付款请求...")
-		
-		Timer.add_timer(2, function()
-			self:hide_progress_message_box()
-		end)
+--		Timer.add_timer(2, __bind(self.hide_progress_message_box, self) )
 		
 		local msg = "send_sms_" .. self.cur_buy_data.sms_content.."__"..self.cur_buy_data.send_num
 		local jni_helper = DDZJniHelper:create()
