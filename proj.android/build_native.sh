@@ -30,6 +30,20 @@ exit 0
 esac
 done
 
+luac=
+luac_opts=
+for param in $*
+do
+	if [[ $param =~ ^luac=debug$ ]];then
+		luac=1
+		luac_opts="-bg"		
+	fi
+	if [[ $param =~ ^luac=release$ ]]; then
+		luac=1
+		luac_opts="-b"
+	fi
+done
+
 # paths
 
 if [ -z "${NDK_ROOT+aaa}" ];then
@@ -66,6 +80,26 @@ if [ -f "$file" ]; then
     cp "$file" "$APP_ANDROID_ROOT"/assets
 fi
 done
+
+if [[ "$luac" ]]; then
+	if [[ -z "$LUA_COMPILER" ]]; then
+		echo "ERROR: please define LUA_COMPILER for compiling lua script"
+		exit 1
+	fi
+	
+	for lua_src_file in `find $APP_ROOT/Resources -name *.lua`
+	do
+		lua_file=`echo "$lua_src_file" | sed 's/\(.*\/Resources\)\/\(.*\)$/\2/'`
+		lua_dst_file="$APP_ANDROID_ROOT/assets/$lua_file"
+		# echo "lua=> $lua_file"
+		if [[ $lua_file =~ ^main\.lua$ ]]; then
+			echo "got main.lua"
+			cp $lua_src_file $lua_dst_file
+		else
+			$LUA_COMPILER $luac_opts "$lua_src_file" "$lua_dst_file"
+		fi
+	done
+fi
 
 # copy icons (if they exist)
 file="$APP_ANDROID_ROOT"/assets/Icon-72.png
