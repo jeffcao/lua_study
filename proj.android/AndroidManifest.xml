@@ -18,6 +18,8 @@
         android:icon="@drawable/icon"
         android:debuggable="true"
         android:name=".DouDiZhuApplicaion">
+        
+        <meta-data android:name="build" android:value="build_201307031146"/>
 
         <!-- android:theme="@android:style/Theme.NoTitleBar.Fullscreen" -->
         <activity android:name=".DouDiZhu_Lua"
