@@ -140,6 +140,7 @@ function GConnectionPlugin.bind(theClass)
 	end
 	
 	function theClass:op_websocket(pause)
+		cclog("op_websocket " .. tostring(pause))
 		self.g_WebSocket:pause_event(pause)
 	end
 
