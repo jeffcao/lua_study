@@ -113,7 +113,7 @@ function HallServerConnectionPlugin.bind(theClass)
 	end
 
 	function theClass:call_server_method(method_name, pass_data)
---		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
+
 		GlobalSetting.hall_server_websocket:trigger("ui."..method_name, 
 			pass_data,
 			__bind(self.on_trigger_success, self),
@@ -131,6 +131,7 @@ function HallServerConnectionPlugin.bind(theClass)
 	
 	function theClass:on_websocket_ready()
 		print("[HallServerConnectionPlugin:on_websocket_ready()]")
+--		self.connection_state = 1
 		self:init_channel()
 		if "function" == type(self.do_on_websocket_ready) then
 			self:do_on_websocket_ready()
@@ -173,6 +174,8 @@ function HallServerConnectionPlugin.bind(theClass)
 	
 	--正在重连网络
 	function theClass:onSocketReopening()
+		self:show_progress_message_box("正在恢复与服务器的连接，请稍候.")
+--		self.connection_state = 0
 		print("HallServerConnectionPlugin onSocketReopening")
 		self:updateSocket("socket: reopening")
 	end
@@ -182,26 +185,32 @@ function HallServerConnectionPlugin.bind(theClass)
 		print("HallServerConnectionPlugin onSocketReopened")
 		self:restoreConnection()
 		self:updateSocket("socket: reopened, restoring")
+--		self.connection_state = 1
 	end
 	
 	--网络重连失败
 	function theClass:onSocketReopenFail()
+		self:hide_progress_message_box()
+		self:show_message_box("恢复与服务器连接失败.")
 		print("HallServerConnectionPlugin onSocketReopenFail")
 		self:exit()
 	end
 	
 	--restore connection失败，退出游戏
 	function theClass:onSocketRestoreFail()
+		self:hide_progress_message_box()
+		self:show_message_box("恢复与服务器连接失败.")
 		print("HallServerConnectionPlugin onSocketRestoreFail")
 		self:exit()
 	end
 	
 	--restore connection成功
 	function theClass:onSocketRestored(data)
+		self:hide_progress_message_box()
 		print("HallServerConnectionPlugin onSocketRestored")
 		self:updateSocket("socket: restored")
 		self:init_channel()
-
+		
 	end
 
 	-- activity onPause
