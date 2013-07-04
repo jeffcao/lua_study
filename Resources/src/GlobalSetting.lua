@@ -38,7 +38,7 @@ GlobalSetting = {
 	debug_dump_websocket_raw = true,
 	debug_dump_websocket_event = true,
 	debug_dump_outgoing_event = true,
-	debug_dump_internal_event = false,
+	debug_dump_internal_event = true,
 	debug_timer_name = true
 }
 
