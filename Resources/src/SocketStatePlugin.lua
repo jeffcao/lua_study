@@ -15,7 +15,6 @@ function SocketStatePlugin.bind(theClass)
 		self.ss_restore_name = restore_name
 		self.ss_websocket.on_open = function() 
 			if self.onSocketReopened then 
-				self:restoreConnection()
 				self:onSocketReopened() 
 			end 
 		end
