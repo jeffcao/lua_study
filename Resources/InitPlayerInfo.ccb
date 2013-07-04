@@ -673,8 +673,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>595</real>
-							<real>418</real>
+							<real>622</real>
+							<real>425</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -753,8 +753,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>370</real>
-							<real>377</real>
+							<real>392</real>
+							<real>376</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -805,7 +805,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>16</real>
+							<real>20</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1232,7 +1232,7 @@
 								<key>value</key>
 								<array>
 									<real>36</real>
-									<real>83</real>
+									<real>84</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1556,8 +1556,6 @@
 								<string></string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -1675,7 +1673,7 @@
 								<key>value</key>
 								<array>
 									<real>92</real>
-									<real>66</real>
+									<real>62</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1744,6 +1742,8 @@
 								<true/>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
