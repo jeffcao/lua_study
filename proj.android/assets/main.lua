@@ -15,6 +15,7 @@ print("package.path ==> " .. package.path)
 CONFIG_SCREEN_WIDTH = 800
 CONFIG_SCREEN_HEIGHT = 480
 
+
 local function load_requires()
 require("src/WebsocketRails/WebSocketRails")
 require "src/WebsocketRails/WebSocketRails_Event"
@@ -40,8 +41,6 @@ end
 local json = require "cjson"
 
 
-
-
 function __bind(fn, obj)
 	return function(...) 
 		return fn(obj, ...) 
@@ -54,9 +53,8 @@ local function main()
     collectgarbage("setstepmul", 5000)
     
     load_requires()
+--    print("package.path ==> " .. package.path)
 
-    
-    
 	Timer.scheduler = CCDirector:sharedDirector():getScheduler()
 
 	GlobalSetting.user_info = UserInfo:new()

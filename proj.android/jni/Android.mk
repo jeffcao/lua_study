@@ -23,7 +23,6 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
 					../../Classes/cocos2dx-LuaProxy/tolua/LuaEventHandler.cpp \
 					../../Classes/cocos2dx-LuaProxy/tolua/LuaTableView.cpp \
 					../../Classes/cocos2dx-LuaProxy/ui/CursorTextField.cpp \
-					../../Classes/cocos2dx-LuaProxy/ui/UIUtil.cpp \
 					../../Classes/cjson/lua_extensions.c \
 					../../Classes/cjson/fpconv.c \
 					../../Classes/cjson/lua_cjson.c \

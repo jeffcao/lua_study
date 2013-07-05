@@ -68,7 +68,13 @@ function UIControllerPlugin.bind(theClass)
 	end
 	
 	function theClass:create_message_layer(message, msg_width, msg_height)
+		local running_scene = CCDirector:sharedDirector():getRunningScene()
+		if not self.msg_box_container and running_scene ~= self then
+			self.msg_box_container = running_scene.rootNode
+		end
+
 		self.msg_box_container = self.msg_box_container or self.rootNode
+		
 --		local function on_msg_layer_touched(eventType, x, y)
 --			print("[UIControllerPlugin:msg_layer_on_touch]")
 --			return true
@@ -98,7 +104,7 @@ function UIControllerPlugin.bind(theClass)
 		local msg_lb = CCLabelTTF:create(message, "default",16)
 		
 		msg_lb:setColor(ccc3(255, 255, 255))
-		content_layer:addChild(msg_lb, 999)
+		content_layer:addChild(msg_lb, 999, 900)
 		msg_lb:setAnchorPoint(ccp(0.5, 0.5))
 		msg_lb:setPosition(ccp(msg_width/2, msg_height/2))
 		
@@ -129,7 +135,7 @@ function UIControllerPlugin.bind(theClass)
 		msg_width = msg_width or 330
 		msg_height = msg_height or 50
 		local msg_layer = self:create_message_layer(message, msg_width, msg_height)
-		self.msg_box_container:addChild(msg_layer, 0, 901)
+		self.msg_box_container:addChild(msg_layer, 1000, 901)
 
 		scaleNode(msg_layer, GlobalSetting.content_scale_factor)
 		
@@ -148,11 +154,16 @@ function UIControllerPlugin.bind(theClass)
 		local content_layer = msg_layer:getChildByTag(100)
 		local progress_sprite = CCSprite:create()
 --		progress_sprite:setScale(0.75)
+		
 		content_layer:addChild(progress_sprite, 999, 1000)
 		progress_sprite:setAnchorPoint(ccp(0, 0.5))
 		progress_sprite:setPosition(ccp(20, msg_height/2))
 		
-		self.msg_box_container:addChild(msg_layer, 0, 902)
+		msg_lb = tolua.cast(content_layer:getChildByTag(900), "CCLabelTTF")
+		msg_lb:setPosition(ccp(msg_width/2 + 20, msg_height/2))
+		
+		self.msg_box_container:addChild(msg_layer, 1000, 902)
+--		table.insert(GlobalSetting.hall_cur_message_box,  msg_layer)
 		
 		scaleNode(msg_layer, GlobalSetting.content_scale_factor)
 		
@@ -161,6 +172,14 @@ function UIControllerPlugin.bind(theClass)
 	end
 	
 	function theClass:hide_progress_message_box()
+		print("hide_progress_message_box, class name=> "..self.__cname)
+--		msg_layer = GlobalSetting.hall_cur_message_box[1]
+--		if msg_layer then
+--			msg_layer:getParent():removeChild(msg_layer, true)
+--			table.remove(GlobalSetting.hall_cur_message_box, 1)
+--			msg_layer = nil
+--			self.msg_box_container = nil
+--		end
 		if self.msg_box_container then
 			print("self.__cname => ", self, self.__cname)
 			print("self.msg_box_container => ", self.msg_box_container)

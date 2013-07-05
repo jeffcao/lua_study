@@ -25,7 +25,10 @@ function MarketScene:ctor(inactive_market_scene_fn)
 	layer.inactive_market_scene_fn = inactive_market_scene_fn
 	layer:setTitle("biaoti06.png")
 	
-	self:init_product_list()
+	Timer.add_timer(0.1, function() 
+		self:init_product_list()
+	end)
+	
 	
 end
 

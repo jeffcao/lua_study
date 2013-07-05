@@ -174,7 +174,7 @@ function HallServerConnectionPlugin.bind(theClass)
 	
 	--正在重连网络
 	function theClass:onSocketReopening()
-		self:show_progress_message_box("正在恢复与服务器的连接，请稍候.")
+		self:show_progress_message_box("正在恢复与服务器的连接，请稍候.",400)
 --		self.connection_state = 0
 		print("HallServerConnectionPlugin onSocketReopening")
 		self:updateSocket("socket: reopening")
