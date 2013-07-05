@@ -20,6 +20,7 @@ GlobalSetting = {
 	-- 当前用户信息
 	current_user = {},
 	-- 游戏大厅的URLs
+	hall_cur_message_box = {},
 	show_init_player_info_box = 1,
 	need_init_hall_rooms = 0,
 	game_hall_urls = {},
