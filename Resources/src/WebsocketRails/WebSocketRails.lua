@@ -272,6 +272,17 @@ function WebSocketRails:pong()
     return self._conn:trigger(pong_event)
 end
 
+function WebSocketRails:close_when_server_kill()
+	if self.state == 'closed' then
+		cclog("close_when_server_kill socket had been closed before")
+		return
+	end
+	cclog("close_when_server_kill")
+	self._self_close = false
+	self._conn:close(false)
+	self.state = 'closed'
+end
+
 function WebSocketRails:close()
 	self._self_close = true
 	self._conn:close(true)
