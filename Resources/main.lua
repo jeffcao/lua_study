@@ -10,31 +10,39 @@ cclog = function(...)
     print(string.format(...))
 end
 
+--package.path = "src/?;?.lua;src/?.lua;assets/?.lua;assets/src/?.lua;" .. package.path
+local fileUtils = CCFileUtils:sharedFileUtils()
+fileUtils:addSearchPath("src")
+fileUtils:addSearchPath("src/WebsocketRails")
+fileUtils:addSearchPath("framework")
+
 print("package.path ==> " .. package.path)
 
 CONFIG_SCREEN_WIDTH = 800
 CONFIG_SCREEN_HEIGHT = 480
 
 local function load_requires()
-require("src/WebsocketRails/WebSocketRails")
-require "src/WebsocketRails/WebSocketRails_Event"
-require "src/WebsocketRails/WebSocketRails_Connection"
-require "src/WebsocketRails/WebSocketRails_Connection_CC"
-require "src/WebsocketRails/WebSocketRails_Channel"
-require "src.WebsocketRails.Timer"
+require "UserInfo"
+require("WebSocketRails")
+require "WebSocketRails_Event"
+require "WebSocketRails_Connection"
+require "WebSocketRails_Connection_CC"
+require "WebSocketRails_Channel"
+require "Timer"
 require "framework.init"
 require "framework.client.init"
-require "src.GlobalSetting"
-require "src.UserInfo"
-require "src.GlobalFunction"
-require "src.NotificationProxy"
+require "GlobalSetting"
+--require "src.UserInfo"
+require "GlobalFunction"
+require "NotificationProxy"
 --require "src.functions"
 require "LandingScene"
 require "GamingScene"
-require "src.resources"
+require "resources"
 require "CCBReaderLoad"
 require "GuifanStartScene"
 require "GuifanEndScene"
+--require "socket"
 end
 
 local json = require "cjson"
@@ -54,6 +62,8 @@ local function main()
     collectgarbage("setstepmul", 5000)
     
     load_requires()
+    
+    require('mobdebug').start("192.168.0.165")
 
     
     
