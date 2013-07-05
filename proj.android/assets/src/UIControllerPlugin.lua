@@ -59,9 +59,10 @@ function UIControllerPlugin.bind(theClass)
 	end
 	
 	function theClass:on_msg_layer_touched(eventType, x, y)
-			print("[UIControllerPlugin:msg_layer_on_touch]")
-			return true
-		end
+		local is_dialog = self.network_disconnected_dialog and self.network_disconnected_dialog:isShowing()
+		print("[UIControllerPlugin:msg_layer_on_touch]", is_dialog)
+		return not is_dialog
+	end
 		
 	function theClass:set_message_box_contener(msg_box_container)
 		self.msg_box_container = msg_box_container
@@ -148,6 +149,11 @@ function UIControllerPlugin.bind(theClass)
 	end
 	
 	function theClass:show_progress_message_box(message, msg_width, msg_height)
+		print("show_progress_message_box, class name=> "..self.__cname)
+		
+		if #GlobalSetting.hall_cur_message_box > 0 then
+			self:hide_progress_message_box()
+		end
 		msg_width = msg_width or 350
 		msg_height = msg_height or 73
 		local msg_layer = self:create_message_layer(message, msg_width, msg_height)
@@ -161,9 +167,10 @@ function UIControllerPlugin.bind(theClass)
 		
 		msg_lb = tolua.cast(content_layer:getChildByTag(900), "CCLabelTTF")
 		msg_lb:setPosition(ccp(msg_width/2 + 20, msg_height/2))
-		
+		print("show_progress_message_box, msg_layer=> ", msg_layer)
 		self.msg_box_container:addChild(msg_layer, 1000, 902)
---		table.insert(GlobalSetting.hall_cur_message_box,  msg_layer)
+		print("show_progress_message_box, msg_box_container=> ", self.msg_box_container)
+		table.insert(GlobalSetting.hall_cur_message_box,  msg_layer)
 		
 		scaleNode(msg_layer, GlobalSetting.content_scale_factor)
 		
@@ -173,20 +180,33 @@ function UIControllerPlugin.bind(theClass)
 	
 	function theClass:hide_progress_message_box()
 		print("hide_progress_message_box, class name=> "..self.__cname)
---		msg_layer = GlobalSetting.hall_cur_message_box[1]
---		if msg_layer then
---			msg_layer:getParent():removeChild(msg_layer, true)
---			table.remove(GlobalSetting.hall_cur_message_box, 1)
---			msg_layer = nil
---			self.msg_box_container = nil
---		end
+
 		if self.msg_box_container then
-			print("self.__cname => ", self, self.__cname)
-			print("self.msg_box_container => ", self.msg_box_container)
+			print("hide_progress_message_box, self.msg_box_container => ", self.msg_box_container)
 			local msg_layer = self.msg_box_container:getChildByTag(902)
-			self.msg_box_container:removeChild(msg_layer, true)
-			msg_layer = nil
-			self.msg_box_container = nil
+			local count = 1
+			local function remove_box(cb_fn)
+				msg_layer = self.msg_box_container:getChildByTag(902)
+				if msg_layer then
+					print("hide_progress_message_box, msg_layer => ", msg_layer)
+					self.msg_box_container:removeChild(msg_layer, true)
+					table.remove(GlobalSetting.hall_cur_message_box, 1)
+				end
+				count = count + 1
+				msg_layer = self.msg_box_container:getChildByTag(902)
+				if cb_fn and msg_layer and count < 10 then
+					Timer.add_timer(0.7, function() 
+					cb_fn(cb_fn)
+					end)
+				end
+				if not msg_layer then
+					msg_layer = nil
+					self.msg_box_container = nil
+				end
+				
+			end
+			remove_box(remove_box)
+			
 		end
 	end
 	
