@@ -301,7 +301,7 @@
 								<key>value</key>
 								<array>
 									<string>onConfirm</string>
-									<integer>1</integer>
+									<integer>0</integer>
 								</array>
 							</dict>
 							<dict>
@@ -516,7 +516,7 @@
 								<key>value</key>
 								<array>
 									<string>onCancel</string>
-									<integer>1</integer>
+									<integer>0</integer>
 								</array>
 							</dict>
 							<dict>
@@ -906,8 +906,6 @@
 						<string>您正在游戏中，此时强退系统将最大输赢扣初您的豆子。</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
