@@ -23,13 +23,30 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
 					../../Classes/cocos2dx-LuaProxy/tolua/LuaEventHandler.cpp \
 					../../Classes/cocos2dx-LuaProxy/tolua/LuaTableView.cpp \
 					../../Classes/cocos2dx-LuaProxy/ui/CursorTextField.cpp \
+					../../Classes/cocos2dx-LuaProxy/ui/UIUtil.cpp \
 					../../Classes/cjson/lua_extensions.c \
 					../../Classes/cjson/fpconv.c \
 					../../Classes/cjson/lua_cjson.c \
 					../../Classes/cjson/strbuf.c \
 					../../Classes/DDZJniHelper.cpp \
 					../../Classes/DDZJniHelper_lua.cpp \
+					../../Classes/luasocket/auxiliar.c \
+					../../Classes/luasocket/buffer.c \
+					../../Classes/luasocket/except.c \
+					../../Classes/luasocket/inet.c \
+					../../Classes/luasocket/io.c \
+					../../Classes/luasocket/luasocket.c \
+					../../Classes/luasocket/mime.c \
+					../../Classes/luasocket/options.c \
+					../../Classes/luasocket/select.c \
+					../../Classes/luasocket/tcp.c \
+					../../Classes/luasocket/timeout.c \
+					../../Classes/luasocket/udp.c \
+					../../Classes/luasocket/unix.c \
+					../../Classes/luasocket/usocket.c \
 
+#					../../Classes/luasocket/wsocket.c \
+					
 
 #					$(LWS_LIB_PATH)/base64-decode.c \
 					$(LWS_LIB_PATH)/client.c \
@@ -55,6 +72,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes \
 					$(LOCAL_PATH)/../../Classes/cocos2dx-LuaProxy \
 					$(LOCAL_PATH)/../../Classes/cjson \
+					$(LOCAL_PATH)/../../Classes/luasocket \
 					$(LOCAL_PATH)/../../Classes/libwebsockets/lib
 					                    
 

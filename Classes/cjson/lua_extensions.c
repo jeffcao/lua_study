@@ -12,14 +12,14 @@ extern "C" {
 //#include "lua_zlib.h"
 //
 //// socket
-//#include "luasocket.h"
+#include "luasocket.h"
 //#include "mime.h"
 //#include "socket_scripts.h"
 
 static luaL_Reg luax_exts[] = {
     {"cjson", luaopen_cjson},
 //    {"zlib", luaopen_zlib},
-//    {"socket.core", luaopen_socket_core},
+    {"socket.core", luaopen_socket_core},
 //    {"mime.core", luaopen_mime_core},
 
     {NULL, NULL}

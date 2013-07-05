@@ -12,6 +12,7 @@
 #include "tolua/luaopen_LuaProxy.h"
 extern "C" {
 #include "cjson/lua_extensions.h"
+#include "luasocket/luasocket.h"
 }
 
 #include "Lua_extensions_CCB.h"
@@ -158,6 +159,12 @@ bool AppDelegate::applicationDidFinishLaunching()
     luaopen_LuaProxy(pLuaState);
     luaopen_lua_extensions(pLuaState);
     tolua_extensions_ccb_open(pLuaState);
+    //luaopen_socket_core(pLuaState);
+    //CCFileUtils::sharedFileUtils()->addSearchPath("src");
+
+    std::string mainPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("main.lua");
+    CCLOG("[DEBUG] mainPath => %s", mainPath.c_str());
+    CCLOG("[DEBUG] UserInfo => %s", CCFileUtils::sharedFileUtils()->fullPathForFilename("UserInfo.lua").c_str());
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
     tolua_web_socket_open(pLuaState);
