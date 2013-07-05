@@ -24,7 +24,7 @@ private:
 
 class DialogLayerConvertor : public cocos2d::CCObject {
 public:
-	DialogLayerConvertor() : delegater(NULL) {};
+	DialogLayerConvertor() : delegater(NULL), _count(1) {};
 	virtual ~DialogLayerConvertor() {};
 
 	static DialogLayerConvertor* create(CCArray* menus);
@@ -34,6 +34,7 @@ public:
 
 private:
 	TouchDelegater* delegater;
+	int _count;
 };
 
 #endif /* DIALOGLAYERCONVERTOR_H_ */

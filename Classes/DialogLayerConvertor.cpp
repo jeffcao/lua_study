@@ -16,14 +16,19 @@ DialogLayerConvertor* DialogLayerConvertor::create(CCArray* menus) {
 void DialogLayerConvertor::convert() {
 	CCTouchDispatcher* dispatcher =
 			CCDirector::sharedDirector()->getTouchDispatcher();
-	dispatcher->addTargetedDelegate(this->delegater, kCCMenuHandlerPriority - 1,
+	dispatcher->addTargetedDelegate(this->delegater, kCCMenuHandlerPriority - this->_count,
 			true);
+	this->_count = this->_count + 1;
 }
 
 void DialogLayerConvertor::unconvert() {
 	CCTouchDispatcher* dispatcher =
 			CCDirector::sharedDirector()->getTouchDispatcher();
 	dispatcher->removeDelegate(this->delegater);
+	this->_count = this->_count - 1;
+	if (this->_count < 1) {
+		this->_count = 1;
+	}
 }
 
 void DialogLayerConvertor::purgeTouchDispatcher() {

@@ -59,9 +59,10 @@ function UIControllerPlugin.bind(theClass)
 	end
 	
 	function theClass:on_msg_layer_touched(eventType, x, y)
-			print("[UIControllerPlugin:msg_layer_on_touch]")
-			return true
-		end
+		local is_dialog = self.network_disconnected_dialog and self.network_disconnected_dialog:isShowing()
+		print("[UIControllerPlugin:msg_layer_on_touch]", is_dialog)
+		return not is_dialog
+	end
 		
 	function theClass:set_message_box_contener(msg_box_container)
 		self.msg_box_container = msg_box_container
