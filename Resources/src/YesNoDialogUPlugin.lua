@@ -17,6 +17,21 @@ function YesNoDialogUPlugin.bind(theClass)
 		self.reject:registerScriptTapHandler(fn)
 	end
 	
+	function theClass:setYesButtonFrameNormal(frame)
+		self.confirm:setNormalSpriteFrame(frame)
+	end
+	
+	function theClass:setNoButtonFrameNormal(frame)
+		self.reject:setNormalSpriteFrame(frame)
+	end
+	
+	function theClass:setYesButtonFrameSelected(frame)
+		self.confirm:setSelectedSpriteFrame(frame)
+	end
+	
+	function theClass:setNoButtonFrameSelected(frame)
+		self.reject:setSelectedSpriteFrame(frame)
+	end
 	
 
 end

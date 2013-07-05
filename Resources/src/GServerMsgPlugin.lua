@@ -94,7 +94,7 @@ function GServerMsgPlugin.bind(theClass)
 		print("onServerGrabLordNotify")
 		local log_prefix = "[onServerGrabLordNotify] "
 	
-		cclog("hide the get lord menu firstlynot ")
+		cclog("hide the get lord menu firstly! ")
 		self:hideGetLordMenu()
 		-- 更新各玩家信息
 		self:updatePlayers(data.players)
@@ -272,7 +272,8 @@ function GServerMsgPlugin.bind(theClass)
 				self:playCardTips(player.poke_card_count, player.gender == 1)
 			end
 		else
-			cclog("is not playing")
+			cclog("is not playing, return to hall")
+			self:exit()
 		end
 		
 		-- 更新各更手上的牌数
