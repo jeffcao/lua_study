@@ -162,9 +162,12 @@ function UIControllerPlugin.bind(theClass)
 	
 	function theClass:hide_progress_message_box()
 		if self.msg_box_container then
+			print("self.__cname => ", self, self.__cname)
+			print("self.msg_box_container => ", self.msg_box_container)
 			local msg_layer = self.msg_box_container:getChildByTag(902)
 			self.msg_box_container:removeChild(msg_layer, true)
 			msg_layer = nil
+			self.msg_box_container = nil
 		end
 	end
 	

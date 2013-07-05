@@ -14,7 +14,7 @@ WebSocketRails = {
 		-- 事件重发次数
 		EVENT_MAX_RESEND = 5,
 		-- 事件重发时间间隔
-		EVENT_RESEND_TIMEFRAME = 2,
+		EVENT_RESEND_TIMEFRAME = 5,
 		
 		-- ping pong 时间间隔， 通常是服务器的间隔＋10
 		PING_PONG_TIMEFRAME = 40,	
@@ -101,55 +101,64 @@ function WebSocketRails:new_message(data)
         end
         
         -- check notify id
+        local data = event.data
         local last_notify_id = self.last_notify_id or -1
         local cur_id = nil
-        local has_notify_id = type(data) == "table" and #data > 0 and type(data[1]) == "table" and #data[1] > 1 and data[1][2].data and type(data[1][2].data) == "table"
-        if has_notify_id then cur_id = data[1][2].data.notify_id end
+        --local has_notify_id = type(data) == "table" and #data > 0 and type(data[1]) == "table" and #data[1] > 1 and data[1][2].data and type(data[1][2].data) == "table"
+       -- if has_notify_id then cur_id = data[1][2].data.notify_id end
+        local has_notify_id = data and data.notify_id
+        if has_notify_id then cur_id = data.notify_id end
+        local is_event_useful = true
         if cur_id and cur_id > last_notify_id then
         	self.last_notify_id = cur_id
         	cclog("change notify id from %d to %d", last_notify_id, cur_id)
-        elseif cur_id then
-        	cclog("current notify id %d is not bigger than last notify id%d", cur_id, last_notify_id)
-        	return
+        else
+        	dump(data, "notify id not change, data is=>")
+        	if cur_id then
+        		is_event_useful = false
+        		cclog("current notify id %d is not bigger than last notify id%d", cur_id, last_notify_id)
+        	end
         end
  		
- 		ack_event = event:new_client_ack_event()
- 		if ack_event ~= nil then
- 			self._conn:trigger(ack_event)
- 		end
-        
-        if event:is_result() then
-         	--print("[WebSocketRails:new_message] event is result ", event.id, "   ", type(event.id))
-            local _ref = self.queue[event.id]
-            --print("_ref ==> " , _ref)
-            if _ref ~= nil then
-                --print("_ref ====>")
-                --dump_table(_ref)
-                --print("event ====>")
-                --dump_table(event)
-                _ref:run_callback(event.success, event.data)
-            end
-            self.queue[event.id] = nil
-        elseif event:is_channel() then
-            self:dispatch_channel(event)
-        elseif event:is_ping() then
-            self:pong()
-        elseif event:is_server_ack() then
-        	if event.data and event.data.ack_id then
-        		local req_event = self.request_event_queue[event.data.ack_id]
-        		self.request_event_queue[event.data.ack_id] = nil
-        		if req_event then
-        			Timer.cancel_timer(req_event.timer_handler)
-        		end
-        	end
-        else
-            self:dispatch(event)
-        end
-        
-        if (self.state == 'connecting' or self.state == 'closed') and event.name == 'client_connected' then
-            table.insert(results, #results + 1, self:connection_established(event.data) )
-        else
-            table.insert(results, #results + 1, 0)
+ 		if is_event_useful then
+	 		ack_event = event:new_client_ack_event()
+	 		if ack_event ~= nil then
+	 			self._conn:trigger(ack_event)
+	 		end
+	        
+	        if event:is_result() then
+	         	--print("[WebSocketRails:new_message] event is result ", event.id, "   ", type(event.id))
+	            local _ref = self.queue[event.id]
+	            --print("_ref ==> " , _ref)
+	            if _ref ~= nil then
+	                --print("_ref ====>")
+	                --dump_table(_ref)
+	                --print("event ====>")
+	                --dump_table(event)
+	                _ref:run_callback(event.success, event.data)
+	            end
+	            self.queue[event.id] = nil
+	        elseif event:is_channel() then
+	            self:dispatch_channel(event)
+	        elseif event:is_ping() then
+	            self:pong()
+	        elseif event:is_server_ack() then
+	        	if event.data and event.data.ack_id then
+	        		local req_event = self.request_event_queue[event.data.ack_id]
+	        		self.request_event_queue[event.data.ack_id] = nil
+	        		if req_event then
+	        			Timer.cancel_timer(req_event.timer_handler)
+	        		end
+	        	end
+	        else
+	            self:dispatch(event)
+	        end
+	        
+	        if (self.state == 'connecting' or self.state == 'closed') and event.name == 'client_connected' then
+	            table.insert(results, #results + 1, self:connection_established(event.data) )
+	        else
+	            table.insert(results, #results + 1, 0)
+	        end
         end
     end
     return results
@@ -263,6 +272,17 @@ function WebSocketRails:pong()
     return self._conn:trigger(pong_event)
 end
 
+function WebSocketRails:close_when_server_kill()
+	if self.state == 'closed' then
+		cclog("close_when_server_kill socket had been closed before")
+		return
+	end
+	cclog("close_when_server_kill")
+	self._self_close = false
+	self._conn:close(false)
+	self.state = 'closed'
+end
+
 function WebSocketRails:close()
 	self._self_close = true
 	self._conn:close(true)
@@ -270,5 +290,10 @@ function WebSocketRails:close()
 end
 
 function WebSocketRails:pause_event(pause)
+	if self._pause == pause then return end
 	self._pause = pause
+	if not self._pause then 
+		cclog("flush queue when pause event to false")
+		self:new_message({})
+	end
 end

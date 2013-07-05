@@ -21,7 +21,7 @@ function GConnectionPlugin.bind(theClass)
 		self:bind_channel(self.g_channel)
 		self:bind_channel(self.m_channel)
 		
-		self:initSocket(self.g_WebSocket, "g.restore_connection")
+		self:initSocket(self.g_WebSocket, "g.restore_connection", "g.ddz_socket_closed")
 	end
 	
 	function theClass:bind_channel(channel) 
@@ -140,6 +140,7 @@ function GConnectionPlugin.bind(theClass)
 	end
 	
 	function theClass:op_websocket(pause)
+		cclog("op_websocket " .. tostring(pause))
 		self.g_WebSocket:pause_event(pause)
 	end
 

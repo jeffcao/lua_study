@@ -79,8 +79,14 @@ public class SysIntentSender {
 	 * @param context
 	 */
 	public static void goNetworkSetting(Context context) {
-		Intent it = new Intent(
-				android.provider.Settings.ACTION_WIRELESS_SETTINGS);
+		String action = null;
+		if(android.os.Build.VERSION.SDK_INT > 10 ){
+		     //3.0以上打开设置界面，也可以直接用ACTION_WIRELESS_SETTINGS打开到wifi界面
+			action = android.provider.Settings.ACTION_SETTINGS;
+		} else {
+			action = android.provider.Settings.ACTION_WIRELESS_SETTINGS;
+		}
+		Intent it = new Intent(action);
 		it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		context.startActivity(it);
 	}

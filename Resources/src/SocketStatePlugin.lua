@@ -10,17 +10,33 @@ SocketStatePlugin = {}
 --                   -> onSocketReopenFail      -> onSocketRestoreFail
 function SocketStatePlugin.bind(theClass)
 
-	function theClass:initSocket(websocket, restore_name)
+	function theClass:bind_server_kill(kill_event)
+		kill_event = kill_event or "ui.ddz_socket_closed"
+		local fn = function() 
+			cclog("on server kill")
+			if self.ss_websocket.state == 'closed' then
+				cclog('on server kill, socket already closed')
+				return
+			end
+			self.ss_websocket:close_when_server_kill() 
+			self.ss_websocket._conn:on_close({})
+		end
+		for _, v in pairs(self.ss_websocket.channels) do
+			v:bind(kill_event, fn)
+		end
+	end
+
+	function theClass:initSocket(websocket, restore_name, kill_event)
 		self.ss_websocket = websocket
 		self.ss_restore_name = restore_name
 		self.ss_websocket.on_open = function() 
 			if self.onSocketReopened then 
-				self:restoreConnection()
 				self:onSocketReopened() 
 			end 
 		end
 		self.ss_websocket:bind("connection_closed", function(data) self:onSocketProblem(data, "connection_closed") end)
 		self.ss_websocket:bind("connection_error", function(data) self:onSocketProblem(data, "connection_error") end)
+		self:bind_server_kill(kill_event)
 	end
 	
 	function theClass:onSocketProblem(data, event_name)
