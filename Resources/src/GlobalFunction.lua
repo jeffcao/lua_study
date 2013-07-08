@@ -177,6 +177,13 @@ function isnan(x)
     return false;
 end
 
+function check_email(email)
+	if (email:match("[A-Za-z0-9%.%%%+%-]+@[A-Za-z0-9%.%%%+%-]+%.%w%w%w?%w?")) then
+		return true
+	end
+	return false
+end
+
 function device_info()
 	local userDefault = CCUserDefault:sharedUserDefault()
 	local device_info = {

@@ -100,7 +100,12 @@ function LoginSceneUIPlugin.bind(theClass)
 			print("go to register in login scene")
 			CCDirector:sharedDirector():pushScene(createRegisterScene())
 --			CCDirector:sharedDirector():replaceScene(createRegisterScene())	
-		end
+	end
+	function theClass:do_ui_forget_pwd_btn_clicked(tag, sender)
+			print("go to register in login scene")
+			CCDirector:sharedDirector():pushScene(createForgetPasswordScene())
+--			CCDirector:sharedDirector():replaceScene(createRegisterScene())	
+	end
 	
 	function theClass:do_ui_fast_game_clicked()
 		print("[LoginScene:onKuaisuLoginBtnClick()]")

@@ -1,5 +1,6 @@
 local json = require "cjson"
 require "RegisterScene"
+require "ForgetPasswordScene"
 require "HallScene"
 require "src.UIControllerPlugin"
 require "src.LoginServerConnectionPlugin"
@@ -20,6 +21,7 @@ function LoginScene:ctor()
 	ccb.login_scene = self
 	
 	self.on_ui_register_clicked = __bind(self.do_ui_register_clicked, self)
+	self.on_ui_forget_pwd_btn_clicked = __bind(self.do_ui_forget_pwd_btn_clicked, self)
 	self.on_ui_fast_game_clicked = __bind(self.do_ui_fast_game_clicked, self) 
 	self.on_ui_login_clicked = __bind(self.do_ui_login_clicked, self)
 	self.on_ui_show_ids_clicked = __bind(self.do_ui_show_ids_clicked, self)

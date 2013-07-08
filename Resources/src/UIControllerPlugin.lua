@@ -20,6 +20,7 @@ function UIControllerPlugin.bind(theClass)
 		else
 			editbox2:setInputFlag(kEditBoxInputFlagSensitive)
 		end
+		
 		editbox2:setInputMode(kEditBoxInputModeSingleLine)
 		editbox2:setReturnType(kKeyboardReturnTypeDone)
 		return editbox2
@@ -30,7 +31,7 @@ function UIControllerPlugin.bind(theClass)
 		layer:addChild(layer.editbox, 0, tag)
 		return layer.editbox
 	end
-	
+
 	function theClass:create_progress_animation(layer, sprite)
 		local frameCache = CCSpriteFrameCache:sharedSpriteFrameCache()
 		if frameCache == nil then
@@ -132,11 +133,12 @@ function UIControllerPlugin.bind(theClass)
 		msg_layer = nil
 	end
 	
-	function theClass:show_message_box(message, msg_width, msg_height)
+	function theClass:show_message_box(message, msg_width, msg_height, z_order)
 		msg_width = msg_width or 330
 		msg_height = msg_height or 50
+		z_order = z_order or 1000
 		local msg_layer = self:create_message_layer(message, msg_width, msg_height)
-		self.msg_box_container:addChild(msg_layer, 1000, 901)
+		self.msg_box_container:addChild(msg_layer, z_order, 901)
 
 		scaleNode(msg_layer, GlobalSetting.content_scale_factor)
 		
@@ -148,7 +150,7 @@ function UIControllerPlugin.bind(theClass)
 
 	end
 	
-	function theClass:show_progress_message_box(message, msg_width, msg_height)
+	function theClass:show_progress_message_box(message, msg_width, msg_height, z_order)
 		print("show_progress_message_box, class name=> "..self.__cname)
 		
 		if #GlobalSetting.hall_cur_message_box > 0 then
@@ -156,6 +158,7 @@ function UIControllerPlugin.bind(theClass)
 		end
 		msg_width = msg_width or 350
 		msg_height = msg_height or 73
+		z_order = z_order or 1000
 		local msg_layer = self:create_message_layer(message, msg_width, msg_height)
 		local content_layer = msg_layer:getChildByTag(100)
 		local progress_sprite = CCSprite:create()
@@ -168,7 +171,7 @@ function UIControllerPlugin.bind(theClass)
 		msg_lb = tolua.cast(content_layer:getChildByTag(900), "CCLabelTTF")
 		msg_lb:setPosition(ccp(msg_width/2 + 20, msg_height/2))
 		print("show_progress_message_box, msg_layer=> ", msg_layer)
-		self.msg_box_container:addChild(msg_layer, 1000, 902)
+		self.msg_box_container:addChild(msg_layer, z_order, 902)
 		print("show_progress_message_box, msg_box_container=> ", self.msg_box_container)
 		table.insert(GlobalSetting.hall_cur_message_box,  msg_layer)
 		

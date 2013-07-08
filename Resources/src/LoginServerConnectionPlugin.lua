@@ -76,6 +76,17 @@ function LoginServerConnectionPlugin.bind(theClass)
 			__bind(self.sign_failure, self) )
 	end
 	
+	function theClass:forget_password(user_id, mail_address)
+		local event_data = {retry="0", user_id=user_id, mail=mail_address} 
+		local device_info = device_info()
+		table.combine(event_data, device_info)
+		dump(event_data, "[LoginServerConnectionPlugin.forget_password] event_data=>")
+		GlobalSetting.login_server_websocket:trigger("login.forget_password", 
+			event_data ,
+			__bind(self.do_on_trigger_success, self), 
+			__bind(self.do_on_trigger_failure, self) )
+	end
+	
 	function theClass:on_websocket_ready()
 		print("[LoginServerConnectionPlugin:on_websocket_ready()]")
 		
@@ -96,7 +107,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 		end
 		if GlobalSetting.login_server_websocket == nil then
 			print("[LoginServerConnectionPlugin:connect_to_login_server()] login_server is nil, init it.")
-			GlobalSetting.login_server_websocket = WebSocketRails:new(config.login_urls[3], true)
+			GlobalSetting.login_server_websocket = WebSocketRails:new(config.login_urls[1], true)
 			GlobalSetting.login_server_websocket.on_open = __bind(self.on_websocket_ready, self)
 			GlobalSetting.login_server_websocket:bind("connection_error", sign_failure)
 		end
