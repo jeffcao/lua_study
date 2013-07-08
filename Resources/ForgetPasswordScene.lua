@@ -55,8 +55,8 @@ function ForgetPasswordScene:do_ui_ok_btn_clicked(tag, sender)
 		return
 	end
 	
---	self:show_progress_message_box("提交信息...")
---	self:forget_password(feedback)
+	self:show_progress_message_box("提交取回密码信息...")
+	self:forget_password(user_id, mail)
 end
 
 function ForgetPasswordScene:do_on_trigger_success(data)
@@ -70,11 +70,11 @@ end
 function ForgetPasswordScene:do_on_trigger_failure(data)
 	print("[ForgetPasswordScene:do_on_trigger_failure]")
 	self:hide_progress_message_box()
-	self.failure_msg = "提交信息失败，请稍后重试."
+	self.failure_msg = "取回密码失败, 请检查您输入的帐号与绑定邮箱是否正确."
 	if not is_blank(data.result_message) then
 		self.failure_msg = data.result_message
 	end
-	self:show_message_box(self.failure_msg)
+	self:show_back_message_box(self.failure_msg)
 
 end
 

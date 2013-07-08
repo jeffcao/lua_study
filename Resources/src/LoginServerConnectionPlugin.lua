@@ -77,7 +77,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 	end
 	
 	function theClass:forget_password(user_id, mail_address)
-		local event_data = {retry="0", user_id=user_id, mail=mail_address} 
+		local event_data = {retry="0", user_id=user_id, email=mail_address} 
 		local device_info = device_info()
 		table.combine(event_data, device_info)
 		dump(event_data, "[LoginServerConnectionPlugin.forget_password] event_data=>")
