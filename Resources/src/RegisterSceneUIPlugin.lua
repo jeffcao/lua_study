@@ -82,6 +82,10 @@ function RegisterSceneUIPlugin.bind(theClass)
 			self:show_message_box("密码不能为空")
 			return
 		end
+		if #password < 8 then
+		self:show_message_box("密码不能小于8位")
+		return
+	end
 		if password ~= confirm_pwd then
 			print("[RegisterScene:do_register_btn_clicked] 两次密码输入不一致.")
 			self:show_message_box("两次密码输入不一致")

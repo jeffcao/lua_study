@@ -50,6 +50,10 @@ function UpdatePasswordLayer:do_ui_ok_btn_clicked(tag, sender)
 		self:show_message_box("请输入新密码")
 		return
 	end
+	if #new_pwd < 8 then
+		self:show_message_box("密码不能小于8位")
+		return
+	end
 	local cfm_pwd = self.cfm_pwd_box:getText()
 	if new_pwd ~= cfm_pwd then
 		self:show_message_box("两次输入的新密码不一致")

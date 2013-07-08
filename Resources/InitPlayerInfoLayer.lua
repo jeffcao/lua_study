@@ -105,6 +105,10 @@ function InitPlayerInfoLayer:do_ui_commit_btn_clicked(tag, sender)
 		self:show_message_box("密码不能为空", nil, nil, 99999)
 		return
 	end
+	if #password < 8 then
+		self:show_message_box("密码不能小于8位", nil, nil, 99999)
+		return
+	end
 	local mail = trim_blank(self.mail_box:getText())
 	if is_blank(mail) then
 		self:show_message_box("邮箱地址不能为空，否则在您忘记密码时无法从系统获得密码.",460, nil, 99999)
