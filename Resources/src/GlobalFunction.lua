@@ -193,7 +193,11 @@ function device_info()
 		product = userDefault:getStringForKey("hw_product"),
 		display = userDefault:getStringForKey("hw_display"),
 		id = userDefault:getStringForKey("hw_id"),
-		fingerprint = userDefault:getStringForKey("hw_fingerprint")
+		appid = userDefault:getStringForKey("appid"),
+		pkg_version_name = userDefault:getStringForKey("pkg_version_name"),
+		pkg_version_code = userDefault:getStringForKey("pkg_version_code"),
+		pkg_build = userDefault:getStringForKey("pkg_build")
+
 	}
 	return device_info
 end
