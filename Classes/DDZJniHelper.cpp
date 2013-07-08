@@ -6,10 +6,10 @@
 using namespace cocos2d;
 
 extern "C" {
-void Java_com_tblin_DDZ2_DDZJniHelper_messageCpp(JNIEnv* env, jobject thiz,
+void Java_com_tblin_DDZ_DDZJniHelper_messageCpp(JNIEnv* env, jobject thiz,
 		jstring text) {
 
-	CCLog("[Java_com_tblin_DDZ2_DDZJniHelper_test] enter.");
+	CCLog("[Java_com_tblin_DDZ_DDZJniHelper_test] enter.");
 
 	std::string myText = JniHelper::jstring2string(text);
 
@@ -17,9 +17,9 @@ void Java_com_tblin_DDZ2_DDZJniHelper_messageCpp(JNIEnv* env, jobject thiz,
 	/*DDZJniHelper* h = new DDZJniHelper();
 	const char* is_connected = h->get("IsNetworkConnected");*/
 
-	CCLog("[Java_com_tblin_DDZ2_DDZJniHelper_test] pText: %s.", myText.c_str());
+	CCLog("[Java_com_tblin_DDZ_DDZJniHelper_test] pText: %s.", myText.c_str());
 
-	CCLog("[Java_com_tblin_DDZ2_DDZJniHelper_test] return.");
+	CCLog("[Java_com_tblin_DDZ_DDZJniHelper_test] return.");
 }
 }
 
@@ -29,7 +29,7 @@ void DDZJniHelper::messageJava(const char* text) {
 	static bool DDZJniHelper_onCppMessage_init = false;
 	if (!DDZJniHelper_onCppMessage_init) {
 		if (!JniHelper::getStaticMethodInfo(DDZJniHelper_onCppMessage,
-				"com/tblin/DDZ2/DDZJniHelper", "onCppMessage",
+				"com/tblin/DDZ/DDZJniHelper", "onCppMessage",
 				"(Ljava/lang/String;)V"))
 			return;
 		DDZJniHelper_onCppMessage_init = true;
@@ -53,7 +53,7 @@ const char* DDZJniHelper::get(const char* text) {
 	static bool DDZJniHelper_func_name_init = false;
 	if (!DDZJniHelper_func_name_init) {
 		if (!JniHelper::getStaticMethodInfo(DDZJniHelper_func_name,
-						"com/tblin/DDZ2/DDZJniHelper", "get",
+						"com/tblin/DDZ/DDZJniHelper", "get",
 						"(Ljava/lang/String;)Ljava/lang/String;"))
 			return "";
 		DDZJniHelper_func_name_init = true;

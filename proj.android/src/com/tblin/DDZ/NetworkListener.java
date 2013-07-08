@@ -1,4 +1,4 @@
-package com.tblin.DDZ2;
+package com.tblin.DDZ;
 
 import java.util.List;
 import java.util.Locale;

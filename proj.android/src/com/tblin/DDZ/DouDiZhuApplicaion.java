@@ -1,9 +1,11 @@
-package com.tblin.DDZ2;
+package com.tblin.DDZ;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 import java.util.Set;
+
+import com.tblin.DDZ.R;
 
 import android.app.Application;
 import android.content.Context;

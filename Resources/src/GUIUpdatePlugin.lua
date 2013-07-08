@@ -660,7 +660,7 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	function theClass:updateSocket(status)
 		cclog("update socket status to " .. status)
-		self.socket_label:setString(status)
+		--self.socket_label:setString(status)
 	end
 	
 	function theClass:updateReady()

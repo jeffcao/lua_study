@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.tblin.DDZ2"
+      package="com.tblin.DDZ"
       android:versionCode="2"
       android:versionName="1.0">
 
@@ -17,22 +17,21 @@
     <application android:label="@string/app_name"
         android:icon="@drawable/icon"
         android:debuggable="true"
-        android:name=".DouDiZhuApplicaion">
+        android:name="com.tblin.DDZ.DouDiZhuApplicaion">
         
-        <meta-data android:name="build" android:value="build_201307031146"/>
+        <meta-data android:name="build" android:value="build_201307080847"/>
 
-        <!-- android:theme="@android:style/Theme.NoTitleBar.Fullscreen" -->
-        <activity android:name=".DouDiZhu_Lua"
+        <activity android:name="com.tblin.DDZ.DouDiZhu_Lua"
                   android:label="@string/app_name"
                   android:screenOrientation="landscape"
-                  android:theme="@android:style/Theme.NoTitleBar"
+                  android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
                   android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".NetworkListener">
+        <receiver android:name="com.tblin.DDZ.NetworkListener">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
             </intent-filter>
