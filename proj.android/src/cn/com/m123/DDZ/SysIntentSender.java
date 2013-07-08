@@ -1,7 +1,7 @@
-package com.tblin.DDZ;
+package cn.com.m123.DDZ;
 
 
-import com.tblin.DDZ.R;
+import cn.com.m123.DDZ.R;
 
 import android.content.Context;
 import android.content.Intent;
