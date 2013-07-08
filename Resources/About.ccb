@@ -137,6 +137,8 @@
 						<string>斗地主游戏由深圳市新中南实业有限公司提供。</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -160,9 +162,9 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>10</real>
-							<real>62</real>
-							<integer>4</integer>
+							<real>80</real>
+							<real>298</real>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -264,9 +266,9 @@
 				<key>displayName</key>
 				<string>CCLabelTTF</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>version_lbl</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -276,7 +278,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>158</real>
+							<real>80</real>
 							<real>252</real>
 							<integer>0</integer>
 						</array>
@@ -288,7 +290,7 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>0.0</real>
 							<real>0.5</real>
 						</array>
 					</dict>
@@ -448,8 +450,6 @@
 				<true/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
