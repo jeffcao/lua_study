@@ -1,11 +1,11 @@
-package com.tblin.DDZ;
+package cn.com.m123.DDZ;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 import java.util.Set;
 
-import com.tblin.DDZ.R;
+import cn.com.m123.DDZ.R;
 
 import android.app.Application;
 import android.content.Context;
@@ -45,8 +45,16 @@ public class DouDiZhuApplicaion extends Application {
 			editor.putString(key, infos.get(key));
 		}
 		editor.commit();
+		checkFirst(sp);
 		long end_t = System.currentTimeMillis();
 		System.out.println("cost time:" + (end_t - start_t));
+	}
+	
+	private void checkFirst(SharedPreferences sp) {
+		if (sp.getBoolean("is_first", true)) {
+			sp.edit().putBoolean("is_first", false).commit();
+			sp.edit().putFloat("music_volume", 0.5f).commit();
+		}
 	}
 	
 	private void initPkgInfo() {

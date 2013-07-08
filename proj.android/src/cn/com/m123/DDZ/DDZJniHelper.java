@@ -1,4 +1,4 @@
-package com.tblin.DDZ;
+package cn.com.m123.DDZ;
 
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
