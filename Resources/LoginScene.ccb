@@ -1665,8 +1665,6 @@
 										<string>密码:</string>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 							<dict>
 								<key>baseClass</key>
@@ -1747,8 +1745,8 @@
 												<string>Block</string>
 												<key>value</key>
 												<array>
-													<string></string>
-													<integer>0</integer>
+													<string>on_ui_forget_pwd_btn_clicked</string>
+													<integer>1</integer>
 												</array>
 											</dict>
 											<dict>
@@ -1793,6 +1791,8 @@
 												</array>
 											</dict>
 										</array>
+										<key>selected</key>
+										<true/>
 									</dict>
 								</array>
 								<key>customClass</key>
