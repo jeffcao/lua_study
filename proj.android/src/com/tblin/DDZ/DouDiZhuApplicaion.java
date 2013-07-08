@@ -45,8 +45,16 @@ public class DouDiZhuApplicaion extends Application {
 			editor.putString(key, infos.get(key));
 		}
 		editor.commit();
+		checkFirst(sp);
 		long end_t = System.currentTimeMillis();
 		System.out.println("cost time:" + (end_t - start_t));
+	}
+	
+	private void checkFirst(SharedPreferences sp) {
+		if (sp.getBoolean("is_first", true)) {
+			sp.edit().putBoolean("is_first", false).commit();
+			sp.edit().putFloat("music_volume", 0.5f).commit();
+		}
 	}
 	
 	private void initPkgInfo() {
