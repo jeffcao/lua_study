@@ -24,6 +24,7 @@ require "src.GChatPlugin"
 require "src.GAnimationPlugin"
 require "src.ConnectivityPlugin"
 require "src.SocketStatePlugin"
+require "src.CardRoboter"
 
 GamingScene = class("GamingScene", function()
 	return display.newScene("GamingScene")
@@ -37,7 +38,7 @@ function GamingScene:ctor()
 	self.ccbproxy = CCBProxy:create()
 	self.ccbproxy:retain()
 	ccb.GamingScene = self
-	--self.onTuoguanClicked = __bind(self.onTestAnim, self)
+	--self.onTuoguanClicked = __bind(self.onTest, self)
 	self.onCancelTuoguanClicked = __bind(self.onCancelTuoguanClicked, self)
 	self.onTuoguanClicked = __bind(self.onTuoguanClicked, self)
 	self.onSelfUserClicked = __bind(self.onSelfUserClicked, self)
@@ -129,13 +130,14 @@ function GamingScene:onTest()
 	--local arr = {play_card1, play_card2, play_card3}
 	local arr = {message1, message2, message3}
 	local s = arr[math.random(3)]
-	self:onEvent(all_join, self.onServerPlayerJoin)
 	self:onEvent(start, self.onServerStartGame)
-	self:onEvent(grab_3, self.onServerGrabLordNotify)
+	self:onEvent(play_card1, self.onServerPlayCard)
+	--self:onEvent(start, self.onServerStartGame)
+	--self:onEvent(grab_3, self.onServerGrabLordNotify)
 	--Timer.add_timer(2, function()
 	--	self:onEvent(s, self.onServerPlayCard)
 	--	end)
-	self:onEvent(game_over2, self.onServerGameOver)
+	--self:onEvent(game_over2, self.onServerGameOver)
 end
 
 function GamingScene:onEvent(json_str, fn)

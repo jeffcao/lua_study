@@ -92,6 +92,8 @@ function GDataPlugin.bind(theClass)
 		self:enter_room(self.g_room_id)
 		
 		self.socket_label:setVisible(false)
+		
+		
 	end
 
 	function theClass:retrievePlayers(player_list)

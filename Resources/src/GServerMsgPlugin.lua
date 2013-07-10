@@ -9,6 +9,11 @@ function GServerMsgPlugin.bind(theClass)
 	-- g_channel and c_channel
 	function theClass:onServerStartGame(data)
 		dump(data, "[game_start] data -> ")
+		
+		if not self.card_roboter then
+			self.card_roboter = CardRoboter.new()
+			self.card_roboter:init(self.rootNode)
+		end
 	
 		--cclog("[game_start] user_id -> " .. data.user_id)
 		
@@ -50,6 +55,8 @@ function GServerMsgPlugin.bind(theClass)
 		--_has_gaming_started = true
 		cclog("onServerStartGame gaming to true")
 		self:setHasGamingStarted(true)
+		
+		self.card_roboter:onServerStartGame(data)
 	end
 	
 	-- g_channel and c_channel
@@ -210,7 +217,7 @@ function GServerMsgPlugin.bind(theClass)
 			cclog("playCardEffect not self")
 			self:playCardEffect(card)
 		end
-		
+		self.card_roboter:onServerPlayCard(poke_cards)
 	
 		if self._is_playing then
 			local player
@@ -273,11 +280,12 @@ function GServerMsgPlugin.bind(theClass)
 			end
 		else
 			cclog("is not playing, return to hall")
-			self:exit()
+		--	self:exit()
 		end
 		
 		-- 更新各更手上的牌数
 		self:updatePlayerPokeCounts()
+		
 		
 	end
 	
@@ -296,6 +304,7 @@ function GServerMsgPlugin.bind(theClass)
 		if self.next_user then
 			self:doGetUserProfileIfNeed(self.next_user.user_id, true)
 		end
+		self.card_roboter:onServerGameOver(data)
 	end
 	
 	--c_channel
