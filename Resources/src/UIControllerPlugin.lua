@@ -23,6 +23,8 @@ function UIControllerPlugin.bind(theClass)
 		
 		editbox2:setInputMode(kEditBoxInputModeSingleLine)
 		editbox2:setReturnType(kKeyboardReturnTypeDone)
+		editbox2:setText(" ")
+		editbox2:setText("")
 		return editbox2
 	end
 	

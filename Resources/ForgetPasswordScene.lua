@@ -24,6 +24,8 @@ function ForgetPasswordScene:ctor()
  	
  	self.input_png = "kuang_a.png"
 	self.user_id_box = self:addEditbox(self.user_id_box_layer, 270, 30, false, 101)
+	self.user_id_box:setInputMode(kEditBoxInputModeNumeric)
+	self.user_id_box:setMaxLength(5)
 	self.mail_box = self:addEditbox(self.mail_box_layer, 270, 30, false, 101)
 	
 	--self.feedback_ttf:setDimensions(CCSizeMake(460,160))
