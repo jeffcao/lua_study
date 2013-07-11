@@ -24,7 +24,7 @@ require "src.GChatPlugin"
 require "src.GAnimationPlugin"
 require "src.ConnectivityPlugin"
 require "src.SocketStatePlugin"
-require "src.CardRoboter"
+require "src.CardRoboter2"
 
 GamingScene = class("GamingScene", function()
 	return display.newScene("GamingScene")
