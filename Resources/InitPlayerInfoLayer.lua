@@ -37,8 +37,13 @@ function InitPlayerInfoLayer:init_input_controller()
 	print("[InitPlayerInfoLayer:init_input_controller]")
 	self.input_png = "kuang_a.png"
 	self.nick_name_box = self:addEditbox(self.nick_name_box_layer, 225, 30, false, 101)
+	self.nick_name_box:setMaxLength(10)
+	self.nick_name_box:setPlaceHolder("昵称为不大于10位的任意字符")
 	self.password_box = self:addEditbox(self.pwd_box_layer, 225, 30, true, 101)
+	self.password_box:setMaxLength(20)
+	self.password_box:setPlaceHolder("密码为8到20位的任意字符")
 	self.mail_box = self:addEditbox(self.mail_box_layer, 225, 30, false, 101)
+	self.mail_box:setPlaceHolder("example@example.com")
 	
 	self.m_checkbox = CheckBox.create("男")
 	self.f_checkbox = CheckBox.create("女")

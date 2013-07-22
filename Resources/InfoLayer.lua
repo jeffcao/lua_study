@@ -73,6 +73,8 @@ function InfoLayer:init_input_controller()
 	
 	self.input_png = "kuang_a.png"
 	self.nick_name_box = self:addEditbox(self.nick_name_edit_layer, 225, 30, false, 101)
+	self.nick_name_box:setMaxLength(10)
+	self.nick_name_box:setPlaceHolder("昵称为不大于10位的任意字符")
 	print("[InfoLayer:init_input_controller] nick_name_box: ", self.nick_name_box)
 	self.nick_name_box:registerScriptEditBoxHandler(__bind(self.editBoxTextEventHandle, self))
 	print("[InfoLayer:init_input_controller] nick_name_box.onExit: ", self.nick_name_box.onExit)

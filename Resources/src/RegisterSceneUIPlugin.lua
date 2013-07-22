@@ -4,9 +4,15 @@ function RegisterSceneUIPlugin.bind(theClass)
 	
 	function theClass:init_input_controller()
 		self.input_png = "kuang_a.png"
-		self:addEditbox(self.nick_name_layer, 225, 30, false, 101)
-		self:addEditbox(self.password_layer, 225, 30, true, 102)
-		self:addEditbox(self.confirm_pwd_layer, 225, 30, true, 103)
+		local name_box = self:addEditbox(self.nick_name_layer, 225, 30, false, 101)
+		name_box:setPlaceHolder("昵称为不大于10位的任意字符")
+		name_box:setMaxLength(10)
+		local pwd_box = self:addEditbox(self.password_layer, 225, 30, true, 102)
+		pwd_box:setPlaceHolder("密码为8到20位的任意字符")
+		pwd_box:setMaxLength(20)
+		local c_pwd_box = self:addEditbox(self.confirm_pwd_layer, 225, 30, true, 103)
+		c_pwd_box:setMaxLength(20)
+		c_pwd_box:setPlaceHolder("再次输入密码")
 		
 		local male_on_sprite = CCSprite:createWithSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_d.png"))
 		local male_off_sprite = CCSprite:createWithSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_c.png"))
