@@ -11,7 +11,7 @@ function GServerMsgPlugin.bind(theClass)
 		dump(data, "[game_start] data -> ")
 		
 		if not self.card_roboter then
-			self.card_roboter = CardRoboter.new()
+			self.card_roboter = CardRoboter2.new()
 			self.card_roboter:init(self.rootNode)
 		end
 	
@@ -280,7 +280,7 @@ function GServerMsgPlugin.bind(theClass)
 			end
 		else
 			cclog("is not playing, return to hall")
-		--	self:exit()
+			self:exit()
 		end
 		
 		-- 更新各更手上的牌数
