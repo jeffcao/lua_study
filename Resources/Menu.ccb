@@ -850,8 +850,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>changing_over.png</string>
+											<string></string>
+											<string>ccbResources/Login_new_01.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -861,8 +861,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>changing_over_a.png</string>
+											<string></string>
+											<string>ccbResources/Login_new_02.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1092,8 +1092,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -1272,6 +1270,8 @@
 						<true/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
