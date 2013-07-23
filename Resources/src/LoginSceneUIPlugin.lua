@@ -4,9 +4,10 @@ function LoginSceneUIPlugin.bind(theClass)
 		
 	function theClass:init_input_controll()
 		self.input_png = "xiankuang02.png"
-		self:addEditbox(self.register_account_layer, 145, 35, false, 101)
-		self:addEditbox(self.forget_password_layer, 165, 35, true, 102)
-		
+		local account_box = self:addEditbox(self.register_account_layer, 145, 35, false, 101)
+		account_box:setMaxLength(5)
+		local pwd_box = self:addEditbox(self.forget_password_layer, 165, 35, true, 102)
+		pwd_box:setMaxLength(30)
 		local createUserIdMenue = function(lb_text)
 			local menu_lb = CCLabelTTF:create(lb_text, "default",16)
 			menu_lb:setColor(ccc3(0, 0, 0))
