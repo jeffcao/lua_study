@@ -1,13 +1,15 @@
 var ccb_resources = [
+    {type:'plist', src:"ccbResources/guifan.plist"},
     {type:'ccbi', src:"YesNoLayer.ccbi"},
     {type:'image', src:"clickme.png"},
     {type:'plist', src:"ccbResources/dialogs.plist"},
     {type:'plist', src:"ccbResources/gaming.plist"},
     {type:'ccbi', src:"ExitLayer.ccbi"},
     {type:'image', src:"ccbResources/ccbParticleSmoke.png"},
-    {type:'ccbi', src:"Set2.ccbi"},
+    {type:'image', src:"ccbResources/Login_new_01.png"},
     {type:'plist', src:"ccbResources/login.plist"},
     {type:'plist', src:"ccbResources/common2.plist"},
+    {type:'ccbi', src:"Set2.ccbi"},
     {type:'ccbi', src:"GamingScene.ccbi"},
     {type:'ccbi', src:"InitPlayerInfo.ccbi"},
     {type:'plist', src:"ccbResources/ccbDefaultImages.plist"},
@@ -71,5 +73,5 @@ var ccb_resources = [
     {type:'image', src:"ccbResources/hall.png"},
     {type:'image', src:"ccbResources/landing.png"},
     {type:'ccbi', src:"Chat.ccbi"},
-    {type:'plist', src:"ccbResources/guifan.plist"},
+    {type:'image', src:"ccbResources/Login_new_02.png"},
 ];
