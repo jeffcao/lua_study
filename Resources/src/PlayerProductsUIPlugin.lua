@@ -7,12 +7,12 @@ function PlayerProductsUIPlugin.bind(theClass)
 		if self.product_view then
 			self.rootNode:removeChild(self.product_view, true)
 		end
-		self.product_view = self:create_product_list(data.cats)
+		self.product_list = data.cats
+		self.product_view = self:create_product_list()
 		if self.product_view then
 			self.rootNode:setContent(self.product_view)
 		end
 	end
-	
 	
 	function theClass:init_product_list()
 		print("[PlayerProductsScene:init_product_list]")
@@ -27,6 +27,13 @@ function PlayerProductsUIPlugin.bind(theClass)
 	function theClass:after_use_product(data)
 		print("[PlayerProductsScene:after_use_product]")
 		if tostring(data.prop.prop_count) ~= "0" then
+			for index=#(self.product_list), 1, -1 do
+				print("[PlayerProductsScene:after_use_product] prod_id_s=>"..self.product_list[index].prop_id)
+				print("[PlayerProductsScene:after_use_product] prod_id_d=>"..data.prop.prop_id)
+				if self.product_list[index].prop_id == data.prop.prop_id then
+					self.product_list[index].using_me = true
+				end
+			end
 			self.use_prop_callback(data.prop.prop_count)
 		else
 			self:init_product_list()
@@ -59,6 +66,9 @@ function PlayerProductsUIPlugin.bind(theClass)
 	function theClass:do_on_trigger_failure(data)
 		print("[MarketSceneUPlugin:do_on_trigger_failure]")
 		self:hide_progress_message_box()
+		if not is_blank(data.result_message) then
+			self.failure_msg = data.result_message
+		end 
 		self:show_message_box(self.failure_msg)
 		if "function" == type(self.after_trigger_failure) then
 			self.after_trigger_failure(data)

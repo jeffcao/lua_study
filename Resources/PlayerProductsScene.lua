@@ -29,14 +29,15 @@ function PlayerProductsScene:ctor()
 	
 end
 
-function PlayerProductsScene:create_product_list(product_list)
+function PlayerProductsScene:create_product_list()
 	print("[PlayerProductsScene:create_product_list]")
-	if product_list == nil or product_list == json.null then
+	if self.product_list == nil or self.product_list == json.null then
 		return
 	end
-	
+
 	local h = LuaEventHandler:create(function(fn, table, a1, a2)
 		local r
+		print("[MarketSceneUPlugin.create_product_list] fn =>"..fn)
 		if fn == "cellSize" then
 			r = CCSizeMake(800,80)
 		elseif fn == "cellAtIndex" then
@@ -44,26 +45,26 @@ function PlayerProductsScene:create_product_list(product_list)
 				a2 = CCTableViewCell:create()
 				a3 = createPlayerProductItem()
 				print("[MarketSceneUPlugin.create_product_list] a1 =>"..a1)
-				a3:init_item(product_list[a1+1], __bind(self.show_use_notify, self))
+				a3:init_item(self.product_list[a1+1], __bind(self.show_use_notify, self))
 				a2:addChild(a3, 0, 1)
 			else
 				local a3 = tolua.cast(a2:getChildByTag(1), "CCLayer")
 				if a3 then
-					a3:init_item(product_list[a1 + 1],  __bind(self.show_use_notify, self))
+					a3:init_item(self.product_list[a1 + 1],  __bind(self.show_use_notify, self))
 				end
 				
 			end
 			r = a2
 		elseif fn == "numberOfCells" then
-			r = #product_list
-		elseif fn == "cellTouched" then
+			r = #self.product_list
 		end
 		return r
 	end)
+	
 	local t = LuaTableView:createWithHandler(h, CCSizeMake(800,300))
 	t:setPosition(CCPointMake(0,70))
 	
-	for index=#(product_list), 1, -1 do
+	for index=#(self.product_list), 1, -1 do
 		t:updateCellAtIndex(index-1)
 	end
 	

@@ -18,7 +18,7 @@ function PlayerProductItem:ctor()
 	local ccbproxy = CCBProxy:create()
 	local node = CCBReaderLoad("PlayerProductItem.ccbi", ccbproxy, false, "")
 	self:addChild(node)
-
+	
 	self.rootNode:ignoreAnchorPointForPosition(false)
 	self.rootNode:setAnchorPoint(ccp(0,0.5))
 
@@ -37,6 +37,9 @@ function PlayerProductItem:use_product_callback(count)
 	else
 		local count_lb = tolua.cast(self.count_lb, "CCLabelTTF")
 		count_lb:setString("x"..count)
+		local use_btn = tolua.cast(self.use_btn, "CCMenuItemImage")
+		print("[PlayerProductItem:init_item] setEnabled(false) ")
+		use_btn:setEnabled(false)
 	end
 	
 end
@@ -65,6 +68,14 @@ function PlayerProductItem:init_item(product, show_use_notify, small)
 	icon_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(product.prop_icon))
 	print("[PlayerProductItem:init_item] name=> "..product.prop_name.." icon=> "..product.prop_icon)
 	
+	print("[PlayerProductItem:init_item] using_me=> "..tostring(product.using_me))
+	local use_btn = tolua.cast(self.use_btn, "CCMenuItemImage")
+	if product.using_me then
+		use_btn:setEnabled(false)
+	else
+		use_btn:setEnabled(true)
+	end
+	 
 	if small then
 		self.use_menu:setPosition(CCPointMake(420,34))
 	end
