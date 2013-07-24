@@ -338,8 +338,6 @@
 								<string>购买白银宝箱将获得240000豆子，其中赠送2000豆子</string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -462,10 +460,12 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string></string>
+											<string>ccbResources/shiyongzhong_03.png</string>
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
