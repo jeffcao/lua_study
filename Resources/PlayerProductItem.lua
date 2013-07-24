@@ -40,6 +40,8 @@ function PlayerProductItem:use_product_callback(count)
 		local use_btn = tolua.cast(self.use_btn, "CCMenuItemImage")
 		print("[PlayerProductItem:init_item] setEnabled(false) ")
 		use_btn:setEnabled(false)
+		local time_lb = tolua.cast(self.time_lb, "CCLabelTTF")
+		time_lb:setVisible(true)
 	end
 	
 end
@@ -68,16 +70,21 @@ function PlayerProductItem:init_item(product, show_use_notify, small)
 	icon_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(product.prop_icon))
 	print("[PlayerProductItem:init_item] name=> "..product.prop_name.." icon=> "..product.prop_icon)
 	
-	print("[PlayerProductItem:init_item] using_me=> "..tostring(product.using_me))
+	local time_lb = tolua.cast(self.time_lb, "CCLabelTTF")
+	time_lb:setString(product.remaining_time)
 	local use_btn = tolua.cast(self.use_btn, "CCMenuItemImage")
+	print("[PlayerProductItem:init_item] using_me=> "..tostring(product.using_me))
 	if product.using_me then
 		use_btn:setEnabled(false)
+		time_lb:setVisible(true)
 	else
 		use_btn:setEnabled(true)
+		time_lb:setVisible(false)
 	end
 	 
 	if small then
 		self.use_menu:setPosition(CCPointMake(420,34))
+		time_lb:setPosition(CCPointMake(420,14))
 	end
 	
 end
