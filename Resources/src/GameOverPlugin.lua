@@ -12,7 +12,7 @@ function GameOverPlugin.bind(theClass)
 		local win_flag = false
 		local win_user = nil
 		
-		local self_user_win_value = game_result.balance[tostring(gaming_layer.self_user.user_id)]
+		local self_user_win_value = game_result.self_balance[tostring(gaming_layer.self_user.user_id)]
 
 		win_flag = self_user_win_value > 0
 		if win_flag then

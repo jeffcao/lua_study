@@ -56,7 +56,8 @@ function GServerMsgPlugin.bind(theClass)
 		cclog("onServerStartGame gaming to true")
 		self:setHasGamingStarted(true)
 		
-		self.card_roboter:onServerStartGame(data)
+		self:refreshProps(data)
+		self.card_roboter:onServerStartGame(self)
 	end
 	
 	-- g_channel and c_channel
@@ -115,6 +116,8 @@ function GServerMsgPlugin.bind(theClass)
 			new_data.poke_cards = self._all_cards_ids
 			new_data.grab_lord = 0
 			new_data.players = data.players
+			new_data.using_props = self.using_props
+			new_data.show_jipaiqi = self.show_jipaiqi
 			
 			-- 开始牌局
 			self:onServerStartGame(new_data)

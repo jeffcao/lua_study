@@ -77,6 +77,9 @@ function GDataPlugin.bind(theClass)
 		
 		self.users = {}
 		
+		self.using_props = {}
+		self.show_jipaiqi = 0
+		
 		self.socket_label:setVisible(true)
 		
 		--[[
@@ -94,6 +97,11 @@ function GDataPlugin.bind(theClass)
 		self.socket_label:setVisible(false)
 		
 		
+	end
+	
+	function theClass:refreshProps(data) 
+		self.using_props = data.using_props
+		self.show_jipaiqi = data.show_jipaiqi
 	end
 
 	function theClass:retrievePlayers(player_list)

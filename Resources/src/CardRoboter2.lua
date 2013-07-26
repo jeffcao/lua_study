@@ -18,7 +18,10 @@ function CardRoboter2:init(parent, z_order)
 	self.ccbproxy = CCBProxy:create()
 	self.ccbproxy:retain()
 	ccb.card_roboter = self
-	self.on_button_clicked = function() self.recorder:setVisible(not self.recorder:isVisible()) end
+	self.on_button_clicked = function() 
+		self.recorder:setVisible(not self.recorder:isVisible()) 
+		self:playButtonEffect()
+	end
 	local node = CCBReaderLoad("CardRoboter.ccbi", self.ccbproxy, true, "card_roboter")
 	self.layer = node
 	
@@ -77,7 +80,11 @@ function CardRoboter2:updateCards()
 end
 
 function CardRoboter2:onServerStartGame(data)
-	self:show()
+	if data.show_jipaiqi == 1 then
+		self:show()
+	else
+		self:dismiss()
+	end
 end
 
 function CardRoboter2:onServerPlayCard(data)
@@ -88,3 +95,5 @@ function CardRoboter2:onServerGameOver(data)
 	self:reset()
 	self:dismiss()
 end
+
+SoundEffect.bind(CardRoboter2)

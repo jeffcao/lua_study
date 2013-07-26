@@ -532,7 +532,7 @@ function GUIUpdatePlugin.bind(theClass)
 		self.g_WebSocket:clear_notify_id()
 		dump(data, "[onEnterRoomSuccess] data => ")
 		local game_info = data.game_info
-		
+		self:refreshProps(data)
 		self:updatePlayers(data.players)
 		self:init_channel(game_info)
 		self.menu_ready:setVisible(true)

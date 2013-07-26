@@ -342,6 +342,45 @@
                 <key>sourceSize</key>
                 <string>{70,70}</string>
             </dict>
+            <key>hushenka_shiyong_03.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{74,96},{29,29}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{1,1},{29,29}}</string>
+                <key>sourceSize</key>
+                <string>{31,31}</string>
+            </dict>
+            <key>jifenka_shiyong.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{64,65},{29,29}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{1,1},{29,29}}</string>
+                <key>sourceSize</key>
+                <string>{31,31}</string>
+            </dict>
+            <key>jipaiqi_shiyong_03.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{33,65},{29,29}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{1,1},{29,29}}</string>
+                <key>sourceSize</key>
+                <string>{31,31}</string>
+            </dict>
             <key>libao_016_baiyin.png</key>
             <dict>
                 <key>frame</key>
@@ -602,6 +641,19 @@
                 <key>sourceSize</key>
                 <string>{70,70}</string>
             </dict>
+            <key>shuangbeijifenka_shiyong_03.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,65},{29,29}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{1,1},{29,29}}</string>
+                <key>sourceSize</key>
+                <string>{31,31}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -612,7 +664,7 @@
             <key>size</key>
             <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:9af7150722ae24d2db149198d8c99482$</string>
+            <string>$TexturePacker:SmartUpdate:0c39fec144b2f3c86727756ec43333e1$</string>
             <key>textureFileName</key>
             <string>props.png</string>
         </dict>

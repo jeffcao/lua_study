@@ -47,6 +47,22 @@ function PlayerInfo:initWithInfo(gaming_layer, info)
 	percent = tostring(percent)
 	if string.len(percent) > max_l then percent = string.sub(percent, 1, max_l - string.len(percent)) end
 	self.lbl_info_achievement:setString(percent .. "%  " .. win .. "胜" .. lost .. "负")
+	
+	self.props_layer:removeAllChildrenWithCleanup(true)
+	if gaming_layer.using_props and user_id == gaming_layer.self_user.user_id then
+		cclog("gaming_layer.using_props user_id == gaming_layer.self_user.user_id")
+		local x = 10
+		local step = 50
+		for _, prop in pairs(gaming_layer.using_props) do
+			local sprite = CCSprite:createWithSpriteFrameName(prop.icon_name)
+			sprite:setTag(1000)
+			x = x + step
+			sprite:setPosition(ccp(x, 22))
+			self.props_layer:addChild(sprite)
+		end
+	end
+	
+	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 end
 
 function PlayerInfo:onTouch(eventType, x, y)
