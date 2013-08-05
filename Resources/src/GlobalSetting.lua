@@ -40,6 +40,8 @@ GlobalSetting = {
 	debug_dump_websocket_event = true,
 	debug_dump_outgoing_event = false,
 	debug_dump_internal_event = false,
-	debug_timer_name = false
+	debug_timer_name = false,
+	
+	run_env = "test"
 }
 

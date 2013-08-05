@@ -24,15 +24,6 @@ function HallServerConnectionPlugin.bind(theClass)
 		end
 	end
 	
-	
-	
-	function theClass:check_connection()
-		self.failure_msg = "与服务器连接认证失败"
-		local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token, version="1.0"}
-		self:call_server_method("check_connection", event_data)
-
-	end
-	
 	function theClass:get_all_rooms()
 		self.failure_msg = "获取房间列表失败"
 		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}

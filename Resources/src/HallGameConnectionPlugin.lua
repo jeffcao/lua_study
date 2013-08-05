@@ -32,7 +32,7 @@ function HallGameConnectionPlugin.bind(theClass)
 	
 	function theClass:check_connection_game_server()
 		self.failure_msg = "与游戏服务器连接认证失败"
-		local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token, version="1.0"}
+		local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token, version="1.0", run_env = GlobalSetting.run_env}
 		GlobalSetting.g_WebSocket:trigger("g.check_connection", 
 			event_data,
 			__bind(self.on_trigger_success, self),
