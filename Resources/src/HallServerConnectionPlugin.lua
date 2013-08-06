@@ -27,7 +27,7 @@ function HallServerConnectionPlugin.bind(theClass)
 	
 	function theClass:check_connection()
 		self.failure_msg = "与服务器连接认证失败"
-		local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token, version="1.0"}
+		local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token, version="1.0", run_env = GlobalSetting.run_env}
 		self:call_server_method("check_connection", event_data)
 
 	end
