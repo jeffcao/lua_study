@@ -50,6 +50,10 @@ public class DDZJniHelper {
 			String url = str.substring("on_open_url_intent_".length());
 			openUrl(url);
 		}
+		if (str.startsWith("share_intent_")) {
+			String url = str.substring("share_intent_".length());
+			share();
+		}
 	}
 	
 	public static void openUrl(String url) {
@@ -91,6 +95,19 @@ public class DDZJniHelper {
 	public static void recoveryMusicVolume() {
 		AudioManager am = (AudioManager) DouDiZhuApplicaion.APP_CONTEXT.getSystemService(Context.AUDIO_SERVICE);
 		am.setStreamVolume(AudioManager.STREAM_MUSIC, DouDiZhu_Lua.initial_volume, 0);
+	}
+	
+	public static void share() {
+		Intent intent=new Intent(Intent.ACTION_SEND);
+	    intent.setType("text/plain");
+	    intent.putExtra(Intent.EXTRA_SUBJECT, "分享至");
+	    intent.putExtra(Intent.EXTRA_TEXT, "由老马工作室倾情推出的《我爱斗地主》上线啦！快来看看我们的新玩法吧！\n"
+	    								   +"百万巨制，交友神器，和农民一起斗地主，我的地盘我做主。\n"
+                                           +"一切尽在《我爱斗地主》。\n"
+                                           +"（分享自@《我爱斗地主》官方网站）");
+	    Intent it = Intent.createChooser(intent, "分享至");
+	    it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	    DouDiZhuApplicaion.APP_CONTEXT.startActivity(it);
 	}
 	
 	public static String get(String func_name) {
