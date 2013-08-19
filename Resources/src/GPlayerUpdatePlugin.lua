@@ -13,7 +13,23 @@ function GPlayerUpdatePlugin.bind(theClass)
 		self:updatePlayerRoles()
 		self:updatePlayerPokeCounts()
 		self:updatePlayerAvatars()
+		self:updatePlayerLevels()
 	end
+	
+	function theClass:updatePlayerLevels()
+		self:updatePlayerLevel(self.self_user, self.self_user_level)
+		self:updatePlayerLevel(self.prev_user, self.prev_user_level)
+		self:updatePlayerLevel(self.next_user, self.next_user_level)
+	end
+	
+	function theClass:updatePlayerLevel(player, player_level_ui)
+		if player and player.level then
+			player_level_ui:setString(player.level)
+		else
+			player_level_ui:setString("短工")
+			player_level_ui:setVisible(nil ~= player)
+		end
+ 	end
 
 	function theClass:updateTuoguan()
 		if self.self_user and self.self_user.tuo_guan == 1 and self.self_user.poke_card_count > 0 then
