@@ -123,7 +123,12 @@ function InfoLayer:init_player_info()
 	
 	self.m_checkbox.toggle:setChecked(tonumber(cur_user.gender) == 1)
 	self.f_checkbox.toggle:setChecked(tonumber(cur_user.gender) == 2)
-
+	
+	if cur_user.level then 
+		self.level_lb:setString(cur_user.level)
+	else
+		self.level_lb:setString("短工")
+	end
 end
 
 

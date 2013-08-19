@@ -57,13 +57,13 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:onMenuClick(tag, sender)
-	DDZJniHelper:create():messageJava('share_intent_3')
-	--	self:onKeypad("menuClicked")
+	--DDZJniHelper:create():messageJava('share_intent_3')
+		self:onKeypad("menuClicked")
 	end
 	
 	function theClass:onInfoClick(tag, sender)
-	DDZJniHelper:create():messageJava('share_intent_1')
-	--	self:doToInfo()
+	--DDZJniHelper:create():messageJava('share_intent_1')
+		self:doToInfo()
 	end
 	
 	function theClass:onAvatarClick(tag, sender)
@@ -71,8 +71,8 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:onMarketClick(tag, sender)
-	DDZJniHelper:create():messageJava('share_intent_2')
-	--	self:doToMarket()
+	--DDZJniHelper:create():messageJava('share_intent_2')
+		self:doToMarket()
 	end
 	
 	function theClass:do_ui_prop_btn_clicked(tag, sender)
