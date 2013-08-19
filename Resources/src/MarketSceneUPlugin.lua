@@ -46,8 +46,61 @@ function MarketSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:show_product_list(data)
-		local product_view = self:create_product_list(data.commodity)
-		self.rootNode:setContent(product_view)
+		self:test_process_props(data.commodity)
+		--local product_view = self:create_product_list(data.commodity)
+		--self.rootNode:setContent(product_view)
+		
+		local kinds = {}
+		for k,v in pairs(data.commodity) do
+			if not kinds[v.kind] then kinds[v.kind] = {} end
+			table.insert(kinds[v.kind], v)
+		end
+		local first_key = ''
+		for k,v in pairs(kinds) do
+			if first_key == '' then first_key = k end
+			self:createTab(k,v)
+		end
+		self:setTab(first_key)
+	end
+	
+	function theClass:createTab(kind, data)
+		local right_menu = self.rootNode:getRightMenu()
+		local toggle = CCMenuItemToggle:create(CCMenuItemFont:create(kind .. '上'))
+		toggle:addSubItem(CCMenuItemFont:create(kind..'下'))
+		toggle:setSelectedIndex(1)
+		local menu = CCMenu:createWithItem(toggle)
+		menu:ignoreAnchorPointForPosition(false)
+		right_menu:addChild(menu)
+		menu.toggle = toggle
+		menu.name = kind
+		menu.data = data
+		if not right_menu.tabs then right_menu.tabs = {} end
+		local len = 0
+		for k,v in pairs(right_menu.tabs) do len = len + 1 end
+		menu:setPosition(ccp(360 + len * 100, 260))
+		toggle:registerScriptTapHandler(function() self:setTab(menu.name) end)
+		right_menu.tabs[menu.name] = menu
+	end
+	
+	function theClass:setTab(name)
+		local right = self.rootNode:getRightMenu()
+		if name == right.last then return end
+		for k,v in pairs(right.tabs) do
+			local y = v:getPositionY()
+			local x = v:getPositionX()
+			if k == name then
+				if not v.attach_view then v.attach_view = self:create_product_list(v.data) self.rootNode:setContent(v.attach_view) end
+				v.attach_view:setVisible(true)
+				v:setEnabled(false)
+				v:setPosition(ccp(x, y - 10))
+			else
+				if v.name == right.last then v:setPosition(ccp(x, y + 10)) end
+				v.toggle:setSelectedIndex(0)
+				if v.attach_view then v.attach_view:setVisible(false) end
+				v:setEnabled(true)
+			end
+		end
+		right.last = name
 	end
 	
 	
@@ -58,6 +111,16 @@ function MarketSceneUPlugin.bind(theClass)
 		self:shop_prop_list()
 		self.after_trigger_success = __bind(self.show_product_list, self)
 		
+	end
+	
+	function theClass:test_process_props(source_data)
+		for k,v in pairs(source_data) do
+			if v.name and string.find(v.name, '卡') then v.kind = '卡'
+			elseif v.name and string.find(v.name, '礼包') then v.kind = '礼包'
+			elseif v.name and string.find(v.name, '宝箱') then v.kind = '宝箱'
+			else v.kind = '其他' end
+		end
+		dump(source_data)
 	end
 	
 	function theClass:is_cm_sim_card()

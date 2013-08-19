@@ -6,6 +6,10 @@ function FullMubanStyleUPlugin.bind(theClass)
 		self:addChild(layer)
 	end
 	
+	function theClass:getRightMenu()
+		return self.right_menu
+	end
+	
 	function theClass:setTitle(sprite_frame, plist_name)
 		plist_name = plist_name or Res.common_plist
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
