@@ -52,10 +52,8 @@ public class DDZJniHelper {
 			openUrl(url);
 		}
 		if (str.startsWith("share_intent_")) {
-			String mode = str.substring("share_intent_".length());
-			int md = 1;
-			try { md = Integer.valueOf(mode);}catch(Exception e){}
-			share(md);
+			String url = str.substring("share_intent_".length());
+			share(url);
 		}
 	}
 	
@@ -98,6 +96,13 @@ public class DDZJniHelper {
 	public static void recoveryMusicVolume() {
 		AudioManager am = (AudioManager) DouDiZhuApplicaion.APP_CONTEXT.getSystemService(Context.AUDIO_SERVICE);
 		am.setStreamVolume(AudioManager.STREAM_MUSIC, DouDiZhu_Lua.initial_volume, 0);
+	}
+	
+	public static void share(String url) {
+		Intent it = new Intent(DouDiZhuApplicaion.APP_CONTEXT, ShareActivity.class);
+		it.putExtra("url", url);
+		it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	    DouDiZhuApplicaion.APP_CONTEXT.startActivity(it);
 	}
 	
 	public static void share(int mode) {

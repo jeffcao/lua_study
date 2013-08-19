@@ -34,6 +34,13 @@ function HallSceneUPlugin.bind(theClass)
 		end
 	end
 	
+	function theClass:doShare()
+		self.share_dialog_layer = createShare()
+		self.rootNode:addChild(self.share_dialog_layer, 1001, 907)
+		print("[HallSceneUPlugin:share] share:show")
+		self.share_dialog_layer:show()
+	end
+	
 	function theClass:doShowExitDialog()
 		endtolua_guifan()
 		
@@ -54,6 +61,10 @@ function HallSceneUPlugin.bind(theClass)
 		self.rootNode:addChild(self.set_dialog_layer, 1001, 907)
 		print("[HallSceneUPlugin:show_set_dialog] set_dialog_layer:show")
 		self.set_dialog_layer:show()
+	end
+	
+	function theClass:onShareClick(tag, sender)
+		self:doShare()
 	end
 	
 	function theClass:onMenuClick(tag, sender)
