@@ -17,6 +17,7 @@ function DialogInterface.bind(theClass)
 			self.rootNode:setKeypadEnabled(true)
 			self:getParent():setKeypadEnabled(false)
 		end
+		self:touchOutsideDismiss()
 	end
 	
 	function theClass:dismiss(need_remove_self)
@@ -57,6 +58,33 @@ function DialogInterface.bind(theClass)
     
     function theClass:swallowOnKeypad()
     	self.swallow_keypad = true
+    	self:setOnKeypad(function(key)
+			if key == "backClicked" then
+				print("dialog on key pad")
+				if self:isShowing()  then
+					self:dismiss()
+				end
+			end
+		end)
+    end
+    
+    function theClass:touchOutsideDismiss()
+    	if not self.bg or not self.rootNode then return end
+    	local ontouch = function(eventType, x, y)
+    		cclog("touch event Share:%s,x:%d,y:%d", eventType, x, y)
+			if eventType == "began" then
+				do return true end
+			elseif eventType == "moved" then
+				do return end
+			else
+				if not self.bg:boundingBox():containsPoint(ccp(x,y)) then
+					self:dismiss()
+				end
+				do return end
+			end
+    	end
+    	self.rootNode:registerScriptTouchHandler(ontouch)
+    	self.rootNode:setTouchEnabled(true)
     end
     
     function theClass:setOnKeypad(fn)

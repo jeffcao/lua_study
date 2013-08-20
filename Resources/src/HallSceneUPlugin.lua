@@ -54,13 +54,11 @@ function HallSceneUPlugin.bind(theClass)
 		local task = GlobalSetting.time_task or default_task
 		dump(task, 'time task is ')
 		local font_item = CCMenuItemFont:create(task.task_name)
-		--local font_item CCMenuItemFont:create('星期一长工要债农民')
 		local menu = CCMenu:createWithItem(font_item)
 		menu:ignoreAnchorPointForPosition(false)
 		font_item:setPosition(ccp(340,450))
 		self.rootNode:addChild(menu)
 		self.time_task_menu = menu
-		print('add time task menu')
 		
 		font_item:registerScriptTapHandler(function() local tm = createTimeTask() self.rootNode:addChild(tm) tm:show() end)
 	end
