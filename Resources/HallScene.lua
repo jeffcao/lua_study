@@ -10,7 +10,7 @@ require "Menu"
 require "src.WidgetPlugin"
 require "src.SoundEffect"
 require "Share"
-
+require "TimeTask"
 
 HallScene = class("HallScene", function() 
 	print("create new hall scene")
@@ -68,6 +68,7 @@ HallScene = class("HallScene", function()
  function HallScene:onEnter() 
 	print("HallScene:onEnter()")
 	self.super.onEnter(self)
+	self:updateTimeTask()
 	self:do_on_enter()
 	local is_playing = SimpleAudioEngine:sharedEngine():isBackgroundMusicPlaying()
 	if SoundSettings.bg_music and not is_playing then
