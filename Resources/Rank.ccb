@@ -145,8 +145,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -161,7 +159,7 @@
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
-						<string>range</string>
+						<string>rank</string>
 						<key>memberVarAssignmentName</key>
 						<string></string>
 						<key>memberVarAssignmentType</key>
@@ -282,7 +280,7 @@
 								<key>customClass</key>
 								<string></string>
 								<key>displayName</key>
-								<string>range_tab</string>
+								<string>rank_tab</string>
 								<key>memberVarAssignmentName</key>
 								<string></string>
 								<key>memberVarAssignmentType</key>
@@ -721,7 +719,7 @@
 						<key>displayName</key>
 						<string>content</string>
 						<key>memberVarAssignmentName</key>
-						<string>range_content</string>
+						<string>rank_content</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -745,9 +743,9 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>100</real>
-									<real>50</real>
-									<integer>1</integer>
+									<real>400</real>
+									<real>200</real>
+									<integer>0</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1363,7 +1361,7 @@
 										<key>type</key>
 										<string>Text</string>
 										<key>value</key>
-										<string>更新倒计时： </string>
+										<string>更新倒计时:</string>
 									</dict>
 								</array>
 							</dict>
@@ -1389,7 +1387,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>80</real>
+											<real>82</real>
 											<real>50</real>
 											<integer>4</integer>
 										</array>
@@ -1578,7 +1576,7 @@
 				<key>displayName</key>
 				<string>CCLayer</string>
 				<key>memberVarAssignmentName</key>
-				<string>bg</string>
+				<string>bg2</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -1667,7 +1665,7 @@
 		<key>displayName</key>
 		<string>CCLayer</string>
 		<key>jsController</key>
-		<string>Range</string>
+		<string>Rank</string>
 		<key>memberVarAssignmentName</key>
 		<string>rootNode</string>
 		<key>memberVarAssignmentType</key>
