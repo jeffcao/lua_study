@@ -1,15 +1,16 @@
 require "CCBReaderLoad"
 require "src.DialogInterface"
+require "src.RankUPlugin"
 
-Range = class("Range", function() return display.newLayer("Range") end)
+Rank = class("Rank", function() return display.newLayer("Rank") end)
 
-function createRange() return Range.new() end
+function createRank() return Rank.new() end
 
-function Range:ctor()
+function Rank:ctor()
 	self.ccbproxy = CCBProxy:create()
 	self.ccbproxy:retain()
-	ccb.Range = self
-	local node = CCBReaderLoad("Range.ccbi", self.ccbproxy, true, "Range")
+	ccb.Rank = self
+	local node = CCBReaderLoad("Rank.ccbi", self.ccbproxy, true, "Rank")
 	self.rootNode = tolua.cast(node, "CCLayer")
 	self:addChild(self.rootNode)
 	
@@ -17,12 +18,14 @@ function Range:ctor()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 end
 
-function Range:init()
+function Rank:init()
 	local menus = CCArray:create()
 	menus:addObject(self.rootNode)
+	menus:addObject(self.rank_content)
 	self:swallowOnTouch(menus)
 	self:setVisible(false)
 	self:swallowOnKeypad()
 end
 
-DialogInterface.bind(Range)
+DialogInterface.bind(Rank)
+RankUPlugin.bind(Rank)

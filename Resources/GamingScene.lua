@@ -3,7 +3,7 @@ require "GameOver"
 require "GChat"
 require "SetDialog"
 require "PlayerInfo"
-require 'Range'
+require 'Rank'
 require "src.GServerMsgPlugin"
 require "src.GUIUpdatePlugin"
 require "src.GPlayerUpdatePlugin"

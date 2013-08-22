@@ -62,7 +62,7 @@ function DialogInterface.bind(theClass)
 			if key == "backClicked" then
 				print("dialog on key pad")
 				if self:isShowing()  then
-					self:dismiss()
+					self:dismiss(true)
 				end
 			end
 		end)

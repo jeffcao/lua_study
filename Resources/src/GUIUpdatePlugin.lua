@@ -489,9 +489,18 @@ function GUIUpdatePlugin.bind(theClass)
 			self:exit()
 		end
 		]]
-		local range = createRange()
-		self.rootNode:addChild(range,self.RANGE_ORDER)
-		range:show()
+		local rank = createRank()
+		local rank_list = {}
+		for i=1,50 do
+			local rank_item = {}
+			rank_item.rank = i
+			rank_item.name = 'little bing ' .. tostring(i)
+			rank_item.bean = 1000*i+1234
+			table.insert(rank_list, rank_item)
+		end
+		rank:rank(rank_list)
+		self.rootNode:addChild(rank,self.RANK_ORDER)
+		rank:show()
 	end
 	
 	
