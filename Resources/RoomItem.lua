@@ -59,16 +59,23 @@ function RoomItem:init_room_info(room_info, room_index)
 	local dizhu_lb = tolua.cast(self.dizhu_lb, "CCLabelTTF")
 	dizhu_lb:setString(self.room_info.ante)
 	local level_sprite = tolua.cast(self.level_sprite, "CCSprite")
-	local room_leve_png = "xinshou.png"
+	local title = tolua.cast(self.title, "CCLabelTTF")
+	dump(self.title, "room_title")
+	local room_name = "农耕畜牧"
+	--local room_leve_png = "xinshou.png"
 
 	if tonumber(self.room_info.room_type) == 2 then
-		room_leve_png = "zhongshou.png"
+		room_name = "别具匠心"
+	--	room_leve_png = "zhongshou.png"
 	elseif tonumber(self.room_info.room_type) == 3 then
-		room_leve_png = "gaoshou.png"
+		room_name = "经营四方"
+	--	room_leve_png = "gaoshou.png"
 	elseif tonumber(self.room_info.room_type) == 4 then
-		room_leve_png = "dashi.png" 
+		room_name = "锦绣仕途"
+	--	room_leve_png = "dashi.png" 
 	end
-	level_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(room_leve_png))
+	--level_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(room_leve_png))
+	title:setString(room_name)
 	
 	local bg_sprite = tolua.cast(self.bg_sprite, "CCSprite")
 	local bg_sprite_png_index = (room_index % 6) > 0 and (room_index % 6) or 6
