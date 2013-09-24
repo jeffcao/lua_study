@@ -55,7 +55,7 @@ function RoomItem:init_room_info(room_info, room_index)
 	cache:addSpriteFramesWithFile(Res.hall_plist)
 	
 	local zhunru_lb = tolua.cast(self.zhunru_lb, "CCLabelTTF")
-	zhunru_lb:setString("准入资格"..self.room_info.min_qualification.."豆子")
+	zhunru_lb:setString(self.room_info.min_qualification.."豆子")
 	local dizhu_lb = tolua.cast(self.dizhu_lb, "CCLabelTTF")
 	dizhu_lb:setString(self.room_info.ante)
 	local level_sprite = tolua.cast(self.level_sprite, "CCSprite")
