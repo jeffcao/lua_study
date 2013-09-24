@@ -101,11 +101,13 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string>ccbResources/common.plist</string>
-									<string>bg.png</string>
+									<string>ccbResources/hall.plist</string>
+									<string>datingbeijing.png</string>
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -182,12 +184,10 @@
 								<key>value</key>
 								<array>
 									<string>ccbResources/common.plist</string>
-									<string>bg_c.png</string>
+									<string>bg_d.png</string>
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
