@@ -9,6 +9,7 @@ function HelpSceneUPlugin.bind(theClass)
 		
 		local help = CCLabelTTF:create()
 		help:setString(help_text)
+		help:setColor(ccc3(67,31,24))
 		help:setFontSize(20.0)
 		help:setDimensions(CCSizeMake(660,400))
 		
