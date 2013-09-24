@@ -41,7 +41,8 @@ HallScene = class("HallScene", function()
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
-	self.avatar_btn:setScale(GlobalSetting.content_scale_factor * 0.45)
+	self.avatar_btn:setScale(GlobalSetting.content_scale_factor * 0.6)
+	self.avatar_bg:setScale(GlobalSetting.content_scale_factor * 0.9)
 	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler(__bind(self.onKeypad, self))
