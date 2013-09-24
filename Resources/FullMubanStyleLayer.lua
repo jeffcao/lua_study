@@ -30,6 +30,25 @@ function FullMubanStyleLayer:ctor()
 	end
 	self:setOnClose(to_hall)
 	self:setOnBackClicked(to_hall)
+	self:repeat_bg()
+end
+
+function FullMubanStyleLayer:repeat_bg()
+	local rect = CCRectMake(0,0,750,386)
+	--local sprite = CCSprite:createWithSpriteFrameName("kuang01_tianchong.png")
+	local sprite = CCSprite:create("ccbResources/kuang01_tianchong.png")
+	dump(sprite, "repeat bg")
+	sprite:setTextureRect(rect)
+	local params = ccTexParams:new()
+	params.minFilter = GL_LINEAR
+	params.magFilter = GL_LINEAR
+	params.wrapS = GL_REPEAT
+	params.wrapT = GL_REPEAT
+	--{GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT}
+	sprite:getTexture():setTexParameters(params)
+	sprite:setAnchorPoint(ccp(0.5,0.5))
+	sprite:setPosition(ccp(402,219))
+	self.rootNode:addChild(sprite)
 end
 
 FullMubanStyleUPlugin.bind(FullMubanStyleLayer)
