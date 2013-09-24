@@ -206,7 +206,7 @@
 										<key>value</key>
 										<array>
 											<string>ccbResources/common.plist</string>
-											<string>setup.png</string>
+											<string>setup_a.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -217,7 +217,7 @@
 										<key>value</key>
 										<array>
 											<string>ccbResources/common.plist</string>
-											<string>setup_a.png</string>
+											<string>setup.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -421,7 +421,7 @@
 										<key>value</key>
 										<array>
 											<string>ccbResources/common.plist</string>
-											<string>help.png</string>
+											<string>help_a.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -432,7 +432,7 @@
 										<key>value</key>
 										<array>
 											<string>ccbResources/common.plist</string>
-											<string>help_a.png</string>
+											<string>help.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -636,7 +636,7 @@
 										<key>value</key>
 										<array>
 											<string>ccbResources/common.plist</string>
-											<string>about.png</string>
+											<string>about_a.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -647,7 +647,7 @@
 										<key>value</key>
 										<array>
 											<string>ccbResources/common.plist</string>
-											<string>about_a.png</string>
+											<string>about.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -851,7 +851,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>ccbResources/Login_new_01.png</string>
+											<string>ccbResources/Login_new_02.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -862,7 +862,7 @@
 										<key>value</key>
 										<array>
 											<string></string>
-											<string>ccbResources/Login_new_02.png</string>
+											<string>ccbResources/Login_new_01.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1066,7 +1066,7 @@
 										<key>value</key>
 										<array>
 											<string>ccbResources/common.plist</string>
-											<string>more.png</string>
+											<string>more_a.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1077,7 +1077,7 @@
 										<key>value</key>
 										<array>
 											<string>ccbResources/common.plist</string>
-											<string>more_a.png</string>
+											<string>more.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1092,6 +1092,8 @@
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -1201,7 +1203,7 @@
 						<key>value</key>
 						<array>
 							<real>100</real>
-							<real>10</real>
+							<real>7.5</real>
 							<integer>4</integer>
 						</array>
 					</dict>
