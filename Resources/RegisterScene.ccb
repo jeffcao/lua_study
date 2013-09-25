@@ -114,86 +114,6 @@
 						<array>
 							<dict>
 								<key>baseClass</key>
-								<string>CCSprite</string>
-								<key>children</key>
-								<array/>
-								<key>customClass</key>
-								<string></string>
-								<key>displayName</key>
-								<string>bg_sprite</string>
-								<key>memberVarAssignmentName</key>
-								<string></string>
-								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
-								<key>properties</key>
-								<array>
-									<dict>
-										<key>name</key>
-										<string>position</string>
-										<key>type</key>
-										<string>Position</string>
-										<key>value</key>
-										<array>
-											<real>50</real>
-											<real>50</real>
-											<integer>4</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>anchorPoint</string>
-										<key>type</key>
-										<string>Point</string>
-										<key>value</key>
-										<array>
-											<real>0.5</real>
-											<real>0.5</real>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>scale</string>
-										<key>type</key>
-										<string>ScaleLock</string>
-										<key>value</key>
-										<array>
-											<real>1</real>
-											<real>1</real>
-											<false/>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>tag</string>
-										<key>type</key>
-										<string>Integer</string>
-										<key>value</key>
-										<integer>1000</integer>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>ignoreAnchorPointForPosition</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>displayFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string>ccbResources/login.plist</string>
-											<string>kuang_regist.png</string>
-										</array>
-									</dict>
-								</array>
-							</dict>
-							<dict>
-								<key>baseClass</key>
 								<string>CCLabelTTF</string>
 								<key>children</key>
 								<array/>
@@ -214,8 +134,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>20.052770614624023</real>
-											<real>17.857143402099609</real>
+											<real>24</real>
+											<real>10</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -226,7 +146,7 @@
 										<string>Point</string>
 										<key>value</key>
 										<array>
-											<real>0.5</real>
+											<real>1</real>
 											<real>0.5</real>
 										</array>
 									</dict>
@@ -304,7 +224,7 @@
 										<key>type</key>
 										<string>Text</string>
 										<key>value</key>
-										<string>确认密码</string>
+										<string>重复密码：</string>
 									</dict>
 								</array>
 							</dict>
@@ -330,7 +250,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>20.052770614624023</real>
+											<real>24</real>
 											<real>62.5</real>
 											<integer>4</integer>
 										</array>
@@ -342,7 +262,7 @@
 										<string>Point</string>
 										<key>value</key>
 										<array>
-											<real>0.5</real>
+											<real>1</real>
 											<real>0.5</real>
 										</array>
 									</dict>
@@ -420,7 +340,7 @@
 										<key>type</key>
 										<string>Text</string>
 										<key>value</key>
-										<string>性        别</string>
+										<string>性别：</string>
 									</dict>
 								</array>
 							</dict>
@@ -446,8 +366,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>20</real>
-											<real>85</real>
+											<real>24</real>
+											<real>88</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -458,7 +378,7 @@
 										<string>Point</string>
 										<key>value</key>
 										<array>
-											<real>0.5</real>
+											<real>1</real>
 											<real>0.5</real>
 										</array>
 									</dict>
@@ -536,7 +456,7 @@
 										<key>type</key>
 										<string>Text</string>
 										<key>value</key>
-										<string>昵        称</string>
+										<string>昵称：</string>
 									</dict>
 								</array>
 							</dict>
@@ -562,8 +482,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>20.052770614624023</real>
-											<real>39.880950927734375</real>
+											<real>24</real>
+											<real>36</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -574,7 +494,7 @@
 										<string>Point</string>
 										<key>value</key>
 										<array>
-											<real>0.5</real>
+											<real>1</real>
 											<real>0.5</real>
 										</array>
 									</dict>
@@ -652,7 +572,7 @@
 										<key>type</key>
 										<string>Text</string>
 										<key>value</key>
-										<string>密        码</string>
+										<string>密码：</string>
 									</dict>
 								</array>
 							</dict>
@@ -678,8 +598,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>34.036937713623047</real>
-											<real>75</real>
+											<real>24</real>
+											<real>78</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -771,8 +691,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>34.036937713623047</real>
-											<real>29.761905670166016</real>
+											<real>24</real>
+											<real>26</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -864,8 +784,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>34.036937713623047</real>
-											<real>8.9285717010498047</real>
+											<real>24</real>
+											<real>1</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -934,6 +854,8 @@
 										<true/>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 							<dict>
 								<key>baseClass</key>
@@ -957,7 +879,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>46</real>
+											<real>24</real>
 											<real>61.309524536132812</real>
 											<integer>4</integer>
 										</array>
@@ -969,7 +891,7 @@
 										<string>Point</string>
 										<key>value</key>
 										<array>
-											<real>0.5</real>
+											<real>0.0</real>
 											<real>0.5</real>
 										</array>
 									</dict>
@@ -1073,7 +995,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>38</real>
+											<real>42</real>
 											<real>61</real>
 											<integer>4</integer>
 										</array>
@@ -1154,8 +1076,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>58</real>
-											<real>61</real>
+											<real>78</real>
+											<real>60.714286804199219</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -1235,7 +1157,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>66</real>
+											<real>60</real>
 											<real>61.299999237060547</real>
 											<integer>4</integer>
 										</array>
@@ -1247,7 +1169,7 @@
 										<string>Point</string>
 										<key>value</key>
 										<array>
-											<real>0.5</real>
+											<real>0.0</real>
 											<real>0.5</real>
 										</array>
 									</dict>
@@ -1347,8 +1269,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>8</real>
-									<real>30</real>
+									<real>7</real>
+									<real>19</real>
 									<integer>4</integer>
 								</array>
 							</dict>
@@ -1531,8 +1453,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -1553,7 +1473,7 @@
 								<key>value</key>
 								<array>
 									<real>73</real>
-									<real>15</real>
+									<real>4</real>
 									<integer>4</integer>
 								</array>
 							</dict>
@@ -1744,7 +1664,7 @@
 								<key>value</key>
 								<array>
 									<real>27</real>
-									<real>15</real>
+									<real>4</real>
 									<integer>4</integer>
 								</array>
 							</dict>
