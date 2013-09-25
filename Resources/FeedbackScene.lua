@@ -22,11 +22,16 @@ function FeedbackScene:ctor()
 	local ccbproxy = CCBProxy:create()
  	local node = CCBReaderLoad("FeedbackScene.ccbi", ccbproxy, false, "")
  	
- 	self.input_png = "kuang11.png"
+ 	self.feedback_ttf:setColor(ccc3(255,255,255))
+ 	
+ 	self.input_png = "ccbResources/yinyingkuang.png"
+ 	self.direct = true
 	self.feedback_box = self:addEditbox(self.feed_layer, 500, 200, false, 101)
 	self.feedback_box:setInputMode(kEditBoxInputModeAny)
 	self.feedback_box:registerScriptEditBoxHandler(editBoxTextEventHandle)
-	self.feedback_box:setFontColor(display.COLOR_WHITE)
+	--self.feedback_box:setFontColor(display.COLOR_WHITE)
+	self.feedback_box:setFontColor(ccc3(93,72,41))
+	self.feedback_box:setFontSize(1)
 	self.feedback_box:setMaxLength(100)
 	--self.feedback_ttf:setDimensions(CCSizeMake(460,160))
 	

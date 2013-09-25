@@ -7,8 +7,15 @@ function UIControllerPlugin.bind(theClass)
 	function theClass:createEditbox(width, height, is_password)
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 		cache:addSpriteFramesWithFile(Res.common2_plist)
+		cache:addSpriteFramesWithFile(Res.common3_plist)
 		
-		local scale9_2 = CCScale9Sprite:createWithSpriteFrameName(self.input_png)
+		local scale9_2 = nil
+		if not self.direct then 
+			scale9_2 = CCScale9Sprite:createWithSpriteFrameName(self.input_png)
+		else 
+			cclog('load 9sprite from direct dir')
+			scale9_2 = CCScale9Sprite:create(self.input_png)
+		end
 		local editbox2 = CCEditBox:create(CCSizeMake(width,height), scale9_2)
 		editbox2:setPosition(ccp(0,0))
 		editbox2:setAnchorPoint(ccp(0,0))

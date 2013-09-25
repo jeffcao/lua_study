@@ -56,6 +56,9 @@ HallScene = class("HallScene", function()
 	self:init_connectivity()
 	
 	self.music_update = Timer.add_repeat_timer(30, __bind(self.playMusic, self))
+	
+	
+	
  end
  
 

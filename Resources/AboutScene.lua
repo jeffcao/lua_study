@@ -27,5 +27,13 @@ function AboutScene:ctor()
 	self.version_lbl:setString(version)
 	layer:setContent(node)
 
+	--test 9sprite
+	
+	--local scale9 = CCScale9Sprite:create("ccbResources/yinyingkuang.png")
+	--scale9:setPosition(ccp(400,240))
+	--local size = CCSizeMake(700,340)
+	--dump(size, "size is")
+	--scale9:setPreferredSize(size)
+ 	--self:addChild(scale9)
 end
 
