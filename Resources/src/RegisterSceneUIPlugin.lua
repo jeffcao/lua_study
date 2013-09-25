@@ -3,7 +3,7 @@ RegisterSceneUIPlugin = {}
 function RegisterSceneUIPlugin.bind(theClass)
 	
 	function theClass:init_input_controller()
-		self.input_png = "kuang_a.png"
+		self.input_png = "kuang_b.png"
 		local name_box = self:addEditbox(self.nick_name_layer, 225, 30, false, 101)
 		name_box:setPlaceHolder("昵称为不大于10位的任意字符")
 		name_box:setMaxLength(10)
