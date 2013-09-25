@@ -3,14 +3,16 @@ LoginSceneUIPlugin = {}
 function LoginSceneUIPlugin.bind(theClass)
 		
 	function theClass:init_input_controll()
-		self.input_png = "xiankuang02.png"
+		self.input_png = "touming.png"
 		local account_box = self:addEditbox(self.register_account_layer, 145, 35, false, 101)
+		account_box:setFontColor(display.COLOR_WHITE)
 		account_box:setMaxLength(5)
 		local pwd_box = self:addEditbox(self.forget_password_layer, 165, 35, true, 102)
 		pwd_box:setMaxLength(30)
+		pwd_box:setFontColor(display.COLOR_WHITE)
 		local createUserIdMenue = function(lb_text)
 			local menu_lb = CCLabelTTF:create(lb_text, "default",16)
-			menu_lb:setColor(ccc3(0, 0, 0))
+			menu_lb:setColor(display.COLOR_WHITE)
 			
 			local menu_item = CCMenuItemLabel:create(menu_lb)
 
@@ -25,8 +27,8 @@ function LoginSceneUIPlugin.bind(theClass)
 		local pwd_bg_sprite = tolua.cast(self.pwd_bg_sprite, "CCScale9Sprite") 
 		local user_bg_sprite = tolua.cast(self.user_bg_sprite, "CCScale9Sprite") 
 		
-		self.user_bg_sprite:setSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_a.png"))
-		self.pwd_bg_sprite:setSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_a.png"))
+		self.user_bg_sprite:setSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_b.png"))
+		self.pwd_bg_sprite:setSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_b.png"))
 		self.user_bg_sprite:setPreferredSize(CCSizeMake(220, 40))
 		self.pwd_bg_sprite:setPreferredSize(CCSizeMake(220, 40))
 	
