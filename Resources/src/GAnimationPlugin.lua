@@ -39,7 +39,7 @@ end)
 
 function Explosion:ctor()
 	
-	local pFrame = cache:spriteFrameByName("baoza_0.png")
+	local pFrame = cache:spriteFrameByName("baoza_1.png")
 	self:setDisplayFrame(pFrame)
 	self:setScale(GlobalSetting.content_scale_factor)
 	local animation = CCAnimationCache:sharedAnimationCache():animationByName("baozha")
@@ -52,7 +52,7 @@ end
 function Explosion.sharedExplosion()
 	local animFrames = CCArray:create()
 	local str = ""
-	for index = 0, 6 do
+	for index = 1, 13 do
 		str = "baoza_" .. index .. ".png"
 		local frame = cache:spriteFrameByName(str)
 		animFrames:addObject(frame)
