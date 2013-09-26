@@ -60,6 +60,7 @@ function GameOverPlugin.bind(theClass)
 		--if tonumber(gaming_layer.next_user.user_id) ~= tonumber(game_result.winner_player_id) then
 		if next_balance <= 0 then
 		--	next_user_win = "失败"
+			self.next_user_win_flag:setDisplayFrame(frameCache:spriteFrameByName("shibai.png"))
 		end
 		--self.lbl_next_user_win:setString(next_user_win)
 		self.lbl_next_user_win_value:setString("" .. next_balance)
@@ -71,6 +72,7 @@ function GameOverPlugin.bind(theClass)
 		--if tonumber(gaming_layer.prev_user.user_id) ~= tonumber(game_result.winner_player_id) then
 		if prev_balance <= 0 then
 		--	prev_user_win = "失败"
+			self.prev_user_win_flag:setDisplayFrame(frameCache:spriteFrameByName("shibai.png"))
 		end
 		--self.lbl_prev_user_win:setString(prev_user_win)
 		self.lbl_prev_user_win_value:setString("" .. prev_balance)

@@ -69,6 +69,32 @@
                 <key>sourceSize</key>
                 <string>{609,359}</string>
             </dict>
+            <key>shengli.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{974,29},{47,24}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{47,24}}</string>
+                <key>sourceSize</key>
+                <string>{47,24}</string>
+            </dict>
+            <key>shibai.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{974,2},{48,25}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{48,25}}</string>
+                <key>sourceSize</key>
+                <string>{48,25}</string>
+            </dict>
             <key>win.png</key>
             <dict>
                 <key>frame</key>
@@ -92,7 +118,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:47e57420d9e8c72ca9e220c1b7dc8269$</string>
+            <string>$TexturePacker:SmartUpdate:cc8956bbcf9e5926917a73d8895255ad$</string>
             <key>textureFileName</key>
             <string>jiesuan.png</string>
         </dict>
