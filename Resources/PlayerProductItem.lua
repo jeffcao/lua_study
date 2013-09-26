@@ -83,8 +83,8 @@ function PlayerProductItem:init_item(product, show_use_notify, small)
 	end
 	 
 	if small then
-		self.use_menu:setPosition(CCPointMake(420,34))
-		time_lb:setPosition(CCPointMake(420,14))
+	--	self.use_menu:setPosition(CCPointMake(420,34))
+	--	time_lb:setPosition(CCPointMake(420,14))
 	end
 	
 end

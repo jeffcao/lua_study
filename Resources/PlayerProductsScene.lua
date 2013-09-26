@@ -23,7 +23,7 @@ function PlayerProductsScene:ctor()
 	local layer = createFullMubanStyleLayer()
 	self.rootNode = layer
 	self:addChild(layer)
-	layer:setTitle("biaoti03.png")
+	layer:setTitle("biaoti06.png")
 	
 	self:init_product_list()
 	

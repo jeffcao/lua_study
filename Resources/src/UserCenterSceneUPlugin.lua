@@ -45,10 +45,12 @@ function UserCenterSceneUPlugin.bind(theClass)
 		self:doSetLayer("player_cats")
 	end
 	
-	function theClass:init_controller()
-		self:set_title("biaoti02.png")
-		self:display_avatar()
-		self:doSetLayer("personal_info")
+	function theClass:init_controller(i_layer)
+		i_layer = i_layer or "personal_info"
+		if i_layer == "personal_info" then
+			self:display_avatar()
+		end
+		self:doSetLayer(i_layer)
 	end
 	
 	function theClass:after_player_info_changed(data)

@@ -75,7 +75,8 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:do_ui_prop_btn_clicked(tag, sender)
 		print("[HallSceneUPlugin:do_ui_prop_btn_clicked]")
-		local scene = createPlayerProductsScene()
+		--local scene = createPlayerProductsScene()
+		local scene = createUserCenterScene(__bind(self.init_current_player_info, self),"player_cats")
 		CCDirector:sharedDirector():pushScene(scene)
 	end
 	

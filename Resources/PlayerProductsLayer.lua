@@ -34,7 +34,7 @@ function PlayerProductsLayer:create_product_list()
 	local h = LuaEventHandler:create(function(fn, table, a1, a2)
 		local r
 		if fn == "cellSize" then
-			r = CCSizeMake(450,80)
+			r = CCSizeMake(512,140)
 		elseif fn == "cellAtIndex" then
 			if not a2 then
 				a2 = CCTableViewCell:create()
@@ -56,8 +56,9 @@ function PlayerProductsLayer:create_product_list()
 		end
 		return r
 	end)
-	local t = LuaTableView:createWithHandler(h, CCSizeMake(550,340))
-	t:setPosition(CCPointMake(95,70))
+	local t = LuaTableView:createWithHandler(h, CCSizeMake(700,380))
+	t:setAnchorPoint(ccp(0.5,0.5))
+	t:setPosition(CCPointMake(3,45))
 	
 	for index=#(self.product_list), 1, -1 do
 		t:updateCellAtIndex(index-1)
