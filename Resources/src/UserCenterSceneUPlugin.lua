@@ -21,8 +21,8 @@ function UserCenterSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:set_title(tile_png)
-		local title_sprite = tolua.cast(self.title_sprite, "CCSprite")
-		title_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(tile_png))
+		--local title_sprite = tolua.cast(self.title_sprite, "CCSprite")
+		--title_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(tile_png))
 	end
 	
 	function theClass:do_ui_avatar_btn_clicked(tag, sender)

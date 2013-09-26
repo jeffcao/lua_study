@@ -1,7 +1,7 @@
 require "src.UserCenterSceneUPlugin"
 require "src.UIControllerPlugin"
 require "SetDialog"
-
+require "FullMubanStyleLayer"
 
 UserCenterScene = class("UserCenterScene", function()
 	print("new UserCenterScene")
@@ -27,7 +27,7 @@ function UserCenterScene:ctor(avatar_call_back)
 	local ccbproxy = CCBProxy:create()
  	local node = CCBReaderLoad("UserCenterScene.ccbi", ccbproxy, false, "")
  	self.rootNode = tolua.cast(node, "CCLayer")
-	self:addChild(node)
+	--self:addChild(node)
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
@@ -37,6 +37,13 @@ function UserCenterScene:ctor(avatar_call_back)
 	self.avatar_call_back = avatar_call_back
 	
 	self:init_controller()
+	
+	self.avatar_bg:setScale(GlobalSetting.content_scale_factor*1.55)
+	
+	local layer = createFullMubanStyleLayer()
+	layer:setTitle("biaoti02.png")
+	self:addChild(layer)
+	layer:setContent(node)
 	
 end
 
