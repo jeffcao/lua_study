@@ -72,7 +72,9 @@ function InfoLayer:init_input_controller()
 	print("[InfoLayer:init_input_controller]")
 	
 	self.input_png = "kuang_a.png"
-	self.nick_name_box = self:addEditbox(self.nick_name_edit_layer, 225, 30, false, 101)
+	self.nick_name_box = self:addEditbox(self.nick_name_edit_layer, 225, 45, false, 101)
+	self.nick_name_box:setFont("default",24)
+	self.nick_name_box:setFontColor(ccc3(255,255,255))
 	self.nick_name_box:setMaxLength(10)
 	self.nick_name_box:setPlaceHolder("昵称为不大于10位的任意字符")
 	print("[InfoLayer:init_input_controller] nick_name_box: ", self.nick_name_box)
@@ -81,8 +83,12 @@ function InfoLayer:init_input_controller()
 	
 	local menu1 = CheckBox.create("男")
 	local menu2 = CheckBox.create("女")
-	menu1:setPosition(ccp(72,25))
-	menu2:setPosition(ccp(200,25))
+	menu1.title:setFontSizeObj(24)
+	menu2.title:setFontSizeObj(24)
+	menu1.title:setColor(GlobalSetting.zongse)
+	menu2.title:setColor(GlobalSetting.zongse)
+	menu1:setPosition(ccp(90,33))
+	menu2:setPosition(ccp(210,33))
 	
 	local function menuCallback(tag, sender)
         if sender == menu1.toggle then
