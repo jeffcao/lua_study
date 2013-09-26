@@ -47,9 +47,7 @@ function UserCenterSceneUPlugin.bind(theClass)
 	
 	function theClass:init_controller(i_layer)
 		i_layer = i_layer or "personal_info"
-		if i_layer == "personal_info" then
-			self:display_avatar()
-		end
+		self:display_avatar()
 		self:doSetLayer(i_layer)
 	end
 	

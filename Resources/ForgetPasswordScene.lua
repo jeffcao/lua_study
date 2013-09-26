@@ -23,12 +23,16 @@ function ForgetPasswordScene:ctor()
  	local node = CCBReaderLoad("ForgetPassword.ccbi", ccbproxy, false, "")
  	
  	self.input_png = "kuang_a.png"
-	self.user_id_box = self:addEditbox(self.user_id_box_layer, 270, 30, false, 101)
+	self.user_id_box = self:addEditbox(self.user_id_box_layer, 300, 50, false, 101)
 	self.user_id_box:setInputMode(kEditBoxInputModeNumeric)
 	self.user_id_box:setMaxLength(5)
-	self.user_id_box:setPlaceHolder("请输入帐号(如:12345)")
-	self.mail_box = self:addEditbox(self.mail_box_layer, 270, 30, false, 101)
-	self.mail_box:setPlaceHolder("example@example.com")
+	self.user_id_box:setPlaceHolder(" 请输入帐号(如:12345)")
+	self.mail_box = self:addEditbox(self.mail_box_layer, 300, 50, false, 101)
+	self.mail_box:setPlaceHolder(" example@example.com")
+	self.user_id_box:setFont("default",24)
+	self.user_id_box:setFontColor(ccc3(255,255,255))
+	self.mail_box:setFont("default",24)
+	self.mail_box:setFontColor(ccc3(255,255,255))
 	
 	--self.feedback_ttf:setDimensions(CCSizeMake(460,160))
 	
