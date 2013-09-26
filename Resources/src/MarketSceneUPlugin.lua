@@ -16,7 +16,7 @@ function MarketSceneUPlugin.bind(theClass)
 		local h = LuaEventHandler:create(function(fn, table, a1, a2)
 			local r
 			if fn == "cellSize" then
-				r = CCSizeMake(800,80)
+				r = CCSizeMake(800,130)
 			elseif fn == "cellAtIndex" then
 				if not a2 then
 					a2 = CCTableViewCell:create()
@@ -35,8 +35,8 @@ function MarketSceneUPlugin.bind(theClass)
 			end
 			return r
 		end)
-		local t = LuaTableView:createWithHandler(h, CCSizeMake(800,300))
-		t:setPosition(CCPointMake(0,70))
+		local t = LuaTableView:createWithHandler(h, CCSizeMake(800,370))
+		t:setPosition(CCPointMake(0,35))
 		
 		for index=#(product_list), 1, -1 do
 			t:updateCellAtIndex(index-1)

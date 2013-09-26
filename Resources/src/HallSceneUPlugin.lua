@@ -61,8 +61,8 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:onInfoClick(tag, sender)
-	DDZJniHelper:create():messageJava('share_intent_1')
-	--	self:doToInfo()
+	--DDZJniHelper:create():messageJava('share_intent_1')
+	  self:doToInfo()
 	end
 	
 	function theClass:onAvatarClick(tag, sender)
