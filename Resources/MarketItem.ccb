@@ -323,6 +323,18 @@
 							</dict>
 							<dict>
 								<key>name</key>
+								<string>color</string>
+								<key>type</key>
+								<string>Color3</string>
+								<key>value</key>
+								<array>
+									<integer>254</integer>
+									<integer>255</integer>
+									<integer>255</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>dimensions</string>
 								<key>type</key>
 								<string>Size</string>
@@ -728,8 +740,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>

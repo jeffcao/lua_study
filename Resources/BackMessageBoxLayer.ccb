@@ -143,13 +143,13 @@
 			</dict>
 			<dict>
 				<key>baseClass</key>
-				<string>CCSprite</string>
+				<string>CCScale9Sprite</string>
 				<key>children</key>
 				<array/>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCSprite</string>
+				<string>bg</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -163,9 +163,9 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>400</real>
-							<real>240</real>
-							<integer>0</integer>
+							<real>50</real>
+							<real>50</real>
+							<integer>4</integer>
 						</array>
 					</dict>
 					<dict>
@@ -194,14 +194,6 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>tag</string>
-						<key>type</key>
-						<string>Integer</string>
-						<key>value</key>
-						<integer>1000</integer>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>ignoreAnchorPointForPosition</string>
 						<key>type</key>
 						<string>Check</string>
@@ -210,14 +202,78 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>displayFrame</string>
+						<string>spriteFrame</string>
 						<key>type</key>
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
 							<string>ccbResources/common3.plist</string>
-							<string>ziliaokuang01.png</string>
+							<string>tanchukuang.png</string>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>preferedSize</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>400</real>
+							<real>260</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>opacity</string>
+						<key>type</key>
+						<string>Byte</string>
+						<key>value</key>
+						<integer>255</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>color</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<integer>255</integer>
+							<integer>255</integer>
+							<integer>255</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>insetLeft</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>insetTop</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>insetRight</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>insetBottom</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
 					</dict>
 				</array>
 			</dict>
@@ -867,7 +923,7 @@
 								<key>value</key>
 								<array>
 									<string>ccbResources/common3.plist</string>
-									<string>kuang.png</string>
+									<string>yinyingkuang.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -877,8 +933,8 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>350</real>
-									<real>130</real>
+									<real>316</real>
+									<real>145</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1126,7 +1182,7 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>330</real>
+									<real>290</real>
 									<real>120</real>
 									<integer>0</integer>
 								</array>
@@ -1248,13 +1304,13 @@
 			</dict>
 			<dict>
 				<key>baseClass</key>
-				<string>CCSprite</string>
+				<string>CCLabelTTF</string>
 				<key>children</key>
 				<array/>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCSprite</string>
+				<string>CCLabelTTF</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -1269,7 +1325,7 @@
 						<key>value</key>
 						<array>
 							<real>50</real>
-							<real>70</real>
+							<real>71.458335876464844</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -1299,14 +1355,6 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>tag</string>
-						<key>type</key>
-						<string>Integer</string>
-						<key>value</key>
-						<integer>1000</integer>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>ignoreAnchorPointForPosition</string>
 						<key>type</key>
 						<string>Check</string>
@@ -1315,18 +1363,72 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>displayFrame</string>
+						<string>fontName</string>
 						<key>type</key>
-						<string>SpriteFrame</string>
+						<string>FontTTF</string>
+						<key>value</key>
+						<string>Helvetica</string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>fontSize</string>
+						<key>type</key>
+						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<string></string>
-							<string>ccbResources/wenxintishi_03.png</string>
+							<real>24</real>
+							<integer>0</integer>
 						</array>
 					</dict>
+					<dict>
+						<key>name</key>
+						<string>color</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<integer>85</integer>
+							<integer>42</integer>
+							<integer>31</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>dimensions</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>horizontalAlignment</string>
+						<key>type</key>
+						<string>IntegerLabeled</string>
+						<key>value</key>
+						<integer>0</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>verticalAlignment</string>
+						<key>type</key>
+						<string>IntegerLabeled</string>
+						<key>value</key>
+						<integer>0</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>string</string>
+						<key>type</key>
+						<string>Text</string>
+						<key>value</key>
+						<string>温馨提示</string>
+					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
