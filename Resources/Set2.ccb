@@ -156,9 +156,9 @@
 				<key>displayName</key>
 				<string>bg</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>container_layer</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -409,8 +409,6 @@
 						<string>声音设置</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>

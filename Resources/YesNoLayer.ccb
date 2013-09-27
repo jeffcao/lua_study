@@ -151,9 +151,9 @@
 				<key>displayName</key>
 				<string>bg</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>bg</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -276,6 +276,8 @@
 						<real>0.0</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -970,8 +972,6 @@
 						<string>您正在游戏中，此时强退系统将最大输赢扣初您的豆子。</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
