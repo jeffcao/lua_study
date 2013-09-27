@@ -59,7 +59,7 @@ function FeedbackScene:do_on_trigger_success(data)
 	print("[InfoLayer:do_on_trigger_success]")
 	self:hide_progress_message_box()
 	
-	self:show_message_box("保存成功")
+	self:show_message_box_suc("反馈成功")
 	
 	Timer.add_timer(2, function()
 			CCDirector:sharedDirector():popScene()

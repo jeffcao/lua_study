@@ -71,7 +71,7 @@ function ForgetPasswordScene:do_on_trigger_success(data)
 	print("[ForgetPasswordScene:do_on_trigger_success]")
 	self:hide_progress_message_box()
 	
-	self:show_message_box("提交信息成功, 请注意查收邮件.")
+	self:show_message_box_suc("提交信息成功, 请注意查收邮件.")
 
 end
 

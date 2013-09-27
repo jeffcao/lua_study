@@ -78,7 +78,11 @@ function UIControllerPlugin.bind(theClass)
 		self.msg_box_container = msg_box_container
 	end
 	
-	function theClass:create_message_layer(message, msg_width, msg_height)
+	function theClass:create_message_layer(message, params)
+		params = params or {}
+		local msg_width = params.msg_width
+		local msg_height = params.msg_height
+		local type = params.type
 		local running_scene = CCDirector:sharedDirector():getRunningScene()
 		if not self.msg_box_container and running_scene ~= self then
 			self.msg_box_container = running_scene.rootNode
@@ -93,6 +97,8 @@ function UIControllerPlugin.bind(theClass)
 		
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 		cache:addSpriteFramesWithFile(Res.dialog_plist)
+		cache:addSpriteFramesWithFile(Res.common3_plist)
+		
 
 		local win_size = self.rootNode:getContentSize()
 		print("win_size.width: ", win_size.width, "win_size.height:", win_size.height)
@@ -111,10 +117,18 @@ function UIControllerPlugin.bind(theClass)
 		content_layer:setAnchorPoint(ccp(0.5, 0.5))
 		content_layer:setPosition(ccp(win_size.width/2, win_size.height/2))	
 
-		local msg_sprite = CCScale9Sprite:createWithSpriteFrameName("cue_a.png")
-		local msg_lb = CCLabelTTF:create(message, "default",16)
+		local msg_sprite = CCScale9Sprite:createWithSpriteFrameName("tanchukuang.png")--"cue_a.png")
+		if type == 'progress' then
+			msg_sprite = CCScale9Sprite:createWithSpriteFrameName("cue_a.png")
+		end
+		local msg_lb = CCLabelTTF:create(message, "default",20)
 		
-		msg_lb:setColor(ccc3(255, 255, 255))
+		msg_lb:setColor(ccc3(67,31,24))
+		if type == 'progress' then
+			msg_lb:setColor(ccc3(255,255,255))
+		elseif type == 'warning' then
+			msg_lb:setColor(ccc3(255,0,0))
+		end
 		content_layer:addChild(msg_lb, 999, 900)
 		msg_lb:setAnchorPoint(ccp(0.5, 0.5))
 		msg_lb:setPosition(ccp(msg_width/2, msg_height/2))
@@ -130,7 +144,7 @@ function UIControllerPlugin.bind(theClass)
 	end
 	
 	function theClass:load_untouched_layer()
-		local msg_layer = self:create_message_layer("", 0, 0)
+		local msg_layer = self:create_message_layer("", {msg_width=0,msg_height=0})
 		self.rootNode:addChild(msg_layer, 0, 904)
 
 		scaleNode(msg_layer, GlobalSetting.content_scale_factor)	
@@ -142,11 +156,20 @@ function UIControllerPlugin.bind(theClass)
 		msg_layer = nil
 	end
 	
-	function theClass:show_message_box(message, msg_width, msg_height, z_order)
-		msg_width = msg_width or 330
-		msg_height = msg_height or 50
-		z_order = z_order or 1000
-		local msg_layer = self:create_message_layer(message, msg_width, msg_height)
+	function theClass:show_message_box_suc(message, params)
+		params = params or {}
+		params.type = 'ok'
+		self:show_message_box(message, params)
+	end
+	
+	function theClass:show_message_box(message, params)
+		local w = 200 + 5*string.len(message)
+		params = params or {}
+		local msg_width = params.msg_width or w--330
+		local msg_height = params.msg_height or 70
+		local z_order = params.z_order or 1000
+		local type = params.type or 'warning'
+		local msg_layer = self:create_message_layer(message, {type=type,msg_width=msg_width, msg_height=msg_height})
 		self.msg_box_container:addChild(msg_layer, z_order, 901)
 
 		scaleNode(msg_layer, GlobalSetting.content_scale_factor)
@@ -168,7 +191,7 @@ function UIControllerPlugin.bind(theClass)
 		msg_width = msg_width or 350
 		msg_height = msg_height or 73
 		z_order = z_order or 1000
-		local msg_layer = self:create_message_layer(message, msg_width, msg_height)
+		local msg_layer = self:create_message_layer(message, {type='progress',msg_width=msg_width, msg_height=msg_height})
 		local content_layer = msg_layer:getChildByTag(100)
 		local progress_sprite = CCSprite:create()
 --		progress_sprite:setScale(0.75)
