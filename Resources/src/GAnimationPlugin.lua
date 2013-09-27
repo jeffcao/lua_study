@@ -6,7 +6,7 @@ function GAnimationPlugin.sharedAnimation()
 	cache:addSpriteFramesWithFile(Res.s_anim_plist)
 	Explosion.sharedExplosion()
 	ButterFly.sharedButterFly()
-	Insects.sharedInsects()
+	--Insects.sharedInsects()
 end
 
 function GAnimationPlugin.share(frames, name)
