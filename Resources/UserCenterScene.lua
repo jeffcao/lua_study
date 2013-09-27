@@ -44,7 +44,7 @@ function UserCenterScene:ctor(avatar_call_back, i_layer)
 	layer:setTitle("biaoti02.png")
 	self:addChild(layer)
 	layer:setContent(node)
-	
+	layer:setOnBackClicked(function() print('muban on close') end)
 end
 
 function UserCenterScene:onEnter()

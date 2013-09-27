@@ -6,12 +6,14 @@ UserCenterSceneUPlugin = {}
 
 function UserCenterSceneUPlugin.bind(theClass)
 	function theClass:onKeypad(key)
+		cclog('onkeypad', key)
 		if key == "backClicked" then
 			self:doToHall()
 		end
 	end
 	
 	function theClass:doToHall()
+		cclog('doToHall')
 		--local scene = createHallScene()
 		CCDirector:sharedDirector():popScene()
 	end
