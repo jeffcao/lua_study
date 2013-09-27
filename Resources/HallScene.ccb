@@ -1226,7 +1226,7 @@
 										<key>customClass</key>
 										<string></string>
 										<key>displayName</key>
-										<string>prop_btn</string>
+										<string>share_btn</string>
 										<key>memberVarAssignmentName</key>
 										<string>share_btn</string>
 										<key>memberVarAssignmentType</key>
@@ -1352,6 +1352,14 @@
 								<array>
 									<dict>
 										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>position</string>
 										<key>type</key>
 										<string>Position</string>
@@ -1427,6 +1435,8 @@
 										<true/>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -2086,8 +2096,6 @@
 										<string></string>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -3134,6 +3142,14 @@
 						<integer>0</integer>
 						<key>properties</key>
 						<array>
+							<dict>
+								<key>name</key>
+								<string>visible</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
 							<dict>
 								<key>name</key>
 								<string>position</string>
