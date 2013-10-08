@@ -1,3 +1,8 @@
+local default_share  = "由老马工作室倾情推出的《我爱斗地主》上线啦！快来看看我们的新玩法吧！\n"
+				   .."百万巨制，交友神器，和农民一起斗地主，我的地盘我做主。\n"
+                   .."一切尽在《我爱斗地主》。\n"
+                   .."（分享自@《我爱斗地主》官方网站）"
+
 GlobalSetting = {
 	-- 连接最大重连次数
 	CONNECTION_MAX_RETRIES = 6,
@@ -44,6 +49,12 @@ GlobalSetting = {
 	
 	run_env = "test",
 	
-	zongse = ccc3(67,31,24)
+
+	zongse = ccc3(67,31,24),
+
+	sina_share_url = "http://service.weibo.com/share/share.php?appkey=2045436852&title="..default_share.."&ralateUid=&language=zh_cn",
+	
+	tencent_share_url = "http://share.v.t.qq.com/index.php?c=share&a=index&appkey=801192940&title="..default_share
+
 }
 

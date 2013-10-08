@@ -382,6 +382,7 @@ function GUIUpdatePlugin.bind(theClass)
 		self.rootNode:stopActionByTag(self.GAME_OVER_HIDE_ACTION_TAG)
 	end
 	
+	--[[
 	function theClass:onCloseClicked() 
 		if self._has_gaming_started then
 			self:showExit()
@@ -389,6 +390,7 @@ function GUIUpdatePlugin.bind(theClass)
 			self:exit()
 		end
 	end
+	]]
 	
 	function theClass:showGameOver(data)
 		self.menu_tuoguan:setVisible(false)
@@ -480,11 +482,25 @@ function GUIUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:onCloseClicked() 
+		--[[
 		if self._has_gaming_started then
 			self:showExit()
 	 	else 
 			self:exit()
 		end
+		]]
+		local rank = createRank()
+		local rank_list = {}
+		for i=1,50 do
+			local rank_item = {}
+			rank_item.rank = i
+			rank_item.name = 'little bing ' .. tostring(i)
+			rank_item.bean = 1000*i+1234
+			table.insert(rank_list, rank_item)
+		end
+		rank:rank(rank_list)
+		self.rootNode:addChild(rank,self.RANK_ORDER)
+		rank:show()
 	end
 	
 	

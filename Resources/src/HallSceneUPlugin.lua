@@ -34,9 +34,33 @@ function HallSceneUPlugin.bind(theClass)
 		end
 	end
 	
+	function theClass:doShare()
+		self.share_dialog_layer = createShare()
+		self.rootNode:addChild(self.share_dialog_layer, 1001, 907)
+		print("[HallSceneUPlugin:share] share:show")
+		self.share_dialog_layer:show()
+	end
+	
 	function theClass:doShowExitDialog()
 		endtolua_guifan()
 		
+	end
+	
+	function theClass:updateTimeTask()
+		if self.time_task_menu then
+			self.time_task_menu:removeFromParentAndCleanup(true)
+		end
+		local default_task = {weekday = '星期一', task_name = '长工要债', fit = '农民', effect = '农民收益增加10%'}
+		local task = GlobalSetting.time_task or default_task
+		dump(task, 'time task is ')
+		local font_item = CCMenuItemFont:create(task.task_name)
+		local menu = CCMenu:createWithItem(font_item)
+		menu:ignoreAnchorPointForPosition(false)
+		font_item:setPosition(ccp(340,450))
+		self.rootNode:addChild(menu)
+		self.time_task_menu = menu
+		
+		font_item:registerScriptTapHandler(function() local tm = createTimeTask() self.rootNode:addChild(tm) tm:show() end)
 	end
 	
 	function theClass:menu_dismiss_callback()
@@ -56,13 +80,18 @@ function HallSceneUPlugin.bind(theClass)
 		self.set_dialog_layer:show()
 	end
 	
+	function theClass:onShareClick(tag, sender)
+		self:doShare()
+	end
+	
 	function theClass:onMenuClick(tag, sender)
+	--DDZJniHelper:create():messageJava('share_intent_3')
 		self:onKeypad("menuClicked")
 	end
 	
 	function theClass:onInfoClick(tag, sender)
 	--DDZJniHelper:create():messageJava('share_intent_1')
-	  self:doToInfo()
+		self:doToInfo()
 	end
 	
 	function theClass:onAvatarClick(tag, sender)
@@ -70,6 +99,7 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:onMarketClick(tag, sender)
+	--DDZJniHelper:create():messageJava('share_intent_2')
 		self:doToMarket()
 	end
 	

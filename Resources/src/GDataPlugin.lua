@@ -5,6 +5,7 @@ function GDataPlugin.bind(theClass)
 	function theClass:initData()
 		self.NOTIFY_ORDER = 4000--退出提示层
 		self.GAME_OVER_ORDER = 3000--游戏结束层
+		self.RANK_ORDER = 2300--排行榜层
 		self.BUTTERFLY_ANIM_ORDER = 2210--动画层
 		self.TOP_PANEL_ORDER = 2200--顶部栏层
 		self.INFO_ORDER = 2110--用户资料层

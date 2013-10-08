@@ -21,6 +21,9 @@ function LoginServerConnectionPlugin.bind(theClass)
 		GlobalSetting.show_init_player_info_box = 1
 		GlobalSetting.need_init_hall_rooms = 1
 		
+		if data.sina_share_url then print('get sina share url') GlobalSetting.sina_share_url = data.sina_share_url end
+		if data.tencent_share_url then print('get tencent share url') GlobalSetting.tencent_share_url = data.tencent_share_url end
+		
 		print("[LoginServerConnectionPlugin.sign_success] on_login_success.")
 		if "function" == type(self.do_on_login_success) then
 			self:do_on_login_success()

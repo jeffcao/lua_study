@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.net.Uri;
+import android.os.Environment;
 import android.telephony.SmsManager;
 import android.util.Log;
 
@@ -52,7 +53,7 @@ public class DDZJniHelper {
 		}
 		if (str.startsWith("share_intent_")) {
 			String url = str.substring("share_intent_".length());
-			share();
+			share(url);
 		}
 	}
 	
@@ -97,15 +98,33 @@ public class DDZJniHelper {
 		am.setStreamVolume(AudioManager.STREAM_MUSIC, DouDiZhu_Lua.initial_volume, 0);
 	}
 	
-	public static void share() {
+	public static void share(String url) {
+		Intent it = new Intent(DouDiZhuApplicaion.APP_CONTEXT, ShareActivity.class);
+		it.putExtra("url", url);
+		it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	    DouDiZhuApplicaion.APP_CONTEXT.startActivity(it);
+	}
+	
+	public static void share(int mode) {
+		String content = "由老马工作室倾情推出的《我爱斗地主》上线啦！快来看看我们的新玩法吧！\n"
+				   +"百万巨制，交友神器，和农民一起斗地主，我的地盘我做主。\n"
+                   +"一切尽在《我爱斗地主》。\n"
+                   +"（分享自@《我爱斗地主》官方网站）";
 		Intent intent=new Intent(Intent.ACTION_SEND);
 	    intent.setType("text/plain");
 	    intent.putExtra(Intent.EXTRA_SUBJECT, "分享至");
-	    intent.putExtra(Intent.EXTRA_TEXT, "由老马工作室倾情推出的《我爱斗地主》上线啦！快来看看我们的新玩法吧！\n"
-	    								   +"百万巨制，交友神器，和农民一起斗地主，我的地盘我做主。\n"
-                                           +"一切尽在《我爱斗地主》。\n"
-                                           +"（分享自@《我爱斗地主》官方网站）");
+	    intent.putExtra(Intent.EXTRA_TEXT, content);
 	    Intent it = Intent.createChooser(intent, "分享至");
+	    if (mode > 1) {
+	    	String sd = Environment.getExternalStorageDirectory().getAbsolutePath();
+	    	String pic = sd + "/DCIM/Camera/1.jpg";
+	    	System.out.println("pic is " + pic);
+	    	it = new Intent(DouDiZhuApplicaion.APP_CONTEXT, ShareActivity.class);
+	    	String url1 = "http://service.weibo.com/share/share.php?appkey=2045436852&title=" + content + /*"&pic=" + pic +*/"&ralateUid=&language=zh_cn";
+			String url2 = "http://share.v.t.qq.com/index.php?c=share&a=index&appkey=801192940&title=" + content /*+ "&pic=" + pic*/;
+			String url = mode > 2 ? url1 : url2;
+			it.putExtra("url", url);
+	    }
 	    it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 	    DouDiZhuApplicaion.APP_CONTEXT.startActivity(it);
 	}
