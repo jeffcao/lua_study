@@ -130,11 +130,18 @@ function InfoLayer:init_player_info()
 	self.m_checkbox.toggle:setChecked(tonumber(cur_user.gender) == 1)
 	self.f_checkbox.toggle:setChecked(tonumber(cur_user.gender) == 2)
 	
-	if cur_user.level then 
-		self.level_lb:setString(cur_user.level)
+	local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+	dump(cur_user, 'user is')
+	local level_frame = cache:spriteFrameByName('duangong.png')
+	if cur_user.game_level then 
+		cclog('init_player_info game_level is=> ' .. cur_user.game_level)
+		local picname = get_level_pic(cur_user.game_level)
+		level_frame  = cache:spriteFrameByName(picname)
 	else
-		self.level_lb:setString("短工")
+		cclog('init_player_info game_level is=> nil')
 	end
+	self.level_sprite:setDisplayFrame(level_frame)
+	self.level_sprite:setVisible(true)
 end
 
 

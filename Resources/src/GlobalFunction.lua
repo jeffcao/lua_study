@@ -208,3 +208,73 @@ function device_info()
 	}
 	return device_info
 end
+
+local levels_hanzi = {
+"短工",
+"长工",
+"佃户",
+"贫农",
+"渔夫",
+"猎人",
+"中农",
+"富农",
+"掌柜",
+"商人",
+"衙役",
+"小财主",
+"大财主",
+"小地主",
+"大地主",
+"知县",
+"通判",
+"知府",
+"总督",
+"巡抚",
+"丞相",
+"侯爵",
+"亲王",
+"明君",
+"仁主"}
+
+local levels_pinyin = {
+"duangong",
+"changgong",
+"tianhu",
+"pinnong",
+"yufu",
+"lieren",
+"zhongnong",
+"funong",
+"zhanggui",
+"shangren",
+"yayi",
+"xiaocaizhu",
+"dachaizhu",
+"xiaodizhu",
+"dadizhu",
+"zhixian",
+"tongpan",
+"zhifu",
+"zhongdu",
+"xunfu",
+"chengxiang",
+"houjue",
+"qinwang",
+"mingjun",
+"renzhu"}
+
+
+function get_level_pic(level_hanzi)
+	local level = "duangong"
+	if level_hanzi then
+		for k,v in pairs(levels_hanzi) do
+			if v==level_hanzi then
+				level = levels_pinyin[k]
+				break
+			end
+		end
+	end
+	cclog("level pic is " .. level .. ".png")
+	return level .. ".png"
+end
+

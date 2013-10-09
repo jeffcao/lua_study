@@ -75,6 +75,7 @@ function UserCenterSceneUPlugin.bind(theClass)
 		GlobalSetting.current_user.nick_name = user_info.nick_name
 		GlobalSetting.current_user.gender = user_info.gender
 		GlobalSetting.current_user.avatar = user_info.avatar
+		GlobalSetting.current_user.game_level = user_info.game_level
 	end
 	
 	

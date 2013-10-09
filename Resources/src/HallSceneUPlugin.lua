@@ -203,7 +203,7 @@ function HallSceneUPlugin.bind(theClass)
 		local player_beans_lb = tolua.cast(self.player_beans_lb, "CCLabelTTF")
 		player_beans_lb:setString(score_info.score)
 		
-		GlobalSetting.current_user.socre = score_info.score
+		GlobalSetting.current_user.score = score_info.score
 		GlobalSetting.current_user.win_count = score_info.win_count
 		GlobalSetting.current_user.lost_count = score_info.lost_count	
 	end
