@@ -17,17 +17,31 @@ function GPlayerUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:updatePlayerLevels()
-		self:updatePlayerLevel(self.self_user, self.self_user_level)
-		self:updatePlayerLevel(self.prev_user, self.prev_user_level)
-		self:updatePlayerLevel(self.next_user, self.next_user_level)
+		local info = nil
+		if self.self_user then
+			info = self.users[tostring(self.self_user.user_id)]
+		end
+		self:updatePlayerLevel(info, self.self_level_layer, self.self_level_sprite)
+		
+		info = nil
+		if self.prev_user then
+			info = self.users[tostring(self.prev_user.user_id)]
+		end
+		self:updatePlayerLevel(info, self.prev_level_layer, self.prev_level_sprite)
+		
+		info = nil
+		if self.next_user then
+			info = self.users[tostring(self.next_user.user_id)]
+		end
+		self:updatePlayerLevel(info, self.next_level_layer, self.next_level_sprite)
 	end
 	
-	function theClass:updatePlayerLevel(player, player_level_ui)
-		if player and player.level then
-			player_level_ui:setString(player.level)
+	function theClass:updatePlayerLevel(info, player_level_layer, player_level_sprite)
+		if info and info.game_level then
+			player_level_layer:setVisible(true)
+			set_level_sprite(player_level_sprite, info.game_level)
 		else
-			player_level_ui:setString("短工")
-			player_level_ui:setVisible(nil ~= player)
+			player_level_layer:setVisible(false)
 		end
  	end
 

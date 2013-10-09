@@ -432,6 +432,7 @@ function GActionPlugin.bind(theClass)
 					print("========game:get_rival_msg return success: " , data)
 					self.users[user_id] = data
 					data.user_id = user_id
+					self:updatePlayerLevels()
 				end, 
 				function(data) 
 					print("========game:get_rival_msg return failure: " , data) 

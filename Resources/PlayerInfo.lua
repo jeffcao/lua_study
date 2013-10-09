@@ -48,6 +48,8 @@ function PlayerInfo:initWithInfo(gaming_layer, info)
 	if string.len(percent) > max_l then percent = string.sub(percent, 1, max_l - string.len(percent)) end
 	self.lbl_info_achievement:setString(percent .. "%  " .. win .. "胜" .. lost .. "负")
 	
+	set_level_sprite(self.level_sprite, info.game_level)
+	
 	self.props_layer:removeAllChildrenWithCleanup(true)
 	if gaming_layer.using_props and user_id == gaming_layer.self_user.user_id then
 		cclog("gaming_layer.using_props user_id == gaming_layer.self_user.user_id")

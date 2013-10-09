@@ -482,13 +482,14 @@ function GUIUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:onCloseClicked() 
-		--[[
+		
 		if self._has_gaming_started then
 			self:showExit()
 	 	else 
 			self:exit()
 		end
-		]]
+		
+		--[[
 		local rank = createRank()
 		local rank_list = {}
 		for i=1,50 do
@@ -501,6 +502,7 @@ function GUIUpdatePlugin.bind(theClass)
 		rank:rank(rank_list)
 		self.rootNode:addChild(rank,self.RANK_ORDER)
 		rank:show()
+		]]
 	end
 	
 	

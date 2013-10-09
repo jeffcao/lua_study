@@ -278,3 +278,17 @@ function get_level_pic(level_hanzi)
 	return level .. ".png"
 end
 
+function set_level_sprite(sprite, game_level)
+	local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+	local level_frame = cache:spriteFrameByName('duangong.png')
+	if game_level then 
+		cclog('set_level_sprite game_level is=> ' .. game_level)
+		local picname = get_level_pic(game_level)
+		level_frame  = cache:spriteFrameByName(picname)
+	else
+		cclog('set_level_sprite game_level is=> nil')
+	end
+	sprite:setDisplayFrame(level_frame)
+	sprite:setVisible(true)
+end
+
