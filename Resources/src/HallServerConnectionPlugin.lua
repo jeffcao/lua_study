@@ -39,6 +39,12 @@ function HallServerConnectionPlugin.bind(theClass)
 
 	end
 	
+	function theClass:get_today_activity()
+		self.failure_msg = "获取今日活动失败"
+		local event_data = {retry="0", version="1.0"}
+		self:call_server_method("get_activity", event_data)
+	end
+	
 	function theClass:get_user_profile()
 		self.failure_msg = "获取玩家信息失败"
 		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}

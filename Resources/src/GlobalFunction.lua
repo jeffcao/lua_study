@@ -292,3 +292,13 @@ function set_level_sprite(sprite, game_level)
 	sprite:setVisible(true)
 end
 
+local wkd = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"}
+function get_weekday(wk_int) 
+	for k,v in pairs(wkd) do
+		cclog('kv wkd['..k..':'..v)
+	end
+	local weekday = wkd[tonumber(wk_int) + 1]
+	cclog('weekday for ' .. tostring(wk_int) .. ' is ' .. weekday)
+	return weekday
+end
+

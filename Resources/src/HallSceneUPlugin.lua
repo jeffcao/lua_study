@@ -50,10 +50,11 @@ function HallSceneUPlugin.bind(theClass)
 		if self.time_task_menu then
 			self.time_task_menu:removeFromParentAndCleanup(true)
 		end
-		local default_task = {weekday = '星期一', task_name = '长工要债', fit = '农民', effect = '农民收益增加10%'}
+		--"content"      = "记牌器免费试用1小时" "name"         = "地主之谊" "object"       = "立卷交易"
+		local default_task = {weekday = '星期一', name = '长工要债', object = '农民', content = '农民收益增加10%'}
 		local task = GlobalSetting.time_task or default_task
 		dump(task, 'time task is ')
-		local font_item = CCMenuItemFont:create(task.task_name)
+		local font_item = CCMenuItemFont:create(task.name)
 		local menu = CCMenu:createWithItem(font_item)
 		menu:ignoreAnchorPointForPosition(false)
 		font_item:setPosition(ccp(340,450))
@@ -180,6 +181,25 @@ function HallSceneUPlugin.bind(theClass)
 			print("[HallSceneUPlugin:display_player_info] init_player_info_layer:show")
 			init_player_info_layer:show()
 			GlobalSetting.show_init_player_info_box = 0
+		end
+		
+		self:get_today_activity()
+		self.after_trigger_success = __bind(self.init_today_activity, self)
+	end
+	
+	function theClass:init_today_activity(data)
+		dump(data, 'init_today_activity')
+		if tonumber(data.result_code) == 0 then
+			cclog('init_today_activity result code is 0')
+			GlobalSetting.time_task = data
+			--[[GlobalSetting.time_task = {}
+			GlobalSetting.time_task.name = data.name
+			GlobalSetting.time_task.content = data.content
+			GlobalSetting.time_task.week = data.week
+			GlobalSetting.time_task.object = data.object]]
+			GlobalSetting.time_task.weekday = get_weekday(data.week)
+			dump(GlobalSetting.time_task, 'GlobalSetting.time_task')
+			self:updateTimeTask()
 		end
 	end
 	
