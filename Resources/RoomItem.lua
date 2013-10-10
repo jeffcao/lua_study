@@ -20,24 +20,15 @@ function RoomItem:ctor()
 		print("room item touch:" .. eventType)
 		if not self.rootNode:boundingBox():containsPoint(self:convertToNodeSpace(ccp(x, y))) then
 			print("not in boundingbox")
+			self.dianji:setVisible(false)
 			return
 		end
         if eventType == "began" then
-        	self.move = 0
+        	self.dianji:setVisible(true)
             return true
         elseif eventType == "moved" then
-        	self.move = self.move + 1
         elseif eventType == "ended" then
-        	if self.move < 3 then
-	        	if not self.rootNode:getActionByTag(10) then
-		            local sca = CCScaleBy:create(0.1, 1.2)
-		            local sca2 = CCScaleTo:create(0.1, 1)
-		        	local seq = CCSequence:createWithTwoActions(sca, sca2)
-		        	seq:setTag(10)
-		        	self.rootNode:runAction(seq)
-	        	end
-        	end
-        	self.move = 0
+        	self.dianji:setVisible(false)
         	print("[RoomItem:onTouchRoom] ended")
         end
     end
