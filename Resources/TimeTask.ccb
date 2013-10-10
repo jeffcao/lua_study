@@ -383,7 +383,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>5</real>
+									<real>10</real>
 									<real>67</real>
 									<integer>4</integer>
 								</array>
@@ -516,7 +516,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>5</real>
+											<real>10</real>
 											<real>50</real>
 											<integer>4</integer>
 										</array>
@@ -644,7 +644,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>35</real>
+											<real>40</real>
 											<real>50</real>
 											<integer>4</integer>
 										</array>
@@ -838,8 +838,6 @@
 								<true/>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -863,7 +861,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>5</real>
+									<real>10</real>
 									<real>25</real>
 									<integer>4</integer>
 								</array>
@@ -968,6 +966,8 @@
 								<string>农民收益增加10%</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
