@@ -1311,8 +1311,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/hall.plist</string>
-													<string>btn_prop.png</string>
+													<string>ccbResources/info.plist</string>
+													<string>IconFenxiang.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -1322,8 +1322,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/hall.plist</string>
-													<string>btn_prop_a.png</string>
+													<string>ccbResources/info.plist</string>
+													<string>IconFenxiang2.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -1338,6 +1338,8 @@
 												</array>
 											</dict>
 										</array>
+										<key>selected</key>
+										<true/>
 									</dict>
 								</array>
 								<key>customClass</key>
@@ -1352,21 +1354,13 @@
 								<array>
 									<dict>
 										<key>name</key>
-										<string>visible</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
 										<string>position</string>
 										<key>type</key>
 										<string>Position</string>
 										<key>value</key>
 										<array>
 											<real>37</real>
-											<real>72</real>
+											<real>57</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -1435,8 +1429,6 @@
 										<true/>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
