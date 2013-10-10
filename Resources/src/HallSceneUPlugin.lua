@@ -47,21 +47,15 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:updateTimeTask()
-		if self.time_task_menu then
-			self.time_task_menu:removeFromParentAndCleanup(true)
-		end
-		--"content"      = "记牌器免费试用1小时" "name"         = "地主之谊" "object"       = "立卷交易"
-		local default_task = {weekday = '星期一', name = '长工要债', object = '农民', content = '农民收益增加10%'}
-		local task = GlobalSetting.time_task or default_task
+		local task = GlobalSetting.time_task
+		if not task then return end
 		dump(task, 'time task is ')
-		local font_item = CCMenuItemFont:create(task.name)
-		local menu = CCMenu:createWithItem(font_item)
-		menu:ignoreAnchorPointForPosition(false)
-		font_item:setPosition(ccp(340,450))
-		self.rootNode:addChild(menu)
-		self.time_task_menu = menu
-		
-		font_item:registerScriptTapHandler(function() local tm = createTimeTask() self.rootNode:addChild(tm) tm:show() end)
+		self.task_lbl:setString(task.name)
+		self.task_layer:setVisible(true)
+	end
+	
+	function theClass:do_on_task_btn_clicked()
+		local tm = createTimeTask() self.rootNode:addChild(tm) tm:show()
 	end
 	
 	function theClass:menu_dismiss_callback()

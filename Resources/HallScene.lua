@@ -35,6 +35,7 @@ HallScene = class("HallScene", function()
 	self.on_ui_feedback_btn_clicked = __bind(self.do_ui_feedback_btn_clicked, self)
 	self.on_ui_prop_btn_clicked = __bind(self.do_ui_prop_btn_clicked, self)
 	self.on_ui_share_btn_clicked = __bind(self.onShareClick, self)
+	self.on_task_btn_clicked = __bind(self.do_on_task_btn_clicked, self)
 	
 	local ccbproxy = CCBProxy:create()
  	local node = CCBReaderLoad("HallScene.ccbi", ccbproxy, false, "")
