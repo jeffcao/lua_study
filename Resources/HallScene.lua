@@ -74,6 +74,7 @@ HallScene = class("HallScene", function()
 	print("HallScene:onEnter()")
 	self.super.onEnter(self)
 	self:updateTimeTask()
+	self:update_player_beans_with_gl()
 	self:do_on_enter()
 	local is_playing = SimpleAudioEngine:sharedEngine():isBackgroundMusicPlaying()
 	if SoundSettings.bg_music and not is_playing then

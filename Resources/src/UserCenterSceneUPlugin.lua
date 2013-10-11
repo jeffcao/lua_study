@@ -78,6 +78,12 @@ function UserCenterSceneUPlugin.bind(theClass)
 		GlobalSetting.current_user.game_level = user_info.game_level
 	end
 	
+	function theClass:online_time_beans_update()
+		if self.current_layer == "personal_info" and self.c_layer then
+			self.c_layer:init_player_info()
+		end
+	end
+	
 	
 	function theClass:doSetLayer(name)
 		if self.current_layer == name then
@@ -102,5 +108,6 @@ function UserCenterSceneUPlugin.bind(theClass)
 		layer:ignoreAnchorPointForPosition(false)
 		layer:setAnchorPoint(ccp(0.5, 0.5))
 		layer:setPosition(ccp(container_size.width/2, container_size.height/2))	
+		self.c_layer = layer
 	end
 end

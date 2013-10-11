@@ -54,27 +54,30 @@ function HallServerConnectionPlugin.bind(theClass)
 		end
 		local suc = function(data) 
 			dump(data, 'start_online_time_get_beans=>')
+			local scene = CCDirector:sharedDirector():getRunningScene()
+				dump(scene, 'running scene')
+			if scene.rootNode and scene.show_server_notify and data.user_id then
+				cclog('the running scene has root node')
+				local msg = "在线有礼：您已在线满"..tostring(data.online_time).."分钟，获得了"..tostring(data.beans).."个豆子"
+				scene:show_server_notify(msg)
+				GlobalSetting.current_user.score = data.score
+				GlobalSetting.current_user.game_level = data.game_level
+				if scene.online_time_beans_update then
+					scene:online_time_beans_update()
+				end
+			end
 		end
 		local fn = function()
 			local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
 			GlobalSetting.hall_server_websocket:trigger("ui.online_time_get_beans", 
 			event_data, suc,
 			function() cclog('ui.online_time_get_beans ui.online_time_get_beans') end)
-			local scene = CCDirector:sharedDirector():getRunningScene()
-				dump(scene, 'running scene')
-			if scene.rootNode then
-				cclog('the running scene has root node')
-				if scene.show_server_notify then
-					scene:show_server_notify("获得在线时长奖励-----------fffffffffffffff豆子100")
-				else 
-					cclog('the running scene has not show message box function')
-				end
-			end
 			return true
 		end
-		local period = 10
+		local period = 60
 		local timer_name = 'start_online_time_get_beans'
 		GlobalSetting.online_time_get_beans_handle = Timer.add_repeat_timer(period, fn, timer_name)
+		Timer.add_timer(0,fn,"start_online_time_get_beans_nr")
 	end
 	
 	function theClass:get_user_profile()

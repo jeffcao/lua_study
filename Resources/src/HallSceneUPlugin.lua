@@ -46,6 +46,20 @@ function HallSceneUPlugin.bind(theClass)
 		
 	end
 	
+	function theClass:online_time_beans_update()
+		self:update_player_beans_with_gl()
+	end
+	
+	--通过global setting存储的user来更新
+	function theClass:update_player_beans_with_gl()
+		cclog("update_player_beans_with_gl()")
+		local user = GlobalSetting.current_user
+		if user and user.score then
+			local player_beans_lb = tolua.cast(self.player_beans_lb, "CCLabelTTF")
+			player_beans_lb:setString(user.score)
+		end
+	end
+	
 	function theClass:updateTimeTask()
 		local task = GlobalSetting.time_task
 		if not task then return end
