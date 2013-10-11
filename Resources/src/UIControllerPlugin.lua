@@ -182,45 +182,7 @@ function UIControllerPlugin.bind(theClass)
 
 	end
 	
-	function theClass:show_server_notify(message, type)
 	
-		local scene = CCDirector:sharedDirector():getRunningScene()
-		if not (scene and scene.rootNode) then
-			cclog('show_server_notify the running scene is null or has not root node')
-			return
-		end
-			
-		local w = 200 + 5*string.len(message)
-		params = {}
-		local msg_width = w
-		local msg_height = 70
-		local z_order = 1000
-		local type = 'ok' or warning
-		local msg_layer = scene:create_notify_message_layer(message, {type=type,msg_width=msg_width, msg_height=msg_height})
-		scene.rootNode:addChild(msg_layer, z_order, 901)
-		
-		scaleNode(msg_layer, GlobalSetting.content_scale_factor)
-		
-		local function remove_layer()
-			local msg_layer = scene.rootNode:getChildByTag(901)
-			if msg_layer then
-				scene.rootNode:removeChild(msg_layer, true)
-				msg_layer = nil
-			end
-		end
-		
-		--[[
-		local function onTouch(eventType, x, y)
-		cclog('on event ' ..eventType )
-			if eventType == 'ended' then
-				remove_layer()
-			end
-		end
-		msg_layer:registerScriptTouchHandler(onTouch)
-		]]
-		
-		Timer.add_timer(5, remove_layer)
-	end
 	
 	function theClass:show_progress_message_box(message, msg_width, msg_height, z_order)
 		print("show_progress_message_box, class name=> "..self.__cname)
@@ -324,16 +286,60 @@ function UIControllerPlugin.bind(theClass)
 		end
 	end
 	
+	function theClass:show_server_notify(message, type)
+		local scene = CCDirector:sharedDirector():getRunningScene()
+		if not (scene and scene.rootNode) then
+			cclog('show_server_notify the running scene is null or has not root node')
+			return
+		end
+			
+		local w = 200 + 5*string.len(message)
+		params = {}
+		local msg_width = w
+		local msg_height = 70
+		local z_order = 1000
+		local type = 'ok' or warning
+		local msg_layer = scene:create_notify_message_layer(message, {type=type,msg_width=msg_width, msg_height=msg_height})
+		
+		
+		scaleNode(msg_layer, GlobalSetting.content_scale_factor)
+		
+		local function remove_layer()
+			local msg_layer = scene.rootNode:getChildByTag(901)
+			if msg_layer then
+				scene.rootNode:removeChild(msg_layer, true)
+				msg_layer = nil
+			end
+		end
+		
+		local function on_msg_layer_touched(eventType, x, y)
+			--cclog("[UIControllerPlugin:msg_lb_on_touch]"..eventType)
+			--dump(loc,'loc')
+			if eventType == "ended" then
+				local mloc = ccp(x,y)
+				local bd = msg_layer.msg_lb:boundingBox()
+				--cclog('bd (x:' .. bd:getMinX() .. '~' .. bd:getMaxX() .. ', y:' ..bd:getMinY()..'~'..bd:getMaxY()..')')
+				mloc = msg_layer.msg_lb:getParent():convertToNodeSpace(mloc)
+				--cclog('mloc('..x..','..y..')')
+				if msg_layer.msg_lb:boundingBox():containsPoint(mloc) then
+					remove_layer()
+				end
+			end
+			return true
+		end
+		msg_layer:setTouchEnabled(true)
+		msg_layer:registerScriptTouchHandler(on_msg_layer_touched, false, -1024, true)
+		
+		scene.rootNode:addChild(msg_layer, z_order, 901)
+		
+		Timer.add_timer(5, remove_layer)
+	end
+	
 	function theClass:create_notify_message_layer(message, params)
 		params = params or {}
 		local msg_width = params.msg_width
 		local msg_height = params.msg_height
 		local type = params.type
-		
-		local function on_msg_layer_touched(eventType, x, y)
-			print("[UIControllerPlugin:msg_lb_on_touch]"..eventType)
-			return true
-		end
 		
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 		cache:addSpriteFramesWithFile(Res.dialog_plist)
@@ -344,11 +350,8 @@ function UIControllerPlugin.bind(theClass)
 		local msg_layer = CCLayerColor:create(ccc4(0, 0, 0, 0))
 		msg_layer:setOpacity(100)
 		
-
 		local content_layer = CCLayer:create()
 		content_layer:setContentSize(CCSizeMake(msg_width, msg_height))
-		content_layer:setTouchEnabled(true)
-		
 		msg_layer:addChild(content_layer, 999, 100)
 		content_layer:ignoreAnchorPointForPosition(false)
 		content_layer:setAnchorPoint(ccp(0.5, 0.5))
@@ -356,7 +359,6 @@ function UIControllerPlugin.bind(theClass)
 
 		local msg_sprite = CCScale9Sprite:createWithSpriteFrameName("tanchukuang.png")
 		local msg_lb = CCLabelTTF:create(message, "default",20)
-		msg_lb = CCMenuItemFont:create(message)
 		
 		msg_lb:setColor(ccc3(67,31,24))
 		if type == 'warning' then
@@ -365,14 +367,12 @@ function UIControllerPlugin.bind(theClass)
 		content_layer:addChild(msg_lb, 999, 900)
 		msg_lb:setAnchorPoint(ccp(0.5, 0.5))
 		msg_lb:setPosition(ccp(msg_width/2, msg_height/2))
-		msg_lb:registerScriptTapHandler(function() cclog('on click') end)
-		--msg_lb:setTouchEnabled(true)
-		--msg_lb:registerScriptTouchHandler(on_msg_layer_touched, false, -1024, true)
-		
+				
 		msg_sprite:setPreferredSize(CCSizeMake(msg_width, msg_height))
 		content_layer:addChild(msg_sprite, 0)
 		msg_sprite:setAnchorPoint(ccp(0, 0.5))
 		msg_sprite:setPosition(ccp(0, msg_height / 2.0 ))
+		msg_layer.msg_lb = msg_lb
 		return msg_layer
 	end
 	
