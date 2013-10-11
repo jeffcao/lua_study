@@ -1,4 +1,5 @@
 require "FullMubanStyleLayer"
+require "src.UIControllerPlugin"
 AboutScene = class("AboutScene", function()
 	print("new about scene")
 	return display.newScene("AboutScene")	
@@ -37,3 +38,4 @@ function AboutScene:ctor()
  	--self:addChild(scale9)
 end
 
+UIControllerPlugin.bind(AboutScene)

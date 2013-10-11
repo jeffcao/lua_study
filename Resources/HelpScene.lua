@@ -1,4 +1,5 @@
 require "src.HelpSceneUPlugin"
+require "src.UIControllerPlugin"
 HelpScene = class("HelpScene", function()
 	print("new help scene")
 	return display.newScene("HelpScene")	
@@ -16,6 +17,9 @@ function HelpScene:ctor()
 	local ccbproxy = CCBProxy:create()
 	
 	local layer = createFullMubanStyleLayer()
+	
+	self.rootNode = layer
+	
 	self:addChild(layer)
 	
 	layer:setTitle("biaoti05.png")
@@ -24,3 +28,4 @@ function HelpScene:ctor()
 	layer:setContent(scroll_view)
 end
 HelpSceneUPlugin.bind(HelpScene)
+UIControllerPlugin.bind(HelpScene)

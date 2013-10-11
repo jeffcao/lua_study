@@ -60,6 +60,16 @@ function HallServerConnectionPlugin.bind(theClass)
 			GlobalSetting.hall_server_websocket:trigger("ui.online_time_get_beans", 
 			event_data, suc,
 			function() cclog('ui.online_time_get_beans ui.online_time_get_beans') end)
+			local scene = CCDirector:sharedDirector():getRunningScene()
+				dump(scene, 'running scene')
+			if scene.rootNode then
+				cclog('the running scene has root node')
+				if scene.show_server_notify then
+					scene:show_server_notify("获得在线时长奖励-----------fffffffffffffff豆子100")
+				else 
+					cclog('the running scene has not show message box function')
+				end
+			end
 			return true
 		end
 		local period = 10
