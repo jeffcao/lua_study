@@ -45,6 +45,28 @@ function HallServerConnectionPlugin.bind(theClass)
 		self:call_server_method("get_activity", event_data)
 	end
 	
+	--启动获取常规活动的任务
+	function theClass:start_online_time_get_beans()
+		if GlobalSetting.online_time_get_beans_handle then
+			cclog('cancel previous online_time_get_beans handler when start a new')
+			Timer.cancel_timer(GlobalSetting.online_time_get_beans_handle)
+			GlobalSetting.online_time_get_beans_handle = nil
+		end
+		local suc = function(data) 
+			dump(data, 'start_online_time_get_beans=>')
+		end
+		local fn = function()
+			local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
+			GlobalSetting.hall_server_websocket:trigger("ui.online_time_get_beans", 
+			event_data, suc,
+			function() cclog('ui.online_time_get_beans ui.online_time_get_beans') end)
+			return true
+		end
+		local period = 10
+		local timer_name = 'start_online_time_get_beans'
+		GlobalSetting.online_time_get_beans_handle = Timer.add_repeat_timer(period, fn, timer_name)
+	end
+	
 	function theClass:get_user_profile()
 		self.failure_msg = "获取玩家信息失败"
 		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}

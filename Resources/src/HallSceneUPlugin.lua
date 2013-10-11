@@ -195,6 +195,9 @@ function HallSceneUPlugin.bind(theClass)
 			dump(GlobalSetting.time_task, 'GlobalSetting.time_task')
 			self:updateTimeTask()
 		end
+		
+		--then call online_time_get_beans
+		self:start_online_time_get_beans()
 	end
 	
 	function theClass:init_current_player_info()
@@ -326,6 +329,11 @@ function HallSceneUPlugin.bind(theClass)
 		local game = createGamingScene()
 		CCDirector:sharedDirector():replaceScene(game)
 		self:close_hall_websocket()
+		if GlobalSetting.online_time_get_beans_handle then
+			cclog('cancel previous online_time_get_beans handler while enter game')
+			Timer.cancel_timer(GlobalSetting.online_time_get_beans_handle)
+			GlobalSetting.online_time_get_beans_handle = nil
+		end
 	end
 	
 	function theClass:updateSocket(status)
