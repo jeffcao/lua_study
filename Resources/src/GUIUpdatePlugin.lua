@@ -490,7 +490,7 @@ function GUIUpdatePlugin.bind(theClass)
 			self:exit()
 		end
 		]]
-		local option = nil
+		--[[local option = nil
 		local fn1 = function()
 			if option then option:dismiss() end
 			self:onReturnClicked()
@@ -499,8 +499,8 @@ function GUIUpdatePlugin.bind(theClass)
 		self.rootNode:addChild(option, self.GAMING_OPTION_ORDER);
 		--option:init_funcs(fn1,fn1,fn1)
 		option:show()
+		]]
 		
-		--[[
 		local rank = createRank()
 		local rank_list = {}
 		for i=1,50 do
@@ -513,7 +513,7 @@ function GUIUpdatePlugin.bind(theClass)
 		rank:rank(rank_list)
 		self.rootNode:addChild(rank,self.RANK_ORDER)
 		rank:show()
-		]]
+		
 	end
 	
 	

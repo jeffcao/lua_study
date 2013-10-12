@@ -14,7 +14,7 @@ function RankUPlugin.bind(theClass)
 		local h = LuaEventHandler:create(function(fn, table, a1, a2)
 			local r
 			if fn == "cellSize" then
-				r = CCSizeMake(400,30)
+				r = CCSizeMake(348,30)
 			elseif fn == "cellAtIndex" then
 				if not a2 then
 					a2 = CCTableViewCell:create()
@@ -31,7 +31,7 @@ function RankUPlugin.bind(theClass)
 			end
 			return r
 		end)
-		local t = LuaTableView:createWithHandler(h, CCSizeMake(400,200))
+		local t = LuaTableView:createWithHandler(h, CCSizeMake(348,180))
 		for index=#(rank_list), 1, -1 do
 			t:updateCellAtIndex(index-1)
 		end
