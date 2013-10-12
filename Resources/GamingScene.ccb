@@ -4454,9 +4454,9 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>48</real>
-											<real>52</real>
-											<integer>4</integer>
+											<real>24</real>
+											<real>30</real>
+											<integer>0</integer>
 										</array>
 									</dict>
 									<dict>
@@ -4526,7 +4526,7 @@
 										<key>value</key>
 										<array>
 											<string>ccbResources/gaming.plist</string>
-											<string>top_panel_exit.png</string>
+											<string>top_panel_anjianzuhe.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -4537,7 +4537,7 @@
 										<key>value</key>
 										<array>
 											<string>ccbResources/gaming.plist</string>
-											<string>top_panel_exit_a.png</string>
+											<string>top_panel_anjianzuhe_a.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -4552,6 +4552,8 @@
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
