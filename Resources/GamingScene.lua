@@ -26,6 +26,7 @@ require "src.GAnimationPlugin"
 require "src.ConnectivityPlugin"
 require "src.SocketStatePlugin"
 require "src.CardRoboter2"
+require "GamingOption"
 
 GamingScene = class("GamingScene", function()
 	return display.newScene("GamingScene")

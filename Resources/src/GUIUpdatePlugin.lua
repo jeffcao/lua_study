@@ -382,15 +382,15 @@ function GUIUpdatePlugin.bind(theClass)
 		self.rootNode:stopActionByTag(self.GAME_OVER_HIDE_ACTION_TAG)
 	end
 	
-	--[[
-	function theClass:onCloseClicked() 
+	
+	function theClass:onReturnClicked() 
 		if self._has_gaming_started then
 			self:showExit()
 	 	else 
 			self:exit()
 		end
 	end
-	]]
+	
 	
 	function theClass:showGameOver(data)
 		self.menu_tuoguan:setVisible(false)
@@ -483,11 +483,22 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	function theClass:onCloseClicked() 
 		
+		--[[
 		if self._has_gaming_started then
 			self:showExit()
 	 	else 
 			self:exit()
 		end
+		]]
+		local option = nil
+		local fn1 = function()
+			if option then option:dismiss() end
+			self:onReturnClicked()
+		end
+		option = createGamingOption(fn1,fn1,fn1)
+		self.rootNode:addChild(option, self.GAMING_OPTION_ORDER);
+		--option:init_funcs(fn1,fn1,fn1)
+		option:show()
 		
 		--[[
 		local rank = createRank()

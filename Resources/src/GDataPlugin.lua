@@ -14,6 +14,7 @@ function GDataPlugin.bind(theClass)
 		self.CHAT_LAYER_ORDER = 2120--聊天板
 		self.MSG_LAYER_ORDER = 2400--聊天气泡
 		self.SET_LAYER_ORDER = 2130--设置板
+		self.GAMING_OPTION_ORDER = 2140--弹出的组合按钮
 		self.winSize = CCDirector:sharedDirector():getWinSize()
 		self.y_ratio = self.winSize.height / 480.0
 		self.x_ratio = self.winSize.width / 800.0
@@ -42,7 +43,7 @@ function GDataPlugin.bind(theClass)
         local key_fn = function(event)
         	print(event)
         	if event == "backClicked" then
-        		self:onCloseClicked()
+        		self:onReturnClicked()
         	end
         end
 		self.rootNode:registerScriptKeypadHandler(key_fn)
