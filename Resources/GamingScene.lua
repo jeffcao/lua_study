@@ -26,6 +26,8 @@ require "src.GAnimationPlugin"
 require "src.ConnectivityPlugin"
 require "src.SocketStatePlugin"
 require "src.CardRoboter2"
+require "src.ServerNotifyPlugin"
+require "src.UIControllerPlugin"
 require "GamingOption"
 
 GamingScene = class("GamingScene", function()
@@ -164,3 +166,5 @@ GConnectionPlugin.bind(GamingScene)
 GChatPlugin.bind(GamingScene)
 ConnectivityPlugin.bind(GamingScene)
 SocketStatePlugin.bind(GamingScene)
+ServerNotifyPlugin.bind(GamingScene)
+UIControllerPlugin.bind(GamingScene)

@@ -297,7 +297,7 @@ function UIControllerPlugin.bind(theClass)
 		params = {}
 		local msg_width = w
 		local msg_height = 70
-		local z_order = 1000
+		local z_order = 5000
 		local type = 'ok' or warning
 		local msg_layer = scene:create_notify_message_layer(message, {type=type,msg_width=msg_width, msg_height=msg_height})
 		

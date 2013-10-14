@@ -43,6 +43,16 @@ function GConnectionPlugin.bind(theClass)
 		channel:bind("g.leave_game_notify", function(data)
 			self:onServerLeave(data)
 		end)
+		channel:bind("ui.routine_notify", function(data)
+			self:onServerNotify(data)
+		end)
+	end
+	
+	function theClass:onServerNotify(data)
+		if not data then return end
+		dump(data, "on server notify=>")
+		local type = tostring(data.notify_type)
+		
 	end
 	
 	function theClass:close_game_websocket()
