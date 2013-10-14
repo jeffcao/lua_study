@@ -656,7 +656,7 @@
 								<key>displayName</key>
 								<string>beans_lbl</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>champion_beans</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -773,8 +773,6 @@
 										<string>1234567890</string>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
