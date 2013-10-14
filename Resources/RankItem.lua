@@ -16,8 +16,8 @@ function RankItem:ctor()
 end
 
 function RankItem:init(rank)
-	self.rank_lbl:setString(rank.rank)
-	self.name_lbl:setString(rank.name)
-	self.bean_lbl:setString(rank.bean)
+	self.rank_lbl:setString(rank.id)
+	self.name_lbl:setString(rank.nick_name)
+	self.bean_lbl:setString(rank.score)
 end
 

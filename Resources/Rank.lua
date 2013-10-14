@@ -1,6 +1,8 @@
 require "CCBReaderLoad"
 require "src.DialogInterface"
 require "src.RankUPlugin"
+require "src.UIControllerPlugin"
+require "src/WebsocketRails/Timer"
 
 Rank = class("Rank", function() return display.newLayer("Rank") end)
 
@@ -22,6 +24,16 @@ function Rank:ctor()
 	self.rank_avatar:setScale(sc)
 	sc = GlobalSetting.content_scale_factor*0.85
 	self.rank_avatar_bg:setScale(sc)
+	
+	self:setOnKeypad(function(key)
+		if key == "backClicked" then
+			print("Rank on key pad")
+			if self:isShowing()  then
+				self:dismiss()
+			end
+		end
+	end)
+	GlobalSetting.rank_dialog = self
 end
 
 function Rank:init()
@@ -35,3 +47,4 @@ end
 
 DialogInterface.bind(Rank)
 RankUPlugin.bind(Rank)
+UIControllerPlugin.bind(Rank)

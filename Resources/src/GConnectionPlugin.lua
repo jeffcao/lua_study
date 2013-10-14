@@ -48,13 +48,6 @@ function GConnectionPlugin.bind(theClass)
 		end)
 	end
 	
-	function theClass:onServerNotify(data)
-		if not data then return end
-		dump(data, "on server notify=>")
-		local type = tostring(data.notify_type)
-		
-	end
-	
 	function theClass:close_game_websocket()
 		print("[GConnectionPlugin:close_game_websocket()]")
 		if GlobalSetting.g_WebSocket then

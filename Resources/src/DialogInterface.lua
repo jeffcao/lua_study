@@ -48,6 +48,7 @@ function DialogInterface.bind(theClass)
 		parent:setKeypadEnabled(true)
 		if need_remove_self then
 			parent:removeChild(self, true)
+			self.dismiss_true = true
 		end
 		print("dismiss after")
 	end

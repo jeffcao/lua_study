@@ -97,6 +97,40 @@ function GServerMsgPlugin.bind(theClass)
 		end
 	end
 	
+	function theClass:getRank()
+		if not self.rank or (self.rank.expire_time <= os.time()) then
+			cclog("rank time expire, get again")
+			local event_data = {user_id = self.g_user_id}
+			self.g_WebSocket:trigger("g.user_score_list", event_data, function(data) 
+				print("========g.user_score_list return succss: " , data)
+				self:onServerRank(data)
+			end, function(data) 
+				print("----------------g.user_score_list return failure: " , data)
+			end)
+		else
+			cclog("directly show rank")
+			self:showRank()
+		end
+	end
+	
+	function theClass:onServerRank(data)
+		data.expire_time = os.time() + math.floor(data.next_time/1000)
+		self.rank = data
+		self:showRank()
+	end
+	
+	function theClass:showRank()
+		local rank = GlobalSetting.rank_dialog or createRank()
+		local on_time_over = function()
+			self:getRank()
+		end
+		rank:rank_with_data(self.rank, on_time_over)
+		if not rank:getParent() then
+			self.rootNode:addChild(rank,self.RANK_ORDER)
+		end
+		rank:show()
+	end
+	
 	-- g_channel and c_channel
 	function theClass:onServerGrabLordNotify(data)
 		print("onServerGrabLordNotify")
