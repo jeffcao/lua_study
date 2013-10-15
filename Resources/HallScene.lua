@@ -11,6 +11,7 @@ require "src.WidgetPlugin"
 require "src.SoundEffect"
 require "Share"
 require "TimeTask"
+require "VIP"
 
 HallScene = class("HallScene", function() 
 	print("create new hall scene")
@@ -36,6 +37,7 @@ HallScene = class("HallScene", function()
 	self.on_ui_prop_btn_clicked = __bind(self.do_ui_prop_btn_clicked, self)
 	self.on_ui_share_btn_clicked = __bind(self.onShareClick, self)
 	self.on_task_btn_clicked = __bind(self.do_on_task_btn_clicked, self)
+	self.on_vip_clicked = __bind(self.on_vip_click, self)
 	
 	local ccbproxy = CCBProxy:create()
  	local node = CCBReaderLoad("HallScene.ccbi", ccbproxy, false, "")

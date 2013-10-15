@@ -50,6 +50,16 @@ function HallSceneUPlugin.bind(theClass)
 		self:update_player_beans_with_gl()
 	end
 	
+	function theClass:on_vip_click()
+		self:do_to_vip()
+	end
+	
+	function theClass:do_to_vip()
+		local scene = createVIP()
+		self.VIP = scene
+		CCDirector:sharedDirector():pushScene(scene)
+	end
+	
 	--通过global setting存储的user来更新
 	function theClass:update_player_beans_with_gl()
 		cclog("update_player_beans_with_gl()")
