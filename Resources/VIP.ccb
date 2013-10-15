@@ -2245,8 +2245,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string>ccbResources/info.plist</string>
-									<string>Iconxiaoqizi.png</string>
+									<string>ccbResources/jiesuan.plist</string>
+									<string>hongqi.png</string>
 								</array>
 							</dict>
 						</array>
@@ -2274,7 +2274,7 @@
 								<key>value</key>
 								<array>
 									<real>45</real>
-									<real>60</real>
+									<real>50</real>
 									<integer>4</integer>
 								</array>
 							</dict>
@@ -2349,9 +2349,9 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>133.05601501464844</real>
-							<real>381.88803100585938</real>
-							<integer>0</integer>
+							<real>16.632001876831055</real>
+							<real>82</real>
+							<integer>4</integer>
 						</array>
 					</dict>
 					<dict>
