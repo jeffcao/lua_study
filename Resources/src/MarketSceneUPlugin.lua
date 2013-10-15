@@ -36,7 +36,7 @@ function MarketSceneUPlugin.bind(theClass)
 			return r
 		end)
 		local t = LuaTableView:createWithHandler(h, CCSizeMake(800,370))
-		t:setPosition(CCPointMake(0,35))
+		t:setPosition(CCPointMake(0,10))
 		
 		for index=#(product_list), 1, -1 do
 			t:updateCellAtIndex(index-1)
@@ -109,7 +109,7 @@ function MarketSceneUPlugin.bind(theClass)
 		
 		self:show_progress_message_box("获取商品列表")
 		self:shop_prop_list()
-		self.after_trigger_success = __bind(self.show_product_list, self)
+		--self.after_trigger_success = __bind(self.show_product_list, self)
 		
 	end
 	

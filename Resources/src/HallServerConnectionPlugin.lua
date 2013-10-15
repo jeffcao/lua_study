@@ -117,9 +117,9 @@ function HallServerConnectionPlugin.bind(theClass)
 		self:call_server_method("feedback", event_data)
 	end
 	
-	function theClass:shop_prop_list()
+	function theClass:shop_prop_list(prop_type)
 		self.failure_msg = "获取商品列表失败"
-		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0", prop_type=1}
+		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0", prop_type=prop_type}
 		self:call_server_method("shop_prop_list", event_data)
 	
 	end
