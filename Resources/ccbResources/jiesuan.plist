@@ -4,6 +4,149 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>S_40_vip.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{296,832},{60,66}}</string>
+                <key>offset</key>
+                <string>{0,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{5,3},{60,66}}</string>
+                <key>sourceSize</key>
+                <string>{70,70}</string>
+            </dict>
+            <key>S_40_vip_weijihuo.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{296,764},{60,66}}</string>
+                <key>offset</key>
+                <string>{0,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{5,3},{60,66}}</string>
+                <key>sourceSize</key>
+                <string>{70,70}</string>
+            </dict>
+            <key>S_42_vip.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{316,613},{60,66}}</string>
+                <key>offset</key>
+                <string>{0,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{5,3},{60,66}}</string>
+                <key>sourceSize</key>
+                <string>{70,70}</string>
+            </dict>
+            <key>S_42_vip_weijihuo.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{296,696},{60,66}}</string>
+                <key>offset</key>
+                <string>{0,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{5,3},{60,66}}</string>
+                <key>sourceSize</key>
+                <string>{70,70}</string>
+            </dict>
+            <key>S_44_vip.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{292,900},{60,66}}</string>
+                <key>offset</key>
+                <string>{0,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{5,3},{60,66}}</string>
+                <key>sourceSize</key>
+                <string>{70,70}</string>
+            </dict>
+            <key>S_44_vip_weijihuo.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{234,832},{60,66}}</string>
+                <key>offset</key>
+                <string>{0,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{5,3},{60,66}}</string>
+                <key>sourceSize</key>
+                <string>{70,70}</string>
+            </dict>
+            <key>S_46_vip.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{234,764},{60,66}}</string>
+                <key>offset</key>
+                <string>{0,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{5,3},{60,66}}</string>
+                <key>sourceSize</key>
+                <string>{70,70}</string>
+            </dict>
+            <key>S_46_vip_weijihuo.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{234,696},{60,66}}</string>
+                <key>offset</key>
+                <string>{0,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{5,3},{60,66}}</string>
+                <key>sourceSize</key>
+                <string>{70,70}</string>
+            </dict>
+            <key>VIP_heikuang.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{234,613},{81,80}}</string>
+                <key>offset</key>
+                <string>{-2,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{81,80}}</string>
+                <key>sourceSize</key>
+                <string>{85,80}</string>
+            </dict>
+            <key>VIP_jiantou.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{974,331},{33,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{33,44}}</string>
+                <key>sourceSize</key>
+                <string>{33,44}</string>
+            </dict>
+            <key>VIPlicheng.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{974,366},{101,27}}</string>
+                <key>offset</key>
+                <string>{3,-3}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{43,13},{101,27}}</string>
+                <key>sourceSize</key>
+                <string>{181,47}</string>
+            </dict>
             <key>dizhuwin.png</key>
             <dict>
                 <key>frame</key>
@@ -42,6 +185,45 @@
                 <string>{{0,0},{243,258}}</string>
                 <key>sourceSize</key>
                 <string>{243,258}</string>
+            </dict>
+            <key>lingqv1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{974,239},{90,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{90,44}}</string>
+                <key>sourceSize</key>
+                <string>{90,44}</string>
+            </dict>
+            <key>lingqv2.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{974,147},{90,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{90,44}}</string>
+                <key>sourceSize</key>
+                <string>{90,44}</string>
+            </dict>
+            <key>lingqv3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{974,55},{90,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{90,44}}</string>
+                <key>sourceSize</key>
+                <string>{90,44}</string>
             </dict>
             <key>lose.png</key>
             <dict>
@@ -95,6 +277,19 @@
                 <key>sourceSize</key>
                 <string>{48,25}</string>
             </dict>
+            <key>vip_vip.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{974,469},{71,20}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{1,1},{71,20}}</string>
+                <key>sourceSize</key>
+                <string>{73,22}</string>
+            </dict>
             <key>win.png</key>
             <dict>
                 <key>frame</key>
@@ -118,7 +313,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:cc8956bbcf9e5926917a73d8895255ad$</string>
+            <string>$TexturePacker:SmartUpdate:dcce42ffd59b80f0961d8c560d9f105d$</string>
             <key>textureFileName</key>
             <string>jiesuan.png</string>
         </dict>
