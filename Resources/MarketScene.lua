@@ -34,8 +34,9 @@ function MarketScene:ctor(inactive_market_scene_fn)
 		self:set_tab(0)
 	end)
 	]]
-	
+	self.inactive_market_scene_fn = inactive_market_scene_fn
 	self.ccbproxy = CCBProxy:create()
+	self.on_close_clicked = __bind(self.on_close_click, self)
 	ccb.market_scene = self
 	local node = CCBReaderLoad("MarketScene.ccbi", self.ccbproxy, true, "market_scene")
 	self:addChild(self.rootNode)
@@ -46,6 +47,12 @@ function MarketScene:ctor(inactive_market_scene_fn)
 	end)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
+end
+
+function MarketScene:on_close_click()
+	print("[FullMubanStyleLayer] call inactive_market_scene_fn")
+	self.inactive_market_scene_fn()
+	CCDirector:sharedDirector():popScene()
 end
 
 function MarketScene:get_prop_list(type)
@@ -118,6 +125,7 @@ function MarketScene:set_tab(name)
 					if not v.attach_view:getParent() then
 						self.content_layer:addChild(v.attach_view)
 					end
+					v.toggle:setSelectedIndex(1)
 					v.attach_view:setVisible(true)
 					v.menu:setEnabled(false)
 					v:setPosition(ccp(v.x, v.y - 10))
