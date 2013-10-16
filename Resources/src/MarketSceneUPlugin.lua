@@ -45,84 +45,6 @@ function MarketSceneUPlugin.bind(theClass)
 		return t
 	end
 	
-	function theClass:show_product_list(data)
-		self:test_process_props(data.commodity)
-		--local product_view = self:create_product_list(data.commodity)
-		--self.rootNode:setContent(product_view)
-		
-		local kinds = {}
-		for k,v in pairs(data.commodity) do
-			if not kinds[v.kind] then kinds[v.kind] = {} end
-			table.insert(kinds[v.kind], v)
-		end
-		local first_key = ''
-		for k,v in pairs(kinds) do
-			if first_key == '' then first_key = k end
-			self:createTab(k,v)
-		end
-		self:setTab(first_key)
-	end
-	
-	function theClass:createTab(kind, data)
-		local right_menu = self.rootNode:getRightMenu()
-		local toggle = CCMenuItemToggle:create(CCMenuItemFont:create(kind .. '上'))
-		toggle:addSubItem(CCMenuItemFont:create(kind..'下'))
-		toggle:setSelectedIndex(1)
-		local menu = CCMenu:createWithItem(toggle)
-		menu:ignoreAnchorPointForPosition(false)
-		right_menu:addChild(menu)
-		menu.toggle = toggle
-		menu.name = kind
-		menu.data = data
-		if not right_menu.tabs then right_menu.tabs = {} end
-		local len = 0
-		for k,v in pairs(right_menu.tabs) do len = len + 1 end
-		menu:setPosition(ccp(360 + len * 100, 260))
-		toggle:registerScriptTapHandler(function() self:setTab(menu.name) end)
-		right_menu.tabs[menu.name] = menu
-	end
-	
-	function theClass:setTab(name)
-		local right = self.rootNode:getRightMenu()
-		if name == right.last then return end
-		for k,v in pairs(right.tabs) do
-			local y = v:getPositionY()
-			local x = v:getPositionX()
-			if k == name then
-				if not v.attach_view then v.attach_view = self:create_product_list(v.data) self.rootNode:setContent(v.attach_view) end
-				v.attach_view:setVisible(true)
-				v:setEnabled(false)
-				v:setPosition(ccp(x, y - 10))
-			else
-				if v.name == right.last then v:setPosition(ccp(x, y + 10)) end
-				v.toggle:setSelectedIndex(0)
-				if v.attach_view then v.attach_view:setVisible(false) end
-				v:setEnabled(true)
-			end
-		end
-		right.last = name
-	end
-	
-	
-	function theClass:init_product_list()
-		print("[MarketSceneUPlugin:do_on_trigger_success]")
-		
-		self:show_progress_message_box("获取商品列表")
-		self:shop_prop_list()
-		--self.after_trigger_success = __bind(self.show_product_list, self)
-		
-	end
-	
-	function theClass:test_process_props(source_data)
-		for k,v in pairs(source_data) do
-			if v.name and string.find(v.name, '卡') then v.kind = '卡'
-			elseif v.name and string.find(v.name, '礼包') then v.kind = '礼包'
-			elseif v.name and string.find(v.name, '宝箱') then v.kind = '宝箱'
-			else v.kind = '其他' end
-		end
-		dump(source_data)
-	end
-	
 	function theClass:is_cm_sim_card()
 		print("[MarketSceneUPlugin:is_cm_sim_card]")
 		local imsi = CCUserDefault:sharedUserDefault():getStringForKey("hw_imsi")
@@ -253,4 +175,92 @@ function MarketSceneUPlugin.bind(theClass)
 			fn(data)
 		end
 	end
+	
+	function theClass:on_close_click()
+		print("[FullMubanStyleLayer] call inactive_market_scene_fn")
+		self.inactive_market_scene_fn()
+		CCDirector:sharedDirector():popScene()
+	end
+	
+	function theClass:get_prop_list(type)
+		self:show_progress_message_box("获取商品列表")
+		self:shop_prop_list(type)
+		self.after_trigger_success = __bind(self.on_get_tab, self)
+	end
+
+	function theClass:init_tabs()
+		for index = 0,3 do
+			self:create_one_tab(tostring(index))
+		end
+	end
+	
+	function theClass:create_one_tab(tab_seq)
+		tab_seq = tostring(tab_seq)
+		local name = tab_seq
+		if self.tabs[name] then return end
+		local name_hanzi = self.tabnames_hanzi[tonumber(tab_seq) + 1]
+		
+		local layer = CCLayer:create()
+		local label = CCLabelTTF:create(name_hanzi,"default",25)
+		
+		local menu_normal_sprite = CCSprite:createWithSpriteFrameName("xuanxiangka2.png")
+		local menu_click_sprite = CCSprite:createWithSpriteFrameName("xuanxiangka1.png")
+		local toggle_sub_normal = CCMenuItemSprite:create(menu_normal_sprite, menu_click_sprite)
+		local toggle_sub_selected = CCMenuItemSprite:create(CCSprite:createWithSpriteFrameName("xuanxiangka1.png"),
+															CCSprite:createWithSpriteFrameName("xuanxiangka1.png"))
+		local toggle = CCMenuItemToggle:create(toggle_sub_normal)
+		toggle:addSubItem(toggle_sub_selected)
+		toggle:setSelectedIndex(0)
+		toggle:setTag(1000)
+		toggle:registerScriptTapHandler(function() self:set_tab(name) end)
+		local menu = CCMenu:createWithItem(toggle)
+		menu:ignoreAnchorPointForPosition(false)
+		layer:addChild(menu)
+		layer:addChild(label)
+		self.menu_layer:addChild(layer)
+		layer:setPosition(ccp(40+tonumber(tab_seq)*115,20))
+		
+		
+		layer.menu = menu
+		layer.toggle = toggle
+		layer.name = name
+		layer.y = layer:getPositionY()
+		layer.x = layer:getPositionX()
+		self.tabs[name]=layer
+	end
+
+	function theClass:on_get_tab(data)
+		cclog("on get tab data")
+		dump(data, "data=>")
+		self.tabs[data.type].attach_view = self:create_product_list(data.commodity)
+		self:set_tab(data.type)
+	end
+
+	function theClass:set_tab(name)
+		cclog('set tab '..name)
+		name = tostring(name)
+		if name == self.last_tab then cclog('name == self.last_tab, return') return end
+		for k,v in pairs(self.tabs) do
+			if k == name then
+				if not v.attach_view then 
+					self:get_prop_list(name)
+					return
+				else
+					if not v.attach_view:getParent() then
+						self.content_layer:addChild(v.attach_view)
+					end
+					v.toggle:setSelectedIndex(1)
+					v.attach_view:setVisible(true)
+					v.menu:setEnabled(false)
+					v:setPosition(ccp(v.x, v.y - 10))
+				end
+			else
+				if v.name == self.last_tab then v:setPosition(ccp(v.x, v.y)) end
+				v.toggle:setSelectedIndex(0)
+				if v.attach_view then v.attach_view:setVisible(false) end
+				v.menu:setEnabled(true)
+			end
+		end
+		self.last_tab = name
+	  end
 end
