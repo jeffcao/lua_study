@@ -1985,8 +1985,6 @@
 										<string>新中南</string>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 							<dict>
 								<key>baseClass</key>
