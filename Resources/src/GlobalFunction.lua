@@ -301,4 +301,3 @@ function get_weekday(wk_int)
 	cclog('weekday for ' .. tostring(wk_int) .. ' is ' .. weekday)
 	return weekday
 end
-

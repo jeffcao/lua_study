@@ -29,6 +29,7 @@ require "src.CardRoboter2"
 require "src.ServerNotifyPlugin"
 require "src.UIControllerPlugin"
 require "GamingOption"
+require "IntroduceDialog"
 
 GamingScene = class("GamingScene", function()
 	return display.newScene("GamingScene")
@@ -80,7 +81,9 @@ function GamingScene:ctor()
 	if self.rootNode then str = "GamingScene root node is not nil" end
 	print(str)
 	self:init_connectivity()
-	
+	Timer.add_timer(0.5, function() 
+		self:check_tech_msg("enter_room")
+	end)
 end
 
 function GamingScene:onEnter()
@@ -90,6 +93,7 @@ end
 
 function GamingScene:onExit()
 	self.super.onExit(self)
+	
 	print("[GamingScene:on_exit()]")
 end
 

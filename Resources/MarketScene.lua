@@ -1,6 +1,7 @@
 require "src.MarketSceneUPlugin"
 require "src.UIControllerPlugin"
 require "src.HallServerConnectionPlugin"
+require "IntroduceDialog"
 
 MarketScene = class("MarketScene", function()
 	print("new market scene")
@@ -25,6 +26,9 @@ function MarketScene:ctor(inactive_market_scene_fn)
 	self:init_tabs()
 	Timer.add_timer(0.1, function() 
 		self:get_prop_list("0")
+	end)
+	Timer.add_timer(0.5, function() 
+		self:check_tech_msg("shop")
 	end)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 end

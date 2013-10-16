@@ -39,6 +39,8 @@ GlobalSetting = {
 	
 	game_server_url = "",
 	
+	teach_msg = {},
+	
 	content_scale_factor = 1.0,
 	
 	debug_dump_websocket_raw = true,

@@ -117,7 +117,7 @@ function InitPlayerInfoLayer:do_ui_commit_btn_clicked(tag, sender)
 	end
 	local mail = trim_blank(self.mail_box:getText())
 	if is_blank(mail) then
-		self:show_message_box("邮箱地址不能为空，否则在您忘记密码时无法从系统获得密码.",{msg_width=460,z_order=99999})
+		self:show_message_box("邮箱地址不能为空，否则在您忘记密码时无法从系统获得密码.",{msg_width=660,z_order=99999})
 		return
 	end
 	if not check_email(mail) then

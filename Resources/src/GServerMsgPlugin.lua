@@ -158,6 +158,7 @@ function GServerMsgPlugin.bind(theClass)
 			-- 显示出牌菜单
 			self:showPlayCardMenu(true)
 			self:showLordCards(data.lord_cards, data.lord_value)
+			self:check_tech_msg("lord")
 	 	else 
 			-- 自己不是地主，先更新各玩家的叫地主分数
 			self:updateLordValue(self.self_user_lord_value, self.self_user.lord_value)
@@ -198,6 +199,7 @@ function GServerMsgPlugin.bind(theClass)
 				else
 					self:startPrevUserAlarm(30, nil)
 				end
+				self:check_tech_msg("farmer")
 				self:showLordCards(data.lord_cards, data.lord_value)
 			 else 
 				-- 还没有地主产生，也轮不到自己叫地主， 则标示出叫地主的玩家，并启动计时提示

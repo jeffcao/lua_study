@@ -12,6 +12,7 @@ require "src.SoundEffect"
 require "Share"
 require "TimeTask"
 require "VIP"
+require "IntroduceDialog"
 
 HallScene = class("HallScene", function() 
 	print("create new hall scene")

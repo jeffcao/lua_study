@@ -110,6 +110,7 @@ function UIControllerPlugin.bind(theClass)
 		msg_layer:registerScriptTouchHandler(__bind(self.on_msg_layer_touched, self), false, -1024, true)
 
 		local content_layer = CCLayer:create()
+		cclog("msg_width: " .. msg_width .. ", msg_height: " .. msg_height)
 		content_layer:setContentSize(CCSizeMake(msg_width, msg_height))
 		
 		msg_layer:addChild(content_layer, 999, 100)
@@ -163,7 +164,9 @@ function UIControllerPlugin.bind(theClass)
 	end
 	
 	function theClass:show_message_box(message, params)
+		cclog("show_message_box " .. message)
 		local w = 200 + 5*string.len(message)
+		cclog("set w to " ..w)
 		params = params or {}
 		local msg_width = params.msg_width or w--330
 		local msg_height = params.msg_height or 70
@@ -374,6 +377,23 @@ function UIControllerPlugin.bind(theClass)
 		msg_sprite:setPosition(ccp(0, msg_height / 2.0 ))
 		msg_layer.msg_lb = msg_lb
 		return msg_layer
+	end
+	
+	function theClass:check_tech_msg(moment)
+		cclog("check_tech_msg "..moment)
+		dump(GlobalSetting.teach_msg, "GlobalSetting.teach_msg=>")
+		local teach = GlobalSetting.teach_msg[moment]
+		if not (teach and teach.content) then
+			cclog("do not introduce moment " .. moment)
+			return
+		end
+		local scene = CCDirector:sharedDirector():getRunningScene()
+		if not (scene and scene.rootNode) then
+			cclog('check_tech_msg the running scene is null or has not root node')
+			return
+		end
+		showIntroduce(teach.content, scene.rootNode)
+		GlobalSetting.teach_msg[moment] = nil
 	end
 	
 end

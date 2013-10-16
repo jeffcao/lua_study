@@ -25,7 +25,9 @@ function LoginServerConnectionPlugin.bind(theClass)
 			if data.weibo.sina_weibo then print('get sina share url') GlobalSetting.sina_share_url = data.weibo.sina_weibo end
 			if data.weibo.tencent_weibo then print('get tencent share url') GlobalSetting.tencent_share_url = data.weibo.tencent_weibo end
 		end
-		
+		if data.teach_msg then
+			GlobalSetting.teach_msg = data.teach_msg
+		end
 		print("[LoginServerConnectionPlugin.sign_success] on_login_success.")
 		if "function" == type(self.do_on_login_success) then
 			self:do_on_login_success()

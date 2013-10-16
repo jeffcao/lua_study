@@ -222,7 +222,11 @@ function HallSceneUPlugin.bind(theClass)
 		
 		--then call online_time_get_beans
 		self:start_online_time_get_beans()
+		
+		self:check_tech_msg("sign")
 	end
+	
+	
 	
 	function theClass:init_current_player_info()
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
