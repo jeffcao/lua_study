@@ -392,7 +392,7 @@ function UIControllerPlugin.bind(theClass)
 			cclog('check_tech_msg the running scene is null or has not root node')
 			return
 		end
-		showIntroduce(teach.content, scene.rootNode)
+		showIntroduce(moment, teach.content, scene.rootNode)
 		GlobalSetting.teach_msg[moment] = nil
 	end
 	

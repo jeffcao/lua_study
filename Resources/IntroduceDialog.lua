@@ -1,5 +1,6 @@
 require "src.DialogInterface"
 require "CCBReaderLoad"
+require "src.SoundEffect"
 
 IntroduceDialog = class("IntroduceDialog", function()
 	print("create IntroduceDialog")
@@ -7,11 +8,12 @@ IntroduceDialog = class("IntroduceDialog", function()
 end
 )
 
-function showIntroduce(msg, layer)
+function showIntroduce(moment, msg, layer)
 	local dialog = createIntroduceDialog()
 	dialog:setMessage(msg)
 	layer:addChild(dialog, 6000, 1002)
 	dialog:show()
+	dialog:playIntroduce(moment)
 	return dialog
 end
 

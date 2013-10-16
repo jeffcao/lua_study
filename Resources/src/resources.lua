@@ -21,6 +21,9 @@ Res = {
 
 -- 按键点击音效
  s_music_button_click = dirMusic .. "click/button_click.ogg",
+ 
+-- 游戏引导音效
+ s_music_introduce = dirMusic .. "introduce/",
 
 -- 抽牌
  s_effect_pick_card = dirMusic .. "pick/discard.ogg",

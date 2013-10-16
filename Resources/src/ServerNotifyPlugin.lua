@@ -4,10 +4,14 @@ function ServerNotifyPlugin.bind(theClass)
 	function theClass:onServerNotify(data)
 		if not data then return end
 		dump(data, "onServerNotify=>")
-		local funcs = {self.onLevel, self.onVIP, self.onProp, self.onActivity, self.onTimeBeans, self.onBankrupt}
+		local funcs = {self.onLevel, self.onVIP, self.onProp, self.onActivity, self.onTimeBeans, self.onBankrupt, self.onMusic}
 		local func = funcs[tonumber(data.notify_type)+1]
 		if not func then return end
 		func(self,data)
+	end
+	
+	function theClass:onMusic(data)
+		
 	end
 	
 	function theClass:onBankrupt(data)

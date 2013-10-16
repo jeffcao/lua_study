@@ -228,4 +228,17 @@ function SoundEffect.bind(theClass)
 		end
 		SimpleAudioEngine:sharedEngine():playEffect(s_effect_file)
 	end
+	
+	function theClass:playIntroduce(moment)
+		if not SoundSettings.effect_music then return end
+		local p = Res.s_music_introduce
+		local sounds = {
+		sign=p.."3.mp3",
+		shop=p.."5.mp3",
+		enter_room=p.."6.mp3",
+		farmer=p.."8.mp3",
+		lord=p.."7.mp3"
+		}
+		SimpleAudioEngine:sharedEngine():playEffect(sounds[moment])
+	end
 end
