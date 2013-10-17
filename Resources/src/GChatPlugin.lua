@@ -16,6 +16,7 @@ function GChatPlugin.bind(theClass)
 		chat:getParent():reorderChild(chat, self.MSG_LAYER_ORDER)
 	end
 	
+	--[[
 	function theClass:onChatTouch(eventType, x, y)
 		if not self.chat_layer:isVisible() then return false end
 		cclog("onChatTouch touch event:%s,x:%d,y:%d", eventType, x, y)
@@ -27,17 +28,23 @@ function GChatPlugin.bind(theClass)
 			return self:onChatToucheEnded(ccp(x, y))
 		end
     end
+    ]]
 	
 	function theClass:showChatBoard() 
+		if not self.voice_props and (#self.voice_props > 0)then
+			return
+		end
 		if not self.chat_layer then
 			self.chat_layer = createGChat()
-			self.chat_layer:registerScriptTouchHandler(__bind(self.onChatTouch, self))
-        	self.chat_layer:setTouchEnabled(true)
+			self.chat_layer:init(self.voice_props, __bind(self.doSendChatMessage, self))
+			--self.chat_layer:registerScriptTouchHandler(__bind(self.onChatTouch, self))
+        	--self.chat_layer:setTouchEnabled(true)
 			self.rootNode:addChild(self.chat_layer, self.CHAT_LAYER_ORDER)
 		end
 		self.chat_layer:setVisible(true)
 	end
 	
+	--[[
 	function theClass:onChatToucheBegan(loc) 
 		return true
 	end
@@ -90,6 +97,7 @@ function GChatPlugin.bind(theClass)
 		end
 		self.chat_layer:setVisible(false)
 	end
+	]]
 	
 	function theClass:displayChatMessage(message, layer, uid) 
 		local bg = layer:getChildByTag(1002)

@@ -12,6 +12,9 @@ function ServerNotifyPlugin.bind(theClass)
 	
 	function theClass:onMusic(data)
 		self:play_vip_voice(data.voice)
+		if data.chat == 1 and self.onServerChatMessage then
+			self:onServerChatMessage(data)
+		end
 	end
 	
 	function theClass:onBankrupt(data)

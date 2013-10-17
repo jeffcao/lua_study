@@ -14,10 +14,6 @@ function GConnectionPlugin.bind(theClass)
 		self.g_WebSocket.channels[user_channel_name] = nil
 		self.g_channel = self.g_WebSocket:subscribe(channel_name)
 		self.m_channel = self.g_WebSocket:subscribe(user_channel_name)
-		self.c_channel = self.g_WebSocket:subscribe(channel_name .. "_chat")
-		self.c_channel:bind("g.on_message", function(data) 
-			self:onServerChatMessage(data)
-		end)
 		self:bind_channel(self.g_channel)
 		self:bind_channel(self.m_channel)
 		

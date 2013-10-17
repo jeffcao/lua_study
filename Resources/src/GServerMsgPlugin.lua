@@ -348,10 +348,10 @@ function GServerMsgPlugin.bind(theClass)
 	
 	--c_channel
 	function theClass:onServerChatMessage(message)
-		print("onServerChatMessage")
+		dump(message, "onServerChatMessage")
 		--cclog("chat messageon server :" .. message.msg .. ", from id:" .. tostring(message.user_id))
 		local layer = nil
-		local id = message.user_id
+		local id = tonumber(message.user_id)
 		if self.next_user and id == self.next_user.user_id then
 			layer = self.next_liaotian
 		elseif  self.prev_user and id == self.prev_user.user_id then
@@ -359,6 +359,6 @@ function GServerMsgPlugin.bind(theClass)
 		else 
 			layer = self.self_liaotian
 		end
-		self:displayChatMessage(message.msg, layer, id)
+		self:displayChatMessage(message.text, layer, id)
 	end
 end

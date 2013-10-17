@@ -48,8 +48,13 @@ function GActionPlugin.bind(theClass)
 		end
 	end
 	
-	function theClass:doSendChatMessage(message) 
-		self.c_channel:trigger("g.on_message", {msg = message, user_id = self.g_user_id})
+	function theClass:doSendChatMessage(data) 
+		self.g_WebSocket:trigger("g.chat_in_playing", {prop_id=data, user_id=self.g_user_id}, function(data)
+			print("========g.chat_in_playing succeess: " , data)
+		end, function(data)
+			print("========g.chat_in_playing failure: " , data)
+		end)
+		--self.c_channel:trigger("g.on_message", {msg = message, user_id = self.g_user_id})
 	end
 	
 	function theClass:doTuoguan(isNotServerAuto) 
