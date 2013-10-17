@@ -11,7 +11,7 @@ function ServerNotifyPlugin.bind(theClass)
 	end
 	
 	function theClass:onMusic(data)
-		
+		self:play_vip_voice(data.voice)
 	end
 	
 	function theClass:onBankrupt(data)

@@ -24,6 +24,8 @@ Res = {
  
 -- 游戏引导音效
  s_music_introduce = dirMusic .. "introduce/",
+ 
+ s_music_vip = dirMusic .. "vip_sounds/",
 
 -- 抽牌
  s_effect_pick_card = dirMusic .. "pick/discard.ogg",

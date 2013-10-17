@@ -209,6 +209,10 @@ function HallServerConnectionPlugin.bind(theClass)
 			self:on_buy_product_message(data)
 		end)
 		
+		self.hall_channel:bind("ui.routine_notify", function(data)
+			self:onServerNotify(data)
+		end)
+		
 		self:initSocket(GlobalSetting.hall_server_websocket, "ui.restore_connection")
 	end
 	

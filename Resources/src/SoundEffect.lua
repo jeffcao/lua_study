@@ -241,4 +241,11 @@ function SoundEffect.bind(theClass)
 		}
 		SimpleAudioEngine:sharedEngine():playEffect(sounds[moment])
 	end
+	
+	function theClass:play_vip_voice(voice)
+		cclog("play vip voice " .. voice)
+		if not SoundSettings.effect_music then return end
+		local p = Res.s_music_vip .. voice
+		SimpleAudioEngine:sharedEngine():playEffect(p)
+	end
 end

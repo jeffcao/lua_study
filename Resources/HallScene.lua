@@ -13,6 +13,7 @@ require "Share"
 require "TimeTask"
 require "VIP"
 require "IntroduceDialog"
+require "src.ServerNotifyPlugin"
 
 HallScene = class("HallScene", function() 
 	print("create new hall scene")
@@ -118,3 +119,4 @@ end
  ConnectivityPlugin.bind(HallScene)
  SocketStatePlugin.bind(HallScene)
  SoundEffect.bind(HallScene)
+ ServerNotifyPlugin.bind(HallScene)
