@@ -43,6 +43,26 @@ function GUIUpdatePlugin.bind(theClass)
 		self.menu_get_lord:setVisible(false)
 	end
 	
+	--破产
+	function theClass:scene_on_bankrupt(data)
+		local info = users[self.g_user_id]
+		if info then
+			info.score = data.score
+		end
+	end
+	
+	--道具过期
+	function theClass:scene_on_prop(data)
+		local name = data.name
+		if name == "记牌器" then
+			self:set_jipaiqi_enable(false)
+			if self.card_roboter then
+				self.card_roboter:reset()
+				self.card_roboter:dismiss()
+			end
+		end
+	end
+	
 	function theClass:showLordCards(lord_card_ids, lord_value) 
 		--提取出扑克牌
 		local poke_card_ids = {}
@@ -389,6 +409,7 @@ function GUIUpdatePlugin.bind(theClass)
 	 	else 
 			self:exit()
 		end
+		self:playButtonEffect()
 	end
 	
 	
@@ -432,6 +453,7 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	function theClass:onBgMusicClicked() 
 		self:showChatBoard()
+		self:playButtonEffect()
 	end
 	
 	function theClass:onEffectMusicClicked()
@@ -441,7 +463,7 @@ function GUIUpdatePlugin.bind(theClass)
 		end
 		self.set_dialog:updateVolume()
 		self.set_dialog:show()
-		
+		self:playButtonEffect()
 	end
 	
 	function theClass:onPrevUserClicked()
@@ -490,16 +512,32 @@ function GUIUpdatePlugin.bind(theClass)
 			self:exit()
 		end
 		]]
-		--[[local option = nil
+		local option = nil
 		local fn1 = function()
 			if option then option:dismiss() end
 			self:onReturnClicked()
+			self:playButtonEffect()
 		end
-		option = createGamingOption(fn1,fn1,fn1)
+		local fn2 = function()
+			if self:is_jipaiqi_enable() and self._is_playing then
+				if self.card_roboter:isShowing() then
+					self.card_roboter:dismiss()
+				else
+					self.card_roboter:show()
+				end
+				self:playButtonEffect()
+			end
+			option:dismiss()
+		end
+		local fn3 = function()
+			self:getRank()
+			self:playButtonEffect()
+		end
+		option = createGamingOption(fn1,fn2,fn3)
 		self.rootNode:addChild(option, self.GAMING_OPTION_ORDER);
 		--option:init_funcs(fn1,fn1,fn1)
 		option:show()
-		]]
+		self:playButtonEffect()
 		--[[
 		local rank = createRank()
 		local rank_list = {}
@@ -514,7 +552,7 @@ function GUIUpdatePlugin.bind(theClass)
 		self.rootNode:addChild(rank,self.RANK_ORDER)
 		rank:show()
 		]]
-		self:getRank()
+		--self:getRank()
 	end
 	
 	

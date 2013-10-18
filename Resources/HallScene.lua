@@ -14,7 +14,7 @@ require "TimeTask"
 require "VIP"
 require "IntroduceDialog"
 require "src.ServerNotifyPlugin"
-
+local cjson = require "cjson"
 HallScene = class("HallScene", function() 
 	print("create new hall scene")
 	return display.newScene("HallScene")
@@ -84,6 +84,9 @@ HallScene = class("HallScene", function()
 	if SoundSettings.bg_music and not is_playing then
 		self:playBackgroundMusic()
 	end
+	local is_vip = (GlobalSetting.vip ~= cjson.null)
+	print("set vip menu visible to " .. tostring(is_vip))
+	self.hall_vip_menu:setVisible(is_vip)
  end
  
  function HallScene:playMusic()

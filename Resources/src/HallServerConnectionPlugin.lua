@@ -111,6 +111,12 @@ function HallServerConnectionPlugin.bind(theClass)
 		self:call_server_method("fast_begin_game", event_data)
 	end
 	
+	function theClass:get_vip_salary()
+		self.failure_msg = "领取工资失败"
+		local event_data = {user_id =  GlobalSetting.current_user.user_id}
+		self:call_server_method("get_salary", event_data)
+	end
+	
 	function theClass:feedback(content)
 		self.failure_msg = "保存反馈信息失败"
 		local event_data = {user_id =  GlobalSetting.current_user.user_id, content = content}

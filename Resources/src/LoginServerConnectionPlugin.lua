@@ -28,6 +28,9 @@ function LoginServerConnectionPlugin.bind(theClass)
 		if data.teach_msg then
 			GlobalSetting.teach_msg = data.teach_msg
 		end
+		if data.vip then
+			GlobalSetting.vip = data.vip
+		end
 		print("[LoginServerConnectionPlugin.sign_success] on_login_success.")
 		if "function" == type(self.do_on_login_success) then
 			self:do_on_login_success()

@@ -1,4 +1,4 @@
-local json = require "cjson"
+local cjson = require "cjson"
 require "UserCenterScene"
 require "YesNoDialog2"
 require "YesNoDialog"
@@ -12,6 +12,13 @@ require "PlayerProductsScene"
 HallSceneUPlugin = {}
 
 function HallSceneUPlugin.bind(theClass)
+	
+	function theClass:scene_on_become_vip()
+		local is_vip = (GlobalSetting.vip ~= cjson.null)
+		print("scene_on_vip set vip menu visible to " .. tostring(is_vip))
+		self.hall_vip_menu:setVisible(is_vip)
+	end
+
 	function theClass:onKeypad(key)
 		print("hall scene on key pad")
 		if key == "menuClicked" then

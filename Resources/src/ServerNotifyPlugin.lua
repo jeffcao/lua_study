@@ -17,19 +17,55 @@ function ServerNotifyPlugin.bind(theClass)
 		end
 	end
 	
+	--破产
 	function theClass:onBankrupt(data)
+		local beans = data.beans
+		local score = data.score
+		local scene = CCDirector:sharedDirector():getRunningScene()
+		if beans and scene.rootNode and scene.show_server_notify and data.user_id then
+			local message = "您获得了破产补助："..beans.."个豆子"
+			scene:show_server_notify(msg)
+		end
+		if scene.scene_on_bankrupt then
+			scene:scene_on_bankrupt(data)
+		end
 	end
 	
+	--等级升级
 	function theClass:onLevel(data)
+		--local level = data.level
 	end
 	
+	--VIP升级
 	function theClass:onVIP(data)
+		local o_vip = GlobalSetting.vip
+		local cjson = require "cjson"
+		local is_become_vip = ((not o_vip) or (o_vip == cjson.null))
+		if data then
+			GlobalSetting.vip = data
+		end
+		local scene = CCDirector:sharedDirector():getRunningScene()
+		if scene.scene_on_become_vip and is_become_vip then
+			scene:scene_on_become_vip()
+		end
 	end
 	
+	--道具过期
 	function theClass:onProp(data)
+		local id = data.user_id
+		local prop_id = data.prop_id
+		self:play_vip_voice("27.mp3")
+		local scene = CCDirector:sharedDirector():getRunningScene()
+		if scene.scene_on_prop then
+			scene:scene_on_prop(data)
+		end
+		--对于记牌器在游戏界面过期要进行处理
+		--对于在我的道具界面，要进行刷新处理
 	end
 	
+	--新活动，在其他界面之用刷新活动的data，在大厅界面且活动打开的时候，刷新活动的界面
 	function theClass:onActivity(data)
+	--数据和大厅界面获取活动的数据一样
 	end
 	
 	function theClass:onTimeBeans(data)

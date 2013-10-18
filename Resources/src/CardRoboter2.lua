@@ -18,16 +18,20 @@ function CardRoboter2:init(parent, z_order)
 	self.ccbproxy = CCBProxy:create()
 	self.ccbproxy:retain()
 	ccb.card_roboter = self
+	
+	--[[
 	self.on_button_clicked = function() 
 		self.recorder:setVisible(not self.recorder:isVisible()) 
 		self:playButtonEffect()
 	end
+	]]
 	local node = CCBReaderLoad("CardRoboter.ccbi", self.ccbproxy, true, "card_roboter")
 	self.layer = node
 	
 	z_order = z_order or 9999
 	self.parent = parent
 	self:reset()
+	self.button:setVisible(false)
 	print("self.layer", self.layer)
 	self.layer:setVisible(false)
 	self.layer:setPosition(ccp(0, 0))

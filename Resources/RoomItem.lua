@@ -65,6 +65,7 @@ function RoomItem:init_room_info(room_info, room_index)
 		room_name = "锦绣仕途"
 	--	room_leve_png = "dashi.png" 
 	end
+	room_name = self.room_info.name
 	--level_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(room_leve_png))
 	title:setString(room_name)
 	

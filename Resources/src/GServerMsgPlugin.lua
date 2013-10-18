@@ -57,7 +57,20 @@ function GServerMsgPlugin.bind(theClass)
 		self:setHasGamingStarted(true)
 		
 		self:refreshProps(data)
-		self.card_roboter:onServerStartGame(self)
+		self:set_jipaiqi_enable(data.show_jipaiqi == 1)
+		if self:is_jipaiqi_enable() then
+			self.card_roboter:onServerStartGame(self)
+		end
+	end
+	
+	function theClass:set_jipaiqi_enable(enable)
+		print("set jipaiqi_enable", enable)
+		self.has_jipaiqi = enable
+	end
+	
+	function theClass:is_jipaiqi_enable()
+		print("is jipaiqi_enable", self.has_jipaiqi)
+		return self.has_jipaiqi
 	end
 	
 	-- g_channel and c_channel
@@ -114,7 +127,7 @@ function GServerMsgPlugin.bind(theClass)
 	end
 	
 	function theClass:onServerRank(data)
-		data.expire_time = os.time() + math.floor(data.next_time/1000)
+		data.expire_time = os.time() + data.next_time
 		self.rank = data
 		self:showRank()
 	end
@@ -256,7 +269,9 @@ function GServerMsgPlugin.bind(theClass)
 			cclog("playCardEffect not self")
 			self:playCardEffect(card)
 		end
-		self.card_roboter:onServerPlayCard(poke_cards)
+		if self:is_jipaiqi_enable() then
+			self.card_roboter:onServerPlayCard(poke_cards)
+		end
 	
 		if self._is_playing then
 			local player
@@ -343,7 +358,9 @@ function GServerMsgPlugin.bind(theClass)
 		if self.next_user then
 			self:doGetUserProfileIfNeed(self.next_user.user_id, true)
 		end
-		self.card_roboter:onServerGameOver(data)
+		if self:is_jipaiqi_enable() then
+			self.card_roboter:onServerGameOver(data)
+		end
 	end
 	
 	--c_channel
