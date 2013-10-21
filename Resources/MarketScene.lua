@@ -2,6 +2,7 @@ require "src.MarketSceneUPlugin"
 require "src.UIControllerPlugin"
 require "src.HallServerConnectionPlugin"
 require "IntroduceDialog"
+require "src.SoundEffect"
 
 MarketScene = class("MarketScene", function()
 	print("new market scene")
@@ -33,6 +34,15 @@ function MarketScene:ctor(inactive_market_scene_fn)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 end
 
+ function MarketScene:onEnter() 
+ 	self:playMarketMusic()
+ end
+ 
+ function MarketScene:onExit() 
+ 	self:stopMarketMusic()
+ end
+
 MarketSceneUPlugin.bind(MarketScene)
 UIControllerPlugin.bind(MarketScene)
 HallServerConnectionPlugin.bind(MarketScene)
+SoundEffect.bind(MarketScene)

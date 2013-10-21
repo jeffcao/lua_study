@@ -14,6 +14,9 @@ Res = {
 -- 背景音乐
  s_music_bg = dirMusic .. "bg/1.mp3",
  
+--商城背景音乐
+ s_music_market_bg = dirMusic.."bg/2.mp3",
+ 
  s_anim_plist = dirImage .. "animation.plist",
 
 -- 背景音乐列表

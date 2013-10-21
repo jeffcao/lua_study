@@ -121,6 +121,17 @@ function SoundEffect.bind(theClass)
 		]]
 	end
 	
+	function theClass:playMarketMusic()
+		if  SoundSettings.bg_music then
+			self:stopBackgroundMusic()
+			SimpleAudioEngine:sharedEngine():playBackgroundMusic(Res.s_music_market_bg, true)
+		end
+	end
+	
+	function theClass:stopMarketMusic()
+		self:stopBackgroundMusic()
+	end
+	
 	function theClass:playOneBgMusic()
 		local engine = SimpleAudioEngine:sharedEngine()
 		local rd = math.random(#Res.s_music_bg_arr)
