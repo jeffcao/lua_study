@@ -1,4 +1,5 @@
 require "CCBReaderLoad"
+require "src.SoundEffect"
 
 GuifanEndScene = class("GuifanEndScene", function()
 	return display.newScene("GuifanEndScene")
@@ -29,6 +30,10 @@ function GuifanEndScene:ctor()
 	end)
 end
 
+function GuifanEndScene:onEnter() 
+	self:play_vip_voice("4.mp3")
+end
+
 function GuifanEndScene:onExitConfirmClicked()
 	self.layer_exit:setVisible(false)
 	self.layer_game_center:setVisible(true)
@@ -47,3 +52,5 @@ end
 function GuifanEndScene:onGameCenterExitClicked()
 	CCDirector:sharedDirector():endToLua()
 end
+
+ SoundEffect.bind(GuifanEndScene)

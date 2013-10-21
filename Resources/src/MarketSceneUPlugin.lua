@@ -189,7 +189,7 @@ function MarketSceneUPlugin.bind(theClass)
 	end
 
 	function theClass:init_tabs()
-		for index = 0,3 do
+		for index = 1,3 do
 			self:create_one_tab(tostring(index))
 		end
 	end
@@ -198,7 +198,7 @@ function MarketSceneUPlugin.bind(theClass)
 		tab_seq = tostring(tab_seq)
 		local name = tab_seq
 		if self.tabs[name] then return end
-		local name_hanzi = self.tabnames_hanzi[tonumber(tab_seq) + 1]
+		local name_hanzi = self.tabnames_hanzi[tonumber(tab_seq)]
 		
 		local layer = CCLayer:create()
 		local label = CCLabelTTF:create(name_hanzi,"default",25)
@@ -218,7 +218,7 @@ function MarketSceneUPlugin.bind(theClass)
 		layer:addChild(menu)
 		layer:addChild(label)
 		self.menu_layer:addChild(layer)
-		layer:setPosition(ccp(40+tonumber(tab_seq)*115,20))
+		layer:setPosition(ccp(40+(tonumber(tab_seq)-1)*115,20))
 		
 		
 		layer.menu = menu

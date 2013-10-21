@@ -52,7 +52,7 @@ function VIP:ctor()
 	for index=1,4 do
 		local icon = "S_" ..tostring(38 + 2 * index) .. "_vip"
 		local icon_name = icon..".png"
-		if index > vip.vip_level then icon_name = icon.."_weijihuo.png" end
+		if index > tonumber(vip.vip_level) then icon_name = icon.."_weijihuo.png" end
 		local sprite_name = "vip_sprite_"..index
 		local frame = CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(icon_name)
 		self[sprite_name]:setDisplayFrame(frame)

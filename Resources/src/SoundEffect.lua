@@ -1,5 +1,5 @@
 SoundEffect = {}
-SoundSettings = {effect_music = 1, bg_music = 1}
+SoundSettings = {effect_music = 1, bg_music = 1, sound_handler = nil, delay_sound_handler = nil}
 
 function SoundEffect.bind(theClass)
 
@@ -90,11 +90,41 @@ function SoundEffect.bind(theClass)
 	end
 
 	function theClass:playBackgroundMusic()
+		if not SoundSettings.bg_music then return end
+		if SoundSettings.sound_handler then return end
+		local engine = SimpleAudioEngine:sharedEngine()
+		if engine:isBackgroundMusicPlaying() then return end
+		
+		self:playOneBgMusic()
+		
+		local rep = function() 
+	 		if not SoundSettings.bg_music then 
+	 			SoundSettings.sound_handler = nil
+	 			return false 
+	 		end
+	 		if engine:isBackgroundMusicPlaying() then return true end
+	 		if SoundSettings.delay_sound_handler then return true end
+	 		local delay = function()
+	 			self:playOneBgMusic()
+	 			SoundSettings.delay_sound_handler = nil
+	 		end
+	 		SoundSettings.delay_sound_handler = Timer.add_timer(7, delay, "delay_bg_music")
+	 		return true
+	 	end	
+	 	SoundSettings.sound_handler = Timer.add_repeat_timer(1, rep, "bg_music")
+		--[[
 		if  SoundSettings.bg_music then
 			self:stopBackgroundMusic()
 			local rd = math.random(#Res.s_music_bg_arr)
 			SimpleAudioEngine:sharedEngine():playBackgroundMusic(Res.s_music_bg_arr[rd], true)
 		end
+		]]
+	end
+	
+	function theClass:playOneBgMusic()
+		local engine = SimpleAudioEngine:sharedEngine()
+		local rd = math.random(#Res.s_music_bg_arr)
+		engine:playBackgroundMusic(Res.s_music_bg_arr[rd], false)
 	end
 
 	function theClass:stopBackgroundMusic()

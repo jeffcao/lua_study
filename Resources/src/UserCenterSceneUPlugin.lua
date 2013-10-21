@@ -84,6 +84,12 @@ function UserCenterSceneUPlugin.bind(theClass)
 		end
 	end
 	
+	function theClass:scene_on_level_up(data)
+		if self.current_layer == "personal_info" and self.c_layer then
+			self.c_layer:init_player_info()
+		end
+	end
+	
 	
 	function theClass:doSetLayer(name)
 		if self.current_layer == name then

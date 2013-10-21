@@ -1,5 +1,6 @@
 require "FullMubanStyleLayer"
 require "src.UIControllerPlugin"
+require "src.Stats"
 AboutScene = class("AboutScene", function()
 	print("new about scene")
 	return display.newScene("AboutScene")	
@@ -12,7 +13,7 @@ function createAboutScene()
 end
 
 function AboutScene:ctor()
-
+	Stats:on_start("fda")
 	ccb.about_scene = self
 	
 	local ccbproxy = CCBProxy:create()

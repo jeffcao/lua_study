@@ -16,7 +16,7 @@ end
 
 function MarketScene:ctor(inactive_market_scene_fn)
 	self.tabs = {}
-	self.tabnames_hanzi = {"优  惠", "豆  子", "礼  包", "服  务"}
+	self.tabnames_hanzi = {"豆  子", "礼  包", "服  务"}
 	self.inactive_market_scene_fn = inactive_market_scene_fn
 	self.ccbproxy = CCBProxy:create()
 	self.on_close_clicked = __bind(self.on_close_click, self)
@@ -25,7 +25,7 @@ function MarketScene:ctor(inactive_market_scene_fn)
 	self:addChild(self.rootNode)
 	self:init_tabs()
 	Timer.add_timer(0.1, function() 
-		self:get_prop_list("0")
+		self:get_prop_list("1")
 	end)
 	Timer.add_timer(0.5, function() 
 		self:check_tech_msg("shop")

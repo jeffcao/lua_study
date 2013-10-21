@@ -137,7 +137,15 @@ public class DDZJniHelper {
 		if (func_name.equals("MusicVolume")) {
 			return getMusicVolume();
 		}
+		if (func_name.equals("CurrentTime")) {
+			return getCurrentTime();
+		}
 		return "";
+	}
+	
+	public static String getCurrentTime() {
+		long time = System.currentTimeMillis();
+		return String.valueOf(time);
 	}
 	
 	public static String getMusicVolume() {

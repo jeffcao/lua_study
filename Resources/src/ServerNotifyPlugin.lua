@@ -34,6 +34,12 @@ function ServerNotifyPlugin.bind(theClass)
 	--等级升级
 	function theClass:onLevel(data)
 		--local level = data.level
+		dump(data, "on level up=>")
+		GlobalSetting.current_user.game_level = data.game_level
+		local scene = CCDirector:sharedDirector():getRunningScene()
+		if scene.scene_on_level_up then
+			scene:scene_on_level_up(data)
+		end
 	end
 	
 	--VIP升级
