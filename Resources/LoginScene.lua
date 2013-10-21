@@ -7,6 +7,7 @@ require "src.LoginServerConnectionPlugin"
 require "src.LoginHallConnectionPlugin"
 require "src.LoginSceneUIPlugin"
 require "YesNoDialog2"
+require "src.Stats"
 
 LoginScene = class("LoginScene", function()
 	print("creating new loginScene")
@@ -47,10 +48,12 @@ function LoginScene:onEnter()
 		self:show_progress_message_box("登录服务器...")
 		self:connect_to_login_server(GlobalSetting)
 	end
+	Stats:on_start("login")
 end
 
 function LoginScene:onExit()
 	print("[LoginScene:on_exit()]")
+	Stats:on_end("login")
 end
 
 function LoginScene:onCleanup()

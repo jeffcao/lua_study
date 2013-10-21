@@ -30,6 +30,7 @@ require "src.ServerNotifyPlugin"
 require "src.UIControllerPlugin"
 require "GamingOption"
 require "IntroduceDialog"
+require "src.Stats"
 
 GamingScene = class("GamingScene", function()
 	return display.newScene("GamingScene")
@@ -89,11 +90,12 @@ end
 function GamingScene:onEnter()
 	self.super.onEnter(self)
 	--self:registerCleanup()
+	Stats:on_start("gaming")
 end
 
 function GamingScene:onExit()
 	self.super.onExit(self)
-	
+	Stats:on_end("gaming")
 	print("[GamingScene:on_exit()]")
 end
 

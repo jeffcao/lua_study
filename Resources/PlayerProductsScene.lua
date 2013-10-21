@@ -2,6 +2,7 @@ require "src.UIControllerPlugin"
 require "src.HallServerConnectionPlugin"
 require "src.PlayerProductsUIPlugin"
 require "PlayerProductItem"
+require "src.Stats"
 local json = require "cjson"
 
 PlayerProductsScene = class("PlayerProductsScene", function()
@@ -9,6 +10,14 @@ PlayerProductsScene = class("PlayerProductsScene", function()
 	return display.newScene("PlayerProductsScene")	
 end
 )
+
+function PlayerProductsScene:onEnter()
+	Stats:on_start("player_product")
+end
+
+function PlayerProductsScene:onExit()
+	Stats:on_end("player_product")
+end
 
 function createPlayerProductsScene()
 	print("create PlayerProductsScene")

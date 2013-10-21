@@ -2,6 +2,7 @@ require "src.UserCenterSceneUPlugin"
 require "src.UIControllerPlugin"
 require "SetDialog"
 require "FullMubanStyleLayer"
+require "src.Stats"
 
 UserCenterScene = class("UserCenterScene", function()
 	print("new UserCenterScene")
@@ -49,8 +50,12 @@ end
 
 function UserCenterScene:onEnter()
 	self:init_controller(self.i_layer)
+	Stats:on_start("user_center")
 end
 
+function UserCenterScene:onExit()
+	Stats:on_end("user_center")
+end
 
 UserCenterSceneUPlugin.bind(UserCenterScene)
 UIControllerPlugin.bind(UserCenterScene)

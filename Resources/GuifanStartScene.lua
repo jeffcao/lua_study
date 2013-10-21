@@ -1,4 +1,5 @@
 require "CCBReaderLoad"
+require "src.Stats"
 
 local ANIM_INTERVAL = 0.17
 
@@ -20,6 +21,14 @@ function GuifanStartScene:ctor()
 	self.rootNode = tolua.cast(node, "CCLayer")
 	self:addChild(self.rootNode)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+end
+
+function GuifanStartScene:onEnter()
+	Stats:on_start("guifan_start")
+end
+
+function GuifanStartScene:onExit()
+	Stats:on_end("guifan_start")
 end
 
 function GuifanStartScene:onOpenEffectClicked()

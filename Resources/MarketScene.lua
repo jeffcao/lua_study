@@ -3,6 +3,7 @@ require "src.UIControllerPlugin"
 require "src.HallServerConnectionPlugin"
 require "IntroduceDialog"
 require "src.SoundEffect"
+require "src.Stats"
 
 MarketScene = class("MarketScene", function()
 	print("new market scene")
@@ -36,10 +37,12 @@ end
 
  function MarketScene:onEnter() 
  	self:playMarketMusic()
+ 	Stats:on_start("market")
  end
  
  function MarketScene:onExit() 
  	self:stopMarketMusic()
+ 	Stats:on_end("market")
  end
 
 MarketSceneUPlugin.bind(MarketScene)

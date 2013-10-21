@@ -1,5 +1,6 @@
 require "CCBReaderLoad"
 require "src.SoundEffect"
+require "src.Stats"
 
 GuifanEndScene = class("GuifanEndScene", function()
 	return display.newScene("GuifanEndScene")
@@ -32,6 +33,11 @@ end
 
 function GuifanEndScene:onEnter() 
 	self:play_vip_voice("4.mp3")
+	Stats:on_start("guifan_end")
+end
+
+function GuifanEndScene:onExit()
+	Stats:on_end("guifan_end")
 end
 
 function GuifanEndScene:onExitConfirmClicked()

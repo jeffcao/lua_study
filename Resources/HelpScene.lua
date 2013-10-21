@@ -1,5 +1,6 @@
 require "src.HelpSceneUPlugin"
 require "src.UIControllerPlugin"
+require "src.Stats"
 HelpScene = class("HelpScene", function()
 	print("new help scene")
 	return display.newScene("HelpScene")	
@@ -9,6 +10,14 @@ end
 function createHelpScene()
 	print("create help scene")
 	return HelpScene.new()
+end
+
+function HelpScene:onEnter()
+	Stats:on_start("help")
+end
+
+function HelpScene:onExit()
+	Stats:on_end("help")
 end
 
 function HelpScene:ctor()

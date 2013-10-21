@@ -1,11 +1,20 @@
 require "src.UIControllerPlugin"
 require "src.HallServerConnectionPlugin"
+require "src.Stats"
 
 FeedbackScene = class("FeedbackScene", function() 
 		return display.newScene("FeedbackScene") 
 	end)
 
 function createFeedbackScene() return FeedbackScene.new() end
+
+function FeedbackScene:onEnter()
+	Stats:on_start("feedback")
+end
+
+function FeedbackScene:onExit()
+	Stats:on_end("feedback")
+end
 
 function FeedbackScene:ctor()
 	ccb.feedback_scene = self

@@ -1,6 +1,7 @@
 local json = require "cjson"
 require "src.UIControllerPlugin"
 require "src.RegisterSceneUIPlugin"
+require "src.Stats"
 
 RegisterScene = class("RegisterScene", function()
 	print("creating new RegisterScene")
@@ -34,10 +35,12 @@ function RegisterScene:onEnter()
 		self:show_progress_message_box("连接服务器...")
 		self:connect_to_login_server(GlobalSetting)
 	end
+	Stats:on_start("register")
 end
 
 function RegisterScene:onExit()
 	print("[RegisterScene:on_exit()]")
+	Stats:on_end("register")
 end
 
 function RegisterScene:onCleanup()

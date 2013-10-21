@@ -98,7 +98,7 @@ function GDataPlugin.bind(theClass)
 		
 		self.socket_label:setVisible(false)
 		
-		
+		Stats.flush(self.g_WebSocket)
 	end
 	
 	function theClass:refreshProps(data) 

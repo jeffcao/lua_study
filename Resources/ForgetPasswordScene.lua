@@ -1,5 +1,6 @@
 require "src.UIControllerPlugin"
 require "src.LoginServerConnectionPlugin"
+require "src.Stats"
 
 ForgetPasswordScene = class("ForgetPasswordScene", function() 
 		return display.newScene("ForgetPasswordScene") 
@@ -84,6 +85,14 @@ function ForgetPasswordScene:do_on_trigger_failure(data)
 	end
 	self:show_back_message_box(self.failure_msg)
 
+end
+
+function ForgetPasswordScene:onEnter()
+	Stats:on_start("forget_password")
+end
+
+function ForgetPasswordScene:onExit()
+	Stats:on_end("forget_password")
 end
 
 UIControllerPlugin.bind(ForgetPasswordScene)

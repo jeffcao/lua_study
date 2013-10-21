@@ -12,8 +12,16 @@ function createAboutScene()
 	return AboutScene.new()
 end
 
+function AboutScene:onEnter()
+	Stats:on_start("about")
+end
+
+function AboutScene:onExit()
+	Stats:on_end("about")
+end
+
 function AboutScene:ctor()
-	Stats:on_start("fda")
+	
 	ccb.about_scene = self
 	
 	local ccbproxy = CCBProxy:create()
