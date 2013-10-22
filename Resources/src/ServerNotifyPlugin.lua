@@ -73,6 +73,12 @@ function ServerNotifyPlugin.bind(theClass)
 	--新活动，在其他界面之用刷新活动的data，在大厅界面且活动打开的时候，刷新活动的界面
 	function theClass:onActivity(data)
 	--数据和大厅界面获取活动的数据一样
+		GlobalSetting.time_task = data
+		GlobalSetting.time_task.weekday = get_weekday(data.week)
+		local scene = CCDirector:sharedDirector():getRunningScene()
+		if scene.on_activity_update then
+			scene:on_activity_update(data)
+		end
 	end
 	
 	function theClass:onTimeBeans(data)

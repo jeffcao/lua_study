@@ -212,6 +212,10 @@ function HallSceneUPlugin.bind(theClass)
 		self.after_trigger_success = __bind(self.init_today_activity, self)
 	end
 	
+	function theClass:on_activity_update(data)
+		self:updateTimeTask()
+	end
+	
 	function theClass:init_today_activity(data)
 		dump(data, 'init_today_activity')
 		if tonumber(data.result_code) == 0 then
