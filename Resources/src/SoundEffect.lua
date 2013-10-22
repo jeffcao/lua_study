@@ -105,8 +105,11 @@ function SoundEffect.bind(theClass)
 	 		if engine:isBackgroundMusicPlaying() then return true end
 	 		if SoundSettings.delay_sound_handler then return true end
 	 		local delay = function()
-	 			self:playOneBgMusic()
 	 			SoundSettings.delay_sound_handler = nil
+	 			if engine:isBackgroundMusicPlaying() then 
+	 				return true 
+	 			end
+	 			self:playOneBgMusic()
 	 		end
 	 		SoundSettings.delay_sound_handler = Timer.add_timer(7, delay, "delay_bg_music")
 	 		return true

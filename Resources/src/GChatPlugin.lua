@@ -34,7 +34,8 @@ function GChatPlugin.bind(theClass)
 		if not self.voice_props and (#self.voice_props > 0)then
 			return
 		end
-		if not self.chat_layer then
+		--[[
+		if not self.chat_layer or (not self.chat_layer:getParent()) then
 			self.chat_layer = createGChat()
 			self.chat_layer:init(self.voice_props, __bind(self.doSendChatMessage, self))
 			--self.chat_layer:registerScriptTouchHandler(__bind(self.onChatTouch, self))
@@ -42,62 +43,12 @@ function GChatPlugin.bind(theClass)
 			self.rootNode:addChild(self.chat_layer, self.CHAT_LAYER_ORDER)
 		end
 		self.chat_layer:setVisible(true)
+		]]
+		local chat_layer = createGChat()
+		chat_layer:init(self.voice_props, __bind(self.doSendChatMessage, self))
+		self.rootNode:addChild(chat_layer, self.CHAT_LAYER_ORDER)
+		chat_layer:setVisible(true)
 	end
-	
-	--[[
-	function theClass:onChatToucheBegan(loc) 
-		return true
-	end
-	
-	function theClass:onChatToucheMoved(loc) 
-		if not (self.chat_layer and self.chat_layer:isVisible()) then
-			return
-		end
-		local childrens = self.chat_layer.text_layer:getChildren()
-		for index = 1, childrens:count() do
-			local label = childrens:objectAtIndex(index-1)
-			label = tolua.cast(label, "CCLabelTTF")
-			if label:boundingBox():containsPoint(loc) then
-				if label:getTag() ~= 1 then
-					label:setTag(1)
-					label:setColor(ccc3(0,255,255))
-				end
-			 elseif  label:getTag() == 1 then
-				label:setTag(0)
-				label:setColor(ccc3(255,255,255))
-			end
-		end
-	end
-	
-	--点击用户资料对话框
-	function theClass:onChatToucheEnded(loc) 
-		if not self.chat_layer or not self.chat_layer:isVisible() then
-			return
-		end
-		local childrens = self.chat_layer.text_layer:getChildren()
-		local need_break = false
-		for index = 1, childrens:count() do
-			local label = childrens:objectAtIndex(index-1)
-			label = tolua.cast(label, "CCLabelTTF")
-			if label:getTag() == 1 then
-				label:setTag(0)
-				label:setColor(ccc3(255,255,255))
-			end
-			if label:boundingBox():containsPoint(loc) then
-				self:doSendChatMessage(self.CHAT_MSGS[index])
-				self.chat_layer:setVisible(false)
-				need_break = true
-			end
-		end
-		if need_break then
-			return
-		end
-		if self.chat_layer.text_container:boundingBox():containsPoint(loc) then
-			return
-		end
-		self.chat_layer:setVisible(false)
-	end
-	]]
 	
 	function theClass:displayChatMessage(message, layer, uid) 
 		local bg = layer:getChildByTag(1002)

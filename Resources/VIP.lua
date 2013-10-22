@@ -96,6 +96,8 @@ function VIP:do_on_trigger_success(data)
 	self.vip_get_salary_item:setEnabled(false)
 	if data.result_code == 0 then
 		self:show_message_box_suc("恭喜您领取了今天的工资"..data.salary.."豆子")
+		GlobalSetting.vip.get_salary = 1
+		GlobalSetting.current_user.score = tonumber(GlobalSetting.current_user.score) + tonumber(data.salary)
 	--	GlobalSetting.current_user.score = data.score
 	--	GlobalSetting.current_user.game_level = data.game_level
 	end

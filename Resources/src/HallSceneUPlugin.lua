@@ -377,7 +377,7 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:updateSocket(status)
 		print("update socket status to " .. status)
-		self.socket_label:setString(status)
+	--	self.socket_label:setString(status)
 	end
 	
 	function theClass:exit()

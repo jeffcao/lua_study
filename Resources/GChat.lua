@@ -19,7 +19,8 @@ function GChat:ctor()
 				do return end
 			else
 				if not self.bg:boundingBox():containsPoint(ccp(x,y)) then
-					self:setVisible(false)
+					--self:setVisible(false)
+					self:removeFromParentAndCleanup(true)
 				end
 				do return end
 			end
@@ -74,7 +75,8 @@ function GChat:init(data, click_func)
 				local a3 = a1:getChildByTag(1)
 			--	dump(a1:getTag(), "on props clicked =>")
 				click_func(a1:getTag())
-				self:setVisible(false)
+			--	self:setVisible(false)
+				self:removeFromParentAndCleanup(true)
 			end
 			return r
 	end)

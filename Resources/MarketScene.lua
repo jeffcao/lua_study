@@ -36,7 +36,15 @@ function MarketScene:ctor(inactive_market_scene_fn)
 end
 
  function MarketScene:onEnter() 
- 	self:playMarketMusic()
+ 	self:stopBackgroundMusic()
+ 	Timer.add_timer(3, function() 
+ 		local scene = CCDirector:sharedDirector():getRunningScene()
+ 		if scene == self then
+			self:playMarketMusic()
+		end
+	end)
+ 	
+ 	--self:playMarketMusic()
  	Stats:on_start("market")
  end
  
