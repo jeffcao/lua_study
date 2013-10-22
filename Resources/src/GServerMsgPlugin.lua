@@ -127,6 +127,7 @@ function GServerMsgPlugin.bind(theClass)
 	end
 	
 	function theClass:onServerRank(data)
+		print("os time " , os.time() , ", next time ", data.next_time)
 		data.expire_time = os.time() + data.next_time
 		self.rank = data
 		self:showRank()

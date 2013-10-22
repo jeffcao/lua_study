@@ -87,10 +87,11 @@ function RankUPlugin.bind(theClass)
 		local first = rank_list[1]
 		self.champion_name:setString(first.nick_name)
 		self.champion_beans:setString(first.score)
-		table.remove(rank_list, 1)
+		--table.remove(rank_list, 1)
 		for k,v in pairs(rank_list) do
 			self.rank_list[k] = v
 		end
+		table.remove(self.rank_list, 1)
 		table.sort(self.rank_list, function(a, b) return tonumber(a.id) > tonumber(b.id) end)
 		
 		local avatar_png = self:get_player_avatar_png_name()

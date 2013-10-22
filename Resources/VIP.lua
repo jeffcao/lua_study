@@ -68,7 +68,7 @@ function VIP:ctor()
 	
 	--设置VIP称号
 	local vip_names = {"初级VIP","中级VIP", "高级VIP", "特级VIP"}
-	self.vip_level_lbl:setString(vip_names[vip.vip_level])
+	self.vip_level_lbl:setString(vip_names[tonumber(vip.vip_level)])
 	
 	--设置VIP工资
 	self.tequan_lbl:setString("每天发放"..vip.salary.."工资")
@@ -80,7 +80,7 @@ function VIP:ctor()
  	
  	--设置VIP框的缩放
 	
-	self.vip_kuang:setScale(vip_kuang_scales[vip.vip_level] * GlobalSetting.content_scale_factor)
+	self.vip_kuang:setScale(vip_kuang_scales[tonumber(vip.vip_level)] * GlobalSetting.content_scale_factor)
 	
 end
 
