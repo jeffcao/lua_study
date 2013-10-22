@@ -33,11 +33,11 @@ end
 
 function GuifanEndScene:onEnter() 
 	self:play_vip_voice("4.mp3")
-	Stats:on_start("guifan_end")
+	--Stats:on_start("guifan_end")
 end
 
 function GuifanEndScene:onExit()
-	Stats:on_end("guifan_end")
+	
 end
 
 function GuifanEndScene:onExitConfirmClicked()
@@ -50,6 +50,7 @@ function GuifanEndScene:onExitCancelClicked()
 end
 
 function GuifanEndScene:onGameCenterConfirmClicked()
+	Stats:on_end("app_total")
 	CCDirector:sharedDirector():endToLua()
 	local jni = DDZJniHelper:create()
 	jni:messageJava("on_open_url_intent_g.10086.cn")

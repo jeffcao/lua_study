@@ -226,7 +226,7 @@ function HallSceneUPlugin.bind(theClass)
 			dump(GlobalSetting.time_task, 'GlobalSetting.time_task')
 			self:updateTimeTask()
 		end
-		Stats.flush(GlobalSetting.hall_server_websocket)
+		Stats:flush(GlobalSetting.hall_server_websocket)
 		--then call online_time_get_beans
 		self:start_online_time_get_beans()
 		

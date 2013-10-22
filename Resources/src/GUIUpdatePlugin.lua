@@ -618,6 +618,7 @@ function GUIUpdatePlugin.bind(theClass)
 			self:exit()
 		end)
 		
+	--	Stats:flush(self.g_WebSocket)
 		cclog("[onEnterRoomSuCCss] exit...")
 	end
 	

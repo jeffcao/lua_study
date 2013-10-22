@@ -97,8 +97,6 @@ function GDataPlugin.bind(theClass)
 		self:enter_room(self.g_room_id)
 		
 		self.socket_label:setVisible(false)
-		
-		Stats.flush(self.g_WebSocket)
 	end
 	
 	function theClass:refreshProps(data) 

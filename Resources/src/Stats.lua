@@ -39,13 +39,17 @@ function Stats:on_end(name)
 end
 
 function Stats:flush(socket)
+	print("socket is ", socket)
+	print("is socket nil? ", (not socket))
 	local stats = user_default:getStringForKey("stats")
-	local event_data = {user_id = GlobalSetting.current_user.user_id, data = stats}
-	socket:trigger("g.user_score_list", event_data, function(data) 
-		print("========g.user_score_list return succss: " , data)
+	if is_blank(stats) or stats == "-" then return end
+	stats = cjson.decode(stats)
+	local event_data = stats--{user_id = GlobalSetting.current_user.user_id, data = stats}
+	socket:trigger("ui.ui_visit_count", event_data, function(data) 
+		print("========ui.ui_visit_count return success: " , data)
 		--self:onServerRank(data)
-		user_default:setStringForKey("stats", nil)
 	end, function(data) 
-		print("----------------g.user_score_list return failure: " , data)
+		print("----------------ui.ui_visit_count return failure: " , data)
 	end)
+	user_default:setStringForKey("stats", nil)
 end

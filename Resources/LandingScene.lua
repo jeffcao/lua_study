@@ -40,7 +40,8 @@ function LandingScene:onEnter()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	self:show_progress_message_box("连接服务器...")
 	self:setup_websocket()
-	Stats:on_start("landing")
+	--Stats:on_start("landing")
+	
 end
 
 function LandingScene:do_on_websocket_ready()
@@ -57,7 +58,7 @@ end
 
 function LandingScene:onExit()
 	print("[LandingScene:on_exit()]")
-	Stats:on_end("landing")
+	--Stats:on_end("landing")
 end
 
 function LandingScene:onCleanup()

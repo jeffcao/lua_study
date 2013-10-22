@@ -24,11 +24,12 @@ function GuifanStartScene:ctor()
 end
 
 function GuifanStartScene:onEnter()
-	Stats:on_start("guifan_start")
+	--Stats:on_start("guifan_start")
+	Stats:on_start("app_total")
 end
 
 function GuifanStartScene:onExit()
-	Stats:on_end("guifan_start")
+	--Stats:on_end("guifan_start")
 end
 
 function GuifanStartScene:onOpenEffectClicked()
