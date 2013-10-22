@@ -22,8 +22,9 @@ function ServerNotifyPlugin.bind(theClass)
 		local beans = data.beans
 		local score = data.score
 		local scene = CCDirector:sharedDirector():getRunningScene()
-		if beans and scene.rootNode and scene.show_server_notify and data.user_id then
+		if beans and scene.rootNode and scene.show_server_notify then
 			local message = "您获得了破产补助："..beans.."个豆子"
+			print("破产补助=>", message)
 			scene:show_server_notify(msg)
 		end
 		if scene.scene_on_bankrupt then

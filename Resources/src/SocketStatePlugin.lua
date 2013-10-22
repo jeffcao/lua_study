@@ -56,6 +56,9 @@ function SocketStatePlugin.bind(theClass)
 	--restore connection
 	function theClass:restoreConnection()
 		local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token, notify_id = self.ss_websocket:get_notify_id(), run_env = GlobalSetting.run_env}
+		if GlobalSetting.game_id then
+			event_data.game_id = GlobalSetting.game_id
+		end
 		local succ = function(data)
 			if self.onSocketRestored then
 				self:onSocketRestored(data)

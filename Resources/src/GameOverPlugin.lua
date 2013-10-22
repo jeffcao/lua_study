@@ -65,6 +65,8 @@ function GameOverPlugin.bind(theClass)
 		
 		if lose_persons == 1 then
 			self.game_over_bg:setDisplayFrame(frameCache:spriteFrameByName("nongmingwin.png"))
+		else 
+			self.game_over_bg:setDisplayFrame(frameCache:spriteFrameByName("dizhuwin.png"))
 		end
 	
 		local avatarFrame = Avatar.getUserAvatarFrame(gaming_layer.self_user)

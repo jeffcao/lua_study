@@ -96,6 +96,11 @@ end
 function GamingScene:onExit()
 	self.super.onExit(self)
 	Stats:on_end("gaming")
+	if GlobalSetting.rank_dialog then
+		GlobalSetting.rank_dialog:removeFromParentAndCleanup(true)
+	end
+	GlobalSetting.rank_dialog = nil
+	GlobalSetting.game_id = nil
 	print("[GamingScene:on_exit()]")
 end
 

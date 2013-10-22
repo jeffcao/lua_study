@@ -45,7 +45,7 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	--破产
 	function theClass:scene_on_bankrupt(data)
-		local info = users[self.g_user_id]
+		local info = self.users[self.g_user_id]
 		if info then
 			info.score = data.score
 		end
@@ -532,6 +532,7 @@ function GUIUpdatePlugin.bind(theClass)
 		local fn3 = function()
 			self:getRank()
 			self:playButtonEffect()
+			option:dismiss()
 		end
 		option = createGamingOption(fn1,fn2,fn3)
 		self.rootNode:addChild(option, self.GAMING_OPTION_ORDER);
@@ -601,6 +602,7 @@ function GUIUpdatePlugin.bind(theClass)
 		dump(data, "[onEnterRoomSuccess] data => ")
 		self.voice_props = data.voice_props
 		local game_info = data.game_info
+		GlobalSetting.game_id = game_info.game_id
 		self:refreshProps(data)
 		self:updatePlayers(data.players)
 		self:init_channel(game_info)

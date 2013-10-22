@@ -108,6 +108,7 @@ function RankUPlugin.bind(theClass)
 	--	menus:addObject(self.rootNode)
 	--	menus:addObject(self.rank_content)
 		menus:addObject(rank)
+		menus:addObject(self.rank_close)
 		self:swallowOnTouch(menus)
 		self.rank_content:addChild(rank)
 		self.rank_content.rank = rank

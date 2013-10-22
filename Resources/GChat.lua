@@ -29,14 +29,14 @@ function GChat:ctor()
 end
 
 function GChat:init(data, click_func)
-	dump(data, "GChat init data is =>")
-	dump(click_func, "click func is =>")
+	--dump(data, "GChat init data is =>")
+	--dump(click_func, "click func is =>")
 	local h = LuaEventHandler:create(function(fn, table, a1, a2)
-			dump(a1, "LuaEventHandler a1=>")
-			dump(fn, "LuaEventHandler fn=>")
-			dump(a2, "LuaEventHandler a2=>")
-			dump(table, "LuaEventHandler table=>")
-			dump(data, "LuaEventHandler data is =>")
+		--	dump(a1, "LuaEventHandler a1=>")
+		--	dump(fn, "LuaEventHandler fn=>")
+		--	dump(a2, "LuaEventHandler a2=>")
+		--	dump(table, "LuaEventHandler table=>")
+		--	dump(data, "LuaEventHandler data is =>")
 			local r
 			if fn == "cellSize" then
 				r = CCSizeMake(340,30)
@@ -45,10 +45,10 @@ function GChat:init(data, click_func)
 				if not a2 then
 					a2 = CCTableViewCell:create()
 					cclog("a1 is " .. a1)
-					dump(data[a1],"data[a1]")
+				--	dump(data[a1],"data[a1]")
 					local a3 = CCLabelTTF:create(data[a1].text, "default", "22")
 					a3:setColor(GlobalSetting.zongse)
-					a3:setAnchorPoint(ccp(0,0.5))
+					a3:setAnchorPoint(ccp(0,0))
 					a3:setPosition(ccp(20,0))
 					a2.data = data[a1]
 					a2:setTag(data[a1].id)
@@ -72,17 +72,17 @@ function GChat:init(data, click_func)
 			elseif fn == "cellTouched" then
 				print("[HallSceneUPlugin:init_room_tabview] room_cell_touched")
 				local a3 = a1:getChildByTag(1)
-				dump(a1:getTag(), "on props clicked =>")
+			--	dump(a1:getTag(), "on props clicked =>")
 				click_func(a1:getTag())
 				self:setVisible(false)
 			end
 			return r
 	end)
 		
-	local t = LuaTableView:createWithHandler(h, CCSizeMake(386,198))
+	local t = LuaTableView:createWithHandler(h, CCSizeMake(380,185))
 	t:setDirection(kCCScrollViewDirectionVertical)
 	t:reloadData()
-	t:setPosition(CCPointMake(0,0))
+	t:setPosition(CCPointMake(0,7))
 	self.text_container:addChild(t)
 	
 	for index=#data, 1, -1 do
