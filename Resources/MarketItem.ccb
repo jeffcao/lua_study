@@ -308,7 +308,7 @@
 								<key>type</key>
 								<string>FontTTF</string>
 								<key>value</key>
-								<string>Helvetica</string>
+								<string>Helvetica-Bold</string>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -328,9 +328,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>254</integer>
-									<integer>255</integer>
-									<integer>255</integer>
+									<integer>48</integer>
+									<integer>80</integer>
+									<integer>121</integer>
 								</array>
 							</dict>
 							<dict>
@@ -436,7 +436,7 @@
 								<key>type</key>
 								<string>FontTTF</string>
 								<key>value</key>
-								<string>Helvetica</string>
+								<string>Helvetica-Bold</string>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -447,6 +447,18 @@
 								<array>
 									<real>16</real>
 									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>color</string>
+								<key>type</key>
+								<string>Color3</string>
+								<key>value</key>
+								<array>
+									<integer>48</integer>
+									<integer>80</integer>
+									<integer>121</integer>
 								</array>
 							</dict>
 							<dict>
@@ -552,7 +564,7 @@
 								<key>type</key>
 								<string>FontTTF</string>
 								<key>value</key>
-								<string>Helvetica</string>
+								<string>HelveticaNeue-Bold</string>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -572,9 +584,9 @@
 								<string>Color3</string>
 								<key>value</key>
 								<array>
-									<integer>71</integer>
-									<integer>225</integer>
-									<integer>238</integer>
+									<integer>37</integer>
+									<integer>62</integer>
+									<integer>102</integer>
 								</array>
 							</dict>
 							<dict>
