@@ -53,7 +53,7 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	--道具过期
 	function theClass:scene_on_prop(data)
-		local name = data.name
+		local name = data.prop_name
 		if name == "记牌器" then
 			self:set_jipaiqi_enable(false)
 			if self.card_roboter then

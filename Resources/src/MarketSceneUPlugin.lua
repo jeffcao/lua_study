@@ -75,8 +75,8 @@ function MarketSceneUPlugin.bind(theClass)
 		is_cm_sim_card = self:is_cm_sim_card()
 		print("[MarketSceneUPlugin:show_buy_notify] is_cm_sim_card=> "..tostring(is_cm_sim_card))
 		if not is_cm_sim_card then
---			self:show_back_message_box("尊敬的客户，非中国移动客户暂不支持购买道具.")
---			do return end
+			self:show_back_message_box("尊敬的客户，非中国移动客户暂不支持购买道具.")
+			do return end
 		end
 
 		self.cur_product = product
