@@ -89,7 +89,7 @@
 										<key>type</key>
 										<string>Integer</string>
 										<key>value</key>
-										<integer>1000</integer>
+										<integer>1101</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -210,7 +210,7 @@
 										<key>type</key>
 										<string>Integer</string>
 										<key>value</key>
-										<integer>1000</integer>
+										<integer>1102</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -417,7 +417,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>292</real>
+											<real>293</real>
 											<real>265</real>
 											<integer>0</integer>
 										</array>
@@ -1264,8 +1264,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>292</real>
-											<real>50</real>
+											<real>291</real>
+											<real>49</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -1483,8 +1483,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
