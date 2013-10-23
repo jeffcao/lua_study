@@ -6,9 +6,9 @@ function __G__TRACKBACK__(msg)
     print("----------------------------------------")
 end
 
-cclog = function(...)
-    print(string.format(...))
-end
+LUA_DEBUG = false
+
+
 
 print("package.path ==> " .. package.path)
 
@@ -23,8 +23,8 @@ require "src/WebsocketRails/WebSocketRails_Connection"
 require "src/WebsocketRails/WebSocketRails_Connection_CC"
 require "src/WebsocketRails/WebSocketRails_Channel"
 require "src.WebsocketRails.Timer"
-require "framework.init"
-require "framework.client.init"
+--require "framework.init"
+--require "framework.client.init"
 require "src.GlobalSetting"
 require "src.UserInfo"
 require "src.GlobalFunction"
@@ -52,8 +52,36 @@ local function main()
     collectgarbage("setpause", 100)
     collectgarbage("setstepmul", 5000)
     
+    require "framework.init"
+	require "framework.client.init"
+	
+	local user_default = CCUserDefault:sharedUserDefault()
+	local dbg = user_default:getStringForKey("debug")
+	if dbg and dbg == "true" then LUA_DEBUG = true end
+
+    old_print = print
+    old_echo = echoInfo
+    old_dump = dump
+	echoInfo = function(...)
+		if not LUA_DEBUG then return end
+		old_echo(...)
+	end
+	print = function(...)
+		if not LUA_DEBUG then return end
+		old_print(...)
+	end
+	cclog = function(...)
+    	print(string.format(...))
+	end
+	dump = function(...)
+		if not LUA_DEBUG then return end
+		old_dump(...)
+	end
+    
     load_requires()
 --    print("package.path ==> " .. package.path)
+
+	
 
 	Timer.scheduler = CCDirector:sharedDirector():getScheduler()
 
@@ -146,7 +174,7 @@ local function main()
 	end
 	
 	local audio = SimpleAudioEngine:sharedEngine()
-	local user_default = CCUserDefault:sharedUserDefault()
+	
 	audio:setBackgroundMusicVolume(1)
 	audio:setEffectsVolume(1)
 	

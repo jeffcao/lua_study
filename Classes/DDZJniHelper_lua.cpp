@@ -113,7 +113,7 @@ static int tolua_DDZJniHelper_DDZJniHelper_get00(lua_State* tolua_S)
    const char* tolua_ret = (const char*)  self->get(func);
    char buf[512];
    memset(buf, 0, sizeof(buf));
-   sprintf(buf, "self->get('%s') returned: '%s', length: %d", func, tolua_ret, strlen(tolua_ret) );
+   //sprintf(buf, "self->get('%s') returned: '%s', length: %d", func, tolua_ret, strlen(tolua_ret) );
    CCLOG(buf);
    memset(buf, 0 , sizeof(buf));
    strncpy(buf, tolua_ret, strlen(tolua_ret));

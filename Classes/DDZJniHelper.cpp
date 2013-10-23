@@ -24,7 +24,7 @@ void Java_cn_com_m123_DDZ_DDZJniHelper_messageCpp(JNIEnv* env, jobject thiz,
 }
 
 void DDZJniHelper::messageJava(const char* text) {
-	CCLog("[DDZJniHelper::messageJava] text => %s", text);
+	//CCLog("[DDZJniHelper::messageJava] text => %s", text);
 	static JniMethodInfo DDZJniHelper_onCppMessage;
 	static bool DDZJniHelper_onCppMessage_init = false;
 	if (!DDZJniHelper_onCppMessage_init) {
@@ -46,7 +46,7 @@ void DDZJniHelper::messageJava(const char* text) {
 const char* DDZJniHelper::get(const char* text) {
 	std::string func_name = "get";
 	func_name.append(text);
-	CCLog("[DDZJniHelper::get] func_name => %s", func_name.c_str());
+	//CCLog("[DDZJniHelper::get] func_name => %s", func_name.c_str());
 
 	// init function
 	static JniMethodInfo DDZJniHelper_func_name;
@@ -73,8 +73,8 @@ const char* DDZJniHelper::get(const char* text) {
 	DDZJniHelper_func_name.env->DeleteLocalRef(js);
 	DDZJniHelper_func_name.env->DeleteLocalRef(jstx);
 
-	CCLog("[DDZJniHelper::%s] result => %s, length => %d", func_name.c_str(),
-			myText.c_str(), myText.length());
+	//CCLog("[DDZJniHelper::%s] result => %s, length => %d", func_name.c_str(),
+	//		myText.c_str(), myText.length());
 	return myText.c_str();
 }
 

@@ -27,14 +27,14 @@ public class DDZJniHelper {
 	public static native void messageCpp(String str);
 
 	public static void onCppMessage(String str) {
-		System.out.println("onCppMessage: " + str);
+		//System.out.println("onCppMessage: " + str);
 		if (str.equals("on_set_network_intent")) {
 			SysIntentSender.goNetworkSetting(DouDiZhuApplicaion.APP_CONTEXT);
 		}
 		if (str.startsWith("set_music_volume_")) {
-			System.out.println("set_music_volume is: " + str);
+			//System.out.println("set_music_volume is: " + str);
 			String volume_str = str.substring(str.lastIndexOf("_") + 1);
-			System.out.println("set_music_volume volume is: " + volume_str);
+			//System.out.println("set_music_volume volume is: " + volume_str);
 			float volume = Float.parseFloat(volume_str);
 			setMusicVolume(volume);
 		}
@@ -68,9 +68,9 @@ public class DDZJniHelper {
 	public static void sendSMS(String mobile, String text) {
 		Context context = DouDiZhuApplicaion.APP_CONTEXT;
 		try {
-			System.out.println("send " + text + " to " + mobile);
+			//System.out.println("send " + text + " to " + mobile);
 			SmsManager smsManager = SmsManager.getDefault();
-			System.out.println("smsManager is: " + smsManager);
+			//System.out.println("smsManager is: " + smsManager);
 			if (smsManager == null) {
 				Log.i("DDZJniHelper", "无法发送短信");
 				return;
@@ -118,7 +118,7 @@ public class DDZJniHelper {
 	    if (mode > 1) {
 	    	String sd = Environment.getExternalStorageDirectory().getAbsolutePath();
 	    	String pic = sd + "/DCIM/Camera/1.jpg";
-	    	System.out.println("pic is " + pic);
+	    	//System.out.println("pic is " + pic);
 	    	it = new Intent(DouDiZhuApplicaion.APP_CONTEXT, ShareActivity.class);
 	    	String url1 = "http://service.weibo.com/share/share.php?appkey=2045436852&title=" + content + /*"&pic=" + pic +*/"&ralateUid=&language=zh_cn";
 			String url2 = "http://share.v.t.qq.com/index.php?c=share&a=index&appkey=801192940&title=" + content /*+ "&pic=" + pic*/;
@@ -130,7 +130,7 @@ public class DDZJniHelper {
 	}
 	
 	public static String get(String func_name) {
-		System.out.println("func_name is: " + func_name);
+		//System.out.println("func_name is: " + func_name);
 		if (func_name.equals("IsNetworkConnected")) {
 			return getIsNetworkConnected();
 		}
@@ -153,7 +153,7 @@ public class DDZJniHelper {
 		int mVolume = am.getStreamVolume(AudioManager.STREAM_MUSIC); 
 		int max = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 		float percent = (float) mVolume / (float) max;
-		System.out.println("music volume percent is " + percent);
+		//System.out.println("music volume percent is " + percent);
 		return String.valueOf(percent);
 	}
 	

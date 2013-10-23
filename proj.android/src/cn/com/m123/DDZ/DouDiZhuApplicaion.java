@@ -1,11 +1,10 @@
 package cn.com.m123.DDZ;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 import java.util.Set;
-
-import cn.com.m123.DDZ.R;
 
 import android.app.Application;
 import android.content.Context;
@@ -14,6 +13,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Environment;
 import android.util.Log;
 
 public class DouDiZhuApplicaion extends Application {
@@ -22,6 +22,7 @@ public class DouDiZhuApplicaion extends Application {
 	public static int pkgVersionCode;
 	public static String pkgBuild;
 	public static String appid;
+	public static boolean DEBUG = false;
 	
 	public static final String TAG = DouDiZhuApplicaion.class.getName();
 
@@ -29,12 +30,24 @@ public class DouDiZhuApplicaion extends Application {
 	public void onCreate() {
 		APP_CONTEXT = this;
 		super.onCreate();
+		initDebug();
 		saveHardwareInfo();
 		initPkgInfo();
 	}
 	
+	private void initDebug() {
+		String pref_name = "Cocos2dxPrefsFile";
+		SharedPreferences sp = getSharedPreferences(pref_name, Context.MODE_PRIVATE);
+		File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/ddzdbg");
+		if (f.exists()) {
+			DEBUG = true;
+		}
+		Log.i("DDZ", "DEBUG is " + DEBUG);
+		sp.edit().putString("debug", String.valueOf(DEBUG)).commit();
+	}
+	
 	private void saveHardwareInfo() {
-		long start_t = System.currentTimeMillis();
+		//long start_t = System.currentTimeMillis();
 		String pref_name = "Cocos2dxPrefsFile";
 		SharedPreferences sp = getSharedPreferences(pref_name, Context.MODE_PRIVATE);
 		MobileInfoGetter g = new MobileInfoGetter(this);
@@ -46,8 +59,8 @@ public class DouDiZhuApplicaion extends Application {
 		}
 		editor.commit();
 		checkFirst(sp);
-		long end_t = System.currentTimeMillis();
-		System.out.println("cost time:" + (end_t - start_t));
+		//long end_t = System.currentTimeMillis();
+		//System.out.println("cost time:" + (end_t - start_t));
 	}
 	
 	private void checkFirst(SharedPreferences sp) {
@@ -65,8 +78,8 @@ public class DouDiZhuApplicaion extends Application {
 					PackageManager.GET_CONFIGURATIONS);
 			pkgVersionName = pkgInfo.versionName;
 			pkgVersionCode = pkgInfo.versionCode;
-			Log.i(TAG, "version code " + pkgInfo.versionCode
-					+ ", version name " + pkgInfo.versionName);
+		//	Log.i(TAG, "version code " + pkgInfo.versionCode
+		//			+ ", version name " + pkgInfo.versionName);
 		} catch (NameNotFoundException e) {
 			// this will not happen
 			e.printStackTrace();
@@ -78,7 +91,7 @@ public class DouDiZhuApplicaion extends Application {
 			appInfo = getPackageManager().getApplicationInfo(getPackageName(),
 					PackageManager.GET_META_DATA);
 			pkgBuild = appInfo.metaData.getString("build");
-			Log.i(TAG, "build is " + pkgBuild);
+		//	Log.i(TAG, "build is " + pkgBuild);
 		} catch (NameNotFoundException e) {
 			// this will not happen
 			e.printStackTrace();
@@ -109,9 +122,9 @@ public class DouDiZhuApplicaion extends Application {
 			if (length > 0) {
 				String id = new String(buffer, 0, length);
 				result = id != null ? id : result;
-				Log.i(TAG, "app id is: " + result);
+			//	Log.i(TAG, "app id is: " + result);
 			} else {
-				Log.w(TAG, "app.txt is null");
+			//	Log.w(TAG, "app.txt is null");
 			}
 		} catch (IOException e) {
 			Log.e(TAG, e.getMessage());
