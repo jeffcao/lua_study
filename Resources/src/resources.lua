@@ -20,8 +20,9 @@ Res = {
  s_anim_plist = dirImage .. "animation.plist",
 
 -- 背景音乐列表
- s_music_bg_arr = {dirMusic .. "bg/1.mp3", dirMusic .. "bg/3.mp3",dirMusic .. "bg/4.mp3",dirMusic .. "bg/5.mp3",
- 	dirMusic .. "bg/7.mp3",dirMusic .. "bg/8.mp3",dirMusic .. "bg/9.mp3",dirMusic .. "bg/10.mp3"},
+ --s_music_bg_arr = {dirMusic .. "bg/1.mp3", dirMusic .. "bg/3.mp3",dirMusic .. "bg/4.mp3",dirMusic .. "bg/5.mp3",
+ --	dirMusic .. "bg/7.mp3",dirMusic .. "bg/8.mp3",dirMusic .. "bg/9.mp3",dirMusic .. "bg/10.mp3"},
+   s_music_bg_arr = {dirMusic .. "bg/1.mp3", dirMusic .. "bg/3.mp3"},
 
 -- 按键点击音效
  s_music_button_click = dirMusic .. "click/button_click.ogg",
