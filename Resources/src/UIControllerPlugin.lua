@@ -253,6 +253,11 @@ function UIControllerPlugin.bind(theClass)
 	function theClass:get_player_avatar_png_name()
 		local cur_user = GlobalSetting.current_user
 		local avatar_png_index = tonumber(cur_user.avatar) < 10 and "0"..cur_user.avatar or cur_user.avatar
+		if tonumber(cur_user.avatar) == 101 then
+			avatar_png_index = "00_m"
+		elseif tonumber(cur_user.avatar) == 102 then
+			avatar_png_index = "00_f"
+		end
 		local avatar_png_index_gender = tonumber(cur_user.gender) == 1 and "m" or "f"
 		avatar_png_index = avatar_png_index == "00" and "00_"..avatar_png_index_gender or avatar_png_index
 		local avatar_png = "touxiang"..avatar_png_index..".png"
