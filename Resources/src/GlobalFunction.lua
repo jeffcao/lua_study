@@ -151,30 +151,30 @@ end
 
 function isnan(x) 
     if (x ~= x) then
-        --print(string.format("NaN: %s ~= %s", x, x));
-        return true; --only NaNs will have the property of not being equal to themselves
-    end;
+        --print(string.format("NaN: %s ~= %s", x, x))
+        return true --only NaNs will have the property of not being equal to themselves
+    end
 
     --but not all NaN's will have the property of not being equal to themselves
 
     --only a number can not be a number
     if type(x) ~= "number" then
-       return false; 
-    end;
+       return false 
+    end
 
     --fails in cultures other than en-US, and sometimes fails in enUS depending on the compiler
 --  if tostring(x) == "-1.#IND" then
 
     --Slower, but works around the three above bugs in LUA
     if tostring(x) == tostring((-1)^0.5) then
-        --print("NaN: x = sqrt(-1)");
-        return true; 
-    end;
+        --print("NaN: x = sqrt(-1)")
+        return true 
+    end
 
     --i really can't help you anymore. 
     --You're just going to have to live with the exception
 
-    return false;
+    return false
 end
 
 function check_email(email)
@@ -300,4 +300,72 @@ function get_weekday(wk_int)
 	local weekday = wkd[tonumber(wk_int) + 1]
 	cclog('weekday for ' .. tostring(wk_int) .. ' is ' .. weekday)
 	return weekday
+end
+
+function set_string_with_stroke(label, str)
+	label:setString(str)
+	set_stroke(label, label.stroke_size, label.stroke_color)
+end
+
+function set_stroke(label, size, color)
+	local stroke = create_stroke(label, size, color)
+	if not label.stroke_sprite then
+		label.stroke_sprite = CCSprite:createWithTexture(stroke:getSprite():getTexture())
+		label:getParent():addChild(label.stroke_sprite, label:getZOrder() - 1)
+		label.stroke_size = size
+		label.stroke_color = color
+	else
+		label.stroke_sprite:setTexture(stroke:getSprite():getTexture())
+		label.stroke_sprite:setTextureRect(stroke:getSprite():getTextureRect())
+	end
+	local x = label:getPositionX() + (2*label:getAnchorPoint().x - 1)*label.stroke_size
+	local y = label:getPositionY() + (2*label:getAnchorPoint().y - 1)*label.stroke_size
+	label.stroke_sprite:setPosition(ccp(x,y))
+	label.stroke_sprite:setAnchorPoint(label:getAnchorPoint())
+end
+
+function create_stroke(label, size, color)
+	if label:getZOrder() == 0 then
+		label:getParent():reorderChild(label, 2)
+	end
+	local label_tx_width = label:getTexture():getContentSize().width
+	local label_tx_height = label:getTexture():getContentSize().height
+	local label_anchor_x = label:getAnchorPoint().x
+	local label_anchor_y = label:getAnchorPoint().y
+
+	local rt = CCRenderTexture:create(label_tx_width + size*2,
+		label_tx_height + size*2)
+	local originalPos = ccp(label:getPositionX(),label:getPositionY())
+	local originalColor = label:getColor()
+	local originalVisibility = label:isVisible()
+	
+	label:setColor(color)
+	label:setVisible(true)
+	
+	local originalBlend = label:getBlendFunc()
+	local blend = ccBlendFunc:new()
+	blend.src = GL_SRC_ALPHA
+	blend.dst = GL_ONE
+	label:setBlendFunc(blend)
+	
+	local bottomLeft = ccp(label_tx_width*label_anchor_x + size, label_tx_height*label_anchor_y + size)
+    local positionOffset = ccp(label_tx_width*label_anchor_x - label_tx_width/2, label_tx_height*label_anchor_y - label_tx_height/2)
+    local position = ccpSub(originalPos, positionOffset)
+    
+    rt:begin()
+    for i = 0,11 do
+    	label:setFlipY(true)
+        label:setPosition(ccp(bottomLeft.x + math.sin(0.01745329252*(i*30))*size, bottomLeft.y + math.cos(0.01745329252*(i*30))*size))
+        label:visit()
+	end
+    rt:endToLua()
+
+    label:setPosition(originalPos)
+    label:setColor(originalColor)
+    label:setBlendFunc(originalBlend)
+    label:setVisible(originalVisibility)
+    label:setFlipY(false)
+    rt:setPosition(position)
+
+    return rt
 end

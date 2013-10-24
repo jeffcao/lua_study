@@ -34,17 +34,11 @@ function AboutScene:ctor()
 	local user_default = CCUserDefault:sharedUserDefault()
 	local version = "版本： " .. user_default:getStringForKey("pkg_version_name") 
 		.. " build:" .. user_default:getStringForKey("pkg_build")
-	self.version_lbl:setString(version)
-	layer:setContent(node)
-
-	--test 9sprite
 	
-	--local scale9 = CCScale9Sprite:create("ccbResources/yinyingkuang.png")
-	--scale9:setPosition(ccp(400,240))
-	--local size = CCSizeMake(700,340)
-	--dump(size, "size is")
-	--scale9:setPreferredSize(size)
- 	--self:addChild(scale9)
+	layer:setContent(node)
+	self.version_lbl:setString(version)
+	--set_stroke(self.version_lbl, 1.5, ccc3(255,255,255))
+	--set_string_with_stroke(self.version_lbl, version)
 end
 
 UIControllerPlugin.bind(AboutScene)

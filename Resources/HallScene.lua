@@ -65,11 +65,18 @@ HallScene = class("HallScene", function()
 	
 	self.music_update = Timer.add_repeat_timer(30, __bind(self.playMusic, self))
 	
-	
-	
+	self.btn_stroke_color = ccc3(0,0,0)
+	self.btn_stroke_size = 2.5
+	self:set_btn_stroke(self.to_info_lbl)
+	self:set_btn_stroke(self.to_feedback_lbl)
+	self:set_btn_stroke(self.task_lbl)
  end
  
-
+ function HallScene:set_btn_stroke(btn_lbl)
+ 	cclog("hallscece set to info lbl stroke")
+	set_stroke(btn_lbl, self.btn_stroke_size, self.btn_stroke_color)
+	cclog("hallscece set to info lbl stroke finish")
+ end
  
  function HallScene:init()
  	print("HallScene:init()")
