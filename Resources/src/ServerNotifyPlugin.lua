@@ -11,10 +11,12 @@ function ServerNotifyPlugin.bind(theClass)
 	end
 	
 	function theClass:onMusic(data)
-		self:play_vip_voice(data.voice)
 		if data.chat == 1 and self.onServerChatMessage then
 			self:onServerChatMessage(data)
 		end
+		--重发的音效不播放出来
+		if data.__srv_resend and data.__srv_resend >= 1 then return end
+		self:play_vip_voice(data.voice)
 	end
 	
 	--破产
