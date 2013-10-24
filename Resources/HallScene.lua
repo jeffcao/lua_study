@@ -65,7 +65,7 @@ HallScene = class("HallScene", function()
 	
 	self.music_update = Timer.add_repeat_timer(30, __bind(self.playMusic, self))
 	
-	self.btn_stroke_color = ccc3(0,0,0)
+	self.btn_stroke_color = GlobalSetting.zongse
 	self.btn_stroke_size = 2.5
 	self:set_btn_stroke(self.to_info_lbl)
 	self:set_btn_stroke(self.to_feedback_lbl)

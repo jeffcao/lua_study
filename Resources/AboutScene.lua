@@ -36,9 +36,9 @@ function AboutScene:ctor()
 		.. " build:" .. user_default:getStringForKey("pkg_build")
 	
 	layer:setContent(node)
-	self.version_lbl:setString(version)
-	--set_stroke(self.version_lbl, 1.5, ccc3(255,255,255))
-	--set_string_with_stroke(self.version_lbl, version)
+	--self.version_lbl:setString(version)
+	set_stroke(self.version_lbl, 1.5, ccc3(255,255,255))
+	set_string_with_stroke(self.version_lbl, version)
 end
 
 UIControllerPlugin.bind(AboutScene)

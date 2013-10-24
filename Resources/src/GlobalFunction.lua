@@ -342,12 +342,13 @@ function create_stroke(label, size, color)
 	label:setColor(color)
 	label:setVisible(true)
 	
+	--[[
 	local originalBlend = label:getBlendFunc()
 	local blend = ccBlendFunc:new()
 	blend.src = GL_SRC_ALPHA
 	blend.dst = GL_ONE
 	label:setBlendFunc(blend)
-	
+	]]
 	local bottomLeft = ccp(label_tx_width*label_anchor_x + size, label_tx_height*label_anchor_y + size)
     local positionOffset = ccp(label_tx_width*label_anchor_x - label_tx_width/2, label_tx_height*label_anchor_y - label_tx_height/2)
     local position = ccpSub(originalPos, positionOffset)
@@ -362,7 +363,7 @@ function create_stroke(label, size, color)
 
     label:setPosition(originalPos)
     label:setColor(originalColor)
-    label:setBlendFunc(originalBlend)
+    --label:setBlendFunc(originalBlend)
     label:setVisible(originalVisibility)
     label:setFlipY(false)
     rt:setPosition(position)
