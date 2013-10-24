@@ -15,7 +15,7 @@ function ServerNotifyPlugin.bind(theClass)
 			self:onServerChatMessage(data)
 		end
 		--重发的音效不播放出来
-		if data.__srv_resend and data.__srv_resend >= 1 then return end
+		if data.__srv_resend and data.__srv_resend >= 1 and data.voice == "1.mp3" then return end
 		self:play_vip_voice(data.voice)
 	end
 	
