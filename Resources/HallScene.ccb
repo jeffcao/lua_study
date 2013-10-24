@@ -3139,9 +3139,9 @@
 										<key>displayName</key>
 										<string>task_lbl</string>
 										<key>memberVarAssignmentName</key>
-										<string></string>
+										<string>to_feedback_lbl</string>
 										<key>memberVarAssignmentType</key>
-										<integer>0</integer>
+										<integer>1</integer>
 										<key>properties</key>
 										<array>
 											<dict>
@@ -3564,9 +3564,9 @@
 										<key>displayName</key>
 										<string>task_lbl</string>
 										<key>memberVarAssignmentName</key>
-										<string></string>
+										<string>to_info_lbl</string>
 										<key>memberVarAssignmentType</key>
-										<integer>0</integer>
+										<integer>1</integer>
 										<key>properties</key>
 										<array>
 											<dict>
@@ -3630,6 +3630,18 @@
 												<array>
 													<real>21</real>
 													<integer>0</integer>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>color</string>
+												<key>type</key>
+												<string>Color3</string>
+												<key>value</key>
+												<array>
+													<integer>254</integer>
+													<integer>255</integer>
+													<integer>255</integer>
 												</array>
 											</dict>
 											<dict>
