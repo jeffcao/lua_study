@@ -88,6 +88,7 @@ HallScene = class("HallScene", function()
 	self:updateTimeTask()
 	self:update_player_beans_with_gl()
 	self:do_on_enter()
+	--[[
 	local is_playing = SimpleAudioEngine:sharedEngine():isBackgroundMusicPlaying()
 	if SoundSettings.bg_music and not is_playing then
 		Timer.add_timer(3, function() 
@@ -95,6 +96,8 @@ HallScene = class("HallScene", function()
 		end)
 		--self:playBackgroundMusic()
 	end
+	]]
+	self:playBackgroundMusic()
 	local is_vip = (GlobalSetting.vip ~= cjson.null)
 	print("set vip menu visible to " .. tostring(is_vip))
 	self.hall_vip_menu:setVisible(is_vip)

@@ -130,6 +130,11 @@ function InfoLayer:init_player_info()
 	self.m_checkbox.toggle:setChecked(tonumber(cur_user.gender) == 1)
 	self.f_checkbox.toggle:setChecked(tonumber(cur_user.gender) == 2)
 	
+	local cjson = require "cjson"
+	local email = cur_user.email
+	if email == cjson.null or tostring(email) == "0" then email = "" end
+	self.email_lbl:setString(email)
+	
 	set_level_sprite(self.level_sprite, cur_user.game_level)
 end
 

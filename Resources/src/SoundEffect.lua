@@ -88,8 +88,15 @@ function SoundEffect.bind(theClass)
 		
 		SimpleAudioEngine:sharedEngine():playEffect(Res.s_effect_win)
 	end
-
+	
 	function theClass:playBackgroundMusic()
+		if not SoundSettings.bg_music then return end
+		local engine = SimpleAudioEngine:sharedEngine()
+		if engine:isBackgroundMusicPlaying() then return end
+		SimpleAudioEngine:sharedEngine():playBackgroundMusic(Res.s_music_bg, true)
+	end
+
+	function theClass:playBackgroundMusicRandom()
 		if not SoundSettings.bg_music then return end
 		if SoundSettings.sound_handler then return end
 		local engine = SimpleAudioEngine:sharedEngine()
