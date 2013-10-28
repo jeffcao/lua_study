@@ -6,6 +6,7 @@
 #include "SimpleAudioEngine.h"
 //#include "lua++.h"
 #include "WebsocketManager_lua.h"
+#include "Downloader.h"
 //#include "CCEditBoxBridge_lua.h"
 #include "DialogLayerConvertor_lua.h"
 #include "DDZJniHelper_lua.h"
@@ -188,6 +189,14 @@ bool AppDelegate::applicationDidFinishLaunching()
 //    // run
 //    pDirector->runWithScene(pScene);
 
+    std::string pathToSave = CCFileUtils::sharedFileUtils()->getWritablePath();
+    std::string url = "http://www.daemonology.net/bsdiff/bsdiff-4.3.tar.gz";
+    std::string name = "bsdiff-4.3.tar.gz";
+    CCLOG("[DEBUG] pathToSave => %s", pathToSave.c_str());
+    Downloader *d = new Downloader(url.c_str(), pathToSave.c_str(), name.c_str());
+    d->setDelegate(new DownloadListener());
+    d->update();
+    CCLOG("download run");
     return true;
 }
 
@@ -211,4 +220,14 @@ void AppDelegate::applicationWillEnterForeground()
     // if you use SimpleAudioEngine, it must resume here
     if (_bg_music_playing)
         SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+}
+
+void DownloadListener::onError(Downloader::ErrorCode errorCode) {
+CCLOG("DownloadListener::onError => %d, %d", errorCode, Downloader::kCreateFile);
+}
+void DownloadListener::onProgress(int percent){
+	CCLOG("DownloadListener::onProgress");
+}
+void DownloadListener::onSuccess(){
+	CCLOG("DownloadListener::onSuccess");
 }
