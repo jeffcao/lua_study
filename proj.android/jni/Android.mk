@@ -15,6 +15,7 @@ QC_LIB_PATH := ../../Classes/quick_cocos2dx-lib
 LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AppDelegate.cpp \
                    ../../Classes/Downloader.cpp \
+                   ../../Classes/Downloader_lua.cpp \
  	                ../../Classes/WebsocketManager.cpp \
  	                ../../Classes/WebsocketManager_lua.cpp \
  	                ../../Classes/DialogLayerConvertor.cpp \

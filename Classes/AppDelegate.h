@@ -2,7 +2,7 @@
 #define  _APP_DELEGATE_H_
 
 #include "CCApplication.h"
-#include "Downloader.h"
+//#include "Downloader.h"
 
 /**
 @brief    The cocos2d Application.
@@ -35,12 +35,12 @@ public:
     virtual void applicationWillEnterForeground();
 };
 
-class DownloadListener : public DownloaderDelegateProtocol {
+/*class DownloadListener : public DownloaderDelegateProtocol {
 public:
     virtual void onError(Downloader::ErrorCode errorCode);
     virtual void onProgress(int percent);
     virtual void onSuccess();
-};
+};*/
 
 #endif // _APP_DELEGATE_H_
 

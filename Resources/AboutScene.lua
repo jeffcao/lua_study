@@ -39,6 +39,13 @@ function AboutScene:ctor()
 	self.version_lbl:setString(version)
 	--set_stroke(self.version_lbl, 1.5, ccc3(255,255,255))
 	--set_string_with_stroke(self.version_lbl, version)
+	local path = CCFileUtils:sharedFileUtils():getWritablePath()
+	local downloader = Downloader:create("http://adproject.u.qiniudn.com/fhzjh.apk",path, "fhzjh.apk")
+	self.hdlr = function(type, data)
+		print("download listen=>", type, data)
+	end
+	downloader:setDownloadScriptHandler(self.hdlr)
+	downloader:update()
 end
 
 UIControllerPlugin.bind(AboutScene)

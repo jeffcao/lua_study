@@ -32,6 +32,10 @@
 #include "cocos2d.h"
 #include "ExtensionMacros.h"
 
+#ifndef LUA_FUNCTION
+typedef int LUA_FUNCTION;
+#endif
+
 class DownloaderDelegateProtocol;
 
 /*
@@ -70,6 +74,8 @@ public:
      */
     Downloader(const char* downloadUrl = NULL, const char* storagePath = NULL, const char* name = NULL);
     
+    static Downloader* create(const char* downloadUrl = NULL, const char* storagePath = NULL, const char* name = NULL);
+
     virtual ~Downloader();
     
     /* @brief Download new package if there is a new version, and uncompress downloaded zip file.
@@ -112,13 +118,15 @@ public:
      */
     void setConnectionTimeout(unsigned int timeout);
     
+    void setDownloadScriptHandler(LUA_FUNCTION download_script_handler);
+
     /** @brief Gets connection time out in secondes
      */
     unsigned int getConnectionTimeout();
     
     /* downloadAndUncompress is the entry of a new thread 
      */
-    friend void* downloaderDownloadAndUncompress(void*);
+    friend void* downloaderDownload(void*);
     friend int downloadProgressFunc(void *, double, double, double, double);
     
 protected:
@@ -161,6 +169,8 @@ private:
     std::string _url;
     std::string _name;
     
+    int _download_lua_handler;
+
     CURL *_curl;
     Helper *_schedule;
     pthread_t *_tid;

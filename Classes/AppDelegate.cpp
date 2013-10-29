@@ -6,7 +6,7 @@
 #include "SimpleAudioEngine.h"
 //#include "lua++.h"
 #include "WebsocketManager_lua.h"
-#include "Downloader.h"
+#include "Downloader_lua.h"
 //#include "CCEditBoxBridge_lua.h"
 #include "DialogLayerConvertor_lua.h"
 #include "DDZJniHelper_lua.h"
@@ -157,6 +157,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     tolua_WebsocketManager_open(pLuaState);
     tolua_DDZJniHelper_open(pLuaState);
     tolua_DialogLayerConvertor_open(pLuaState);
+    tolua_Downloader_open(pLuaState);
     luaopen_LuaProxy(pLuaState);
     luaopen_lua_extensions(pLuaState);
     tolua_extensions_ccb_open(pLuaState);
@@ -189,14 +190,14 @@ bool AppDelegate::applicationDidFinishLaunching()
 //    // run
 //    pDirector->runWithScene(pScene);
 
-    std::string pathToSave = CCFileUtils::sharedFileUtils()->getWritablePath();
+    /*std::string pathToSave = CCFileUtils::sharedFileUtils()->getWritablePath();
     std::string url = "http://www.daemonology.net/bsdiff/bsdiff-4.3.tar.gz";
     std::string name = "bsdiff-4.3.tar.gz";
     CCLOG("[DEBUG] pathToSave => %s", pathToSave.c_str());
     Downloader *d = new Downloader(url.c_str(), pathToSave.c_str(), name.c_str());
     d->setDelegate(new DownloadListener());
     d->update();
-    CCLOG("download run");
+    CCLOG("download run");*/
     return true;
 }
 
@@ -222,7 +223,7 @@ void AppDelegate::applicationWillEnterForeground()
         SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
 }
 
-void DownloadListener::onError(Downloader::ErrorCode errorCode) {
+/*void DownloadListener::onError(Downloader::ErrorCode errorCode) {
 CCLOG("DownloadListener::onError => %d, %d", errorCode, Downloader::kCreateFile);
 }
 void DownloadListener::onProgress(int percent){
@@ -230,4 +231,4 @@ void DownloadListener::onProgress(int percent){
 }
 void DownloadListener::onSuccess(){
 	CCLOG("DownloadListener::onSuccess");
-}
+}*/
