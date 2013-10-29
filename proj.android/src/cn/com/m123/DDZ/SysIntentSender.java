@@ -1,7 +1,7 @@
 package cn.com.m123.DDZ;
 
 
-import cn.com.m123.DDZ.R;
+import java.io.File;
 
 import android.content.Context;
 import android.content.Intent;
@@ -91,5 +91,13 @@ public class SysIntentSender {
 		Intent it = new Intent(action);
 		it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		context.startActivity(it);
+	}
+	
+	public static void install(Context context, String path) {
+		Intent intent = new Intent(Intent.ACTION_VIEW); 
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.setDataAndType(Uri.fromFile(new File(path)),  
+		        "application/vnd.android.package-archive");  
+		context.startActivity(intent);
 	}
 }

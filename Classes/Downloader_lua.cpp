@@ -1,6 +1,6 @@
 /*
 ** Lua binding: Downloader
-** Generated automatically by tolua++-1.0.93 on Tue Oct 29 09:48:45 2013.
+** Generated automatically by tolua++-1.0.93 on Tue Oct 29 13:37:10 2013.
 */
 
 /****************************************************************************
@@ -26,7 +26,6 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
 extern "C" {
 #include "tolua++.h"
 #include "tolua_fix.h"
@@ -153,6 +152,38 @@ static int tolua_Downloader_Downloader_update00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: uncompress of class  Downloader */
+#ifndef TOLUA_DISABLE_tolua_Downloader_Downloader_uncompress00
+static int tolua_Downloader_Downloader_uncompress00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Downloader",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Downloader* self = (Downloader*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'uncompress'", NULL);
+#endif
+  {
+   bool tolua_ret = (bool)  self->uncompress();
+   tolua_pushboolean(tolua_S,(bool)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'uncompress'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* Open function */
 TOLUA_API int tolua_Downloader_open (lua_State* tolua_S)
 {
@@ -165,6 +196,7 @@ TOLUA_API int tolua_Downloader_open (lua_State* tolua_S)
    tolua_function(tolua_S,"create",tolua_Downloader_Downloader_create00);
    tolua_function(tolua_S,"setDownloadScriptHandler",tolua_Downloader_Downloader_setDownloadScriptHandler00);
    tolua_function(tolua_S,"update",tolua_Downloader_Downloader_update00);
+   tolua_function(tolua_S,"uncompress",tolua_Downloader_Downloader_uncompress00);
   tolua_endmodule(tolua_S);
  tolua_endmodule(tolua_S);
  return 1;

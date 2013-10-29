@@ -129,14 +129,18 @@ public:
     friend void* downloaderDownload(void*);
     friend int downloadProgressFunc(void *, double, double, double, double);
     
+    bool uncompress();
+
 protected:
     bool downLoad();
     void checkStoragePath();
-    bool uncompress();
+
     bool createDirectory(const char *path);
     void setSearchPath();
     void sendErrorMessage(ErrorCode code);
     
+    bool CreatDir(const char *pDirPath);
+
 private:
     typedef struct _Message
     {

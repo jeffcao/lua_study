@@ -150,7 +150,7 @@ bool Downloader::uncompress() {
 
 	if (!zipfile) {
 		CCLOG("is not zip file");
-		return true;
+		return false;
 	}
 
 	// Get info about the zip file
@@ -180,7 +180,7 @@ bool Downloader::uncompress() {
 		}
 
 		string fullPath = _storagePath + fileName;
-
+		CCLOG("create file %s", fullPath.c_str());
 		// Check if this entry is a directory or a file.
 		const size_t filenameLength = strlen(fileName);
 		if (fileName[filenameLength - 1] == '/') {
@@ -190,6 +190,8 @@ bool Downloader::uncompress() {
 				CCLOG("can not create directory %s", fullPath.c_str());
 				unzClose(zipfile);
 				return false;
+			} else {
+				CCLOG("create directory %s", fullPath.c_str());
 			}
 		} else {
 			// Entry is a file, so extract it.
@@ -204,10 +206,23 @@ bool Downloader::uncompress() {
 			// Create a file to store current file.
 			FILE *out = fopen(fullPath.c_str(), "wb");
 			if (!out) {
-				CCLOG("can not open destination file %s", fullPath.c_str());
-				unzCloseCurrentFile(zipfile);
-				unzClose(zipfile);
-				return false;
+				if (!CreatDir(fullPath.c_str())) {
+					CCLOG("can not create destination directory %s",
+							fullPath.c_str());
+					unzCloseCurrentFile(zipfile);
+					unzClose(zipfile);
+					return false;
+				} else {
+					out = fopen(fullPath.c_str(), "wb");
+					if (!out) {
+						CCLOG("can not open destination file %s",
+								fullPath.c_str());
+						unzCloseCurrentFile(zipfile);
+						unzClose(zipfile);
+						return false;
+					}
+				}
+
 			}
 
 			// Write current file content to destinate file.
@@ -244,6 +259,34 @@ bool Downloader::uncompress() {
 
 	CCLOG("end uncompressing");
 
+	return true;
+}
+
+bool Downloader::CreatDir(const char *pDirPath) {
+	if (!pDirPath)
+		return false;
+	char temp[256] = { 0 };
+	char path[256] = { 0 };
+	int len = strlen(pDirPath);
+	memcpy(temp, pDirPath, len);
+	int i = 0;
+	while (temp[i] != '\0') {
+		path[i] = temp[i];
+		if (path[i] == 47 || path[i] == 92) {
+			struct stat statbuf;
+			if (0 != stat(path, &statbuf)) {
+				int isCreate = mkdir(path, S_IRWXU | S_IRWXG | S_IRWXO);
+				if (!isCreate) {
+					CCLOG("create path:%s\n", path);
+				} else {
+					CCLOG("create path failed! error code : %s \n", isCreate,
+							path);
+					return false;
+				}
+			}
+		}
+		++i;
+	}
 	return true;
 }
 

@@ -1,6 +1,6 @@
 /*
 ** Lua binding: Downloader
-** Generated automatically by tolua++-1.0.93 on Tue Oct 29 09:48:45 2013.
+** Generated automatically by tolua++-1.0.93 on Tue Oct 29 13:37:10 2013.
 */
 extern "C" {
 #include "tolua++.h"

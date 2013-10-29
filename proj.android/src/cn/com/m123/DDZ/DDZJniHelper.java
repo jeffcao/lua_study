@@ -55,6 +55,10 @@ public class DDZJniHelper {
 			String url = str.substring("share_intent_".length());
 			share(url);
 		}
+		if (str.startsWith("on_install_")) {
+			String path = str.substring("on_install_".length());
+			SysIntentSender.install(DouDiZhuApplicaion.APP_CONTEXT, path);
+		}
 	}
 	
 	public static void openUrl(String url) {
