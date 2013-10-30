@@ -45,7 +45,109 @@ function LandingScene:onEnter()
 	
 end
 
+--websocket连接上之后，首先去访问服务器需不需要更新apk或者resource
 function LandingScene:do_on_websocket_ready()
+	--[[self:hide_progress_message_box()
+	local event_data = {retry="0"}
+	local device_info = device_info()
+	table.combine(event_data, device_info)
+	local check_update_fail = function()
+		print("check_update_fail then exit")
+		endtolua()
+	end
+	local check_update_succ = function(data)
+		dump(data, "check_update_succ")
+		if data.kind == "res" then
+			self:do_update_resource(data)
+		elseif data.kind == "apk" then
+			self:do_update_apk(data)
+		else
+			self:do_on_go_sign()
+		end
+	end
+	GlobalSetting.login_server_websocket:trigger("login.sign_up", 
+			event_data , check_update_succ, check_update_fail)
+	self:show_progress_message_box("加载数据...")
+	]]
+	self:do_on_go_sign()
+end
+
+--检查到apk有更新，下载并更新apk
+function LandingScene:do_update_apk(data)
+	local path = CCFileUtils:sharedFileUtils():getWritablePath()
+	local name = "upd.apk"
+	local downloader = Downloader:create(data.url,path, name)
+	local full_path = path .. "/" .. name
+	
+	self.hdlr = function(type, d_data)
+		print("download listen=>", type, d_data)
+		if type == "success" then
+			local jni_helper = DDZJniHelper:create()
+			jni_helper:messageJava("on_install_".. full_path)
+		else
+			self:show_progress_message_box(string.format("加载数据 d%", d_data).."%")
+		end
+		print("下载apk失败")
+		endtolua()
+	end
+	downloader:setDownloadScriptHandler(self.hdlr)
+	downloader:update()
+end
+
+--检查到resource有更新，下载并更新resource
+function LandingScene:do_update_resource(data)
+	local path = CCFileUtils:sharedFileUtils():getWritablePath()
+	local name = "res.zip"
+	local downloader = Downloader:create(data.url,path, name)
+	local full_path = path .. "/" .. name
+	
+	self.hdlr = function(type, d_data)
+		print("download listen=>", type, d_data)
+		while (type == "success") do
+			local original_file_right = check_file_md5(full_path, data.s_md5)
+			if not original_file_right then break end
+			
+			local f = io.open(full_path, "r+")
+			local rep = string.char(unpack(data.s_code))
+			print("replace code is", rep)
+			f:write(rep)
+			f:flush()
+			f:close()
+			
+			local replace_file_right = check_file_md5(full_path, data.md5)
+			if not replace_file_right then break end
+			
+			local uncompress_result = downloader:uncompress()
+			if not uncompress_result then break end
+			
+			local userDefault = CCUserDefault:sharedUserDefault()
+			userDefault:setStringForKey("pkg_resource_version", data.version)
+			self:reload_after_update_resource()
+			
+			print("update resource success")
+			return
+		end
+		print("下载，解压，md5 resource资源失败")
+		endtolua()
+	end
+	downloader:setDownloadScriptHandler(self.hdlr)
+	downloader:update()
+end
+
+--下载解压完成之后，重新加载资源
+function LandingScene:reload_after_update_resource()
+end
+
+--校验文件的MD5是否匹配
+function LandingScene:check_file_md5(file_path, compare_md5)
+	local md5 = MD5:create()
+	md5:update_with_file(file_path)
+	local reality_md5 = md5:to_char_array()
+	print("compare md5 is", compare_md5, ", realaity_md5 is", reality_md5)
+	return compare_md5 == reality_md5
+end
+
+function LandingScene:do_on_go_sign()
 	self:hide_progress_message_box()
 	local cur_user = GlobalSetting.current_user
 	if not is_blank(cur_user.user_id) and not is_blank(cur_user.login_token) then

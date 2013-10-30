@@ -8,6 +8,7 @@
 #include "WebsocketManager_lua.h"
 #include "Downloader_lua.h"
 #include "md5_lua.h"
+#include <vector>
 //#include "CCEditBoxBridge_lua.h"
 #include "DialogLayerConvertor_lua.h"
 #include "DDZJniHelper_lua.h"
@@ -29,6 +30,7 @@ extern "C" {
 USING_NS_CC;
 
 using namespace CocosDenshion;
+using namespace std;
 
 bool _bg_music_playing = false;
 
@@ -200,7 +202,18 @@ bool AppDelegate::applicationDidFinishLaunching()
     d->setDelegate(new DownloadListener());
     d->update();
     CCLOG("download run");*/
+    setSearchPath();
     return true;
+}
+
+//添加缓存目录为加载目录
+void AppDelegate::setSearchPath()
+{
+    vector<string> searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
+    vector<string>::iterator iter = searchPaths.begin();
+    std::string file_path = CCFileUtils::sharedFileUtils()->getWritablePath();
+    searchPaths.insert(iter, file_path);
+    CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
 }
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too

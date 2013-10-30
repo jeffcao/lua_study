@@ -203,8 +203,8 @@ function device_info()
 		appid = userDefault:getStringForKey("appid"),
 		pkg_version_name = userDefault:getStringForKey("pkg_version_name"),
 		pkg_version_code = userDefault:getStringForKey("pkg_version_code"),
-		pkg_build = userDefault:getStringForKey("pkg_build")
-
+		pkg_build = userDefault:getStringForKey("pkg_build"),
+		pkg_resource_version = userDefault:getStringForKey("pkg_resource_version") or "1.0"
 	}
 	return device_info
 end
