@@ -1,0 +1,5 @@
+class MD5 {
+	static MD5* create();
+	void update_with_file(const char* path);
+	const char* to_char_array();
+};

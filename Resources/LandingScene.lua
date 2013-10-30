@@ -6,6 +6,7 @@ require "LoginScene"
 require "CCBReaderLoad"
 require "src.Stats"
 
+
 LandingScene = class("LandingScene", function()
 	print("creating new landingScene")
 	return display.newScene("LandingScene")

@@ -224,7 +224,6 @@ bool Downloader::uncompress() {
 				}
 
 			}
-
 			// Write current file content to destinate file.
 			int error = UNZ_OK;
 			do {

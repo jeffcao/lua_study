@@ -52,7 +52,17 @@ function AboutScene:ctor()
 		--	local jni_helper = DDZJniHelper:create()
 		--	jni_helper:messageJava("on_install_"..path.."/"..name)
 			local result = downloader:uncompress()
-		print("umcompress result is " .. tostring(result))
+			print("umcompress result is " .. tostring(result))
+			local md5 = MD5:create()
+			md5:update_with_file(path.."/"..name)
+			print("md5 is ", md5:to_char_array())
+		--[[
+			local f = io.open(path.."/"..name, "r+")
+			local rep = {}
+			f:write(string.char(unpack(rep)))
+			f:flush()
+			f:close()
+		]]
 		end
 	end
 	downloader:setDownloadScriptHandler(self.hdlr)
