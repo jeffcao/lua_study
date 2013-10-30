@@ -146,7 +146,7 @@
 						<key>type</key>
 						<string>Text</string>
 						<key>value</key>
-						<string>斗地主游戏由深圳市新中南实业有限公司提供。</string>
+						<string>我爱斗地主由深圳市新中南实业有限公司提供。</string>
 					</dict>
 				</array>
 			</dict>
@@ -405,8 +405,6 @@
 						<string>版本: v 1.01(706)</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
