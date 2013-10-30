@@ -107,7 +107,7 @@ function UserInfo:load_from_json(json_data)
 	self.gender = self.gender or 0
 	self.nick_name = self.nick_name or ""	
 	self.flag = self.flag or 0
-	self.email = self.flag or 0
+	self.email = self.email or 0
 	self.score = self.score or 0
 	self.win_count = self.win_count or 0
 	self.lost_count = self.lost_count or 0

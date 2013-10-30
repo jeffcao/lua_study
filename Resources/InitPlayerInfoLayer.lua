@@ -146,7 +146,7 @@ function InitPlayerInfoLayer:do_on_trigger_success(data)
 	print("[InitPlayerInfoLayer:do_on_trigger_success]")
 	GlobalSetting.current_user.nick_name = data.nick_name
 	GlobalSetting.current_user.gender = data.gender
-
+	GlobalSetting.current_user.email = data.email
 	self:hide_progress_message_box()
 	self:show_message_box_suc("更新资料成功", params)
 	self:dismiss()
