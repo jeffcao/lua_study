@@ -37,36 +37,7 @@ function AboutScene:ctor()
 	
 	layer:setContent(node)
 	self.version_lbl:setString(version)
-	--set_stroke(self.version_lbl, 1.5, ccc3(255,255,255))
-	--set_string_with_stroke(self.version_lbl, version)
-	local path = CCFileUtils:sharedFileUtils():getWritablePath()
-	local name = "res.zip"
-	local downloader = Downloader:create("http://adproject.u.qiniudn.com/ccbResources8.zip",path, name)
-	
-	--name = "dxzjh.apk"
-	--local downloader = Downloader:create("http://adproject.u.qiniudn.com/dxzjh.apk",path, name)
-	self.hdlr = function(type, data)
-		print("download listen=>", type, data)
-		if type == "success" then
-		--  安装APK
-		--	local jni_helper = DDZJniHelper:create()
-		--	jni_helper:messageJava("on_install_"..path.."/"..name)
-			local result = downloader:uncompress()
-			print("umcompress result is " .. tostring(result))
-			local md5 = MD5:create()
-			md5:update_with_file(path.."/"..name)
-			print("md5 is ", md5:to_char_array())
-		--[[
-			local f = io.open(path.."/"..name, "r+")
-			local rep = {}
-			f:write(string.char(unpack(rep)))
-			f:flush()
-			f:close()
-		]]
-		end
-	end
-	downloader:setDownloadScriptHandler(self.hdlr)
-	downloader:update()
+	--require "banana"
 end
 
 UIControllerPlugin.bind(AboutScene)
