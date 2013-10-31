@@ -36,7 +36,15 @@ function HallSceneUPlugin.bind(theClass)
 					self.set_dialog_layer = nil
 				end
 			else
-				self:doShowExitDialog()
+				local scene = createLoginScene()
+				CCDirector:sharedDirector():replaceScene(scene)
+				self:close_hall_websocket()
+				if GlobalSetting.online_time_get_beans_handle then
+					cclog('cancel previous online_time_get_beans while switch')
+					Timer.cancel_timer(GlobalSetting.online_time_get_beans_handle)
+					GlobalSetting.online_time_get_beans_handle = nil
+				end
+				--self:doShowExitDialog()
 			end
 		end
 	end
