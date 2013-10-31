@@ -22,12 +22,12 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:onKeypad(key)
 		print("hall scene on key pad")
 		if key == "menuClicked" then
-
+			--[[
 			self.menu_layer = createMenu(__bind(self.menu_dismiss_callback, self), __bind(self.show_set_dialog, self))
 			self.rootNode:addChild(self.menu_layer, 1001, 908)
 			print("[HallSceneUPlugin:display_player_info] menu_layer:show")
 			self.menu_layer:show()
-
+			]]
 		elseif key == "backClicked" then
 			if self.menu_layer and self.menu_layer:isShowing() then
 				self.menu_layer:dismiss(true)
@@ -112,12 +112,10 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:onMenuClick(tag, sender)
-	--DDZJniHelper:create():messageJava('share_intent_3')
 		self:onKeypad("menuClicked")
 	end
 	
 	function theClass:onInfoClick(tag, sender)
-	--DDZJniHelper:create():messageJava('share_intent_1')
 		self:doToInfo()
 	end
 	
@@ -126,7 +124,6 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:onMarketClick(tag, sender)
-	--DDZJniHelper:create():messageJava('share_intent_2')
 		self:doToMarket()
 	end
 	

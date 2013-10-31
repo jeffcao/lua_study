@@ -74,7 +74,7 @@ function MarketSceneUPlugin.bind(theClass)
 		
 		is_cm_sim_card = self:is_cm_sim_card()
 		print("[MarketSceneUPlugin:show_buy_notify] is_cm_sim_card=> "..tostring(is_cm_sim_card))
-		if not is_cm_sim_card then
+		if not is_cm_sim_card and GlobalSetting.run_env ~= "test" then
 			self:show_back_message_box("尊敬的客户，非中国移动客户暂不支持购买道具.")
 			do return end
 		end
@@ -82,8 +82,8 @@ function MarketSceneUPlugin.bind(theClass)
 		self.cur_product = product
 		self.yes_no_dialog = createYesNoDialog3()
 		content = "尊敬的客户，您即将购买的是\n游戏名：我爱斗地主\n道具名："
-	 	content = content..self.cur_product.name.."\n道具数量：1\n服务提供商：新中南\n资费说明：\n" 	
-	 	content = content..self.cur_product.price.." 点（即消费"..self.cur_product.rmb.."元人民币）\n点击确认按钮确认购买，中国移动"
+	 	content = content..self.cur_product.name.."\n道具数量：1\n服务提供商：新中南实业有限公司\n资费说明：\n" 	
+	 	content = content..self.cur_product.price.." 点（即消费"..self.cur_product.rmb.."元人民币）\n点击确认按钮确认购买，中国移动\n客服电话400-6788456"
 		print("[MarketSceneUPlugin:show_buy_notify] notify content=> "..content)
 		self.yes_no_dialog:setMessage(content)
 		 

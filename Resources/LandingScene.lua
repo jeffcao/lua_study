@@ -18,6 +18,7 @@ function LandingScene:ctor()
 	ccb.landing_scene = self
 	self.on_ui_clickme_clicked = __bind(self.do_ui_clickme, self)
 	
+	
 
 	local ccbproxy = CCBProxy:create()
 	
@@ -149,6 +150,9 @@ end
 
 function LandingScene:do_on_go_sign()
 	self:hide_progress_message_box()
+	local scene = createLoginScene()
+	CCDirector:sharedDirector():replaceScene(scene)
+	--[[
 	local cur_user = GlobalSetting.current_user
 	if not is_blank(cur_user.user_id) and not is_blank(cur_user.login_token) then
 		self:show_progress_message_box("登录服务器...")
@@ -157,6 +161,7 @@ function LandingScene:do_on_go_sign()
 		self:show_progress_message_box("注册用户...")
 		self:signup()
 	end
+	]]
 end
 
 function LandingScene:onExit()

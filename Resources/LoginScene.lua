@@ -8,6 +8,7 @@ require "src.LoginHallConnectionPlugin"
 require "src.LoginSceneUIPlugin"
 require "YesNoDialog2"
 require "src.Stats"
+require "src.SoundEffect"
 
 LoginScene = class("LoginScene", function()
 	print("creating new loginScene")
@@ -26,6 +27,23 @@ function LoginScene:ctor()
 	self.on_ui_fast_game_clicked = __bind(self.do_ui_fast_game_clicked, self) 
 	self.on_ui_login_clicked = __bind(self.do_ui_login_clicked, self)
 	self.on_ui_show_ids_clicked = __bind(self.do_ui_show_ids_clicked, self)
+	local function about(tag, sender)
+		local scene = createAboutScene()
+		CCDirector:sharedDirector():pushScene(scene)
+	end
+	local function help(tag, sender)
+		local scene = createHelpScene()
+		CCDirector:sharedDirector():pushScene(scene)
+	end
+	local function game_center()
+		local jni = DDZJniHelper:create()
+		jni:messageJava("on_open_url_intent_g.10086.cn")
+	end
+	
+	self.on_help_item_clicked = help
+	self.on_about_item_clicked = about
+	self.on_more_item_clicked = game_center
+	self.on_exit_item_clicked = __bind(self.do_close, self)
 	
 	local ccbproxy = CCBProxy:create()
 	local node = CCBReaderLoad("LoginScene.ccbi", ccbproxy, false, "")
@@ -43,6 +61,7 @@ end
 function LoginScene:onEnter()
 	print("[LoginScene:on_enter()]")
 	self.super.onEnter(self)
+	self:playBackgroundMusic()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	if GlobalSetting.login_server_websocket == nil then
 		self:show_progress_message_box("登录服务器...")
@@ -85,7 +104,7 @@ function createLoginScene()
 	return login
 end
 
-
+SoundEffect.bind(LoginScene)
 
 
 

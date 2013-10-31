@@ -49,7 +49,7 @@ GlobalSetting = {
 	debug_dump_internal_event = false,
 	debug_timer_name = false,
 	
-	run_env = "prod",
+	run_env = "test",
 	
 
 	zongse = ccc3(67,31,24),
