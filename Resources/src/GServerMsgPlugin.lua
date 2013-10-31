@@ -12,7 +12,7 @@ function GServerMsgPlugin.bind(theClass)
 		
 		if not self.card_roboter then
 			self.card_roboter = CardRoboter2.new()
-			self.card_roboter:init(self.rootNode)
+			self.card_roboter:init(self.rootNode, self.JIPAIQI_ORDER)
 		end
 	
 		--cclog("[game_start] user_id -> " .. data.user_id)

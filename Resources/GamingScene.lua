@@ -115,7 +115,7 @@ end
 
 function GamingScene:onTestAnim()
 	print("onTestAnim")
-	Explosion.explode(self.rootNode)
+	Explosion.explode(self.rootNode, self.BOMB_ORDER)
 	--local game_over = "{\"game_result\":{\"winner_player_id\":\"10006\",\"bombs\":\"0\",\"spring\":\"0\",\"anti_spring\":\"0\",\"base\":20,\"lord_value\":\"3\",\"total\":120,\"balance\":{\"10006\":60,\"40188\":60,\"40189\":-120}},\"players\":[{\"user_id\":10006,\"avatar\":\"0\",\"nick_name\":\"10006\",\"gender\":\"1\",\"is_robot\":\"0\",\"state\":1,\"tuo_guan\":0,\"lord_value\":-1,\"grab_lord\":0,\"player_role\":1,\"poke_card_count\":0},{\"user_id\":40188,\"avatar\":\"1\",\"nick_name\":\"4e664e66\",\"gender\":\"1\",\"is_robot\":\"1\",\"state\":1,\"tuo_guan\":1,\"lord_value\":0,\"grab_lord\":1,\"player_role\":1,\"poke_card_count\":15},{\"user_id\":40189,\"avatar\":\"0\",\"nick_name\":\"82cf582466256653\",\"gender\":\"1\",\"is_robot\":\"1\",\"state\":1,\"tuo_guan\":1,\"lord_value\":3,\"grab_lord\":0,\"player_role\":2,\"poke_card_count\":8}],\"notify_id\":30,\"__srv_seq_id\":5099984}"
 	--self:showGameOver(game_over)
 	self.g_WebSocket:close_when_server_kill()

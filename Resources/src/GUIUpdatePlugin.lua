@@ -430,13 +430,21 @@ function GUIUpdatePlugin.bind(theClass)
 		local delayTime = CCDelayTime:create(2)
 		local show = function()
 			print("_has_gaming_started " ,  self._has_gaming_started)
-			
 			if self._has_gaming_started then
 				return
 			end
 			
 			cclog("show game_over_layer")
 			self.game_over_layer:show()
+			
+			local self_user_win_value = data.game_result.self_balance[tostring(self.self_user.user_id)]
+			self_user_win_value = tonumber(self_user_win_value)
+			local win_flag = self_user_win_value > 0
+			if win_flag then
+				self:playWinEffect()
+			else 
+				self:playLoseEffect()
+			end
 	
 			self:showPlayCardMenu(false)
 			self:hideGetLordMenu()

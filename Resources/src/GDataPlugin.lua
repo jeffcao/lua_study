@@ -15,6 +15,8 @@ function GDataPlugin.bind(theClass)
 		self.MSG_LAYER_ORDER = 2400--聊天气泡
 		self.SET_LAYER_ORDER = 2130--设置板
 		self.GAMING_OPTION_ORDER = 2140--弹出的组合按钮
+		self.JIPAIQI_ORDER = 2000--记牌器
+		self.BOMB_ORDER = 2500--爆炸
 		self.winSize = CCDirector:sharedDirector():getWinSize()
 		self.y_ratio = self.winSize.height / 480.0
 		self.x_ratio = self.winSize.width / 800.0

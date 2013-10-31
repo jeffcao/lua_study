@@ -137,7 +137,7 @@ function GActionPlugin.bind(theClass)
 			
 			if card.card_type == CardType.BOMB or card.card_type == CardType.ROCKET then
 				cclog("炸弹效果")
-				Explosion.explode(self.rootNode)
+				Explosion.explode(self.rootNode, self.BOMB_ORDER)
 			end
 			
 			-- 记住本次出牌
@@ -252,7 +252,7 @@ function GActionPlugin.bind(theClass)
 		
 		if card.card_type == CardType.BOMB or card.card_type == CardType.ROCKET then
 			cclog("炸弹效果")
-			Explosion.explode(self.rootNode)
+			Explosion.explode(self.rootNode, self.BOMB_ORDER)
 		end
 		
 		-- 记住本次出牌
@@ -316,7 +316,7 @@ function GActionPlugin.bind(theClass)
 		
 		if card.card_type == CardType.BOMB or card.card_type == CardType.ROCKET then
 			cclog("炸弹效果")
-			Explosion.explode(self.rootNode)
+			Explosion.explode(self.rootNode, self.BOMB_ORDER)
 		end
 		
 		-- 记住本次出牌

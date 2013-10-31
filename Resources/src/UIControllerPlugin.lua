@@ -21,7 +21,8 @@ function UIControllerPlugin.bind(theClass)
 		editbox2:setAnchorPoint(ccp(0,0))
 		editbox2:setPlaceholderFont("default",16)
 		editbox2:setFont("default",16)
-		editbox2:setFontColor(ccc3(0, 0, 0))
+		editbox2:setPlaceholderFontColor(ccc3(255, 255, 255))
+		editbox2:setFontColor(ccc3(255, 255, 255))
 		if is_password then
 			editbox2:setInputFlag(kEditBoxInputFlagPassword)
 		else

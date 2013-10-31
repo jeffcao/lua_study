@@ -20,12 +20,12 @@ function GameOverPlugin.bind(theClass)
 		win_flag = self_user_win_value > 0
 		if win_flag then
 			self.lbl_self_user_win:setDisplayFrame(frameCache:spriteFrameByName("win.png"))
-			gaming_layer:playWinEffect()
+		--	gaming_layer:playWinEffect()
 		else 
 			cclog("self user is lose")
 			lose_persons = lose_persons + 1
 			self.lbl_self_user_win:setDisplayFrame(frameCache:spriteFrameByName("lose.png"))
-			gaming_layer:playLoseEffect()
+		--	gaming_layer:playLoseEffect()
 		end
 		
 		
