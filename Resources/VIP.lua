@@ -1,6 +1,8 @@
 --require "FullMubanStyleLayer"
 require "src.UIControllerPlugin"
 require "src.HallServerConnectionPlugin"
+require "src/WebsocketRails/Timer"
+require "src.Stats"
 VIP = class("VIP", function()
 	print("new VIP")
 	return display.newScene("VIP")	
@@ -82,6 +84,14 @@ function VIP:ctor()
 	
 	self.vip_kuang:setScale(vip_kuang_scales[tonumber(vip.vip_level)] * GlobalSetting.content_scale_factor)
 	
+end
+
+function VIP:onEnter()
+	Stats:on_start("vip")
+end
+
+function VIP:onExit()
+	Stats:on_end("vip")
 end
 
 function VIP:on_get_vip_salary()

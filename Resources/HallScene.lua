@@ -102,6 +102,32 @@ HallScene = class("HallScene", function()
 	print("set vip menu visible to " .. tostring(is_vip))
 	self.hall_vip_menu:setVisible(is_vip)
 	Stats:on_start("hall")
+	
+	self:checkVip()
+ end
+ 
+ function HallScene:checkVip()
+ 	local is_vip = (GlobalSetting.vip ~= cjson.null)
+ 	if not is_vip then return end
+ 	local fn = function()
+ 		local is_vip = (GlobalSetting.vip ~= cjson.null)
+ 		if not is_vip then return false end
+		local scene = CCDirector:sharedDirector():getRunningScene()
+		local salary_getted = (GlobalSetting.vip.get_salary~=0)
+		if scene ~= self or salary_getted then return false end
+		
+		local blink = CCBlink:create(2, 3)
+		self.hall_vip_menu:runAction(blink)
+		return true
+	end
+	local fn2 = function() fn() self.vip_blink_1 = nil end
+	local fn3 = function() local re = fn() if not re then self.vip_blink = nil end return re end
+	if not self.vip_blink_1 and not self.vip_blink then
+		self.vip_blink_1 = Timer.add_timer(0.5, fn2, "vip_blink_1")
+	end
+	if not self.vip_blink then
+		self.vip_blink = Timer.add_repeat_timer(5, fn3, "vip_blink")
+	end
  end
  
  function HallScene:playMusic()

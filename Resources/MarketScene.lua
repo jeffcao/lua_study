@@ -33,6 +33,14 @@ function MarketScene:ctor(inactive_market_scene_fn)
 		self:check_tech_msg("shop")
 	end)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+	
+	local keypad_fn = function(key)
+		if key == "backClicked" then
+			CCDirector:sharedDirector():popScene()
+		end
+	end
+	self.rootNode:setKeypadEnabled(true)
+	self.rootNode:registerScriptKeypadHandler(keypad_fn)
 end
 
  function MarketScene:onEnter() 

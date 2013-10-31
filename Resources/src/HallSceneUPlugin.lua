@@ -17,6 +17,7 @@ function HallSceneUPlugin.bind(theClass)
 		local is_vip = (GlobalSetting.vip ~= cjson.null)
 		print("scene_on_vip set vip menu visible to " .. tostring(is_vip))
 		self.hall_vip_menu:setVisible(is_vip)
+		self:checkVip()
 	end
 
 	function theClass:onKeypad(key)

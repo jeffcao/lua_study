@@ -31,9 +31,9 @@ function GameOverPlugin.bind(theClass)
 		
 		self.lbl_base:setString("" .. game_result.base)
 		self.lbl_base_x:setString("" .. game_result.lord_value)
-		self.lbl_bomb:setString("" .. (1+tonumber(game_result.bombs)))
-		self.lbl_spring:setString("" .. (1+tonumber(game_result.spring)))
-		self.lbl_anti_spring:setString("" .. (1+tonumber(game_result.anti_spring)))
+		self.lbl_bomb:setString("" .. game_result.bombs)
+		self.lbl_spring:setString("" .. game_result.spring)
+		self.lbl_anti_spring:setString("" .. game_result.anti_spring)
 		
 		local self_name = gaming_layer.self_user.nick_name .. "[" .. gaming_layer.self_user.user_id .. "]"
 		self.lbl_self_user_name:setString(self_name)
