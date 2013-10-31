@@ -19,7 +19,7 @@
         android:debuggable="true"
         android:name="cn.com.m123.DDZ.DouDiZhuApplicaion">
         
-        <meta-data android:name="build" android:value="v20131031.05(内部版)"/>
+        <meta-data android:name="build" android:value="v20131031.05"/>
 
         <activity android:name="cn.com.m123.DDZ.DouDiZhu_Lua"
                   android:label="@string/app_name"
