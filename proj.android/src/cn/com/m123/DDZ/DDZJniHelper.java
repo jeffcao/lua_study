@@ -62,11 +62,19 @@ public class DDZJniHelper {
 	}
 	
 	public static void openUrl(String url) {
-		Uri uri = Uri.parse(url);
-		Intent it = new Intent(Intent.ACTION_VIEW, uri);
-		it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		it.setClassName("com.android.browser","com.android.browser.BrowserActivity"); 
-		DouDiZhuApplicaion.APP_CONTEXT.startActivity(it);
+		try {
+			Uri uri = Uri.parse(url);
+			Intent it = new Intent(Intent.ACTION_VIEW, uri);
+			it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			it.setClassName("com.android.browser","com.android.browser.BrowserActivity"); 
+			DouDiZhuApplicaion.APP_CONTEXT.startActivity(it);
+		} catch (Exception e) {
+			//System.out.println("调用浏览器失败");
+			Uri uri = Uri.parse(url);
+			Intent it = new Intent(Intent.ACTION_VIEW, uri);
+			it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			DouDiZhuApplicaion.APP_CONTEXT.startActivity(it);
+		}
 	}
 	
 	public static void sendSMS(String mobile, String text) {

@@ -9,6 +9,10 @@ function YesNoDialogUPlugin.bind(theClass)
 		self.msg:setString(message)
 	end
 	
+	function theClass:setMessageSize(size)
+		self.msg:setFontSize(size)
+	end
+	
 	function theClass:setYesButton(fn)
 		self.confirm:registerScriptTapHandler(fn)
 	end

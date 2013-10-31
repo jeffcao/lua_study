@@ -82,11 +82,11 @@ function MarketSceneUPlugin.bind(theClass)
 		self.cur_product = product
 		self.yes_no_dialog = createYesNoDialog3()
 		content = "尊敬的客户，您即将购买的是\n游戏名：我爱斗地主\n道具名："
-	 	content = content..self.cur_product.name.."\n道具数量：1\n服务提供商：新中南实业有限公司\n资费说明：\n" 	
+	 	content = content..self.cur_product.name.."\n道具数量：1\n服务提供商：深圳市新中南实业有限公司\n资费说明：\n" 	
 	 	content = content..self.cur_product.price.." 点（即消费"..self.cur_product.rmb.."元人民币）\n点击确认按钮确认购买，中国移动\n客服电话400-6788456"
 		print("[MarketSceneUPlugin:show_buy_notify] notify content=> "..content)
 		self.yes_no_dialog:setMessage(content)
-		 
+		self.yes_no_dialog:setMessageSize(19)
 		self.yes_no_dialog:setYesButton(__bind(self.do_buy_product, self))
 		self.yes_no_dialog:setNoButton(__bind(self.do_cancel_buy, self))
 		 

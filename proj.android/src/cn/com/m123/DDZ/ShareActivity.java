@@ -2,6 +2,7 @@ package cn.com.m123.DDZ;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -12,6 +13,7 @@ public class ShareActivity extends Activity {
 		WebView v = new ProgressWebView(this);
 		setContentView(v);
 		v.getSettings().setJavaScriptEnabled(true);
+		v.setWebChromeClient(new WebChromeClient());
 		v.setWebViewClient(new WebViewClient(){       
             public boolean shouldOverrideUrlLoading(WebView view, String url) {       
                 view.loadUrl(url);       
