@@ -48,7 +48,7 @@ end
 
 --websocket连接上之后，首先去访问服务器需不需要更新apk或者resource
 function LandingScene:do_on_websocket_ready()
-	--[[self:hide_progress_message_box()
+	self:hide_progress_message_box()
 	local event_data = {retry="0"}
 	local device_info = device_info()
 	table.combine(event_data, device_info)
@@ -69,8 +69,8 @@ function LandingScene:do_on_websocket_ready()
 	GlobalSetting.login_server_websocket:trigger("login.sign_up", 
 			event_data , check_update_succ, check_update_fail)
 	self:show_progress_message_box("加载数据...")
-	]]
-	self:do_on_go_sign()
+	
+	--self:do_on_go_sign()
 end
 
 --检查到apk有更新，下载并更新apk
