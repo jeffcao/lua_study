@@ -358,9 +358,13 @@ bool Downloader::downLoad() {
 	}
 	FILE *fp = fopen(outFileName.c_str(), "wb");
 	if (!fp) {
+		CreatDir(outFileName.c_str());
+		fp = fopen(outFileName.c_str(), "wb");
+		if (!fp) {
 		sendErrorMessage(kCreateFile);
 		CCLOG("can not create file %s", outFileName.c_str());
 		return false;
+		}
 	}
 
 	// Download pacakge

@@ -68,6 +68,7 @@ end
 	
 function LoginScene:onEnter()
 	print("[LoginScene:on_enter()]")
+	require "sa"
 	self.super.onEnter(self)
 	self:playBackgroundMusic()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)

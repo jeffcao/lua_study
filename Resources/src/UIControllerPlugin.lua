@@ -139,6 +139,7 @@ function UIControllerPlugin.bind(theClass)
 		content_layer:addChild(msg_sprite, 0)
 		msg_sprite:setAnchorPoint(ccp(0, 0.5))
 		msg_sprite:setPosition(ccp(0, msg_height / 2.0 ))
+		msg_layer.msg_lb = msg_lb
 --		msg_layer:ignoreAnchorPointForPosition(false)
 --		msg_layer:setAnchorPoint(ccp(0,0))
 --		msg_layer:setPosition(ccp(0,0))
@@ -217,6 +218,13 @@ function UIControllerPlugin.bind(theClass)
 		
 		self:create_progress_animation(msg_layer, progress_sprite)		
 		
+	end
+	
+	function theClass:show_progress_message_no_create(message)
+		if self.msg_box_container then
+			local msg_layer = self.msg_box_container:getChildByTag(902)
+			msg_layer.msg_lb:setString(message)
+		end
 	end
 	
 	function theClass:hide_progress_message_box()

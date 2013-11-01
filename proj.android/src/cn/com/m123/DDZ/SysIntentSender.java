@@ -94,6 +94,7 @@ public class SysIntentSender {
 	}
 	
 	public static void install(Context context, String path) {
+		System.out.println("install " + path);
 		Intent intent = new Intent(Intent.ACTION_VIEW); 
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		intent.setDataAndType(Uri.fromFile(new File(path)),  

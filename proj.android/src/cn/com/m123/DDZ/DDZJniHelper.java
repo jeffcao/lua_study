@@ -152,6 +152,9 @@ public class DDZJniHelper {
 		if (func_name.equals("CurrentTime")) {
 			return getCurrentTime();
 		}
+		if (func_name.equals("SDCardPath")) {
+			return Environment.getExternalStorageDirectory().getAbsolutePath();
+		}
 		return "";
 	}
 	

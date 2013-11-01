@@ -66,7 +66,7 @@ function LandingScene:do_on_websocket_ready()
 			self:do_on_go_sign()
 		end
 	end
-	GlobalSetting.login_server_websocket:trigger("login.sign_up", 
+	GlobalSetting.login_server_websocket:trigger("login.check_update", 
 			event_data , check_update_succ, check_update_fail)
 	self:show_progress_message_box("加载数据...")
 	
@@ -75,21 +75,28 @@ end
 
 --检查到apk有更新，下载并更新apk
 function LandingScene:do_update_apk(data)
-	local path = CCFileUtils:sharedFileUtils():getWritablePath()
+	--local path = CCFileUtils:sharedFileUtils():getWritablePath()
+	local jni_helper = DDZJniHelper:create()
+	local path = jni_helper:get("SDCardPath") .. "/m123/download/"
 	local name = "upd.apk"
 	local downloader = Downloader:create(data.url,path, name)
-	local full_path = path .. "/" .. name
+	local full_path = path .. name
 	
 	self.hdlr = function(type, d_data)
 		print("download listen=>", type, d_data)
 		if type == "success" then
 			local jni_helper = DDZJniHelper:create()
 			jni_helper:messageJava("on_install_".. full_path)
+			endtolua()
+			return
+		elseif type == "error" then
+			print("download update error happend", d_data)
+			endtolua()
+			return
 		else
-			self:show_progress_message_box(string.format("加载数据 d%", d_data).."%")
+			self:show_progress_message_no_create(string.format("加载数据 %d", d_data).."%")
+			return
 		end
-		print("下载apk失败")
-		endtolua()
 	end
 	downloader:setDownloadScriptHandler(self.hdlr)
 	downloader:update()
@@ -100,22 +107,26 @@ function LandingScene:do_update_resource(data)
 	local path = CCFileUtils:sharedFileUtils():getWritablePath()
 	local name = "res.zip"
 	local downloader = Downloader:create(data.url,path, name)
-	local full_path = path .. "/" .. name
-	
+	local full_path = path .. name
+	print("full_path in update resource is ", full_path)
 	self.hdlr = function(type, d_data)
 		print("download listen=>", type, d_data)
+		if type ~= "success" then
+			return
+		end
 		while (type == "success") do
-			local original_file_right = check_file_md5(full_path, data.s_md5)
-			if not original_file_right then break end
+			local original_file_right = self:check_file_md5(full_path, data.s_md5)
+			if not original_file_right then print("orinigal md5 is wrong") break end
 			
 			local f = io.open(full_path, "r+")
+			print("start to unpack s_code")
 			local rep = string.char(unpack(data.s_code))
 			print("replace code is", rep)
 			f:write(rep)
 			f:flush()
 			f:close()
 			
-			local replace_file_right = check_file_md5(full_path, data.md5)
+			local replace_file_right = self:check_file_md5(full_path, data.md5)
 			if not replace_file_right then break end
 			
 			local uncompress_result = downloader:uncompress()
@@ -137,6 +148,7 @@ end
 
 --下载解压完成之后，重新加载资源
 function LandingScene:reload_after_update_resource()
+	self:do_on_go_sign()
 end
 
 --校验文件的MD5是否匹配
