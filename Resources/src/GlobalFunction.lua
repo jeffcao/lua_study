@@ -42,6 +42,12 @@ function table.combine(dest, src)
 	end
 end
 
+function table.copy_kv(dest, src)
+	for k,v in pairs(src) do
+		dest[k] = v
+	end
+end
+
 function clone_table(array)
 	local result = {}
 	table.merge(result, array)
@@ -192,7 +198,7 @@ function device_info()
 		imsi = userDefault:getStringForKey("hw_imsi"),
 		brand = userDefault:getStringForKey("hw_brand"),
 		model = userDefault:getStringForKey("hw_model"),
-		version = userDefault:getStringForKey("hw_version"),
+		os_release = userDefault:getStringForKey("hw_version"),
 		manufacture = userDefault:getStringForKey("hw_manufacture"),
 		cpu_abi = userDefault:getStringForKey("hw_cpu_abi"),
 		board = userDefault:getStringForKey("hw_board"),
