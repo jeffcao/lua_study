@@ -51,7 +51,7 @@ function LandingScene:do_on_websocket_ready()
 	self:hide_progress_message_box()
 	local event_data = {retry="0"}
 	local device_info = device_info()
-	table.combine(event_data, device_info)
+	table.copy_kv(event_data, device_info)
 	local check_update_fail = function()
 		print("check_update_fail then exit")
 		endtolua()

@@ -67,7 +67,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 	function theClass:signup()
 		local event_data = {retry="0", sign_type="100"}
 		local device_info = device_info()
-		table.combine(event_data, device_info)
+		table.copy_kv(event_data, device_info)
 		dump(event_data, "[LoginServerConnectionPlugin.signup] event_data=>")
 		GlobalSetting.login_server_websocket:trigger("login.sign_up", 
 			event_data , 
@@ -78,7 +78,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 	function theClass:fast_sign_up(nick_name, password, gender)
 		local event_data = {retry="0", sign_type="101", nick_name=nick_name, password=password, gender=gender} 
 		local device_info = device_info()
-		table.combine(event_data, device_info)
+		table.copy_kv(event_data, device_info)
 		dump(event_data, "[LoginServerConnectionPlugin.fast_sign_up] event_data=>")
 		GlobalSetting.login_server_websocket:trigger("login.sign_up", 
 			event_data ,
@@ -89,7 +89,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 	function theClass:forget_password(user_id, mail_address)
 		local event_data = {retry="0", user_id=user_id, email=mail_address} 
 		local device_info = device_info()
-		table.combine(event_data, device_info)
+		table.copy_kv(event_data, device_info)
 		dump(event_data, "[LoginServerConnectionPlugin.forget_password] event_data=>")
 		GlobalSetting.login_server_websocket:trigger("login.forget_password", 
 			event_data ,
