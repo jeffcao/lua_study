@@ -79,9 +79,12 @@ local function main()
 	end
     
     load_requires()
---    print("package.path ==> " .. package.path)
+    print("package.path ==> " .. package.path)
 
+	local path = CCFileUtils:sharedFileUtils():getWritablePath()
+	package.path = path.."?.lua;" .. path.."?.lo;" .. path.."/resource/?.lua;" .. path.."/resource/?.lo;" ..package.path
 	
+	print("package.path ==> " .. package.path)
 
 	Timer.scheduler = CCDirector:sharedDirector():getScheduler()
 
