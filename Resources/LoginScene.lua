@@ -44,6 +44,7 @@ function LoginScene:ctor()
 	self.on_about_item_clicked = about
 	self.on_more_item_clicked = game_center
 	self.on_exit_item_clicked = __bind(self.do_close, self)
+	self.on_config_item_clicked = __bind(self.show_set_dialog, self)
 	
 	local ccbproxy = CCBProxy:create()
 	local node = CCBReaderLoad("LoginScene.ccbi", ccbproxy, false, "")
@@ -55,6 +56,13 @@ function LoginScene:ctor()
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler( __bind(self.on_keypad_pressed, self) )
 
+end
+
+function LoginScene:show_set_dialog()
+		self.set_dialog_layer = createSetDialog()
+		self.rootNode:addChild(self.set_dialog_layer, 1001, 907)
+		print("[HallSceneUPlugin:show_set_dialog] set_dialog_layer:show")
+		self.set_dialog_layer:show()
 end
 
 	
