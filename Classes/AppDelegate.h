@@ -2,6 +2,7 @@
 #define  _APP_DELEGATE_H_
 
 #include "CCApplication.h"
+#include <string>
 //#include "Downloader.h"
 
 /**
@@ -35,6 +36,8 @@ public:
     virtual void applicationWillEnterForeground();
 
     void setSearchPath();
+
+    void StringReplace(std::string &strBase, std::string strSrc, std::string strDes);
 };
 
 /*class DownloadListener : public DownloaderDelegateProtocol {

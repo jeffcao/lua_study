@@ -10,6 +10,7 @@
 #include "md5_lua.h"
 #include "CCLuaStack.h"
 #include "CCLuaValue.h"
+#include <algorithm>
 #include <vector>
 //#include "CCEditBoxBridge_lua.h"
 #include "DialogLayerConvertor_lua.h"
@@ -44,6 +45,46 @@ AppDelegate::AppDelegate()
 
 AppDelegate::~AppDelegate()
 {
+}
+
+extern "C"
+{
+    int cocos2dx_lo_loader(lua_State *L)
+    {
+        std::string filename(luaL_checkstring(L, 1));
+        size_t pos = filename.rfind(".lo");
+        if (pos != std::string::npos)
+        {
+            filename = filename.substr(0, pos);
+        }
+
+        pos = filename.find_first_of(".");
+        while (pos != std::string::npos)
+        {
+            filename.replace(pos, 1, "/");
+            pos = filename.find_first_of(".");
+        }
+        filename.append(".lo");
+
+        unsigned long codeBufferSize = 0;
+        unsigned char* codeBuffer = CCFileUtils::sharedFileUtils()->getFileData(filename.c_str(), "rb", &codeBufferSize);
+
+        if (codeBuffer)
+        {
+            if (luaL_loadbuffer(L, (char*)codeBuffer, codeBufferSize, filename.c_str()) != 0)
+            {
+                luaL_error(L, "error loading module %s from file %s :\n\t%s",
+                    lua_tostring(L, 1), filename.c_str(), lua_tostring(L, -1));
+            }
+            delete []codeBuffer;
+        }
+        else
+        {
+            CCLog("can not get file data of %s", filename.c_str());
+        }
+
+        return 1;
+    }
 }
 
 bool AppDelegate::applicationDidFinishLaunching()
@@ -185,11 +226,14 @@ bool AppDelegate::applicationDidFinishLaunching()
     {
         pEngine->executeString(pstrFileContent->getCString());
     }
+    //pEngine->executeString("require 'main'");
 #else
     std::string path = CCFileUtils::sharedFileUtils()->fullPathForFilename("main.lua");
     pEngine->addSearchPath(path.substr(0, path.find_last_of("/")).c_str());
     pEngine->executeScriptFile(path.c_str());
 #endif
+
+
 
 //    // create a scene. it's an autorelease object
 //    CCScene *pScene = HelloWorld::scene();
@@ -227,10 +271,29 @@ void AppDelegate::setSearchPath()
     lua_getglobal(m_state, "package");
     lua_getfield(m_state, -1, "path");
     const char* cur_path =  lua_tostring(m_state, -1);
-    lua_pushfstring(m_state, "%s/?.lua;%s", file_path.c_str(), cur_path);
+    std::string cur_path_s = string(cur_path);
+    std::string cur_path_s_2  = string(cur_path);
+    StringReplace(cur_path_s_2, "?.lua", "?.lo");
+    cur_path_s = cur_path_s_2 + ";" + cur_path_s;
+    lua_pushfstring(m_state, "%s/?.lo;%s/?.lua;%s", file_path.c_str(),file_path.c_str(), cur_path_s.c_str());
     lua_setfield(m_state, -3, "path");
     lua_pop(m_state, 2);
+
+    m_stack->addLuaLoader(cocos2dx_lo_loader);
 }
+
+void AppDelegate::StringReplace(string &strBase, string strSrc, string strDes)
+    {
+        string::size_type pos = 0;
+        string::size_type srcLen = strSrc.size();
+        string::size_type desLen = strDes.size();
+        pos=strBase.find(strSrc, pos);
+        while ((pos != string::npos))
+        {
+            strBase.replace(pos, srcLen, strDes);
+            pos=strBase.find(strSrc, (pos+desLen));
+        }
+    }
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
 void AppDelegate::applicationDidEnterBackground()
