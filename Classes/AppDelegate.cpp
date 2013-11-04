@@ -8,6 +8,8 @@
 #include "WebsocketManager_lua.h"
 #include "Downloader_lua.h"
 #include "md5_lua.h"
+#include "CCLuaStack.h"
+#include "CCLuaValue.h"
 #include <vector>
 //#include "CCEditBoxBridge_lua.h"
 #include "DialogLayerConvertor_lua.h"
@@ -16,6 +18,7 @@
 extern "C" {
 #include "cjson/lua_extensions.h"
 #include "luasocket/luasocket.h"
+#include "lua.h"
 }
 
 #include "Lua_extensions_CCB.h"
@@ -36,7 +39,7 @@ bool _bg_music_playing = false;
 
 AppDelegate::AppDelegate()
 {
-
+	setSearchPath();
 }
 
 AppDelegate::~AppDelegate()
@@ -202,18 +205,31 @@ bool AppDelegate::applicationDidFinishLaunching()
     d->setDelegate(new DownloadListener());
     d->update();
     CCLOG("download run");*/
-    setSearchPath();
+  //  setSearchPath();
     return true;
 }
 
 //添加缓存目录为加载目录
 void AppDelegate::setSearchPath()
 {
-    vector<string> searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
+	vector<string> searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
     vector<string>::iterator iter = searchPaths.begin();
-    std::string file_path = CCFileUtils::sharedFileUtils()->getWritablePath();
+    std::string file_path = CCFileUtils::sharedFileUtils()->getWritablePath() + "resources";
     searchPaths.insert(iter, file_path);
     CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
+
+    //CCFileUtils:sharedFileUtils():purgeCachedEntries()
+
+    //set path in lua priorer than default path
+    CCLuaEngine* lua_engine = CCLuaEngine::defaultEngine();
+    CCLuaStack* m_stack = lua_engine->getLuaStack();
+    lua_State* m_state = m_stack->getLuaState();
+    lua_getglobal(m_state, "package");
+    lua_getfield(m_state, -1, "path");
+    const char* cur_path =  lua_tostring(m_state, -1);
+    lua_pushfstring(m_state, "%s/?.lua;%s", file_path.c_str(), cur_path);
+    lua_setfield(m_state, -3, "path");
+    lua_pop(m_state, 2);
 }
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too

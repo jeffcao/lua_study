@@ -17,6 +17,7 @@ CONFIG_SCREEN_HEIGHT = 480
 
 
 local function load_requires()
+require "Version"
 require("src/WebsocketRails/WebSocketRails")
 require "src/WebsocketRails/WebSocketRails_Event"
 require "src/WebsocketRails/WebSocketRails_Connection"
@@ -78,13 +79,15 @@ local function main()
 		old_dump(...)
 	end
     
-    load_requires()
     print("package.path ==> " .. package.path)
 
-	local path = CCFileUtils:sharedFileUtils():getWritablePath()
-	package.path = path.."?.lua;" .. path.."?.lo;" .. path.."/resource/?.lua;" .. path.."/resource/?.lo;" ..package.path
+	--local path = CCFileUtils:sharedFileUtils():getWritablePath()
+	--package.path = path.."?.lua;" .. path.."?.lo;" .. path.."resources/?.lua;" .. path.."resources/?.lo;" ..package.path
+	--package.path = package.path .. ";" ..path.."?.lua;" .. path.."?.lo;" .. path.."resources/?.lua;" .. path.."resources/?.lo;"
+	--package.path = path.."resources/?.lua"
+	--print("package.path ==> " .. package.path)
 	
-	print("package.path ==> " .. package.path)
+	load_requires()
 
 	Timer.scheduler = CCDirector:sharedDirector():getScheduler()
 

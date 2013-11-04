@@ -210,15 +210,15 @@ function device_info()
 		pkg_version_name = userDefault:getStringForKey("pkg_version_name"),
 		pkg_version_code = userDefault:getStringForKey("pkg_version_code"),
 		pkg_build = userDefault:getStringForKey("pkg_build"),
-		pkg_resource_version = userDefault:getStringForKey("pkg_resource_version")
+		pkg_resource_version = resource_version
 	}
 	if is_blank(device_info.pkg_resource_version) then
 		device_info.pkg_resource_version = device_info.pkg_version_name
 	end
 	--for test
-	if GlobalSetting.run_env == "test" then
-		device_info.pkg_resource_version = "1.7"
-	end
+	--if GlobalSetting.run_env == "test" then
+	--	device_info.pkg_resource_version = "1.7"
+	--end
 	return device_info
 end
 

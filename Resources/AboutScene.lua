@@ -37,6 +37,9 @@ function AboutScene:ctor()
 	
 	layer:setContent(node)
 	self.version_lbl:setString(version)
+	
+	--package.loaded["Version"] = nil
+	--require "Version"
 	--require "banana"
 end
 
