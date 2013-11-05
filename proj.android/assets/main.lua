@@ -48,6 +48,33 @@ function __bind(fn, obj)
 	end
 end
 
+function init_modules()
+end
+
+function on_GlobalSetting_reload()
+	GlobalSetting.user_info = UserInfo:new()
+	local size = CCDirector:sharedDirector():getWinSize()
+	local contentScaleFactor = CCDirector:sharedDirector():getContentScaleFactor()
+	GlobalSetting.content_scale_factor = CCDirector:sharedDirector():getContentScaleFactor()
+	GlobalSetting.current_user = UserInfo:new():load(CCUserDefault:sharedUserDefault())
+end
+
+function on_WebSocketRails_reload()
+	WebSocketRails.config = GlobalSetting
+	package.loaded["src/WebsocketRails/WebSocketRails_Event"] = nil
+	require "src/WebsocketRails/WebSocketRails_Event"
+	package.loaded["src/WebsocketRails/WebSocketRails_Connection"] = nil
+	require "src/WebsocketRails/WebSocketRails_Connection"
+	package.loaded["src/WebsocketRails/WebSocketRails_Connection_CC"] = nil
+	require "src/WebsocketRails/WebSocketRails_Connection_CC"
+	package.loaded["src/WebsocketRails/WebSocketRails_Channel"] = nil
+	require "src/WebsocketRails/WebSocketRails_Channel"
+end
+
+function on_Timer_reload()
+	Timer.scheduler = CCDirector:sharedDirector():getScheduler()
+end
+
 local function main()
     -- avoid memory leak
     collectgarbage("setpause", 100)

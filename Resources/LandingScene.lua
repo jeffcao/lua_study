@@ -34,6 +34,15 @@ function LandingScene:ctor()
 	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler( __bind(self.on_keypad_pressed, self) )
+	
+	--[[
+	on_WebSocketRails_reload = function()
+		if on_WebSocketRails_reload then
+			on_WebSocketRails_reload()
+		end
+		self:setup_websocket()
+	end
+	]]
 end
 	
 function LandingScene:onEnter()
@@ -104,6 +113,9 @@ end
 
 --检查到resource有更新，下载并更新resource
 function LandingScene:do_update_resource(data)
+	--if GlobalSetting.run_env == "test" then
+	--	data.url = "http://adproject.u.qiniudn.com/resources.zip"
+	--end
 	local path = CCFileUtils:sharedFileUtils():getWritablePath()
 	local name = "res.zip"
 	local downloader = Downloader:create(data.url,path, name)
@@ -131,12 +143,11 @@ function LandingScene:do_update_resource(data)
 			
 			local uncompress_result = downloader:uncompress()
 			if not uncompress_result then break end
-			
-			local userDefault = CCUserDefault:sharedUserDefault()
-			userDefault:setStringForKey("pkg_resource_version", data.version)
-			self:reload_after_update_resource()
-			
+			dump(uncompress_result, "uncompress_result")
+			self:reload_after_update_resource(uncompress_result)
 			print("update resource success")
+			os.remove(full_path)
+			self:do_on_go_sign()
 			return
 		end
 		print("下载，解压，md5 resource资源失败")
@@ -147,8 +158,52 @@ function LandingScene:do_update_resource(data)
 end
 
 --下载解压完成之后，重新加载资源
-function LandingScene:reload_after_update_resource()
-	self:do_on_go_sign()
+function LandingScene:reload_after_update_resource(files)
+	local file_utils = CCFileUtils:sharedFileUtils()
+	file_utils:purgeCachedEntries()
+	local dir = file_utils:getWritablePath() .. "resources/"
+	local get_name = function(path)
+		return string.sub(path, string.len(dir) + 1, -string.len(".lo")-1)
+	end
+	local reload = function(name, module_name)
+		if package.loaded[name] then
+			package.loaded[name] = nil
+			print("reload lua file ", name)
+			require(name)
+			local func_name = "on_"..module_name.."_reload"
+			if _G[func_name] and type(_G[func_name]) == "function" then _G[func_name]() end
+			return true
+		else
+			cclog("%s had not been loaded", name)
+		end
+		return false
+	end
+	local count = files:count() - 1
+	for i=0, count do
+		local name = files:objectAtIndex(i)
+		name = tolua.cast(name, "CCString"):getCString()
+		print("full path name is ", name)
+		if string.len(name) < 4 or string.sub(name, -3) ~= ".lo" then
+			cclog("file %s is not lua file", name)
+		else
+			name = get_name(name)
+			print("file name is ", name)
+			if string.find(name, "/") then
+				--package.loaded[name] = nil
+				local o_name = name
+				name = string.gsub(name, "/", ".")
+				local names = string.split(name, ".")
+				local module_name = names[#names]
+				if reload(o_name, module_name) then
+					cclog("require by / ok")
+				elseif not reload(name, module_name) then
+					reload(module_name, module_name)
+				end
+			else
+				reload(name, name)
+			end
+		end
+	end
 end
 
 --校验文件的MD5是否匹配

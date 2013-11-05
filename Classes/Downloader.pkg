@@ -2,5 +2,5 @@ class Downloader {
 	static Downloader* create(const char* url, const char* path, const char* name);
 	void setDownloadScriptHandler(LUA_FUNCTION download_script_handler);
 	void update();
-	bool uncompress();
+	cocos2d::CCArray* uncompress();
 };

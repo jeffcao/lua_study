@@ -46,8 +46,8 @@ function GuifanStartScene:doEffect(open)
 		local jni = DDZJniHelper:create()
 		jni:messageJava("set_music_volume_" .. user_default:getFloatForKey("music_volume"))
 	end
-	SoundSettings.effect_music = open
-	SoundSettings.bg_music = open
+	effect_music = open
+	bg_music = open
 	self.layer_volume:setVisible(false)
 	self.layer_anim:setVisible(true)
 	Timer.add_timer(0.5, function() self:playAnim(1) end)

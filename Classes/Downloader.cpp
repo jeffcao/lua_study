@@ -133,7 +133,7 @@ void Downloader::update() {
 	pthread_create(&(*_tid), NULL, downloaderDownload, this);
 }
 
-bool Downloader::uncompress() {
+CCArray* Downloader::uncompress() {
 	// Open the zip file
 	string outFileName = _storagePath + TEMP_PACKAGE_FILE_NAME;
 	if (_name.c_str()) {
@@ -150,7 +150,7 @@ bool Downloader::uncompress() {
 
 	if (!zipfile) {
 		CCLOG("is not zip file");
-		return false;
+		return NULL;
 	}
 
 	// Get info about the zip file
@@ -158,7 +158,7 @@ bool Downloader::uncompress() {
 	if (unzGetGlobalInfo(zipfile, &global_info) != UNZ_OK) {
 		CCLOG("can not read file global info of %s", outFileName.c_str());
 		unzClose(zipfile);
-		return false;
+		return NULL;
 	}
 
 	// Buffer to hold data read from the zip file
@@ -166,6 +166,7 @@ bool Downloader::uncompress() {
 
 	CCLOG("start uncompressing");
 
+	CCArray* files = CCArray::create();
 	// Loop to extract all files.
 	uLong i;
 	for (i = 0; i < global_info.number_entry; ++i) {
@@ -176,7 +177,7 @@ bool Downloader::uncompress() {
 				NULL, 0, NULL, 0) != UNZ_OK) {
 			CCLOG("can not read file info");
 			unzClose(zipfile);
-			return false;
+			return NULL;
 		}
 
 		string fullPath = _storagePath + fileName;
@@ -189,7 +190,7 @@ bool Downloader::uncompress() {
 			if (!createDirectory(fullPath.c_str())) {
 				CCLOG("can not create directory %s", fullPath.c_str());
 				unzClose(zipfile);
-				return false;
+				return NULL;
 			} else {
 				CCLOG("create directory %s", fullPath.c_str());
 			}
@@ -200,7 +201,7 @@ bool Downloader::uncompress() {
 			if (unzOpenCurrentFile(zipfile) != UNZ_OK) {
 				CCLOG("can not open file %s", fileName);
 				unzClose(zipfile);
-				return false;
+				return NULL;
 			}
 
 			// Create a file to store current file.
@@ -211,19 +212,21 @@ bool Downloader::uncompress() {
 							fullPath.c_str());
 					unzCloseCurrentFile(zipfile);
 					unzClose(zipfile);
-					return false;
+					return NULL;
 				} else {
 					out = fopen(fullPath.c_str(), "wb");
+
 					if (!out) {
 						CCLOG("can not open destination file %s",
 								fullPath.c_str());
 						unzCloseCurrentFile(zipfile);
 						unzClose(zipfile);
-						return false;
+						return NULL;
 					}
 				}
 
 			}
+			files->addObject(ccs(fullPath));
 			// Write current file content to destinate file.
 			int error = UNZ_OK;
 			do {
@@ -233,7 +236,7 @@ bool Downloader::uncompress() {
 							fileName, error);
 					unzCloseCurrentFile(zipfile);
 					unzClose(zipfile);
-					return false;
+					return NULL;
 				}
 
 				if (error > 0) {
@@ -251,14 +254,17 @@ bool Downloader::uncompress() {
 			if (unzGoToNextFile(zipfile) != UNZ_OK) {
 				CCLOG("can not read next file");
 				unzClose(zipfile);
-				return false;
+				return NULL;
 			}
 		}
 	}
-
+	CCObject* f;
+	CCARRAY_FOREACH(files, f) {
+		CCLOG("umcompress file %s", (dynamic_cast <CCString*>(f))->getCString());
+	}
 	CCLOG("end uncompressing");
 
-	return true;
+	return files;
 }
 
 bool Downloader::CreatDir(const char *pDirPath) {

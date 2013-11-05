@@ -71,7 +71,7 @@ function GDataPlugin.bind(theClass)
         
         self:loadSettings()
         
-        if (SoundSettings.bg_music) then
+        if bg_music then
 			self:playBackgroundMusic()
 		end
 		
