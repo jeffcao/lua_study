@@ -90,7 +90,7 @@ HallScene = class("HallScene", function()
 	self:do_on_enter()
 	--[[
 	local is_playing = SimpleAudioEngine:sharedEngine():isBackgroundMusicPlaying()
-	if SoundSettings.bg_music and not is_playing then
+	if bg_music and not is_playing then
 		Timer.add_timer(3, function() 
 	 		self:playBackgroundMusic()
 		end)
@@ -132,7 +132,7 @@ HallScene = class("HallScene", function()
  
  function HallScene:playMusic()
  	print("playMusic")
- 	if not SoundSettings.bg_music then return true end
+ 	if not bg_music then return true end
  	local running_scene = CCDirector:sharedDirector():getRunningScene()
 	if running_scene == self then 
  		self:playBackgroundMusic()

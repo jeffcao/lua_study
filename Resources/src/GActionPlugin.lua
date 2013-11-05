@@ -365,11 +365,11 @@ function GActionPlugin.bind(theClass)
 	function theClass:loadSettings() 
 		--[[
 		local ls = CCUserDefault:sharedUserDefault()
-		SoundSettings.bg_music = ls:getStringForKey("bg_music") ~= "0"
-		SoundSettings.effect_music = ls:getStringForKey("effect_music") ~= "0"
+		bg_music = ls:getStringForKey("bg_music") ~= "0"
+		effect_music = ls:getStringForKey("effect_music") ~= "0"
 		
-		print("[MainSceneDelegate.loadSettings] SoundSettings.bg_music => " , SoundSettings.bg_music)
-		print("[MainSceneDelegate.loadSettings] SoundSettings.effect_music => " , SoundSettings.effect_music)
+		print("[MainSceneDelegate.loadSettings] bg_music => " , bg_music)
+		print("[MainSceneDelegate.loadSettings] effect_music => " , effect_music)
 		]]
 	end
 	
@@ -378,9 +378,9 @@ function GActionPlugin.bind(theClass)
 	--[[
 		local ls = CCUserDefault:sharedUserDefault()
 		local bg = "0"
-		if SoundSettings.bg_music then bg = "1" end
+		if bg_music then bg = "1" end
 		local effect = "0"
-		if SoundSettings.effect_music then effect = "1" end
+		if effect_music then effect = "1" end
 		ls:setStringForKey("bg_music", bg)
 		ls:setStringForKey("effect_music", effect)
 	]]

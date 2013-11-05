@@ -129,7 +129,7 @@ public:
     friend void* downloaderDownload(void*);
     friend int downloadProgressFunc(void *, double, double, double, double);
     
-    bool uncompress();
+    cocos2d::CCArray* uncompress();
 
 protected:
     bool downLoad();

@@ -1,6 +1,6 @@
 /*
 ** Lua binding: Downloader
-** Generated automatically by tolua++-1.0.93 on Tue Oct 29 13:37:10 2013.
+** Generated automatically by tolua++-1.0.93 on Tue Nov  5 09:36:37 2013.
 */
 
 /****************************************************************************
@@ -26,10 +26,12 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
+
 extern "C" {
 #include "tolua++.h"
 #include "tolua_fix.h"
 }
+
 #include "Downloader.h"
 
 #include <map>
@@ -52,6 +54,7 @@ static void tolua_reg_types (lua_State* tolua_S)
 {
  
  tolua_usertype(tolua_S,"Downloader");
+ //tolua_usertype(tolua_S,"cocos2d::CCArray");
 }
 
 /* method: create of class  Downloader */
@@ -171,8 +174,8 @@ static int tolua_Downloader_Downloader_uncompress00(lua_State* tolua_S)
   if (!self) tolua_error(tolua_S,"invalid 'self' in function 'uncompress'", NULL);
 #endif
   {
-   bool tolua_ret = (bool)  self->uncompress();
-   tolua_pushboolean(tolua_S,(bool)tolua_ret);
+   cocos2d::CCArray* tolua_ret = (cocos2d::CCArray*)  self->uncompress();
+    tolua_pushusertype(tolua_S,(void*)tolua_ret,"CCArray");
   }
  }
  return 1;

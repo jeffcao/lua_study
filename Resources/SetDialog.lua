@@ -63,10 +63,10 @@ function SetDialog:ctor()
 
     local music_toggle = CheckBox.create()
     music_toggle:setPosition(ccp(0,15))
-    music_toggle.toggle:setChecked(SoundSettings.bg_music)
+    music_toggle.toggle:setChecked(bg_music)
 	self.music_toggle_layer:addChild(music_toggle)
 	local function menuCallback(tag, sender)
-		SoundSettings.bg_music = music_toggle.toggle:isChecked()
+		bg_music = music_toggle.toggle:isChecked()
 		if music_toggle.toggle:isChecked() then
 			local user_default = CCUserDefault:sharedUserDefault()
 			local jni = DDZJniHelper:create()
@@ -83,7 +83,7 @@ function SetDialog:ctor()
     effect_toggle.toggle:setChecked(SoundSettings.effect_music)
 	self.effect_toggle_layer:addChild(effect_toggle)
 	local function effect_callback(tag, sender)
-		SoundSettings.effect_music = effect_toggle.toggle:isChecked()
+		effect_music = effect_toggle.toggle:isChecked()
     end
   	effect_toggle.toggle:registerScriptTapHandler(effect_callback)
 	
