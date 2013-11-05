@@ -307,6 +307,12 @@ function GServerMsgPlugin.bind(theClass)
 				-- 执行上家出牌效果
 				self:doPrevUserPlayCard(card)
 				
+				if self:isTuoguan() then
+					-- 开始自己计时提示
+					self:startSelfUserAlarm(30, buchuCallback)
+					self:updatePlayerBuchu(self.self_user_lord_value, false)
+				end
+				
 				if not self:isTuoguan() then
 					-- 轮到自己出牌，显示出牌菜单
 					self:showPlayCardMenu(true)
