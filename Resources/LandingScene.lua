@@ -113,9 +113,6 @@ end
 
 --检查到resource有更新，下载并更新resource
 function LandingScene:do_update_resource(data)
-	if GlobalSetting.run_env == "test" then
-		data.url = "http://adproject.u.qiniudn.com/res11.zip"
-	end
 	local path = CCFileUtils:sharedFileUtils():getWritablePath()
 	local name = "res.zip"
 	local downloader = Downloader:create(data.url,path, name)
@@ -127,7 +124,6 @@ function LandingScene:do_update_resource(data)
 			return
 		end
 		while (type == "success") do
-			if GlobalSetting.run_env ~= "test" then
 			local original_file_right = self:check_file_md5(full_path, data.s_md5)
 			if not original_file_right then print("orinigal md5 is wrong") break end
 			
@@ -141,7 +137,6 @@ function LandingScene:do_update_resource(data)
 			
 			local replace_file_right = self:check_file_md5(full_path, data.md5)
 			if not replace_file_right then break end
-			end
 			local uncompress_result = downloader:uncompress()
 			if not uncompress_result then break end
 			dump(uncompress_result, "uncompress_result")

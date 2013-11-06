@@ -32,7 +32,7 @@ function AboutScene:ctor()
 	layer:setTitle("biaoti07.png")
 	
 	local user_default = CCUserDefault:sharedUserDefault()
-	local version = "版本： " .. user_default:getStringForKey("pkg_version_name") 
+	local version = "版本： " .. resource_version
 		.. " build:" .. user_default:getStringForKey("pkg_build")
 	
 	layer:setContent(node)
