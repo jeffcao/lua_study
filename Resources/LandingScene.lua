@@ -113,9 +113,9 @@ end
 
 --检查到resource有更新，下载并更新resource
 function LandingScene:do_update_resource(data)
-	--if GlobalSetting.run_env == "test" then
-	--	data.url = "http://adproject.u.qiniudn.com/resources.zip"
-	--end
+	if GlobalSetting.run_env == "test" then
+		data.url = "http://adproject.u.qiniudn.com/res11.zip"
+	end
 	local path = CCFileUtils:sharedFileUtils():getWritablePath()
 	local name = "res.zip"
 	local downloader = Downloader:create(data.url,path, name)
@@ -127,6 +127,7 @@ function LandingScene:do_update_resource(data)
 			return
 		end
 		while (type == "success") do
+			if GlobalSetting.run_env ~= "test" then
 			local original_file_right = self:check_file_md5(full_path, data.s_md5)
 			if not original_file_right then print("orinigal md5 is wrong") break end
 			
@@ -140,7 +141,7 @@ function LandingScene:do_update_resource(data)
 			
 			local replace_file_right = self:check_file_md5(full_path, data.md5)
 			if not replace_file_right then break end
-			
+			end
 			local uncompress_result = downloader:uncompress()
 			if not uncompress_result then break end
 			dump(uncompress_result, "uncompress_result")
@@ -161,6 +162,8 @@ end
 function LandingScene:reload_after_update_resource(files)
 	local file_utils = CCFileUtils:sharedFileUtils()
 	file_utils:purgeCachedEntries()
+	--CCSpriteFrameCache:purgeSharedSpriteFrameCache()
+	CCSpriteFrameCache:sharedSpriteFrameCache():removeSpriteFrames()
 	local dir = file_utils:getWritablePath() .. "resources/"
 	local get_name = function(path)
 		return string.sub(path, string.len(dir) + 1, -string.len(".lo")-1)
@@ -185,11 +188,29 @@ function LandingScene:reload_after_update_resource(files)
 		print("full path name is ", name)
 		if string.len(name) < 4 or string.sub(name, -3) ~= ".lo" then
 			cclog("file %s is not lua file", name)
+			--[[
+			if string.len(name) > 4 and string.sub(name, -4) == ".png" then
+				local sprite_cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+				local pic_name = string.sub(name, string.len(dir) + 1)
+				cclog("picture name is %s", pic_name)
+				if sprite_cache:spriteFrameByName(pic_name) then
+					cclog("reload picture %s", pic_name)
+					sprite_cache:removeSpriteFrameByName(pic_name)
+					local frame = CCSpriteFrame:create(pic_name)
+					sprite_cache:addSpriteFrame(frame, pic_name)
+				end
+			elseif string.len(name) > 6 and string.sub(name, -6) == ".plist" then
+				local sprite_cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+				local plist_name = string.sub(name, string.len(dir) + 1)
+				sprite_cache:removeSpriteFramesFromFile(plist_name)
+				sprite_cache:addSpriteFramesWithFile(name)
+				cclog("reload plist %s", plist_name)
+			end
+			]]
 		else
 			name = get_name(name)
 			print("file name is ", name)
 			if string.find(name, "/") then
-				--package.loaded[name] = nil
 				local o_name = name
 				name = string.gsub(name, "/", ".")
 				local names = string.split(name, ".")
