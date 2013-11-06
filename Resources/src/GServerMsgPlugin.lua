@@ -309,7 +309,7 @@ function GServerMsgPlugin.bind(theClass)
 				
 				if self:isTuoguan() then
 					-- 开始自己计时提示
-					self:startSelfUserAlarm(30, buchuCallback)
+					self:startSelfUserAlarm(30, __bind(self.doBuchu, self))
 					self:updatePlayerBuchu(self.self_user_lord_value, false)
 				end
 				
