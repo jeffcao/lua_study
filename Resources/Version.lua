@@ -1,8 +1,29 @@
-resource_version = "3.0.1"
+resource_version = "1.0.0"
 
 print("resource_version is ", resource_version)
 
+local userDefault = CCUserDefault:sharedUserDefault()
+local apk_version = userDefault:getStringForKey("pkg_version_name")
+
 local path = CCFileUtils:sharedFileUtils():getWritablePath()
+
+
+if tonumber(string.sub(apk_version, 0, string.find(apk_version, "."))) >
+	tonumber(string.sub(resource_version, 0, string.find(resource_version, "."))) then
+	cclog("apk version %s, resource version %s", apk_version, resource_version)
+	cclog("apk update, resources be invalidate, remove")
+	local jni_helper = DDZJniHelper:create()
+	jni_helper:messageJava("on_delete_file_"..path.."resources")
+	local file_utils = CCFileUtils:sharedFileUtils()
+	file_utils:purgeCachedEntries()
+	package.loaded["Version"] = nil
+	require "Version"
+	cclog("re-require version as resources been invalidate")
+else
+	cclog("apk version %s is not greater than resource version %s", apk_version, resource_version)
+end
+
+
 local file1 = io.open(path.."/resources/Version.lua")
 
 if file1 then

@@ -1,5 +1,7 @@
 package cn.com.m123.DDZ;
 
+import java.io.File;
+
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
 import android.app.PendingIntent;
@@ -59,7 +61,25 @@ public class DDZJniHelper {
 			String path = str.substring("on_install_".length());
 			SysIntentSender.install(DouDiZhuApplicaion.APP_CONTEXT, path);
 		}
+		
+		if (str.startsWith("on_delete_file_")) {
+			String path = str.substring("on_delete_file_".length());
+			deleteDir(new File(path));
+		}
 	}
+	
+    public static void deleteDir(File dir) {
+        if (dir.isDirectory()) {
+            String[] children = dir.list();
+            //递归删除目录中的子目录下
+            for (int i=0; i<children.length; i++) {
+               deleteDir(new File(dir, children[i]));
+            }
+        }
+        
+        // 目录此时为空，可以删除
+        dir.delete();
+    }
 	
 	public static void openUrl(String url) {
 		try {
