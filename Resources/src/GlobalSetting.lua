@@ -51,6 +51,7 @@ GlobalSetting = {
 	
 	run_env = "test",
 	
+	push_period = 10,
 
 	zongse = ccc3(67,31,24),
 

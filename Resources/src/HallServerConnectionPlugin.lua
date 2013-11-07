@@ -285,6 +285,12 @@ function HallServerConnectionPlugin.bind(theClass)
 		if GlobalSetting.hall_server_websocket then
 			GlobalSetting.hall_server_websocket:close()
 			GlobalSetting.hall_server_websocket = nil
+			--通知socket已关闭
+			if GlobalSetting.hall_closed_lsnrs then
+				for _,v in pairs(GlobalSetting.hall_closed_lsnrs) do
+					v()
+				end
+			end
 		end
 	end
 

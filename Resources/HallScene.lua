@@ -15,6 +15,7 @@ require "VIP"
 require "IntroduceDialog"
 require "src.ServerNotifyPlugin"
 require "src.Stats"
+require "src.Push"
 local cjson = require "cjson"
 HallScene = class("HallScene", function() 
 	print("create new hall scene")
@@ -88,6 +89,7 @@ HallScene = class("HallScene", function()
 	self:updateTimeTask()
 	self:update_player_beans_with_gl()
 	self:do_on_enter()
+	self:start_push()
 	--[[
 	local is_playing = SimpleAudioEngine:sharedEngine():isBackgroundMusicPlaying()
 	if bg_music and not is_playing then
@@ -164,3 +166,4 @@ end
  SocketStatePlugin.bind(HallScene)
  SoundEffect.bind(HallScene)
  ServerNotifyPlugin.bind(HallScene)
+ Push.bind(HallScene)
