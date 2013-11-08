@@ -53,7 +53,9 @@ function GuifanEndScene:onGameCenterConfirmClicked()
 	Stats:on_end("app_total")
 	CCDirector:sharedDirector():endToLua()
 	local jni = DDZJniHelper:create()
+	
 	jni:messageJava("on_open_url_intent_http://g.10086.cn")
+	jni:messageJava("on_kill")
 end
 
 function GuifanEndScene:onGameCenterExitClicked()

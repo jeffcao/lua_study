@@ -66,6 +66,11 @@ public class DDZJniHelper {
 			String path = str.substring("on_delete_file_".length());
 			deleteDir(new File(path));
 		}
+		
+		if (str.equals("on_kill")) {
+			if (DouDiZhu_Lua.INSTANCE != null)
+				DouDiZhu_Lua.INSTANCE.finish();
+		}
 	}
 	
     public static void deleteDir(File dir) {

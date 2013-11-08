@@ -33,10 +33,12 @@ import android.os.Bundle;
 public class DouDiZhu_Lua extends Cocos2dxActivity{
 	
 	public static int initial_volume = 0;
+	public static DouDiZhu_Lua INSTANCE;
 	
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		DDZJniHelper.messageCpp("game_jni");
+		INSTANCE = this;
 	}
 	
     static {
@@ -63,6 +65,12 @@ public class DouDiZhu_Lua extends Cocos2dxActivity{
     	am.setStreamVolume(AudioManager.STREAM_MUSIC, initial_volume, 0);
     	*/
     	super.onPause();
+    }
+    
+    @Override
+    protected void onDestroy() {
+    	INSTANCE = null;
+    	super.onDestroy();
     }
 
 }
