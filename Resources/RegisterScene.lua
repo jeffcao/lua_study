@@ -2,6 +2,7 @@ local json = require "cjson"
 require "src.UIControllerPlugin"
 require "src.RegisterSceneUIPlugin"
 require "src.Stats"
+require "src.UserLocked"
 
 RegisterScene = class("RegisterScene", function()
 	print("creating new RegisterScene")
@@ -32,7 +33,7 @@ function RegisterScene:onEnter()
 	self.super.onEnter(self)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	if GlobalSetting.login_server_websocket == nil then
-		self:show_progress_message_box("连接服务器...")
+		self:show_progress_message_box(strings.rs_connect_server_ing)
 		self:connect_to_login_server(GlobalSetting)
 	end
 	Stats:on_start("register")
@@ -56,7 +57,7 @@ end
 UIControllerPlugin.bind(RegisterScene)
 LoginServerConnectionPlugin.bind(RegisterScene)
 RegisterSceneUIPlugin.bind(RegisterScene)
-
+UserLocked.bind(RegisterScene)
 function createRegisterScene()
 	print("createRegisterScene()")
 	local login = RegisterScene.new()

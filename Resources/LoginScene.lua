@@ -74,7 +74,7 @@ function LoginScene:onEnter()
 	self:playBackgroundMusic()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	if GlobalSetting.login_server_websocket == nil then
-		self:show_progress_message_box("登录服务器...")
+		self:show_progress_message_box(strings.lgs_login_server_ing)
 		self:connect_to_login_server(GlobalSetting)
 	end
 	Stats:on_start("login")

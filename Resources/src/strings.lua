@@ -1,6 +1,7 @@
 strings_general = {
 	g_nick_name_nil_w = '昵称不能为空',
 	g_email_err_w  = '请输入正确的邮箱地址',
+	g_connect_server_ing = '连接服务器...',
 }
 strings = {
 --AvatarListLayer
@@ -36,11 +37,17 @@ ii_update_info_w = '更新资料失败',
 ii_update_info_s = '更新资料成功',
 
 --LandingScene
-ls_connect_server_ing = '连接服务器...',
+ls_connect_server_ing = strings_general.g_connect_server_ing,
 ls_load_data_ing = '加载数据...',
 ls_login_w = '登录失败',
 ls_connect_hall_w = '连接大厅服务器失败',
 ls_connect_server_w = '连接服务器失败',
+
+--LoginScene
+lgs_login_server_ing = '登录服务器...',
+
+--RegisterScene
+rs_connect_server_ing = strings_general.g_connect_server_ing,
 
 }
 
