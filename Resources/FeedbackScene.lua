@@ -57,10 +57,10 @@ function FeedbackScene:do_ui_commit_btn_clicked(tag, sender)
 	print("[FeedbackScene:do_ui_commit_btn_clicked]")
 	local feedback = trim_blank(self.feedback_box:getText())
 	if is_blank(feedback) then
-		self:show_message_box("反馈内容不能为空")
+		self:show_message_box(strings.feedback_nil_w)
 		return
 	end
-	self:show_progress_message_box("保存反馈信息")
+	self:show_progress_message_box(strings.feedback_ing)
 	self:feedback(feedback)
 end
 
@@ -68,7 +68,7 @@ function FeedbackScene:do_on_trigger_success(data)
 	print("[InfoLayer:do_on_trigger_success]")
 	self:hide_progress_message_box()
 	
-	self:show_message_box_suc("反馈成功")
+	self:show_message_box_suc(strings.feedback_s)
 	
 	Timer.add_timer(2, function()
 			CCDirector:sharedDirector():popScene()

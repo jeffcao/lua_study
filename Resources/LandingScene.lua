@@ -49,7 +49,7 @@ function LandingScene:onEnter()
 	print("[LandingScene:on_enter()]")
 	self.super.onEnter(self)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
-	self:show_progress_message_box("连接服务器...")
+	self:show_progress_message_box(strings.ls_connect_server_ing)
 	self:setup_websocket()
 	--Stats:on_start("landing")
 	
@@ -77,7 +77,7 @@ function LandingScene:do_on_websocket_ready()
 	end
 	GlobalSetting.login_server_websocket:trigger("login.check_update", 
 			event_data , check_update_succ, check_update_fail)
-	self:show_progress_message_box("加载数据...")
+	self:show_progress_message_box(strings.ls_load_data_ing)
 	
 	--self:do_on_go_sign()
 end
@@ -103,7 +103,7 @@ function LandingScene:do_update_apk(data)
 			endtolua()
 			return
 		else
-			self:show_progress_message_no_create(string.format("加载数据 %d", d_data).."%")
+			self:show_progress_message_no_create(string.format("%s %d", strings.ls_load_data_ing, d_data).."%")
 			return
 		end
 	end
@@ -311,14 +311,14 @@ end
 
 function LandingScene:do_on_login_failure()
 	self:hide_progress_message_box()
-	self:show_message_box("登录失败")
+	self:show_message_box(strings.ls_login_w)
 	Timer.add_timer(3, __bind(self.enter_login_scene, self))
 end
 
 function LandingScene:do_on_connection_hall_server_failure()
 	print("[LandingScene:do_on_connection_hall_server_failure()]")
 	self:hide_progress_message_box()
-	self:show_message_box("连接大厅服务器失败")
+	self:show_message_box(strings.ls_connect_hall_w)
 	Timer.add_timer(3, __bind(self.enter_login_scene, self))
 end
 
@@ -330,7 +330,7 @@ end
 	
 function LandingScene:do_on_connection_failure()
 	print("[LandingScene:do_on_connection_failure()]")
-	self:show_message_box("连接服务器失败")
+	self:show_message_box(strings.ls_connect_server_w)
 
 	Timer.add_timer(5, __bind(self.do_close, self))
 	

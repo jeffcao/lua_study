@@ -104,32 +104,32 @@ function InitPlayerInfoLayer:do_ui_commit_btn_clicked(tag, sender)
 	local nick_name = trim_blank(self.nick_name_box:getText())
 	local params = {z_order=99999}
 	if is_blank(nick_name) then
-		self:show_message_box("昵称不能为空", params9)
+		self:show_message_box(strings.ii_nick_name_nil_w, params9)
 		return
 	end
 	local password = trim_blank(self.password_box:getText())
 	if is_blank(password) then
-		self:show_message_box("密码不能为空", params)
+		self:show_message_box(strings.ii_pswd_nil_w, params)
 		return
 	end
 	if #password < 8 then
-		self:show_message_box("密码不能小于8位", params)
+		self:show_message_box(strings.ii_pswd_format_w, params)
 		return
 	end
 	local mail = trim_blank(self.mail_box:getText())
 	if is_blank(mail) then
-		self:show_message_box("邮箱地址不能为空，否则在您忘记密码时无法从系统获得密码.",{msg_width=660,z_order=99999})
+		self:show_message_box(strings.ii_email_nil_w,{msg_width=660,z_order=99999})
 		return
 	end
 	if not check_email(mail) then
-		self:show_message_box("请输入正确的邮箱地址.",params)
+		self:show_message_box(strings.ii_email_format_w,params)
 		return
 	end
 	local gender =  self.m_checkbox.toggle:isChecked() and 1 or 2
 	
-	self:show_progress_message_box("更新资料...", nil, nil, 99999)
+	self:show_progress_message_box(strings.ii_update_info_ing, nil, nil, 99999)
 	
-	self.failure_msg = "更新资料失败"
+	self.failure_msg = strings.ii_update_info_w
 	local changed_info = {retry="0", user_id = GlobalSetting.current_user.user_id, gender = gender, 
 	nick_name = nick_name, password = password, email = mail, version="1.0"}
 	self:complete_user_info(changed_info)
@@ -148,7 +148,7 @@ function InitPlayerInfoLayer:do_on_trigger_success(data)
 	GlobalSetting.current_user.gender = data.gender
 	GlobalSetting.current_user.email = data.email
 	self:hide_progress_message_box()
-	self:show_message_box_suc("更新资料成功", params)
+	self:show_message_box_suc(strings.ii_update_info_s, params)
 	self:dismiss()
 	self.init_player_info_callback(true)
 	

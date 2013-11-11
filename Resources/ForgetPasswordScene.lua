@@ -50,21 +50,21 @@ function ForgetPasswordScene:do_ui_ok_btn_clicked(tag, sender)
 	print("[ForgetPasswordScene:do_ui_ok_btn_clicked]")
 	local user_id = trim_blank(self.user_id_box:getText())
 	if is_blank(user_id) then
-		self:show_message_box("帐号不能为空")
+		self:show_message_box(strings.forget_pswd_id_nil_w)
 		return
 	end
 	local mail = trim_blank(self.mail_box:getText())
 	if is_blank(mail) then
-		self:show_message_box("邮箱地址不能为空")
+		self:show_message_box(strings.forget_pswd_email_nil_w)
 		return
 	end
 	
 	if not check_email(mail) then
-		self:show_message_box("请输入正确的邮箱地址.")
+		self:show_message_box(strings.forget_pswd_email_err_w)
 		return
 	end
 	
-	self:show_progress_message_box("提交取回密码信息...")
+	self:show_progress_message_box(strings.forget_pswd_submit_ing)
 	self:forget_password(user_id, mail)
 end
 
@@ -72,14 +72,14 @@ function ForgetPasswordScene:do_on_trigger_success(data)
 	print("[ForgetPasswordScene:do_on_trigger_success]")
 	self:hide_progress_message_box()
 	
-	self:show_message_box_suc("提交信息成功, 请注意查收邮件.")
+	self:show_message_box_suc(strings.forget_pswd_find_s)
 
 end
 
 function ForgetPasswordScene:do_on_trigger_failure(data)
 	print("[ForgetPasswordScene:do_on_trigger_failure]")
 	self:hide_progress_message_box()
-	self.failure_msg = "取回密码失败, 请检查您输入的帐号与绑定邮箱是否正确."
+	self.failure_msg = strings.forget_pswd_find_w
 	if not is_blank(data.result_message) then
 		self.failure_msg = data.result_message
 	end

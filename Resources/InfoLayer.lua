@@ -44,8 +44,8 @@ function InfoLayer:do_gender_checkbox_selected(tag, sender)
     
     local gender =  self.m_checkbox.toggle:isChecked() and 1 or 2
     
-	self:show_progress_message_box("更改性别...")
-	self.failure_msg = "更改失败"
+	self:show_progress_message_box(strings.update_gender_ing)
+	self.failure_msg = strings.update_w
 	local changed_info = {retry="0", user_id = GlobalSetting.current_user.user_id, gender = gender, version="1.0"}
 	self:complete_user_info(changed_info)
 end
@@ -55,13 +55,13 @@ function InfoLayer:editBoxTextEventHandle(strEventName,pSender)
 	if strEventName == "ended" then
 		local cur_nick_name = trim_blank(self.nick_name_box:getText())
 		if is_blank(cur_nick_name) then
-			self:show_message_box("昵称不能为空")
+			self:show_message_box(strings.nick_name_nil_w)
 			self.nick_name_box:setText(GlobalSetting.current_user.nick_name)
 			return
 		end
 		if cur_nick_name ~= GlobalSetting.current_user.nick_name then
-			self:show_progress_message_box("更改昵称...")
-			self.failure_msg = "更改失败"
+			self:show_progress_message_box(strings.update_nick_name_ing)
+			self.failure_msg = strings.update_w
 			local changed_info = {retry="0", user_id = GlobalSetting.current_user.user_id, nick_name = cur_nick_name, version="1.0"}
 			self:complete_user_info(changed_info)
 		end
