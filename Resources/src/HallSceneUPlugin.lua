@@ -180,6 +180,7 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:init_hall_info(data)
 		print("[HallSceneUPlugin:init_hall_info]")
+		self:start_push()
 		GlobalSetting.need_init_hall_rooms = 0
 		self:get_all_rooms()
 		self.after_trigger_success = __bind(self.init_room_tabview, self)

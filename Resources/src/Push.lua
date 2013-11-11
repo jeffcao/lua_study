@@ -6,14 +6,16 @@ function Push.bind(theClass)
 	--functions use as interface
 	function theClass:start_push()
 		if not GlobalSetting.hall_server_websocket then
+			print("if not GlobalSetting.hall_server_websocket then")
 			return
 		end
 		if GlobalSetting.push_handler then
+			print("if GlobalSetting.push_handler then")
 			return
 		end
 		
 		local fn = function()
-			if not GlobalSetting.hall_server_websocket then print("hall_server_websockt be nil") return false end
+			if not GlobalSetting.hall_server_websocket then print("hall_server_websockt be nil") GlobalSetting.push_handle = nil return false end
 			if not GlobalSetting.push_handler then print("push_handler had been removed") return false end
 			local event_data = {retry="0", time = GlobalSetting.message_time or 0}
 			GlobalSetting.hall_server_websocket:trigger("ui.get_system_message", event_data, __bind(self.on_push_coming, self),
@@ -34,7 +36,7 @@ function Push.bind(theClass)
 	function theClass:stop_push()
 		if GlobalSetting.push_handler then
 			Timer.cancel_timer(GlobalSetting.push_handler)
-			GlobalSetting.push_handle = nil
+			GlobalSetting.push_handler = nil
 		end
 	end
 	
