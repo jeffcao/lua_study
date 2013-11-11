@@ -16,6 +16,7 @@ require "IntroduceDialog"
 require "src.ServerNotifyPlugin"
 require "src.Stats"
 require "src.Push"
+require "src.UserLocked"
 local cjson = require "cjson"
 HallScene = class("HallScene", function() 
 	print("create new hall scene")
@@ -167,3 +168,4 @@ end
  SoundEffect.bind(HallScene)
  ServerNotifyPlugin.bind(HallScene)
  Push.bind(HallScene)
+ UserLocked.bind(HallScene)

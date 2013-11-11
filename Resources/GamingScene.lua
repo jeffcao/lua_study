@@ -31,6 +31,7 @@ require "src.UIControllerPlugin"
 require "GamingOption"
 require "IntroduceDialog"
 require "src.Stats"
+require "src.UserLocked"
 
 GamingScene = class("GamingScene", function()
 	return display.newScene("GamingScene")
@@ -179,3 +180,4 @@ ConnectivityPlugin.bind(GamingScene)
 SocketStatePlugin.bind(GamingScene)
 ServerNotifyPlugin.bind(GamingScene)
 UIControllerPlugin.bind(GamingScene)
+UserLocked.bind(GamingScene)

@@ -4,10 +4,23 @@ function ServerNotifyPlugin.bind(theClass)
 	function theClass:onServerNotify(data)
 		if not data then return end
 		dump(data, "onServerNotify=>")
-		local funcs = {self.onLevel, self.onVIP, self.onProp, self.onActivity, self.onTimeBeans, self.onBankrupt, self.onMusic}
+		local funcs = {self.onLevel, self.onVIP, self.onProp, self.onActivity, self.onTimeBeans, self.onBankrupt, self.onMusic, self.onUserLocked}
 		local func = funcs[tonumber(data.notify_type)+1]
 		if not func then return end
 		func(self,data)
+	end
+	
+	function theClass:onUserLocked(data)
+		if self.check_locked and type(self.check_locked) == "function" then
+			self:check_locked(data)
+			require "src/WebsocketRails/Timer"
+			local function to_login()
+				local scene = createLoginScene()
+				CCDirector:sharedDirector():popToRootScene()
+				CCDirector:sharedDirector():replaceScene(scene)
+			end
+			Timer.add_timer(2, to_login, "to_login")
+		end
 	end
 	
 	function theClass:onMusic(data)
