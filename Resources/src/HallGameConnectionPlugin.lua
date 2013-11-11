@@ -31,7 +31,7 @@ function HallGameConnectionPlugin.bind(theClass)
 	end
 	
 	function theClass:check_connection_game_server()
-		self.failure_msg = "与游戏服务器连接认证失败"
+		self.failure_msg = strings.hgcp_check_connection_w
 		local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token, version="1.0", run_env = GlobalSetting.run_env}
 		GlobalSetting.g_WebSocket:trigger("g.check_connection", 
 			event_data,
@@ -59,7 +59,7 @@ function HallGameConnectionPlugin.bind(theClass)
 		dump(room_info, "[HallSceneUPlugin:enter_game_room] room_info: ")
 		GlobalSetting.game_server_url = room_info.urls[1]
 		GlobalSetting.game_info = room_info
-		self:show_progress_message_box("进入房间...")
+		self:show_progress_message_box(strings.hgcp_enter_room_ing)
 		if GlobalSetting.g_WebSocket == nil then
 			self:connect_to_game_server()
 		else

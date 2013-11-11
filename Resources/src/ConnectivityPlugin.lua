@@ -37,7 +37,7 @@ function ConnectivityPlugin.bind(theClass)
 		if self.rootNode then str = "root node is not nil" end
 		print(str)
 		local dialog = createYesNoDialog(self.rootNode)
-		dialog:setMessage("网络连接已断开，请设置网络！")
+		dialog:setMessage(strings.cp_network_w)
 		dialog:setYesButton(function()
 			jni_helper:messageJava("on_set_network_intent")
 		end)

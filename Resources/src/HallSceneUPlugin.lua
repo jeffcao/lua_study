@@ -171,7 +171,7 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:do_on_enter()
 		print("[HallSceneUPlugin:do_on_enter]")
 		if GlobalSetting.hall_server_websocket == nil then
-			self:show_progress_message_box("连接大厅服务器...")
+			self:show_progress_message_box(strings.hsp_connect_hall_ing)
 			self:connect_to_hall_server()
 		else
 			if GlobalSetting.need_init_hall_rooms == 1 then
@@ -333,7 +333,7 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:do_quick_game_btn_clicked(tag, sender)
 		print("[HallSceneUPlugin:do_quick_game_btn_clicked]")
-		self:show_progress_message_box("请求房间信息...")
+		self:show_progress_message_box(strings.hsp_get_room_info_ing)
 		self:fast_begin_game()
 		self.after_trigger_success = __bind(self.do_connect_game_server, self)
 	end
@@ -341,7 +341,7 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:do_on_room_touched(room_info)
 		print("[HallSceneUPlugin:do_on_room_touched]")
 		local enter_info = {user_id=GlobalSetting.current_user.user_id, room_id=room_info.room_id}
-		self:show_progress_message_box("请求房间信息...")
+		self:show_progress_message_box(strings.hsp_get_room_info_ing)
 		self:request_enter_room(enter_info)
 		self.after_trigger_success = __bind(self.do_connect_game_server, self)
 	end
@@ -378,7 +378,7 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:do_on_connection_game_server_failure()
 		print("[HallSceneUPlugin:do_on_connection_game_server_failure]")
 		self:hide_progress_message_box()
-		self:show_message_box("连接游戏服务器失败.")
+		self:show_message_box(strings.hsp_connect_game_server_w)
 	end
 	
 	function theClass:enter_game_room()

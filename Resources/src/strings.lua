@@ -57,5 +57,21 @@ upl_pswd_format_w = strings_general.g_pswd_format_w,
 upl_pswd_not_same_w = '两次输入的新密码不一致',
 upl_update_pswd_ing = '更改密码...',
 upl_update_pswd_s = '更改密码成功',
+
+--ConnectivityPlugin
+cp_network_w = '网络连接已断开，请设置网络！',
+
+--GUIUpdatePlugin
+gup_mand_exit = '强制退出',
+gup_mand_eixt_w = '您正在游戏中，此时强退系统将最大输赢扣除您的豆子。',
+
+--HallGameConnectionPlugin
+hgcp_check_connection_w = '与游戏服务器连接认证失败',
+hgcp_enter_room_ing = '进入房间...',
+
+--HallSceneUPlugin
+hsp_connect_hall_ing = '连接大厅服务器...',
+hsp_get_room_info_ing = '请求房间信息...',
+hsp_connect_game_server_w = '连接游戏服务器失败.'
 }
 
