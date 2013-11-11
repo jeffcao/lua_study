@@ -2,6 +2,7 @@ strings_general = {
 	g_nick_name_nil_w = '昵称不能为空',
 	g_email_err_w  = '请输入正确的邮箱地址',
 	g_connect_server_ing = '连接服务器...',
+	g_pswd_format_w = '密码不能小于8位',
 }
 strings = {
 --AvatarListLayer
@@ -29,7 +30,7 @@ update_w = '更改失败',
 --InitPlayerInfoLayer
 ii_nick_name_nil_w = strings_general.g_nick_name_nil_w,
 ii_pswd_nil_w = '密码不能为空',
-ii_pswd_format_w = '密码不能小于8位',
+ii_pswd_format_w = strings_general.g_pswd_format_w,
 ii_email_nil_w = '邮箱地址不能为空，否则在您忘记密码时无法从系统获得密码.',
 ii_email_format_w = strings_general.g_email_err_w,
 ii_update_info_ing = '更新资料...',
@@ -49,5 +50,12 @@ lgs_login_server_ing = '登录服务器...',
 --RegisterScene
 rs_connect_server_ing = strings_general.g_connect_server_ing,
 
+--UpdatePasswordLayer
+upl_input_old_pswd_t = '请输入旧密码',
+upl_input_new_pswd_t = '请输入新密码',
+upl_pswd_format_w = strings_general.g_pswd_format_w,
+upl_pswd_not_same_w = '两次输入的新密码不一致',
+upl_update_pswd_ing = '更改密码...',
+upl_update_pswd_s = '更改密码成功',
 }
 

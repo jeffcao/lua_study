@@ -48,31 +48,31 @@ end
 function UpdatePasswordLayer:do_ui_ok_btn_clicked(tag, sender)
 	local old_pwd = self.old_pwd_box:getText()
 	if is_blank(old_pwd) then
-		self:show_message_box("请输入旧密码")
+		self:show_message_box(strings.upl_input_old_pswd_t)
 		return
 	end
 	local new_pwd = self.new_pwd_box:getText()
 	if is_blank(new_pwd) then
-		self:show_message_box("请输入新密码")
+		self:show_message_box(strings.upl_input_new_pswd_t)
 		return
 	end
 	if #new_pwd < 8 then
-		self:show_message_box("密码不能小于8位")
+		self:show_message_box(strings.upl_pswd_format_w)
 		return
 	end
 	local cfm_pwd = self.cfm_pwd_box:getText()
 	if new_pwd ~= cfm_pwd then
-		self:show_message_box("两次输入的新密码不一致")
+		self:show_message_box(strings.upl_pswd_not_same_w)
 		return
 	end
-	self:show_progress_message_box("更改密码...")
+	self:show_progress_message_box(strings.upl_update_pswd_ing)
 	self:reset_password(old_pwd, new_pwd)
 end
 
 function UpdatePasswordLayer:do_on_trigger_success(data)
 	print("[UpdatePasswordLayer:do_on_trigger_success]")
 	self:hide_progress_message_box()
-	self:show_message_box("更改密码成功")
+	self:show_message_box_suc(strings.upl_update_pswd_s)
 	
 end
 
