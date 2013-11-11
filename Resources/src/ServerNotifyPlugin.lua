@@ -16,6 +16,9 @@ function ServerNotifyPlugin.bind(theClass)
 			require "src/WebsocketRails/Timer"
 			local function to_login()
 				local scene = createLoginScene()
+				if self.on_kill_this_scene then
+					self:on_kill_this_scene()
+				end
 				CCDirector:sharedDirector():popToRootScene()
 				CCDirector:sharedDirector():replaceScene(scene)
 			end

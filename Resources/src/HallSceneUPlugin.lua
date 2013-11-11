@@ -50,6 +50,15 @@ function HallSceneUPlugin.bind(theClass)
 		end
 	end
 	
+	function theClass:on_kill_this_scene()
+		self:close_hall_websocket()
+		if GlobalSetting.online_time_get_beans_handle then
+			cclog('cancel previous online_time_get_beans while switch')
+			Timer.cancel_timer(GlobalSetting.online_time_get_beans_handle)
+			GlobalSetting.online_time_get_beans_handle = nil
+		end
+	end
+	
 	function theClass:doShare()
 		self.share_dialog_layer = createShare()
 		self.rootNode:addChild(self.share_dialog_layer, 1001, 907)
