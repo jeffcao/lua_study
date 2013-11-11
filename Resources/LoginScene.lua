@@ -9,6 +9,7 @@ require "src.LoginSceneUIPlugin"
 require "YesNoDialog2"
 require "src.Stats"
 require "src.SoundEffect"
+require "src.UserLocked"
 
 LoginScene = class("LoginScene", function()
 	print("creating new loginScene")
@@ -114,6 +115,6 @@ function createLoginScene()
 end
 
 SoundEffect.bind(LoginScene)
-
+UserLocked.bind(LoginScene)
 
 

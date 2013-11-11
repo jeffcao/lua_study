@@ -7,6 +7,9 @@ function LoginServerConnectionPlugin.bind(theClass)
 		print("[LoginServerConnectionPlugin.sign_success] updating local user info in login scene.")
 		dump(data, "LoginServerConnectionPlugin.sign_success data")
 		
+		local is_locked = self:check_locked(data)
+		if is_locked then return end
+		
 		GlobalSetting.current_user:load_from_json(data.user_profile)
 		local cur_user = GlobalSetting.current_user
 		--cur_user.user_id = data.user_id
