@@ -26,21 +26,21 @@ function HallServerConnectionPlugin.bind(theClass)
 		
 	
 	function theClass:check_connection()
-		self.failure_msg = "与服务器连接认证失败"
+		self.failure_msg = strings.hscp_check_connection_w
 		local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token, version="1.0", run_env = GlobalSetting.run_env}
 		self:call_server_method("check_connection", event_data)
 
 	end
 	
 	function theClass:get_all_rooms()
-		self.failure_msg = "获取房间列表失败"
+		self.failure_msg = strings.hscp_get_rooms_w
 		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
 		self:call_server_method("get_room", event_data)
 
 	end
 	
 	function theClass:get_today_activity()
-		self.failure_msg = "获取今日活动失败"
+		self.failure_msg = strings.hscp_get_today_activity_w
 		local event_data = {retry="0", version="1.0"}
 		self:call_server_method("get_activity", event_data)
 	end

@@ -73,5 +73,10 @@ hgcp_enter_room_ing = '进入房间...',
 hsp_connect_hall_ing = '连接大厅服务器...',
 hsp_get_room_info_ing = '请求房间信息...',
 hsp_connect_game_server_w = '连接游戏服务器失败.'
+
+--HallServerConnectionPlugin
+hscp_check_connection_w = '与服务器连接认证失败',
+hscp_get_rooms_w = '获取房间列表失败',
+hscp_get_today_activity_w = '获取今日活动失败',
 }
 
