@@ -16,8 +16,8 @@ function Push.bind(theClass)
 			if not GlobalSetting.hall_server_websocket then print("hall_server_websockt be nil") return false end
 			if not GlobalSetting.push_handler then print("push_handler had been removed") return false end
 			local event_data = {retry="0", time = GlobalSetting.message_time or 0}
-			GlobalSetting.hall_server_websocket:trigger("ui.get_system_message", event_data,
-			__bind(self.on_push_coming, self), function() end)
+			GlobalSetting.hall_server_websocket:trigger("ui.get_system_message", event_data, __bind(self.on_push_coming, self),
+			function() print("on push?") end  )
 			return true
 		end
 		GlobalSetting.push_handler = Timer.add_repeat_timer(GlobalSetting.push_period, fn, "push")
@@ -45,6 +45,7 @@ function Push.bind(theClass)
 			print("push_handler had been removed, do not process push message") 
 			return false 
 		end
+		dump(data, "on push coming")
 		GlobalSetting.message_time = data.message_time
 		if not data.system_message then return end
 		local fns = {}
@@ -59,14 +60,17 @@ function Push.bind(theClass)
 	end
 	
 	function theClass:on_push_roll_message(content)
+		print("roll:"..content)
 		self:toast("roll:"..content)
 	end
 	
 	function theClass:on_push_toast_message(content)
+		print("toast:"..content)
 		self:toast("toast:"..content)
 	end
 	
 	function theClass:on_push_show_message(content)
+		print("show:"..content)
 		self:toast("show:"..content)
 	end
 	

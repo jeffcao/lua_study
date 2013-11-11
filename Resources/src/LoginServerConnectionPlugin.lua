@@ -32,6 +32,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 			GlobalSetting.vip = data.vip
 		end
 		if data.message_time then
+			GlobalSetting.message_time = data.message_time
 			GlobalSetting.push_handler = nil
 		end
 		print("[LoginServerConnectionPlugin.sign_success] on_login_success.")
