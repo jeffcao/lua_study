@@ -58,7 +58,9 @@ function HallServerConnectionPlugin.bind(theClass)
 				dump(scene, 'running scene')
 			if scene.rootNode and scene.show_server_notify and data.user_id then
 				cclog('the running scene has root node')
-				local msg = "在线有礼：您已在线满"..tostring(data.online_time).."分钟，获得了"..tostring(data.beans).."个豆子"
+				local msg = string.gsub(strings.hscp_zaixianyouli, "minutes", tostring(data.online_time))
+				msg = string.gsub(msg, "beans", tostring(data.beans))
+				--local msg = "在线有礼：您已在线满"..tostring(data.online_time).."分钟，获得了"..tostring(data.beans).."个豆子"
 				scene:show_server_notify(msg)
 				GlobalSetting.current_user.score = data.score
 				GlobalSetting.current_user.game_level = data.game_level
@@ -81,78 +83,78 @@ function HallServerConnectionPlugin.bind(theClass)
 	end
 	
 	function theClass:get_user_profile()
-		self.failure_msg = "获取玩家信息失败"
+		self.failure_msg = strings.hscp_get_player_info_w
 		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
 		self:call_server_method("get_user_profile", event_data)
 
 	end
 	
 	function theClass:complete_user_info(changed_info)
-		self.failure_msg = "更新玩家信息失败"
+		self.failure_msg = strings.hscp_get_player_info_w
 		self:call_server_method("complete_user_info", changed_info)
 
 	end
 
 	function theClass:reset_password(old_pwd, new_pwd)
-		self.failure_msg = "更改密码失败"
+		self.failure_msg = strings.hscp_update_pswd_w
 		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, oldpassword=old_pwd, newpassword=new_pwd, version="1.0"}
 		self:call_server_method("reset_password", event_data)
 	
 	end
 		
 	function theClass:request_enter_room(enter_info)
-		self.failure_msg = "请求房间失败"
+		self.failure_msg = strings.hscp_request_room_w
 		self:call_server_method("request_enter_room", enter_info)
 	end
 	
 	function theClass:fast_begin_game()
-		self.failure_msg = "请求房间失败"
+		self.failure_msg = strings.hscp_request_room_w
 		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
 		self:call_server_method("fast_begin_game", event_data)
 	end
 	
 	function theClass:get_vip_salary()
-		self.failure_msg = "领取工资失败"
+		self.failure_msg = strings.hscp_get_vip_salary_w
 		local event_data = {user_id =  GlobalSetting.current_user.user_id}
 		self:call_server_method("get_salary", event_data)
 	end
 	
 	function theClass:feedback(content)
-		self.failure_msg = "保存反馈信息失败"
+		self.failure_msg = strings.hscp_feedback_w
 		local event_data = {user_id =  GlobalSetting.current_user.user_id, content = content}
 		self:call_server_method("feedback", event_data)
 	end
 	
 	function theClass:shop_prop_list(prop_type)
-		self.failure_msg = "获取商品列表失败"
+		self.failure_msg = strings.hscp_get_props_list_w
 		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0", prop_type=prop_type}
 		self:call_server_method("shop_prop_list", event_data)
 	
 	end
 	
 	function theClass:buy_prop(product_id)
-		self.failure_msg = "购买道具失败"
+		self.failure_msg = strings.hscp_purchase_prop_w
 		local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, version="1.0"}
 		self:call_server_method("buy_prop", event_data)
 	
 	end
 	
 	function theClass:timing_buy_prop(trad_seq, product_id)
-		self.failure_msg = "购买道具失败"
+		self.failure_msg = strings.hscp_purchase_prop_w
 		local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, trade_id = trad_seq, version="1.0"}
 		self:call_server_method("timing_buy_prop", event_data)
 		
 	end
 	
 	function theClass:cate_list()
-		self.failure_msg = "获取道具列表失败"
+		self.failure_msg = strings.hscp_get_my_props_list_w
 		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
 		self:call_server_method("cate_list", event_data)
 		
 	end
 	
 	function theClass:use_cate(product_id)
-		self.failure_msg = "使用道具失败"
+		self.failure_msg = strings.hscp_use_prop_w
 		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, prop_id = product_id, version="1.0"}
 		self:call_server_method("use_cate", event_data)
 		
@@ -224,7 +226,7 @@ function HallServerConnectionPlugin.bind(theClass)
 	
 	--正在重连网络
 	function theClass:onSocketReopening()
-		self:show_progress_message_box("正在恢复与服务器的连接，请稍候.",400)
+		self:show_progress_message_box(strings.hscp_restore_connection_ing,400)
 --		self.connection_state = 0
 		print("HallServerConnectionPlugin onSocketReopening")
 		self:updateSocket("socket: reopening")
@@ -241,7 +243,7 @@ function HallServerConnectionPlugin.bind(theClass)
 	--网络重连失败
 	function theClass:onSocketReopenFail()
 		self:hide_progress_message_box()
-		self:show_message_box("恢复与服务器连接失败.")
+		self:show_message_box(strings.hscp_restore_connection_w)
 		print("HallServerConnectionPlugin onSocketReopenFail")
 		self:exit()
 	end
@@ -249,7 +251,7 @@ function HallServerConnectionPlugin.bind(theClass)
 	--restore connection失败，退出游戏
 	function theClass:onSocketRestoreFail()
 		self:hide_progress_message_box()
-		self:show_message_box("恢复与服务器连接失败.")
+		self:show_message_box(strings.hscp_restore_connection_w)
 		print("HallServerConnectionPlugin onSocketRestoreFail")
 		self:exit()
 	end

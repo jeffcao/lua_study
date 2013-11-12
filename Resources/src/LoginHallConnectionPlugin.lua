@@ -35,7 +35,7 @@ function LoginHallConnectionPlugin.bind(theClass)
 	
 	function theClass:on_check_hall_connection_failure()
 		self:hide_progress_message_box()
-		self:show_message_box("与大厅服务器连接认证失败")
+		self:show_message_box(strings.lhcp_check_hall_connection_w)
 		
 	end
 	
@@ -57,7 +57,7 @@ function LoginHallConnectionPlugin.bind(theClass)
 		print("[LoginHallConnectionPlugin:enter_hall]")
 		dump(room_info, "[LoginHallConnectionPlugin:enter_game_room] room_info: ")
 
-		self:show_progress_message_box("进入大厅...")
+		self:show_progress_message_box(strings.lhcp_enter_hall_ing)
 		if GlobalSetting.hall_server_websocket == nil then
 			self:connect_to_hall_server()
 		else

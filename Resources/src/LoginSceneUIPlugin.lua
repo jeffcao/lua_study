@@ -112,7 +112,7 @@ function LoginSceneUIPlugin.bind(theClass)
 	
 	function theClass:do_ui_fast_game_clicked()
 		print("[LoginScene:onKuaisuLoginBtnClick()]")
-		self:show_progress_message_box("注册用户...")
+		self:show_progress_message_box(strings.lsp_register_ing)
 		self:signup()
 	end
 	
@@ -133,10 +133,10 @@ function LoginSceneUIPlugin.bind(theClass)
 		
 		if is_blank(user_id) or is_blank(user_pwd) or #user_id ~= 5 or #user_pwd < 8 then
 			print("请输入正确的账号，密码信息.")
-			self:show_message_box("请输入正确的账号，密码信息")
+			self:show_message_box(strings.lsp_login_id_pswd_format_w)
 			return
 		end
-		self:show_progress_message_box("登录大厅服务器...")
+		self:show_progress_message_box(strings.lsp_connect_hall_ing)
 		if user_pwd == user_token_chars then
 			user = UserInfo:load_by_id(CCUserDefault:sharedUserDefault(), user_id)
 			self:sign_in_by_token(user_id, user.login_token)
@@ -163,7 +163,7 @@ function LoginSceneUIPlugin.bind(theClass)
 	
 	function theClass:do_on_login_failure()
 		self:hide_progress_message_box()
-		self:show_message_box("登录失败")
+		self:show_message_box(strings.lsp_login_w)
 		
 	end
 	
@@ -174,13 +174,13 @@ function LoginSceneUIPlugin.bind(theClass)
 	function theClass:do_on_connection_failure()
 		print("[LoginScene:do_on_connection_failure()]")
 		self:hide_progress_message_box()
-		self:show_message_box("连接服务器失败")
+		self:show_message_box(strings.lsp_connect_server_w)
 	end
 	
 	function theClass:do_on_connection_hall_server_failure()
 		print("[LoginScene:do_on_connection_hall_server_failure()]")
 		self:hide_progress_message_box()
-		self:show_message_box("连接大厅服务器失败")
+		self:show_message_box(strings.lsp_connect_hall_server_w)
 	end
 	
 	function theClass:show_message(message)

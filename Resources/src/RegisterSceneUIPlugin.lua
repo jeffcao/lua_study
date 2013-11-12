@@ -80,24 +80,24 @@ function RegisterSceneUIPlugin.bind(theClass)
 		
 		if is_blank(nick_name) then
 			print("[RegisterScene:do_register_btn_clicked] 昵称不能为空.")
-			self:show_message_box("昵称不能为空")
+			self:show_message_box(strings.rsp_nick_name_nil_w)
 			return
 		end
 		if is_blank(password) then
 			print("[RegisterScene:do_register_btn_clicked] 密码不能为空.")
-			self:show_message_box("密码不能为空")
+			self:show_message_box(strings.rsp_pswd_nil_w)
 			return
 		end
 		if #password < 8 then
-		self:show_message_box("密码不能小于8位")
+		self:show_message_box(strings.rsp_pswd_formt_w)
 		return
 	end
 		if password ~= confirm_pwd then
 			print("[RegisterScene:do_register_btn_clicked] 两次密码输入不一致.")
-			self:show_message_box("两次密码输入不一致")
+			self:show_message_box(strings.rsp_two_pswd_not_same_w)
 			return
 		end
-		self:show_progress_message_box("注册用户...")
+		self:show_progress_message_box(strings.rsp_register_ing)
 		self:fast_sign_up(nick_name, password, gender)
 		
 	end
@@ -123,7 +123,7 @@ function RegisterSceneUIPlugin.bind(theClass)
 		print("[RegisterScene:do_on_login_success()]")
 		self:hide_progress_message_box()
 		
-		self:show_progress_message_box("连接大厅服务器...")
+		self:show_progress_message_box(strings.rsp_connect_hall_ing)
 		Timer.add_timer(3, function()
 			local hall = createHallScene()
 			CCDirector:sharedDirector():replaceScene(hall)
@@ -132,7 +132,7 @@ function RegisterSceneUIPlugin.bind(theClass)
 	
 	function theClass:do_on_login_failure()
 		self:hide_progress_message_box()
-		self:show_message_box("注册失败")
+		self:show_message_box(strings.rsp_register_w)
 		
 	end
 

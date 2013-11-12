@@ -68,22 +68,25 @@ function MarketSceneUPlugin.bind(theClass)
 		print("[MarketSceneUPlugin:show_buy_notify]")
 		
 		if is_blank(product.consume_code) then
-			self:show_back_message_box("此道具无消息代码，无法完成购买.")
+			self:show_back_message_box(strings.msp_purchase_no_code_w)
 			do return end
 		end
 		
 		is_cm_sim_card = self:is_cm_sim_card()
 		print("[MarketSceneUPlugin:show_buy_notify] is_cm_sim_card=> "..tostring(is_cm_sim_card))
 		if not is_cm_sim_card and GlobalSetting.run_env ~= "test" then
-			self:show_back_message_box("尊敬的客户，非中国移动客户暂不支持购买道具.")
+			self:show_back_message_box(strings.msp_purchase_not_cmcc_w)
 			do return end
 		end
 
 		self.cur_product = product
 		self.yes_no_dialog = createYesNoDialog3()
-		content = "尊敬的客户，您即将购买的是\n游戏名：我爱斗地主\n道具名："
-	 	content = content..self.cur_product.name.."\n道具数量：1\n服务提供商：深圳市新中南实业有限公司\n资费说明：\n" 	
-	 	content = content..self.cur_product.price.." 点（即消费"..self.cur_product.rmb.."元人民币）\n点击确认按钮确认购买，中国移动\n客服电话400-6788456"
+		--content = "尊敬的客户，您即将购买的是\n游戏名：我爱斗地主\n道具名："
+	 	--content = content..self.cur_product.name.."\n道具数量：1\n服务提供商：深圳市新中南实业有限公司\n资费说明：\n" 	
+	 	--content = content..self.cur_product.price.." 点（即消费"..self.cur_product.rmb.."元人民币）\n点击确认按钮确认购买，中国移动\n客服电话400-6788456"
+	 	content = string.gsub(strings.msp_purchase_notify, "name", self.cur_product.name)
+	 	content = string.gsub(content, "price", self.cur_product.price)
+	 	content = string.gsub(content, "rmb", self.cur_product.rmb)
 		print("[MarketSceneUPlugin:show_buy_notify] notify content=> "..content)
 		self.yes_no_dialog:setMessage(content)
 		self.yes_no_dialog:setMessageSize(19)
@@ -100,7 +103,7 @@ function MarketSceneUPlugin.bind(theClass)
 		self.yes_no_dialog:dismiss(true)
 		self.rootNode:removeChild(self.yes_no_dialog, true)
 		self.yes_no_dialog = nil
-		self:show_progress_message_box("购买道具")
+		self:show_progress_message_box(strings.msp_purchase)
 		self:buy_prop(self.cur_product.id)
 		self.after_trigger_success = __bind(self.do_on_buy_message, self)
 	end
@@ -130,7 +133,7 @@ function MarketSceneUPlugin.bind(theClass)
 			self.yes_no_dialog = nil
 		end
 		
-		self:show_progress_message_box("正在发送付款请求...")
+		self:show_progress_message_box(strings.msp_purchase_pay_ing)
 --		Timer.add_timer(2, __bind(self.hide_progress_message_box, self) )
 		
 		local msg = "send_sms_" .. self.cur_buy_data.sms_content.."__"..self.cur_buy_data.send_num
@@ -183,7 +186,7 @@ function MarketSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:get_prop_list(type)
-		self:show_progress_message_box("获取商品列表")
+		self:show_progress_message_box(strings.msp_get_props_w)
 		self:shop_prop_list(type)
 		self.after_trigger_success = __bind(self.on_get_tab, self)
 	end

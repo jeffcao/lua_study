@@ -17,7 +17,7 @@ function PlayerProductsUIPlugin.bind(theClass)
 	function theClass:init_product_list()
 		print("[PlayerProductsScene:init_product_list]")
 		
-		self:show_progress_message_box("获取道具列表...")
+		self:show_progress_message_box(strings.ppp_get_my_props_ing)
 		self.after_trigger_success = __bind(self.show_product_list, self)
 		self:cate_list()
 		
@@ -44,7 +44,7 @@ function PlayerProductsUIPlugin.bind(theClass)
 	function theClass:show_use_notify(product, use_prop_callback)
 		print("[PlayerProductsScene:do_on_trigger_success]")
 		self.use_prop_callback = use_prop_callback
-		self:show_progress_message_box("发送道具使用请求...")
+		self:show_progress_message_box(strings.ppp_use_props_ing)
 		self:use_cate(product.prop_id)
 		self.after_trigger_success = __bind(self.after_use_product, self)
 	end
