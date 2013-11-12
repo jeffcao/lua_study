@@ -9,6 +9,7 @@ strings_general = {
 	g_pswd_nil_w = '密码不能为空',
 	g_register_ing = '注册用户...',
 	g_connect_hall_ing = '连接大厅服务器...',
+	g_zaixianyouli = '在线有礼：您已在线满minutes分钟，获得了beans个豆子',
 	
 }
 strings = {
@@ -85,7 +86,7 @@ hsp_connect_game_server_w = '连接游戏服务器失败.',
 hscp_check_connection_w = '与服务器连接认证失败',
 hscp_get_rooms_w = '获取房间列表失败',
 hscp_get_today_activity_w = '获取今日活动失败',
-hscp_zaixianyouli = '在线有礼：您已在线满minutes分钟，获得了beans个豆子',
+hscp_zaixianyouli = strings_general.g_zaixianyouli,--'在线有礼：您已在线满minutes分钟，获得了beans个豆子',
 hscp_get_player_info_w = '获取玩家信息失败',
 hscp_update_pswd_w = '更改密码失败',
 hscp_request_room_w = '请求房间失败',
@@ -131,5 +132,8 @@ rsp_register_ing = strings_general.g_register_ing,
 rsp_connect_hall_ing = strings_general.g_connect_hall_ing,
 rsp_register_w = '注册失败',
 
+--ServerNotifyPlugin
+snp_bankrupt = '您获得了破产补助：beans个豆子',
+snp_zaixianyouli = strings_general.g_zaixianyouli,
 }
 

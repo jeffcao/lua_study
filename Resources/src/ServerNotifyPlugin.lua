@@ -41,7 +41,8 @@ function ServerNotifyPlugin.bind(theClass)
 		local score = data.score
 		local scene = CCDirector:sharedDirector():getRunningScene()
 		if beans and scene.rootNode and scene.show_server_notify then
-			local message = "您获得了破产补助："..beans.."个豆子"
+			--local message = "您获得了破产补助："..beans.."个豆子"
+			local message = string.gsub(strings.snp_bankrupt, "beans", beans)
 			print("破产补助=>", message)
 			scene:show_server_notify(msg)
 		end
@@ -105,7 +106,9 @@ function ServerNotifyPlugin.bind(theClass)
 		dump(scene, 'running scene')
 		if scene.rootNode and scene.show_server_notify and data.user_id then
 			cclog('the running scene has root node')
-			local msg = "在线有礼：您已在线满"..tostring(data.online_time).."分钟，获得了"..tostring(data.beans).."个豆子"
+			local msg = string.gsub(strings.snp_zaixianyouli, "您已在线满minutes分钟", tostring(data.online_time))
+			msg = string.gsub(msg, "beans", tostring(data.beans))
+			--local msg = "在线有礼：您已在线满"..tostring(data.online_time).."分钟，获得了"..tostring(data.beans).."个豆子"
 			scene:show_server_notify(msg)
 			GlobalSetting.current_user.score = data.score
 			GlobalSetting.current_user.game_level = data.game_level
