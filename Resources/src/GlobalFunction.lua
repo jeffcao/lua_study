@@ -117,6 +117,15 @@ function trim_blank(s)
  	return from > #s and "" or s:match(".*%S", from)
 end
 
+function string_to_array(s)
+	local len = string.len(s)
+	local arr = {}
+	for i=1,len do
+		table.insert(arr, string.sub(s,i,i))
+	end
+	return arr
+end
+
 function split(str, pat)
    local t = {}  -- NOTE: use {n = 0} in Lua-5.0
    local fpat = "(.-)" .. pat

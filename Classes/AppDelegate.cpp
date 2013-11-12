@@ -8,6 +8,7 @@
 #include "WebsocketManager_lua.h"
 #include "Downloader_lua.h"
 #include "md5_lua.h"
+#include "CheckSign_lua.h"
 #include "CCLuaStack.h"
 #include "CCLuaValue.h"
 #include <algorithm>
@@ -22,6 +23,7 @@ extern "C" {
 #include "lua.h"
 }
 
+#include "CheckSign.h"
 #include "Lua_extensions_CCB.h"
 #include "support/CCNotificationCenter.h"
 
@@ -206,6 +208,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     tolua_DialogLayerConvertor_open(pLuaState);
     tolua_Downloader_open(pLuaState);
     tolua_md5_open(pLuaState);
+    tolua_CheckSign_open(pLuaState);
     luaopen_LuaProxy(pLuaState);
     luaopen_lua_extensions(pLuaState);
     tolua_extensions_ccb_open(pLuaState);
@@ -250,6 +253,14 @@ bool AppDelegate::applicationDidFinishLaunching()
     d->update();
     CCLOG("download run");*/
   //  setSearchPath();
+    /*
+    const char* s_name ="1016";
+    const char* s_sign = "109438210549104321";
+    const char* s_code = "43483104875893012542452";
+    const char* i_code = "1480810";
+    const char* mima = CheckSign::check_sign(s_name, s_sign,s_code, i_code);
+    CCLOG("mima is %s",mima);
+    */
     return true;
 }
 

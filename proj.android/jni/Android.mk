@@ -14,6 +14,8 @@ QC_LIB_PATH := ../../Classes/quick_cocos2dx-lib
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AppDelegate.cpp \
+                   ../../Classes/CheckSign.cpp \
+                   ../../Classes/CheckSign_lua.cpp \
                    ../../Classes/md5.cpp \
                    ../../Classes/md5_lua.cpp \
                    ../../Classes/Downloader.cpp \

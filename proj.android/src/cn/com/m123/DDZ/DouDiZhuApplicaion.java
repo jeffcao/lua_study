@@ -33,6 +33,7 @@ public class DouDiZhuApplicaion extends Application {
 		initDebug();
 		saveHardwareInfo();
 		initPkgInfo();
+		//System.out.println("sign=>\n" + DDZJniHelper.getSign(this));
 	}
 	
 	private void initDebug() {
@@ -109,6 +110,7 @@ public class DouDiZhuApplicaion extends Application {
 			.putString("pkg_version_name", pkgVersionName)
 			.putString("pkg_build", pkgBuild)
 			.putString("pkg_version_code", Integer.toString(pkgVersionCode))
+			.putString("sign", DDZJniHelper.getSign(this))
 			.commit();
 	}
 	
