@@ -33,19 +33,40 @@ function HallGameConnectionPlugin.bind(theClass)
 	function theClass:check_connection_game_server()
 		self.failure_msg = strings.hgcp_check_connection_w
 		local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token, version="1.0", run_env = GlobalSetting.run_env}
+		if GlobalSetting.s_token then
+			event_data.s_token = GlobalSetting.s_token
+			event_data.s_name = GlobalSetting.s_name
+		end
 		GlobalSetting.g_WebSocket:trigger("g.check_connection", 
 			event_data,
 			__bind(self.on_trigger_success, self),
-			__bind(self.on_trigger_failure, self))
+			function(data) 
+				CheckSignLua:check_stoken(data) 
+				if self.on_trigger_failure then
+					self:on_trigger_failure(data)
+				end
+			end
+		)
 
 	end
 	
 	function theClass:on_game_server_websocket_ready()
 		print("[HallServerConnectionPlugin:on_game_server_websocket_ready()]")
 		
+		--[[
 		if "function" == type(self.do_on_game_server_websocket_ready) then
 			self:do_on_game_server_websocket_ready()
 		end
+		]]
+		
+		GlobalSetting.g_WebSocket:bind("ui.hand_shake", function(data) 
+			dump(data, "ui.hand_shake") 
+			GlobalSetting.g_WebSocket:unbind_clear("ui.hand_shake")
+			CheckSignLua:generate_stoken(data)
+			if "function" == type(self.do_on_game_server_websocket_ready) then
+				self:do_on_game_server_websocket_ready()
+			end
+		end)
 	end
 	
 	function theClass:do_on_game_server_websocket_ready()
