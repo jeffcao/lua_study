@@ -60,6 +60,10 @@ function LoginServerConnectionPlugin.bind(theClass)
 	
 	function theClass:sign_in_by_token(user_id, user_token)
 		local event_data = {retry="0", login_type="102", user_id = user_id, token = user_token, version="1.0"}
+		if GlobalSetting.s_token then
+			event_data.s_token = GlobalSetting.s_token
+			event_data.s_name = GlobalSetting.s_name
+		end
 		GlobalSetting.login_server_websocket:trigger("login.sign_in", 
 			event_data,
 			__bind(self.sign_success, self),
@@ -68,6 +72,10 @@ function LoginServerConnectionPlugin.bind(theClass)
 	
 	function theClass:sign_in_by_password(username, password)
 		local event_data = {retry="0", login_type="103", user_id = username, password = password, version="1.0"}
+		if GlobalSetting.s_token then
+			event_data.s_token = GlobalSetting.s_token
+			event_data.s_name = GlobalSetting.s_name
+		end
 		GlobalSetting.login_server_websocket:trigger("login.sign_in", 
 			event_data,
 			__bind(self.sign_success, self),
@@ -75,7 +83,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 	end
 	
 	function theClass:signup()
-		local event_data = {retry="0", sign_type="100"}
+		local event_data = {retry="0", sign_type="100"}		
 		local device_info = device_info()
 		table.copy_kv(event_data, device_info)
 		dump(event_data, "[LoginServerConnectionPlugin.signup] event_data=>")
@@ -112,10 +120,10 @@ function LoginServerConnectionPlugin.bind(theClass)
 		GlobalSetting.login_server_websocket:bind("ui.hand_shake", function(data) 
 			dump(data, "ui.hand_shake") 
 			CheckSignLua:generate_stoken(data)
+			if "function" == type(self.do_on_websocket_ready) then
+				self:do_on_websocket_ready()
+			end
 		end)
-		if "function" == type(self.do_on_websocket_ready) then
-			self:do_on_websocket_ready()
-		end
 	end
 	
 	function theClass:connect_to_login_server(config)

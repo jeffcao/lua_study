@@ -18,6 +18,7 @@ const char* CheckSign::check_sign(const char* s_name, const char* s_sign,
 	int i_code_len = it_code.length();
 	string count = it_code.substr(i_code_len - 2, 2);
 	int i_count = atoi(count.c_str());
+	CCLOG("i_count %d", i_count);
 	string st_code_jq = st_code.substr(0, i_count);
 
 	//计算出合并方式

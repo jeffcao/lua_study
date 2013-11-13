@@ -1,7 +1,6 @@
 CheckSignLua = {}
 
 function CheckSignLua:generate_stoken(data)
-	dump(data, "generate_stoken")
 	local s_code = data.v_code
 	local i_code = data.v_flag
 	local userDefault = CCUserDefault:sharedUserDefault()
