@@ -1,25 +1,18 @@
 CheckSign = {}
 
-function CheckSign:check(s_name, s_sign, s_code, i_code)
-	local count, codes = self:cal_codes(i_code)
-	local s = {}
-	s[1] = s_name
-	s[2] = s_sign
-	s[3] = s_code
-	s[4] = string.sub(s_code, 1, count)
-	
-	local str = ''
-	for k,v in pairs(codes) do
-		str = str .. s[tonumber(v)]
-	end
-	print(str)
+function CheckSign:generate_stoken(s_code, i_code)
+	local userDefault = CCUserDefault:sharedUserDefault()
+	local s_name = userDefault:getStringForKey("appid")
+	local s_sign = userDefault:getStringForKey("sign")
+	local s_token = CheckSign:check(s_name, s_sign, s_code, i_code)
+	GlobalSetting.s_token = s_token
+	print("s_token is", s_token)
 end
 
-function CheckSign:cal_codes(i_code)
-	i_code = tostring(i_code)
-	local len = string.len(i_code)
-	local count = string.sub(i_code, len - 1, len)
-	local code = string.sub(i_code, 0, len - 2)
-	code = tostring(tonumber(code) / 12)
-	code = string_to_array(code)
+function CheckSign:check_stoken(s_token)
+	if s_token ~= GlobalSetting.s_token then
+		cclog("s_token is wrong, native is %s", GlobalSetting.s_token or "nil")
+		endtolua()
+	end
+	return true
 end

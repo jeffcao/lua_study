@@ -236,31 +236,6 @@ bool AppDelegate::applicationDidFinishLaunching()
     pEngine->executeScriptFile(path.c_str());
 #endif
 
-
-
-//    // create a scene. it's an autorelease object
-//    CCScene *pScene = HelloWorld::scene();
-//
-//    // run
-//    pDirector->runWithScene(pScene);
-
-    /*std::string pathToSave = CCFileUtils::sharedFileUtils()->getWritablePath();
-    std::string url = "http://www.daemonology.net/bsdiff/bsdiff-4.3.tar.gz";
-    std::string name = "bsdiff-4.3.tar.gz";
-    CCLOG("[DEBUG] pathToSave => %s", pathToSave.c_str());
-    Downloader *d = new Downloader(url.c_str(), pathToSave.c_str(), name.c_str());
-    d->setDelegate(new DownloadListener());
-    d->update();
-    CCLOG("download run");*/
-  //  setSearchPath();
-    /*
-    const char* s_name ="1016";
-    const char* s_sign = "109438210549104321";
-    const char* s_code = "43483104875893012542452";
-    const char* i_code = "1480810";
-    const char* mima = CheckSign::check_sign(s_name, s_sign,s_code, i_code);
-    CCLOG("mima is %s",mima);
-    */
     return true;
 }
 
