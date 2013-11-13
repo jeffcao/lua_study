@@ -33,7 +33,7 @@ public class DouDiZhuApplicaion extends Application {
 		initDebug();
 		saveHardwareInfo();
 		initPkgInfo();
-		//System.out.println("sign=>\n" + DDZJniHelper.getSign(this));
+		System.out.println("sign=>\n" + DDZJniHelper.getSign(this));
 	}
 	
 	private void initDebug() {
