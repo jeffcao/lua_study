@@ -401,7 +401,7 @@ function HallSceneUPlugin.bind(theClass)
 		local exit_hall_scene = function()
 			CCDirector:sharedDirector():endToLua()
 		end
-		Timer.add_timer(1, exit_gaming_scene)
+		Timer.add_timer(1, exit_hall_scene)
 	end
 	
 	--print("theClass.registerCleanup ==> ", theClass.registerCleanup)

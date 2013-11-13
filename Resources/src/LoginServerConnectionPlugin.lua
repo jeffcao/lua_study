@@ -119,6 +119,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 		print("[LoginServerConnectionPlugin:on_websocket_ready()]")
 		GlobalSetting.login_server_websocket:bind("ui.hand_shake", function(data) 
 			dump(data, "ui.hand_shake") 
+			GlobalSetting.login_server_websocket:unbind_clear("ui.hand_shake")
 			CheckSignLua:generate_stoken(data)
 			if "function" == type(self.do_on_websocket_ready) then
 				self:do_on_websocket_ready()

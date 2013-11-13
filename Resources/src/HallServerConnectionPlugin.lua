@@ -28,8 +28,21 @@ function HallServerConnectionPlugin.bind(theClass)
 	function theClass:check_connection()
 		self.failure_msg = strings.hscp_check_connection_w
 		local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token, version="1.0", run_env = GlobalSetting.run_env}
-		self:call_server_method("check_connection", event_data)
-
+		if GlobalSetting.s_token then
+		--	event_data.s_token = GlobalSetting.s_token
+			event_data.s_name = GlobalSetting.s_name
+		end
+		
+		GlobalSetting.hall_server_websocket:trigger("ui.check_connection", 
+			event_data,
+			__bind(self.on_trigger_success, self),
+			function(data) 
+				CheckSignLua:check_stoken(data) 
+				if self.on_trigger_failure then
+					self:on_trigger_failure(data)
+				end
+			end
+		)
 	end
 	
 	function theClass:get_all_rooms()
@@ -180,10 +193,16 @@ function HallServerConnectionPlugin.bind(theClass)
 	function theClass:on_websocket_ready()
 		print("[HallServerConnectionPlugin:on_websocket_ready()]")
 --		self.connection_state = 1
-		self:init_channel()
-		if "function" == type(self.do_on_websocket_ready) then
-			self:do_on_websocket_ready()
-		end
+		print("[HallServerConnectionPlugin:on_websocket_ready()]")
+		GlobalSetting.hall_server_websocket:bind("ui.hand_shake", function(data) 
+			dump(data, "ui.hand_shake") 
+			GlobalSetting.hall_server_websocket:unbind_clear("ui.hand_shake")
+			CheckSignLua:generate_stoken(data)
+			self:init_channel()
+			if "function" == type(self.do_on_websocket_ready) then
+				self:do_on_websocket_ready()
+			end
+		end)
 	end
 	
 	function theClass:connect_to_hall_server()
@@ -234,10 +253,16 @@ function HallServerConnectionPlugin.bind(theClass)
 	
 	--网络已重新连接上
 	function theClass:onSocketReopened()
-		print("HallServerConnectionPlugin onSocketReopened")
-		self:restoreConnection()
-		self:updateSocket("socket: reopened, restoring")
 --		self.connection_state = 1
+
+		GlobalSetting.hall_server_websocket:bind("ui.hand_shake", function(data) 
+			dump(data, "ui.hand_shake of reopened socket") 
+			GlobalSetting.hall_server_websocket:unbind_clear("ui.hand_shake")
+			CheckSignLua:generate_stoken(data)
+			print("HallServerConnectionPlugin onSocketReopened")
+			self:restoreConnection()
+			self:updateSocket("socket: reopened, restoring")
+		end)
 	end
 	
 	--网络重连失败

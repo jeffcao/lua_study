@@ -188,6 +188,12 @@ function WebSocketRails:bind(event_name, callback)
     return self.callbacks
 end
 
+function WebSocketRails:unbind_clear(event_name)
+	if self.callbacks[event_name] then
+		self.callbacks[event_name] = nil
+	end
+end
+
 function WebSocketRails:trigger(event_name, data, success_callback, failure_callback)
     local event = nil
     event = WebSocketRails.Event:new( {event_name, data, self.connection_id},

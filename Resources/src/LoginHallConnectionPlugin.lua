@@ -26,11 +26,27 @@ function LoginHallConnectionPlugin.bind(theClass)
 	function theClass:check_connection_hall_server()
 		
 		local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token, version="1.0", run_env = GlobalSetting.run_env}
+		if GlobalSetting.s_token then
+			event_data.s_token = GlobalSetting.s_token
+			event_data.s_name = GlobalSetting.s_name
+		end
+		--[[
 		GlobalSetting.hall_server_websocket:trigger("ui.check_connection", 
 			event_data,
 			__bind(self.enter_hall, self),
 			__bind(self.on_trigger_failure, self))
-
+		]]
+		
+		GlobalSetting.hall_server_websocket:trigger("ui.check_connection", 
+			event_data,
+			__bind(self.enter_hall, self),
+			function(data) 
+				CheckSignLua:check_stoken(data) 
+				if self.on_trigger_failure then
+					self:on_trigger_failure(data)
+				end
+			end
+		)
 	end
 	
 	function theClass:on_check_hall_connection_failure()
@@ -41,8 +57,10 @@ function LoginHallConnectionPlugin.bind(theClass)
 	
 	function theClass:on_hall_server_websocket_ready()
 		print("[LoginHallConnectionPlugin:on_hall_server_websocket_ready()]")
+	
 		GlobalSetting.hall_server_websocket:bind("ui.hand_shake", function(data) 
 			dump(data, "ui.hand_shake") 
+			GlobalSetting.hall_server_websocket:unbind_clear("ui.hand_shake")
 			CheckSignLua:generate_stoken(data)
 			if "function" == type(self.do_on_hall_server_websocket_ready) then
 				self:do_on_hall_server_websocket_ready()
