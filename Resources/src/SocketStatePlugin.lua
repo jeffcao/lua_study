@@ -59,11 +59,7 @@ function SocketStatePlugin.bind(theClass)
 		if GlobalSetting.game_id then
 			event_data.game_id = GlobalSetting.game_id
 		end
-		print("GlobalSetting.s_token in restore connection", GlobalSetting.s_token)
-		if GlobalSetting.s_token then
-			event_data.s_token = GlobalSetting.s_token
-			event_data.s_name = GlobalSetting.s_name
-		end
+		CheckSignLua:fix_sign_param(event_data)
 		local succ = function(data)
 			if self.onSocketRestored then
 				self:onSocketRestored(data)

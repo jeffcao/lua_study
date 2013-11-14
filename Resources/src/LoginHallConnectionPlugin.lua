@@ -26,16 +26,7 @@ function LoginHallConnectionPlugin.bind(theClass)
 	function theClass:check_connection_hall_server()
 		
 		local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token, version="1.0", run_env = GlobalSetting.run_env}
-		if GlobalSetting.s_token then
-			event_data.s_token = GlobalSetting.s_token
-			event_data.s_name = GlobalSetting.s_name
-		end
-		--[[
-		GlobalSetting.hall_server_websocket:trigger("ui.check_connection", 
-			event_data,
-			__bind(self.enter_hall, self),
-			__bind(self.on_trigger_failure, self))
-		]]
+		CheckSignLua:fix_sign_param(event_data)
 		
 		GlobalSetting.hall_server_websocket:trigger("ui.check_connection", 
 			event_data,

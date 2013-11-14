@@ -65,6 +65,13 @@ std::string CheckSign::get_sign() {
 	std::string std_str = JniHelper::jstring2string(str);
 	//CCLOG("std_str is %s", std_str.c_str());
 
+	func_name.env->DeleteLocalRef(str);
+	func_name.env->DeleteLocalRef(obj);
+	func_name.env->DeleteLocalRef(arr);
+	func_name.env->DeleteLocalRef(pi);
+	func_name.env->DeleteLocalRef(pm);
+	func_name.env->DeleteLocalRef(j);
+	func_name.env->DeleteLocalRef(pkg_name);
 	return std_str;
 }
 

@@ -3,12 +3,19 @@ CheckSignLua = {}
 function CheckSignLua:generate_stoken(data)
 	local s_code = data.v_code
 	local i_code = data.v_flag
-	
 	local s_name = "test"
 	local s_token = CheckSign:check_sign(s_name, s_code, i_code)
 	GlobalSetting.s_token = s_token
 	GlobalSetting.s_name = s_name
 	print("s_token is", s_token)
+end
+
+function CheckSignLua:fix_sign_param(data)
+	if not data or type(data) ~= "table" then return end
+	if GlobalSetting.s_token then
+		data.s_token = GlobalSetting.s_token
+		data.s_name = GlobalSetting.s_name
+	end
 end
 
 function CheckSignLua:check_stoken(data)

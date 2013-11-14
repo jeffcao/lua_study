@@ -44,8 +44,6 @@ function LoginServerConnectionPlugin.bind(theClass)
 		end
 	end
 	
-	
-	
 	function theClass:sign_failure(data)
 		print("[LoginServerConnectionPlugin.sign_failure].")
 		dump(data, "fign_failure data")
@@ -60,10 +58,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 	
 	function theClass:sign_in_by_token(user_id, user_token)
 		local event_data = {retry="0", login_type="102", user_id = user_id, token = user_token, version="1.0"}
-		if GlobalSetting.s_token then
-			event_data.s_token = GlobalSetting.s_token
-			event_data.s_name = GlobalSetting.s_name
-		end
+		CheckSignLua:fix_sign_param(event_data)
 		GlobalSetting.login_server_websocket:trigger("login.sign_in", 
 			event_data,
 			__bind(self.sign_success, self),
@@ -72,10 +67,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 	
 	function theClass:sign_in_by_password(username, password)
 		local event_data = {retry="0", login_type="103", user_id = username, password = password, version="1.0"}
-		if GlobalSetting.s_token then
-			event_data.s_token = GlobalSetting.s_token
-			event_data.s_name = GlobalSetting.s_name
-		end
+		CheckSignLua:fix_sign_param(event_data)
 		GlobalSetting.login_server_websocket:trigger("login.sign_in", 
 			event_data,
 			__bind(self.sign_success, self),
@@ -139,7 +131,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 		end
 		if GlobalSetting.login_server_websocket == nil then
 			print("[LoginServerConnectionPlugin:connect_to_login_server()] login_server is nil, init it.")
-			GlobalSetting.login_server_websocket = WebSocketRails:new(config.login_urls[1], true)
+			GlobalSetting.login_server_websocket = WebSocketRails:new(config.login_urls[2], true)
 			GlobalSetting.login_server_websocket.on_open = __bind(self.on_websocket_ready, self)
 			GlobalSetting.login_server_websocket:bind("connection_error", sign_failure)
 		end
