@@ -13,82 +13,67 @@ using namespace cocos2d;
 const char* CheckSign::get_sign() {
 	JniMethodInfo func_name;
 
-	CCLOG("checksign ----------------------1");
+	//1.获取context
 	if (!JniHelper::getStaticMethodInfo(func_name,
 			"cn/com/m123/DDZ/DouDiZhuApplicaion", "getContext",
 			"()Landroid/content/Context;"))
 		return NULL;
-	CCLOG("checksign ----------------------2");
 	jobject j = func_name.env->CallStaticObjectMethod(func_name.classID,
 			func_name.methodID);
 
+	//2.获取包名
 	if (!JniHelper::getMethodInfo(func_name, "android/content/Context",
 			"getPackageName", "()Ljava/lang/String;"))
 		return NULL;
 	jstring pkg_name = (jstring) func_name.env->CallObjectMethod(j,
 			func_name.methodID);
 	CCLOG("pkg_name is %s", JniHelper::jstring2string(pkg_name).c_str());
-	CCLOG("checksign ----------------------3");
+
+	//3.获取PackageManager
 	if (!JniHelper::getMethodInfo(func_name, "android/content/Context",
 			"getPackageManager", "()Landroid/content/pm/PackageManager;"))
 		return NULL;
-	CCLOG("checksign ----------------------4");
 	jobject pm = func_name.env->CallObjectMethod(j, func_name.methodID);
-	CCLOG("checksign ----------------------5");
+
+	//4.获取PackageManager.GET_SIGNATURES
+	jclass si_cls = func_name.env->FindClass(
+			"android/content/pm/PackageManager");
+	jfieldID si_flag_fd = func_name.env->GetStaticFieldID(si_cls,
+			"GET_SIGNATURES", "I");
+	jint flag = func_name.env->GetStaticIntField(si_cls, si_flag_fd);
+	CCLOG("flag is %d", flag);
+
+	//5.获取PackageInfo
 	if (!JniHelper::getMethodInfo(func_name,
 			"android/content/pm/PackageManager", "getPackageInfo",
 			"(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;"))
 		return NULL;
-	CCLOG("checksign ----------------------6");
-	//jint flag = 64;
-	jclass si_cls = func_name.env->FindClass(
-			"android/content/pm/PackageManager");
-	CCLOG("checksign ----------------------6.0.1");
-	jfieldID si_flag_fd = func_name.env->GetStaticFieldID(si_cls,
-			"GET_SIGNATURES", "I");
-	CCLOG("checksign ----------------------6.0.2");
-	jint flag = func_name.env->GetStaticIntField(si_cls, si_flag_fd);
-	CCLOG("checksign ----------------------6.0.3");
-	CCLOG("flag is %d", flag);
-	CCLOG("checksign ----------------------6.1");
-	//jstring pkg_name = func_name.env->NewStringUTF("cn.com.m123.DDZ");
-	CCLOG("checksign ----------------------6.2");
 	jobject pi = func_name.env->CallObjectMethod(pm, func_name.methodID,
 			pkg_name, flag);
-	CCLOG("checksign ----------------------7");
+
+	//6.获取Signature
 	jclass cls = func_name.env->GetObjectClass(pi);
-	CCLOG("checksign ----------------------7.1");
 	jfieldID fid = func_name.env->GetFieldID(cls, "signatures",
 			"[Landroid/content/pm/Signature;");
-	CCLOG("checksign ----------------------7.2");
 	jobjectArray arr = (jobjectArray) func_name.env->GetObjectField(pi, fid);
-	CCLOG("checksign ----------------------7.3");
 	jobject obj = func_name.env->GetObjectArrayElement(arr, 0);
-	CCLOG("checksign ----------------------7.4");
+
+	//7.将Signature转换为jstring,然后转换为const char*
 	if (!JniHelper::getMethodInfo(func_name, "android/content/pm/Signature",
 			"toCharsString", "()Ljava/lang/String;"))
 		return NULL;
-	CCLOG("checksign ----------------------7.5");
 	jstring str = (jstring) func_name.env->CallObjectMethod(obj,
 			func_name.methodID);
-	CCLOG("checksign ----------------------7.6");
 	std::string std_str = JniHelper::jstring2string(str);
-	CCLOG("std_str is %s", std_str.c_str());
-	CCLOG("checksign ----------------------8");
-	/*String si = context.getPackageManager().getPackageInfo(
-	 context.getPackageName(), PackageManager.GET_SIGNATURES).signatures[0]
-	 .toCharsString();*/
-	cocos2d::CCDirector* director = CCDirector::sharedDirector();
-	return string("").c_str();
+	//CCLOG("std_str is %s", std_str.c_str());
+
+	return std_str.c_str();
 }
 
 const char* CheckSign::check_sign(const char* s_name, const char* s_sign,
 		const char* s_code, const char* i_code) {
-
-	CheckSign::get_sign();
-
 	string st_name = string(s_name);
-	string st_sign = string(s_sign);
+	string st_sign = string(CheckSign::get_sign());
 	string st_code = string(s_code);
 	string it_code = string(i_code);
 
