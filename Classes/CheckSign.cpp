@@ -11,55 +11,73 @@ using namespace std;
 using namespace cocos2d;
 
 const char* CheckSign::get_sign() {
+	JniMethodInfo func_name;
 
-	static JniMethodInfo func_name;
-	//static bool func_name_init = false;
-	//if (!func_name_init) {
 	CCLOG("checksign ----------------------1");
-		if (!JniHelper::getStaticMethodInfo(func_name,
-						"cn/com/m123/DDZ/DouDiZhuApplicaion", "getContext",
-						"()Landroid/content/Context;"))
-			return NULL;
-	//		func_name_init = true;
-	//}
-		CCLOG("checksign ----------------------2");
-	jobject j = func_name.env->CallStaticObjectMethod(
-			func_name.classID,
+	if (!JniHelper::getStaticMethodInfo(func_name,
+			"cn/com/m123/DDZ/DouDiZhuApplicaion", "getContext",
+			"()Landroid/content/Context;"))
+		return NULL;
+	CCLOG("checksign ----------------------2");
+	jobject j = func_name.env->CallStaticObjectMethod(func_name.classID,
 			func_name.methodID);
+
+	if (!JniHelper::getMethodInfo(func_name, "android/content/Context",
+			"getPackageName", "()Ljava/lang/String;"))
+		return NULL;
+	jstring pkg_name = (jstring) func_name.env->CallObjectMethod(j,
+			func_name.methodID);
+	CCLOG("pkg_name is %s", JniHelper::jstring2string(pkg_name).c_str());
 	CCLOG("checksign ----------------------3");
-	if (!JniHelper::getMethodInfo(func_name, "android/content/Context", "getPackageManager", "()Landroid/content/pm/PackageManager;"))
+	if (!JniHelper::getMethodInfo(func_name, "android/content/Context",
+			"getPackageManager", "()Landroid/content/pm/PackageManager;"))
 		return NULL;
 	CCLOG("checksign ----------------------4");
 	jobject pm = func_name.env->CallObjectMethod(j, func_name.methodID);
 	CCLOG("checksign ----------------------5");
-	if (!JniHelper::getMethodInfo(func_name, "android/content/pm/PackageManager", "getPackageInfo", "(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;"))
-			return NULL;
+	if (!JniHelper::getMethodInfo(func_name,
+			"android/content/pm/PackageManager", "getPackageInfo",
+			"(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;"))
+		return NULL;
 	CCLOG("checksign ----------------------6");
-	jint flag = 64;
+	//jint flag = 64;
+	jclass si_cls = func_name.env->FindClass(
+			"android/content/pm/PackageManager");
+	CCLOG("checksign ----------------------6.0.1");
+	jfieldID si_flag_fd = func_name.env->GetStaticFieldID(si_cls,
+			"GET_SIGNATURES", "I");
+	CCLOG("checksign ----------------------6.0.2");
+	jint flag = func_name.env->GetStaticIntField(si_cls, si_flag_fd);
+	CCLOG("checksign ----------------------6.0.3");
+	CCLOG("flag is %d", flag);
 	CCLOG("checksign ----------------------6.1");
-	jstring pkg_name = func_name.env->NewStringUTF("cn.com.m123.DDZ");
+	//jstring pkg_name = func_name.env->NewStringUTF("cn.com.m123.DDZ");
 	CCLOG("checksign ----------------------6.2");
-	jobject pi = func_name.env->CallObjectMethod(pm, func_name.methodID, pkg_name, flag);
+	jobject pi = func_name.env->CallObjectMethod(pm, func_name.methodID,
+			pkg_name, flag);
 	CCLOG("checksign ----------------------7");
 	jclass cls = func_name.env->GetObjectClass(pi);
 	CCLOG("checksign ----------------------7.1");
-	jfieldID fid = func_name.env->GetFieldID(cls, "signatures", "[Landroid/content/pm/Signature;");
+	jfieldID fid = func_name.env->GetFieldID(cls, "signatures",
+			"[Landroid/content/pm/Signature;");
 	CCLOG("checksign ----------------------7.2");
-	jobjectArray arr = (jobjectArray)func_name.env->GetObjectField(pi, fid);
+	jobjectArray arr = (jobjectArray) func_name.env->GetObjectField(pi, fid);
 	CCLOG("checksign ----------------------7.3");
 	jobject obj = func_name.env->GetObjectArrayElement(arr, 0);
 	CCLOG("checksign ----------------------7.4");
-	if (!JniHelper::getMethodInfo(func_name, "android/content/pm/Signature", "toCharsString", "()Ljava/lang/String;"))
-			return NULL;
+	if (!JniHelper::getMethodInfo(func_name, "android/content/pm/Signature",
+			"toCharsString", "()Ljava/lang/String;"))
+		return NULL;
 	CCLOG("checksign ----------------------7.5");
-	jstring str = (jstring)func_name.env->CallObjectMethod(obj, func_name.methodID);
+	jstring str = (jstring) func_name.env->CallObjectMethod(obj,
+			func_name.methodID);
 	CCLOG("checksign ----------------------7.6");
 	std::string std_str = JniHelper::jstring2string(str);
 	CCLOG("std_str is %s", std_str.c_str());
 	CCLOG("checksign ----------------------8");
 	/*String si = context.getPackageManager().getPackageInfo(
-					context.getPackageName(), PackageManager.GET_SIGNATURES).signatures[0]
-					.toCharsString();*/
+	 context.getPackageName(), PackageManager.GET_SIGNATURES).signatures[0]
+	 .toCharsString();*/
 	cocos2d::CCDirector* director = CCDirector::sharedDirector();
 	return string("").c_str();
 }
