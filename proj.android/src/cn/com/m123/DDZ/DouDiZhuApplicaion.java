@@ -36,6 +36,10 @@ public class DouDiZhuApplicaion extends Application {
 		System.out.println("sign=>\n" + DDZJniHelper.getSign(this));
 	}
 	
+	public static Context getContext() {
+		return APP_CONTEXT;
+	}
+	
 	private void initDebug() {
 		String pref_name = "Cocos2dxPrefsFile";
 		SharedPreferences sp = getSharedPreferences(pref_name, Context.MODE_PRIVATE);

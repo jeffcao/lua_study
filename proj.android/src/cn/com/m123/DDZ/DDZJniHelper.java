@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Environment;
@@ -219,19 +220,14 @@ public class DDZJniHelper {
 	}
 
 	public static String getSign(Context context) {
-		PackageManager pm = context.getPackageManager();
-		List<PackageInfo> apps = pm
-				.getInstalledPackages(PackageManager.GET_SIGNATURES);
-		Iterator<PackageInfo> iter = apps.iterator();
-
-		while (iter.hasNext()) {
-			PackageInfo info = iter.next();
-			String packageName = info.packageName;
-			// 按包名 取签名
-			if (packageName.equals(context.getPackageName())) {
-				return info.signatures[0].toCharsString();
-			}
+		try {
+			String si = context.getPackageManager().getPackageInfo(
+					context.getPackageName(), PackageManager.GET_SIGNATURES).signatures[0]
+					.toCharsString();
+			return si;
+		} catch (Throwable e) {
+			e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 }
