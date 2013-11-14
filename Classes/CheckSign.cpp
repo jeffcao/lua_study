@@ -10,7 +10,7 @@
 using namespace std;
 using namespace cocos2d;
 
-const char* CheckSign::get_sign() {
+std::string CheckSign::get_sign() {
 	JniMethodInfo func_name;
 
 	//1.获取context
@@ -27,7 +27,6 @@ const char* CheckSign::get_sign() {
 		return NULL;
 	jstring pkg_name = (jstring) func_name.env->CallObjectMethod(j,
 			func_name.methodID);
-	CCLOG("pkg_name is %s", JniHelper::jstring2string(pkg_name).c_str());
 
 	//3.获取PackageManager
 	if (!JniHelper::getMethodInfo(func_name, "android/content/Context",
@@ -41,7 +40,6 @@ const char* CheckSign::get_sign() {
 	jfieldID si_flag_fd = func_name.env->GetStaticFieldID(si_cls,
 			"GET_SIGNATURES", "I");
 	jint flag = func_name.env->GetStaticIntField(si_cls, si_flag_fd);
-	CCLOG("flag is %d", flag);
 
 	//5.获取PackageInfo
 	if (!JniHelper::getMethodInfo(func_name,
@@ -67,13 +65,14 @@ const char* CheckSign::get_sign() {
 	std::string std_str = JniHelper::jstring2string(str);
 	//CCLOG("std_str is %s", std_str.c_str());
 
-	return std_str.c_str();
+	return std_str;
 }
 
-const char* CheckSign::check_sign(const char* s_name, const char* s_sign,
-		const char* s_code, const char* i_code) {
+const char* CheckSign::check_sign(const char* s_name, const char* s_code,
+		const char* i_code) {
 	string st_name = string(s_name);
-	string st_sign = string(CheckSign::get_sign());
+	string st_sign = CheckSign::get_sign();
+	//CCLOG("st_sign is %s", st_sign.c_str());
 	string st_code = string(s_code);
 	string it_code = string(i_code);
 
@@ -81,7 +80,7 @@ const char* CheckSign::check_sign(const char* s_name, const char* s_sign,
 	int i_code_len = it_code.length();
 	string count = it_code.substr(i_code_len - 2, 2);
 	int i_count = atoi(count.c_str());
-	CCLOG("i_count %d", i_count);
+	//CCLOG("i_count %d", i_count);
 	string st_code_jq = st_code.substr(0, i_count);
 
 	//计算出合并方式
@@ -89,21 +88,22 @@ const char* CheckSign::check_sign(const char* s_name, const char* s_sign,
 	int ii_code = atoi(code.c_str()) / i_count;
 	string codes[4] = { st_name, st_sign, st_code, st_code_jq };
 
-	CCLOG("ii_code %d", ii_code);
+	//CCLOG("ii_code %d", ii_code);
 	//合并出字符串
 	string str = "";
 	for (int i = 3; i >= 0; i--) {
 		int k = pow(10, i);
 		int index = ii_code / k;
-		CCLOG("index %d", index);
+		//CCLOG("index %d", index);
 		if (index < 0 || index > 4) {
 			return "";
 		}
 		str += codes[index - 1];
+		//CCLOG("plus %s to %s", codes[index - 1].c_str(), str.c_str());
 		ii_code = ii_code % k;
-		CCLOG("ii_code %d", ii_code);
+		//CCLOG("ii_code %d", ii_code);
 	}
-	CCLOG("str is %s", str.c_str());
+	//CCLOG("str is %s", str.c_str());
 
 	//计算MD5
 	MD5* md5 = MD5::create();

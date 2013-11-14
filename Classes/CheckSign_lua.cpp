@@ -1,6 +1,6 @@
 /*
 ** Lua binding: CheckSign
-** Generated automatically by tolua++-1.0.93 on Tue Nov 12 17:51:02 2013.
+** Generated automatically by tolua++-1.0.93 on Thu Nov 14 10:11:34 2013.
 */
 
 /****************************************************************************
@@ -66,19 +66,17 @@ static int tolua_CheckSign_CheckSign_check_sign00(lua_State* tolua_S)
      !tolua_isstring(tolua_S,2,0,&tolua_err) ||
      !tolua_isstring(tolua_S,3,0,&tolua_err) ||
      !tolua_isstring(tolua_S,4,0,&tolua_err) ||
-     !tolua_isstring(tolua_S,5,0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,6,&tolua_err)
+     !tolua_isnoobj(tolua_S,5,&tolua_err)
  )
   goto tolua_lerror;
  else
 #endif
  {
   const char* s_name = ((const char*)  tolua_tostring(tolua_S,2,0));
-  const char* s_sign = ((const char*)  tolua_tostring(tolua_S,3,0));
-  const char* s_code = ((const char*)  tolua_tostring(tolua_S,4,0));
-  const char* i_code = ((const char*)  tolua_tostring(tolua_S,5,0));
+  const char* s_code = ((const char*)  tolua_tostring(tolua_S,3,0));
+  const char* i_code = ((const char*)  tolua_tostring(tolua_S,4,0));
   {
-   const char* tolua_ret = (const char*)  CheckSign::check_sign(s_name,s_sign,s_code,i_code);
+   const char* tolua_ret = (const char*)  CheckSign::check_sign(s_name,s_code,i_code);
    tolua_pushstring(tolua_S,(const char*)tolua_ret);
   }
  }

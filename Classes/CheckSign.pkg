@@ -1,4 +1,4 @@
 class CheckSign {
-	static const char* check_sign(const char* s_name, const char* s_sign,
+	static const char* check_sign(const char* s_name,
 		const char* s_code, const char* i_code);
 };

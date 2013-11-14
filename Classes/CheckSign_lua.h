@@ -1,6 +1,6 @@
 /*
 ** Lua binding: CheckSign
-** Generated automatically by tolua++-1.0.93 on Tue Nov 12 17:51:02 2013.
+** Generated automatically by tolua++-1.0.93 on Thu Nov 14 10:11:34 2013.
 */
 extern "C" {
 #include "tolua++.h"
