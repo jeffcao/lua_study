@@ -20,7 +20,7 @@
             <key>btn_cancel_a.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{926,905},{90,45}}</string>
+                <string>{{926,904},{90,45}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>btn_cancel_b.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{915,858},{90,45}}</string>
+                <string>{{915,857},{90,45}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,28 +98,28 @@
             <key>btn_login.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{851,790},{156,66}}</string>
+                <string>{{851,790},{156,65}}</string>
                 <key>offset</key>
-                <string>{-3,-1}</string>
+                <string>{-2,-1}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{3,7},{156,66}}</string>
+                <string>{{4,5},{156,65}}</string>
                 <key>sourceSize</key>
-                <string>{168,78}</string>
+                <string>{168,73}</string>
             </dict>
             <key>btn_login_a.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{955,160},{156,66}}</string>
+                <string>{{955,160},{156,65}}</string>
                 <key>offset</key>
-                <string>{-3,-1}</string>
+                <string>{-2,-1}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{3,7},{156,66}}</string>
+                <string>{{4,5},{156,65}}</string>
                 <key>sourceSize</key>
-                <string>{168,78}</string>
+                <string>{168,73}</string>
             </dict>
             <key>btn_register.png</key>
             <dict>
@@ -150,7 +150,7 @@
             <key>btn_register_account.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{973,905},{117,44}}</string>
+                <string>{{973,904},{117,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -300,7 +300,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:57df49f7dee0371c4015013603860342$</string>
+            <string>$TexturePacker:SmartUpdate:507a7c877496b19bb2107dba99f40f0d$</string>
             <key>textureFileName</key>
             <string>login.png</string>
         </dict>
