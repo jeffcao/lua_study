@@ -79,8 +79,11 @@ end
 function FeedbackScene:do_on_trigger_failure(data)
 	print("[InfoLayer:do_on_trigger_failure]")
 	self:hide_progress_message_box()
-	self:show_message_box(self.failure_msg)
-
+	local msg = self.failure_msg
+	if data.result_message then msg = data.result_message end
+	self:show_message_box(msg)
+	self.feedback_box:setText("")
+	self.feedback_ttf:setString("")
 end
 
 UIControllerPlugin.bind(FeedbackScene)

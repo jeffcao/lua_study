@@ -52,7 +52,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 		
 --		print("[LoginServerConnectionPlugin.sign_failure] result code: "..data.result_code)
 		if "function" == type(self.do_on_login_failure) then
-			self:do_on_login_failure()
+			self:do_on_login_failure(data)
 		end
 	end
 	

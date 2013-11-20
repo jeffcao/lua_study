@@ -117,6 +117,7 @@ function InfoLayer:init_player_info()
 	account_lb:setString(cur_user.user_id)
 	
 	local nick_name_box = tolua.cast(self.nick_name_edit_layer:getChildByTag(101), "CCEditBox")
+	dump(cur_user.nick_name, "cur_user.nick_name")
 	nick_name_box:setText(cur_user.nick_name)
 	
 	local scores_lb = tolua.cast(self.scores_lb, "CCLabelTTF")
@@ -151,8 +152,10 @@ end
 function InfoLayer:do_on_trigger_failure(data)
 	print("[InfoLayer:do_on_trigger_failure]")
 	self:hide_progress_message_box()
-	self:show_message_box(self.failure_msg)
-
+	local msg = self.failure_msg
+	if data.result_message then msg = data.result_message end
+	self:show_message_box(msg)
+	self:init_player_info()
 end
 
 UIControllerPlugin.bind(InfoLayer)

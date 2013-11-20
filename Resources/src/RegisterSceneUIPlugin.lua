@@ -4,34 +4,34 @@ function RegisterSceneUIPlugin.bind(theClass)
 	
 	function theClass:init_input_controller()
 		self.input_png = "kuang_b.png"
-		local name_box = self:addEditbox(self.nick_name_layer, 225, 30, false, 101)
-		name_box:setPlaceHolder("昵称为不大于10位的任意字符")
-		name_box:setMaxLength(10)
-		local pwd_box = self:addEditbox(self.password_layer, 225, 30, true, 102)
-		pwd_box:setPlaceHolder("密码为8到20位的任意字符")
-		pwd_box:setMaxLength(20)
-		local c_pwd_box = self:addEditbox(self.confirm_pwd_layer, 225, 30, true, 103)
-		c_pwd_box:setMaxLength(20)
-		c_pwd_box:setPlaceHolder("再次输入密码")
+		self.name_box = self:addEditbox(self.nick_name_layer, 225, 30, false, 101)
+		self.name_box:setPlaceHolder("昵称为不大于10位的任意字符")
+		self.name_box:setMaxLength(10)
+		self.pwd_box = self:addEditbox(self.password_layer, 225, 30, true, 102)
+		self.pwd_box:setPlaceHolder("密码为8到20位的任意字符")
+		self.pwd_box:setMaxLength(20)
+		self.c_pwd_box = self:addEditbox(self.confirm_pwd_layer, 225, 30, true, 103)
+		self.c_pwd_box:setMaxLength(20)
+		self.c_pwd_box:setPlaceHolder("再次输入密码")
 		
 		local male_on_sprite = CCSprite:createWithSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_d.png"))
 		local male_off_sprite = CCSprite:createWithSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_c.png"))
 		local male_on_btn = CCMenuItemSprite:create(male_on_sprite,nil)
 		local male_off_btn = CCMenuItemSprite:create(male_off_sprite,nil)
-		local male_item_toggle = CCMenuItemToggle:create(male_on_btn)
-		male_item_toggle:addSubItem(male_off_btn)
-		male_item_toggle:setSelectedIndex(1)
-		male_item_toggle:registerScriptTapHandler(__bind(self.do_male_btn_clicked, self))
-		self.gender_male_menu:addChild(male_item_toggle,0,2001)
+		self.male_item_toggle = CCMenuItemToggle:create(male_on_btn)
+		self.male_item_toggle:addSubItem(male_off_btn)
+		self.male_item_toggle:setSelectedIndex(1)
+		self.male_item_toggle:registerScriptTapHandler(__bind(self.do_male_btn_clicked, self))
+		self.gender_male_menu:addChild(self.male_item_toggle,0,2001)
 		
 		local female_on_sprite = CCSprite:createWithSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_d.png"))
 		local female_off_sprite = CCSprite:createWithSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_c.png"))
 		local female_on_btn = CCMenuItemSprite:create(female_on_sprite,nil)
 		local female_off_btn = CCMenuItemSprite:create(female_off_sprite,nil)
-		local female_item_toggle = CCMenuItemToggle:create(female_on_btn)
-		female_item_toggle:registerScriptTapHandler(__bind(self.do_female_btn_clicked, self))
-		female_item_toggle:addSubItem(female_off_btn)
-		self.gender_female_menu:addChild(female_item_toggle,0,2001)
+		self.female_item_toggle = CCMenuItemToggle:create(female_on_btn)
+		self.female_item_toggle:registerScriptTapHandler(__bind(self.do_female_btn_clicked, self))
+		self.female_item_toggle:addSubItem(female_off_btn)
+		self.gender_female_menu:addChild(self.female_item_toggle,0,2001)
 		 
 	end
 	
@@ -130,10 +130,20 @@ function RegisterSceneUIPlugin.bind(theClass)
 			end)
 	end
 	
-	function theClass:do_on_login_failure()
+	function theClass:do_on_login_failure(data)
 		self:hide_progress_message_box()
-		self:show_message_box(strings.rsp_register_w)
-		
+		local msg = strings.rsp_register_w
+		if data.result_message then msg = data.result_message end
+		self:show_message_box(msg)
+		self:clear_input()
+	end
+	
+	function theClass:clear_input()
+		self.name_box:setText("")
+		self.pwd_box:setText("")
+		self.c_pwd_box:setText("")
+		self.male_item_toggle:setSelectedIndex(1)
+		self.female_item_toggle:setSelectedIndex(0)
 	end
 
 end
