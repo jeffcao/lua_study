@@ -54,12 +54,17 @@ function UserCenterSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:after_player_info_changed(data)
-		print("[theClass:after_update_avatar] data => ", data)
+		dump(data, "[theClass:after_update_avatar] data => ")
 		self:update_current_user(data)
-		self:display_avatar()
+		self:update_personal_info_layer()
 		self.avatar_call_back(data)
 	end
 
+	function theClass:update_personal_info_layer()
+		if self.current_layer == "personal_info" and self.c_layer then
+			self.c_layer:init_player_info()
+		end
+	end
 	
 	function theClass:display_avatar()
 	
