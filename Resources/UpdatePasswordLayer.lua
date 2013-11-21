@@ -73,14 +73,18 @@ function UpdatePasswordLayer:do_on_trigger_success(data)
 	print("[UpdatePasswordLayer:do_on_trigger_success]")
 	self:hide_progress_message_box()
 	self:show_message_box_suc(strings.upl_update_pswd_s)
-	
+	self.old_pwd_box:setText("")
+	self.new_pwd_box:setText("")
+	self.cfm_pwd_box:setText("")
 end
 
 function UpdatePasswordLayer:do_on_trigger_failure(data)
 	print("[UpdatePasswordLayer:do_on_trigger_failure]")
 	self:hide_progress_message_box()
 	self:show_message_box(self.failure_msg)
-
+	self.old_pwd_box:setText("")
+	self.new_pwd_box:setText("")
+	self.cfm_pwd_box:setText("")
 end
 
 UpdatePasswordLayerUPlugin.bind(UpdatePasswordLayer)

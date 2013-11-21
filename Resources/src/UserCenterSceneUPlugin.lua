@@ -57,6 +57,7 @@ function UserCenterSceneUPlugin.bind(theClass)
 		dump(data, "[theClass:after_update_avatar] data => ")
 		self:update_current_user(data)
 		self:update_personal_info_layer()
+		self:display_avatar()
 		self.avatar_call_back(data)
 	end
 
