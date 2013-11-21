@@ -82,8 +82,9 @@ function FeedbackScene:do_on_trigger_failure(data)
 	local msg = self.failure_msg
 	if data.result_message then msg = data.result_message end
 	self:show_message_box(msg)
-	self.feedback_box:setText("")
-	self.feedback_ttf:setString("")
+	--		self.feedback_box:setText("")
+	self.feedback_ttf:setString("重新输入")
+	self.feedback_box:setText("重新输入")
 end
 
 UIControllerPlugin.bind(FeedbackScene)
