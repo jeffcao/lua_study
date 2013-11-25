@@ -46,6 +46,9 @@ function YesNoDialog:ctor()
 	self:swallowOnTouch(menus)
 	self:swallowOnKeypad()
 
+	set_stroke(self.reject_btn_lbl, 2, GlobalSetting.red_stroke)
+	set_stroke(self.confirm_btn_lbl, 2, GlobalSetting.green_stroke)
+	
 	self:setOnKeypad(function(key)
 		print("yesno dialog on key pad")
 		if key == "backClicked" then
