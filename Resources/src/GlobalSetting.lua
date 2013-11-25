@@ -52,6 +52,12 @@ GlobalSetting = {
 	run_env = "test",
 	
 	push_period = 10,
+	
+	blue_stroke = ccc3(0, 54, 67),
+	
+	green_stroke = ccc3(15, 39, 4),
+	
+	red_stroke = ccc3(61, 0, 9),
 
 	zongse = ccc3(67,31,24),
 

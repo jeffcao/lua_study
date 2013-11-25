@@ -33,6 +33,8 @@ function BackMessageBoxLayer:ctor()
 	
 	self:setVisible(false)
 	
+	set_stroke(self.reject_btn_lbl, 2, GlobalSetting.blue_stroke)
+	
 --	self:setYesButton(function()
 --		self:dismiss()
 --	end)
@@ -44,7 +46,7 @@ function BackMessageBoxLayer:ctor()
 	local menus = CCArray:create()
 
 	menus:addObject(tolua.cast(self.reject_menu, "CCLayerRGBA"))
-	menus:addObject(tolua.cast(self.confirm_menu, "CCLayerRGBA"))
+	--menus:addObject(tolua.cast(self.confirm_menu, "CCLayerRGBA"))
 	self:swallowOnTouch(menus)
 	self:swallowOnKeypad()
 
