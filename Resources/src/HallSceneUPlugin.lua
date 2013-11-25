@@ -1,6 +1,5 @@
 local cjson = require "cjson"
 require "UserCenterScene"
-require "YesNoDialog2"
 require "YesNoDialog"
 require "MarketScene"
 require "MenuDialog"
