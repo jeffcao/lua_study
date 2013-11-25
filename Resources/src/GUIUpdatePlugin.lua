@@ -574,7 +574,7 @@ function GUIUpdatePlugin.bind(theClass)
 		if not self.exit_layer then
 			self.exit_layer = createYesNoDialog(self.rootNode)
 			self.exit_layer:setTitle(strings.gup_mand_exit)
-			self.exit_layer:setMessage(resources.gup_mand_eixt_w)
+			self.exit_layer:setMessage(strings.gup_mand_eixt_w)
 			local yes_fn = function()
 				self.exit_layer:dismiss()
 				self:exit()
