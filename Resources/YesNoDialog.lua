@@ -46,8 +46,8 @@ function YesNoDialog:ctor()
 	self:swallowOnTouch(menus)
 	self:swallowOnKeypad()
 
-	set_stroke(self.reject_btn_lbl, 2, GlobalSetting.red_stroke)
-	set_stroke(self.confirm_btn_lbl, 2, GlobalSetting.green_stroke)
+	set_green_stroke(self.reject_btn_lbl)
+	set_red_stroke(self.confirm_btn_lbl)
 	
 	self:setOnKeypad(function(key)
 		print("yesno dialog on key pad")

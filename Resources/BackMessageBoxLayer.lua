@@ -33,7 +33,7 @@ function BackMessageBoxLayer:ctor()
 	
 	self:setVisible(false)
 	
-	set_stroke(self.reject_btn_lbl, 2, GlobalSetting.blue_stroke)
+	set_blue_stroke(self.reject_btn_lbl)
 	
 --	self:setYesButton(function()
 --		self:dismiss()

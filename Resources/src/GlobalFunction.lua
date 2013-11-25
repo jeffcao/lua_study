@@ -330,6 +330,18 @@ function set_string_with_stroke(label, str)
 	set_stroke(label, label.stroke_size, label.stroke_color)
 end
 
+function set_blue_stroke(label)
+	set_stroke(label, 2, GlobalSetting.blue_stroke)
+end
+
+function set_green_stroke(label)
+	set_stroke(label, 2, GlobalSetting.green_stroke)
+end
+
+function set_red_stroke(label)
+	set_stroke(label, 2, GlobalSetting.red_stroke)
+end
+
 function set_stroke(label, size, color)
 	local stroke = create_stroke(label, size, color)
 	if not label.stroke_sprite then
