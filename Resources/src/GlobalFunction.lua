@@ -346,6 +346,10 @@ function set_red_stroke(label)
 	set_stroke(label, 2, GlobalSetting.red_stroke)
 end
 
+function set_black_stroke(label)
+	set_stroke(label, 2, GlobalSetting.black_stroke)
+end
+
 function set_stroke(label, size, color)
 	local stroke = create_stroke(label, size, color)
 	if not label.stroke_sprite then

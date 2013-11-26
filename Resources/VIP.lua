@@ -76,7 +76,9 @@ function VIP:ctor()
 	self.tequan_lbl:setString("每天发放"..vip.salary.."工资")
 	
 	--设置领工资
-	self.vip_get_salary_item:setEnabled((vip.get_salary==0))
+	local not_get = (vip.get_salary==0)
+	self:set_get_salary(not_get)
+	
 
  	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
  	
@@ -84,6 +86,17 @@ function VIP:ctor()
 	
 	self.vip_kuang:setScale(vip_kuang_scales[tonumber(vip.vip_level)] * GlobalSetting.content_scale_factor)
 	
+end
+
+function VIP:set_get_salary(enbale)
+	self.vip_get_salary_item:setEnabled(enbale)
+	if enbale then 
+		self.vip_get_salary_lbl:setString("领 取") 
+		set_green_stroke(self.vip_get_salary_lbl)
+	else
+		self.vip_get_salary_lbl:setString("已 领 取") 
+		set_black_stroke(self.vip_get_salary_lbl)
+	end
 end
 
 function VIP:onEnter()
@@ -103,7 +116,8 @@ end
 function VIP:do_on_trigger_success(data)
 	print("[VIP:do_on_trigger_success]")
 	self:hide_progress_message_box()
-	self.vip_get_salary_item:setEnabled(false)
+	--self.vip_get_salary_item:setEnabled(false)
+	self:set_get_salary(false)
 	if data.result_code == 0 then
 		self:show_message_box_suc("恭喜您领取了今天的工资"..data.salary.."豆子")
 		GlobalSetting.vip.get_salary = 1

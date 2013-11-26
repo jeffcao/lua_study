@@ -61,6 +61,8 @@ GlobalSetting = {
 	
 	light_blue_stroke = ccc3(7,49,64),
 
+	black_stroke = ccc3(48, 48, 48),
+
 	zongse = ccc3(67,31,24),
 
 	sina_share_url = "http://service.weibo.com/share/share.php?appkey=2045436852&title="..default_share.."&ralateUid=&language=zh_cn",
