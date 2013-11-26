@@ -72,6 +72,7 @@ HallScene = class("HallScene", function()
 	self:set_btn_stroke(self.to_info_lbl)
 	self:set_btn_stroke(self.to_feedback_lbl)
 	self:set_btn_stroke(self.task_lbl)
+	set_blue_stroke(self.quick_game_btn_lbl)
  end
  
  function HallScene:set_btn_stroke(btn_lbl)
