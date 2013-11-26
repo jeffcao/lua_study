@@ -93,8 +93,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string>ccbResources/common.plist</string>
-									<string>daojvkuang1.png</string>
+									<string></string>
+									<string>ccbResources/daojvkuang1.png</string>
 								</array>
 							</dict>
 							<dict>
