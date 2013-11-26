@@ -27,6 +27,9 @@ function InitPlayerInfoLayer:ctor(init_player_info_callback)
 	
 	self.init_player_info_callback = init_player_info_callback
 	
+	set_green_stroke(self.commit_btn_lbl)
+	set_red_stroke(self.close_btn_lbl)
+	
 	self:init_input_controller()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
