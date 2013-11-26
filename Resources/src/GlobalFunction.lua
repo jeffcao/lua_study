@@ -334,6 +334,10 @@ function set_blue_stroke(label)
 	set_stroke(label, 2, GlobalSetting.blue_stroke)
 end
 
+function set_light_blue_stroke(label)
+	set_stroke(label, 2, GlobalSetting.light_blue_stroke)
+end
+
 function set_green_stroke(label)
 	set_stroke(label, 2, GlobalSetting.green_stroke)
 end

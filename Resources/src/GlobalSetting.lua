@@ -58,6 +58,8 @@ GlobalSetting = {
 	green_stroke = ccc3(15, 39, 4),
 	
 	red_stroke = ccc3(61, 0, 9),
+	
+	light_blue_stroke = ccc3(7,49,64),
 
 	zongse = ccc3(67,31,24),
 

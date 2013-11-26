@@ -53,6 +53,11 @@ function LoginScene:ctor()
 	self:init_input_controll()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
+	set_blue_stroke(self.login_btn_lbl)
+	set_blue_stroke(self.kuaisu_login_btn_lbl)
+	set_light_blue_stroke(self.forget_password_btn_lbl)
+	set_light_blue_stroke(self.register_account_btn_lbl)
+	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler( __bind(self.on_keypad_pressed, self) )
 
