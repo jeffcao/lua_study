@@ -29,6 +29,10 @@ function GameOver:initCallback(onToHall, onChangeDesk, onClose)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	self:setVisible(false)
 	
+	set_blue_stroke(self.return_btn_lbl)
+	set_blue_stroke(self.gm_change_table_lbl)
+	set_blue_stroke(self.to_hall_btn_lbl)
+	
 	local menus = CCArray:create()
 	menus:addObject(self.to_hall_btn:getParent())
 	menus:addObject(self.gm_change_table:getParent())
