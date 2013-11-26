@@ -86,6 +86,23 @@ function GamingScene:ctor()
 	Timer.add_timer(0.5, function() 
 		self:check_tech_msg("enter_room")
 	end)
+	self:setStrokes()
+end
+
+function GamingScene:setStrokes()
+	set_blue_stroke(self.menu_item_buchu_lbl)
+	set_blue_stroke(self.menu_item_reselect_lbl)
+	set_blue_stroke(self.menu_item_tip_lbl)
+	set_blue_stroke(self.menu_item_play_lbl)
+	
+	set_blue_stroke(self.menu_item_bujiao_lbl)
+	set_blue_stroke(self.menu_item_1fen_lbl)
+	set_blue_stroke(self.menu_item_2fen_lbl)
+	set_blue_stroke(self.menu_item_3fen_lbl)
+	
+	set_blue_stroke(self.menu_item_ready_lbl)
+	
+	set_blue_stroke(self.menu_item_huanzhuo_lbl)
 end
 
 function GamingScene:onEnter()
