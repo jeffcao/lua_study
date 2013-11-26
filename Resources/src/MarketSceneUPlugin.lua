@@ -206,6 +206,7 @@ function MarketSceneUPlugin.bind(theClass)
 		local layer = CCLayer:create()
 		local label = CCLabelTTF:create(name_hanzi,"default",25)
 		
+		
 		local menu_normal_sprite = CCSprite:createWithSpriteFrameName("xuanxiangka2.png")
 		local menu_click_sprite = CCSprite:createWithSpriteFrameName("xuanxiangka1.png")
 		local toggle_sub_normal = CCMenuItemSprite:create(menu_normal_sprite, menu_click_sprite)
@@ -222,11 +223,12 @@ function MarketSceneUPlugin.bind(theClass)
 		layer:addChild(label)
 		self.menu_layer:addChild(layer)
 		layer:setPosition(ccp(40+(tonumber(tab_seq)-1)*115,20))
-		
+		set_blue_stroke(label)
 		
 		layer.menu = menu
 		layer.toggle = toggle
 		layer.name = name
+		layer.label = label
 		layer.y = layer:getPositionY()
 		layer.x = layer:getPositionX()
 		self.tabs[name]=layer
@@ -252,13 +254,14 @@ function MarketSceneUPlugin.bind(theClass)
 					if not v.attach_view:getParent() then
 						self.content_layer:addChild(v.attach_view)
 					end
+					set_red_stroke(v.label)
 					v.toggle:setSelectedIndex(1)
 					v.attach_view:setVisible(true)
 					v.menu:setEnabled(false)
 					v:setPosition(ccp(v.x, v.y - 10))
 				end
 			else
-				if v.name == self.last_tab then v:setPosition(ccp(v.x, v.y)) end
+				if v.name == self.last_tab then v:setPosition(ccp(v.x, v.y)) set_blue_stroke(v.label) end
 				v.toggle:setSelectedIndex(0)
 				if v.attach_view then v.attach_view:setVisible(false) end
 				v.menu:setEnabled(true)
