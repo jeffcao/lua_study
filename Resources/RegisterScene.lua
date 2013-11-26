@@ -20,6 +20,9 @@ function RegisterScene:ctor()
 	self:addChild(node)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
+	set_green_stroke(self.register_btn_lbl)
+	set_red_stroke(self.cancel_btn_lbl)
+	
 	self:init_input_controller()
 
 	self.rootNode:setKeypadEnabled(true)
