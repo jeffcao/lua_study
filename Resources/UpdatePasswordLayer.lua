@@ -41,6 +41,8 @@ function UpdatePasswordLayer:ctor()
 	self.new_pwd_box:setPlaceHolder(" 设置密码")
 	self.cfm_pwd_box:setPlaceHolder(" 重复输入")
 	
+	set_green_stroke(self.ok_btn_lbl)
+	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
 end
