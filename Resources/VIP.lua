@@ -91,7 +91,7 @@ end
 function VIP:set_get_salary(enbale)
 	self.vip_get_salary_item:setEnabled(enbale)
 	if enbale then 
-		self.vip_get_salary_lbl:setString("领 取") 
+		self.vip_get_salary_lbl:setString("领 工 资") 
 		set_green_stroke(self.vip_get_salary_lbl)
 	else
 		self.vip_get_salary_lbl:setString("已 领 取") 
