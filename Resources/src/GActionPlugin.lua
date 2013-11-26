@@ -455,7 +455,7 @@ function GActionPlugin.bind(theClass)
 		self.menu_huanzhuo:setVisible(false)
 		self.menu_ready:setVisible(false)
 		if self.game_over_layer then
-			self.game_over_layer.gm_change_table:setVisible(false)
+			self.game_over_layer.gm_change_table_layer:setVisible(false)
 		end
 		self.g_WebSocket:trigger("g.user_change_table", event_data, function(data) 
 			print("========game.user_change_table return success: " , data)
@@ -463,7 +463,7 @@ function GActionPlugin.bind(theClass)
 			self.menu_ready:setVisible(true)
 			self.menu_huanzhuo:setTag(1000)
 			if self.game_over_layer then
-				self.game_over_layer.gm_change_table:setVisible(true)
+				self.game_over_layer.gm_change_table_layer:setVisible(true)
 			end
 			self:onReturn()
 			self:onEnterRoomSuccess(data)
@@ -472,7 +472,7 @@ function GActionPlugin.bind(theClass)
 			self.menu_ready:setVisible(true)
 			self.menu_huanzhuo:setTag(1000)
 			if self.game_over_layer then
-				self.game_over_layer.gm_change_table:setVisible(true)
+				self.game_over_layer.gm_change_table_layer:setVisible(true)
 			end
 			print("----------------game.user_change_table return failure: " , data)
 		end)
