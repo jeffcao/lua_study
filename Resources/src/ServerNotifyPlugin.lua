@@ -106,7 +106,7 @@ function ServerNotifyPlugin.bind(theClass)
 		dump(scene, 'running scene')
 		if scene.rootNode and scene.show_server_notify and data.user_id then
 			cclog('the running scene has root node')
-			local msg = string.gsub(strings.snp_zaixianyouli, "您已在线满minutes分钟", tostring(data.online_time))
+			local msg = string.gsub(strings.snp_zaixianyouli, "minutes", tostring(data.online_time))
 			msg = string.gsub(msg, "beans", tostring(data.beans))
 			--local msg = "在线有礼：您已在线满"..tostring(data.online_time).."分钟，获得了"..tostring(data.beans).."个豆子"
 			scene:show_server_notify(msg)
