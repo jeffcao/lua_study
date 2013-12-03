@@ -41,6 +41,12 @@ public class DouDiZhu_Lua extends Cocos2dxActivity{
 		INSTANCE = this;
 	}
 	
+	public Cocos2dxGLSurfaceView onCreateView() {
+    	Cocos2dxGLSurfaceView glSurfaceView = new Cocos2dxGLSurfaceView(this);
+    	glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
+    	return glSurfaceView;
+    }
+	
     static {
          System.loadLibrary("game");
     }

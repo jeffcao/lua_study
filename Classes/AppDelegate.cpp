@@ -9,6 +9,7 @@
 #include "Downloader_lua.h"
 #include "md5_lua.h"
 #include "CheckSign_lua.h"
+#include "Marquee_lua.h"
 #include "CCLuaStack.h"
 #include "CCLuaValue.h"
 #include <algorithm>
@@ -209,6 +210,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     tolua_Downloader_open(pLuaState);
     tolua_md5_open(pLuaState);
     tolua_CheckSign_open(pLuaState);
+    tolua_Marquee_open(pLuaState);
     luaopen_LuaProxy(pLuaState);
     luaopen_lua_extensions(pLuaState);
     tolua_extensions_ccb_open(pLuaState);

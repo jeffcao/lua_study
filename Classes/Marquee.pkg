@@ -1,0 +1,12 @@
+class Marquee : public cocos2d::CCObject {
+	static Marquee* create();
+	void setSize(float width, float height);
+	void enableStroke();
+	void enableStroke(int r, int g, int b, int stroke_size);
+	void setTextSize(int size);
+	void setTextColor(int r, int g, int b);
+	void setTextFont(const char* font);
+	void setText(const char* text);
+	void init(CCLayer* parent, float x, float y);
+	CCNode* getClipNode();
+};
