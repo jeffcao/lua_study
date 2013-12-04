@@ -50,9 +50,10 @@ function AboutScene:ctor()
 	local marquee = Marquee:create()
 	--marquee:setText("hahahahhhhhhhhhhhhhhhhhhhhhhhhhhh")
 	marquee:enableStroke()
+	marquee:setSize(500, 32)
 	marquee:init(my_layer, my_layer:getContentSize().width/2, my_layer:getContentSize().height/2)
 	Timer.add_timer(10, function() marquee:setText("changed to new text, in this way, hahha, now play it") end, 'marquee')
-	Timer.add_timer(25, function() marquee:setText("test another text") end, 'marquee')
+	Timer.add_timer(25, function() marquee:setText("在走马灯里显示汉字，。。。。以及富豪》》》符号") end, 'marquee')
 	Timer.add_timer(40, function() marquee:setText("local my_layer = CCLayer:create() my_layer:setAnchorPoint(ccp(0.5,0.5)) my_layer:setContentSize(node:getContentSize()) my_layer:setPosition(node:getContentSize().width/2, node:getContentSize().height/2) my_layer:ignoreAnchorPointForPosition(false) node:addChild(my_layer)") end, 'marquee')
 end
 
