@@ -26,6 +26,8 @@ function FullMubanStyleUPlugin.bind(theClass)
 	function theClass:setOnBackClicked(fn)
 		local keypad_fn = function(key)
 			if key == "backClicked" then
+				print("muban style on back clicked")
+				if hasDialogFloating(self) then print "there is dialog floating" return end
 				fn()
 			end
 		end

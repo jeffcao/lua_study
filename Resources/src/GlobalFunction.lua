@@ -413,3 +413,74 @@ function create_stroke(label, size, color)
 
     return rt
 end
+
+function touchChild(node, arr)
+	local node = tolua.cast(node, "CCNode")
+	if node:getTag() == 1011 then
+		table.insert(arr, node)
+	end
+	if node:getChildrenCount() > 0 then
+		local children = node:getChildren()
+		for index = 0, children:count()-1 do
+			local child = children:objectAtIndex(index)
+			touchChild(child, arr)
+		end
+	end
+end
+
+function getTouchChilds(node)
+	local arr = {}
+	touchChild(node, arr)
+	return arr
+end
+
+function getMaxZOrder(node)
+	local max = 0
+	if node:getChildrenCount() > 0 then
+		local children = node:getChildren()
+		for index = 0, children:count()-1 do
+			local child = children:objectAtIndex(index)
+			if child.getZOrder then
+				local child_order = child:getZOrder()
+				if child_order > max then max = child_order end
+			end
+		end
+	end
+	return max
+end
+
+function getMaxZOrderVisibleChild(node)
+	local max = 0
+	local max_node = node
+	if node:getChildrenCount() > 0 then
+		local children = node:getChildren()
+		for index = 0, children:count()-1 do
+			local child = children:objectAtIndex(index)
+			if child.getZOrder then
+				local child_order = child:getZOrder()
+				if child:isVisible() and child_order > max then max = child_order max_node = child end
+			end
+		end
+	end
+	return max_node
+end
+
+--node所在的scene的scene对象
+function getRootParent(node)
+	while node:getParent() do
+		node = node:getParent()
+	end
+	return node
+end
+
+--node所在的scene是否有对话框正在显示
+function hasDialogFloating(node)
+	local max_visible_zorder_node = getMaxZOrderVisibleChild(getRootParent(node))
+	local result = max_visible_zorder_node.is_dialog
+	return result
+end
+
+--x,y点是否落在node的范围内
+function cccn(node, x, y)
+	return node:boundingBox():containsPoint(node:getParent():convertToNodeSpace(ccp(x, y)))
+end

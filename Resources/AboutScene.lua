@@ -41,6 +41,26 @@ function AboutScene:ctor()
 	package.loaded["Version"] = nil
 	require "Version"
 	
+	print('self.rootNode ', self)
+	
+	require 'TestBackMessageBoxLayer'
+	local s = createTestBackMessageBoxLayer(self)
+	s:init_r()
+	
+	Timer.add_timer(3, function() 
+	local s2 = createTestBackMessageBoxLayer(self)
+	s2.msg_text:setString("box 2")
+	s2:setScale(s2:getScaleX() * 1.5)
+	s2:init_r()
+	end, 'marquee2')
+	
+	Timer.add_timer(6, function() 
+	local s3 = createTestBackMessageBoxLayer(self)
+	s3.msg_text:setString("box 3")
+	s3:init_r()
+	end, 'marquee3')
+	
+	--[[
 	local my_layer = CCLayer:create()
 	my_layer:setAnchorPoint(ccp(0.5,0.5))
 	my_layer:setContentSize(node:getContentSize())
@@ -55,6 +75,7 @@ function AboutScene:ctor()
 	Timer.add_timer(10, function() marquee:setText("changed to new text, in this way, hahha, now play it") end, 'marquee')
 	Timer.add_timer(25, function() marquee:setText("在走马灯里显示汉字，。。。。以及富豪》》》符号") end, 'marquee')
 	Timer.add_timer(40, function() marquee:setText("local my_layer = CCLayer:create() my_layer:setAnchorPoint(ccp(0.5,0.5)) my_layer:setContentSize(node:getContentSize()) my_layer:setPosition(node:getContentSize().width/2, node:getContentSize().height/2) my_layer:ignoreAnchorPointForPosition(false) node:addChild(my_layer)") end, 'marquee')
+	]]
 end
 
 UIControllerPlugin.bind(AboutScene)

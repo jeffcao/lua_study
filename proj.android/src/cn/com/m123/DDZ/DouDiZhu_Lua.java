@@ -41,7 +41,6 @@ public class DouDiZhu_Lua extends Cocos2dxActivity{
 		super.onCreate(savedInstanceState);
 		DDZJniHelper.messageCpp("game_jni");
 		INSTANCE = this;
-		PushDataManager.pushNotification(this, null);
 	}
 	
 	public Cocos2dxGLSurfaceView onCreateView() {
