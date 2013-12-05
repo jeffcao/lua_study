@@ -484,3 +484,7 @@ end
 function cccn(node, x, y)
 	return node:boundingBox():containsPoint(node:getParent():convertToNodeSpace(ccp(x, y)))
 end
+
+function runningscene()
+	return	CCDirector:sharedDirector():getRunningScene()
+end
