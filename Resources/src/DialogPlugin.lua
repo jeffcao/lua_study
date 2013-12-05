@@ -31,10 +31,11 @@ function DialogPlugin.bind(theClass)
 	function theClass:on_touch(e,x,y)
 		if self:getZOrder() < getMaxZOrderVisible(self:getParent()) then print("is not touch me") return false end
 		if not self:isVisible() then print("self is not visible") return false end
+		print('event is', e)
 		if self.dialogplugin_sel_childs then
 			for k,v in pairs(self.dialogplugin_sel_childs) do
 				if cccn(v,x,y) then 
-					local is_btn =(v:getTag() == 1011)
+					local is_btn = v:getTag() == 1011
 					if v.on_touch_fn then v.on_touch_fn(e,x,y) end
 					return not is_btn
 				end

@@ -80,7 +80,7 @@ function MarketSceneUPlugin.bind(theClass)
 		end
 
 		self.cur_product = product
-		self.yes_no_dialog = createYesNoDialog3()
+		self.yes_no_dialog = createYesNoDialog3(self)
 		--content = "尊敬的客户，您即将购买的是\n游戏名：我爱斗地主\n道具名："
 	 	--content = content..self.cur_product.name.."\n道具数量：1\n服务提供商：深圳市新中南实业有限公司\n资费说明：\n" 	
 	 	--content = content..self.cur_product.price.." 点（即消费"..self.cur_product.rmb.."元人民币）\n点击确认按钮确认购买，中国移动\n客服电话400-6788456"
@@ -93,7 +93,6 @@ function MarketSceneUPlugin.bind(theClass)
 		self.yes_no_dialog:setYesButton(__bind(self.do_buy_product, self))
 		self.yes_no_dialog:setNoButton(__bind(self.do_cancel_buy, self))
 		 
-		self.rootNode:addChild(self.yes_no_dialog, 9999)
 		self.yes_no_dialog:show()
 
 	end
@@ -112,13 +111,12 @@ function MarketSceneUPlugin.bind(theClass)
 		print("[MarketSceneUPlugin:do_on_buy_message]")
 		self.cur_buy_data = notify_msg
 		if tostring(notify_msg.result_code) == "1" then
-			self.yes_no_dialog = createYesNoDialog3()
+			self.yes_no_dialog = createYesNoDialog3(self)
 			self.yes_no_dialog:setMessage(notify_msg.content)
 			 
 			self.yes_no_dialog:setYesButton(__bind(self.do_confirm_buy, self))
 			self.yes_no_dialog:setNoButton(__bind(self.do_cancel_buy, self))
 			 
-			self.rootNode:addChild(self.yes_no_dialog)
 			self.yes_no_dialog:show()
 		else
 			self:do_confirm_buy()
