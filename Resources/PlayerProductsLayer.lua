@@ -17,7 +17,6 @@ end
 
 function PlayerProductsLayer:ctor(msg_box_container)
 	self.rootNode = self
-	self:set_message_box_contener(msg_box_container)
 	self:init_product_list()
 end
 

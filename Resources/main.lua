@@ -282,7 +282,6 @@ local function main()
 --		print("sprite_loading is nil")
 --	end
 --	
---	create_progress_animation(layer_progress, sprite_loading)
 --	
 --	CCDirector:sharedDirector():runWithScene(landing_scene)
 --	

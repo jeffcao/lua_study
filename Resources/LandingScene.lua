@@ -27,7 +27,6 @@ function LandingScene:ctor()
 	self:addChild(node)
 	
 --	self.sprite_loading = self.ccbproxy:getNodeWithType("sprite_loading", "CCSprite")
---	self:create_progress_animation(self.rootNode, self.sprite_loading)
 	
 	local bg_color = tolua.cast(self.bg_color, "CCLayerColor")
 	bg_color:setColor(ccc3(0, 83, 121))

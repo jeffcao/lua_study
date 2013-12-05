@@ -114,7 +114,6 @@ function UserCenterSceneUPlugin.bind(theClass)
 		else 
 			layer = createAvatarListLayer(__bind(self.after_player_info_changed, self))
 		end
-		layer:set_message_box_contener(self.rootNode)
 		self.container:addChild(layer)
 		local container_size = self.container:getContentSize()
 		layer:ignoreAnchorPointForPosition(false)
