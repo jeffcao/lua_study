@@ -416,7 +416,7 @@ end
 
 function touchChild(node, arr)
 	local node = tolua.cast(node, "CCNode")
-	if node:getTag() == 1011 then
+	if (node:getTag() % 100) == 11 then
 		table.insert(arr, node)
 	end
 	if node:getChildrenCount() > 0 then

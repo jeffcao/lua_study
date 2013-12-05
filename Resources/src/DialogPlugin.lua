@@ -12,9 +12,9 @@ function DialogPlugin.bind(theClass)
 	end
 	
 	function theClass:init_dialog()
-		self.dialogplugin_back_dismiss = true
 		self.dialogplugin_dismiss_cleanup = true
 		self.dialogplugin_is_restricted = false
+		self.dialogplugin_auto_dimiss_time = -1
 		self.dialogplugin_sel_childs = getTouchChilds(self)
 		
 		self:setVisible(false)
@@ -31,7 +31,11 @@ function DialogPlugin.bind(theClass)
 		if not self:isVisible() then print("self is not visible") return false end
 		if self.dialogplugin_sel_childs then
 			for k,v in pairs(self.dialogplugin_sel_childs) do
-				if cccn(v,x,y) then return false end
+				if cccn(v,x,y) then 
+					local is_btn =(v:getTag() == 1011)
+					if v.on_touch_fn then v.on_touch_fn(e,x,y) end
+					return not is_btn
+				end
 			end
 		end
 		if self.bg and (not cccn(self.bg, x,y)) and self.dialogplugin_out_dismiss then
@@ -58,7 +62,7 @@ function DialogPlugin.bind(theClass)
 	
 	--显示
 	function theClass:show()
-		if self:isVisible() then return end
+		if not self:canShow() then return end
 		if self.dialogplugin_is_restricted then
 			local delta = os.time - (GlobalSetting.last_restricted_show_time or 0)
 			if delta < GlobalSetting.restrict_interval then
@@ -74,9 +78,29 @@ function DialogPlugin.bind(theClass)
 	
 	--消失
 	function theClass:dismiss()
+		if not self:canDismiss() then return end
 		self:setVisible(false)
-		if self.dialogplugin_dismiss_cleanup then self:removeFromParentAndCleanup(true) end
+		if self.dialogplugin_dismiss_cleanup then 
+			self:removeFromParentAndCleanup(true) 
+			self.dialogplugin_destoryed = true
+		end
 		if self.dialogplugin_is_restricted then GlobalSetting.last_restricted_show_time = os.time() end
+	end
+	
+	function theClass:canShow()
+		if self.dialogplugin_destoryed then return false end
+		return not self:isVisible()
+	end
+	
+	function theClass:canDismiss()
+		if self.dialogplugin_destoryed then return false end
+		return self:isVisible()
+	end
+	
+	--是否正在显示
+	function theClass:isShowing()
+		if self.dialogplugin_destoryed then return false end
+		return self:isVisible()
 	end
 	
 	--设置点击返回按钮的响应，默认dismiss对话框
@@ -112,6 +136,24 @@ function DialogPlugin.bind(theClass)
 	--设置是否为限制框，默认不是
 	function theClass:set_is_restricted(restricted)
 		self.dialogplugin_is_restricted = restricted
+	end
+	
+	--设置是否在一定时间之后自动消失，time为消失时间
+	function theClass:set_auto_dismiss(time)
+		self.dialogplugin_auto_dimiss_time = time
+		self.dialogplugin_auto_dismiss_fn = Timer.add_timer(self.dialogplugin_auto_dimiss_time, __bind(self.dismiss, self), 'auto_dismiss')
+	end
+	
+	--重置自动消失
+	function theClass:reset_auto_dimiss()
+		if not self:is_auto_dismiss() then return end
+		if self.dialogplugin_auto_dismiss_fn then Timer.cancel_timer(self.dialogplugin_auto_dismiss_fn) end
+		self.dialogplugin_auto_dismiss_fn = Timer.add_timer(self.dialogplugin_auto_dimiss_time, __bind(self.dismiss, self), 'auto_dismiss')
+	end
+	
+	--获取是否为自动消失
+	function theClass:is_auto_dismiss()
+		return self.dialogplugin_auto_dimiss_time and self.dialogplugin_auto_dimiss_time > 0
 	end
 	
 end

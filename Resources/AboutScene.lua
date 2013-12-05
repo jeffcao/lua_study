@@ -39,8 +39,8 @@ function AboutScene:ctor()
 	
 	
 	
-	Timer.add_timer(3, function() self:show_progress_message_box("123") end, 'toast')
-	Timer.add_timer(6, function() self:show_progress_message_box("456") end, 'toast')
+	Timer.add_timer(3, function() ToastPlugin.show_message_box_suc("123") end, 'toast')
+	Timer.add_timer(6, function() ToastPlugin.show_message_box("fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff456") end, 'toast')
 	
 	
 	--[[
@@ -64,5 +64,4 @@ function AboutScene:ctor()
 	Timer.add_timer(40, function() marquee:setText("local my_layer = CCLayer:create() my_layer:setAnchorPoint(ccp(0.5,0.5)) my_layer:setContentSize(node:getContentSize()) my_layer:setPosition(node:getContentSize().width/2, node:getContentSize().height/2) my_layer:ignoreAnchorPointForPosition(false) node:addChild(my_layer)") end, 'marquee')
 	]]
 end
-ToastPlugin.bind(AboutScene)
---UIControllerPlugin.bind(AboutScene)
+UIControllerPlugin.bind(AboutScene)

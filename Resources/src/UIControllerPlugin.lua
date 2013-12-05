@@ -1,5 +1,5 @@
 require "src.WebsocketRails.Timer"
-
+require 'src.ToastPlugin'
 UIControllerPlugin = {}
 
 function UIControllerPlugin.bind(theClass)
@@ -160,12 +160,17 @@ function UIControllerPlugin.bind(theClass)
 	end
 	
 	function theClass:show_message_box_suc(message, params)
+	ToastPlugin.show_message_box_suc(message, params)
+	--[[
 		params = params or {}
 		params.type = 'ok'
 		self:show_message_box(message, params)
+		]]
 	end
 	
 	function theClass:show_message_box(message, params)
+	ToastPlugin.show_message_box(message, params)
+	--[[
 		cclog("show_message_box " .. message)
 		local w = 200 + 5*string.len(message)
 		cclog("set w to " ..w)
@@ -184,12 +189,14 @@ function UIControllerPlugin.bind(theClass)
 			self.msg_box_container:removeChild(msg_layer, true)
 			msg_layer = nil
 		end)
-
+]]
 	end
 	
 	
 	
 	function theClass:show_progress_message_box(message, msg_width, msg_height, z_order)
+		ToastPlugin.show_progress_message_box(message, msg_width, msg_height)
+	--[[
 		print("show_progress_message_box, class name=> "..self.__cname)
 		
 		if #GlobalSetting.hall_cur_message_box > 0 then
@@ -217,17 +224,21 @@ function UIControllerPlugin.bind(theClass)
 		scaleNode(msg_layer, GlobalSetting.content_scale_factor)
 		
 		self:create_progress_animation(msg_layer, progress_sprite)		
-		
+		]]
 	end
 	
 	function theClass:show_progress_message_no_create(message)
+		ToastPlugin.show_progress_message_box(message)
+	--[[
 		if self.msg_box_container then
 			local msg_layer = self.msg_box_container:getChildByTag(902)
 			msg_layer.msg_lb:setString(message)
 		end
+		]]
 	end
 	
 	function theClass:hide_progress_message_box()
+	--[[
 		print("hide_progress_message_box, class name=> "..self.__cname)
 
 		if self.msg_box_container then
@@ -257,6 +268,8 @@ function UIControllerPlugin.bind(theClass)
 			remove_box(remove_box)
 			
 		end
+		]]
+		ToastPlugin.hide_progress_message_box()
 	end
 	
 	function theClass:get_player_avatar_png_name()
@@ -304,6 +317,8 @@ function UIControllerPlugin.bind(theClass)
 	end
 	
 	function theClass:show_server_notify(message, type)
+		ToastPlugin.show_server_notify(message, type)
+	--[[
 		local scene = CCDirector:sharedDirector():getRunningScene()
 		if not (scene and scene.rootNode) then
 			cclog('show_server_notify the running scene is null or has not root node')
@@ -350,6 +365,7 @@ function UIControllerPlugin.bind(theClass)
 		scene.rootNode:addChild(msg_layer, z_order, 901)
 		
 		Timer.add_timer(5, remove_layer)
+		]]
 	end
 	
 	function theClass:create_notify_message_layer(message, params)
