@@ -433,7 +433,7 @@
 								<key>displayName</key>
 								<string>exit_btn</string>
 								<key>memberVarAssignmentName</key>
-								<string>confirm_btn</string>
+								<string>confirm</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -480,7 +480,7 @@
 										<key>type</key>
 										<string>Integer</string>
 										<key>value</key>
-										<integer>1000</integer>
+										<integer>1011</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -858,7 +858,7 @@
 								<key>displayName</key>
 								<string>cancel_btn</string>
 								<key>memberVarAssignmentName</key>
-								<string>reject_btn</string>
+								<string>reject</string>
 								<key>memberVarAssignmentType</key>
 								<integer>1</integer>
 								<key>properties</key>
@@ -905,7 +905,7 @@
 										<key>type</key>
 										<string>Integer</string>
 										<key>value</key>
-										<integer>1000</integer>
+										<integer>1011</integer>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -1273,7 +1273,7 @@
 				<key>displayName</key>
 				<string>msg_text</string>
 				<key>memberVarAssignmentName</key>
-				<string>msg_text</string>
+				<string>msg</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -1456,6 +1456,14 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>tag</string>
+						<key>type</key>
+						<string>Integer</string>
+						<key>value</key>
+						<integer>111</integer>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>ignoreAnchorPointForPosition</string>
 						<key>type</key>
 						<string>Check</string>
@@ -1494,7 +1502,7 @@
 				<key>displayName</key>
 				<string>CCLabelTTF</string>
 				<key>memberVarAssignmentName</key>
-				<string>title_text</string>
+				<string>title</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
