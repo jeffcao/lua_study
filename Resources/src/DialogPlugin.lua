@@ -62,9 +62,14 @@ function DialogPlugin.bind(theClass)
 		end 
 	end
 	
+	function theClass:delayShow(time)
+		time = time or 0.1
+		Timer.add_timer(time, __bind(self.show, self), 'delay_show')
+	end
+	
 	--显示
 	function theClass:show()
-		if not self:canShow() then return end
+		if not self:canShow() then print("error, try to show an dialog been destroyed") return end
 		if self.dialogplugin_is_restricted then
 			local delta = os.time - (GlobalSetting.last_restricted_show_time or 0)
 			if delta < GlobalSetting.restrict_interval then

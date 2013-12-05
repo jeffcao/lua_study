@@ -36,7 +36,7 @@ function ConnectivityPlugin.bind(theClass)
 		local str = "root node is nil"
 		if self.rootNode then str = "root node is not nil" end
 		print(str)
-		local dialog = createYesNoDialog(self.rootNode)
+		local dialog = createYesNoDialog(self)
 		dialog:setMessage(strings.cp_network_w)
 		dialog:setYesButton(function()
 			jni_helper:messageJava("on_set_network_intent")
@@ -49,7 +49,7 @@ function ConnectivityPlugin.bind(theClass)
 		dialog.reject_btn_lbl:setFontSize(20.0)
 		set_string_with_stroke(dialog.confirm_btn_lbl, "设置网络")
 		set_string_with_stroke(dialog.reject_btn_lbl, "退出游戏")
-		dialog:setOnKeypad(function(key) end)
+		dialog:setBackDismiss(false)
 		dialog:show()
 		self.network_disconnected_dialog = dialog
 	end

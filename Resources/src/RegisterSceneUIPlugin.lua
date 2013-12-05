@@ -105,6 +105,7 @@ function RegisterSceneUIPlugin.bind(theClass)
 	
 	function theClass:on_keypad_pressed(key)
 		print("on keypad clicked: " .. key)
+		if hasDialogFloating(self) then print("regist scene there is dialog floating") return end
 		if key == "backClicked" then
 			print("go to login in register scene")
 --			local login = createLoginScene()

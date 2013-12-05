@@ -50,7 +50,7 @@
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
-
+<!-- 
         <receiver android:name=".push.PushReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_RESTARTED" />
@@ -71,7 +71,7 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
-        <service android:name=".push.PushService"></service>
+        <service android:name=".push.PushService"></service> -->
     </application>
 
     <supports-screens

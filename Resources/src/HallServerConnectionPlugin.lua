@@ -242,7 +242,13 @@ function HallServerConnectionPlugin.bind(theClass)
 	
 	--正在重连网络
 	function theClass:onSocketReopening()
-		self:show_progress_message_box(strings.hscp_restore_connection_ing,400)
+		local jni_helper = DDZJniHelper:create()
+		local network_state = jni_helper:get("IsNetworkConnected")
+		print("network_state=> ", network_state, string.len(network_state))
+		network_state = string.sub(network_state, 1, 1)
+		if network_state == "t" then 
+			self:show_progress_message_box(strings.hscp_restore_connection_ing,400)
+		end
 --		self.connection_state = 0
 		print("HallServerConnectionPlugin onSocketReopening")
 		self:updateSocket("socket: reopening")

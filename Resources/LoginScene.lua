@@ -96,6 +96,7 @@ end
 
 function LoginScene:on_keypad_pressed(key)
 	print("on keypad clicked: " .. key)
+	if hasDialogFloating(self) then print("login scene there is dialog floating") return end
 	if key == "backClicked" then
 		self:do_close()
 	elseif key == "menuClicked" then

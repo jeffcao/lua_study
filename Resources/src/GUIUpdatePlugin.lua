@@ -575,6 +575,7 @@ function GUIUpdatePlugin.bind(theClass)
 			self.exit_layer = createYesNoDialog(self.rootNode)
 			self.exit_layer:setTitle(strings.gup_mand_exit)
 			self.exit_layer:setMessage(strings.gup_mand_eixt_w)
+			self.exit_layer:set_dismiss_cleanup(false)
 			local yes_fn = function()
 				self.exit_layer:dismiss()
 				self:exit()
@@ -585,7 +586,7 @@ function GUIUpdatePlugin.bind(theClass)
 		if self.exit_layer:isShowing() then
 			return
 		end
-		self.exit_layer:show()
+		self.exit_layer:delayShow()
 	end
 	
 	function theClass:exit()

@@ -1,5 +1,6 @@
 require "src.YesNoDialogUPlugin"
-require "src.DialogInterface"
+require "src.DialogPlugin"
+require 'CCBReaderLoad'
 
 YesNoDialog = class("YesNoDialog", function()
 	print("new YesNoDialog")
@@ -17,20 +18,14 @@ end
 
 function YesNoDialog:ctor()
 	local ccbproxy = CCBProxy:create()
-
+	ccbproxy:retain()
  	ccb.YesNoDialog = self
-
- 	local node = CCBReaderLoad("ExitLayer.ccbi", ccbproxy, true, "YesNoDialog")
-	self:addChild(node)
-	
-	self.msg = tolua.cast(self.msg_text, "CCLabelTTF") 
-	self.title = tolua.cast(self.title_text, "CCLabelTTF")
-	self.confirm = tolua.cast(self.confirm_btn, "CCMenuItemImage") 
-	self.reject = tolua.cast(self.reject_btn, "CCMenuItemImage") 
-	
+ 	CCBReaderLoad("ExitLayer.ccbi", ccbproxy, true, "YesNoDialog")
+	self:addChild(self.rootNode)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
-	self:setVisible(false)
+	set_green_stroke(self.reject_btn_lbl)
+	set_red_stroke(self.confirm_btn_lbl)
 	
 	self:setYesButton(function()
 		self:dismiss()
@@ -39,27 +34,9 @@ function YesNoDialog:ctor()
 		self:dismiss()
 	end)
 	
-	local menus = CCArray:create()
-
-	menus:addObject(tolua.cast(self.reject_menu, "CCLayerRGBA"))
-	menus:addObject(tolua.cast(self.confirm_menu, "CCLayerRGBA"))
-	self:swallowOnTouch(menus)
-	self:swallowOnKeypad()
-
-	set_green_stroke(self.reject_btn_lbl)
-	set_red_stroke(self.confirm_btn_lbl)
-	
-	self:setOnKeypad(function(key)
-		print("yesno dialog on key pad")
-		if key == "backClicked" then
-			if self:isShowing()  then
-				self:dismiss()
-			end
-		end
-	end)
-	
+	self:init_dialog()
+	self:setClickOutDismiss(false)
 end
 
-
 YesNoDialogUPlugin.bind(YesNoDialog)
-DialogInterface.bind(YesNoDialog)
+DialogPlugin.bind(YesNoDialog)

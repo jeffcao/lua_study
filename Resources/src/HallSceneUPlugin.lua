@@ -21,6 +21,7 @@ function HallSceneUPlugin.bind(theClass)
 
 	function theClass:onKeypad(key)
 		print("hall scene on key pad")
+		if hasDialogFloating(self) then print("hall scene there is dialog floating") return end
 		if key == "menuClicked" then
 			--[[
 			self.menu_layer = createMenu(__bind(self.menu_dismiss_callback, self), __bind(self.show_set_dialog, self))

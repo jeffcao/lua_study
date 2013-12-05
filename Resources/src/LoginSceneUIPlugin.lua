@@ -183,12 +183,4 @@ function LoginSceneUIPlugin.bind(theClass)
 		self:show_message_box(strings.lsp_connect_hall_server_w)
 	end
 	
-	--[[
-	function theClass:show_message(message)
-		local dialogScene = createYesNoDialog2()
-		dialogScene:setMessage(message)
-		dialogScene:show()
-	--	CCDirector:sharedDirector():replaceScene(createRegisterScene())	
-	end
-	]]
 end

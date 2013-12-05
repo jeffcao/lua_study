@@ -49,7 +49,6 @@ public class PushManager {
 	}
 
 	public void onAction(String action) {
-		AlarmSender.deployAlarm(mContext, ACTION_FETCH_ALARM, data_fetcher.getFetch_protocol().getFetchInterval());
 		if (ACTION_PUSH_ALARM.equals(action)) {
 			task_processer.onTaskAlarm();
 		}
