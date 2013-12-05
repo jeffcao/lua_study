@@ -465,6 +465,10 @@ function getMaxZOrderVisibleChild(node)
 	return max_node
 end
 
+function getMaxZOrderVisible(node)
+	return getMaxZOrderVisibleChild(node):getZOrder()
+end
+
 --node所在的scene的scene对象
 function getRootParent(node)
 	while node:getParent() do

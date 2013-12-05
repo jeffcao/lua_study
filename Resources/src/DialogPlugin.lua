@@ -14,7 +14,9 @@ function DialogPlugin.bind(theClass)
 	function theClass:init_dialog()
 		self.dialogplugin_dismiss_cleanup = true
 		self.dialogplugin_is_restricted = false
+		self.dialogplugin_back_dismiss = true
 		self.dialogplugin_auto_dimiss_time = -1
+		self.dialogplugin_out_dismiss = true
 		self.dialogplugin_sel_childs = getTouchChilds(self)
 		
 		self:setVisible(false)
@@ -27,7 +29,7 @@ function DialogPlugin.bind(theClass)
 	end
 	
 	function theClass:on_touch(e,x,y)
-		if self:getZOrder() < getMaxZOrder(self:getParent()) then print("is not touch me") return false end
+		if self:getZOrder() < getMaxZOrderVisible(self:getParent()) then print("is not touch me") return false end
 		if not self:isVisible() then print("self is not visible") return false end
 		if self.dialogplugin_sel_childs then
 			for k,v in pairs(self.dialogplugin_sel_childs) do
@@ -46,7 +48,7 @@ function DialogPlugin.bind(theClass)
 	
 	function theClass:on_keypad(key)
 		print("on keypad clicked: ", self:getZOrder())
-		if self:getZOrder() < getMaxZOrder(self:getParent()) then print("is not keypad me") return end
+		if self:getZOrder() < getMaxZOrderVisible(self:getParent()) then print("is not keypad me") return end
 		if key == "backClicked" then
 			if self.dialogplugin_on_back_fn then 
 				self:dialogplugin_on_back_fn()

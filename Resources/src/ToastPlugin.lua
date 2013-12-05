@@ -24,8 +24,6 @@ ToastPlugin = {}
 		return progress_sprite
 	end
 
-
-
   --------------------------------------------------------create_message_layer
   	function set_lbl_color(lbl, type)
   		local lb_color = ccc3(67,31,24)

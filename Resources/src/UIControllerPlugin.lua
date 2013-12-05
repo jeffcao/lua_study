@@ -62,6 +62,10 @@ function UIControllerPlugin.bind(theClass)
 		ToastPlugin.hide_progress_message_box()
 	end
 	
+	function theClass:show_server_notify(message, type)
+		ToastPlugin.show_server_notify(message, type)
+	end
+	
 	function theClass:get_player_avatar_png_name()
 		local cur_user = GlobalSetting.current_user
 		local avatar_png_index = tonumber(cur_user.avatar) < 10 and "0"..cur_user.avatar or cur_user.avatar
@@ -77,37 +81,22 @@ function UIControllerPlugin.bind(theClass)
 	end
 	
 	function theClass:show_back_message_box(message)
-		self.back_message_box = createBackMessageBoxLayer(self.rootNode)
+		self.back_message_box = createBackMessageBoxLayer(self)
 		self.back_message_box:setMessage(message)
-
-		self.back_message_box:setNoButton(__bind(self.do_back_message_box_btn_clicked, self))
-		 
-		self.rootNode:reorderChild(self.back_message_box, 9999)
 		self.back_message_box:show()
 	end
-	
-	function theClass:do_back_message_box_btn_clicked(tag, sender)
-		print("[MarketSceneUPlugin:do_back_message_box_btn_clicked]")
-		sender.rootNode:dismiss(true)
-		
-	end
-	
+
 	function theClass:do_on_buy_produce_message(data)
 		print("[MarketSceneUPlugin:do_back_message_box]")
-		if self.matket_scene then
-			print("[MarketSceneUPlugin:matket_scene:show_back_message_box]")
-			self.matket_scene:show_back_message_box(data.content)
-		else
-			self:show_back_message_box(data.content)
+		local scene = runningscene()
+		if scene.show_back_message_box then
+			scene:show_back_message_box(data.content)
 		end
+		
 		if self.get_user_profile and self.display_player_info then
 			self:get_user_profile()
 			self.after_trigger_success = __bind(self.display_player_info, self)
 		end
-	end
-	
-	function theClass:show_server_notify(message, type)
-		ToastPlugin.show_server_notify(message, type)
 	end
 	
 	function theClass:check_tech_msg(moment)
