@@ -45,7 +45,7 @@ public class DouDiZhuApplicaion extends Application {
 	}
 	
 	private void initPush() {
-		PushManager.getInstance().init(this).setIconResource(R.drawable.icon);
+		PushManager.getInstance().init(this);
 		Test.testFetch(this);
 	}
 	

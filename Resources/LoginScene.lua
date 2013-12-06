@@ -9,6 +9,7 @@ require "src.LoginSceneUIPlugin"
 require "src.Stats"
 require "src.SoundEffect"
 require "src.UserLocked"
+require 'src.GamePush'
 
 LoginScene = class("LoginScene", function()
 	print("creating new loginScene")
@@ -75,6 +76,7 @@ function LoginScene:onEnter()
 	print("[LoginScene:on_enter()]")
 	--require "sa"
 	self.super.onEnter(self)
+	GamePush:close_push()
 	self:playBackgroundMusic()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	if GlobalSetting.login_server_websocket == nil then

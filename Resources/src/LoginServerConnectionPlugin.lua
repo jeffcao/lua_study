@@ -18,7 +18,9 @@ function LoginServerConnectionPlugin.bind(theClass)
 		cur_user:save(CCUserDefault:sharedUserDefault())
 		
 		GlobalSetting.cm_sim_card_prefix = data.system_settings.cm_sim_card_prefix
-		GlobalSetting.hall_server_url = data.system_settings.ddz_hall_url
+		GlobalSetting.hall_server_url = data.url[1]
+		GlobalSetting.game_push_url = data.msg_server_url
+		dump(data.system_settings, 'system_settings')
 		print("LoginServerConnectionPlugin.sign_success, hall_server_url=> "..GlobalSetting.hall_server_url)
 --		GlobalSetting.hall_server_token = data.token
 		GlobalSetting.show_init_player_info_box = 1
@@ -34,6 +36,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 		if data.vip then
 			GlobalSetting.vip = data.vip
 		end
+		
 		if data.message_time then
 			GlobalSetting.message_time = data.message_time
 			GlobalSetting.push_handler = nil
@@ -131,7 +134,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 		end
 		if GlobalSetting.login_server_websocket == nil then
 			print("[LoginServerConnectionPlugin:connect_to_login_server()] login_server is nil, init it.")
-			GlobalSetting.login_server_websocket = WebSocketRails:new(config.login_urls[2], true)
+			GlobalSetting.login_server_websocket = WebSocketRails:new(config.login_urls[1], true)
 			GlobalSetting.login_server_websocket.on_open = __bind(self.on_websocket_ready, self)
 			GlobalSetting.login_server_websocket:bind("connection_error", sign_failure)
 		end
