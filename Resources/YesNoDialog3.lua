@@ -57,7 +57,6 @@ function YesNoDialog3:create_scroll_view(p_layer, msg_lb)
 	self.scroll_view:setAnchorPoint(ccp(0,0))
 	self.scroll_view:setPosition(ccp(0,0))
 
-	local socket = require 'socket'
 	p_layer.on_touch_fn = function(e,x,y)
 		if e~='moved' then self.scroll_view.last_y = nil return end
 		local newPoint = self.scroll_view:convertToNodeSpace(ccp(x,y))
@@ -65,11 +64,9 @@ function YesNoDialog3:create_scroll_view(p_layer, msg_lb)
 		y = newPoint.y
 		if not self.scroll_view.last_y then 
 			self.scroll_view.last_y = y 
-			self.scroll_view.last_t = socket.gettime()
 			return 
 		end
 		
-	--	if socket.gettime() - self.scroll_view.last_t < 0.01 then print("time is little, discard") return end
 		local delta = y - self.scroll_view.last_y
 		if math.abs(delta) < 0.209166 then print('delta is little, discard') return end
 		local offset = self.scroll_view:getContentOffset()
@@ -77,7 +74,6 @@ function YesNoDialog3:create_scroll_view(p_layer, msg_lb)
 		if adjust_y > 0 then adjust_y = 0 end
 		if adjust_y < -100 then adjust_y = -100 end
 		self.scroll_view:setContentOffset(ccp(0,adjust_y))
-		self.scroll_view.last_t = socket.gettime()
 	end
 end
 YesNoDialogUPlugin.bind(YesNoDialog3)
