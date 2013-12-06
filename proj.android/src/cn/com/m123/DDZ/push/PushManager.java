@@ -1,14 +1,10 @@
 package cn.com.m123.DDZ.push;
 
-import cn.com.m123.DDZ.push.PushDataFetcher.FetchProtocol;
-
 import android.content.Context;
 /**
  * how to use!
  * must set in Application
  *    PushManager.getInstance().init(this)
- *    #default protocol is for ddz, not need to set
- *    PushManager.getInstance().setFetchProtocol(FetchProtocol)
  * must declared in Manifest.xml
  *    service:{@PushService}
  *    receiver:{@PushReceiver}
@@ -58,16 +54,6 @@ public class PushManager {
 
 	public void destroy() {
 		data_manager.destroy();
-	}
-	
-	public PushManager setFetchProtocol(FetchProtocol protocol) {
-		data_fetcher.setFetch_protocol(protocol);
-		return this;
-	}
-
-	public PushManager setIconResource(int icon_resource) {
-		task_processer.setIcon_resource(icon_resource);
-		return this;
 	}
 
 }

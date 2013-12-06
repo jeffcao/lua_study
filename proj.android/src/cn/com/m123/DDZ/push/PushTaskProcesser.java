@@ -13,15 +13,11 @@ import cn.com.m123.DDZ.push.PushDataManager.TaskListener;
 
 public class PushTaskProcesser implements TaskListener {
 	private Context mContext;
-	private int icon_resource = android.R.drawable.star_big_on;
+	private int icon_resource = R.drawable.icon;
 
 	public PushTaskProcesser(Context mContext) {
 		super();
 		this.mContext = mContext;
-	}
-
-	public void setIcon_resource(int icon_resource) {
-		this.icon_resource = icon_resource;
 	}
 
 	public void onTaskAlarm() {
