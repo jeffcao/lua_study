@@ -31,6 +31,7 @@ public class PushReceiver extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 		Intent service_intent = new Intent(context, PushService.class);
 		if (null != intent && null != intent.getAction()) {
+			System.out.println("on receive action " + intent.getAction());
 			service_intent.setAction(intent.getAction());
 		}
 		context.startService(service_intent);

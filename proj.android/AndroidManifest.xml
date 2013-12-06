@@ -50,8 +50,8 @@
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
-<!-- 
-        <receiver android:name=".push.PushReceiver" >
+
+        <receiver android:name="cn.com.m123.DDZ.push.PushReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_RESTARTED" />
                 <data android:scheme="package" >
@@ -71,7 +71,7 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
-        <service android:name=".push.PushService"></service> -->
+        <service android:name="cn.com.m123.DDZ.push.PushService"></service>
     </application>
 
     <supports-screens

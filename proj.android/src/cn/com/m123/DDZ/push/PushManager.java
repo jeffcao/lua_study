@@ -36,9 +36,9 @@ public class PushManager {
 		return null == _inst ? _inst = new PushManager() : _inst;
 	}
 
-	public void init(Context context) {
+	public PushManager init(Context context) {
 		if (null != this.mContext)
-			return;
+			return this;
 		this.mContext = context;
 		data_manager = new PushDataManager(this.mContext);
 		data_fetcher = new PushDataFetcher(this.mContext, data_manager);
@@ -46,6 +46,7 @@ public class PushManager {
 		data_manager.setTaskListener(task_processer);
 		ACTION_FETCH_ALARM = mContext.getPackageName() + ACTION_FETCH_ALARM;
 		ACTION_PUSH_ALARM = mContext.getPackageName() + ACTION_PUSH_ALARM;
+		return this;
 	}
 
 	public void onAction(String action) {
@@ -59,12 +60,14 @@ public class PushManager {
 		data_manager.destroy();
 	}
 	
-	public void setFetchProtocol(FetchProtocol protocol) {
+	public PushManager setFetchProtocol(FetchProtocol protocol) {
 		data_fetcher.setFetch_protocol(protocol);
+		return this;
 	}
 
-	public void setIconResource(int icon_resource) {
+	public PushManager setIconResource(int icon_resource) {
 		task_processer.setIcon_resource(icon_resource);
+		return this;
 	}
 
 }

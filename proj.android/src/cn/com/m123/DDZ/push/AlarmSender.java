@@ -10,6 +10,7 @@ import android.content.Intent;
 public class AlarmSender {
 
 	public static void deployAlarm(Context context, String action, int millisecond) {
+		System.out.println("deploy alarm " + action + " after " + millisecond + "ms");
 		Intent intent = new Intent(action);
 		PendingIntent pending = PendingIntent.getBroadcast(context, 0, intent,
 				0);

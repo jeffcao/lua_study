@@ -6,6 +6,10 @@ import java.io.InputStream;
 import java.util.Map;
 import java.util.Set;
 
+import cn.com.m123.DDZ.push.PushManager;
+import cn.com.m123.DDZ.push.PushTask;
+import cn.com.m123.DDZ.test.Test;
+
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -33,11 +37,16 @@ public class DouDiZhuApplicaion extends Application {
 		initDebug();
 		saveHardwareInfo();
 		initPkgInfo();
-	//	System.out.println("sign=>\n" + DDZJniHelper.getSign(this));
+		initPush();
 	}
 	
 	public static Context getContext() {
 		return APP_CONTEXT;
+	}
+	
+	private void initPush() {
+		PushManager.getInstance().init(this).setIconResource(R.drawable.icon);
+		Test.testFetch(this);
 	}
 	
 	private void initDebug() {
