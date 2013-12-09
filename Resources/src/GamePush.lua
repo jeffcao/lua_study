@@ -28,6 +28,10 @@ function GamePush:fetch_msg()
 	print('[GamePush]=>fetch msg')
 	local ws = self.game_push_ws
 	if not ws then return false end
+	if ws.state ~= 'connected' then
+		print('state is not connect, do not fetch msg')
+		return
+	end
 	local last_msg_seq = CCUserDefault:sharedUserDefault():getStringForKey("last_msg_seq") or "0"
 	local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token,
 		version = resource_version, run_env = GlobalSetting.run_env, last_msg_seq = last_msg_seq}
@@ -40,11 +44,12 @@ end
 
 function GamePush:on_check_success(data)
 	dump(data, '[GamePush]=>game push on check success')
-	GamePush:initSocket(self.game_push_ws, "ui.restore_connection")
-	NotificationProxy.registerScriptObserver(__bind(self.on_resume, self),"on_resume")
-	NotificationProxy.registerScriptObserver(__bind(self.on_pause, self),"on_pause")
+	self:initSocket(self.game_push_ws, "ui.restore_connection")-- to set socket restore logic
+	NotificationProxy.registerScriptObserver(__bind(self.on_resume, self),"on_resume")-- to observe onResume() event
+	NotificationProxy.registerScriptObserver(__bind(self.on_pause, self),"on_pause")-- to observe onPause() event
 	local period = GlobalSetting.game_push_interval
 	self:cancel_fetch_hdlr()
+	self:fetch_msg()--fetch once
 	self.fetch_hdlr = Timer.add_repeat_timer(period, __bind(self.fetch_msg, self), 'game_push')
 end
 
@@ -69,6 +74,7 @@ end
 function GamePush:on_websocket_ready()
 	print("[GamePush:on_websocket_ready()]")
 	self.game_push_ws:bind("ui.hand_shake", function(data)
+		print('receive ui.hand_shake')
 		dump(data, "ui.hand_shake")
 		self.game_push_ws:unbind_clear("ui.hand_shake")
 		CheckSignLua:generate_stoken(data)
@@ -107,8 +113,32 @@ function GamePush:close_push()
 		self.game_push_ws = nil
 	end
 	self:cancel_fetch_hdlr()
+	GamePush.obj = nil
 end
 
+function GamePush:new()
+	print("GamePush.new()")
+	local this_obj = {}
+    setmetatable(this_obj, self)
+    self.__index = self
+	return this_obj
+end
+
+function GamePush.open()
+	if not GamePush.obj then
+		print("GamePush.open()")
+		GamePush.obj = GamePush:new()
+		GamePush.obj:open_push()
+	end
+end
+
+function GamePush.close()
+	if GamePush.obj then
+		print("GamePush.close()")
+		GamePush.obj:close_push()
+		GamePush.obj = nil
+	end
+end
 
 function GamePush:updateSocket(status)
 	print('GamePush update socket:', status)
@@ -126,6 +156,8 @@ end
 
 --网络已重新连接上
 function GamePush:onSocketReopened()
+	dump(self, "GamePush:onSocketReopened self is")
+	print("before bind hand_shake")
 	self.game_push_ws:bind("ui.hand_shake", function(data)
 		dump(data, "ui.hand_shake of reopened socket")
 		self.game_push_ws:unbind_clear("ui.hand_shake")
@@ -134,6 +166,7 @@ function GamePush:onSocketReopened()
 		self:restoreConnection()
 		self:updateSocket("socket: reopened, restoring")
 	end)
+	print("after bind hand_shake")
 end
 
 --网络重连失败
@@ -150,7 +183,6 @@ end
 function GamePush:onSocketRestored(data)
 	print("GamePush onSocketRestored")
 	self:updateSocket("socket: restored")
-	self:init_channel()
 end
 
 -- activity onPause
@@ -167,5 +199,6 @@ end
 
 function GamePush:op_websocket(pause)
 	print("GamePush:op_websocket")
+	dump(self, "GamePush:op_websocet self is")
 	self.game_push_ws:pause_event(pause)
 end

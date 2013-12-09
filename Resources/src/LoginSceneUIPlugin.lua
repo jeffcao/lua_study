@@ -156,7 +156,7 @@ function LoginSceneUIPlugin.bind(theClass)
 	end
 	
 	function theClass:enter_hall()
-		GamePush:open_push()
+		GamePush.open()
 		local game = createHallScene()
 		CCDirector:sharedDirector():replaceScene(game)
 		self:close_login_websocket()

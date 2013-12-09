@@ -64,7 +64,7 @@ public class PushDataFetcher {
 
 			JSONArray messages = obj.getJSONArray("messages");
 			push_data_mgr.addTask(messages);
-		} catch (JSONException e) {
+		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 	}

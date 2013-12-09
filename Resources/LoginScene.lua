@@ -76,7 +76,7 @@ function LoginScene:onEnter()
 	print("[LoginScene:on_enter()]")
 	--require "sa"
 	self.super.onEnter(self)
-	GamePush:close_push()
+	GamePush.close()
 	self:playBackgroundMusic()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	if GlobalSetting.login_server_websocket == nil then
