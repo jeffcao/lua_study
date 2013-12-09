@@ -1,6 +1,6 @@
 /*
 ** Lua binding: Marquee
-** Generated automatically by tolua++-1.0.93 on Tue Dec  3 14:12:56 2013.
+** Generated automatically by tolua++-1.0.93 on Mon Dec  9 14:43:38 2013.
 */
 
 /****************************************************************************
@@ -52,10 +52,11 @@ TOLUA_API int  tolua_Marquee_open (lua_State* tolua_S);
 /* function to register type */
 static void tolua_reg_types (lua_State* tolua_S)
 {
- tolua_usertype(tolua_S,"cocos2d::CCObject");
- tolua_usertype(tolua_S,"CCNode");
  tolua_usertype(tolua_S,"CCLayer");
  tolua_usertype(tolua_S,"Marquee");
+ 
+ tolua_usertype(tolua_S,"CCNode");
+ tolua_usertype(tolua_S,"cocos2d::CCObject");
 }
 
 /* method: create of class  Marquee */
@@ -393,6 +394,39 @@ static int tolua_Marquee_Marquee_getClipNode00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: setTextProvider of class  Marquee */
+#ifndef TOLUA_DISABLE_tolua_Marquee_Marquee_setTextProvider00
+static int tolua_Marquee_Marquee_setTextProvider00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Marquee",0,&tolua_err) ||
+     (tolua_isvaluenil(tolua_S,2,&tolua_err) || !toluafix_isfunction(tolua_S,2,"LUA_FUNCTION",0,&tolua_err)) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Marquee* self = (Marquee*)  tolua_tousertype(tolua_S,1,0);
+  LUA_FUNCTION lua_provider = (  toluafix_ref_function(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setTextProvider'", NULL);
+#endif
+  {
+   self->setTextProvider(lua_provider);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'setTextProvider'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* Open function */
 TOLUA_API int tolua_Marquee_open (lua_State* tolua_S)
 {
@@ -412,6 +446,7 @@ TOLUA_API int tolua_Marquee_open (lua_State* tolua_S)
    tolua_function(tolua_S,"setText",tolua_Marquee_Marquee_setText00);
    tolua_function(tolua_S,"init",tolua_Marquee_Marquee_init00);
    tolua_function(tolua_S,"getClipNode",tolua_Marquee_Marquee_getClipNode00);
+   tolua_function(tolua_S,"setTextProvider",tolua_Marquee_Marquee_setTextProvider00);
   tolua_endmodule(tolua_S);
  tolua_endmodule(tolua_S);
  return 1;

@@ -9,4 +9,5 @@ class Marquee : public cocos2d::CCObject {
 	void setText(const char* text);
 	void init(CCLayer* parent, float x, float y);
 	CCNode* getClipNode();
+	void setTextProvider(LUA_FUNCTION lua_provider);
 };
