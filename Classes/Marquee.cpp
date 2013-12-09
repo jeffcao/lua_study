@@ -49,7 +49,7 @@ const char* Marquee::getText() {
 				lua_pop(l_state, 2); // remove __G__TRACKBACK__ and error message from stack
 			}
 		} else {
-			if(lua_type(l_state, -1) == LUA_TSTRING) {
+			if (lua_type(l_state, -1) == LUA_TSTRING) {
 				const char* str_get = lua_tolstring(l_state, -1, NULL);
 				if (str_get) {
 					CCLOG("text get is %s", str_get);
@@ -126,7 +126,6 @@ void Marquee::init(cocos2d::CCLayer* parent, float x, float y) {
 	parent->addChild(this->_clip_node);
 	//this->_clip_node->setPosition(parent->getContentSize().width/2,parent->getContentSize().height/2);
 	this->_clip_node->setPosition(x, y);
-
 	CCDrawNode *stencil = CCDrawNode::create();
 	CCPoint rectangle[4];
 	rectangle[0] = ccp(0, 0);
@@ -137,7 +136,6 @@ void Marquee::init(cocos2d::CCLayer* parent, float x, float y) {
 	ccColor4F white = { 0, 255, 255, 255 };
 	stencil->drawPolygon(rectangle, 4, white, 1, white);
 	this->_clip_node->setStencil(stencil);
-
 	const char* str = this->getText();
 	CCLabelTTF *content = CCLabelTTF::create(str, this->_font, this->_text_size,
 			CCSizeMake (this->_size.width, 0), kCCTextAlignmentLeft);
@@ -156,7 +154,6 @@ void Marquee::init(cocos2d::CCLayer* parent, float x, float y) {
 		content2->enableStroke(this->_stroke_color, this->_stroke_size);
 	content2->setAnchorPoint(ccp(0.5, 1));
 	content2->setTag(1002);
-
 	content->setPosition(
 			ccp(this->_clip_node->getContentSize().width / 2, this->_clip_node->getContentSize().height));
 	this->_clip_node->addChild(content);
@@ -172,7 +169,6 @@ void Marquee::init(cocos2d::CCLayer* parent, float x, float y) {
 					NULL))
 					);
 	content->setUserData((void*) (getTextCount(content)));
-
 	content2->setPosition(ccp(this->_clip_node->getContentSize().width / 2, 0));
 	this->_clip_node->addChild(content2);
 }

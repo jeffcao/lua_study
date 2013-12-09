@@ -1,4 +1,5 @@
 require 'src.SocketStatePlugin'
+require 'src.MarqueePlugin'
 GamePush = {}
 SocketStatePlugin.bind(GamePush)
 
@@ -20,7 +21,8 @@ function GamePush:on_fetch_msg(data)
 	test()
 	
 	if #data.messages > 0 then
-		ToastPlugin.show_server_notify(data.messages[1].content)	
+	--	ToastPlugin.show_server_notify(data.messages[1].content)	
+		MarqueePlugin.marquee(data.messages[1].content)
 	end
 end
 

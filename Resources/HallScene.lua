@@ -17,6 +17,8 @@ require "src.ServerNotifyPlugin"
 require "src.Stats"
 require "src.Push"
 require "src.UserLocked"
+require 'src.GamePush'
+require 'src.MarqueePlugin'
 local cjson = require "cjson"
 HallScene = class("HallScene", function() 
 	print("create new hall scene")
@@ -73,6 +75,8 @@ HallScene = class("HallScene", function()
 	self:set_btn_stroke(self.to_feedback_lbl)
 	self:set_btn_stroke(self.task_lbl)
 	set_blue_stroke(self.quick_game_btn_lbl)
+	
+	MarqueePlugin.addMarquee(self)
  end
  
  function HallScene:set_btn_stroke(btn_lbl)
@@ -88,6 +92,8 @@ HallScene = class("HallScene", function()
  function HallScene:onEnter() 
 	print("HallScene:onEnter()")
 	self.super.onEnter(self)
+	GamePush.open()
+	
 	self:updateTimeTask()
 	self:update_player_beans_with_gl()
 	self:do_on_enter()

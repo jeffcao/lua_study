@@ -10,7 +10,7 @@ require "src.Stats"
 require "src.SoundEffect"
 require "src.UserLocked"
 require 'src.GamePush'
-
+require 'src.MarqueePlugin'
 LoginScene = class("LoginScene", function()
 	print("creating new loginScene")
 	return display.newScene("LoginScene")
@@ -61,7 +61,6 @@ function LoginScene:ctor()
 	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler( __bind(self.on_keypad_pressed, self) )
-
 end
 
 function LoginScene:show_set_dialog()
