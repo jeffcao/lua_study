@@ -135,7 +135,13 @@ function InitPlayerInfoLayer:do_ui_commit_btn_clicked(tag, sender)
 	self.failure_msg = strings.ii_update_info_w
 	local changed_info = {retry="0", user_id = GlobalSetting.current_user.user_id, gender = gender, 
 	nick_name = nick_name, password = password, email = mail, version="1.0"}
-	self:complete_user_info(changed_info)
+	--self:complete_user_info(changed_info)
+	
+	self.failure_msg = strings.hscp_get_player_info_w
+	GlobalSetting.hall_server_websocket:trigger("ui.complete_user_info", 
+			changed_info,
+			__bind(self.do_on_trigger_success_not_toast, self),
+			__bind(self.do_on_trigger_failure, self))
 end
 
 function InitPlayerInfoLayer:do_ui_close_btn_clicked(tag, sender)
@@ -143,6 +149,17 @@ function InitPlayerInfoLayer:do_ui_close_btn_clicked(tag, sender)
 	self:hide_progress_message_box()
 	self:dismiss()
 	self.init_player_info_callback(false)
+end
+
+function InitPlayerInfoLayer:do_on_trigger_success_not_toast(data)
+	print("[InitPlayerInfoLayer:do_on_trigger_success]")
+	GlobalSetting.current_user.nick_name = data.nick_name
+	GlobalSetting.current_user.gender = data.gender
+	GlobalSetting.current_user.email = data.email
+	self:hide_progress_message_box()
+	self:dismiss()
+	self.init_player_info_callback(true)
+	
 end
 
 function InitPlayerInfoLayer:do_on_trigger_success(data)

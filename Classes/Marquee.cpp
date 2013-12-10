@@ -52,7 +52,7 @@ const char* Marquee::getText() {
 			if (lua_type(l_state, -1) == LUA_TSTRING) {
 				const char* str_get = lua_tolstring(l_state, -1, NULL);
 				if (str_get) {
-					CCLOG("text get is %s", str_get);
+				//	CCLOG("text get is %s", str_get);
 					return str_get;
 				}
 			}
@@ -181,7 +181,7 @@ void Marquee::before_callback(CCNode* pSender, void* data) {
 
 	float delta = getTextDelta(static_cast<CCLabelTTF*>(pSender));
 	int s_count = (int) pSender->getUserData();
-	CCLOG("before_callback s_count is %d", s_count);
+	//CCLOG("before_callback s_count is %d", s_count);
 	s_count--;
 	pSender->setUserData((void*) (s_count));
 	if (s_count == 0) {
@@ -209,7 +209,7 @@ void Marquee::before_callback(CCNode* pSender, void* data) {
 
 void Marquee::after_callback(CCNode* pSender, void* data) {
 	int s_count = (int) pSender->getUserData();
-	CCLOG("after_callback s_count is %d", s_count);
+	//CCLOG("after_callback s_count is %d", s_count);
 	if (s_count == 0) {
 		pSender->setPosition(
 				ccp(pSender->getParent()->getContentSize().width / 2, 0));

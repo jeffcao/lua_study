@@ -134,6 +134,11 @@ rsp_register_w = '注册失败',
 
 --ServerNotifyPlugin
 snp_bankrupt = '您获得了破产补助：beans个豆子',
+snp_plays = '今天您已经玩了count局，再接再厉，恭喜您获得了beans豆子。',
+snp_wins = '今天您已经赢了count局，再接再厉，恭喜您获得了breans豆子。',
+snp_continue_wins = '今天您已经连赢count局，再接再厉，恭喜您获得了breans豆子。',
+snp_logins = '达成连续登录count天成就，恭喜您获得了beans豆子。',
+snp_info_complete = '达成完善资料成就，恭喜您获得了beans豆子。',
 snp_zaixianyouli = strings_general.g_zaixianyouli,
 }
 

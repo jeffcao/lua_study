@@ -4,10 +4,42 @@ function ServerNotifyPlugin.bind(theClass)
 	function theClass:onServerNotify(data)
 		if not data then return end
 		dump(data, "onServerNotify=>")
-		local funcs = {self.onLevel, self.onVIP, self.onProp, self.onActivity, self.onTimeBeans, self.onBankrupt, self.onMusic, self.onUserLocked}
+		local funcs = {self.onLevel, self.onVIP, self.onProp, self.onActivity, 
+					   self.onTimeBeans, self.onBankrupt, self.onMusic, self.onUserLocked, 
+					   self.onGamesBeans, self.onWinsBeans, self.onContinueWinsBeans, self.onPropPrompt,
+					   self.onContinueLoginsBeans, self.onInfoCompletedBeans}
 		local func = funcs[tonumber(data.notify_type)+1]
 		if not func then return end
 		func(self,data)
+	end
+	
+	--用户当天游戏达到一定次数送豆子
+	function theClass:onGamesBeans(data)
+		self:onBeans(data)
+	end
+	
+	--用户当天游戏赢够一定次数送豆子
+	function theClass:onWinsBeans(data)
+		self:onBeans(data)
+	end
+	
+	--用户连续赢送豆子
+	function theClass:onContinueWinsBeans(data)
+		self:onBeans(data)
+	end
+	
+	--完善资料送豆子
+	function theClass:onInfoCompletedBeans(data)
+		self:onBeans(data)
+	end
+	
+	--连续登录送豆子
+	function theClass:onContinueLoginsBeans(data)
+		self:onBeans(data)
+	end
+	
+	--推荐用户购买道具
+	function theClass:onPropPrompt(data)
 	end
 	
 	function theClass:onUserLocked(data)
@@ -101,6 +133,7 @@ function ServerNotifyPlugin.bind(theClass)
 	end
 	
 	function theClass:onTimeBeans(data)
+	--[[
 		cclog("onTimeBeans")
 		local scene = CCDirector:sharedDirector():getRunningScene()
 		dump(scene, 'running scene')
@@ -120,5 +153,53 @@ function ServerNotifyPlugin.bind(theClass)
 				end
 			end
 		end
+	]]
+		self:onBeans(data)
+	end
+	
+	function theClass:onBeans(data)
+		dump(data, 'on beans')
+		local msg = self:getOnBeansNotifyMsg(data)
+		print('on beans msg:', msg)
+		ToastPlugin.show_server_notify(msg)
+		
+		local c_user = GlobalSetting.current_user
+		if data.score then c_user.score = data.score end
+		if data.game_level then c_user.game_level = data.game_level end
+		
+		local scene = runningscene()
+		
+		--for situation in playing card
+		local s_users = scene.users
+		if s_users and data.user_id then
+			local usr_info = s_users[data.user_id]
+			if usr_info then
+				usr_info.score = c_user.score
+				usr_info.game_level = c_user.game_level
+			end
+		end
+		
+		--for situation in hall
+		if scene.online_time_beans_update then
+			scene:online_time_beans_update()
+		end
+	end
+	
+	function theClass:getOnBeansNotifyMsg(data)
+		local msg = ""
+		--4.在线时长送豆子，8.游戏次数送豆子，9.赢次数送豆子，10.连续赢送豆子， 12.连续登录送豆子， 13.完善资料送豆子
+		local strs = {a4=strings.snp_zaixianyouli, a8=strings.snp_plays, a9=strings.snp_wins, 
+					  a10=strings.snp_continue_wins, a12=strings.snp_logins, a13=strings.snp_info_complete}
+		local data_keys = {a4="online_time", a8="game_count", a9="win_count", a10="continue_win", a12="continue_login"}
+		local str_keys = {a4 = "minutes"}
+		local key = "a" .. tostring(data.notify_type)
+		msg = strs[key]
+		if data_keys[key] then
+			local count = tostring(data[data_keys[key]])
+			print("count is", count)
+			msg = string.gsub(msg, (str_keys[key] or "count"), count)
+		end
+		msg = string.gsub(msg, "beans", tostring(data.beans))
+		return msg
 	end
 end
