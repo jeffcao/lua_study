@@ -1,5 +1,6 @@
 package cn.com.m123.DDZ.push;
 
+import cn.com.m123.DDZ.test.Logger;
 import android.content.Context;
 /**
  * how to use!
@@ -8,8 +9,6 @@ import android.content.Context;
  * must declared in Manifest.xml
  *    service:{@PushService}
  *    receiver:{@PushReceiver}
- * 
- * setIconResource is optional, default is android.R.drawable.star_big_on
  * @author qy
  *
  */
@@ -24,7 +23,8 @@ public class PushManager {
 	private PushDataManager data_manager;
 
 	private static PushManager _inst;
-
+	private static final String tag = PushManager.class.getName();
+	
 	private PushManager() {
 	}
 
@@ -46,6 +46,8 @@ public class PushManager {
 	}
 
 	public void onAction(String action) {
+		Logger.i(tag, "on action " + action + "\n  at time:" 
+					+ PushTask.transTime(System.currentTimeMillis()));
 		if (ACTION_PUSH_ALARM.equals(action)) {
 			task_processer.onTaskAlarm();
 		}

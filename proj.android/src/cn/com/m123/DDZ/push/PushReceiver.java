@@ -3,9 +3,10 @@ package cn.com.m123.DDZ.push;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import cn.com.m123.DDZ.test.Logger;
 
 public class PushReceiver extends BroadcastReceiver {
-	
+	private static final String tag = PushReceiver.class.getName();
 
 	/**
 	 * <intent-filter >
@@ -30,9 +31,12 @@ public class PushReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		Intent service_intent = new Intent(context, PushService.class);
-		if (null != intent && null != intent.getAction()) {
-			System.out.println("on receive action " + intent.getAction());
-			service_intent.setAction(intent.getAction());
+		String action = null != intent ? intent.getAction() : null;
+		if (null != action) {
+			Logger.i(tag, "is action null? " + (null == action));
+			Logger.i(tag, "on receive action " + action
+					+ "\n  at time:" + PushTask.transTime(System.currentTimeMillis()));
+			service_intent.setAction(action);
 		}
 		context.startService(service_intent);
 	}

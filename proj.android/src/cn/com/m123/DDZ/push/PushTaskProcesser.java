@@ -10,22 +10,26 @@ import android.net.Uri;
 import cn.com.m123.DDZ.DouDiZhu_Lua;
 import cn.com.m123.DDZ.R;
 import cn.com.m123.DDZ.push.PushDataManager.TaskListener;
+import cn.com.m123.DDZ.test.Logger;
 
 public class PushTaskProcesser implements TaskListener {
 	private Context mContext;
 	private int icon_resource = R.drawable.icon;
-
+	private static final String tag = PushTaskProcesser.class.getName();
+	
 	public PushTaskProcesser(Context mContext) {
 		super();
 		this.mContext = mContext;
 	}
 
 	public void onTaskAlarm() {
+		Logger.i(tag, "onTaskAlarm");
 		processTask();
 	}
 
 	@Override
 	public void onTaskAdd() {
+		Logger.i(tag, "onTaskAdd");
 		processTask();
 	}
 
@@ -35,34 +39,41 @@ public class PushTaskProcesser implements TaskListener {
 	}
 
 	private void processTask() {
+		Logger.i(tag, "processTask");
 		checkImmediatelyTask();
 		arrangeTask();
 	}
 
 	private void checkImmediatelyTask() {
+		Logger.i(tag, "checkImmediatelyTask");
 		PushTask task = PushDAO.getInstance().getImmediatelyTask();
-		if (null != task)
+		if (null != task) {
+			Logger.i(tag, "get immediately task:\n" + task);
 			push(task);
+		}
 	}
 
 	private void arrangeTask() {
 		PushTask latestTask = PushDAO.getInstance().getLatestTask();
 		if (null == latestTask || latestTask.getTimeRemain() <= 0)
 			return;
+		Logger.i(tag, "get latest task:\n" + latestTask);
 		AlarmSender.deployAlarm(mContext, PushManager.ACTION_PUSH_ALARM,
 				(int) latestTask.getTimeRemain());
 	}
 
 	private void push(PushTask task) {
+		Logger.i(tag, "push");
 		pushNotification(mContext, task, icon_resource);
 		PushDAO.getInstance().removeTask(task);
 	}
 
 	public static void pushNotification(Context context, PushTask task,
 			int icon_resource) {
+		Logger.i(tag, "pushNotification");
 		if (null != DouDiZhu_Lua.INSTANCE) {
 			if (task.condition.equals("background")) {
-				System.out.println("task can not show while doudizhu game is running");
+				Logger.i(tag, "task can not show while doudizhu game is running");
 				return;
 			}
 			context = DouDiZhu_Lua.INSTANCE;
@@ -78,10 +89,10 @@ public class PushTaskProcesser implements TaskListener {
 		Intent i = new Intent(context, DouDiZhu_Lua.class);
 
 		if (!(context instanceof Activity)) {
-			System.out.println("set flag new task");
+			Logger.i(tag,"set flag new task");
 			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		} else {
-			System.out.println("set flag FLAG_ACTIVITY_SINGLE_TOP");
+			Logger.i(tag, "set flag FLAG_ACTIVITY_SINGLE_TOP");
 			i.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 		}
 

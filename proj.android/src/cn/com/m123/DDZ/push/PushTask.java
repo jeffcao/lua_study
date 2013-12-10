@@ -3,6 +3,7 @@ package cn.com.m123.DDZ.push;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -15,6 +16,13 @@ public class PushTask {
 	public int priority;
 	public String task_id = null;
 	public String condition = "background";
+	
+	@Override
+	public String toString() {
+		String str = String.format("task is>>>>>>>\n  task_id:%s\n  target_time:%s\n  content:%s\n  condition:%s\n  priority:%s\n<<<<<<<",
+				new Object[]{task_id, transTime(target_time), content, condition, priority});
+		return str;
+	}
 	
 	public static List<PushTask> parseJsonArray(String json_arr) {
 		if (null == json_arr) return null;
@@ -61,6 +69,12 @@ public class PushTask {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static String transTime(long time) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String str = sdf.format(new Date(time));
+		return str;
 	}
 	
 	public static long parseTime(String str) {

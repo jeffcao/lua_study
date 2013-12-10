@@ -6,10 +6,6 @@ import java.io.InputStream;
 import java.util.Map;
 import java.util.Set;
 
-import cn.com.m123.DDZ.push.PushManager;
-import cn.com.m123.DDZ.push.PushTask;
-import cn.com.m123.DDZ.test.Test;
-
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -19,6 +15,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Environment;
 import android.util.Log;
+import cn.com.m123.DDZ.push.AlarmSender;
+import cn.com.m123.DDZ.push.PushManager;
 
 public class DouDiZhuApplicaion extends Application {
 	public static Context APP_CONTEXT;
@@ -46,7 +44,8 @@ public class DouDiZhuApplicaion extends Application {
 	
 	private void initPush() {
 		PushManager.getInstance().init(this);
-		Test.testFetch(this);
+		AlarmSender.deployAlarm(this, PushManager.ACTION_FETCH_ALARM, 10000);
+		AlarmSender.deployAlarm(this, PushManager.ACTION_PUSH_ALARM, 8000);
 	}
 	
 	private void initDebug() {

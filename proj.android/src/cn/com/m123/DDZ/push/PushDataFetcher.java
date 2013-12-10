@@ -4,17 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import cn.com.m123.DDZ.push.NetUtil.HttpMethod;
+import cn.com.m123.DDZ.test.Logger;
 
 public class PushDataFetcher {
 	private Thread fetch_thread;
 	private Context mContext;
 	private PushDataManager push_data_mgr;
+	private final String tag = PushDataFetcher.class.getName();
 
 	public PushDataFetcher(Context mContext, PushDataManager push_data_mgr) {
 		super();
@@ -23,9 +24,11 @@ public class PushDataFetcher {
 	}
 
 	public void onAction(String action) {
+		Logger.i(tag, "onAction:" + action);
 		AlarmSender.deployAlarm(mContext, PushManager.ACTION_FETCH_ALARM,
 				getFetchInterval());
 		Map<String, String> params = getParams();
+		Logger.i(tag, "fetch params:\n" + params);
 		String url = getUrl();
 		if (null != params && null != url) {
 			fetchData(url, params);
@@ -35,15 +38,17 @@ public class PushDataFetcher {
 	public void fetchData(final String url, final Map<String, String> params) {
 		if (null != fetch_thread)
 			return;
-		if (!NetUtil.isNetworkAvailable(mContext))
+		if (!NetUtil.isNetworkAvailable(mContext)) {
+			Logger.i(tag, "network is not available, don't fetch push!");
 			return;
+		}
 		Runnable r = new Runnable() {
 
 			@Override
 			public void run() {
 				String json = NetUtil.syncConnect(url, params, HttpMethod.POST);
 				// json = Test.getTestJson(mContext);
-				System.out.println("json is " + json);
+				Logger.i(tag, "fetched json is " + json);
 				// push_data_mgr.addTask(json);
 				onFetched(json);
 				fetch_thread = null;
@@ -60,6 +65,7 @@ public class PushDataFetcher {
 					.valueOf(obj.getInt("last_msg_seq"));
 			SharedPreferences sp = mContext.getSharedPreferences("push_task",
 					Context.MODE_PRIVATE);
+			Logger.i(tag, "save last_message_seq to " + last_message_seq);
 			sp.edit().putString("last_message_seq", last_message_seq).commit();
 
 			JSONArray messages = obj.getJSONArray("messages");
@@ -76,7 +82,7 @@ public class PushDataFetcher {
 	private Map<String, String> getParams() {
 		SharedPreferences sp = mContext.getSharedPreferences("push_task",
 				Context.MODE_PRIVATE);
-		String last_msg_seq = sp.getString("last_msg_seq", "0");
+		String last_msg_seq = sp.getString("last_message_seq", "0");
 		sp = mContext.getSharedPreferences("Cocos2dxPrefsFile",
 				Context.MODE_PRIVATE);
 		String user_id = sp.getString("user.user_ids", null);

@@ -2,6 +2,8 @@ package cn.com.m123.DDZ.push;
 
 import java.util.Calendar;
 
+import cn.com.m123.DDZ.test.Logger;
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -10,7 +12,7 @@ import android.content.Intent;
 public class AlarmSender {
 
 	public static void deployAlarm(Context context, String action, int millisecond) {
-		System.out.println("deploy alarm " + action + " after " + millisecond + "ms");
+		Logger.i("AlarmSender", "deploy alarm " + action + " after " + millisecond + "ms");
 		Intent intent = new Intent(action);
 		PendingIntent pending = PendingIntent.getBroadcast(context, 0, intent,
 				0);

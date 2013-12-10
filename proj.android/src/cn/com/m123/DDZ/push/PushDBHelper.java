@@ -53,6 +53,11 @@ public class PushDBHelper extends SQLiteOpenHelper {
 		return getWritableDatabase().insert(PUSH_TABLE_NAME, null, values);
 	}
 	
+	public Cursor getAllTask() {
+		String sql = "select * from " + PUSH_TABLE_NAME;
+		return getReadableDatabase().rawQuery(sql, null);
+	}
+	
 	public Cursor getImmediatelyTask() {
 		String sql = "select * from " + PUSH_TABLE_NAME + " where " + PUSH_TABLE_PUSHTIME + "<?" 
 					 + " order by " + PUSH_TABLE_PUSHTIME + " desc";

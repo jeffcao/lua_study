@@ -5,12 +5,15 @@ import java.util.List;
 
 import org.json.JSONArray;
 
+import cn.com.m123.DDZ.test.Logger;
+
 import android.content.Context;
 
 public class PushDataManager {
 	private Context mContext;
 	private TaskListener taskListener;
 	private PushDAO push_dao;
+	private final String tag = PushDataManager.class.getName();
 
 	public PushDataManager(Context mContext) {
 		super();
@@ -49,8 +52,9 @@ public class PushDataManager {
 	}
 	
 	private boolean isOutOfDate(PushTask task) {
-		long day = 24 * 60 * 1000 * 1000;
+		long day = 24 * 60 * 60 * 1000;
 		boolean result = System.currentTimeMillis() - task.target_time > day;
+		Logger.i(tag, "check task is outofdate:\n" + task + "\n, result:" + result);
 		return result;
 	}
 
