@@ -159,15 +159,15 @@ void Marquee::init(cocos2d::CCLayer* parent, float x, float y) {
 	this->_clip_node->addChild(content);
 	content->runAction(
 			CCRepeatForever::create(
-					CCSequence::create(CCDelayTime::create(3.0),
-							CCCallFuncND::create(content,
-									callfuncND_selector(Marquee::before_callback),
-									(void*) this),
-							CCMoveBy::create(
-1.0					, ccp(0,getTextHeight(content))),
+				CCSequence::create(
+					CCDelayTime::create(3.0),
+					CCCallFuncND::create(content, callfuncND_selector(Marquee::before_callback), (void*) this),
+					CCMoveBy::create(1.0, ccp(0,getTextHeight(content))),
 					CCCallFuncND::create(content, callfuncND_selector(Marquee::after_callback), (void*)this),
-					NULL))
-					);
+					NULL
+				)
+			)
+	);
 	content->setUserData((void*) (getTextCount(content)));
 	content2->setPosition(ccp(this->_clip_node->getContentSize().width / 2, 0));
 	this->_clip_node->addChild(content2);
@@ -194,21 +194,18 @@ void Marquee::before_callback(CCNode* pSender, void* data) {
 		pSucc->stopAllActions();
 		pSucc->runAction(
 				CCRepeatForever::create(
-						CCSequence::create(
-								CCCallFuncND::create(pSucc,
-										callfuncND_selector(Marquee::before_callback),
-										(void*) data),
-								CCMoveBy::create(1.0,
-										ccp(0,getTextHeight(pSucc))),
-										CCCallFuncND::create(pSucc, callfuncND_selector(Marquee::after_callback), (void*)data),
-										CCDelayTime::create(3.0),
-										NULL
-										)
-										)
-										);
-									}
+					CCSequence::create(
+						CCCallFuncND::create(pSucc, callfuncND_selector(Marquee::before_callback), (void*) data),
+						CCMoveBy::create(1.0, ccp(0,getTextHeight(pSucc))),
+						CCCallFuncND::create(pSucc, callfuncND_selector(Marquee::after_callback), (void*)data),
+						CCDelayTime::create(3.0),
+						NULL
+					)
+				)
+		);
+	}
 
-								}
+}
 
 void Marquee::after_callback(CCNode* pSender, void* data) {
 	int s_count = (int) pSender->getUserData();

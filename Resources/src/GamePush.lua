@@ -12,17 +12,17 @@ end
 function GamePush:on_fetch_msg(data)
 	CCUserDefault:sharedUserDefault():setStringForKey("last_msg_seq", data.last_msg_seq)
 	dump(data, '[GamePush]=>on fetch msg')
-	
-	local test = function()
-		if #data.messages == 0 then
-			table.insert(data.messages, {content = 'content'..os.time()})
+	if GlobalSetting.run_env == "test" then
+		if #data.messages == 0 and math.random(10)>5 then
+			table.insert(data.messages, {content = '测试走马灯第一条'..os.time()})
+			local str = "测试走马灯第二条，测试走马灯在显示很长一段文字的时候会出现什么状况：if self.game_push_ws then self.game_push_ws:close() self.game_push_ws = nil end self:cancel_fetch_hdlr() GamePush.obj = nil"
+			table.insert(data.messages, {content = '测试走马灯第二条'..os.time()})
+			table.insert(data.messages, {loop = true, content = "测试走马灯，这是一条会一直循环展示的走马灯信息。"})
 		end
 	end
-	test()
 	
-	if #data.messages > 0 then
-	--	ToastPlugin.show_server_notify(data.messages[1].content)	
-		MarqueePlugin.marquee(data.messages[1].content)
+	for _,v in pairs(data.messages) do
+		MarqueePlugin.marquee(v.content, v.loop)
 	end
 end
 

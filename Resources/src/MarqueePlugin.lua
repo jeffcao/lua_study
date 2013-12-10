@@ -8,6 +8,7 @@ function MarqueePlugin.get_text()
 end
 
 function MarqueePlugin.marquee(msg, loop)
+	msg = msg or ""--ensure msg not be nil
 	if loop then MarqueePlugin.loop_text = msg
 	else List.pushright(MarqueePlugin.once, msg) end
 end
