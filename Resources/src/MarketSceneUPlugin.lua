@@ -1,6 +1,7 @@
 require "MarketItem"
 require "YesNoDialog3"
 require "BackMessageBoxLayer"
+require 'src.PurchasePlugin'
 
 local json = require "cjson"
 
@@ -65,6 +66,8 @@ function MarketSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:show_buy_notify(product)
+		PurchasePlugin.show_buy_notify(product)
+		--[[
 		print("[MarketSceneUPlugin:show_buy_notify]")
 		
 		if is_blank(product.consume_code) then
@@ -94,9 +97,9 @@ function MarketSceneUPlugin.bind(theClass)
 		self.yes_no_dialog:setNoButton(__bind(self.do_cancel_buy, self))
 		 
 		self.yes_no_dialog:show()
-
+	]]
 	end
-	
+	--[[
 	function theClass:do_buy_product()
 		print("[MarketSceneUPlugin:do_buy_product]")
 		self.yes_no_dialog:dismiss(true)
@@ -148,7 +151,7 @@ function MarketSceneUPlugin.bind(theClass)
 		self.rootNode:removeChild(self.yes_no_dialog, true)
 		self.yes_no_dialog = nil
 	end
-	
+	]]
 	function theClass:do_on_trigger_success(data)
 		print("[MarketSceneUPlugin:do_on_trigger_success]")
 		self:hide_progress_message_box()

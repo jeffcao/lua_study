@@ -228,10 +228,13 @@ function HallServerConnectionPlugin.bind(theClass)
 		GlobalSetting.hall_server_websocket.channels[user_channel_name] = nil
 		self.hall_channel = GlobalSetting.hall_server_websocket:subscribe(user_channel_name)
 		
+		--[[
 		self.hall_channel:bind("ui.buy_prop", function(data) 
 			print("ui.buy_prop  aaaa")
 			self:on_buy_product_message(data)
 		end)
+		]]
+		PurchasePlugin.bind_ui_buy_prop_event(self.hall_channel)
 		
 		self.hall_channel:bind("ui.routine_notify", function(data)
 			self:onServerNotify(data)
