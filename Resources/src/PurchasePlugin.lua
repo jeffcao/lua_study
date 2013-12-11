@@ -2,7 +2,9 @@ PurchasePlugin = {}
 --purchase logic
 
 function PurchasePlugin.bind_ui_buy_prop_event(channel)
-	channel:bind("ui.buy_prop", PurchasePlugin.on_server_notify_buy_finish_success)
+	local event_name = PurchasePlugin.get_event_start(ws) .. 'buy_prop'
+	print('bind_ui_buy_prop_event event_name is', event_name)
+	channel:bind(event_name, PurchasePlugin.on_server_notify_buy_finish_success)
 end
 
 function PurchasePlugin.on_server_notify_buy_finish_success(data)
@@ -64,6 +66,12 @@ function PurchasePlugin.show_buy_notify(product)
 	dialog:setMessageSize(19)
 	dialog:setYesButton(function() dialog:dismiss() PurchasePlugin.do_buy_product(product) end)
 	dialog:setNoButton(function() dialog:dismiss() end)
+	if product.is_prompt then
+		dialog:set_is_restricted(true)
+	end
+	if product.title then
+		dialog.title:setString(product.title)
+	end
 	dialog:show()
 end
 
@@ -83,7 +91,9 @@ function PurchasePlugin.buy_prop(product_id)
 	if not ws then print('there is no websocket to buy') return end
 
 	local failure_fuc = function(data) dump(data, 'buy_prop failure') ToastPlugin.show_message_box(failure_msg) end
-	ws:trigger('ui.buy_prop', event_data, PurchasePlugin.do_on_buy_message, failure_fuc)
+	local event_name = PurchasePlugin.get_event_start(ws) .. 'buy_prop'
+	print('buy_prop event_name is', event_name)
+	ws:trigger(event_name, event_data, PurchasePlugin.do_on_buy_message, failure_fuc)
 end
 
 --data:content
@@ -123,7 +133,9 @@ function PurchasePlugin.timing_buy_prop(trad_seq, product_id)
 	if not ws then print('there is no websocket to buy') return end
 
 	local timing_func = function(data) dump(data, 'timing func get data') end
-	ws:trigger("ui.timing_buy_prop", event_data, PurchasePlugin.on_timing_success, PurchasePlugin.on_timing_failure)
+	local event_name = PurchasePlugin.get_event_start(ws) .. 'timing_buy_prop'
+	print('timing_buy_prop event_name is', event_name)
+	ws:trigger(event_name, event_data, PurchasePlugin.on_timing_success, PurchasePlugin.on_timing_failure)
 end
 
 --timing success, hide progress message box and wait
@@ -144,4 +156,10 @@ end
 function PurchasePlugin.get_buy_socket()
 	local ws = GlobalSetting.hall_server_websocket or GlobalSetting.g_WebSocket
 	return ws
+end
+
+function PurchasePlugin.get_event_start(ws)
+	local start = 'ui.'
+	if ws == GlobalSetting.g_WebSocket then start = 'g.' end
+	return start
 end

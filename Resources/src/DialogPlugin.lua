@@ -72,7 +72,7 @@ function DialogPlugin.bind(theClass)
 	function theClass:show()
 		if not self:canShow() then print("error, try to show an dialog been destroyed") return end
 		if self.dialogplugin_is_restricted then
-			local delta = os.time - (GlobalSetting.last_restricted_show_time or 0)
+			local delta = os.time() - (GlobalSetting.last_restricted_show_time or 0)
 			if delta < GlobalSetting.restrict_interval then
 				print("delta is less than restricted", delta)
 				return

@@ -16,6 +16,8 @@ function GConnectionPlugin.bind(theClass)
 		self.m_channel = self.g_WebSocket:subscribe(user_channel_name)
 		self:bind_channel(self.g_channel)
 		self:bind_channel(self.m_channel)
+		--receive buy success message
+		PurchasePlugin.bind_ui_buy_prop_event(self.m_channel)
 		
 		self:initSocket(self.g_WebSocket, "g.restore_connection", "g.ddz_socket_closed")
 	end

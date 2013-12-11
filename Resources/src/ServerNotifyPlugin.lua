@@ -1,5 +1,5 @@
 ServerNotifyPlugin = {}
-
+require 'src.PromptPlugin'
 function ServerNotifyPlugin.bind(theClass)
 	function theClass:onServerNotify(data)
 		if not data then return end
@@ -40,6 +40,7 @@ function ServerNotifyPlugin.bind(theClass)
 	
 	--推荐用户购买道具
 	function theClass:onPropPrompt(data)
+		PromptPlugin.showPrompt(data)
 	end
 	
 	function theClass:onUserLocked(data)
