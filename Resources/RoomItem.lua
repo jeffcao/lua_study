@@ -47,6 +47,17 @@ function RoomItem:init_room_info(room_info, room_index)
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 	cache:addSpriteFramesWithFile(Res.hall_plist)
 	
+	self.promotion_layer:setVisible(room_info.is_promotion)
+	self.normal_layer:setVisible(not room_info.is_promotion)
+	if not room_info.is_promotion then
+		self:init_normal_room(room_info, room_index)
+	else
+		self:init_promotion_room(room_info, room_index)
+	end
+	
+end
+
+function RoomItem:init_normal_room(room_info, room_index)
 	self.zhunru_lb:setString(self.room_info.min_qualification.."豆子")
 	self.dizhu_lb:setString(self.room_info.ante)
 	dump(self.title, "room_title")
@@ -65,7 +76,9 @@ function RoomItem:init_room_info(room_info, room_index)
 	local bg_sprite_png_index = (room_index % 6) > 0 and (room_index % 6) or 6
 	local bg_sprite_png = "fangjian0"..bg_sprite_png_index..".png"
 	self.bg_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(bg_sprite_png))
-	
+end
+
+function RoomItem:init_promotion_room(room_info, room_index)
 end
 
 

@@ -422,6 +422,10 @@ function GActionPlugin.bind(theClass)
 		end
 	end
 	
+	function theClass:get_user_profile()
+		self:doGetUserProfileIfNeed(self.g_user_id, true) 
+	end
+	
 	-- 假如用户资料没有get下来，去服务器获取用户资料
 	function theClass:doGetUserProfileIfNeed(user_id, mandantory) 
 		if not user_id then

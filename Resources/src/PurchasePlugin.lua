@@ -13,9 +13,11 @@ function PurchasePlugin.on_server_notify_buy_finish_success(data)
 
 	--after buy finish success, there are something to do
 	local scene = runningscene()
-	if scene.get_user_profile and scene.display_player_info then
+	if scene.get_user_profile then
 		scene:get_user_profile()
-		scene.after_trigger_success = __bind(scene.display_player_info, scene)
+		if scene.display_player_info then
+			scene.after_trigger_success = __bind(scene.display_player_info, scene)
+		end
 	end
 end
 
