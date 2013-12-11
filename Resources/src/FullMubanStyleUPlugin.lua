@@ -18,6 +18,29 @@ function FullMubanStyleUPlugin.bind(theClass)
 		assert(frame, "muban set title, frame is null")
 		self.title:setDisplayFrame(frame)
 	end
+	
+	function theClass:setTitleLeft()
+		self.title_layer:setPosition(ccp(168,480))
+		self.title_sprite:setPosition(ccp(91,18))
+	end
+	
+	function theClass:showTitleBg()
+		self.title_bg:setVisible(true)
+	end
+	
+	function theClass:setDecorationHuawen()
+		local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+		local left = cache:spriteFrameByName("huawen_b.png")
+		local right = cache:spriteFrameByName("huawen_a.png")
+		self.decoration_left:setDisplayFrame(left)
+		self.decoration_right:setDisplayFrame(right)
+		self.close_menu:setPosition(ccp(768,456))
+		self.close_menu:getParent():reorderChild(self.close_menu, self.decoration_right:getZOrder() + 1)
+	end
+	
+	function theClass:removeRepeatBg()
+		self.rootNode:removeChildByTag(23, true)
+	end
 
 	function theClass:setOnClose(fn)
 		self.close:registerScriptTapHandler(fn)

@@ -48,6 +48,7 @@ function FullMubanStyleLayer:repeat_bg()
 	sprite:getTexture():setTexParameters(params)
 	sprite:setAnchorPoint(ccp(0.5,0.5))
 	sprite:setPosition(ccp(402,219))
+	sprite:setTag(23)
 	self.rootNode:addChild(sprite)
 end
 

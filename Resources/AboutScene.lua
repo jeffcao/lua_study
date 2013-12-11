@@ -30,6 +30,10 @@ function AboutScene:ctor()
 	local layer = createFullMubanStyleLayer()
 	self:addChild(layer)
 	layer:setTitle("biaoti07.png")
+	--layer:setTitleLeft()
+	--layer:showTitleBg()
+	--layer:setDecorationHuawen()
+	--layer:removeRepeatBg()
 	
 	local user_default = CCUserDefault:sharedUserDefault()
 	local version = "版本： " .. resource_version
@@ -48,7 +52,7 @@ function AboutScene:ctor()
 	package.loaded["Version"] = nil
 	require "Version"
 	]]
-	MarqueePlugin.addMarquee(self)
+	--MarqueePlugin.addMarquee(self)
 	--[[
 	local my_layer = CCLayer:create()
 	my_layer:setAnchorPoint(ccp(0.5,0.5))
