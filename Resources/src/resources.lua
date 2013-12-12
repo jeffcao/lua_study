@@ -10,6 +10,7 @@ Res = {
 	s_cards_plist = "ccbResources/poke_cards.plist",
  	hall_plist = "ccbResources/hall.plist",
  	props_plist = "ccbResources/props.plist",
+ 	jiesuan_plist = "ccbResources/jiesuan.plist",
 
 -- 背景音乐
  s_music_bg = dirMusic .. "bg/1.mp3",

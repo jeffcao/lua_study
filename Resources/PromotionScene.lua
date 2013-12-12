@@ -27,6 +27,7 @@ function PromotionScene:ctor()
 	view:setPosition(ccp(0,35))
 	layer:setContent(view)
 	]]
+	scaleNode(self.layer, GlobalSetting.content_scale_factor)
 	Timer.add_timer(0.1, function() 
 		self:getPromotionList()
 	end)

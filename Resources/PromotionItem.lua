@@ -1,3 +1,4 @@
+require 'PromotionInfoScene'
 PromotionItem = class("PromotionItem", function() 
 	print("new promotion item")
 	return display.newLayer("PromotionItem")
@@ -42,6 +43,7 @@ end
 
 function PromotionItem:do_on_speci_clicked()
 	print("[PromotionItem:do_on_speci_clicked]")
-	--self.show_buy_notify(self.product)
+	local scene = createPromotionInfoScene(self.item)
+	CCDirector:sharedDirector():replaceScene(scene)
 end
 

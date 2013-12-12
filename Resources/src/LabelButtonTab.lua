@@ -41,6 +41,8 @@ function LabelButtonTab.bind(theClass)
 		local layer = CCLayer:create()
 		local label = CCLabelTTF:create(hanzi_name,"default",25)
 		
+		local plist = Res.jiesuan_plist
+		CCSpriteFrameCache:sharedSpriteFrameCache():addSpriteFramesWithFile(plist)
 		local menu_normal_sprite = CCSprite:createWithSpriteFrameName("xuanxiangka2.png")
 		local menu_click_sprite = CCSprite:createWithSpriteFrameName("xuanxiangka1.png")
 		local toggle_sub_normal = CCMenuItemSprite:create(menu_normal_sprite, menu_click_sprite)
