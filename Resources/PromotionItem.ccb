@@ -253,7 +253,7 @@
 						<key>displayName</key>
 						<string>name_lb</string>
 						<key>memberVarAssignmentName</key>
-						<string>name_lb</string>
+						<string>name_lbl</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -381,7 +381,7 @@
 						<key>displayName</key>
 						<string>time_lb</string>
 						<key>memberVarAssignmentName</key>
-						<string>time_lb</string>
+						<string>time_lbl</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -509,7 +509,7 @@
 						<key>displayName</key>
 						<string>note_lb</string>
 						<key>memberVarAssignmentName</key>
-						<string>note_lb</string>
+						<string>note_lbl</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>
@@ -711,7 +711,7 @@
 												<string>Block</string>
 												<key>value</key>
 												<array>
-													<string>on_ui_forget_pwd_btn_clicked</string>
+													<string>on_speci_clicked</string>
 													<integer>1</integer>
 												</array>
 											</dict>

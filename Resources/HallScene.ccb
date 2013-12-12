@@ -1733,7 +1733,7 @@
 												<string>Block</string>
 												<key>value</key>
 												<array>
-													<string>on_promotion_btn_clicked</string>
+													<string>on_ui_promotion_btn_clicked</string>
 													<integer>1</integer>
 												</array>
 											</dict>
