@@ -140,5 +140,12 @@ snp_continue_wins = '今天您已经连赢count局，再接再厉，恭喜您获
 snp_logins = '达成连续登录count天成就，恭喜您获得了beans豆子。',
 snp_info_complete = '达成完善资料成就，恭喜您获得了beans豆子。',
 snp_zaixianyouli = strings_general.g_zaixianyouli,
+
+--PromotionItem
+pi_duration = '活动时间：begin～end',
+--PromotionScenePlugin
+psp_fetch_promotion = '正在获取活动列表...',
+psp_fetch_promotion_w = '获取活动列表失败',
+psp_fetch_promotion_nil = '当前没有活动',
 }
 

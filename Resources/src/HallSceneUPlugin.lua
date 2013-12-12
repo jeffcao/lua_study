@@ -152,6 +152,12 @@ function HallSceneUPlugin.bind(theClass)
 		CCDirector:sharedDirector():pushScene(scene)
 	end
 	
+	function theClass:do_ui_promotion_btn_clicked(tag, sender)
+		print("[HallSceneUPlugin:do_ui_promotion_btn_clicked]")
+		local scene = createPromotionScene()
+		CCDirector:sharedDirector():pushScene(scene)
+	end
+	
 	function theClass:doToMarket()
 		local scene = createMarketScene(__bind(self.inactive_market_scene, self))
 		self.matket_scene = scene

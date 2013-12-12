@@ -4,6 +4,7 @@ require "src.HallServerConnectionPlugin"
 require "IntroduceDialog"
 require "src.SoundEffect"
 require "src.Stats"
+require "PromotionScene"
 
 MarketScene = class("MarketScene", function()
 	print("new market scene")
