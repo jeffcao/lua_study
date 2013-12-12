@@ -2,7 +2,7 @@ PurchasePlugin = {}
 --purchase logic
 
 function PurchasePlugin.bind_ui_buy_prop_event(channel)
-	local event_name = PurchasePlugin.get_event_start(ws) .. 'buy_prop'
+	local event_name = PurchasePlugin.get_event_start() .. 'buy_prop'
 	print('bind_ui_buy_prop_event event_name is', event_name)
 	channel:bind(event_name, PurchasePlugin.on_server_notify_buy_finish_success)
 end
@@ -13,11 +13,31 @@ function PurchasePlugin.on_server_notify_buy_finish_success(data)
 
 	--after buy finish success, there are something to do
 	local scene = runningscene()
+	--update user info
+	if scene.display_player_info then
+		scene.after_trigger_success = __bind(scene.display_player_info, scene)
+	end
 	if scene.get_user_profile then
 		scene:get_user_profile()
-		if scene.display_player_info then
-			scene.after_trigger_success = __bind(scene.display_player_info, scene)
+	else
+		local ws = GlobalSetting.hall_server_websocket
+		if ws then
+			local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
+			local failure = function(data) dump(data, 'get user profile after buy fail') end
+			local success = function(data) 
+				dump(data, 'get user profile after buy success') 
+				GlobalSetting.current_user.score = data.score
+				GlobalSetting.current_user.win_count = data.win_count
+				GlobalSetting.current_user.lost_count = data.lost_count
+			end
+			success = scene.display_player_info or success
+			ws:trigger("ui.get_user_profile", event_data, success, failure)
 		end
+	end
+	
+	--use prop
+	if scene.use_prop_bought then
+		scene:use_prop_bought(data)
 	end
 end
 
@@ -93,7 +113,7 @@ function PurchasePlugin.buy_prop(product_id)
 	if not ws then print('there is no websocket to buy') return end
 
 	local failure_fuc = function(data) dump(data, 'buy_prop failure') ToastPlugin.show_message_box(failure_msg) end
-	local event_name = PurchasePlugin.get_event_start(ws) .. 'buy_prop'
+	local event_name = PurchasePlugin.get_event_start() .. 'buy_prop'
 	print('buy_prop event_name is', event_name)
 	ws:trigger(event_name, event_data, PurchasePlugin.do_on_buy_message, failure_fuc)
 end
@@ -135,7 +155,7 @@ function PurchasePlugin.timing_buy_prop(trad_seq, product_id)
 	if not ws then print('there is no websocket to buy') return end
 
 	local timing_func = function(data) dump(data, 'timing func get data') end
-	local event_name = PurchasePlugin.get_event_start(ws) .. 'timing_buy_prop'
+	local event_name = PurchasePlugin.get_event_start() .. 'timing_buy_prop'
 	print('timing_buy_prop event_name is', event_name)
 	ws:trigger(event_name, event_data, PurchasePlugin.on_timing_success, PurchasePlugin.on_timing_failure)
 end
@@ -160,8 +180,8 @@ function PurchasePlugin.get_buy_socket()
 	return ws
 end
 
-function PurchasePlugin.get_event_start(ws)
+function PurchasePlugin.get_event_start()
 	local start = 'ui.'
-	if ws == GlobalSetting.g_WebSocket then start = 'g.' end
+	if GlobalSetting.g_WebSocket then start = 'g.' end
 	return start
 end

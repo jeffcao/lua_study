@@ -422,6 +422,24 @@ function GActionPlugin.bind(theClass)
 		end
 	end
 	
+	function theClass:use_prop_bought(data)
+		dump(data, 'use prop bought')
+		local prop_id = data.id
+		local name = data.name
+		local event_data = {user_id = self.g_user_id, prop_id = prop_id, version="1.0"}
+		local failure_func = function(data) dump(data, 'use prop failure') end
+		local success_func = function(data) 
+			dump(data, 'use prop success') 
+			if name == '记牌器' then
+				self:set_jipaiqi_enable(true)
+				if not self.card_roboter:isShowing() and self._is_playing then
+					self.card_roboter:show()
+				end
+			end
+		end
+		self.g_WebSocket:trigger("g.use_cate", event_data, success_func, failure_func)
+	end
+	
 	function theClass:get_user_profile()
 		self:doGetUserProfileIfNeed(self.g_user_id, true) 
 	end

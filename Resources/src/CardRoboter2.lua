@@ -83,6 +83,10 @@ function CardRoboter2:updateCards()
 	end
 end
 
+function CardRoboter2:setJipaiqiShow(show)
+	if show then self:show() else self:dismiss() end
+end
+
 function CardRoboter2:onServerStartGame(data)
 	if data.show_jipaiqi == 1 then
 		self:show()

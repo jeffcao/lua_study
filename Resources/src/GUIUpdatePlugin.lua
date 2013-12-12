@@ -512,14 +512,6 @@ function GUIUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:onCloseClicked() 
-		
-		--[[
-		if self._has_gaming_started then
-			self:showExit()
-	 	else 
-			self:exit()
-		end
-		]]
 		local option = nil
 		local fn1 = function()
 			if option then option:dismiss() end
@@ -544,24 +536,8 @@ function GUIUpdatePlugin.bind(theClass)
 		end
 		option = createGamingOption(fn1,fn2,fn3)
 		self.rootNode:addChild(option, self.GAMING_OPTION_ORDER);
-		--option:init_funcs(fn1,fn1,fn1)
 		option:show()
 		self:playButtonEffect()
-		--[[
-		local rank = createRank()
-		local rank_list = {}
-		for i=1,50 do
-			local rank_item = {}
-			rank_item.rank = i
-			rank_item.name = 'little bing ' .. tostring(i)
-			rank_item.bean = 1000*i+1234
-			table.insert(rank_list, rank_item)
-		end
-		rank:rank(rank_list)
-		self.rootNode:addChild(rank,self.RANK_ORDER)
-		rank:show()
-		]]
-		--self:getRank()
 	end
 	
 	
