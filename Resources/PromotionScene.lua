@@ -22,11 +22,7 @@ function PromotionScene:ctor()
 	layer:showTitleBg()
 	layer:setDecorationHuawen()
 	self.layer = layer
-	--[[
-	local view = self:create_promotion_list({1,2,3,4})
-	view:setPosition(ccp(0,35))
-	layer:setContent(view)
-	]]
+	self.rootNode = self.layer
 	scaleNode(self.layer, GlobalSetting.content_scale_factor)
 	Timer.add_timer(0.1, function() 
 		self:getPromotionList()

@@ -54,6 +54,8 @@ function PromotionScenePlugin.bind(theClass)
 			ToastPlugin.show_message_box(strings.psp_fetch_promotion_nil)
 			return
 		end
+		local s = data.match[1]
+		for index=1,15 do table.insert(data.match, s) end
 		--for index=1,5 do table.insert(data.match, 'a') end
 		local list = self:create_promotion_list(data.match)
 		self.layer:setContent(list)
