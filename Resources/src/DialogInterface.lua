@@ -12,6 +12,9 @@ function DialogInterface.bind(theClass)
 		end
 		self.convertor:convert()
 		print("set visible after convert")
+		if self:getZOrder() < getMaxZOrder(self:getParent()) then
+			self:getParent():reorderChild(self, getMaxZOrder(self:getParent()) + 1)
+		end
 		self:setVisible(true)
 		if self.swallow_keypad then
 			self.rootNode:setKeypadEnabled(true)

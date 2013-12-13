@@ -81,7 +81,7 @@ function UIControllerPlugin.bind(theClass)
 	end
 	
 	function theClass:show_back_message_box(message)
-		self.back_message_box = createBackMessageBoxLayer(self)
+		self.back_message_box = createBackMessageBoxLayer(self.rootNode)
 		self.back_message_box:setMessage(message)
 		self.back_message_box:show()
 	end

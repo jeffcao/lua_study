@@ -1,10 +1,10 @@
-require 'DialogInterface'
+require 'src.DialogPlugin'
 
 RestrictedDialog = {}
 
 function RestrictedDialog.bind(theClass)
 	
-	DialogInterface.bind(theClass)
+	DialogPlugin.bind(theClass)
 	
 	theClass.old_show = theClass.show
 	theClass.old_dismiss = theClass.dismiss

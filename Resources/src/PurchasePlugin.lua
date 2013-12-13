@@ -42,7 +42,7 @@ function PurchasePlugin.on_server_notify_buy_finish_success(data)
 end
 
 function PurchasePlugin.show_back_message_box(message)
-	local dialog = createBackMessageBoxLayer(runningscene())
+	local dialog = createBackMessageBoxLayer(runningscene().rootNode)
 	dialog:setMessage(message)
 	dialog:show()
 end
@@ -83,7 +83,7 @@ function PurchasePlugin.show_buy_notify(product)
 	content = string.gsub(content, "rmb", product.rmb)
 	print("[PurchasePlugin:show_buy_notify] notify content=> "..content)
 
-	local dialog = createYesNoDialog3(runningscene())
+	local dialog = createYesNoDialog3(runningscene().rootNode)
 	dialog:setMessage(content)
 	dialog:setMessageSize(19)
 	dialog:setYesButton(function() dialog:dismiss() PurchasePlugin.do_buy_product(product) end)
@@ -122,7 +122,7 @@ end
 function PurchasePlugin.do_on_buy_message(data)
 	print("[PurchasePlugin:do_on_buy_message]")
 	if tostring(data.result_code) == "1" then
-		local dialog = createYesNoDialog3(runningscene())
+		local dialog = createYesNoDialog3(runningscene().rootNode)
 		dialog:setMessage(data.content)
 		dialog:setYesButton(function() dialog:dismiss() PurchasePlugin.do_confirm_buy(data) end)
 		dialog:setNoButton(function() dialog:dismiss() end)

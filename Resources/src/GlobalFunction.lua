@@ -474,7 +474,7 @@ function getRootParent(node)
 	while node:getParent() do
 		node = node:getParent()
 	end
-	return node
+	return node.rootNode
 end
 
 --node所在的scene是否有对话框正在显示
