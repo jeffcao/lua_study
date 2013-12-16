@@ -119,6 +119,7 @@ function GamingScene:onExit()
 	end
 	GlobalSetting.rank_dialog = nil
 	GlobalSetting.game_id = nil
+	self.list_cache = nil
 	print("[GamingScene:on_exit()]")
 end
 

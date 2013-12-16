@@ -6,6 +6,10 @@ TabPlugin = {}
 --  getTabView(name, call_back)
 --  getTabNode(name)
 
+-- theClass must call
+--   init_mtabs(tabs, tab_content, order)
+--   set_tab(name)
+
 function TabPlugin.bind(theClass)
 
 	--tabs:{tabname:tab_data,...}
@@ -32,6 +36,10 @@ function TabPlugin.bind(theClass)
 			tab_data.tab_view:removeFromParentAndCleanup(true)
 		end
 		tab_data.tab_view = view
+	end
+	
+	function theClass:current_tab()
+		if self.tabplugin_current then return self.tabplugin_current.name else return nil end
 	end
 
 	function theClass:set_tab(name)
