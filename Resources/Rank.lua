@@ -11,7 +11,6 @@ function createRank() return Rank.new() end
 function Rank:ctor()
 	self.ccbproxy = CCBProxy:create()
 	self.ccbproxy:retain()
-	self.on_rank_close_clicked = __bind(self.on_close_click, self)
 	ccb.Rank = self
 	local node = CCBReaderLoad("Rank.ccbi", self.ccbproxy, true, "Rank")
 	self.rootNode = tolua.cast(node, "CCLayer")
@@ -37,15 +36,7 @@ function Rank:ctor()
 	GlobalSetting.rank_dialog = self
 end
 
-function Rank:on_close_click()
-	self:dismiss()
-end
-
 function Rank:init()
-	local menus = CCArray:create()
-	menus:addObject(self.rootNode)
-	menus:addObject(self.rank_content)
-	self:swallowOnTouch(menus)
 	self:setVisible(false)
 	self:swallowOnKeypad()
 end

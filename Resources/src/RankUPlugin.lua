@@ -103,21 +103,35 @@ function RankUPlugin.bind(theClass)
 		self:setDeltaTime()
 		
 		if not self.rank_content.rank then
-		local rank = self:create_rank_list(self.rank_list)
-		local menus = CCArray:create()
-	--	menus:addObject(self.rootNode)
-	--	menus:addObject(self.rank_content)
-		menus:addObject(rank)
-		menus:addObject(self.rank_close)
-		self:swallowOnTouch(menus)
-		self.rank_content:addChild(rank)
-		self.rank_content.rank = rank
-		else
-		--for index=#(self.rank_list), 1, -1 do
-		--	self.rank_content.rank:updateCellAtIndex(index-1)
-			
-		--end
-		self.rank_content.rank:reloadData()
+			local ontouch = function(e,x,y)
+				if not self:isVisible() then print("self is not visible") return false end
+				print('event is', e)
+				if not cccn(self.bg, x,y) then
+					self:dismiss()
+				else 
+					return false
+				end
+				return true 
+			end
+			self.bg:registerScriptTouchHandler(ontouch, false, 200, true)
+    		self.bg:setTouchEnabled(true)
+    	
+			local rank = self:create_rank_list(self.rank_list)
+			local menus = CCArray:create()
+			menus:addObject(self.bg)
+		--	menus:addObject(self.rootNode)
+		--	menus:addObject(self.rank_content)
+			menus:addObject(rank)
+			menus:addObject(self.rank_close)
+			self:swallowOnTouch(menus)
+			self.rank_content:addChild(rank)
+			self.rank_content.rank = rank
+			else
+			--for index=#(self.rank_list), 1, -1 do
+			--	self.rank_content.rank:updateCellAtIndex(index-1)
+				
+			--end
+			self.rank_content.rank:reloadData()
 		end
 	end
 
