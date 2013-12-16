@@ -40,6 +40,14 @@ function Rank:ctor()
 		end
 	end)
 	GlobalSetting.rank_dialog = self
+	
+	local fn = function()
+		local tabs = {douzi={name='douzi'},huafei={name='huafei'}}
+		local order = {'douzi','huafei'}
+		self:init_mtabs(tabs, self.rank_content, order)
+		self:set_tab('douzi')
+	end
+	Timer.add_timer(0.5, fn,  'rank_timer')
 end
 
 function Rank:set_strokes()
@@ -63,8 +71,10 @@ function Rank:init()
 	self.tab_btns:setVisible(true)
 	self.huafei_layer:setVisible(false)
 	self:setVisible(false)
-	self:swallowOnKeypad(
-	self:set_strokes())
+	self:swallowOnKeypad()
+	local menus = CCArray:create()
+	self:swallowOnTouch(menus)
+	self:set_strokes()
 end
 
 DialogInterface.bind(Rank)

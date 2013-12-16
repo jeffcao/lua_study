@@ -23,6 +23,10 @@ function DialogInterface.bind(theClass)
 		self:touchOutsideDismiss()
 	end
 	
+	function theClass:reconvert()
+		self.convertor:convert()
+	end
+	
 	function theClass:dismiss(need_remove_self)
 		if not self:isShowing() then
 			return

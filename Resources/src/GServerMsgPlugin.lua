@@ -110,6 +110,7 @@ function GServerMsgPlugin.bind(theClass)
 		end
 	end
 	
+	--[[
 	function theClass:getRank()
 		if not self.rank or (self.rank.expire_time <= os.time()) then
 			cclog("rank time expire, get again")
@@ -143,6 +144,21 @@ function GServerMsgPlugin.bind(theClass)
 			self.rootNode:addChild(rank,self.RANK_ORDER)
 		end
 		rank:show()
+	end
+	]]
+	
+	function theClass:getRank()
+		if not GlobalSetting.rank_dialog then
+			local rank = createRank()
+			self.rootNode:addChild(rank,self.RANK_ORDER)
+		else
+			GlobalSetting.rank_dialog:show()
+		end
+		--if not rank:getParent() then
+		--	self.rootNode:addChild(rank,self.RANK_ORDER)
+		--end
+		
+		
 	end
 	
 	-- g_channel and c_channel
