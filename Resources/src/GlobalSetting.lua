@@ -65,6 +65,8 @@ GlobalSetting = {
 
 	zongse = ccc3(67,31,24),
 	
+	rank_stroke = ccc3(39,13,0),
+	
 	restrict_interval = 20,--unit is s
 	
 	game_push_interval = 10,

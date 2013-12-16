@@ -44,7 +44,8 @@ function RankUPlugin.bind(theClass)
 		self.rank_data = data
 		self.on_time_over = on_time_over
 		self:rank(data.list)
-		self.player_rank:setString(data.position)
+		--self.player_rank:setString(data.position)
+		set_rank_string_with_stroke(self.player_rank,data.position)
 	end
 	
 	function theClass:getDeltaTime()
@@ -67,11 +68,14 @@ function RankUPlugin.bind(theClass)
 	end
 	
 	function theClass:setDeltaTime()
-		self.timer_time:setString(self:getDeltaTime())
+		set_rank_string_with_stroke(self.timer_time,self:getDeltaTime())
+		--self.timer_time:set_rank_string_with_stroke(self:getDeltaTime())
 		local fn = function() 
 			if self and self:isShowing() then
 				local d = self:getDeltaTime()
-				self.timer_time:setString(self:getDeltaTime())
+			--	self.timer_time:setString(self:getDeltaTime())
+			--  TODO 只在rank展示的时候才重新设置stroke
+				set_rank_string_with_stroke(self.timer_time,self:getDeltaTime())
 				if d == "00:00" then
 					--更新排行榜
 					local fn = self.on_time_over
@@ -84,21 +88,15 @@ function RankUPlugin.bind(theClass)
 	end
 	
 	function theClass:rank(rank_list)
-		local first = rank_list[1]
-		self.champion_name:setString(first.nick_name)
-		self.champion_beans:setString(first.score)
-		--table.remove(rank_list, 1)
-		for k,v in pairs(rank_list) do
-			self.rank_list[k] = v
-		end
-		table.remove(self.rank_list, 1)
+		self.rank_list = rank_list
 		table.sort(self.rank_list, function(a, b) return tonumber(a.id) > tonumber(b.id) end)
 		
 		local avatar_png = self:get_player_avatar_png_name()
 
 		print("[RankUPlugin:rank] avatar_png: "..avatar_png)
 		self.rank_avatar:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(avatar_png))
-		self.player_bean:setString(GlobalSetting.current_user.score)
+		set_rank_string_with_stroke(self.player_bean, GlobalSetting.current_user.score)
+		--self.player_bean:setString(GlobalSetting.current_user.score)
 		
 		self:setDeltaTime()
 		
@@ -119,18 +117,13 @@ function RankUPlugin.bind(theClass)
 			local rank = self:create_rank_list(self.rank_list)
 			local menus = CCArray:create()
 			menus:addObject(self.bg)
-		--	menus:addObject(self.rootNode)
-		--	menus:addObject(self.rank_content)
 			menus:addObject(rank)
-			menus:addObject(self.rank_close)
+			menus:addObject(self.tab_btn_right_menu)
+			menus:addObject(self.tab_btn_left_menu)
 			self:swallowOnTouch(menus)
 			self.rank_content:addChild(rank)
 			self.rank_content.rank = rank
-			else
-			--for index=#(self.rank_list), 1, -1 do
-			--	self.rank_content.rank:updateCellAtIndex(index-1)
-				
-			--end
+		else
 			self.rank_content.rank:reloadData()
 		end
 	end

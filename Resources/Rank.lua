@@ -16,8 +16,14 @@ function Rank:ctor()
 	self.rootNode = tolua.cast(node, "CCLayer")
 	self:addChild(self.rootNode)
 	
+	self.timer_time = self.bottom_lbl2
+	self.player_bean = self.info_value_lbl1
+	self.player_rank = self.info_value_lbl2
+	self.tab_douzi = self.tab_btn_right
+	self.tab_huafei = self.tab_btn_left
 	
 	self:init()
+	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
 	local sc = GlobalSetting.content_scale_factor*0.52
@@ -36,9 +42,30 @@ function Rank:ctor()
 	GlobalSetting.rank_dialog = self
 end
 
+function Rank:set_strokes()
+	local lbls = {self.info_attr_lbl2, self.info_attr_lbl1, self.bottom_lbl1,
+				  self.item_name_lbl1, self.item_name_lbl2, self.item_name_lbl3}
+	for _,v in pairs(lbls) do
+		set_rank_stroke(v)
+	end
+	local lbls2 = {self.tab_btn_left_lbl, self.tab_btn_right_lbl}
+	for _,v in pairs(lbls2) do
+		set_green_stroke(v)
+	end
+end
+
 function Rank:init()
+	self.item_name_lbl1:setPosition(ccp(16,0))
+	self.item_name_lbl2:setPosition(ccp(100,0))
+	self.item_name_lbl3:setPosition(ccp(250,0))
+	self.item_name_lbl4:setVisible(false)
+	self.bottom_lbl1:setVisible(true)
+	self.bottom_lbl2:setVisible(true)
+	self.tab_douzi:setEnabled(false)
+	self.tab_btns:setVisible(true)
 	self:setVisible(false)
-	self:swallowOnKeypad()
+	self:swallowOnKeypad(
+	self:set_strokes())
 end
 
 DialogInterface.bind(Rank)

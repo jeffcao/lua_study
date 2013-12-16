@@ -325,6 +325,15 @@ function get_weekday(wk_int)
 	return weekday
 end
 
+function set_rank_stroke(label, width)
+	set_stroke(label, width or 2, GlobalSetting.rank_stroke)
+end
+
+function set_rank_string_with_stroke(label, str)
+	label:setString(str)
+	set_stroke(label, label.stroke_size or 2, label.stroke_color or GlobalSetting.rank_stroke)
+end
+
 function set_string_with_stroke(label, str)
 	label:setString(str)
 	set_stroke(label, label.stroke_size, label.stroke_color)
