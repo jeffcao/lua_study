@@ -4,8 +4,10 @@ function RankSwitcher.bind(theClass)
 	function theClass:switch_to_huafei()
 		print("switch_to_huafei start")
 		self:reset_touches('huafei')
+		self:setHuafeiInfo(true)
+		
 		self.item_name_lbl1:setPosition(ccp(0,0))
-		self.item_name_lbl2:setPosition(ccp(100,0))
+		self.item_name_lbl2:setPosition(ccp(85,0))
 		self.item_name_lbl3:setPosition(ccp(200,0))
 		self.item_name_lbl4:setPosition(ccp(290,0))
 		set_rank_string_with_stroke(self.item_name_lbl1, "名次")
@@ -20,11 +22,22 @@ function RankSwitcher.bind(theClass)
 		self.huafei_layer:setVisible(true)
 		
 		self.bottom_layer:setVisible(false)
-		
-		set_rank_string_with_stroke(self.player_bean, GlobalSetting.current_user.score)
-		set_rank_string_with_stroke(self.player_rank, self.rank_data.position)
 		print("switch_to_huafei end")
-	--	self.rank_content.rank:setScale(0.01)
+	end
+	
+	function theClass:setHuafeiInfo(man)
+		if self:current_tab() == 'huafei' or man then
+			set_rank_string_with_stroke(self.player_bean, self.huafei_rank_data.balance)
+			set_rank_string_with_stroke(self.player_rank, self.huafei_rank_data.position)
+		end
+	end
+	
+	function theClass:setDouziInfo(man)
+		if self:current_tab() == 'douzi' or man then
+			set_rank_string_with_stroke(self.player_bean, GlobalSetting.current_user.score)
+			set_rank_string_with_stroke(self.timer_time, self:getDeltaTime())
+			set_rank_string_with_stroke(self.player_rank, self.rank_data.position)
+		end
 	end
 	
 	function theClass:reset_touches(name)
@@ -35,10 +48,7 @@ function RankSwitcher.bind(theClass)
 	
 	function theClass:switch_to_douzi()
 		self:reset_touches('douzi')
-			
-		--if self.huafei_rank_data then
-		--	menus:addObject(self.huafei_rank_data.rank)
-		--end
+		self:setDouziInfo(true)
 		
 		self.item_name_lbl1:setPosition(ccp(16,0))
 		self.item_name_lbl2:setPosition(ccp(100,0))
@@ -53,9 +63,5 @@ function RankSwitcher.bind(theClass)
 		
 		hide_label_with_stroke(self.item_name_lbl4)
 		self.huafei_layer:setVisible(false)
-		
-		set_rank_string_with_stroke(self.timer_time, self:getDeltaTime())
-		set_rank_string_with_stroke(self.player_bean, GlobalSetting.current_user.score)
-		set_rank_string_with_stroke(self.player_rank, self.rank_data.position)
 	end
 end

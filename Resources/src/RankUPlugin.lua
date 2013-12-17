@@ -7,12 +7,13 @@ RankUPlugin = {}
 function RankUPlugin.bind(theClass)
 	TabPlugin.bind(theClass)
 	RankSwitcher.bind(theClass)
+
 	function theClass:create_rank_list(rank_list)
 		local t = ListViewPlugin.create_list_view(rank_list,
 		createRankItem, 'init', CCSizeMake(348,30), CCSizeMake(348,180))
 		return t
 	end
-	
+
 	function theClass:create_huafei_rank_list(rank_list)
 		local t = ListViewPlugin.create_list_view(rank_list,
 		createHuafeiRankItem, 'init', CCSizeMake(348,30), CCSizeMake(348,180))
@@ -21,22 +22,13 @@ function RankUPlugin.bind(theClass)
 
 	function theClass:rank_with_data(data, on_time_over)
 		if self.rank_data then
-			for k,_ in pairs(self.rank_data.list) do self.rank_data.list[k] = nil end
-			for k,v in pairs(data) do
-				if k ~= 'list' then 
-					self.rank_data[k] = v 
-				else
-					for k2,v2 in pairs(data.list) do
-						self.rank_data.list[k2] = v2
-					end
-				end
-			end
+			self:process_copy(data, self.rank_data, 'list')
 		else
 			self.rank_data = data
 			self.rank_data.on_time_over = on_time_over
 		end
 		local view = self:rank()
-		set_rank_string_with_stroke(self.player_rank,data.position)
+		self:setDouziInfo(not self.rank_data)
 		return view
 	end
 
@@ -61,7 +53,7 @@ function RankUPlugin.bind(theClass)
 
 	function theClass:setDeltaTime()
 		if self.set_rank_time_hdlr then Timer.cancel_timer(self.set_rank_time_hdlr) end
-		set_rank_string_with_stroke(self.timer_time,self:getDeltaTime())
+		
 		local fn = function()
 			if self and self:isShowing() and self.timer_time:isVisible() then
 				print('set time')
@@ -85,8 +77,6 @@ function RankUPlugin.bind(theClass)
 
 		print("[RankUPlugin:rank] avatar_png: "..avatar_png)
 		self.rank_avatar:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(avatar_png))
-		set_rank_string_with_stroke(self.player_bean, GlobalSetting.current_user.score)
-		--self.player_bean:setString(GlobalSetting.current_user.score)
 
 		self:setDeltaTime()
 
@@ -113,7 +103,7 @@ function RankUPlugin.bind(theClass)
 		end
 		return self.rank_content.rank
 	end
-	
+
 	function theClass:get_touch_menus(name)
 		local menus = CCArray:create()
 		menus:addObject(self.bg)
@@ -129,7 +119,7 @@ function RankUPlugin.bind(theClass)
 		return menus
 	end
 
----------------------------------for TabPlugin functions start
+	---------------------------------for TabPlugin functions start
 	function theClass:setNodeCheckStatus(tab_data)
 		tab_data.tab_node:getChildByTag(1000):setEnabled(false)
 		cclog("set %s checked", tab_data.name)
@@ -159,12 +149,12 @@ function RankUPlugin.bind(theClass)
 			self:getDouziTabView(call_back)
 		end
 	end
----------------------------------for TabPlugin functions end
+	---------------------------------for TabPlugin functions end
 
 	function theClass:getDouziRank(callback)
 		local event_data = {user_id = GlobalSetting.current_user.user_id}
 		GlobalSetting.g_WebSocket:trigger("g.user_score_list", event_data, function(data)
-			print("========g.user_score_list return succss: " , data)
+			print("========g.user_score_list return success: " , data)
 			data.expire_time = os.time() + data.next_time
 			local view = self:rank_with_data(data, __bind(self.getDouziRank, self))
 			if callback then
@@ -173,30 +163,17 @@ function RankUPlugin.bind(theClass)
 				print('get douzi rank, init and show view')
 			else
 				print('get douzi rank, reload view')
-			--	set_tab_view('douzi',view)
+				--	set_tab_view('douzi',view)
 			end
 		end, function(data)
 			print("----------------g.user_score_list return failure: " , data)
 		end)
 	end
-	
+
 	function theClass:create_huafei_rank_view()
 		table.sort(self.huafei_rank_data.list, function(a, b) return tonumber(a.id) > tonumber(b.id) end)
 
-		local avatar_png = self:get_player_avatar_png_name()
-
-		print("[RankUPlugin:rank] avatar_png: "..avatar_png)
-		self.rank_avatar:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(avatar_png))
-		--set_rank_string_with_stroke(self.player_bean, GlobalSetting.current_user.score)
-		set_rank_string_with_stroke(self.player_bean, self.huafei_rank_data.balance)
-		--self.player_bean:setString(GlobalSetting.current_user.score)
-
-		--self:setDeltaTime()
-
 		if not self.huafei_rank_data.rank then
-			--for k,v in pairs(self.huafei_rank_data.list) do
-			--	v.score = v.total_balance
-			--end
 			self.huafei_rank_data.rank = self:create_huafei_rank_list(self.huafei_rank_data.list)
 			local menus = self:get_touch_menus('huafei')
 			self:swallowOnTouch(menus)
@@ -207,24 +184,28 @@ function RankUPlugin.bind(theClass)
 		end
 		return self.huafei_rank_data.rank
 	end
-	
-	function theClass:huafei_rank(data)
-		if self.huafei_rank_data then
-			for k,_ in pairs(self.huafei_rank_data.list) do self.huafei_rank_data.list[k] = nil end
-			for k,v in pairs(data) do
-				if k ~= 'list' then 
-					self.huafei_rank_data[k] = v 
-				else
-					for k2,v2 in pairs(data.list) do
-						self.huafei_rank_data.list[k2] = v2
-					end
+
+	function theClass:process_copy(source, dest, except)
+		for k,_ in pairs(dest[except]) do dest[except][k] = nil end
+		for k,v in pairs(source) do
+			if k ~= except then
+				dest[k] = v
+			else
+				for k2,v2 in pairs(source[except]) do
+					dest[except][k2] = v2
 				end
 			end
+		end
+	end
+
+	function theClass:huafei_rank(data)
+		if self.huafei_rank_data then
+			self:process_copy(data, self.huafei_rank_data, 'list')
 		else
 			self.huafei_rank_data = data
 		end
 		local view = self:create_huafei_rank_view()
-		set_rank_string_with_stroke(self.player_rank,data.position)
+		self:setHuafeiInfo(not self.huafei_rank_data)
 		self:setHuafeiTimer()
 		return view
 	end
@@ -241,22 +222,13 @@ function RankUPlugin.bind(theClass)
 		print("add set rank time")
 		self.set_huafei_rank_time_hdlr = Timer.add_timer(10, __bind(fn,self), "set_huafei_rank_time")
 	end
-	
+
 	--data:list{data:id,nick_name,total_balance,balance},position,balance
 	function theClass:getHuafeiRank(callback)
 		local event_data = {user_id = GlobalSetting.current_user.user_id}
 		GlobalSetting.g_WebSocket:trigger("g.user_score_list", event_data, function(data)
-			data = {}
-			data.position = math.random(100)
-			data.balance = math.random(1000)
-			data.list = {}
-			for index=1,50 do
-				local balance = math.random(1000)
-				local waste = math.random(1000)
-				local item = {id = index, nick_name = 'user'..tostring(math.random(1000)), total_balance=balance+waste, balance=balance}
-				table.insert(data.list, item)
-			end
-			
+			data = self:gen_test_data()
+
 			local view = self:huafei_rank(data)
 			if callback then
 				callback(view)
@@ -270,10 +242,21 @@ function RankUPlugin.bind(theClass)
 		end)
 	end
 
+	function theClass:gen_test_data()
+		data = {}
+		data.position = math.random(100)
+		data.balance = math.random(1000)
+		data.list = {}
+		for index=1,50 do
+			local balance = math.random(1000)
+			local waste = math.random(1000)
+			local item = {id = index, nick_name = 'user'..tostring(math.random(1000)), total_balance=balance+waste, balance=balance}
+			table.insert(data.list, item)
+		end
+		return data
+	end
+
 	function theClass:getHuafeiTabView(callback)
-		print('theClass:getHuafeiTabView(callback)')
-		--local view = CCLayer:create()
-		--callback(view)
 		self:getHuafeiRank(callback)
 	end
 
