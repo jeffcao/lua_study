@@ -3,6 +3,7 @@ require "src.UIControllerPlugin"
 require "src.Stats"
 require 'src.ToastPlugin'
 require 'src.MarqueePlugin'
+require 'MatchResult'
 AboutScene = class("AboutScene", function()
 	print("new about scene")
 	return display.newScene("AboutScene")	
@@ -41,6 +42,20 @@ function AboutScene:ctor()
 	
 	layer:setContent(node)
 	self.version_lbl:setString(version)
+	
+	local result = createMatchResult()
+	local data = {time='18:00', beans_win=4500, order=300}
+	data.list = {}
+	for index=1,50 do
+		--id, nick_name, beans_win, award
+		local item = {id=index,nick_name='user'..tostring(math.random(10000)),beans_win=math.random(20000),award='award'..tostring(math.random(100000000))}
+		item.award='6元话费'
+		table.insert(data.list, item)
+	end
+	result:set_result(data)
+	self.rootNode:addChild(result)
+	--result:attach_to(self.rootNode)
+	result:show()
 	
 	--Timer.add_timer(3, function() ToastPlugin.show_message_box_suc("123") end, 'toast')
 	--Timer.add_timer(6, function() ToastPlugin.show_message_box("fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff456") end, 'toast')
