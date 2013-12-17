@@ -11,6 +11,9 @@ function RankItem:ctor()
 	local node = CCBReaderLoad("RankItem.ccbi", self.ccbproxy, true, "RankItem")
 	self.rootNode = tolua.cast(node, "CCLayer")
 	self:addChild(self.rootNode)
+	self.rank_lbl:setPosition(ccp(24,15))
+	self.name_lbl:setPosition(ccp(72,15))
+	self.bean_lbl:setPosition(ccp(218,15))
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 end

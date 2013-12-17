@@ -359,6 +359,18 @@ function set_black_stroke(label)
 	set_stroke(label, 2, GlobalSetting.black_stroke)
 end
 
+function remove_label_stroke(label)
+	if label.stroke_sprite then 
+		label.stroke_sprite:removeFromParentAndCleanup(true) 
+		label.stroke_sprite = nil
+	end
+end
+
+function hide_label_with_stroke(label)
+	label:setVisible(false)
+	remove_label_stroke(label)
+end
+
 function set_stroke(label, size, color)
 	local stroke = create_stroke(label, size, color)
 	if not label.stroke_sprite then
@@ -394,13 +406,6 @@ function create_stroke(label, size, color)
 	label:setColor(color)
 	label:setVisible(true)
 	
-	--[[
-	local originalBlend = label:getBlendFunc()
-	local blend = ccBlendFunc:new()
-	blend.src = GL_SRC_ALPHA
-	blend.dst = GL_ONE
-	label:setBlendFunc(blend)
-	]]
 	local bottomLeft = ccp(label_tx_width*label_anchor_x + size, label_tx_height*label_anchor_y + size)
     local positionOffset = ccp(label_tx_width*label_anchor_x - label_tx_width/2, label_tx_height*label_anchor_y - label_tx_height/2)
     local position = ccpSub(originalPos, positionOffset)
@@ -478,7 +483,7 @@ function getMaxZOrderVisible(node)
 	return getMaxZOrderVisibleChild(node):getZOrder()
 end
 
---node所在的scene的scene对象
+--node所在的scene的scene对象的rootNode
 function getRootParent(node)
 	while node:getParent() do
 		node = node:getParent()

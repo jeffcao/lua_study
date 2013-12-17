@@ -3,6 +3,8 @@ require "src.DialogInterface"
 require "src.RankUPlugin"
 require "src.UIControllerPlugin"
 require "src/WebsocketRails/Timer"
+require "src.SoundEffect"
+require 'HuafeiRankItem'
 
 Rank = class("Rank", function() return display.newLayer("Rank") end)
 
@@ -77,6 +79,7 @@ function Rank:init()
 	self:set_strokes()
 end
 
+SoundEffect.bind(Rank)
 DialogInterface.bind(Rank)
 RankUPlugin.bind(Rank)
 UIControllerPlugin.bind(Rank)

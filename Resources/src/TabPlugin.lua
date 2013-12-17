@@ -32,10 +32,14 @@ function TabPlugin.bind(theClass)
 	function theClass:set_tab_view(name, view)
 		local tab_data = self.tabplugin_tabs[name]
 		if not tab_data then return end
+		local visible = true
 		if tab_data.tab_view and tab_data.tab_view:getParent() then
+			visible = tab_data.tab_view:isVisible()
 			tab_data.tab_view:removeFromParentAndCleanup(true)
 		end
 		tab_data.tab_view = view
+		tab_data.tab_view:setVisible(visible)
+		self.tabplugin_tab_content:addChild(tab_data.tab_view)
 	end
 	
 	function theClass:current_tab()

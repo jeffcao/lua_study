@@ -117,6 +117,14 @@ function GamingScene:onExit()
 	if GlobalSetting.rank_dialog then
 		GlobalSetting.rank_dialog:removeFromParentAndCleanup(true)
 	end
+	if GlobalSetting.rank_dialog then
+		if GlobalSetting.rank_dialog.set_rank_time_hdlr then
+			Timer.cancel_timer(GlobalSetting.rank_dialog.set_rank_time_hdlr)
+		end
+		if GlobalSetting.rank_dialog.set_huafei_rank_time_hdlr then
+			Timer.cancel_timer(GlobalSetting.rank_dialog.set_huafei_rank_time_hdlr)
+		end
+	end
 	GlobalSetting.rank_dialog = nil
 	GlobalSetting.game_id = nil
 	self.list_cache = nil

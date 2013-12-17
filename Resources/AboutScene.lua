@@ -42,8 +42,6 @@ function AboutScene:ctor()
 	layer:setContent(node)
 	self.version_lbl:setString(version)
 	
-	
-	
 	--Timer.add_timer(3, function() ToastPlugin.show_message_box_suc("123") end, 'toast')
 	--Timer.add_timer(6, function() ToastPlugin.show_message_box("fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff456") end, 'toast')
 	

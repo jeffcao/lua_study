@@ -10,6 +10,7 @@ function DialogInterface.bind(theClass)
 		if self:isShowing() then
 			return
 		end
+		self.convertor:unconvert()
 		self.convertor:convert()
 		print("set visible after convert")
 		if self:getZOrder() < getMaxZOrder(self:getParent()) then
@@ -61,6 +62,7 @@ function DialogInterface.bind(theClass)
 	end
 	
 	function theClass:swallowOnTouch(menus)
+		if self.convertor then self.convertor:unconvert() end
 		self.convertor = DialogLayerConvertor:create(menus)
     end
     
