@@ -4,6 +4,7 @@ require "src.Stats"
 require 'src.ToastPlugin'
 require 'src.MarqueePlugin'
 require 'MatchResult'
+require 'Diploma'
 AboutScene = class("AboutScene", function()
 	print("new about scene")
 	return display.newScene("AboutScene")	
@@ -43,6 +44,7 @@ function AboutScene:ctor()
 	layer:setContent(node)
 	self.version_lbl:setString(version)
 	
+	--[[
 	local result = createMatchResult()
 	local data = {time='18:00', beans_win=4500, order=300}
 	data.list = {}
@@ -56,6 +58,12 @@ function AboutScene:ctor()
 	self.rootNode:addChild(result)
 	--result:attach_to(self.rootNode)
 	result:show()
+	]]
+	
+	local diploma = createDiploma()
+	diploma:init({nick_name='王尼玛', room_name='话费房', match_name='人人都有话费送', order='第一名', award='10元话费奖励'})
+	diploma:attach_to(self.rootNode)
+	diploma:show()
 	
 	--Timer.add_timer(3, function() ToastPlugin.show_message_box_suc("123") end, 'toast')
 	--Timer.add_timer(6, function() ToastPlugin.show_message_box("fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff456") end, 'toast')

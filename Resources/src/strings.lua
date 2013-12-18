@@ -149,5 +149,8 @@ psp_fetch_promotion_w = '获取活动列表失败',
 psp_fetch_promotion_nil = '当前没有活动',
 --MatchResult
 mr_next_time = '下一轮比赛将在 time 开始，请密切关注',
+--Diploma
+dp_msg = '\b\b\b\b\b\b\b\b敬爱的玩家\b\bnick_name，恭喜您在room_name的《match_name》活动中获得：',
+dp_award_msg = 'order\b\b\b\baward'
 }
 

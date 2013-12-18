@@ -334,6 +334,10 @@ function set_rank_string_with_stroke(label, str)
 	set_stroke(label, label.stroke_size or 2, label.stroke_color or GlobalSetting.rank_stroke)
 end
 
+function set_yellow_string_with_stroke(label, str)
+	set_rank_string_with_stroke(label, str)
+end
+
 function set_string_with_stroke(label, str)
 	label:setString(str)
 	set_stroke(label, label.stroke_size, label.stroke_color)
