@@ -60,11 +60,18 @@ function AboutScene:ctor()
 	result:show()
 	]]
 	
+	--[[
 	local diploma = createDiploma()
 	diploma:init({nick_name='王尼玛', room_name='话费房', match_name='人人都有话费送', order='第一名', award='10元话费奖励'})
 	diploma:attach_to(self.rootNode)
 	diploma:show()
-	
+	]]
+	--[[
+	Timer.add_timer(1,function()
+	add_scale9sprite(self.rootNode, CCSizeMake(600,400),ccp(400,240)) end, 'a')
+	Timer.add_timer(5,function()
+	add_scale9sprite(self.rootNode, CCSizeMake(480,320),ccp(400,240)) end, 'b')
+	]]
 	--Timer.add_timer(3, function() ToastPlugin.show_message_box_suc("123") end, 'toast')
 	--Timer.add_timer(6, function() ToastPlugin.show_message_box("fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff456") end, 'toast')
 	
@@ -93,4 +100,6 @@ function AboutScene:ctor()
 	--Timer.add_timer(40, function() marquee:setText("local my_layer = CCLayer:create() my_layer:setAnchorPoint(ccp(0.5,0.5)) my_layer:setContentSize(node:getContentSize()) my_layer:setPosition(node:getContentSize().width/2, node:getContentSize().height/2) my_layer:ignoreAnchorPointForPosition(false) node:addChild(my_layer)") end, 'marquee')
 	
 end
+
+
 UIControllerPlugin.bind(AboutScene)
