@@ -44,6 +44,12 @@ function AboutScene:ctor()
 	layer:setContent(node)
 	self.version_lbl:setString(version)
 	
+	self:test_slot(0)
+	Timer.add_timer(1,function()
+	self:test_slot(1) end, 'a')
+	Timer.add_timer(3, function()
+	self:test_slot(2) end , 'b')
+	
 	--[[
 	local result = createMatchResult()
 	local data = {time='18:00', beans_win=4500, order=300}
@@ -101,5 +107,65 @@ function AboutScene:ctor()
 	
 end
 
+function AboutScene:follow_sprite(follower, to_follow)
+	local y = to_follow:getPositionY() - to_follow:getContentSize().width*to_follow:getScaleY()
+	local x = to_follow:getPositionX()
+	follower:setPosition(ccp(x,y))
+end
+
+function AboutScene:follow(follower, total)
+	local to_follow = follower:getParent():getChildByTag((follower:getTag()+2)%total)
+	self:follow_sprite(follower, to_follow)
+end
+
+function AboutScene:getNext(node,total)
+	local to_follow = node:getParent():getChildByTag((node:getTag()+1)%total)
+	return to_follow
+end
+
+function AboutScene:create_sprite(name, tag, node, total)
+	local sprite = CCSprite:createWithSpriteFrameName(name)
+	sprite:setScale(GlobalSetting.content_scale_factor)
+	sprite:setAnchorPoint(ccp(0.5,1))
+	node:addChild(sprite, 0, tag)
+	if tag ~= 1 then
+		local last = node:getChildByTag((tag-1)%total)
+		self:follow_sprite(sprite, last)
+	end
+end
+
+function AboutScene:test_slot(i)
+	require 'src.resources'
+	CCSpriteFrameCache:sharedSpriteFrameCache():addSpriteFramesWithFile(Res.props_plist)
+	local layer = CCLayer:create()
+	local frames = {"common_jewelry_box_06.png", "libao_024_liujin_small.png", "dj_012_jipaiqi.png"}
+	for index=1,#frames do
+		self:create_sprite(frames[index], index, layer, #frames)
+	end
+	self.rootNode:addChild(layer)
+	layer:setPosition(300+i*80,300)
+	
+	local seq = nil
+	local pos = 1
+	local after = CCCallFuncN:create(function(sender)
+		local cur_tag = pos%3
+		if cur_tag == 0 then cur_tag = 3 end
+		local next_tag = (pos+2) % 3
+		if next_tag == 0 then next_tag =3 end
+		self:follow_sprite(sender:getChildByTag(cur_tag), sender:getChildByTag(next_tag))
+		pos = pos+1
+	end)
+	local move = CCMoveBy:create(0.3, ccp(0,layer:getChildByTag(1):getContentSize().width*layer:getChildByTag(1):getScaleY()))
+	local toarr=function(table)
+	local array = CCArray:create()
+	if not table then return array end
+	for _, _v in pairs(table) do
+		array:addObject(_v)
+	end
+	return array
+	end
+	seq = CCSequence:create(toarr({move,after}))
+	layer:runAction(CCRepeatForever:create(seq))
+end
 
 UIControllerPlugin.bind(AboutScene)

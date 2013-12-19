@@ -28,6 +28,10 @@ public class PushManager {
 	private PushManager() {
 	}
 
+	public PushDataManager getData_manager() {
+		return data_manager;
+	}
+
 	public static PushManager getInstance() {
 		return null == _inst ? _inst = new PushManager() : _inst;
 	}

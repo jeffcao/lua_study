@@ -1,4 +1,5 @@
 require 'CCBReaderLoad'
+require 'src.MatchLogic'
 RoomItem = class("RoomItem", function() 
 	print("new room item")
 	return display.newLayer("RoomItem")
@@ -43,7 +44,7 @@ end
 
 function RoomItem:init_room_info(room_info, room_index)
 	self.room_info = room_info
-	
+	room_info.is_promotion = tonumber(room_info.type) == 2 or tonumber(room_info.type) == 3
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 	cache:addSpriteFramesWithFile(Res.hall_plist)
 	
@@ -79,6 +80,8 @@ function RoomItem:init_normal_room(room_info, room_index)
 end
 
 function RoomItem:init_promotion_room(room_info, room_index)
+	local status_text = MatchLogic.get_status_text(room_info)
+	self.promotion_status_lbl:setString(status_text)
 end
 
 

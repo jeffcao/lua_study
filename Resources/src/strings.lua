@@ -151,6 +151,10 @@ psp_fetch_promotion_nil = '当前没有活动',
 mr_next_time = '下一轮比赛将在 time 开始，请密切关注',
 --Diploma
 dp_msg = '\b\b\b\b\b\b\b\b敬爱的玩家\b\bnick_name，恭喜您在room_name的《match_name》活动中获得：',
-dp_award_msg = 'order\b\b\b\baward'
+dp_award_msg = 'order\b\b\b\baward',
+--MatchLogic
+ml_no_match_w = '当前没有比赛',
+ml_join_fail_w = '报名比赛失败',
+ml_joining = '正在报名...',
 }
 

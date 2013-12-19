@@ -35,6 +35,12 @@ public class PushDataManager {
 		List<PushTask> tasks = PushTask.parseJsonArray(json);
 		addTasks(tasks);
 	}
+	
+	public void addTask(PushTask task) {
+		List<PushTask> tasks =  new ArrayList<PushTask>();
+		tasks.add(task);
+		addTasks(tasks);
+	}
 
 	private void addTasks(List<PushTask> tasks) {
 		if (null == tasks || tasks.isEmpty())

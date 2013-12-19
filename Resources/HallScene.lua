@@ -19,6 +19,8 @@ require "src.Push"
 require "src.UserLocked"
 require 'src.GamePush'
 require 'src.MarqueePlugin'
+require 'src.HallMatchPlugin'
+require 'src.MatchLogic'
 local cjson = require "cjson"
 HallScene = class("HallScene", function() 
 	print("create new hall scene")
@@ -77,6 +79,8 @@ HallScene = class("HallScene", function()
 	self:set_btn_stroke(self.task_lbl)
 	set_blue_stroke(self.quick_game_btn_lbl)
 	
+	self:listen_match_event()
+	
 	MarqueePlugin.addMarquee(self)
  end
  
@@ -99,6 +103,7 @@ HallScene = class("HallScene", function()
 	self:update_player_beans_with_gl()
 	self:do_on_enter()
 	self:start_push()
+	self:refresh_room_list()
 	--[[
 	local is_playing = SimpleAudioEngine:sharedEngine():isBackgroundMusicPlaying()
 	if bg_music and not is_playing then
@@ -177,3 +182,4 @@ end
  ServerNotifyPlugin.bind(HallScene)
  Push.bind(HallScene)
  UserLocked.bind(HallScene)
+ HallMatchPlugin.bind(HallScene)

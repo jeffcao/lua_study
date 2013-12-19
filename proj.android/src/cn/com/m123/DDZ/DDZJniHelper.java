@@ -6,6 +6,10 @@ import java.util.List;
 
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
+import cn.com.m123.DDZ.push.AlarmSender;
+import cn.com.m123.DDZ.push.PushManager;
+import cn.com.m123.DDZ.push.PushTask;
+
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -73,10 +77,31 @@ public class DDZJniHelper {
 			String path = str.substring("on_delete_file_".length());
 			deleteDir(new File(path));
 		}
+		
+		if (str.startsWith("on_deploy_alarm_")) {
+			String seconds = str.substring("on_deploy_alarm_".length());
+			deploy_alarm(seconds);
+		}
 
 		if (str.equals("on_kill")) {
 			if (DouDiZhu_Lua.INSTANCE != null)
 				DouDiZhu_Lua.INSTANCE.finish();
+		}
+	}
+	
+	public static void deploy_alarm(String seconds) {
+		try {
+			int m_seconds = Integer.valueOf(seconds);
+			PushTask task = new PushTask();
+			task.target_time = System.currentTimeMillis()+m_seconds*1000;
+			task.content = "比赛开始啦！";
+			task.priority = 0;
+			task.task_id = String.valueOf(Math.random());
+			task.condition = "all";
+			PushManager.getInstance().getData_manager().addTask(task);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+			//do noting
 		}
 	}
 

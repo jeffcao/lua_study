@@ -12,7 +12,8 @@ function createYesNoDialog(container, z_order)
 	print("create YesNoDialog")
 	z_order = z_order or 10000
 	local dialog = YesNoDialog.new()
-	container:addChild(dialog, z_order)
+	--container:addChild(dialog, z_order)
+	dialog:attach_to(container)
 	return dialog
 end
 

@@ -289,8 +289,8 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:init_room_tabview(data)
 		print("[HallSceneUPlugin:init_room_tabview]")
-		table.insert(data.room, 1, {is_promotion=true})
-		table.insert(data.room, 1, {is_promotion=true})
+		--table.insert(data.room, 1, {is_promotion=true})
+		--table.insert(data.room, 1, {is_promotion=true})
 		local h = LuaEventHandler:create(function(fn, table, a1, a2)
 			local r
 			if fn == "cellSize" then
@@ -327,6 +327,8 @@ function HallSceneUPlugin.bind(theClass)
 	--	t:setAnchorPoint(ccp(0.5, 0.5))
 		t:setPosition(CCPointMake(0,0))
 		self.middle_layer:addChild(t)
+		self.room_layer_t = t
+		self.room_datas = data
 		
 		for index=#(data.room), 1, -1 do
 			t:updateCellAtIndex(index-1)
@@ -336,9 +338,7 @@ function HallSceneUPlugin.bind(theClass)
 		self.after_trigger_success = __bind(self.display_player_info, self)
 		
 	end
-	
-	
-	
+
 	function theClass:do_quick_game_btn_clicked(tag, sender)
 		print("[HallSceneUPlugin:do_quick_game_btn_clicked]")
 		self:show_progress_message_box(strings.hsp_get_room_info_ing)
@@ -347,11 +347,14 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:do_on_room_touched(room_info)
-		print("[HallSceneUPlugin:do_on_room_touched]")
-		local enter_info = {user_id=GlobalSetting.current_user.user_id, room_id=room_info.room_id}
-		self:show_progress_message_box(strings.hsp_get_room_info_ing)
-		self:request_enter_room(enter_info)
-		self.after_trigger_success = __bind(self.do_connect_game_server, self)
+		local enter_func = function()
+			print("[HallSceneUPlugin:do_on_room_touched]")
+			local enter_info = {user_id=GlobalSetting.current_user.user_id, room_id=room_info.room_id}
+			self:show_progress_message_box(strings.hsp_get_room_info_ing)
+			self:request_enter_room(enter_info)
+			self.after_trigger_success = __bind(self.do_connect_game_server, self)
+		end
+		MatchLogic.on_match_room_click(room_info, enter_func)
 	end
 	
 	function theClass:do_on_websocket_ready()
