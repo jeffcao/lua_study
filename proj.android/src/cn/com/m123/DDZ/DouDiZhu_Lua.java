@@ -28,7 +28,7 @@ import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.widget.Toast;
+import cn.cmgame.billing.api.GameInterface;
 
 public class DouDiZhu_Lua extends Cocos2dxActivity {
 
@@ -39,6 +39,11 @@ public class DouDiZhu_Lua extends Cocos2dxActivity {
 		super.onCreate(savedInstanceState);
 		DDZJniHelper.messageCpp("game_jni");
 		INSTANCE = this;
+		GameInterface.initializeApp(this, "我爱斗地主", "新中南", "0759-88888888");
+	}
+
+	static {
+		System.loadLibrary("game");
 	}
 
 	public Cocos2dxGLSurfaceView onCreateView() {

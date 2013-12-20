@@ -16,8 +16,10 @@ function scaleNode(node, scaleFactor)
 end
 
 function endtolua_guifan()
-	local scene = createGuifanEndScene()
-	CCDirector:sharedDirector():pushScene(scene)
+	--local scene = createGuifanEndScene()
+	--CCDirector:sharedDirector():pushScene(scene)
+	local jni_helper = DDZJniHelper:create()
+	jni_helper:messageJava("do_exit_cmcc")
 end
 
 function endtolua()

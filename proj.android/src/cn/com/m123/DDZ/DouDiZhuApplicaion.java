@@ -32,6 +32,7 @@ public class DouDiZhuApplicaion extends Application {
 	public void onCreate() {
 		APP_CONTEXT = this;
 		super.onCreate();
+		System.loadLibrary("megjb");
 		initDebug();
 		saveHardwareInfo();
 		initPkgInfo();

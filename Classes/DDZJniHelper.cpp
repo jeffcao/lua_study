@@ -13,6 +13,11 @@ void Java_cn_com_m123_DDZ_DDZJniHelper_messageCpp(JNIEnv* env, jobject thiz,
 
 	std::string myText = JniHelper::jstring2string(text);
 
+	if (myText.compare("on_exit")==0) {
+		CCDirector::sharedDirector()->end();
+		return;
+	}
+
 	CCNotificationCenter::sharedNotificationCenter()->postNotification(myText.c_str());
 	/*DDZJniHelper* h = new DDZJniHelper();
 	const char* is_connected = h->get("IsNetworkConnected");*/

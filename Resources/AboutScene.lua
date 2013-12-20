@@ -49,6 +49,9 @@ function AboutScene:ctor()
 	
 	layer:setContent(node)
 	self.version_lbl:setString(version)
+	
+	local jni = DDZJniHelper:create()
+	jni:messageJava("do_billing_")
 	--[[
 	local jni_helper = DDZJniHelper:create()
 	local data = {price=1.0,which=2,desc='记牌器',cpparam='1066960011123'}

@@ -8,6 +8,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Environment;
@@ -15,6 +16,11 @@ import android.telephony.SmsManager;
 import android.util.Log;
 import cn.com.m123.DDZ.push.PushManager;
 import cn.com.m123.DDZ.push.PushTask;
+import android.widget.Toast;
+import cn.cmgame.billing.api.BillingResult;
+import cn.cmgame.billing.api.GameInterface;
+import cn.cmgame.billing.api.GameInterface.GameExitCallback;
+import cn.cmgame.billing.api.GameInterface.IPayCallback;
 
 public class DDZJniHelper {
 
@@ -85,6 +91,81 @@ public class DDZJniHelper {
 			if (DouDiZhu_Lua.INSTANCE != null)
 				DouDiZhu_Lua.INSTANCE.finish();
 		}
+		if (str.equals("do_exit_cmcc")) {
+			if (null != DouDiZhu_Lua.INSTANCE) {
+				exit();
+			}
+		}
+		if (str.startsWith("do_billing_")) {
+			dobilling();
+		}
+	}
+	
+	public static void dobilling() {
+		 GameInterface.doBilling(DouDiZhu_Lua.getContext(), true, true, "001", "serri", new IPayCallback() {
+			
+			@Override
+			public void onResult(int resultCode, String billingIndex, Object obj) {
+				 String result = "";
+			        switch (resultCode) {
+			          case BillingResult.SUCCESS:
+			            result = "购买道具：[" + billingIndex + "] 成功！";
+			        //    getPurchaseInfo();
+			            break;
+			          case BillingResult.FAILED:
+			            result = "购买道具：[" + billingIndex + "] 失败！";
+			            break;
+			          default:
+			            result = "购买道具：[" + billingIndex + "] 取消！";
+			            break;
+			        }
+			        Toast.makeText(DouDiZhu_Lua.getContext(), result, Toast.LENGTH_SHORT).show();
+			}
+		});
+	}
+	
+	public static void exit() {
+		GameInterface.exit(DouDiZhu_Lua.INSTANCE, new GameExitCallback() {
+			
+			@Override
+			public void onConfirmExit() {
+				if (null != DouDiZhu_Lua.INSTANCE) {
+					
+					SharedPreferences sp = DouDiZhu_Lua.INSTANCE.getSharedPreferences("Cocos2dxPrefsFile", Context.MODE_PRIVATE);
+					String begin = sp.getString("begin_time", "-1");
+					long begin_time = Long.parseLong(begin);
+					if (begin_time > 0) {
+						long end_time = System.currentTimeMillis();
+						long duration = end_time - begin_time;
+						System.out.println("duration is " + duration);
+						if (duration > 0) {
+							sp.edit().putString("last_app_duration", String.valueOf(duration)).commit();
+						}
+					}
+				}
+				/*new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						try {
+							Thread.sleep(3);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}*/
+						messageCpp("on_exit");
+						if (null != DouDiZhu_Lua.INSTANCE) {
+							DouDiZhu_Lua.INSTANCE.finish();
+							System.out.println("finish game activitfinish game activity");
+						}
+				/*	}
+				}).start();*/
+			}
+			
+			@Override
+			public void onCancelExit() {
+			}
+		});
 	}
 	
 	public static void pay(final String str) {
@@ -236,6 +317,11 @@ public class DDZJniHelper {
 		}
 		if (func_name.equals("SDCardPath")) {
 			return Environment.getExternalStorageDirectory().getAbsolutePath();
+		}
+		if (func_name.equals("MusicEnabled")) {
+			String result = GameInterface.isMusicEnabled ? "1" : "0";
+			return result;
+			//return String.valueOf(GameInterface.isMusicEnabled());
 		}
 		return "";
 	}

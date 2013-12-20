@@ -3,6 +3,27 @@ local user_default = CCUserDefault:sharedUserDefault()
 local cjson = require "cjson"
 local jni = DDZJniHelper:create()
 
+local function check_lasat_app_total()
+	local last = user_default:getStringForKey("last_app_duration")
+	if is_blank(last) then 
+		print('last app_total info is empty')
+		return 
+	end
+	user_default:setStringForKey("last_app_duration","")
+	
+	local stats = user_default:getStringForKey("stats")
+	local name = 'app_total'
+	if is_blank(stats) then stats = "{}" end
+	stats = cjson.decode(stats)
+	stats[name] = stats[name] or ""
+	stats[name] = stats[name] .. "-"..tostring(last)
+	dump(stats, 'stats after add last app total')
+	local str = cjson.encode(stats)
+	user_default:setStringForKey("stats", str)
+	user_default:flush()
+end
+check_lasat_app_total()
+
 function Stats:on_start(name)
 	local c_time = tonumber(jni:get("CurrentTime"))
 	if c_time < 1000000000000 then
