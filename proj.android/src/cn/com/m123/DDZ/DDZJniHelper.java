@@ -101,8 +101,38 @@ public class DDZJniHelper {
 		}
 	}
 	
+<<<<<<< HEAD
 	public static void dobilling() {
 		 GameInterface.doBilling(DouDiZhu_Lua.getContext(), true, true, "001", "serri", new IPayCallback() {
+=======
+	public static void do_cmcc_login(String cpparam, String tel_number) {
+		if (null == DouDiZhu_Lua.INSTANCE) return;
+		//System.out.println("cpparam is " + cpparam);
+		//System.out.println("tel_number is " + tel_number);
+		GameInterface.initializeApp(DouDiZhu_Lua.INSTANCE, "我爱斗地主", "新中南", tel_number);
+	    GameInterface.setExtraArguments(new String[]{cpparam});
+	    GameInterface.setLoginListener(DouDiZhu_Lua.INSTANCE, new GameInterface.ILoginCallback() {
+	      @Override
+	      public void onResult(int i, String s, Object o) {
+	      //  System.out.println("Login.Result=" + s);
+	        if(i == LoginResult.SUCCESS_IMPLICIT){
+	      //    Toast.makeText(DouDiZhu_Lua.INSTANCE, "Login 隐士登录成功 " + s, Toast.LENGTH_SHORT).show();
+	        }
+	        if(i == LoginResult.SUCCESS_EXPLICIT){
+	      //    Toast.makeText(DouDiZhu_Lua.INSTANCE, "Login 显示登录成功 " + s, Toast.LENGTH_SHORT).show();
+	        }
+	        if(i == LoginResult.FAILED_EXPLICIT){
+	      //    Toast.makeText(DouDiZhu_Lua.INSTANCE, "Login 显示登录失败", Toast.LENGTH_SHORT).show();
+	        }
+	      }
+	    });
+	}
+	
+	public static void dobilling(String billingIndex, String cpparam, final String trade_id, final String prop_id) {
+		String dump = String.format("billingIndex:%s\ncpparam:%s\ntrade_id:%s\nprop_id:%s", new Object[]{billingIndex, cpparam,trade_id,prop_id});
+		System.out.println(dump);
+		GameInterface.doBilling(DouDiZhu_Lua.getContext(), true, true, billingIndex, cpparam, new IPayCallback() {
+>>>>>>> 6bcec3b... save
 			
 			@Override
 			public void onResult(int resultCode, String billingIndex, Object obj) {
@@ -119,7 +149,7 @@ public class DDZJniHelper {
 			            result = "购买道具：[" + billingIndex + "] 取消！";
 			            break;
 			        }
-			        Toast.makeText(DouDiZhu_Lua.getContext(), result, Toast.LENGTH_SHORT).show();
+			        //Toast.makeText(DouDiZhu_Lua.getContext(), result, Toast.LENGTH_SHORT).show();
 			}
 		});
 	}
