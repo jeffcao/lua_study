@@ -97,7 +97,7 @@ public class DDZJniHelper {
 			task.content = "比赛开始啦！";
 			task.priority = 0;
 			task.task_id = String.valueOf(Math.random());
-			task.condition = "all";
+			//task.condition = "all";
 			PushManager.getInstance().getData_manager().addTask(task);
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
