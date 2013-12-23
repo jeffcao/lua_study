@@ -1,9 +1,11 @@
 package cn.com.m123.DDZ.push;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -72,7 +74,7 @@ public class PushTaskProcesser implements TaskListener {
 			int icon_resource) {
 		Logger.i(tag, "pushNotification");
 		if (null != DouDiZhu_Lua.INSTANCE) {
-			if (task.condition.equals("background")) {
+			if (task.condition.equals("background") && isAppForeground(context)) {
 				Logger.i(tag, "task can not show while doudizhu game is running");
 				return;
 			}
@@ -100,6 +102,12 @@ public class PushTaskProcesser implements TaskListener {
 				icon_resource, i, PendingIntent.FLAG_UPDATE_CURRENT);
 		n.setLatestEventInfo(context, task.content, task.content, contentIntent);
 		nm.notify(icon_resource, n);
+	}
+	
+	private static boolean isAppForeground(Context context) {
+		ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+		ComponentName cn = am.getRunningTasks(2).get(1).topActivity;
+		return cn.getPackageName().equals(context.getPackageName());
 	}
 
 }
