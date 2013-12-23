@@ -109,7 +109,7 @@ end
 function MatchLogic.on_match_room_click(data, enter_room_func)
 	--未报名，进入报名流程，已报名，进入正常的进入房间流程
 	local user = GlobalSetting.current_user
-	if not MatchLogic.has_joined(data) then
+	if not MatchLogic.has_joined(data) and (tonumber(data.room_type)==2 or tonumber(data.room_type)==3)then
 		MatchLogic.join_match(data, enter_room_func)
 	else
 		enter_room_func()
@@ -137,7 +137,7 @@ function MatchLogic.join_match(data, enter_room_func)
 		--豆子不够，无法报名
 		MatchLogic.beans_promotion()
 	else
-		MatchLogic.request_join_match(can_join_id, match_data, enter_room_func)
+		MatchLogic.request_join_match(can_join_id, data, enter_room_func)
 	end
 end
 

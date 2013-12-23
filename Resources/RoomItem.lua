@@ -44,7 +44,7 @@ end
 
 function RoomItem:init_room_info(room_info, room_index)
 	self.room_info = room_info
-	room_info.is_promotion = tonumber(room_info.type) == 2 or tonumber(room_info.type) == 3
+	room_info.is_promotion = tonumber(room_info.room_type) == 2 or tonumber(room_info.room_type) == 3
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 	cache:addSpriteFramesWithFile(Res.hall_plist)
 	
@@ -82,6 +82,9 @@ end
 function RoomItem:init_promotion_room(room_info, room_index)
 	local status_text = MatchLogic.get_status_text(room_info)
 	self.promotion_status_lbl:setString(status_text)
+	local bg_sprite_png = 'songdoufang.png'
+	if tonumber(room_info.room_type) == 3 then bg_sprite_png = 'songhuafei.png' end
+	self.promotion_bg:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(bg_sprite_png))
 end
 
 
