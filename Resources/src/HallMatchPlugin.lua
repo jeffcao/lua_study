@@ -45,6 +45,9 @@ function HallMatchPlugin.bind(theClass)
 		self:refresh_room_list()
 		self:update_player_beans_with_gl()
 		MatchLogic.bind_match_channels(self, GlobalSetting.hall_server_websocket, true)
+		if tonumber(room_info.time) > 0 then
+			ToastPlugin.show_message_box_suc(strings.hmp_join_s)
+		end
 	end
 	
 	function theClass:refresh_room_list()

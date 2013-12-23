@@ -156,5 +156,8 @@ dp_award_msg = 'order\b\b\b\baward',
 ml_no_match_w = '当前没有比赛',
 ml_join_fail_w = '报名比赛失败',
 ml_joining = '正在报名...',
+ml_match_waiting_w = '比赛还未开始',
+--HallMatchPlugin
+hmp_join_s = '报名成功',
 }
 

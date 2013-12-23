@@ -109,10 +109,16 @@ end
 function MatchLogic.on_match_room_click(data, enter_room_func)
 	--未报名，进入报名流程，已报名，进入正常的进入房间流程
 	local user = GlobalSetting.current_user
-	if not MatchLogic.has_joined(data) and (tonumber(data.room_type)==2 or tonumber(data.room_type)==3)then
+	local is_promotion = tonumber(data.room_type)==2 or tonumber(data.room_type)==3
+	
+	if not MatchLogic.has_joined(data) and is_promotion then
 		MatchLogic.join_match(data, enter_room_func)
 	else
-		enter_room_func()
+		if not is_promotion then
+			enter_room_func()
+		else
+			ToastPlugin.show_message_box(strings.ml_match_waiting_w)
+		end
 		--MatchLogic.request_enter_match(data)
 	end
 end
@@ -127,7 +133,7 @@ function MatchLogic.join_match(data, enter_room_func)
 	
 	--检查是否可以报名
 	local can_join_id = MatchLogic.get_join_match_seq(data)
-	if not can_join_id then
+	if is_blank(can_join_id) then
 		ToastPlugin.show_message_box('当前没有比赛')
 		return
 	end
@@ -144,10 +150,12 @@ end
 --报名成功
 function MatchLogic.on_join_match_success(data, match_data, enter_room_func)
 	ToastPlugin.hide_progress_message_box()
-	user.score = match_data.score
-	user.joined_match = match_data.joined_match
+	local user = GlobalSetting.current_user
+	user.score = data.score
+	user.joined_match = data.joined_match
+	match_data.time = data.time
 	--通知各监听器，比赛报名成功
-	MatchLogic.notify_event('on_join_success', match_data)
+	MatchLogic.notify_event('event_join_success', data)
 	if tonumber(data.time) <= 0 then
 		--比赛已开始
 		--MatchLogic.request_enter_match(match_data)
