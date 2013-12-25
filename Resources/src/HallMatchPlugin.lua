@@ -39,7 +39,7 @@ function HallMatchPlugin.bind(theClass)
 		for _,room in pairs(self.room_datas.room) do
 			if tonumber(room.room_id) == room_id then
 				for k,v in pairs(room) do
-					if room_info[k] then
+					if room_info[k] ~= nil then
 						room[k] = room_info[k]--只copy房间本身就有的值
 					end
 				end
