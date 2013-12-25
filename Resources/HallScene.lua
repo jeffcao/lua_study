@@ -79,8 +79,6 @@ HallScene = class("HallScene", function()
 	self:set_btn_stroke(self.task_lbl)
 	set_blue_stroke(self.quick_game_btn_lbl)
 	
-	self:listen_match_event()
-	
 	MarqueePlugin.addMarquee(self)
  end
  

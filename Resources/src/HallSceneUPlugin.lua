@@ -334,6 +334,7 @@ function HallSceneUPlugin.bind(theClass)
 			t:updateCellAtIndex(index-1)
 		end
 
+		self:listen_match_event()
 		self:get_user_profile()
 		self.after_trigger_success = __bind(self.display_player_info, self)
 		

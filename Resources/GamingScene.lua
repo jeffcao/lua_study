@@ -32,6 +32,7 @@ require "GamingOption"
 require "IntroduceDialog"
 require "src.Stats"
 require "src.UserLocked"
+require 'src.GameMatchPlugin'
 
 GamingScene = class("GamingScene", function()
 	return display.newScene("GamingScene")
@@ -87,6 +88,8 @@ function GamingScene:ctor()
 		self:check_tech_msg("enter_room")
 	end)
 	self:setStrokes()
+	
+	self:listen_match_event()
 end
 
 function GamingScene:setStrokes()
@@ -207,3 +210,4 @@ SocketStatePlugin.bind(GamingScene)
 ServerNotifyPlugin.bind(GamingScene)
 UIControllerPlugin.bind(GamingScene)
 UserLocked.bind(GamingScene)
+GameMatchPlugin.bind(GamingScene)

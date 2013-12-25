@@ -54,23 +54,51 @@ end
 --  global_match_change
 --    data:@{room data info}
 function MatchLogic.listen(event_name, func)
-	if not MatchLogic[event_name] then MatchLogic[event_name] = {} end
-	table.insert(MatchLogic[event_name], func)
+	if not MatchLogic.events_listener then MatchLogic.events_listener = {} end
+	if not MatchLogic.events_listener[event_name] then MatchLogic.events_listener[event_name] = {} end
+	table.insert(MatchLogic.events_listener[event_name], func)
+end
+
+function MatchLogic.clear()
+	print('MatchLogic.clear()')
+	MatchLogic.events_listener = {}
 end
 
 function MatchLogic.notify_event(event_name, data)
-	if MatchLogic[event_name] then
-		for _,func in pairs(MatchLogic[event_name]) do
+	if MatchLogic.events_listener[event_name] then
+		for _,func in pairs(MatchLogic.events_listener[event_name]) do
 			func(data)
 		end
 	end
 end
 
-function MatchLogic.has_joined(data)
+function MatchLogic.has_joined_cur(data)
 	local user = GlobalSetting.current_user
 	return table.contains(user.joined_match, data.cur_match_seq)
 end
 
+function MatchLogic.has_joined_next(data)
+	local user = GlobalSetting.current_user
+	return table.contains(user.joined_match, data.joined_next_match)
+end
+
+--是否已经报名当前房间的【当前场次或下一场次】
+function MatchLogic.has_joined(data)
+	local joined_cur_match = MatchLogic.has_joined_cur(data)
+	local joined_next_match = MatchLogic.has_joined_next(data)
+	return joined_cur_match or joined_next_match
+end
+
+--是否可以进入当前房间的当前比赛
+function MatchLogic.can_enter_match(match)
+	if not match.is_in_match then 
+		return false 
+	else
+		return MatchLogic.has_joined_cur(match)
+	end
+end
+
+--获取当前房间【可以报名的】比赛序列号
 function MatchLogic.get_join_match_seq(data)
 	local can_join_id = nil
 	if data.can_join and data.cur_match_seq then
@@ -84,13 +112,16 @@ function MatchLogic.get_join_match_seq(data)
 end
 
 function MatchLogic.get_status_text(room_info)
-	local text = ''
+	local text = '敬请期待'
 	if MatchLogic.has_joined(room_info) then
 		text = '已报名'
-		if room_info.is_in_match then text = '进入' end
-	elseif MatchLogic.get_join_match_seq(room_info) then
+		if MatchLogic.can_enter_match(room_info) then text = '进入' end
+	elseif not is_blank(MatchLogic.get_join_match_seq(room_info)) then
 		text = '报名'
 	end
+	dump(room_info, 'room_info')
+	dump(GlobalSetting.current_user.joined_match, 'GlobalSetting.current_user.joined_match')
+	print('room text:', text)
 	return text
 end
 
@@ -107,25 +138,32 @@ function MatchLogic.on_private_match_status_change(data)
 end
 
 function MatchLogic.on_match_room_click(data, enter_room_func)
+	cclog('on_match_room_click')
 	--未报名，进入报名流程，已报名，进入正常的进入房间流程
 	local user = GlobalSetting.current_user
 	local is_promotion = tonumber(data.room_type)==2 or tonumber(data.room_type)==3
 	
-	if not MatchLogic.has_joined(data) and is_promotion then
+	--1.检查不是比赛房间，直接enter room
+	if not is_promotion then enter_room_func() return end
+	
+	--2.如果没有报名当前房间，则进入报名流程
+	if not MatchLogic.has_joined(data) then
 		MatchLogic.join_match(data, enter_room_func)
+		return
+	end
+	
+	--3.如果已报名当前房间，查看报名的比赛是否已开始，已开始则进入，没开始，提示比赛尚未开始
+	if MatchLogic.can_enter_match(data) then
+		enter_room_func()
 	else
-		if not is_promotion then
-			enter_room_func()
-		else
-			ToastPlugin.show_message_box(strings.ml_match_waiting_w)
-		end
-		--MatchLogic.request_enter_match(data)
+		ToastPlugin.show_message_box(strings.ml_match_waiting_w)
 	end
 end
 
 --弹出豆子购买框
 function MatchLogic.beans_promotion()
 	--TODO
+	cclog('join match beans is not enough')
 end
 
 function MatchLogic.join_match(data, enter_room_func)
@@ -192,12 +230,17 @@ function MatchLogic.parse_match_joined_when_login(data)
 end
 
 function MatchLogic.create_match_channel(ws, name)
+	if name ~= 'global_channel' then name = 'm_' .. name end
 	local channel = ws:subscribe(name)
+	cclog('create match channel[%s]:%s', tostring(name), tostring(channel))
 	channel:bind("ui.routine_notify", function(data)
+		dump(data, 'on match channel routine notify')
 		local type = tonumber(data.notify_type)
-		if table.contains({20,21}, match_seq) then
+		if table.contains({20,21}, type) then
+			cclog('MatchLogic.on_private_match_status_change')
 			MatchLogic.on_private_match_status_change(data)
-		elseif table.contains({22,23,24}, match_seq) then
+		elseif table.contains({22,23,24}, type) then
+			cclog('MatchLogic.on_global_match_status_change')
 			MatchLogic.on_global_match_status_change(data)
 		end
 	end)
@@ -212,9 +255,10 @@ function MatchLogic.bind_match_channels(scene, ws, bind_global)
 	end
 	if not user.joined_match then return end
 	--把没有绑定的channel绑定起来
+	dump(user.joined_match, 'user.joined_match')
 	for _,match_seq in pairs(user.joined_match) do
 		match_seq = tostring(match_seq)
-		if not table.contains(scene.match_channels, match_seq) then
+		if not scene.match_channels[match_seq] then
 			scene.match_channels[match_seq] = MatchLogic.create_match_channel(ws, match_seq)
 		end
 	end

@@ -409,7 +409,7 @@ function GUIUpdatePlugin.bind(theClass)
 	 	else 
 			self:exit()
 		end
-		self:playButtonEffect()
+		--self:playButtonEffect()
 	end
 	
 	

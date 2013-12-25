@@ -55,6 +55,7 @@ public class DouDiZhuApplicaion extends Application {
 		if (f.exists()) {
 			DEBUG = true;
 		}
+		DEBUG=true;
 		Log.i("DDZ", "DEBUG is " + DEBUG);
 		sp.edit().putString("debug", String.valueOf(DEBUG)).commit();
 	}

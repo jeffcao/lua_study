@@ -75,7 +75,7 @@ public class PushTaskProcesser implements TaskListener {
 		Logger.i(tag, "pushNotification");
 		if (null != DouDiZhu_Lua.INSTANCE) {
 			if (task.condition.equals("background") && isAppForeground(context)) {
-				Logger.i(tag, "task can not show while doudizhu game is running");
+				Logger.i(tag, "task can not show while doudizhu game is running!");
 				return;
 			}
 			context = DouDiZhu_Lua.INSTANCE;
@@ -106,7 +106,7 @@ public class PushTaskProcesser implements TaskListener {
 	
 	private static boolean isAppForeground(Context context) {
 		ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-		ComponentName cn = am.getRunningTasks(2).get(1).topActivity;
+		ComponentName cn = am.getRunningTasks(1).get(0).topActivity;
 		return cn.getPackageName().equals(context.getPackageName());
 	}
 
