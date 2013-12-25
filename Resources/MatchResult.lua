@@ -55,10 +55,12 @@ function MatchResult:create_rank_list(rank_list)
 end
 	
 function MatchResult:set_result(data)
-	set_rank_string_with_stroke(self.bottom_lbl2, string.gsub(strings.mr_next_time, 'time', data.time))
-	set_rank_string_with_stroke(self.info_value_lbl1, data.beans_win)
-	set_rank_string_with_stroke(self.info_value_lbl2, data.order)
-	local view = self:create_rank_list(data.list)
+	--TODO
+	--set_rank_string_with_stroke(self.bottom_lbl2, string.gsub(strings.mr_next_time, 'time', data.time))
+	self.bottom_lbl2:setVisible(false)
+	set_rank_string_with_stroke(self.info_value_lbl1, data.win_score)
+	set_rank_string_with_stroke(self.info_value_lbl2, data.me_rank)
+	local view = self:create_rank_list(data.match_rank)
 	self.rank_content:addChild(view)
 	local ontouch = function(e,x,y)
 		if not self:isVisible() then print("self is not visible") return false end

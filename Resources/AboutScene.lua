@@ -68,7 +68,10 @@ function AboutScene:ctor()
 	
 	--[[
 	local diploma = createDiploma()
-	diploma:init({nick_name='王尼玛', room_name='话费房', match_name='人人都有话费送', order='第一名', award='10元话费奖励'})
+	diploma:init({
+	dp_msg="\\b\\b\\b\\b\\b\\b\\b\\b敬爱的玩家\\b\\b夏汐，恭喜您在送话费的《天天送话费》活动中获得：",
+	dp_award_msg = "第1名\\b\\b\\b\\b"
+	})
 	diploma:attach_to(self.rootNode)
 	diploma:show()
 	]]

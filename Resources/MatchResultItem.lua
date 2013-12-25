@@ -21,9 +21,12 @@ function MatchResultItem:ctor()
 end
 
 function MatchResultItem:init(item)
-	self.rank_lbl:setString(item.id)
+	self.rank_lbl:setString(item.rank)
 	self.name_lbl:setString(item.nick_name)
-	self.bean_lbl:setString(item.beans_win)
-	self.gets_lbl:setString(item.award)
+	self.bean_lbl:setString(item.scores)
+	local bonus = ''
+	local cjson = require "cjson"
+	if item.bonus ~= cjson.null then bonus = item.bonus end
+	self.gets_lbl:setString(bonus)
 end
 

@@ -1,5 +1,6 @@
 ServerNotifyPlugin = {}
 require 'src.PromptPlugin'
+require 'MatchResult'
 function ServerNotifyPlugin.bind(theClass)
 	function theClass:onServerNotify(data)
 		if not data then return end
@@ -8,9 +9,32 @@ function ServerNotifyPlugin.bind(theClass)
 					   self.onTimeBeans, self.onBankrupt, self.onMusic, self.onUserLocked, 
 					   self.onGamesBeans, self.onWinsBeans, self.onContinueWinsBeans, self.onPropPrompt,
 					   self.onContinueLoginsBeans, self.onInfoCompletedBeans}
+		funcs[26] = self.onDiploma
+		funcs[27] = self.onMatchResult
 		local func = funcs[tonumber(data.notify_type)+1]
+				
 		if not func then return end
 		func(self,data)
+	end
+	
+	--奖状
+	function theClass:onDiploma(data)
+		dump(data, 'diploma')
+		local diploma = createDiploma()
+		diploma:init(data)
+		local scene = runningscene()
+		diploma:attach_to(scene.rootNode)
+		diploma:show()
+	end
+	
+	--比赛结果
+	function theClass:onMatchResult(data)
+		dump(data, 'match result is')
+		local result = createMatchResult()
+		result:set_result(data)
+		local scene = runningscene()
+		scene.rootNode:addChild(result)
+		result:show()
 	end
 	
 	--用户当天游戏达到一定次数送豆子
