@@ -15,6 +15,7 @@ function HallMatchPlugin.bind(theClass)
 	function theClass:on_private_match_start(data)
 		local scene = runningscene()
 		local dialog = createYesNoDialog(scene.rootNode)
+		dialog:setTitle('温馨提示')
 		dialog:setMessage('比赛已开始，是否进入')--TODO
 		dialog:setYesButton(function() 
 			for _,room in pairs(self.room_datas.room) do
