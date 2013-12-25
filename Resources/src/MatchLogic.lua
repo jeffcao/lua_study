@@ -131,10 +131,11 @@ end
 
 function MatchLogic.on_private_match_status_change(data)
 	local event = 'private_match_start'
-	if data.notify_type == 21 then
+	if tonumber(data.notify_type) == 21 then
 		event = 'private_match_end'
 	end
-	MatchLogic.notify_event('global_match_change', data)
+	cclog('m_ channel event is %s', event)
+	MatchLogic.notify_event(event, data)
 end
 
 function MatchLogic.on_match_room_click(data, enter_room_func)

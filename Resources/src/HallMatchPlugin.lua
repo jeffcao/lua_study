@@ -17,10 +17,10 @@ function HallMatchPlugin.bind(theClass)
 		local dialog = createYesNoDialog(scene.rootNode)
 		dialog:setMessage('比赛已开始，是否进入')--TODO
 		dialog:setYesButton(function() 
-			for _,room in pairs(self.room_datas) do
+			for _,room in pairs(self.room_datas.room) do
 				if tonumber(room.room_id) == tonumber(data.room_id) then
+					dialog:dismiss()
 					self:do_on_room_touched(room)
-					self:dismiss()
 				end
 			end
 		end)
