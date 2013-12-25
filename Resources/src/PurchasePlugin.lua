@@ -36,7 +36,7 @@ function PurchasePlugin.on_server_notify_buy_finish_success(data)
 	end
 	
 	--use prop
-	if scene.use_prop_bought then
+	if scene.use_prop_bought  and tonumber(data.result_code) == 0 then
 		scene:use_prop_bought(data)
 	end
 end
