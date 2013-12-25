@@ -22,6 +22,7 @@ function GameMatchPlugin.bind(theClass)
 	end
 	
 	function theClass:on_private_match_end(data)
+		KickOut.set_reason('match_end')
 		dump(data,'game scene listen on_private_match_end')
 	end
 	

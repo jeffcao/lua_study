@@ -101,6 +101,8 @@ function GServerMsgPlugin.bind(theClass)
 		print("onServerLeave " .. data.user_id)
 		if (tonumber(self.g_user_id) == tonumber(data.user_id)) then
 			cclog("被踢出房间")
+			--设置被踢出标志
+			KickOut.set()
 			self:exit()
 		else
 			cclog("其他用户被踢出房间，刷新界面")

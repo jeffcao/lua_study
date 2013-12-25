@@ -21,6 +21,7 @@ require 'src.GamePush'
 require 'src.MarqueePlugin'
 require 'src.HallMatchPlugin'
 require 'src.MatchLogic'
+require 'src.KickOut'
 local cjson = require "cjson"
 HallScene = class("HallScene", function() 
 	print("create new hall scene")
@@ -78,8 +79,16 @@ HallScene = class("HallScene", function()
 	self:set_btn_stroke(self.to_feedback_lbl)
 	self:set_btn_stroke(self.task_lbl)
 	set_blue_stroke(self.quick_game_btn_lbl)
-	
+	--self:check_kick_out()
 	MarqueePlugin.addMarquee(self)
+ end
+ 
+ function HallScene:check_kick_out()
+ 	local reason = KickOut.check()
+ 	if not reason then return end
+ 	if reason == 'match_end' then
+ 		self:show_back_message_box('比赛已经结束')--TODO
+ 	end
  end
  
  function HallScene:set_btn_stroke(btn_lbl)

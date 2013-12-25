@@ -335,6 +335,7 @@ function HallSceneUPlugin.bind(theClass)
 		end
 
 		self:listen_match_event()
+		self:check_kick_out()
 		self:get_user_profile()
 		self.after_trigger_success = __bind(self.display_player_info, self)
 		
