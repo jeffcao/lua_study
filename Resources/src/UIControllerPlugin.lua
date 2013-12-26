@@ -88,9 +88,33 @@ function UIControllerPlugin.bind(theClass)
 
 	function theClass:do_on_buy_produce_message(data)
 		print("[MarketSceneUPlugin:do_back_message_box]")
-		local scene = runningscene()
-		if scene.show_back_message_box then
-			scene:show_back_message_box(data.content)
+		
+		--[[
+		if GlobalSetting.run_env == 'test' then
+			data.result_code = 2
+			data.billingIndex = "010"
+			data.cpparam = "5133301388036864"
+			data.trade_num = "5133301388036864"
+			data.prop_id = 186
+		end
+		]]
+		
+		if tonumber(data.result_code) == 2 then
+			local billingIndex = data.billingIndex
+			local cpparam = data.cpparam
+			local trade_id = data.trade_num
+			local prop_id = data.prop_id
+			local params = billingIndex..'_'..cpparam..'_'..trade_id..'_'..prop_id
+			print('retry billing...', params)
+			local jni = DDZJniHelper:create()
+			jni:messageJava('retry_billing_'..params)
+			return
+		end
+		if self.matket_scene then
+			print("[MarketSceneUPlugin:matket_scene:show_back_message_box]")
+			self.matket_scene:show_back_message_box(data.content)
+		else
+			self:show_back_message_box(data.content)
 		end
 		
 		if self.get_user_profile and self.display_player_info then

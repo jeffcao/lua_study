@@ -21,6 +21,7 @@ import cn.cmgame.billing.api.BillingResult;
 import cn.cmgame.billing.api.GameInterface;
 import cn.cmgame.billing.api.GameInterface.GameExitCallback;
 import cn.cmgame.billing.api.GameInterface.IPayCallback;
+import cn.cmgame.billing.api.LoginResult;
 
 public class DDZJniHelper {
 
@@ -97,12 +98,89 @@ public class DDZJniHelper {
 			}
 		}
 		if (str.startsWith("do_billing_")) {
-			dobilling();
+			//System.out.println("do_billing_\n"+str);
+			String mstr = str.substring("do_billing_".length());
+			String params[] = mstr.split("_");
+			dobilling(params[0], params[1], params[2], params[3]);
+		}
+		if (str.startsWith("retry_billing_")) {
+			//System.out.println("do_billing_\n"+str);
+			if (null == DouDiZhu_Lua.INSTANCE) return;
+			String mstr = str.substring("retry_billing_".length());
+			final String params[] = mstr.split("_");
+			Runnable r = new Runnable() {
+				
+				@Override
+				public void run() {
+					retrybilling(params[0], params[1], params[2], params[3]);
+				}
+			};
+			DouDiZhu_Lua.INSTANCE.runOnUiThread(r);
+		}
+		if (str.startsWith("do_cmcc_login_")) {
+			String mstr = str.substring("do_cmcc_login_".length());
+			String[] params = mstr.split("_");
+			do_cmcc_login(params[0], params[1]);
 		}
 	}
 	
-	public static void dobilling() {
-		 GameInterface.doBilling(DouDiZhu_Lua.getContext(), true, true, "001", "serri", new IPayCallback() {
+	public static void do_cmcc_login(String cpparam, String tel_number) {
+		if (null == DouDiZhu_Lua.INSTANCE) return;
+		//System.out.println("cpparam is " + cpparam);
+		//System.out.println("tel_number is " + tel_number);
+		//GameInterface.initializeApp(DouDiZhu_Lua.INSTANCE, "我爱斗地主", "深圳市新中南实业有限公司", tel_number);
+		GameInterface.initializeApp(DouDiZhu_Lua.INSTANCE);
+		GameInterface.setExtraArguments(new String[]{cpparam});
+		GameInterface.setLoginListener(DouDiZhu_Lua.INSTANCE, new GameInterface.ILoginCallback() {
+	      @Override
+	      public void onResult(int i, String s, Object o) {
+	      //  System.out.println("Login.Result=" + s);
+	        if(i == LoginResult.SUCCESS_IMPLICIT){
+	      //    Toast.makeText(DouDiZhu_Lua.INSTANCE, "Login 隐士登录成功 " + s, Toast.LENGTH_SHORT).show();
+	        }
+	        if(i == LoginResult.SUCCESS_EXPLICIT){
+	      //    Toast.makeText(DouDiZhu_Lua.INSTANCE, "Login 显示登录成功 " + s, Toast.LENGTH_SHORT).show();
+	        }
+	        if(i == LoginResult.FAILED_EXPLICIT){
+	      //    Toast.makeText(DouDiZhu_Lua.INSTANCE, "Login 显示登录失败", Toast.LENGTH_SHORT).show();
+	        }
+	      }
+	    });
+	}
+	
+	public static void retrybilling(String billingIndex, String cpparam, final String trade_id, final String prop_id) {
+		String dump = String.format("billingIndex:%s\ncpparam:%s\ntrade_id:%s\nprop_id:%s", new Object[]{billingIndex, cpparam,trade_id,prop_id});
+		//System.out.println(dump);
+		GameInterface.retryBilling(DouDiZhu_Lua.getContext(), true, true, billingIndex, cpparam, new IPayCallback() {
+			
+			@Override
+			public void onResult(int resultCode, String billingIndex, Object obj) {
+				 String result = "";
+			        switch (resultCode) {
+			          case BillingResult.SUCCESS:
+			            result = "购买道具成功！";
+			        //    getPurchaseInfo();
+			            break;
+			          case BillingResult.FAILED:
+			            result = "购买道具失败！";
+			            break;
+			          default:
+			            result = "购买道具取消！";
+			            SharedPreferences sp = DouDiZhu_Lua.INSTANCE.getSharedPreferences("Cocos2dxPrefsFile", Context.MODE_PRIVATE);
+			            sp.edit().putString("on_bill_cancel", trade_id+"_"+prop_id).commit();
+			            messageToCpp("on_bill_cancel");
+			            break;
+			        }
+			        System.out.println("重试" + result);
+			//        Toast.makeText(DouDiZhu_Lua.getContext(), result, Toast.LENGTH_SHORT).show();
+			}
+		});
+	}
+	
+	public static void dobilling(String billingIndex, String cpparam, final String trade_id, final String prop_id) {
+		String dump = String.format("billingIndex:%s\ncpparam:%s\ntrade_id:%s\nprop_id:%s", new Object[]{billingIndex, cpparam,trade_id,prop_id});
+		//System.out.println(dump);
+		GameInterface.doBilling(DouDiZhu_Lua.getContext(), true, true, billingIndex, cpparam, new IPayCallback() {
 			
 			@Override
 			public void onResult(int resultCode, String billingIndex, Object obj) {
@@ -119,7 +197,8 @@ public class DDZJniHelper {
 			            result = "购买道具：[" + billingIndex + "] 取消！";
 			            break;
 			        }
-			        //Toast.makeText(DouDiZhu_Lua.getContext(), result, Toast.LENGTH_SHORT).show();
+			        System.out.println(result);
+			//        Toast.makeText(DouDiZhu_Lua.getContext(), result, Toast.LENGTH_SHORT).show();
 			}
 		});
 	}

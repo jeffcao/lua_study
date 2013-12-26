@@ -26,6 +26,7 @@ package cn.com.m123.DDZ;
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
+import cn.cmgame.billing.api.GameInterface;
 import android.os.Bundle;
 import android.view.KeyEvent;
 
@@ -38,6 +39,8 @@ public class DouDiZhu_Lua extends Cocos2dxActivity {
 		super.onCreate(savedInstanceState);
 		DDZJniHelper.messageCpp("game_jni");
 		INSTANCE = this;
+		GameInterface.initializeApp(this);
+		GameInterface.setExtraArguments(new String[]{"0000000000000000"});
 	}
 
 	static {
