@@ -22,10 +22,9 @@ function AwardRecordItem:ctor()
 end
 
 function AwardRecordItem:init_award(award_record)
-	self.time_lbl:setString(award_record.time)
-	self.name_lbl:setString(GlobalSetting.current_user.nick_name)
-	local blanks = ""
-	for index=1,30 do blanks = blanks.."\b" end
-	self.spec_one_lbl:setString(blanks..award_record.speci)
+	self.time_lbl:setString(award_record.date)
+	self.name_lbl:setVisible(false)
+	self.player_lbl:setVisible(false)
+	self.spec_one_lbl:setString(award_record.content)
 end
 

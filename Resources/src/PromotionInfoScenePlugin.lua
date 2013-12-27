@@ -1,5 +1,6 @@
 PromotionInfoScenePlugin = {}
 require 'src.LabelButtonTab'
+require 'src.strings'
 
 function PromotionInfoScenePlugin.bind(theClass)
 	LabelButtonTab.bind(theClass)
@@ -8,39 +9,55 @@ function PromotionInfoScenePlugin.bind(theClass)
 		local tabs = {speci = {name="speci"}, rule = {name="rule"}, record = {name="record"}}
 		local order = {"speci","rule","record"}
 		local tab_content = self.layer
-		local hanzi_names = {speci="活动介绍", rule="活动规则", record="领奖记录"}
+		local hanzi_names = {speci="活动介绍", rule="活动规则", record="获奖记录"}
 		self:setTabHanziNames(hanzi_names)
 		self:init_mtabs(tabs, tab_content, order)
 		self:set_tab('speci')
 	end
 
 	function theClass:getTabView(name, call_back)
-		local speci = '活动规则：\na、每场比赛30-300人，时间为30分钟，在规定的时间赢豆最多的玩家获得胜利，领取相应的话费奖励。\n'
-		..'b、所有虚拟奖品实时到帐，用户可在排行中的话费排行查看中奖情况与金额，话费达到10的倍数即可提现。'
-		local rule = speci .. '\n\n' .. speci
 		local tab_view = nil
 		if name == 'rule' then
-			tab_view = self:createInfoLabel(rule)
+			tab_view = self:createInfoLabel(self.promotion.rule_desc)
 		elseif name == 'speci' then
-			tab_view = self:createSpeciView(speci)
+			tab_view = self:createSpeciView(self.promotion.description)
 		elseif name == 'record' then
-			tab_view = self:createRecordView()
+			tab_view = self:createRecordView(call_back)
+			return
 		end
 		scaleNode(tab_view, GlobalSetting.content_scale_factor)
 		call_back(tab_view)
 	end
 	
-	function theClass:createRecordView()
-		local list = {}
-		for index=1, 10 do
-			local data = {time='2013.10.'..tostring(index)}
-			data.speci = '在【送话费房】比赛中获得第一名，获得了6元话费，恭喜您'
-			if index%2 == 0 then data.speci = '在【送豆子】比赛中获得第一百一十一名，获得了26元话费，恭喜您！' end
-			table.insert(list, data)
+	function theClass:createRecordView(call_back)
+		local fail = function(data)
+			dump(data, 'get_record fail')
+			ToastPlugin.hide_progress_message_box()
 		end
-		return self:create_record_list(list)
+		local suc = function(data)
+			dump(data, 'get_record success')
+			ToastPlugin.hide_progress_message_box()
+			self.record_list = data.content
+			
+			local process_time = function(t) return string.gsub(string.sub(t,0,string.find(t,'T')-1),'-','.') end
+			for _,v in pairs(self.record_list) do
+				v.date = process_time(v.date)
+			end
+			table.sort(self.record_list, 
+				function(a,b)
+					local date1 = string.gsub(a.date, "%.", "")
+					local date2 = string.gsub(b.date, "%.", "")
+					return tonumber(date1) > tonumber(date2)
+				end
+			)
+			local view = self:create_record_list(self.record_list)
+			call_back(view)
+		end
+		local event_data = {user_id=GlobalSetting.current_user.user_id, room_type=self.promotion.match_type}
+		ToastPlugin.show_progress_message_box(strings.pisp_get_record_ing)
+		GlobalSetting.hall_server_websocket:trigger('ui.game_match_log', event_data, suc, fail)
 	end
-	
+
 	function theClass:createSpeciView(text)
 		local tab_view = CCLayer:create()
 		local label = self:createInfoLabel(text)
@@ -63,37 +80,12 @@ function PromotionInfoScenePlugin.bind(theClass)
 	end
 	
 	function theClass:create_record_list(record_list)
-		if not record_list or #record_list == 0 then return end
-		local h = LuaEventHandler:create(function(fn, table, a1, a2)
-			local r
-			if fn == "cellSize" then
-				r = CCSizeMake(800,80)
-			elseif fn == "cellAtIndex" then
-				if not a2 then
-					a2 = CCTableViewCell:create()
-					a3 = createAwardRecordItem()
-					print("[PromotionInfoScene.create_record_list] a1 =>"..a1)
-					a3:init_award(record_list[a1+1])
-					a2:addChild(a3, 0, 1)
-					_G.table.insert(self.record_layers, a3)--keep this variable or it will be clean up
-				else
-					local a3 = tolua.cast(a2:getChildByTag(1), "CCLayer")
-					a3.init_award(a3, record_list[a1 + 1])
-				end
-				r = a2
-			elseif fn == "numberOfCells" then
-				r = #record_list
-			elseif fn == "cellTouched" then
-			end
-			return r
-		end)
-		local t = LuaTableView:createWithHandler(h, CCSizeMake(800,360))
-		t:setPosition(CCPointMake(0,40))
-		
-		for index=#(record_list), 1, -1 do
-			t:updateCellAtIndex(index-1)
+		local t = ListViewPlugin.create_list_view(record_list,
+			createAwardRecordItem, 'init_award', CCSizeMake(800,80), CCSizeMake(800,360))
+		if not t then
+			return CCLayer:create()
 		end
-		
+		t:setPosition(CCPointMake(0,40))
 		return t
 	end
 end

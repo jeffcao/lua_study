@@ -9,17 +9,19 @@ end
 
 function createPromotionInfoScene(promotion)
 	print("create promotion info scene")
-	local scene = PromotionInfoScene.new()
-	scene.promotion = promotion
+	local scene = PromotionInfoScene.new(promotion)
 	return scene
 end
 
-function PromotionInfoScene:ctor()
+function PromotionInfoScene:ctor(promotion)
+	self.promotion = promotion
 	local layer = createFullMubanStyleLayer()
 	self:addChild(layer)
 	layer:setTitleLeft()
+	layer:setTitle('huodongxiangqing.png')
 	self.layer = layer
 	self.menu_layer = layer.menu_layer
+	self.menu_layer:setPositionX(self.menu_layer:getPositionX() - 15)
 	self.rootNode = self.layer
 	self.record_layers = {}
 	self:init_tabs()
@@ -31,7 +33,7 @@ end
  end
  
  function PromotionInfoScene:onExit()
- 	self.record_layers = nil 
+ 	self.list_cache = nil
  	Stats:on_end("promotion_info")
  end
 PromotionInfoScenePlugin.bind(PromotionInfoScene)

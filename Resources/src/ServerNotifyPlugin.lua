@@ -30,6 +30,11 @@ function ServerNotifyPlugin.bind(theClass)
 	--比赛结果
 	function theClass:onMatchResult(data)
 		dump(data, 'match result is')
+		table.sort(data.match_rank, function(a,b)
+			return tonumber(a.rank) > tonumber(b.rank)
+		end
+		)
+		dump(data, 'sorted match result is')
 		local result = createMatchResult()
 		result:set_result(data)
 		local scene = runningscene()

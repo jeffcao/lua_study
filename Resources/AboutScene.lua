@@ -44,22 +44,28 @@ function AboutScene:ctor()
 	layer:setContent(node)
 	self.version_lbl:setString(version)
 	
+	--[[
 	self:test_slot(0)
 	Timer.add_timer(1,function()
 	self:test_slot(1) end, 'a')
 	Timer.add_timer(3, function()
 	self:test_slot(2) end , 'b')
+	]]
 	
 	--[[
 	local result = createMatchResult()
-	local data = {time='18:00', beans_win=4500, order=300}
-	data.list = {}
-	for index=1,50 do
+	local data = {time='18:00', win_score=4500, me_rank=300}
+	data.match_rank = {}
+	for index=1,5 do
 		--id, nick_name, beans_win, award
-		local item = {id=index,nick_name='user'..tostring(math.random(10000)),beans_win=math.random(20000),award='award'..tostring(math.random(100000000))}
+		local item = {rank=index,nick_name='user'..tostring(math.random(10000)),scores=math.random(20000),bonus='award'..tostring(math.random(100000000))}
 		item.award='6元话费'
-		table.insert(data.list, item)
+		table.insert(data.match_rank, item)
 	end
+	table.sort(data.match_rank, function(a,b)
+			return tonumber(a.rank) > tonumber(b.rank)
+		end
+		)
 	result:set_result(data)
 	self.rootNode:addChild(result)
 	--result:attach_to(self.rootNode)

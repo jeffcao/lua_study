@@ -34,6 +34,7 @@ end
  end
  
  function PromotionScene:onExit() 
+ 	self.list_cache = nil
  	Stats:on_end("promotion_center")
  end
 PromotionScenePlugin.bind(PromotionScene)

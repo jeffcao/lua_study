@@ -159,5 +159,7 @@ ml_joining = '正在报名...',
 ml_match_waiting_w = '比赛还未开始',
 --HallMatchPlugin
 hmp_join_s = '报名成功',
+--PromotionInfoScenePlugin
+pisp_get_record_ing = '获取获奖记录...',
 }
 
