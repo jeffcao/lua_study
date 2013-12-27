@@ -19,6 +19,7 @@ function PromotionScene:ctor()
 
 	local layer = createFullMubanStyleLayer()
 	self:addChild(layer)
+	layer:setTitle('huobaohuodong.png')
 	layer:showTitleBg()
 	layer:setDecorationHuawen()
 	self.layer = layer
@@ -30,10 +31,12 @@ function PromotionScene:ctor()
 end
 
  function PromotionScene:onEnter() 
+ 	self:listen_match_event()
  	Stats:on_start("promotion_center")
  end
  
  function PromotionScene:onExit() 
+ 	self:unlisten_match_event()
  	self.list_cache = nil
  	Stats:on_end("promotion_center")
  end

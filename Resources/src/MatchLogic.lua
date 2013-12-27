@@ -59,6 +59,16 @@ function MatchLogic.listen(event_name, func)
 	table.insert(MatchLogic.events_listener[event_name], func)
 end
 
+--取消比赛房间事件监听
+function MatchLogic.unlisten(event_name, func)
+	if not MatchLogic.events_listener or not MatchLogic.events_listener[event_name] then return end
+	for k,v in pairs(MatchLogic.events_listener[event_name]) do
+		if v == func then
+			MatchLogic.events_listener[event_name][k] = nil
+		end
+	end
+end
+
 function MatchLogic.clear()
 	print('MatchLogic.clear()')
 	MatchLogic.events_listener = {}
@@ -144,6 +154,10 @@ function MatchLogic.on_match_room_click(data, enter_room_func)
 	local user = GlobalSetting.current_user
 	local is_promotion = tonumber(data.room_type)==2 or tonumber(data.room_type)==3
 	
+	print('is_promotion:', is_promotion)
+	print('has_joined:', MatchLogic.has_joined(data))
+	print('can_enter_match:', MatchLogic.can_enter_match(data))
+	
 	--1.检查不是比赛房间，直接enter room
 	if not is_promotion then enter_room_func() return end
 	
@@ -165,6 +179,7 @@ end
 function MatchLogic.beans_promotion()
 	--TODO
 	cclog('join match beans is not enough')
+	ToastPlugin.show_message_box('豆子不够')
 end
 
 function MatchLogic.join_match(data, enter_room_func)
@@ -173,7 +188,7 @@ function MatchLogic.join_match(data, enter_room_func)
 	--检查是否可以报名
 	local can_join_id = MatchLogic.get_join_match_seq(data)
 	if is_blank(can_join_id) then
-		ToastPlugin.show_message_box('当前没有比赛')
+		ToastPlugin.show_message_box('当前没有比赛')--TODO
 		return
 	end
 	

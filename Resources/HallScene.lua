@@ -81,6 +81,7 @@ HallScene = class("HallScene", function()
 	set_blue_stroke(self.quick_game_btn_lbl)
 	--self:check_kick_out()
 	MarqueePlugin.addMarquee(self)
+	GlobalSetting.hall_scene = self
  end
  
  function HallScene:check_kick_out()
@@ -170,6 +171,7 @@ HallScene = class("HallScene", function()
  
  function HallScene:onCleanup()
 	print("[HallScene:onCleanup()]")
+	GlobalSetting.hall_scene = nil
 	self.super.onCleanup(self)
 	Timer.cancel_timer(self.music_update)
 end

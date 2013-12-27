@@ -147,6 +147,7 @@ pi_duration = '活动时间：begin～end',
 psp_fetch_promotion = '正在获取活动列表...',
 psp_fetch_promotion_w = '获取活动列表失败',
 psp_fetch_promotion_nil = '当前没有活动',
+psp_join_suc = '报名活动成功',
 --MatchResult
 mr_next_time = '下一轮比赛将在 time 开始，请密切关注',
 --Diploma
