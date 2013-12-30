@@ -2,6 +2,7 @@ require "RankItem"
 require "src.TabPlugin"
 require "src.RankSwitcher"
 require "src.ListViewPlugin"
+require 'InputMobile'
 RankUPlugin = {}
 
 function RankUPlugin.bind(theClass)
@@ -290,24 +291,51 @@ function RankUPlugin.bind(theClass)
 	function theClass:getDouziTabView(callback)
 		self:getDouziRank(callback)
 	end
-
-	function theClass:get_mobile_charge()
+	
+	--弹出对话框，提示用户输入手机号码
+	function theClass:show_input_mobile()
+		self:dismiss()
+		Timer.add_timer(0.1,function()
+			local dialog = createInputMobile(__bind(self.actual_get_charge, self))
+			runningscene().rootNode:addChild(dialog)
+			dialog:show()
+		end,
+		'input_mobile')
+	end
+	
+	--执行实际的领奖操作
+	function theClass:actual_get_charge(mobile)
+		--if (not mobile) and GlobalSetting.run_env == 'test' then 
+		--	print('directly show input mobile')
+		--	self:show_input_mobile() 
+		--	return 
+		--end
 		local event_data = {user_id = GlobalSetting.current_user.user_id}
+		if mobile then event_data.mobile = mobile end
 		local notify = function(data, status, is_suc)
 			dump(data, status)
 			ToastPlugin.hide_progress_message_box()
+			if not data.content then return end
 			local func = ToastPlugin.show_message_box
 			if is_suc then func = ToastPlugin.show_message_box_suc end
 			func(data.content)
 		end
 		local fail = function(data)
 			notify(data, 'get mobile charge fail')
+			if tonumber(data.result_code) == 509 then
+				self:show_input_mobile()
+			end
 		end
 		local suc = function(data)
 			notify(data, 'get mobile charge sucess', true)
 			set_user_balance(data.left_charge)
 		end
+		dump(event_data, 'event_data')
 		self.rankuplugin_socket:trigger(self.rankuplugin_event_prefix .. "get_mobile_charge", event_data, suc, fail)
 		ToastPlugin.show_progress_message_box(strings.rup_get_charge_ing)
+	end
+
+	function theClass:get_mobile_charge()
+		self:actual_get_charge()
 	end
 end
