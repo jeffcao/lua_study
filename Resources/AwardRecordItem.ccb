@@ -165,9 +165,9 @@
 						<key>displayName</key>
 						<string>CCLabelTTF</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>player_lbl</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -433,7 +433,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>20</real>
+									<real>19.857143402099609</real>
 									<real>60</real>
 									<integer>4</integer>
 								</array>

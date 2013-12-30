@@ -2958,7 +2958,7 @@
 																<string>Block</string>
 																<key>value</key>
 																<array>
-																	<string>on_ui_close_btn_clicked</string>
+																	<string>on_get_huafei_btn_clicked</string>
 																	<integer>1</integer>
 																</array>
 															</dict>
