@@ -18,6 +18,15 @@ function HallSceneUPlugin.bind(theClass)
 		self.hall_vip_menu:setVisible(is_vip)
 		self:checkVip()
 	end
+	
+	function theClass:getRank()
+		if not self.rank_dialog then
+			self.rank_dialog = createRank(GlobalSetting.hall_server_websocket,'ui.')
+			self.rootNode:addChild(self.rank_dialog)
+		else
+			self.rank_dialog:show()
+		end
+	end
 
 	function theClass:onKeypad(key)
 		print("hall scene on key pad")

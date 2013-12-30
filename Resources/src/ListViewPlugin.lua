@@ -19,7 +19,8 @@ function ListViewPlugin.create_list_view(list_data, cell_func_create, cell_func_
 				a2:addChild(a3, 0, 1)
 				_G.table.insert(runningscene().list_cache, a3)--keep this variable or it will be clean up
 			else
-				local a3 = tolua.cast(a2:getChildByTag(1), "CCLayer")
+				--local a3 = tolua.cast(a2:getChildByTag(a1+1), "CCLayer")
+				local a3 = a2:getChildren():objectAtIndex(0)
 				a3[cell_func_init](a3, list_data[a1 + 1])
 				a3:setTag(a1+1)
 			end

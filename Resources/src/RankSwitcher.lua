@@ -26,10 +26,29 @@ function RankSwitcher.bind(theClass)
 	end
 	
 	function theClass:setHuafeiInfo(man)
+		--if GlobalSetting.run_env == 'test' then
+		--	self.huafei_rank_data.balance = 20
+		--end
+		self.huafei_rank_data.balance = GlobalSetting.current_user.balance
 		if self:current_tab() == 'huafei' or man then
 			set_rank_string_with_stroke(self.player_bean, self.huafei_rank_data.balance)
 			set_rank_string_with_stroke(self.player_rank, self.huafei_rank_data.position)
+			self.get_huafei_btn:setEnabled(tonumber(self.huafei_rank_data.balance) >= 10)
 		end
+		if not self.on_set_balance then
+			print('register notification observer')
+			self.on_set_balance = __bind(self.setHuafeiInfo, self)
+			NotificationProxy.registerScriptObserver(self.on_set_balance, "set_user_balance")
+		else
+			print('do not register notification observer again')
+		end
+		---if GlobalSetting.run_env == 'test' then
+		---	Timer.add_timer(1, function() set_user_balance(1000) end, 'set balance')
+		---end
+		--self.on_get_charge_suc = function(data)
+		--	self.huafei_rank_data.balance = data.left_charge
+		--	self:setHuafeiInfo(true)
+		--end
 	end
 	
 	function theClass:setDouziInfo(man)

@@ -8,12 +8,13 @@ require 'HuafeiRankItem'
 
 Rank = class("Rank", function() return display.newLayer("Rank") end)
 
-function createRank() return Rank.new() end
+function createRank(socket, event_prefix) return Rank.new(socket, event_prefix) end
 
-function Rank:ctor()
+function Rank:ctor(socket, event_prefix)
 	self.ccbproxy = CCBProxy:create()
 	self.ccbproxy:retain()
 	ccb.Rank = self
+	self.on_get_huafei_btn_clicked = __bind(self.get_mobile_charge, self)
 	local node = CCBReaderLoad("Rank.ccbi", self.ccbproxy, true, "Rank")
 	self.rootNode = tolua.cast(node, "CCLayer")
 	self:addChild(self.rootNode)
@@ -24,6 +25,7 @@ function Rank:ctor()
 	self.tab_douzi = self.tab_btn_right
 	self.tab_huafei = self.tab_btn_left
 	
+	self:set_socket(socket, event_prefix)
 	self:init()
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
@@ -41,7 +43,7 @@ function Rank:ctor()
 			end
 		end
 	end)
-	GlobalSetting.rank_dialog = self
+	--GlobalSetting.rank_dialog = self
 	
 	local fn = function()
 		local tabs = {douzi={name='douzi'},huafei={name='huafei'}}

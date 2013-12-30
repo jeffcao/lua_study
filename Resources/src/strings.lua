@@ -162,5 +162,9 @@ ml_match_waiting_w = '比赛还未开始',
 hmp_join_s = '报名成功',
 --PromotionInfoScenePlugin
 pisp_get_record_ing = '获取获奖记录...',
+--RankUPlugin
+rup_get_scores_ing = '获取豆子榜...',
+rup_get_hf_ing = '获取话费榜...',
+rup_get_charge_ing = '正在领取话费...',
 }
 

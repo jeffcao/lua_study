@@ -20,6 +20,7 @@ function ServerNotifyPlugin.bind(theClass)
 	--奖状
 	function theClass:onDiploma(data)
 		dump(data, 'diploma')
+		set_user_balance(data.balance)
 		local diploma = createDiploma()
 		diploma:init(data)
 		local scene = runningscene()

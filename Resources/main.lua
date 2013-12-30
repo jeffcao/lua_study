@@ -202,7 +202,7 @@ local function main()
 	
 	local notify_center = CCNotificationCenter:sharedNotificationCenter()
 	local node = display.newSprite()
-	local events = {"on_resume", "on_pause", "on_network_change_disable", "on_network_change_available"}
+	local events = {"on_resume", "on_pause", "on_network_change_disable", "on_network_change_available", "set_user_balance"}
 	for _,event in pairs(events) do
 		notify_center:registerScriptObserver(node, NotificationProxy.on_event, event)
 	end

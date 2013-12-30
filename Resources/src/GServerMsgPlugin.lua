@@ -150,17 +150,12 @@ function GServerMsgPlugin.bind(theClass)
 	]]
 	
 	function theClass:getRank()
-		if not GlobalSetting.rank_dialog then
-			local rank = createRank()
-			self.rootNode:addChild(rank,self.RANK_ORDER)
+		if not self.rank_dialog then
+			self.rank_dialog = createRank(GlobalSetting.g_WebSocket,'g.')
+			self.rootNode:addChild(self.rank_dialog)
 		else
-			GlobalSetting.rank_dialog:show()
+			self.rank_dialog:show()
 		end
-		--if not rank:getParent() then
-		--	self.rootNode:addChild(rank,self.RANK_ORDER)
-		--end
-		
-		
 	end
 	
 	-- g_channel and c_channel

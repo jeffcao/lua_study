@@ -49,6 +49,7 @@ HallScene = class("HallScene", function()
 	self.on_ui_share_btn_clicked = __bind(self.onShareClick, self)
 	self.on_task_btn_clicked = __bind(self.do_on_task_btn_clicked, self)
 	self.on_vip_clicked = __bind(self.on_vip_click, self)
+	self.on_rank_btn_clicked = __bind(self.getRank, self)
 	
 	local ccbproxy = CCBProxy:create()
  	local node = CCBReaderLoad("HallScene.ccbi", ccbproxy, false, "")
@@ -82,6 +83,12 @@ HallScene = class("HallScene", function()
 	--self:check_kick_out()
 	MarqueePlugin.addMarquee(self)
 	GlobalSetting.hall_scene = self
+	--if GlobalSetting.run_env == 'test' then
+	--	local func = function()
+	--		self:onDiploma({balance = 1002, dp_msg='hhhhhh', dp_award_msg='dpawardmsg'})
+	--	end
+	--	Timer.add_timer(20, func, 'set balance')
+	--end
  end
  
  function HallScene:check_kick_out()

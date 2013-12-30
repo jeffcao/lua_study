@@ -8,6 +8,11 @@ function RankUPlugin.bind(theClass)
 	TabPlugin.bind(theClass)
 	RankSwitcher.bind(theClass)
 
+	function theClass:set_socket(socket, event_prefix)
+		self.rankuplugin_socket = socket
+		self.rankuplugin_event_prefix = event_prefix
+	end
+
 	function theClass:create_rank_list(rank_list)
 		local t = ListViewPlugin.create_list_view(rank_list,
 		createRankItem, 'init', CCSizeMake(348,30), CCSizeMake(348,180))
@@ -153,7 +158,10 @@ function RankUPlugin.bind(theClass)
 
 	function theClass:getDouziRank(callback)
 		local event_data = {user_id = GlobalSetting.current_user.user_id}
-		GlobalSetting.g_WebSocket:trigger("g.user_score_list", event_data, function(data)
+		self.rankuplugin_socket:trigger(self.rankuplugin_event_prefix .. "user_score_list", event_data, function(data)
+			if callback then
+				ToastPlugin.hide_progress_message_box()
+			end
 			print("========g.user_score_list return success: " , data)
 			data.expire_time = os.time() + data.next_time
 			local view = self:rank_with_data(data, __bind(self.getDouziRank, self))
@@ -166,8 +174,14 @@ function RankUPlugin.bind(theClass)
 				--	set_tab_view('douzi',view)
 			end
 		end, function(data)
+			if callback then
+				ToastPlugin.hide_progress_message_box()
+			end
 			print("----------------g.user_score_list return failure: " , data)
 		end)
+		if callback then
+			ToastPlugin.show_progress_message_box(strings.rup_get_scores_ing)
+		end
 	end
 
 	function theClass:create_huafei_rank_view()
@@ -206,11 +220,15 @@ function RankUPlugin.bind(theClass)
 		end
 		local view = self:create_huafei_rank_view()
 		self:setHuafeiInfo(not self.huafei_rank_data)
-		self:setHuafeiTimer()
+		self:setHuafeiTimer(data)
 		return view
 	end
 	
-	function theClass:setHuafeiTimer()
+	function theClass:setHuafeiTimer(data)
+		if not data or not data.next_time or tonumber(data.next_time) <= 0 then 
+			print('setHuafeiTimer data nil or data.next_time error')
+			return 
+		end
 		if self.set_huafei_rank_time_hdlr then Timer.cancel_timer(self.set_huafei_rank_time_hdlr) end
 		local fn = function()
 			if self and self:isShowing() then
@@ -220,15 +238,18 @@ function RankUPlugin.bind(theClass)
 			return true
 		end
 		print("add set rank time")
-		self.set_huafei_rank_time_hdlr = Timer.add_timer(10, __bind(fn,self), "set_huafei_rank_time")
+		self.set_huafei_rank_time_hdlr = Timer.add_timer(tonumber(data.next_time), __bind(fn,self), "set_huafei_rank_time")
 	end
 
 	--data:list{data:id,nick_name,total_balance,balance},position,balance
 	function theClass:getHuafeiRank(callback)
 		local event_data = {user_id = GlobalSetting.current_user.user_id}
-		GlobalSetting.g_WebSocket:trigger("g.user_score_list", event_data, function(data)
-			data = self:gen_test_data()
-
+		self.rankuplugin_socket:trigger(self.rankuplugin_event_prefix .. "mobile_charge_list", event_data, function(data)
+			--data = self:gen_test_data()
+			if callback then
+				ToastPlugin.hide_progress_message_box()
+			end
+			set_user_balance(data.balance)
 			local view = self:huafei_rank(data)
 			if callback then
 				callback(view)
@@ -238,8 +259,14 @@ function RankUPlugin.bind(theClass)
 				print('get huafei rank, reload view')
 			end
 		end, function(data)
+			if callback then
+				ToastPlugin.hide_progress_message_box()
+			end
 			print("----------------getHuafeiRank return failure: " , data)
 		end)
+		if callback then
+			ToastPlugin.show_progress_message_box(strings.rup_get_hf_ing)
+		end
 	end
 
 	function theClass:gen_test_data()
@@ -264,4 +291,23 @@ function RankUPlugin.bind(theClass)
 		self:getDouziRank(callback)
 	end
 
+	function theClass:get_mobile_charge()
+		local event_data = {user_id = GlobalSetting.current_user.user_id}
+		local notify = function(data, status, is_suc)
+			dump(data, status)
+			ToastPlugin.hide_progress_message_box()
+			local func = ToastPlugin.show_message_box
+			if is_suc then func = ToastPlugin.show_message_box_suc end
+			func(data.content)
+		end
+		local fail = function(data)
+			notify(data, 'get mobile charge fail')
+		end
+		local suc = function(data)
+			notify(data, 'get mobile charge sucess', true)
+			set_user_balance(data.left_charge)
+		end
+		self.rankuplugin_socket:trigger(self.rankuplugin_event_prefix .. "get_mobile_charge", event_data, suc, fail)
+		ToastPlugin.show_progress_message_box(strings.rup_get_charge_ing)
+	end
 end

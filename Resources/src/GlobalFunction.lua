@@ -510,3 +510,12 @@ end
 function runningscene()
 	return	CCDirector:sharedDirector():getRunningScene()
 end
+
+function set_user_balance(balance)
+	if not balance then return end
+	balance = tonumber(balance)
+	GlobalSetting.current_user.balance = balance
+	local notify_center = CCNotificationCenter:sharedNotificationCenter()
+	print('post notification set_user_balance')
+	notify_center:postNotification("set_user_balance")
+end
