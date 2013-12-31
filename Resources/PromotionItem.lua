@@ -46,6 +46,6 @@ end
 function PromotionItem:do_on_speci_clicked()
 	print("[PromotionItem:do_on_speci_clicked]")
 	local scene = createPromotionInfoScene(self.item)
-	CCDirector:sharedDirector():replaceScene(scene)
+	CCDirector:sharedDirector():pushScene(scene)
 end
 
