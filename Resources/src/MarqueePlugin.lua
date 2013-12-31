@@ -13,7 +13,7 @@ function MarqueePlugin.marquee(msg, loop)
 	else List.pushright(MarqueePlugin.once, msg) end
 end
 
-function MarqueePlugin.addMarquee(node)
+function MarqueePlugin.addMarquee(node, position)
 	if node.marqueeplugin_marquee then return end
 	local my_layer = CCLayer:create()
 	my_layer:setAnchorPoint(ccp(0.5,0.5))
@@ -23,8 +23,14 @@ function MarqueePlugin.addMarquee(node)
 	node:addChild(my_layer)
 	local marquee = Marquee:create()
 	marquee:enableStroke()
-	marquee:setSize(500, 32)
+	marquee:setSize(460, 32)
 	marquee:setTextProvider(MarqueePlugin.get_text)
-	marquee:init(my_layer, my_layer:getContentSize().width/2, 400)
+	local x = my_layer:getContentSize().width/2
+	local y = 400
+	if position then
+		x = position.x
+		y = position.y
+	end
+	marquee:init(my_layer, x, y)
 	node.marqueeplugin_marquee = marquee
 end
