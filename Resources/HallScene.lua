@@ -22,6 +22,8 @@ require 'src.MarqueePlugin'
 require 'src.HallMatchPlugin'
 require 'src.MatchLogic'
 require 'src.KickOut'
+require 'src.PurchasePlugin'
+
 local cjson = require "cjson"
 HallScene = class("HallScene", function() 
 	print("create new hall scene")
