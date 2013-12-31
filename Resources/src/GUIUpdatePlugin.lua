@@ -519,15 +519,18 @@ function GUIUpdatePlugin.bind(theClass)
 			self:playButtonEffect()
 		end
 		local fn2 = function()
+			print('on jipaiqi clicked')
+			self:playButtonEffect()
+			option:dismiss()
 			if self:is_jipaiqi_enable() and self._is_playing then
 				if self.card_roboter:isShowing() then
 					self.card_roboter:dismiss()
 				else
 					self.card_roboter:show()
 				end
-				self:playButtonEffect()
+			elseif not self:is_jipaiqi_enable() then
+				PurchasePlugin.suggest_buy('jipaiqi', '')
 			end
-			option:dismiss()
 		end
 		local fn3 = function()
 			self:getRank()
@@ -602,6 +605,7 @@ function GUIUpdatePlugin.bind(theClass)
 		dump(data, "[onEnterRoomSuccess] data => ")
 		self.voice_props = data.voice_props
 		local game_info = data.game_info
+		self.game_info = data.game_info
 		GlobalSetting.game_id = game_info.game_id
 		self:refreshProps(data)
 		self:updatePlayers(data.players)
@@ -630,7 +634,27 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	function theClass:onStartReadyClicked() 
 		self:playButtonEffect()	
-		self:doStartReady()
+		--if GlobalSetting.run_env == 'test' then
+		--	PurchasePlugin.suggest_buy('douzi', strings.gup_suggest_douzi)
+		--  PurchasePlugin.suggest_buy('jipaiqi', '')
+		--end
+		if self:check_beans() then
+			self:doStartReady()
+		else
+			PurchasePlugin.suggest_buy('douzi', strings.gup_suggest_douzi)
+		end
+	end
+	
+	function theClass:check_beans()
+		if is_match_room(self.game_info) then
+			return true
+		end
+		local base = tonumber(self.game_info.room_base)
+		dump(self.game_info, 'check beans game info')
+		local info = self.users[self.g_user_id]
+		if not info then info = GlobalSetting.current_user end
+		local result = tonumber(info.score) >= base
+		return result
 	end
 	
 	---------------------------------------------------------------------------------------------------

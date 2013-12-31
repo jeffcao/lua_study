@@ -42,6 +42,11 @@ function LoginServerConnectionPlugin.bind(theClass)
 			GlobalSetting.message_time = data.message_time
 			GlobalSetting.push_handler = nil
 		end
+		
+		if data.prop_list then
+			GlobalSetting.cache_prop = data.prop_list
+		end
+		
 		MatchLogic.parse_match_joined_when_login(data)
 		print("[LoginServerConnectionPlugin.sign_success] on_login_success.")
 		if "function" == type(self.do_on_login_success) then

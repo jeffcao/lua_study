@@ -16,7 +16,7 @@ function HallMatchPlugin.bind(theClass)
 		local scene = runningscene()
 		local dialog = createYesNoDialog(scene.rootNode)
 		dialog:setTitle('温馨提示')
-		dialog:setMessage('比赛已开始，是否进入')--TODO
+		dialog:setMessage(strings.hmp_match_begin)
 		dialog:setYesButton(function() 
 			for _,room in pairs(self.room_datas.room) do
 				if tonumber(room.room_id) == tonumber(data.room_id) then

@@ -107,7 +107,7 @@ function ServerNotifyPlugin.bind(theClass)
 			--local message = "您获得了破产补助："..beans.."个豆子"
 			local message = string.gsub(strings.snp_bankrupt, "beans", beans)
 			print("破产补助=>", message)
-			scene:show_server_notify(msg)
+			scene:show_server_notify(message)
 		end
 		if scene.scene_on_bankrupt then
 			scene:scene_on_bankrupt(data)

@@ -152,7 +152,7 @@ function MatchLogic.on_match_room_click(data, enter_room_func)
 	cclog('on_match_room_click')
 	--未报名，进入报名流程，已报名，进入正常的进入房间流程
 	local user = GlobalSetting.current_user
-	local is_promotion = tonumber(data.room_type)==2 or tonumber(data.room_type)==3
+	local is_promotion = is_match_room(data)
 	
 	print('is_promotion:', is_promotion)
 	print('has_joined:', MatchLogic.has_joined(data))
@@ -177,9 +177,9 @@ end
 
 --弹出豆子购买框
 function MatchLogic.beans_promotion()
-	--TODO
 	cclog('join match beans is not enough')
-	ToastPlugin.show_message_box('豆子不够')
+	--ToastPlugin.show_message_box('豆子不够')
+	PurchasePlugin.suggest_buy('douzi')
 end
 
 function MatchLogic.join_match(data, enter_room_func)

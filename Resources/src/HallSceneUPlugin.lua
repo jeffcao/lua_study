@@ -360,6 +360,10 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:do_on_room_touched(room_info)
 		local enter_func = function()
 			print("[HallSceneUPlugin:do_on_room_touched]")
+			if tonumber(GlobalSetting.current_user.score) < tonumber(room_info.min_qualification) then
+				PurchasePlugin.suggest_buy('douzi')
+				return
+			end
 			local enter_info = {user_id=GlobalSetting.current_user.user_id, room_id=room_info.room_id}
 			self:show_progress_message_box(strings.hsp_get_room_info_ing)
 			self:request_enter_room(enter_info)

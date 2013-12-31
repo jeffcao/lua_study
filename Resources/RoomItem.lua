@@ -44,7 +44,7 @@ end
 
 function RoomItem:init_room_info(room_info, room_index)
 	self.room_info = room_info
-	room_info.is_promotion = tonumber(room_info.room_type) == 2 or tonumber(room_info.room_type) == 3
+	room_info.is_promotion = is_match_room(room_info)
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 	cache:addSpriteFramesWithFile(Res.hall_plist)
 	
@@ -62,16 +62,7 @@ function RoomItem:init_normal_room(room_info, room_index)
 	self.zhunru_lb:setString(self.room_info.min_qualification.."豆子")
 	self.dizhu_lb:setString(self.room_info.ante)
 	dump(self.title, "room_title")
-	local room_name = "农耕畜牧"
-
-	if tonumber(self.room_info.room_type) == 2 then
-		room_name = "别具匠心"
-	elseif tonumber(self.room_info.room_type) == 3 then
-		room_name = "经营四方"
-	elseif tonumber(self.room_info.room_type) == 4 then
-		room_name = "锦绣仕途"
-	end
-	room_name = self.room_info.name
+	local room_name = self.room_info.name
 	self.title:setString(room_name)
 	
 	local bg_sprite_png_index = (room_index % 6) > 0 and (room_index % 6) or 6

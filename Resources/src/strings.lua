@@ -10,7 +10,7 @@ strings_general = {
 	g_register_ing = '注册用户...',
 	g_connect_hall_ing = '连接大厅服务器...',
 	g_zaixianyouli = '在线有礼：您已在线满minutes分钟，获得了beans个豆子',
-	
+	g_match_begin = '比赛开始了，快来赢豆子吧！'
 }
 strings = {
 --AvatarListLayer
@@ -72,6 +72,7 @@ cp_network_w = '网络连接已断开，请设置网络！',
 --GUIUpdatePlugin
 gup_mand_exit = '强制退出',
 gup_mand_eixt_w = '您正在游戏中，此时强退系统将最大输赢扣除您的豆子。',
+gup_suggest_douzi = '是否充值继续冲击大奖！',
 
 --HallGameConnectionPlugin
 hgcp_check_connection_w = '与游戏服务器连接认证失败',
@@ -168,5 +169,10 @@ rup_get_hf_ing = '获取话费榜...',
 rup_get_charge_ing = '正在领取话费...',
 --InputMobile
 im_mobile_err = '请输入正确的手机号码',
+
+--GameMatchPlugin
+gmp_match_begin = strings_general.g_match_begin,
+--HallMatchPlugin
+hmp_match_begin = strings_general.g_match_begin,
 }
 
