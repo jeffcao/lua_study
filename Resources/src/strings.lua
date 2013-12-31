@@ -158,7 +158,7 @@ dp_award_msg = 'order\b\b\b\baward',
 ml_no_match_w = '当前没有比赛',
 ml_join_fail_w = '报名比赛失败',
 ml_joining = '正在报名...',
-ml_match_waiting_w = '比赛还未开始',
+ml_match_waiting_w = '已经报名',
 --HallMatchPlugin
 hmp_join_s = '报名成功',
 --PromotionInfoScenePlugin
@@ -174,5 +174,7 @@ im_mobile_err = '请输入正确的手机号码',
 gmp_match_begin = strings_general.g_match_begin,
 --HallMatchPlugin
 hmp_match_begin = strings_general.g_match_begin,
+--HallScene
+hs_match_end = '本场比赛已结束',
 }
 

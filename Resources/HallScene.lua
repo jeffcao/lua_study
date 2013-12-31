@@ -95,7 +95,8 @@ HallScene = class("HallScene", function()
  	local reason = KickOut.check()
  	if not reason then return end
  	if reason == 'match_end' then
- 		self:show_back_message_box('比赛已经结束')--TODO
+ 		ToastPlugin.show_message_box_suc(strings.hs_match_end)
+ 	--	self:show_back_message_box('比赛已经结束')--TODO
  	end
  end
  

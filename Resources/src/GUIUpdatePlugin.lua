@@ -641,14 +641,13 @@ function GUIUpdatePlugin.bind(theClass)
 		if self:check_beans() then
 			self:doStartReady()
 		else
-			PurchasePlugin.suggest_buy('douzi', strings.gup_suggest_douzi)
+			local title = nil
+			if is_match_room(self.game_info) then title = strings.gup_suggest_douzi end
+			PurchasePlugin.suggest_buy('douzi', title)
 		end
 	end
 	
 	function theClass:check_beans()
-		if is_match_room(self.game_info) then
-			return true
-		end
 		local base = tonumber(self.game_info.room_base)
 		dump(self.game_info, 'check beans game info')
 		local info = self.users[self.g_user_id]
