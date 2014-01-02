@@ -12,6 +12,7 @@ end
 function GamePush:on_fetch_msg(data)
 	CCUserDefault:sharedUserDefault():setStringForKey("last_msg_seq", data.last_msg_seq)
 	dump(data, '[GamePush]=>on fetch msg')
+	--[[
 	if GlobalSetting.run_env == "test" then
 		if #data.messages == 0 and math.random(10)>5 then
 			table.insert(data.messages, {content = '测试走马灯第一条'..os.time()})
@@ -20,9 +21,9 @@ function GamePush:on_fetch_msg(data)
 			table.insert(data.messages, {loop = true, content = "测试走马灯，这是一条会一直循环展示的走马灯信息。"})
 		end
 	end
-	
+	]]
 	for _,v in pairs(data.messages) do
-		MarqueePlugin.marquee(v.content, v.loop)
+		MarqueePlugin.marquee(v.content, tonumber(v.display_flag)==1)
 	end
 end
 

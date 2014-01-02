@@ -42,6 +42,9 @@ function RankSwitcher.bind(theClass)
 		else
 			print('do not register notification observer again')
 		end
+		--if GlobalSetting.run_env == 'test' then
+		--	self.get_huafei_btn:setEnabled(true)
+		--end
 		---if GlobalSetting.run_env == 'test' then
 		---	Timer.add_timer(1, function() set_user_balance(1000) end, 'set balance')
 		---end

@@ -90,6 +90,8 @@ function GamingScene:ctor()
 	self:setStrokes()
 	
 	self:listen_match_event()
+	
+	MarqueePlugin.addMarquee(self.rootNode,ccp(400,355))
 end
 
 function GamingScene:setStrokes()

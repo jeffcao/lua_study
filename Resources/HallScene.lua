@@ -22,6 +22,8 @@ require 'src.MarqueePlugin'
 require 'src.HallMatchPlugin'
 require 'src.MatchLogic'
 require 'src.KickOut'
+require 'src.PurchasePlugin'
+
 local cjson = require "cjson"
 HallScene = class("HallScene", function() 
 	print("create new hall scene")
@@ -81,7 +83,7 @@ HallScene = class("HallScene", function()
 	self:set_btn_stroke(self.task_lbl)
 	set_blue_stroke(self.quick_game_btn_lbl)
 	--self:check_kick_out()
-	MarqueePlugin.addMarquee(self)
+	MarqueePlugin.addMarquee(self.rootNode,ccp(400,355))
 	GlobalSetting.hall_scene = self
 	--if GlobalSetting.run_env == 'test' then
 	--	local func = function()
@@ -95,7 +97,8 @@ HallScene = class("HallScene", function()
  	local reason = KickOut.check()
  	if not reason then return end
  	if reason == 'match_end' then
- 		self:show_back_message_box('比赛已经结束')--TODO
+ 		ToastPlugin.show_message_box_suc(strings.hs_match_end)
+ 	--	self:show_back_message_box('比赛已经结束')--TODO
  	end
  end
  

@@ -66,6 +66,13 @@ function PurchasePlugin.is_cm_sim_card()
 	return is_cm_sim_card
 end
 
+function PurchasePlugin.suggest_buy(type, title)
+	local product = GlobalSetting.cache_prop[type]
+	dump(product, 'suggest buy')
+	product.title = title
+	PurchasePlugin.show_buy_notify(product)
+end
+
 --product:consume_code,name,price,rmb
 function PurchasePlugin.show_buy_notify(product)
 	print("[PurchasePlugin:show_buy_notify]")

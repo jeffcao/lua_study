@@ -519,3 +519,11 @@ function set_user_balance(balance)
 	print('post notification set_user_balance')
 	notify_center:postNotification("set_user_balance")
 end
+
+function is_match_room(data)
+	if not data then return false end
+	local type = data.room_type or data.match_type
+	if not type then return false end
+	type = tonumber(type)
+	return type == 2 or type == 3
+end

@@ -36,7 +36,7 @@ function GamingOption:ctor()
 	--gaming scene
 	local scene = CCDirector:sharedDirector():getRunningScene()
 	print("set option jipaiqi enabled=> ", scene:is_jipaiqi_enable())
-	self.option_jipaiqi:setEnabled(scene:is_jipaiqi_enable())
+	--self.option_jipaiqi:setEnabled(scene:is_jipaiqi_enable())
 	scaleNode(node, GlobalSetting.content_scale_factor)
 end
 
