@@ -62,7 +62,7 @@ end
 
 function GamePush:check_connection_game_push()
 	local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token,
-		version = resource_version, run_env = GlobalSetting.run_env}
+		version = resource_version, run_env = GlobalSetting.run_env, app_id = GlobalSetting.app_id}
 	CheckSignLua:fix_sign_param(event_data)
 	self.game_push_ws:trigger("ui.check_connection",
 	event_data, __bind(self.on_check_success, self), __bind(self.on_check_fail, self))

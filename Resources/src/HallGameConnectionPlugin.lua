@@ -32,7 +32,7 @@ function HallGameConnectionPlugin.bind(theClass)
 	
 	function theClass:check_connection_game_server()
 		self.failure_msg = strings.hgcp_check_connection_w
-		local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token, version="1.0", run_env = GlobalSetting.run_env}
+		local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token, version="1.0", run_env = GlobalSetting.run_env, app_id = GlobalSetting.app_id}
 		CheckSignLua:fix_sign_param(event_data)
 		GlobalSetting.g_WebSocket:trigger("g.check_connection", 
 			event_data,

@@ -51,6 +51,8 @@ GlobalSetting = {
 	
 	run_env = "test",
 	
+	app_id = "public_market_app",
+	
 	push_period = 10,
 	
 	blue_stroke = ccc3(0, 54, 67),
