@@ -135,7 +135,7 @@ local function main()
 	local game_test = function()
 		local lg = WebSocketRails:new("ws://login.test.170022.cn:8080/websocket", true)
 		lg.on_open = function() print("lg on open") end
-		local event_data = {retry="0", login_type="103", user_id = "10004", password = "12345678", version="1.0"}
+		local event_data = {retry="0", login_type="103", user_id = "10004", password = "12345678"}
 		local fn = function(data) 
 			GlobalSetting.current_user:load_from_json(data.user_profile)
 			local cur_user = GlobalSetting.current_user

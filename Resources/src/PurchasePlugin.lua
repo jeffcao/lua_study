@@ -22,7 +22,7 @@ function PurchasePlugin.on_server_notify_buy_finish_success(data)
 	else
 		local ws = GlobalSetting.hall_server_websocket
 		if ws then
-			local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
+			local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id}
 			local failure = function(data) dump(data, 'get user profile after buy fail') end
 			local success = function(data) 
 				dump(data, 'get user profile after buy success') 
@@ -114,7 +114,7 @@ end
 
 function PurchasePlugin.buy_prop(product_id)
 	local failure_msg = strings.hscp_purchase_prop_w
-	local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, version="1.0"}
+	local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id}
 
 	local ws = PurchasePlugin.get_buy_socket()
 	if not ws then print('there is no websocket to buy') return end
@@ -156,7 +156,7 @@ end
 --notify server has send sms to buy some prop, command to start time count
 function PurchasePlugin.timing_buy_prop(trad_seq, product_id)
 	local failure_msg = strings.hscp_purchase_prop_w
-	local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, trade_id = trad_seq, version="1.0"}
+	local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, trade_id = trad_seq}
 
 	--temporary only can buy in hall and game websocket
 	local ws = PurchasePlugin.get_buy_socket()

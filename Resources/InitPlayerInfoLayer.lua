@@ -134,7 +134,7 @@ function InitPlayerInfoLayer:do_ui_commit_btn_clicked(tag, sender)
 	
 	self.failure_msg = strings.ii_update_info_w
 	local changed_info = {retry="0", user_id = GlobalSetting.current_user.user_id, gender = gender, 
-	nick_name = nick_name, password = password, email = mail, version="1.0"}
+	nick_name = nick_name, password = password, email = mail}
 	--self:complete_user_info(changed_info)
 	
 	self.failure_msg = strings.hscp_get_player_info_w

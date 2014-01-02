@@ -426,7 +426,7 @@ function GActionPlugin.bind(theClass)
 		dump(data, 'use prop bought')
 		local prop_id = data.id
 		local name = data.name
-		local event_data = {user_id = self.g_user_id, prop_id = prop_id, version="1.0"}
+		local event_data = {user_id = self.g_user_id, prop_id = prop_id}
 		local failure_func = function(data) dump(data, 'use prop failure') end
 		local success_func = function(data) 
 			dump(data, 'use prop success') 

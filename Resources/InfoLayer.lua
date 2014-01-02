@@ -46,7 +46,7 @@ function InfoLayer:do_gender_checkbox_selected(tag, sender)
     
 	self:show_progress_message_box(strings.update_gender_ing)
 	self.failure_msg = strings.update_w
-	local changed_info = {retry="0", user_id = GlobalSetting.current_user.user_id, gender = gender, version="1.0"}
+	local changed_info = {retry="0", user_id = GlobalSetting.current_user.user_id, gender = gender}
 	self:complete_user_info(changed_info)
 end
 
@@ -62,7 +62,7 @@ function InfoLayer:editBoxTextEventHandle(strEventName,pSender)
 		if cur_nick_name ~= GlobalSetting.current_user.nick_name then
 			self:show_progress_message_box(strings.update_nick_name_ing)
 			self.failure_msg = strings.update_w
-			local changed_info = {retry="0", user_id = GlobalSetting.current_user.user_id, nick_name = cur_nick_name, version="1.0"}
+			local changed_info = {retry="0", user_id = GlobalSetting.current_user.user_id, nick_name = cur_nick_name}
 			self:complete_user_info(changed_info)
 		end
 	end

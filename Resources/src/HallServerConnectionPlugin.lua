@@ -27,7 +27,7 @@ function HallServerConnectionPlugin.bind(theClass)
 	
 	function theClass:check_connection()
 		self.failure_msg = strings.hscp_check_connection_w
-		local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token, version="1.0", run_env = GlobalSetting.run_env, app_id = GlobalSetting.app_id}
+		local event_data = {user_id = GlobalSetting.current_user.user_id, token = GlobalSetting.current_user.login_token, run_env = GlobalSetting.run_env, app_id = GlobalSetting.app_id}
 		CheckSignLua:fix_sign_param(event_data)
 		
 		GlobalSetting.hall_server_websocket:trigger("ui.check_connection", 
@@ -44,14 +44,14 @@ function HallServerConnectionPlugin.bind(theClass)
 	
 	function theClass:get_all_rooms()
 		self.failure_msg = strings.hscp_get_rooms_w
-		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
+		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id}
 		self:call_server_method("get_room", event_data)
 
 	end
 	
 	function theClass:get_today_activity()
 		self.failure_msg = strings.hscp_get_today_activity_w
-		local event_data = {retry="0", version="1.0"}
+		local event_data = {retry="0"}
 		self:call_server_method("get_activity", event_data)
 	end
 	
@@ -80,7 +80,7 @@ function HallServerConnectionPlugin.bind(theClass)
 			end
 		end
 		local fn = function()
-			local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
+			local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id}
 			GlobalSetting.hall_server_websocket:trigger("ui.online_time_get_beans", 
 			event_data, suc,
 			function() cclog('ui.online_time_get_beans ui.online_time_get_beans') end)
@@ -94,7 +94,7 @@ function HallServerConnectionPlugin.bind(theClass)
 	
 	function theClass:get_user_profile()
 		self.failure_msg = strings.hscp_get_player_info_w
-		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
+		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id}
 		self:call_server_method("get_user_profile", event_data)
 
 	end
@@ -107,7 +107,7 @@ function HallServerConnectionPlugin.bind(theClass)
 
 	function theClass:reset_password(old_pwd, new_pwd)
 		self.failure_msg = strings.hscp_update_pswd_w
-		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, oldpassword=old_pwd, newpassword=new_pwd, version="1.0"}
+		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, oldpassword=old_pwd, newpassword=new_pwd}
 		self:call_server_method("reset_password", event_data)
 	
 	end
@@ -119,7 +119,7 @@ function HallServerConnectionPlugin.bind(theClass)
 	
 	function theClass:fast_begin_game()
 		self.failure_msg = strings.hscp_request_room_w
-		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
+		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id}
 		self:call_server_method("fast_begin_game", event_data)
 	end
 	
@@ -137,35 +137,35 @@ function HallServerConnectionPlugin.bind(theClass)
 	
 	function theClass:shop_prop_list(prop_type)
 		self.failure_msg = strings.hscp_get_props_list_w
-		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0", prop_type=prop_type}
+		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, prop_type=prop_type}
 		self:call_server_method("shop_prop_list", event_data)
 	
 	end
 	
 	function theClass:buy_prop(product_id)
 		self.failure_msg = strings.hscp_purchase_prop_w
-		local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, version="1.0"}
+		local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id}
 		self:call_server_method("buy_prop", event_data)
 	
 	end
 	
 	function theClass:timing_buy_prop(trad_seq, product_id)
 		self.failure_msg = strings.hscp_purchase_prop_w
-		local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, trade_id = trad_seq, version="1.0"}
+		local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, trade_id = trad_seq}
 		self:call_server_method("timing_buy_prop", event_data)
 		
 	end
 	
 	function theClass:cate_list()
 		self.failure_msg = strings.hscp_get_my_props_list_w
-		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, version="1.0"}
+		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id}
 		self:call_server_method("cate_list", event_data)
 		
 	end
 	
 	function theClass:use_cate(product_id)
 		self.failure_msg = strings.hscp_use_prop_w
-		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, prop_id = product_id, version="1.0"}
+		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id, prop_id = product_id}
 		self:call_server_method("use_cate", event_data)
 		
 	end
