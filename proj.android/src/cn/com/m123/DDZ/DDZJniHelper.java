@@ -1,26 +1,20 @@
 package cn.com.m123.DDZ;
 
 import java.io.File;
-import java.util.Iterator;
-import java.util.List;
 
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
-
-import cn.com.m123.DDZ.push.AlarmSender;
-import cn.com.m123.DDZ.push.PushManager;
-import cn.com.m123.DDZ.push.PushTask;
 
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Environment;
 import android.telephony.SmsManager;
 import android.util.Log;
+import cn.com.m123.DDZ.push.PushManager;
+import cn.com.m123.DDZ.push.PushTask;
 
 public class DDZJniHelper {
 
@@ -82,11 +76,32 @@ public class DDZJniHelper {
 			String seconds = str.substring("on_deploy_alarm_".length());
 			deploy_alarm(seconds);
 		}
+		
+		if (str.startsWith("on_pay_")) {
+			pay(str);
+		}
 
 		if (str.equals("on_kill")) {
 			if (DouDiZhu_Lua.INSTANCE != null)
 				DouDiZhu_Lua.INSTANCE.finish();
 		}
+	}
+	
+	public static void pay(final String str) {
+		Runnable r = new Runnable() {
+
+			@Override
+			public void run() {
+				String params = str.substring("on_pay_".length());
+				if (null == params) return;
+				String[] arr = params.split("_");
+				if (null != arr && arr.length == 2) {
+					Payments.pay(arr[0], arr[1]);
+				}
+			}
+		};
+		if (null != DouDiZhu_Lua.INSTANCE)
+			DouDiZhu_Lua.INSTANCE.runOnUiThread(r);
 	}
 	
 	public static void deploy_alarm(String seconds) {
