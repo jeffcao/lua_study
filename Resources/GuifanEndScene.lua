@@ -13,10 +13,10 @@ end
 function GuifanEndScene:ctor()
 	self.ccbproxy = CCBProxy:create()
 	self.ccbproxy:retain()
-	self.onExitConfirmClicked = __bind(self.onExitConfirmClicked, self)
+	self.onExitConfirmClicked = __bind(self.onGameCenterExitClicked, self)
 	self.onExitCancelClicked = __bind(self.onExitCancelClicked, self)
-	self.onGameCenterConfirmClicked = __bind(self.onGameCenterConfirmClicked, self)
-	self.onGameCenterExitClicked = __bind(self.onGameCenterExitClicked, self)
+	--self.onGameCenterConfirmClicked = __bind(self.onGameCenterConfirmClicked, self)
+	--self.onGameCenterExitClicked = __bind(self.onGameCenterExitClicked, self)
 	ccb.GuifanEnd = self
 	local node = CCBReaderLoad("GuifanEndScene.ccbi", self.ccbproxy, true, "GuifanEnd")
 	self.rootNode = tolua.cast(node, "CCLayer")
@@ -29,6 +29,7 @@ function GuifanEndScene:ctor()
 			CCDirector:sharedDirector():popScene()
 		end
 	end)
+	self.shouzhi_pic:setVisible(false)
 end
 
 function GuifanEndScene:onEnter() 
