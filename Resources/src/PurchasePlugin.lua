@@ -77,9 +77,9 @@ end
 --product:consume_code,name,price,rmb
 function PurchasePlugin.show_buy_notify(product, which)
 	print("[PurchasePlugin:show_buy_notify]")
-	self:show_progress_message_box(strings.pp_get_prop_info)
-	self.cur_product = product
-	self.cur_product.which = which or 1
+	ToastPlugin.show_progress_message_box(strings.pp_get_prop_info)
+	runningscene().cur_product = product
+	runningscene().cur_product.which = which or 1
 	PurchasePlugin.buy_prop(product.id)
 end
 
@@ -117,8 +117,8 @@ end
 
 --data:trade_num, prop_id
 function PurchasePlugin.do_confirm_buy(data)
-	self:hide_progress_message_box()
-	self.cur_buy_data = data
+	ToastPlugin.hide_progress_message_box()
+	runningscene().cur_buy_data = data
 	if GlobalSetting.pay_type == 'anzhi' then
 		PurchasePlugin.anzhi_pay(data)
 	end
@@ -126,11 +126,14 @@ end
 
 function PurchasePlugin.anzhi_pay(data)
 	local jni_helper = DDZJniHelper:create()
-	local j_data = {price=cur_product.price,which=data.which,desc=cur_product.name,cpparam=data.cpparam,
+	local scene = runningscene()
+	if GlobalSetting.run_env == 'test' and not data.cpparam then data.cpparam = '123456' end
+	dump(scene.cur_product,'scene.cur_product')
+	local j_data = {price=scene.cur_product.rmb,which=data.which,desc=scene.cur_product.name,cpparam=data.cpparam,
 					trade_id=data.trade_num,prop_id=data.prop_id}
 	local cjson = require("cjson")
 	local status, s = pcall(cjson.encode, j_data)
-	local str = 'on_pay_anzhi_' .. s
+	local str = 'on_pay_anzhi__' .. s
 	print('pay:', str)
 	jni_helper:messageJava(str)
 end

@@ -93,8 +93,10 @@ public class DDZJniHelper {
 			@Override
 			public void run() {
 				String params = str.substring("on_pay_".length());
+				System.out.println("params:"+params);
 				if (null == params) return;
-				String[] arr = params.split("_");
+				String[] arr = params.split("__");
+				System.out.println("arr"+arr+", length:"+arr.length);
 				if (null != arr && arr.length == 2) {
 					Payments.pay(arr[0], arr[1]);
 				}
