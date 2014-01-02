@@ -120,6 +120,7 @@ local function main()
 
 	Timer.scheduler = CCDirector:sharedDirector():getScheduler()
 
+	GlobalSetting.app_id = user_default:getStringForKey("appid")
 	GlobalSetting.user_info = UserInfo:new()
 	WebSocketRails.config = GlobalSetting
 

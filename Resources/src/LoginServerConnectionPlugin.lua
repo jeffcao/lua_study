@@ -67,7 +67,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 	end
 	
 	function theClass:sign_in_by_token(user_id, user_token)
-		local event_data = {retry="0", login_type="102", user_id = user_id, token = user_token}
+		local event_data = {retry="0", login_type="102", user_id = user_id, token = user_token, app_id = GlobalSetting.app_id}
 		CheckSignLua:fix_sign_param(event_data)
 		GlobalSetting.login_server_websocket:trigger("login.sign_in", 
 			event_data,
@@ -76,7 +76,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 	end
 	
 	function theClass:sign_in_by_password(username, password)
-		local event_data = {retry="0", login_type="103", user_id = username, password = password}
+		local event_data = {retry="0", login_type="103", user_id = username, password = password, app_id = GlobalSetting.app_id}
 		CheckSignLua:fix_sign_param(event_data)
 		GlobalSetting.login_server_websocket:trigger("login.sign_in", 
 			event_data,
@@ -96,7 +96,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 	end
 	
 	function theClass:fast_sign_up(nick_name, password, gender)
-		local event_data = {retry="0", sign_type="101", nick_name=nick_name, password=password, gender=gender} 
+		local event_data = {retry="0", sign_type="101", nick_name=nick_name, password=password, gender=gender, app_id = GlobalSetting.app_id} 
 		local device_info = device_info()
 		table.copy_kv(event_data, device_info)
 		dump(event_data, "[LoginServerConnectionPlugin.fast_sign_up] event_data=>")
