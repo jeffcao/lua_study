@@ -16,6 +16,7 @@ public class Payments {
 	public static void anzhi_pay(String params) {
 		String key = "pTgybEN12XWgYWgXctJTW0qv";
 		String secret = "TAJ1LBK5YP9OsX3JQT0U6Yx1";
+		
 		AnzhiPayments payments = AnzhiPayments.getInstance(DouDiZhu_Lua.getContext(), key, secret);
 		try {
 			JSONObject json = new JSONObject(params);

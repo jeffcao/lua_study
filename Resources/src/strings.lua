@@ -176,5 +176,7 @@ gmp_match_begin = strings_general.g_match_begin,
 hmp_match_begin = strings_general.g_match_begin,
 --HallScene
 hs_match_end = '本场比赛已结束',
+--PurchasePlugin
+pp_get_prop_info = '正在获取道具信息...',
 }
 

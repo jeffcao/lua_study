@@ -47,25 +47,6 @@ function PurchasePlugin.show_back_message_box(message)
 	dialog:show()
 end
 
-function PurchasePlugin.is_cm_sim_card()
-	print("[PurchasePlugin:is_cm_sim_card]")
-	local imsi = CCUserDefault:sharedUserDefault():getStringForKey("hw_imsi")
-	print("[PurchasePlugin:show_buy_notify] imsi=> "..imsi)
-	local is_cm_sim_card = false
-	if not is_blank(GlobalSetting.cm_sim_card_prefix) and not is_blank(imsi) then
-		print("[PurchasePlugin:is_cm_sim_card] GlobalSetting.cm_sim_card_prefix=> "..GlobalSetting.cm_sim_card_prefix)
-		local cm_sim_card_flags = split(GlobalSetting.cm_sim_card_prefix, ",")
-		for k, v in pairs(cm_sim_card_flags) do
-			local f_index = string.find(imsi, v)
-			if f_index ~= nil and f_index == 1 then
-				is_cm_sim_card = true
-				break
-			end
-		end
-	end
-	return is_cm_sim_card
-end
-
 function PurchasePlugin.suggest_buy(type, title)
 	local product = GlobalSetting.cache_prop[type]
 	dump(product, 'suggest buy')
@@ -73,42 +54,32 @@ function PurchasePlugin.suggest_buy(type, title)
 	PurchasePlugin.show_buy_notify(product)
 end
 
---product:consume_code,name,price,rmb
-function PurchasePlugin.show_buy_notify(product)
-	print("[PurchasePlugin:show_buy_notify]")
-
-	--check error
-	local err_msg = nil
-	is_cm_sim_card = PurchasePlugin.is_cm_sim_card()
-	if is_blank(product.consume_code) then err_msg = strings.msp_purchase_no_code_w end
-	if not is_cm_sim_card and GlobalSetting.run_env ~= "test" then err_msg = strings.msp_purchase_not_cmcc_w end
-	if err_msg then PurchasePlugin.show_back_message_box(err_msg) return end
-
-	--create show content
-	local content = string.gsub(strings.msp_purchase_notify, "name", product.name)
-	content = string.gsub(content, "price", product.price)
-	content = string.gsub(content, "rmb", product.rmb)
-	print("[PurchasePlugin:show_buy_notify] notify content=> "..content)
-
-	local dialog = createYesNoDialog3(runningscene().rootNode)
-	dialog:setMessage(content)
-	dialog:setMessageSize(19)
-	dialog:setYesButton(function() dialog:dismiss() PurchasePlugin.do_buy_product(product) end)
-	dialog:setNoButton(function() dialog:dismiss() end)
-	if product.is_prompt then
-		dialog:set_is_restricted(true)
-	end
-	if product.title then
-		dialog.title:setString(product.title)
-	end
-	dialog:show()
+function PurchasePlugin.on_bill_cancel()
+		if GlobalSetting.run_env == "test" then
+			print('run env is test, do not cancel')
+			return
+		end
+		local user_default = CCUserDefault:sharedUserDefault()
+		local params = user_default:getStringForKey("on_bill_cancel")
+		print('on_bill_cancel', params)
+		user_default:setStringForKey("on_bill_cancel", "")
+		if is_blank(params) then return end
+		local index = string.find(params,'_')
+		local trade_id = string.sub(params, 1, index - 1)
+		local prop_id = string.sub(params, index+1)
+		cclog('trade_id:%s, prop_id:%s', trade_id, prop_id)
+		GlobalSetting.hall_server_websocket:trigger("ui.cancel_buy_prop",{trade_num=trade_id,prop_id=prop_id},
+			function(data) dump(data, 'ui.cancel_buy_prop success') end,
+			function(data) dump(data, 'ui.cancel_buy_prop fail') end
+		)
 end
 
---trigger websocket to notify server to buy something
-function PurchasePlugin.do_buy_product(product)
-	print("[PurchasePlugin:do_buy_product]")
-	ToastPlugin.show_progress_message_box(strings.msp_purchase)
-
+--product:consume_code,name,price,rmb
+function PurchasePlugin.show_buy_notify(product, which)
+	print("[PurchasePlugin:show_buy_notify]")
+	self:show_progress_message_box(strings.pp_get_prop_info)
+	self.cur_product = product
+	self.cur_product.which = which or 1
 	PurchasePlugin.buy_prop(product.id)
 end
 
@@ -119,7 +90,11 @@ function PurchasePlugin.buy_prop(product_id)
 	local ws = PurchasePlugin.get_buy_socket()
 	if not ws then print('there is no websocket to buy') return end
 
-	local failure_fuc = function(data) dump(data, 'buy_prop failure') ToastPlugin.show_message_box(failure_msg) end
+	local failure_fuc = function(data) 
+		dump(data, 'buy_prop failure') 
+		ToastPlugin.hide_progress_message_box()
+		ToastPlugin.show_message_box(failure_msg) 
+	end
 	local event_name = PurchasePlugin.get_event_start() .. 'buy_prop'
 	print('buy_prop event_name is', event_name)
 	ws:trigger(event_name, event_data, PurchasePlugin.do_on_buy_message, failure_fuc)
@@ -140,47 +115,24 @@ function PurchasePlugin.do_on_buy_message(data)
 	end
 end
 
---data:sms_content, send_num, trade_num, prop_id
+--data:trade_num, prop_id
 function PurchasePlugin.do_confirm_buy(data)
-	print("[PurchasePlugin:do_confirm_buy]")
-	ToastPlugin.show_progress_message_box(strings.msp_purchase_pay_ing)
-
-	--send sms
-	local msg = "send_sms_" .. data.sms_content.."__"..data.send_num
-	local jni_helper = DDZJniHelper:create()
-	jni_helper:messageJava(msg)
-
-	PurchasePlugin.timing_buy_prop(data.trade_num, data.prop_id)
-end
-
---notify server has send sms to buy some prop, command to start time count
-function PurchasePlugin.timing_buy_prop(trad_seq, product_id)
-	local failure_msg = strings.hscp_purchase_prop_w
-	local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, trade_id = trad_seq}
-
-	--temporary only can buy in hall and game websocket
-	local ws = PurchasePlugin.get_buy_socket()
-	if not ws then print('there is no websocket to buy') return end
-
-	local timing_func = function(data) dump(data, 'timing func get data') end
-	local event_name = PurchasePlugin.get_event_start() .. 'timing_buy_prop'
-	print('timing_buy_prop event_name is', event_name)
-	ws:trigger(event_name, event_data, PurchasePlugin.on_timing_success, PurchasePlugin.on_timing_failure)
-end
-
---timing success, hide progress message box and wait
-function PurchasePlugin.on_timing_success(data)
-	print("[PurchasePlugin:on_timing_success]")
-	ToastPlugin.hide_progress_message_box()
-end
-
---timing failure, hide progress message box, notify user failure and wait
-function PurchasePlugin.on_timing_failure(data)
-	print("[PurchasePlugin:on_timing_failure]")
-	ToastPlugin.hide_progress_message_box()
-	if not is_blank(data.result_message) then
-		ToastPlugin.show_message_box(data.result_message)
+	self:hide_progress_message_box()
+	self.cur_buy_data = data
+	if GlobalSetting.pay_type == 'anzhi' then
+		PurchasePlugin.anzhi_pay(data)
 	end
+end
+
+function PurchasePlugin.anzhi_pay(data)
+	local jni_helper = DDZJniHelper:create()
+	local j_data = {price=cur_product.price,which=data.which,desc=cur_product.name,cpparam=data.cpparam,
+					trade_id=data.trade_num,prop_id=data.prop_id}
+	local cjson = require("cjson")
+	local status, s = pcall(cjson.encode, j_data)
+	local str = 'on_pay_anzhi_' .. s
+	print('pay:', str)
+	jni_helper:messageJava(str)
 end
 
 function PurchasePlugin.get_buy_socket()
