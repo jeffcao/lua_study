@@ -1,5 +1,6 @@
 PurchasePlugin = {}
 --purchase logic
+require 'AnzhiPurchase'
 
 function PurchasePlugin.bind_ui_buy_prop_event(channel)
 	local event_name = PurchasePlugin.get_event_start() .. 'buy_prop'
@@ -55,6 +56,7 @@ function PurchasePlugin.suggest_buy(type, title)
 end
 
 function PurchasePlugin.on_bill_cancel()
+--[[
 		if GlobalSetting.run_env == "test" then
 			print('run env is test, do not cancel')
 			return
@@ -72,15 +74,35 @@ function PurchasePlugin.on_bill_cancel()
 			function(data) dump(data, 'ui.cancel_buy_prop success') end,
 			function(data) dump(data, 'ui.cancel_buy_prop fail') end
 		)
+]]
+	print('do note cancel')
 end
 
 --product:consume_code,name,price,rmb
 function PurchasePlugin.show_buy_notify(product, which)
 	print("[PurchasePlugin:show_buy_notify]")
-	ToastPlugin.show_progress_message_box(strings.pp_get_prop_info)
-	runningscene().cur_product = product
-	runningscene().cur_product.which = which or 1
-	PurchasePlugin.buy_prop(product.id)
+	--if GlobalSetting.run_env == 'test' then
+	--	product.title = '为您的豆子保驾护航！'
+	--	product.note = '开启后1个小时状态效果，记牌器显示3个人已出牌，方便您计算对方牌面，点击使反反复复反反复复反反复复方法发用。'
+	--end
+	local scene = runningscene()
+	print('scene', scene.__cname)
+	local buy = function() 
+		ToastPlugin.show_progress_message_box(strings.pp_get_prop_info)
+		scene.cur_product = product
+		scene.cur_product.which = which or 1
+		PurchasePlugin.buy_prop(product.id)
+	end
+	if GlobalSetting.pay_type == 'anzhi' then
+		local dialog = createAnzhiPurchase(buy)
+		print('local dialog = createAnzhiPurchase(buy)')
+		dialog:init(product)
+		print('dialog:init(product)')
+		dialog:attach_to(scene.rootNode)
+		print('dialog:attach_to(scene.rootNode)')
+		dialog:show()
+		print('show buy notify dialog')
+	end
 end
 
 function PurchasePlugin.buy_prop(product_id)
