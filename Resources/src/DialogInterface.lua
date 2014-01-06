@@ -1,4 +1,5 @@
 require "src.WebsocketRails.Timer"
+require "src.Scale9Funcs"
 DialogInterface = {}
 
 function DialogInterface.bind(theClass)
@@ -10,6 +11,7 @@ function DialogInterface.bind(theClass)
 		if self:isShowing() then
 			return
 		end
+		check_dialog_scale9_bg(self)
 		self.convertor:unconvert()
 		self.convertor:convert()
 		print("set visible after convert")

@@ -5,6 +5,7 @@ require 'src.ToastPlugin'
 require 'src.MarqueePlugin'
 require 'MatchResult'
 require 'Diploma'
+require 'InputMobile'
 AboutScene = class("AboutScene", function()
 	print("new about scene")
 	return display.newScene("AboutScene")	
@@ -43,8 +44,7 @@ function AboutScene:ctor()
 	
 	layer:setContent(node)
 	self.version_lbl:setString(version)
-	
-	
+	--[[
 	local jni_helper = DDZJniHelper:create()
 	local data = {price=1.0,which=2,desc='记牌器',cpparam='1066960011123'}
 	local cjson = require("cjson")
@@ -52,7 +52,12 @@ function AboutScene:ctor()
 	local str = 'on_pay_anzhi_' .. s
 	print('pay:', str)
 	jni_helper:messageJava(str)
-	
+	]]
+	--[[
+	local dialog = createInputMobile(function() end)
+	self.rootNode:addChild(dialog)
+	dialog:show()
+	]]
 	--[[
 	self:test_slot(0)
 	Timer.add_timer(1,function()

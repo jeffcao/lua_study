@@ -32,7 +32,6 @@ function InitPlayerInfoLayer:ctor(init_player_info_callback)
 	
 	self:init_input_controller()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
-	
 	self:show_player_info()
 end
 
@@ -171,7 +170,6 @@ function InitPlayerInfoLayer:do_on_trigger_success(data)
 	self:show_message_box_suc(strings.ii_update_info_s, params)
 	self:dismiss()
 	self.init_player_info_callback(true)
-	
 end
 
 function InitPlayerInfoLayer:do_on_trigger_failure(data)

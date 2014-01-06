@@ -1,5 +1,5 @@
 DialogPlugin = {}
-
+require "src.Scale9Funcs"
 function DialogPlugin.bind(theClass)
 
 	function theClass:attach_to_scene(tag)
@@ -26,6 +26,8 @@ function DialogPlugin.bind(theClass)
 		
 		self:setKeypadEnabled(true)
 		self:registerScriptKeypadHandler(__bind(self.on_keypad, self))
+		
+		check_dialog_scale9_bg(self)
 	end
 	
 	function theClass:on_touch(e,x,y)

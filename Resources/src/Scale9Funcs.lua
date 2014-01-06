@@ -37,4 +37,20 @@ function add_scale9sprite(node, pref_size, position, frame)
 	scale9:setPreferredSize(pref_size)
 	scale9:setPosition(position)
 	node:addChild(scale9)
+	return scale9
+end
+
+function dialog_bg_scale9(dialog)
+	local p_size = tolua.cast(dialog.bg,"CCScale9Sprite"):getPreferredSize()
+	local c_size = dialog.bg:getContentSize()
+	local s_size = CCSizeMake(p_size.width + c_size.width, p_size.height + c_size.height)
+	local scale9 = add_scale9sprite(dialog.bg:getParent(), s_size, ccp(dialog.bg:getPosition()))
+	dialog.bg:removeFromParentAndCleanup(true)
+	dialog.bg=scale9
+end
+
+function check_dialog_scale9_bg(dialog)
+	if dialog.bg and tolua.cast(dialog.bg, 'CCScale9Sprite').getPreferredSize then
+		dialog_bg_scale9(dialog)
+	end
 end
