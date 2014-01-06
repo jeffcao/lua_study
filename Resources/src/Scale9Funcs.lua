@@ -51,6 +51,6 @@ end
 
 function check_dialog_scale9_bg(dialog)
 	if dialog.bg and tolua.cast(dialog.bg, 'CCScale9Sprite').getPreferredSize then
-		dialog_bg_scale9(dialog)
+	--	dialog_bg_scale9(dialog)
 	end
 end
