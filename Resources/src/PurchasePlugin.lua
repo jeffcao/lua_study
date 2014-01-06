@@ -12,12 +12,21 @@ function PurchasePlugin.on_server_notify_buy_finish_success(data)
 	print("[PurchasePlugin:on_server_notify_buy_finish_success]")
 	PurchasePlugin.show_back_message_box(data.content)
 
+	local success = function(data) 
+		dump(data, 'get user profile after buy success') 
+		GlobalSetting.current_user.score = data.score
+		GlobalSetting.current_user.win_count = data.win_count
+		GlobalSetting.current_user.lost_count = data.lost_count
+	end
 	--after buy finish success, there are something to do
 	local scene = runningscene()
 	--update user info
 	if scene.display_player_info then
 		scene.after_trigger_success = __bind(scene.display_player_info, scene)
+	else
+		scene.after_trigger_success = success
 	end
+	
 	if scene.get_user_profile then
 		scene:get_user_profile()
 	else
@@ -25,12 +34,6 @@ function PurchasePlugin.on_server_notify_buy_finish_success(data)
 		if ws then
 			local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id}
 			local failure = function(data) dump(data, 'get user profile after buy fail') end
-			local success = function(data) 
-				dump(data, 'get user profile after buy success') 
-				GlobalSetting.current_user.score = data.score
-				GlobalSetting.current_user.win_count = data.win_count
-				GlobalSetting.current_user.lost_count = data.lost_count
-			end
 			success = scene.display_player_info or success
 			ws:trigger("ui.get_user_profile", event_data, success, failure)
 		end
