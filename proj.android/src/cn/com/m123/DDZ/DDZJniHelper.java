@@ -111,7 +111,7 @@ public class DDZJniHelper {
 			int m_seconds = Integer.valueOf(seconds);
 			PushTask task = new PushTask();
 			task.target_time = System.currentTimeMillis()+m_seconds*1000;
-			task.content = "比赛开始啦！";
+			task.content = "比赛开始了，快来赢豆子吧！";
 			task.priority = 0;
 			task.task_id = String.valueOf(Math.random());
 			//task.condition = "all";
