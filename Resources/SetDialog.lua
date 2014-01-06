@@ -133,7 +133,7 @@ end
 
 function SetDialog:onTouchEnded(loc)
 	--loc = self.bg:convertToNodeSpace(loc)
-	if not self.bg:boundingBox():containsPoint(loc) then
+	if not self.container_layer:boundingBox():containsPoint(loc) then
 		self:dismiss()
 	end
 end
