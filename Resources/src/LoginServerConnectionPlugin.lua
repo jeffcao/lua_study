@@ -21,6 +21,11 @@ function LoginServerConnectionPlugin.bind(theClass)
 		GlobalSetting.cm_sim_card_prefix = data.system_settings.cm_sim_card_prefix
 		GlobalSetting.hall_server_url = data.url[1]
 		GlobalSetting.game_push_url = data.msg_server_url
+		
+		--save in shared preference
+		local user_default = CCUserDefault:sharedUserDefault()
+		user_default:setStringForKey("notification_url",GlobalSetting.game_push_url)
+		
 		dump(data.system_settings, 'system_settings')
 		print("LoginServerConnectionPlugin.sign_success, hall_server_url=> "..GlobalSetting.hall_server_url)
 --		GlobalSetting.hall_server_token = data.token

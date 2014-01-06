@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import cn.com.m123.DDZ.DouDiZhuApplicaion;
 import cn.com.m123.DDZ.push.NetUtil.HttpMethod;
 import cn.com.m123.DDZ.test.Logger;
 
@@ -76,7 +77,12 @@ public class PushDataFetcher {
 	}
 
 	private String getUrl() {
-		return "http://192.168.0.203:5004/sys_msg/notification_msg";
+		String pref_name = "Cocos2dxPrefsFile";
+		SharedPreferences sp = DouDiZhuApplicaion.APP_CONTEXT.getSharedPreferences(pref_name, Context.MODE_PRIVATE);
+		String url = sp.getString("notification_url", null);
+		url = "http://" + url + "/sys_msg/notification_msg";
+		return url;
+	//	return "http://192.168.0.203:5004/sys_msg/notification_msg";
 	}
 
 	private Map<String, String> getParams() {

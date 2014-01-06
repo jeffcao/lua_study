@@ -16,7 +16,12 @@ function PromotionInfoScenePlugin.bind(theClass)
 	end
 
 	function theClass:getTabView(name, call_back)
+		--if GlobalSetting.run_env == 'test' then
+		--	self.promotion.rule_desc = "活动规则：\na:\b每场比赛30--300人。时间30分钟，在规定的时间赢豆子最多的玩家获得胜利，领取相应的话费奖励.\nb:\b所有虚拟奖品实时到账，用户可以在排行中的话费排行查看中奖情况和金额，话费达到10倍数即可提现"
+		--end
 		local tab_view = nil
+		self.promotion.rule_desc = string.gsub(self.promotion.rule_desc, " ", "\b")
+		self.promotion.description = string.gsub(self.promotion.description, " ", "\b")
 		if name == 'rule' then
 			tab_view = self:createInfoLabel(self.promotion.rule_desc)
 		elseif name == 'speci' then
