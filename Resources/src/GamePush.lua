@@ -203,5 +203,6 @@ end
 function GamePush:op_websocket(pause)
 	print("GamePush:op_websocket")
 	dump(self, "GamePush:op_websocet self is")
-	self.game_push_ws:pause_event(pause)
+	if self.game_push_ws then self.game_push_ws:pause_event(pause)
+	else print('on_op_websocket, game push ws is nil') end
 end

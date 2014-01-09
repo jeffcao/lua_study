@@ -89,7 +89,7 @@ end
 
 function MatchLogic.has_joined_next(data)
 	local user = GlobalSetting.current_user
-	return table.contains(user.joined_match, data.joined_next_match)
+	return table.contains(user.joined_match, data.next_match_seq)
 end
 
 --是否已经报名当前房间的【当前场次或下一场次】

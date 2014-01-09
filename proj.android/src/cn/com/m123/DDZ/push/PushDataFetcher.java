@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 import cn.com.m123.DDZ.DouDiZhuApplicaion;
 import cn.com.m123.DDZ.push.NetUtil.HttpMethod;
 import cn.com.m123.DDZ.test.Logger;
@@ -60,6 +61,7 @@ public class PushDataFetcher {
 	}
 
 	private void onFetched(String json) {
+		if (TextUtils.isEmpty(json)) return;
 		try {
 			JSONObject obj = new JSONObject(json);
 			String last_message_seq = String
