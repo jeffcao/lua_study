@@ -194,7 +194,6 @@ function HallSceneUPlugin.bind(theClass)
 				self:init_hall_info()
 			end
 		end
-		
 	end
 	
 	function theClass:do_ui_feedback_btn_clicked()
@@ -296,10 +295,14 @@ function HallSceneUPlugin.bind(theClass)
 		GlobalSetting.current_user.lost_count = score_info.lost_count	
 	end
 	
-	function theClass:init_room_tabview(data)
-		print("[HallSceneUPlugin:init_room_tabview]")
-		--table.insert(data.room, 1, {is_promotion=true})
-		--table.insert(data.room, 1, {is_promotion=true})
+	function theClass:refresh_room_data()
+		self:get_all_rooms()
+		self.after_trigger_success = __bind(self.refresh_room_tabview, self)
+	end
+	
+	function theClass:refresh_room_tabview(data)
+		dump(data,"[HallSceneUPlugin:refresh_room_tabview]")
+		if not self.room_layer_t then
 		local h = LuaEventHandler:create(function(fn, table, a1, a2)
 			local r
 			if fn == "cellSize" then
@@ -308,7 +311,7 @@ function HallSceneUPlugin.bind(theClass)
 				if not a2 then
 					a2 = CCTableViewCell:create()
 					local a3 = createRoomItem()
-					print("[HallSceneUPlugin:init_room_tabview] a1: "..a1)
+					print("[HallSceneUPlugin:refresh_room_tabview] a1: "..a1)
 					a3:init_room_info(data.room[a1], a1)
 					a2:addChild(a3, 0, 1)
 				else
@@ -322,14 +325,13 @@ function HallSceneUPlugin.bind(theClass)
 					r = #(data.room)
 				end
 			elseif fn == "cellTouched" then
-				print("[HallSceneUPlugin:init_room_tabview] room_cell_couched")
+				print("[HallSceneUPlugin:refresh_room_tabview] room_cell_couched")
 				local a3 = tolua.cast(a1:getChildByTag(1), "CCLayer")
 				dump(a3.room_info, "[HallSceneUPlugin:init_room_tabview] room_cell_couched, room_info: ")
 				self:do_on_room_touched(a3.room_info)
 			end
 			return r
 		end)
-		
 		local t = LuaTableView:createWithHandler(h, CCSizeMake(800,260))
 		t:setDirection(kCCScrollViewDirectionHorizontal)
 		t:reloadData()
@@ -338,10 +340,23 @@ function HallSceneUPlugin.bind(theClass)
 		self.middle_layer:addChild(t)
 		self.room_layer_t = t
 		self.room_datas = data
+		else
+			for k,v in pairs(data) do
+				self.room_datas[k] = data[k]
+			end
+			self.room_layer_t:reloadData()
+		end
 		
 		for index=#(data.room), 1, -1 do
-			t:updateCellAtIndex(index-1)
+			self.room_layer_t:updateCellAtIndex(index-1)
 		end
+	end
+	
+	function theClass:init_room_tabview(data)
+		print("[HallSceneUPlugin:init_room_tabview]")
+		--table.insert(data.room, 1, {is_promotion=true})
+		--table.insert(data.room, 1, {is_promotion=true})
+		self:refresh_room_tabview(data)
 
 		self:listen_match_event()
 		self:check_kick_out()

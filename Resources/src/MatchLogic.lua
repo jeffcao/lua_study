@@ -84,6 +84,7 @@ end
 
 function MatchLogic.has_joined_cur(data)
 	local user = GlobalSetting.current_user
+	dump(user.joined_match, 'user.joined_match')
 	return table.contains(user.joined_match, data.cur_match_seq)
 end
 
@@ -101,9 +102,11 @@ end
 
 --是否可以进入当前房间的当前比赛
 function MatchLogic.can_enter_match(match)
+	print(match.is_in_match, 'match.is_in_match')
 	if not match.is_in_match then 
 		return false 
 	else
+		print(MatchLogic.has_joined_cur(match), 'MatchLogic.has_joined_cur(match)')
 		return MatchLogic.has_joined_cur(match)
 	end
 end
@@ -169,8 +172,10 @@ function MatchLogic.on_match_room_click(data, enter_room_func)
 	
 	--3.如果已报名当前房间，查看报名的比赛是否已开始，已开始则进入，没开始，提示比赛尚未开始
 	if MatchLogic.can_enter_match(data) then
+		print('enter_room_func()')
 		enter_room_func()
 	else
+		print('ToastPlugin.show_message_box(strings.ml_match_waiting_w)')
 		ToastPlugin.show_message_box(strings.ml_match_waiting_w)
 	end
 end

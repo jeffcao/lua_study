@@ -293,7 +293,10 @@ function HallServerConnectionPlugin.bind(theClass)
 		print("HallServerConnectionPlugin onSocketRestored")
 		self:updateSocket("socket: restored")
 		self:init_channel()
-		
+		if GlobalSetting.hall_scene then
+			print('refresh hall room data after socket restored')
+			GlobalSetting.hall_scene:refresh_room_data()
+		end
 	end
 
 	-- activity onPause

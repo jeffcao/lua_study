@@ -138,6 +138,8 @@ HallScene = class("HallScene", function()
 	Stats:on_start("hall")
 	
 	self:checkVip()
+	
+	--self:refresh_room_data()
  end
  
  function HallScene:checkVip()
