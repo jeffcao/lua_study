@@ -119,18 +119,18 @@ end
 function GamingScene:onExit()
 	self.super.onExit(self)
 	Stats:on_end("gaming")
-	if GlobalSetting.rank_dialog then
-		GlobalSetting.rank_dialog:removeFromParentAndCleanup(true)
+	if self.rank_dialog then
+		self.rank_dialog:removeFromParentAndCleanup(true)
 	end
-	if GlobalSetting.rank_dialog then
-		if GlobalSetting.rank_dialog.set_rank_time_hdlr then
-			Timer.cancel_timer(GlobalSetting.rank_dialog.set_rank_time_hdlr)
+	if self.rank_dialog then
+		if self.rank_dialog.set_rank_time_hdlr then
+			Timer.cancel_timer(self.rank_dialog.set_rank_time_hdlr)
 		end
-		if GlobalSetting.rank_dialog.set_huafei_rank_time_hdlr then
-			Timer.cancel_timer(GlobalSetting.rank_dialog.set_huafei_rank_time_hdlr)
+		if self.rank_dialog.set_huafei_rank_time_hdlr then
+			Timer.cancel_timer(self.rank_dialog.set_huafei_rank_time_hdlr)
 		end
 	end
-	GlobalSetting.rank_dialog = nil
+	self.rank_dialog = nil
 	GlobalSetting.game_id = nil
 	self.list_cache = nil
 	print("[GamingScene:on_exit()]")
