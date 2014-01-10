@@ -84,6 +84,7 @@ function DialogPlugin.bind(theClass)
 			self:getParent():reorderChild(self, getMaxZOrder(self:getParent()) + 1)
 		end
 		self:setVisible(true)
+		if self.dialogplugin_is_restricted then GlobalSetting.last_restricted_show_time = os.time() end
 	end
 	
 	--消失
@@ -94,7 +95,6 @@ function DialogPlugin.bind(theClass)
 			self:removeFromParentAndCleanup(true) 
 			self.dialogplugin_destoryed = true
 		end
-		if self.dialogplugin_is_restricted then GlobalSetting.last_restricted_show_time = os.time() end
 	end
 	
 	function theClass:canShow()
