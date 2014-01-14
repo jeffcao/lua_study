@@ -38,7 +38,7 @@ function SetDialog:ctor()
 	local function valueChanged(strEventName,pSender)
 		if self:isShowing() then
 			local value = pSender:getValue()
-			user_default:setFloatForKey("music_volume", value)
+		--	user_default:setFloatForKey("music_volume", value)
 			jni:messageJava("set_music_volume_" .. tonumber(value))
         end
     end
@@ -67,10 +67,9 @@ function SetDialog:ctor()
 	self.music_toggle_layer:addChild(music_toggle)
 	local function menuCallback(tag, sender)
 		bg_music = music_toggle.toggle:isChecked()
-		if music_toggle.toggle:isChecked() then
-			local user_default = CCUserDefault:sharedUserDefault()
-			local jni = DDZJniHelper:create()
-			jni:messageJava("set_music_volume_" .. user_default:getFloatForKey("music_volume"))
+		user_default:setBoolForKey("bg_music", not bg_music)
+		if bg_music then
+		--	jni:messageJava("set_music_volume_" .. user_default:getFloatForKey("music_volume"))
 			self:playBackgroundMusic()
 		else
 			self:stopBackgroundMusic()
@@ -80,10 +79,11 @@ function SetDialog:ctor()
   	
   	local effect_toggle = CheckBox.create()
     effect_toggle:setPosition(ccp(0,15))
-    effect_toggle.toggle:setChecked(SoundSettings.effect_music)
+    effect_toggle.toggle:setChecked(effect_music)
 	self.effect_toggle_layer:addChild(effect_toggle)
 	local function effect_callback(tag, sender)
 		effect_music = effect_toggle.toggle:isChecked()
+		user_default:setBoolForKey("effect_music", not effect_music)
     end
   	effect_toggle.toggle:registerScriptTapHandler(effect_callback)
 	
