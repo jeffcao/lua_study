@@ -196,9 +196,9 @@ local function main()
 	end
 --	game_test()
 
---	local ls = createLandingScene()
+	local ls = createLandingScene()
 	CCDirector:sharedDirector():setDisplayStats(false)
-	local ls = createGuifanStartScene()
+--	local ls = createGuifanStartScene()
 	CCDirector:sharedDirector():runWithScene(ls)
 	
 	local notify_center = CCNotificationCenter:sharedNotificationCenter()
