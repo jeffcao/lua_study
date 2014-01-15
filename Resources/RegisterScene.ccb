@@ -32,9 +32,9 @@
 				<key>displayName</key>
 				<string>bg_sprite</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>bg_sprite</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>

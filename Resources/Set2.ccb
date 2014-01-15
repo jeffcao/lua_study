@@ -161,7 +161,7 @@
 						<key>displayName</key>
 						<string>bg</string>
 						<key>memberVarAssignmentName</key>
-						<string>container_layer</string>
+						<string>bg</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>properties</key>

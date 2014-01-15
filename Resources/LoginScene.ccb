@@ -32,9 +32,9 @@
 				<key>displayName</key>
 				<string>bg_sprite</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>bg_sprite</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -3852,6 +3852,14 @@
 						<array>
 							<dict>
 								<key>name</key>
+								<string>visible</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>position</string>
 								<key>type</key>
 								<string>Position</string>
@@ -4072,7 +4080,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>483</real>
+									<real>340</real>
 									<real>30</real>
 									<integer>0</integer>
 								</array>
