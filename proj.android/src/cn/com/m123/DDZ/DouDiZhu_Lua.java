@@ -20,65 +20,72 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-****************************************************************************/
+ ****************************************************************************/
 package cn.com.m123.DDZ;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
-import cn.com.m123.DDZ.push.PushDataManager;
-
-import android.content.Context;
-import android.media.AudioManager;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.widget.Toast;
 
-public class DouDiZhu_Lua extends Cocos2dxActivity{
-	
+public class DouDiZhu_Lua extends Cocos2dxActivity {
+
 	public static int initial_volume = 0;
 	public static DouDiZhu_Lua INSTANCE;
-	
-	protected void onCreate(Bundle savedInstanceState){
+
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		DDZJniHelper.messageCpp("game_jni");
 		INSTANCE = this;
 	}
-	
+
 	public Cocos2dxGLSurfaceView onCreateView() {
-    	Cocos2dxGLSurfaceView glSurfaceView = new Cocos2dxGLSurfaceView(this);
-    	glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
-    	return glSurfaceView;
-    }
-	
-    static {
-         System.loadLibrary("game");
-    }
-    
-    @Override
-    protected void onResume() {
-    	/*
-    	System.out.println("DouDiZhu_Lua onResume");
-    	AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-    	initial_volume = am.getStreamVolume(AudioManager.STREAM_MUSIC); 
-    	int max = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-    	am.setStreamVolume(AudioManager.STREAM_MUSIC, max, 0);
-    	*/
-    	super.onResume();
-    }
-    
-    @Override
-    protected void onPause() {
-    	/*
-    	System.out.println("DouDiZhu_Lua onPause");
-    	AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-    	am.setStreamVolume(AudioManager.STREAM_MUSIC, initial_volume, 0);
-    	*/
-    	super.onPause();
-    }
-    
-    @Override
-    protected void onDestroy() {
-    	INSTANCE = null;
-    	super.onDestroy();
-    }
+		Cocos2dxGLSurfaceView glSurfaceView = new Cocos2dxGLSurfaceView(this);
+		glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
+		return glSurfaceView;
+	}
+
+	static {
+		System.loadLibrary("game");
+	}
+
+	@Override
+	protected void onResume() {
+		/*
+		 * System.out.println("DouDiZhu_Lua onResume"); AudioManager am =
+		 * (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+		 * initial_volume = am.getStreamVolume(AudioManager.STREAM_MUSIC); int
+		 * max = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+		 * am.setStreamVolume(AudioManager.STREAM_MUSIC, max, 0);
+		 */
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		/*
+		 * System.out.println("DouDiZhu_Lua onPause"); AudioManager am =
+		 * (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+		 * am.setStreamVolume(AudioManager.STREAM_MUSIC, initial_volume, 0);
+		 */
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		INSTANCE = null;
+		super.onDestroy();
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_VOLUME_UP
+				|| keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+			DDZJniHelper.messageToCpp("on_volume_change");
+		}
+		return super.onKeyDown(keyCode, event);
+	}
 
 }

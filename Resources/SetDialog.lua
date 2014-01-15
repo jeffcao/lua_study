@@ -111,6 +111,18 @@ function SetDialog:ctor()
 	self.rootNode:registerScriptTouchHandler(__bind(self.onTouch, self))
     self.rootNode:setTouchEnabled(true)
     self:setVisible(false)
+    local func = function()
+    	cclog('set dialog receive on volume change')
+    	if self and self:isShowing() then
+    		cclog('set dialog respond to on volume change')
+    		pSlider:setValue(tonumber(jni:get("MusicVolume")))
+    	else
+    		cclog('set dialog do not respond to on volume change')
+    		NotificationProxy.removeAllObserver("on_volume_change")
+    		cclog('set dialog unregist on volume change')
+    	end
+    end
+    NotificationProxy.registerScriptObserver(func,"on_volume_change")
 end
 
 function SetDialog:onTouch(eventType, x, y)

@@ -11,7 +11,9 @@ function NotificationProxy.registerScriptObserver(fn, event)
 	end
 	table.insert(event_table, fn)
 end
-
+function NotificationProxy.removeAllObserver(event)
+	NotificationProxy[event] = nil
+end
 function NotificationProxy.unregisterScriptObserver(fn, event)
 	if not NotificationProxy[event] then 
  		cclog("event %s table is not exist, return", event)
