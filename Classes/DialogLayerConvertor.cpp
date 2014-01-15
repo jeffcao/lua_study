@@ -16,8 +16,12 @@ DialogLayerConvertor* DialogLayerConvertor::create(CCArray* menus) {
 void DialogLayerConvertor::convert() {
 	CCTouchDispatcher* dispatcher =
 			CCDirector::sharedDirector()->getTouchDispatcher();
+	if(dispatcher->findHandler(this->delegater)){
+		CCLOG("delegater had been added before!!!");
+		return;
+	}
 	dispatcher->addTargetedDelegate(this->delegater, kCCMenuHandlerPriority - this->_count,
-			true);
+				true);
 	this->_count = this->_count + 1;
 }
 

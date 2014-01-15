@@ -15,8 +15,10 @@ function DialogInterface.bind(theClass)
 			check_dialog_scale9_bg(self)
 			self.not_first_show = ture
 		end
-		self.convertor:unconvert()
+		--self.convertor:unconvert()
+		dump(self.convertor, 'self.convertor')
 		self.convertor:convert()
+		
 		print("set visible after convert")
 		if self:getZOrder() < getMaxZOrder(self:getParent()) then
 			self:getParent():reorderChild(self, getMaxZOrder(self:getParent()) + 1)

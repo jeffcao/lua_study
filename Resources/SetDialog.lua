@@ -23,10 +23,13 @@ function SetDialog:ctor()
 
 	ccb.set_scene = self
 	local ccbproxy = CCBProxy:create()
-	local node = CCBReaderLoad("Set2.ccbi", ccbproxy, false, "")
-	self:addChild(node)
-	self.rootNode = node
-
+	--local node = CCBReaderLoad("Set2.ccbi", ccbproxy, false, "")
+	--self:addChild(node)
+	--self.rootNode = node
+	CCBReaderLoad("Set2.ccbi", ccbproxy, true, "set_scene")
+	self:addChild(self.rootNode)
+	print('self.bg', self.bg)
+	print('self.rootNode', self.rootNode)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
@@ -95,6 +98,7 @@ function SetDialog:ctor()
 	self:swallowOnTouch(menus)
 	self:swallowOnKeypad()
 
+	--[[
 	self:setOnKeypad(function(key)
 		if key == "menuClicked" then
 			print("set dialog on key pad")
@@ -107,9 +111,9 @@ function SetDialog:ctor()
 			end
 		end
 	end)
-	
-	self.rootNode:registerScriptTouchHandler(__bind(self.onTouch, self))
-    self.rootNode:setTouchEnabled(true)
+	]]
+	--self.rootNode:registerScriptTouchHandler(__bind(self.onTouch, self))
+   -- self.rootNode:setTouchEnabled(true)
     self:setVisible(false)
     local func = function()
     	cclog('set dialog receive on volume change')
@@ -125,6 +129,7 @@ function SetDialog:ctor()
     NotificationProxy.registerScriptObserver(func,"on_volume_change")
 end
 
+--[[
 function SetDialog:onTouch(eventType, x, y)
 	cclog("touch event PlayerInfo:%s,x:%d,y:%d", eventType, x, y)
 	if eventType == "began" then
@@ -149,6 +154,7 @@ function SetDialog:onTouchEnded(loc)
 		self:dismiss()
 	end
 end
+]]
 
 DialogInterface.bind(SetDialog)
 SoundEffect.bind(SetDialog)
