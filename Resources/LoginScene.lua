@@ -51,6 +51,7 @@ function LoginScene:ctor()
 	local node = CCBReaderLoad("LoginScene.ccbi", ccbproxy, false, "")
 	self:addChild(node)
 	
+	set_bg(self)
 	self:init_input_controll()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
@@ -61,6 +62,15 @@ function LoginScene:ctor()
 	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler( __bind(self.on_keypad_pressed, self) )
+end
+
+function set_bg(scene)
+	local bg = GlobalSetting.login_bg[GlobalSetting.app_id]
+	if bg then
+		local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+		cache:addSpriteFramesWithFile(bg.res)
+		scene.bg_sprite:setDisplayFrame(cache:spriteFrameByName(bg.name))
+	end
 end
 
 function LoginScene:show_set_dialog()

@@ -23,6 +23,7 @@ function RegisterScene:ctor()
 	set_green_stroke(self.register_btn_lbl)
 	set_red_stroke(self.cancel_btn_lbl)
 	
+	set_bg(self)
 	self:init_input_controller()
 
 	self.rootNode:setKeypadEnabled(true)

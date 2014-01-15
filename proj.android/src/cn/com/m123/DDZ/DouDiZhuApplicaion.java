@@ -122,9 +122,16 @@ public class DouDiZhuApplicaion extends Application {
 		sp.edit().putString("appid", appid)
 			.putString("pkg_version_name", pkgVersionName)
 			.putString("pkg_build", pkgBuild)
+			.putString("app_name", getAppName())
 			.putString("pkg_version_code", Integer.toString(pkgVersionCode))
 			//.putString("sign", DDZJniHelper.getSign(this))
 			.commit();
+	}
+	
+	private String getAppName() {
+		ApplicationInfo pm = getApplicationInfo();
+		String name = (String) getPackageManager().getApplicationLabel(pm);
+		return name;
 	}
 	
 	private String getId() {

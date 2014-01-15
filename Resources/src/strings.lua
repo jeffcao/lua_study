@@ -14,7 +14,7 @@ strings_general = {
 }
 strings = {
 --AboutScene
-as_company = '我爱斗地主游戏由company提供。',
+as_company = 'app_name游戏由company提供。',
 --AvatarListLayer
 update_avatar_ing = '更新头像...',
 

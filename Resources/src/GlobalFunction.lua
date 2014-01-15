@@ -232,6 +232,12 @@ function device_info()
 	return device_info
 end
 
+function app_name()
+	local userDefault = CCUserDefault:sharedUserDefault()
+	local name = userDefault:getStringForKey("app_name")
+	return name
+end
+
 local levels_hanzi = {
 "短工",
 "长工",

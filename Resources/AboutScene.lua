@@ -40,6 +40,7 @@ function AboutScene:ctor()
 	--layer:removeRepeatBg()
 	local company_name = GlobalSetting.company_name[GlobalSetting.app_id] or GlobalSetting.company_name.default
 	company_name = string.gsub(strings.as_company, 'company', company_name)
+	company_name = string.gsub(company_name, 'app_name', app_name())
 	print('company_name is', company_name)
 	self.company_name:setString(company_name)
 	local user_default = CCUserDefault:sharedUserDefault()
