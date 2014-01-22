@@ -4,5 +4,6 @@ gen/
 .project
 lint.xml
 *~
+*.lo
 *.DS*
 tools/encrypt_js
