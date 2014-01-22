@@ -20,6 +20,7 @@ end
 
 function AboutScene:onEnter()
 	Stats:on_start("about")
+	--ss
 end
 
 function AboutScene:onExit()
