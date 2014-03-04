@@ -7,3 +7,4 @@ lint.xml
 *.lo
 *.DS*
 tools/encrypt_js
+org.eclipse.cdt.codan.core.prefs
