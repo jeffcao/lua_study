@@ -105,6 +105,8 @@ function PurchasePlugin.show_buy_notify(product, which)
 		print('dialog:attach_to(scene.rootNode)')
 		dialog:show()
 		print('show buy notify dialog')
+	elseif GlobalSetting.pay_type == 'cmcc' then
+		
 	end
 end
 
