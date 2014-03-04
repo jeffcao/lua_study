@@ -73,10 +73,11 @@ GlobalSetting = {
 	
 	game_push_interval = 10,
 	
-	pay_type = 'anzhi',
+	--pay_type = 'anzhi',
 	
 	company_name = {["1019"] = "深圳市景泰通信有限公司", default = "深圳市新中南实业有限公司"},
 	login_bg = {["1019"] = {name="bg01_2.png",res="ccbResources/common3.plist"}},
+	pay_type = {["1019"]="anzhi", default="cmcc"},
 
 	sina_share_url = "http://service.weibo.com/share/share.php?appkey=2045436852&title="..default_share.."&ralateUid=&language=zh_cn",
 	

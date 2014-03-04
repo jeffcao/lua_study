@@ -51,6 +51,8 @@ function LoginScene:ctor()
 	local node = CCBReaderLoad("LoginScene.ccbi", ccbproxy, false, "")
 	self:addChild(node)
 	
+	self:setMenus()
+	
 	set_bg(self)
 	self:init_input_controll()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
@@ -70,6 +72,22 @@ function set_bg(scene)
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
 		cache:addSpriteFramesWithFile(bg.res)
 		scene.bg_sprite:setDisplayFrame(cache:spriteFrameByName(bg.name))
+	end
+end
+
+function LoginScene:setMenus()
+	local pay_type = GlobalSetting.pay_type[GlobalSetting.app_id] or GlobalSetting.pay_type["default"]
+	if pay_type == 'anzhi' then
+		self.help:setPosition(ccp(36,30))
+		self.about:setPosition(ccp(186,30))
+		self.more:setVisible(false)
+		self.switch:setPosition(ccp(340,30))
+	elseif pay_type == 'cmcc' then
+		self.help:setPosition(ccp(36,30))
+		self.about:setPosition(ccp(186,30))
+		self.more:setVisible(true)
+		self.more:setPosition(ccp(340,30))
+		self.switch:setPosition(ccp(483,30))
 	end
 end
 

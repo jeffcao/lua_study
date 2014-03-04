@@ -96,7 +96,8 @@ function PurchasePlugin.show_buy_notify(product, which)
 		scene.cur_product.which = which or 1
 		PurchasePlugin.buy_prop(product.id)
 	end
-	if GlobalSetting.pay_type == 'anzhi' then
+	local pay_type = GlobalSetting.pay_type[GlobalSetting.app_id] or GlobalSetting.pay_type["default"]
+	if pay_type == 'anzhi' then
 		local dialog = createAnzhiPurchase(buy)
 		print('local dialog = createAnzhiPurchase(buy)')
 		dialog:init(product)
@@ -105,7 +106,7 @@ function PurchasePlugin.show_buy_notify(product, which)
 		print('dialog:attach_to(scene.rootNode)')
 		dialog:show()
 		print('show buy notify dialog')
-	elseif GlobalSetting.pay_type == 'cmcc' then
+	elseif pay_type == 'cmcc' then
 		
 	end
 end
