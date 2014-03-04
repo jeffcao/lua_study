@@ -8,4 +8,5 @@ lint.xml
 *.DS*
 tools/encrypt_js
 proj.android/assets/*.lua
+proj.android/assets/*.js
 org.eclipse.cdt.codan.core.prefs
