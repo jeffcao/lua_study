@@ -160,7 +160,7 @@ void Marquee::init(cocos2d::CCLayer* parent, float x, float y) {
 	content->runAction(
 			CCRepeatForever::create(
 				CCSequence::create(
-					CCDelayTime::create(3.0),
+					CCDelayTime::create(2.0),
 					CCCallFuncND::create(content, callfuncND_selector(Marquee::before_callback), (void*) this),
 					CCMoveBy::create(1.0, ccp(0,getTextHeight(content))),
 					CCCallFuncND::create(content, callfuncND_selector(Marquee::after_callback), (void*)this),
@@ -198,7 +198,7 @@ void Marquee::before_callback(CCNode* pSender, void* data) {
 						CCCallFuncND::create(pSucc, callfuncND_selector(Marquee::before_callback), (void*) data),
 						CCMoveBy::create(1.0, ccp(0,getTextHeight(pSucc))),
 						CCCallFuncND::create(pSucc, callfuncND_selector(Marquee::after_callback), (void*)data),
-						CCDelayTime::create(3.0),
+						CCDelayTime::create(2.0),
 						NULL
 					)
 				)
