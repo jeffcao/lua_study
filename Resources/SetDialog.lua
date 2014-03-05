@@ -8,7 +8,10 @@ SetDialog = class("SetDialog", function()
 	return display.newLayer("SetDialog")
 end
 )
-
+--声音设置策略
+--1.只有在设置框拖动进度条的时候才会保存音量大小设置，默认设置为一半大小
+--2.进游戏时，若声音为打开状态，则调整手机声音至保存的音量
+--3.进游戏时，声音为关闭状态，打开设置框，打开声音，此时不调整手机音量大小
 function createSetDialog()
 	print("new SetDialog")
 	return SetDialog.new()
@@ -23,17 +26,14 @@ function SetDialog:ctor()
 
 	ccb.set_scene = self
 	local ccbproxy = CCBProxy:create()
-	--local node = CCBReaderLoad("Set2.ccbi", ccbproxy, false, "")
-	--self:addChild(node)
-	--self.rootNode = node
 	CCBReaderLoad("Set2.ccbi", ccbproxy, true, "set_scene")
 	self:addChild(self.rootNode)
 	print('self.bg', self.bg)
 	print('self.rootNode', self.rootNode)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
-	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
-	cache:addSpriteFramesWithFile(Res.dialog_plist);
+	local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+	cache:addSpriteFramesWithFile(Res.dialog_plist)
 	local audio = SimpleAudioEngine:sharedEngine()
 	
 	local user_default = CCUserDefault:sharedUserDefault()
@@ -41,7 +41,7 @@ function SetDialog:ctor()
 	local function valueChanged(strEventName,pSender)
 		if self:isShowing() then
 			local value = pSender:getValue()
-		--	user_default:setFloatForKey("music_volume", value)
+			user_default:setFloatForKey("music_volume", value)
 			jni:messageJava("set_music_volume_" .. tonumber(value))
         end
     end
@@ -115,18 +115,18 @@ function SetDialog:ctor()
 	--self.rootNode:registerScriptTouchHandler(__bind(self.onTouch, self))
    -- self.rootNode:setTouchEnabled(true)
     self:setVisible(false)
-    local func = function()
+    self.volume_func = function()
     	cclog('set dialog receive on volume change')
     	if self and self:isShowing() then
     		cclog('set dialog respond to on volume change')
     		pSlider:setValue(tonumber(jni:get("MusicVolume")))
     	else
     		cclog('set dialog do not respond to on volume change')
-    		NotificationProxy.removeAllObserver("on_volume_change")
+    		NotificationProxy.unregisterScriptObserver(self.volume_func, "on_volume_change")
     		cclog('set dialog unregist on volume change')
     	end
     end
-    NotificationProxy.registerScriptObserver(func,"on_volume_change")
+    NotificationProxy.registerScriptObserver(self.volume_func,"on_volume_change")
 end
 
 --[[

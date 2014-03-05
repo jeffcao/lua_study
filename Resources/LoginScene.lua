@@ -104,6 +104,7 @@ function LoginScene:onEnter()
 	--require "sa"
 	self.super.onEnter(self)
 	GamePush.close()
+	self:initMusic()
 	self:playBackgroundMusic()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	if GlobalSetting.login_server_websocket == nil then
@@ -111,6 +112,25 @@ function LoginScene:onEnter()
 		self:connect_to_login_server(GlobalSetting)
 	end
 	Stats:on_start("login")
+end
+
+function LoginScene:initMusic()
+	local jni = DDZJniHelper:create()
+	local user_default = CCUserDefault:sharedUserDefault()
+	local do_effect = function(bg_open, effect_open)
+		if bg_open then
+			jni:messageJava("set_music_volume_" .. user_default:getFloatForKey("music_volume"))
+		end
+		effect_music = effect_open
+		bg_music = bg_open
+	end
+	if getPayType() == 'cmcc' then
+		local music_state = jni:get("MusicEnabled")
+		print("music_state=> ", music_state, string.len(music_state))
+		do_effect(music_state=="1", music_state=="1")
+	else
+		do_effect(user_default:getBoolForKey("bg_music"), user_default:getBoolForKey("effect_music"))
+	end
 end
 
 function LoginScene:onExit()

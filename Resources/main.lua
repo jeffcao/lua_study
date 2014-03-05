@@ -209,25 +209,10 @@ local function main()
 	end
 	
 	local audio = SimpleAudioEngine:sharedEngine()
-	
 	audio:setBackgroundMusicVolume(1)
 	audio:setEffectsVolume(1)
 	
-	local do_effect = function(open)
-		if open then
-			local user_default = CCUserDefault:sharedUserDefault()
-			local jni = DDZJniHelper:create()
-			jni:messageJava("set_music_volume_" .. user_default:getFloatForKey("music_volume"))
-		end
-		SoundSettings.effect_music = open
-		SoundSettings.bg_music = open
-	end
 	local jni_helper = DDZJniHelper:create()
-	local music_state = jni_helper:get("MusicEnabled")
-	print("music_state=> ", music_state, string.len(music_state))
-	--music_state = string.sub(music_state, 1, 1)
-	do_effect(music_state=="1")
-	
 	local c_time = tonumber(jni_helper:get("CurrentTime"))
 	if c_time < 1000000000000 then
 		c_time = c_time * 10

@@ -41,13 +41,8 @@ function GuifanStartScene:onCloseEffectClicked()
 end
 
 function GuifanStartScene:doEffect(open)
-	if open then
-		local user_default = CCUserDefault:sharedUserDefault()
-		local jni = DDZJniHelper:create()
-		jni:messageJava("set_music_volume_" .. user_default:getFloatForKey("music_volume"))
-	end
-	effect_music = open
-	bg_music = open
+	CCUserDefault:sharedUserDefault():setBoolForKey("bg_music", open)
+	CCUserDefault:sharedUserDefault():setBoolForKey("effect_music", open)
 	self.layer_volume:setVisible(false)
 	self.layer_anim:setVisible(true)
 	Timer.add_timer(0.5, function() self:playAnim(1) end)

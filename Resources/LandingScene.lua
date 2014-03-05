@@ -42,6 +42,7 @@ function LandingScene:ctor()
 		self:setup_websocket()
 	end
 	]]
+	--[[
 	local user_default = CCUserDefault:sharedUserDefault()
 	local set = function(music, music_name)
 		if music ~= nil then return music end
@@ -52,6 +53,7 @@ function LandingScene:ctor()
 	bg_music = set(bg_music, "bg_music")
 	effect_music = set(effect_music, "effect_music")
 	print(bg_music, effect_music)
+	]]
 end
 	
 function LandingScene:onEnter()

@@ -1,5 +1,5 @@
 SoundEffect = {}
-SoundSettings = {effect_music = 1, bg_music = 1, sound_handler = nil, delay_sound_handler = nil}
+SoundSettings = {sound_handler = nil, delay_sound_handler = nil}
 
 function SoundEffect.bind(theClass)
 
