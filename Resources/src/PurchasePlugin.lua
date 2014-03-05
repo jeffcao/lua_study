@@ -96,7 +96,7 @@ function PurchasePlugin.show_buy_notify(product, which)
 		scene.cur_product.which = which or 1
 		PurchasePlugin.buy_prop(product.id)
 	end
-	local pay_type = GlobalSetting.pay_type[GlobalSetting.app_id] or GlobalSetting.pay_type["default"]
+	local pay_type = getPayType()
 	if pay_type == 'anzhi' then
 		local dialog = createAnzhiPurchase(buy)
 		print('local dialog = createAnzhiPurchase(buy)')
@@ -107,7 +107,14 @@ function PurchasePlugin.show_buy_notify(product, which)
 		dialog:show()
 		print('show buy notify dialog')
 	elseif pay_type == 'cmcc' then
-		
+		if product.is_prompt then
+			local dialog = createAnzhiPurchase(buy)
+			dialog:init(product)
+			dialog:attach_to(scene.rootNode)
+			dialog:show()
+		else
+			buy()
+		end
 	end
 end
 
@@ -147,8 +154,11 @@ end
 function PurchasePlugin.do_confirm_buy(data)
 	ToastPlugin.hide_progress_message_box()
 	runningscene().cur_buy_data = data
-	if GlobalSetting.pay_type == 'anzhi' then
+	local payType = getPayType()
+	if payType == 'anzhi' then
 		PurchasePlugin.anzhi_pay(data)
+	elseif payType == 'cmcc' then
+		PurchasePlugin.cmcc_pay(data)
 	end
 end
 
@@ -162,6 +172,19 @@ function PurchasePlugin.anzhi_pay(data)
 	local cjson = require("cjson")
 	local status, s = pcall(cjson.encode, j_data)
 	local str = 'on_pay_anzhi__' .. s
+	print('pay:', str)
+	jni_helper:messageJava(str)
+end
+
+function PurchasePlugin.cmcc_pay(data)
+	local jni_helper = DDZJniHelper:create()
+	local scene = runningscene()
+	if GlobalSetting.run_env == 'test' and not data.cpparam then data.cpparam = '123456' end
+	dump(scene.cur_product,'scene.cur_product')
+	local j_data = {billingIndex=data.billingIndex,cpparam=data.cpparam,trade_id=data.trade_num,prop_id=data.prop_id}
+	local cjson = require("cjson")
+	local status, s = pcall(cjson.encode, j_data)
+	local str = 'on_pay_cmcc__' .. s
 	print('pay:', str)
 	jni_helper:messageJava(str)
 end

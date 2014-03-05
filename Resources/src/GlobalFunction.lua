@@ -1,3 +1,6 @@
+function getPayType()
+	return GlobalSetting.pay_type[GlobalSetting.app_id] or GlobalSetting.pay_type["default"]
+end
 
 function scaleNode(node, scaleFactor)
 	local node = tolua.cast(node, "CCNode")
