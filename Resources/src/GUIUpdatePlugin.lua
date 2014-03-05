@@ -143,6 +143,7 @@ function GUIUpdatePlugin.bind(theClass)
 	function theClass:drawPokeCards(data) 
 		-- self:resetself._all_cards()
 		-- 根据服务器发的牌编号(a03, b03...)提取相应的扑克牌
+		self.finding_lbl:setVisible(false)
 		self._all_cards = {}
 		local card_ids = {}
 		self._all_cards_ids = data.poke_cards
@@ -612,6 +613,8 @@ function GUIUpdatePlugin.bind(theClass)
 		self:init_channel(game_info)
 		self.menu_ready:setVisible(true)
 		self.menu_huanzhuo:setVisible(true)
+		
+		self.finding_lbl:setVisible(true)
 		
 		cclog("[onEnterRoomSuCCss] update room base...")
 		local room_base = "底注: " .. data.game_info.room_base

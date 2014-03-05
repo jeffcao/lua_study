@@ -180,5 +180,8 @@ hmp_match_begin = strings_general.g_match_begin,
 hs_match_end = '本场比赛已结束',
 --PurchasePlugin
 pp_get_prop_info = '正在获取道具信息...',
+
+--GDataPlugin
+gdp_finding = '请稍等，正在为您匹配玩家...',
 }
 

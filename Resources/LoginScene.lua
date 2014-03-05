@@ -118,6 +118,7 @@ function LoginScene:initMusic()
 	local jni = DDZJniHelper:create()
 	local user_default = CCUserDefault:sharedUserDefault()
 	local do_effect = function(bg_open, effect_open)
+		print('initMusic,bg,effect:', bg_open, effect_open)
 		if bg_open then
 			jni:messageJava("set_music_volume_" .. user_default:getFloatForKey("music_volume"))
 		end
@@ -129,7 +130,8 @@ function LoginScene:initMusic()
 		print("music_state=> ", music_state, string.len(music_state))
 		do_effect(music_state=="1", music_state=="1")
 	else
-		do_effect(user_default:getBoolForKey("bg_music"), user_default:getBoolForKey("effect_music"))
+		print('initMusic not cmcc')
+		do_effect(not user_default:getBoolForKey("bg_music"), not user_default:getBoolForKey("effect_music"))
 	end
 end
 

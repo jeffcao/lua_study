@@ -39,6 +39,10 @@ function GDataPlugin.bind(theClass)
         self:initChat()
         self.users = {}
         
+        self.finding_lbl = CCLabelTTF:create(strings.gdp_finding, "Helvetica", 22)
+        self.finding_lbl:setPosition(ccp(400, 80))
+        self.rootNode:addChild(self.finding_lbl)
+        
         self.rootNode:registerScriptTouchHandler(__bind(self.onTouch, self))
         self.rootNode:setTouchEnabled(true)
         self.rootNode:setKeypadEnabled(true)
