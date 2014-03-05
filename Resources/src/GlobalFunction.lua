@@ -21,8 +21,13 @@ end
 function endtolua_guifan()
 	--local scene = createGuifanEndScene()
 	--CCDirector:sharedDirector():pushScene(scene)
-	local jni_helper = DDZJniHelper:create()
-	jni_helper:messageJava("do_exit_cmcc")
+	if getPayType() == 'cmcc' then
+		local jni_helper = DDZJniHelper:create()
+		jni_helper:messageJava("do_exit_cmcc")
+	else
+		local scene = createGuifanEndScene()
+		CCDirector:sharedDirector():pushScene(scene)
+	end
 end
 
 function endtolua()
