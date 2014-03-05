@@ -51,11 +51,6 @@ function AnzhiPurchase:init(item)
 		set_rank_stroke(self.confirm_lbl3)
 	end
 	
-	--self.cancel_btn:setVisible(false)
-	--local cancel_layer = self.cancel_btn_menu:getParent()
-	--self.cancel_btn_menu:removeFromParentAndCleanup(true)
-	--local label = CCLabelTTF:create()
-	--self.cancel_btn_menu:removeAllChildrenWithCleanup(true)
 end
 
 UIControllerPlugin.bind(AnzhiPurchase)
