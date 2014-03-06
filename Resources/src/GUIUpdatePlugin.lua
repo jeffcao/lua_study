@@ -32,7 +32,9 @@ function GUIUpdatePlugin.bind(theClass)
 		if data and data.players then players = data.players end
 		-- 更新玩家信息
 		self:updatePlayers(players)
-	
+		-- 玩家逃跑时将扣除的豆子数
+		if data and data.players then self.escape_money = data.escape_money else self.escape_money = 0 end
+		
 		-- 隐藏不出提示
 		self:updatePlayerBuchu(self.self_user_lord_value, false)
 		self:updatePlayerBuchu(self.prev_user_lord_value, false)
@@ -554,7 +556,7 @@ function GUIUpdatePlugin.bind(theClass)
 		if not self.exit_layer then
 			self.exit_layer = createYesNoDialog(self.rootNode)
 			self.exit_layer:setTitle(strings.gup_mand_exit)
-			self.exit_layer:setMessage(strings.gup_mand_eixt_w)
+			self.exit_layer:setMessage(string.format(strings.gup_mand_eixt_w, tostring(self.escape_money)))
 			self.exit_layer:set_dismiss_cleanup(false)
 			local yes_fn = function()
 				self.exit_layer:dismiss()
