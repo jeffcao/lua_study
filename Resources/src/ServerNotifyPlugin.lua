@@ -120,7 +120,7 @@ function ServerNotifyPlugin.bind(theClass)
 	function theClass:onLevel(data)
 		--local level = data.level
 		dump(data, "on level up=>")
-		GlobalSetting.current_user.game_level = data.game_level
+		GlobalSetting.current_user.game_level = data.level
 		local scene = CCDirector:sharedDirector():getRunningScene()
 		if scene.scene_on_level_up then
 			scene:scene_on_level_up(data)
