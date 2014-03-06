@@ -164,8 +164,7 @@ ToastPlugin = {}
 		local w = params.msg_width or width
 		local h = params.msg_height or 70
 		local type = params.type or 'warning'
-		local dismiss_time = params.dismiss_time or 3
-		
+		local dismiss_time = params.dismiss_time or 1
 		if check_is_toast_exist(type, message, w, h) then return end
 		
 		local msg_layer = create_message_layer(message, {type=type,msg_width=w, msg_height=h})
