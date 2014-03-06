@@ -73,7 +73,7 @@ cp_network_w = '网络连接已断开，请设置网络！',
 
 --GUIUpdatePlugin
 gup_mand_exit = '强制退出',
-gup_mand_eixt_w = '您正在游戏中，此时强退系统将最大输赢扣除您的豆子。',
+gup_mand_eixt_w = '您正在游戏中，此时强退系统将以底注的最大输赢倍数扣除您 %s 豆子',
 gup_suggest_douzi = '是否充值继续冲击大奖！',
 
 --HallGameConnectionPlugin
