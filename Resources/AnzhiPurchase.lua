@@ -40,7 +40,7 @@ function AnzhiPurchase:init(item)
 	set_rank_stroke(self.cancel_btn_lbl)
 	set_rank_stroke(self.shoujia_lbl)
 	self.note_lbl:setString(item.note)
-	self:set_is_restricted(item.is_prompt)
+	self:set_is_restricted(item.is_prompt and item.must_show)
 	if not is_blank(item.title) then
 		self.confirm_layer:setVisible(false)
 		set_rank_string_with_stroke(self.prompt_lbl, item.title)

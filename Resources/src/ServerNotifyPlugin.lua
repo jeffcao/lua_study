@@ -70,6 +70,7 @@ function ServerNotifyPlugin.bind(theClass)
 	
 	--推荐用户购买道具
 	function theClass:onPropPrompt(data)
+		--data.must_show = true代表这个道具推送不加入弹窗限制
 		PromptPlugin.showPrompt(data)
 	end
 	
