@@ -13,6 +13,7 @@ function MatchResultItem:ctor()
 	self.rank_lbl:setPosition(ccp(2,15))
 	self.name_lbl:setPosition(ccp(62,15))
 	self.bean_lbl:setPosition(ccp(180,15))
+	self.bean_lbl:setDimensions(CCSizeMake(100,42))
 	self.gets_lbl:setPosition(ccp(265,15))
 	self.bean_lbl:setFontSize(20)
 	self.gets_lbl:setFontSize(20)
@@ -27,6 +28,6 @@ function MatchResultItem:init(item)
 	local bonus = ''
 	local cjson = require "cjson"
 	if item.bonus ~= cjson.null then bonus = item.bonus end
-	self.gets_lbl:setString(bonus)
+	self.gets_lbl:setString(bonus..' 元话费')
 end
 
