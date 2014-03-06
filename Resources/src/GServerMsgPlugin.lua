@@ -180,6 +180,7 @@ function GServerMsgPlugin.bind(theClass)
 			new_data.using_props = self.using_props
 			new_data.show_jipaiqi = self.show_jipaiqi
 			
+			new_data.escape_money = self.escape_money
 			-- 开始牌局
 			self:onServerStartGame(new_data)
 			-- 显示出牌菜单
