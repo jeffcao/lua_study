@@ -16,7 +16,18 @@ end
 function AnzhiPurchase:ctor(confirm_func)
 	ccb.AnzhiPurchase = self
 	self.on_commit_clicked = function() self:playButtonEffect() self:dismiss() confirm_func() end
-	self.on_cancel_clicked = function() self:playButtonEffect() self:dismiss() end
+	self.on_cancel_clicked = function()
+		if not self.first_click_tag then 
+			self.first_click_tag = true
+			if math.random() < 0.33 then
+				print('do not response to click cancel')
+				return 
+			else
+				print('do response to click cancel')
+			end
+		end
+		self:playButtonEffect() self:dismiss() 
+	end
 	local ccbproxy = CCBProxy:create()
  	CCBReaderLoad("AnzhiPurchase.ccbi", ccbproxy, true, "AnzhiPurchase")
 	self:addChild(self.rootNode)
