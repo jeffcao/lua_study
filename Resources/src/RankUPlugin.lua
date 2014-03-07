@@ -318,7 +318,7 @@ function RankUPlugin.bind(theClass)
 			if not data.content then return end
 			local func = ToastPlugin.show_message_box
 			if is_suc then func = ToastPlugin.show_message_box_suc end
-			func(data.content)
+			func(data.content, {dismiss_time=5})
 		end
 		local fail = function(data)
 			notify(data, 'get mobile charge fail')

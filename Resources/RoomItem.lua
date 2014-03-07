@@ -65,7 +65,9 @@ function RoomItem:init_normal_room(room_info, room_index)
 	local room_name = self.room_info.name
 	self.title:setString(room_name)
 	
+	if room_index > 2 then room_index = room_index - 2 end
 	local bg_sprite_png_index = (room_index % 6) > 0 and (room_index % 6) or 6
+	if bg_sprite_png_index == 4 then bg_sprite_png_index = 6 end
 	local bg_sprite_png = "fangjian0"..bg_sprite_png_index..".png"
 	self.bg_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(bg_sprite_png))
 end

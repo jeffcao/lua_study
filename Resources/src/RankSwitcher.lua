@@ -33,7 +33,7 @@ function RankSwitcher.bind(theClass)
 		if self:current_tab() == 'huafei' or man then
 			set_rank_string_with_stroke(self.player_bean, self.huafei_rank_data.balance)
 			set_rank_string_with_stroke(self.player_rank, self.huafei_rank_data.position)
-			self.get_huafei_btn:setEnabled(tonumber(self.huafei_rank_data.balance) >= 10)
+			self.get_huafei_btn:setEnabled(tonumber(self.huafei_rank_data.balance) >= 50)
 		end
 		if not self.on_set_balance then
 			print('register notification observer')
