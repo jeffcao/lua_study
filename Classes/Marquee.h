@@ -8,7 +8,7 @@ typedef int LUA_FUNCTION;
 
 	class Marquee: public cocos2d::CCObject {
 		Marquee():_text(""), _size(cocos2d::CCSizeMake(200,27)),
-				_stroke_size(2), _stroke_color(cocos2d::ccc3(0,0,0)),
+				_stroke_size(1), _stroke_color(cocos2d::ccc3(0,0,0)),
 				_text_size(24), _text_color(cocos2d::ccc3(255,212,63)),
 				_clip_node(NULL), _font("Marker Felt"),
 				_stroke_enable(false){};

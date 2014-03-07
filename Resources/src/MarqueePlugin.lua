@@ -20,7 +20,16 @@ function MarqueePlugin.addMarquee(node, position)
 	my_layer:setContentSize(node:getContentSize())
 	my_layer:setPosition(node:getContentSize().width/2, node:getContentSize().height/2)
 	my_layer:ignoreAnchorPointForPosition(false)
-	node:addChild(my_layer)
+	local sprite = CCSprite:create("ccbResources/heitiao.png")
+	sprite:setAnchorPoint(ccp(0.5,0.5))
+	sprite:setTag(9001)
+	--sprite:setPosition(ccp(400,100))
+	sprite:setScale(GlobalSetting.content_scale_factor)
+	sprite:setVisible(false)
+	
+	node:addChild(sprite, 1)
+	node:addChild(my_layer, 2)
+	
 	local marquee = Marquee:create()
 	marquee:enableStroke()
 	marquee:setSize(460, 32)
@@ -31,6 +40,7 @@ function MarqueePlugin.addMarquee(node, position)
 		x = position.x
 		y = position.y
 	end
+	sprite:setPosition(x,y)
 	marquee:init(my_layer, x, y)
 	node.marqueeplugin_marquee = marquee
 end

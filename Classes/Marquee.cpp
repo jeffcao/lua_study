@@ -184,9 +184,15 @@ void Marquee::before_callback(CCNode* pSender, void* data) {
 	//CCLOG("before_callback s_count is %d", s_count);
 	s_count--;
 	pSender->setUserData((void*) (s_count));
+
+	const char* label_text = pSucc->getString();
+	const char* cur_text = marquee->getText();
+	if ((label_text and strcmp(label_text, "") != 0) or (cur_text and strcmp(cur_text, "") != 0)) {
+		pSender->getParent()->getParent()->getParent()->getChildByTag(9001)->setVisible(true);
+	} else {
+		pSender->getParent()->getParent()->getParent()->getChildByTag(9001)->setVisible(false);
+	}
 	if (s_count == 0) {
-		const char* label_text = pSucc->getString();
-		const char* cur_text = marquee->getText();
 		if (strcmp(label_text, cur_text) != 0) {
 			pSucc->setString(cur_text);
 		}
