@@ -21,7 +21,7 @@
         android:icon="@drawable/icon"
         android:name="cn.com.m123.DDZ.DouDiZhuApplicaion">
         
-        <meta-data android:name="build" android:value="v20140307.01"/>
+        <meta-data android:name="build" android:value="v20140307.02"/>
 		
         <activity android:name="cn.cmgame.billing.ui.GameOpenActivity"
 			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
