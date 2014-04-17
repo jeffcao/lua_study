@@ -61,17 +61,19 @@ public class Payments {
 	private static void do_leyifu_pay(String params) {
 		try {
 			JSONObject json = new JSONObject(params);
-			String trade_id = json.getString("trade_id");
+			String consume_code = json.getString("consume_code");
 			String prop_id = json.getString("prop_id");
 			
 			String prop_name = json.getString("prop_name");// param only for leyifu
 			float price = Float.parseFloat(json.getString("price"));
+			int price_i = (int) price;
+			String trade_id = json.getString("trade_id");
 			
 			String dump = String.format(
-					"leyifu pay=>\ntrade_id:%s\nprop_id:%s\nprop_name:%s\nprice:%f",
-					new Object[] { trade_id, prop_id, prop_name, price });
+					"leyifu pay=>\nconsume_code:%s\nprop_id:%s\nprop_name:%s\nprice:%d\ntrade_id:%s",
+					new Object[] { consume_code, prop_id, prop_name, price_i, trade_id });
 			System.out.println(dump);
-			AppTache.requestPay(DouDiZhu_Lua.INSTANCE, true, (int)price, 1, prop_id, prop_name, trade_id, DouDiZhu_Lua.LEYIFU_PAY_REQUEST_CODE);
+			AppTache.requestPay(DouDiZhu_Lua.INSTANCE, true, price_i, 1, consume_code, prop_name, trade_id, DouDiZhu_Lua.LEYIFU_PAY_REQUEST_CODE);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		} catch (Throwable t) {

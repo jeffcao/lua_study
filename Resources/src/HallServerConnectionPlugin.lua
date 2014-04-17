@@ -144,7 +144,7 @@ function HallServerConnectionPlugin.bind(theClass)
 	
 	function theClass:buy_prop(product_id)
 		self.failure_msg = strings.hscp_purchase_prop_w
-		local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id}
+		local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, payment=getPayType()}
 		self:call_server_method("buy_prop", event_data)
 	
 	end

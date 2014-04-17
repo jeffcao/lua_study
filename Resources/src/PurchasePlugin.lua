@@ -120,7 +120,7 @@ end
 
 function PurchasePlugin.buy_prop(product_id)
 	local failure_msg = strings.hscp_purchase_prop_w
-	local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id}
+	local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, payment=getPayType()}
 
 	local ws = PurchasePlugin.get_buy_socket()
 	if not ws then print('there is no websocket to buy') return end
@@ -179,12 +179,13 @@ function PurchasePlugin.anzhi_pay(data)
 end
 
 function PurchasePlugin.leyifu_pay(data)
+	dump(data, 'leyifu data')
 	local jni_helper = DDZJniHelper:create()
 	local scene = runningscene()
 	if GlobalSetting.run_env == 'test' and not data.cpparam then data.cpparam = '123456' end
 	dump(scene.cur_product,'scene.cur_product')
-	local j_data = {price=scene.cur_product.rmb,which=data.which,desc=scene.cur_product.name,cpparam=data.cpparam,
-					trade_id=data.trade_num,prop_id=data.prop_id,prop_name=scene.cur_product.name}
+	local j_data = {price=data.price,which=data.which,desc=scene.cur_product.name,cpparam=data.cpparam,
+					consume_code=data.consume_code,prop_id=data.prop_id,prop_name=scene.cur_product.name,trade_id=data.trade_num}
 	local cjson = require("cjson")
 	local status, s = pcall(cjson.encode, j_data)
 	local str = 'on_pay_leyifu__' .. s

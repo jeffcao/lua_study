@@ -27,8 +27,10 @@ import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
 import cn.cmgame.billing.api.GameInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.widget.Toast;
 
 public class DouDiZhu_Lua extends Cocos2dxActivity {
 
@@ -93,6 +95,29 @@ public class DouDiZhu_Lua extends Cocos2dxActivity {
 			DDZJniHelper.messageToCpp("on_volume_change");
 		}
 		return super.onKeyDown(keyCode, event);
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == LEYIFU_PAY_REQUEST_CODE) {
+			Bundle bundle = data.getExtras();
+			if (null != bundle) {
+				String is_success = "" + (resultCode == 100);// 是否成功
+				String real_price = "" + bundle.getInt("order_price");// 本次支付费用
+				String user_order_id = "" + bundle.getString("order_id");// 用户定义的订单号
+				String error_code = "" + bundle.getString("pay_result_id");// 支付结果，主要是指错误Code
+				String error_msg = "" + bundle.getString("pay_result_msg");// 失败时返回的错误原因
+				String[] args = {is_success,real_price,user_order_id,error_code,error_msg};
+				String str = String.format("是否成功：%s，支付费用：%s，订单号：%s，支付结果：%s，失败原因：%s", (Object[])args);
+				System.out.println(str);
+				if (is_success.contains("true")) {// 支付成功
+				//	Toast.makeText(this, error_msg, Toast.LENGTH_LONG).show();
+				} else { // 支付失败
+				//	Toast.makeText(this, "支付失败:" + error_msg, Toast.LENGTH_LONG).show();
+				}
+
+			}
+		}
 	}
 
 }
