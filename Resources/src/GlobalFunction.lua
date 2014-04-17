@@ -1,5 +1,9 @@
+local paytype = CCUserDefault:sharedUserDefault():getStringForKey("pay_type")
 function getPayType()
-	return GlobalSetting.pay_type[GlobalSetting.app_id] or GlobalSetting.pay_type["default"]
+	--local paytype = CCUserDefault:sharedUserDefault():getStringForKey("pay_type")
+	print('current paytype:', paytype)
+	return paytype
+	--return GlobalSetting.pay_type[GlobalSetting.app_id] or GlobalSetting.pay_type["default"]
 end
 
 function scaleNode(node, scaleFactor)

@@ -34,6 +34,7 @@ public class DouDiZhu_Lua extends Cocos2dxActivity {
 
 	public static int initial_volume = 0;
 	public static DouDiZhu_Lua INSTANCE;
+	public static final int LEYIFU_PAY_REQUEST_CODE = 2014;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -124,6 +124,7 @@ public class DouDiZhuApplicaion extends Application {
 			.putString("pkg_version_name", pkgVersionName)
 			.putString("pkg_build", pkgBuild)
 			.putString("app_name", getAppName())
+			.putString("pay_type", getPaytype())
 			.putString("pkg_version_code", Integer.toString(pkgVersionCode))
 			//.putString("sign", DDZJniHelper.getSign(this))
 			.commit();
@@ -136,18 +137,26 @@ public class DouDiZhuApplicaion extends Application {
 	}
 	
 	private String getId() {
+		String raw_result = getByRaw(R.raw.appid);
+		return raw_result != null ? raw_result : "1000";
+	}
+	
+	private String getPaytype() {
+		String raw_result = getByRaw(R.raw.paytype);
+		return raw_result != null ? raw_result : "cmcc";
+	}
+	
+	private String getByRaw(int raw_id) {
 		InputStream is = null;
-		String result = "1000";
+		String result = null;
 		try {
-			is = getResources().openRawResource(R.raw.appid);
-			byte[] buffer = new byte[100];
+			is = getResources().openRawResource(raw_id);
+			byte[] buffer = new byte[1024];
 			int length = is.read(buffer);
 			if (length > 0) {
 				String id = new String(buffer, 0, length);
-				result = id != null ? id : result;
-			//	Log.i(TAG, "app id is: " + result);
+				result = id;
 			} else {
-			//	Log.w(TAG, "app.txt is null");
 			}
 		} catch (IOException e) {
 			Log.e(TAG, e.getMessage());

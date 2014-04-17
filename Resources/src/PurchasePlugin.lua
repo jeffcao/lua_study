@@ -97,7 +97,7 @@ function PurchasePlugin.show_buy_notify(product, which)
 		PurchasePlugin.buy_prop(product.id)
 	end
 	local pay_type = getPayType()
-	if pay_type == 'anzhi' then
+	if pay_type == 'anzhi' or pay_type == 'leyifu' then
 		local dialog = createAnzhiPurchase(buy)
 		print('local dialog = createAnzhiPurchase(buy)')
 		dialog:init(product)
@@ -159,6 +159,8 @@ function PurchasePlugin.do_confirm_buy(data)
 		PurchasePlugin.anzhi_pay(data)
 	elseif payType == 'cmcc' then
 		PurchasePlugin.cmcc_pay(data)
+	elseif payType == 'leyifu' then
+		PurchasePlugin.leyifu_pay(data)
 	end
 end
 
@@ -172,6 +174,20 @@ function PurchasePlugin.anzhi_pay(data)
 	local cjson = require("cjson")
 	local status, s = pcall(cjson.encode, j_data)
 	local str = 'on_pay_anzhi__' .. s
+	print('pay:', str)
+	jni_helper:messageJava(str)
+end
+
+function PurchasePlugin.leyifu_pay(data)
+	local jni_helper = DDZJniHelper:create()
+	local scene = runningscene()
+	if GlobalSetting.run_env == 'test' and not data.cpparam then data.cpparam = '123456' end
+	dump(scene.cur_product,'scene.cur_product')
+	local j_data = {price=scene.cur_product.rmb,which=data.which,desc=scene.cur_product.name,cpparam=data.cpparam,
+					trade_id=data.trade_num,prop_id=data.prop_id,prop_name=scene.cur_product.name}
+	local cjson = require("cjson")
+	local status, s = pcall(cjson.encode, j_data)
+	local str = 'on_pay_leyifu__' .. s
 	print('pay:', str)
 	jni_helper:messageJava(str)
 end
