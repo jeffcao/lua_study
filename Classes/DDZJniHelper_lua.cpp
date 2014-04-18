@@ -1,6 +1,6 @@
 /*
 ** Lua binding: DDZJniHelper
-** Generated automatically by tolua++-1.0.93 on Tue Jun 25 11:45:01 2013.
+** Generated automatically by tolua++-1.0.92 on Fri Apr 18 11:18:14 2014.
 */
 
 /****************************************************************************
@@ -28,11 +28,8 @@
  ****************************************************************************/
 
 extern "C" {
-#include "tolua++.h"
 #include "tolua_fix.h"
 }
-
-#include "DDZJniHelper.h"
 
 #include <map>
 #include <string>
@@ -40,6 +37,7 @@ extern "C" {
 #include "CCLuaEngine.h"
 #include "SimpleAudioEngine.h"
 #include "cocos-ext.h"
+#include "DDZJniHelper.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -111,13 +109,7 @@ static int tolua_DDZJniHelper_DDZJniHelper_get00(lua_State* tolua_S)
 #endif
   {
    const char* tolua_ret = (const char*)  self->get(func);
-   char buf[512];
-   memset(buf, 0, sizeof(buf));
-   //sprintf(buf, "self->get('%s') returned: '%s', length: %d", func, tolua_ret, strlen(tolua_ret) );
-   CCLOG(buf);
-   memset(buf, 0 , sizeof(buf));
-   strncpy(buf, tolua_ret, strlen(tolua_ret));
-   tolua_pushstring(tolua_S,(const char*)buf);
+   tolua_pushstring(tolua_S,(const char*)tolua_ret);
   }
  }
  return 1;

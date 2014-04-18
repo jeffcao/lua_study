@@ -204,7 +204,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     lua_State* pLuaState = pEngine->getLuaStack()->getLuaState();
 
-    tolua_WebsocketManager_open(pLuaState);
+    //tolua_WebsocketManager_open(pLuaState);
     tolua_DDZJniHelper_open(pLuaState);
     tolua_DialogLayerConvertor_open(pLuaState);
     tolua_Downloader_open(pLuaState);

@@ -53,7 +53,7 @@ fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # ... use paths relative to current directory
-COCOS2DX_ROOT="$DIR/../.."
+COCOS2DX_ROOT="$DIR/../../.."
 APP_ROOT="$DIR/.."
 APP_ANDROID_ROOT="$DIR"
 
@@ -133,6 +133,10 @@ else
         "NDK_MODULE_PATH=${COCOS2DX_ROOT}:${COCOS2DX_ROOT}/cocos2dx/platform/third_party/android/prebuilt"
 fi
 
+if [ ! -d libs ]; then
+    mkdir -p libs/armeabi
+fi
+   
 cp ../cmcc/libmegjb.so libs/armeabi
 cp ../anzhi/anzhi_sdk_pay.jar libs
 cp ../leyifu/libbsjni.so libs/armeabi
