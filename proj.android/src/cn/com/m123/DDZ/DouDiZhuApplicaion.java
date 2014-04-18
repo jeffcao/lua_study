@@ -141,7 +141,7 @@ public class DouDiZhuApplicaion extends Application {
 		return raw_result != null ? raw_result : "1000";
 	}
 	
-	private String getPaytype() {
+	public String getPaytype() {
 		String raw_result = getByRaw(R.raw.paytype);
 		return raw_result != null ? raw_result : "cmcc";
 	}

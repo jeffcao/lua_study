@@ -42,8 +42,11 @@ public class DouDiZhu_Lua extends Cocos2dxActivity {
 		super.onCreate(savedInstanceState);
 		DDZJniHelper.messageCpp("game_jni");
 		INSTANCE = this;
-		GameInterface.initializeApp(this);
-		GameInterface.setExtraArguments(new String[]{"0000000000000000"});
+		String payType = ((DouDiZhuApplicaion)getApplication()).getPaytype();
+		if ("cmcc".equalsIgnoreCase(payType)) {
+			GameInterface.initializeApp(this);
+			GameInterface.setExtraArguments(new String[]{"0000000000000000"});
+		}
 	}
 
 	static {
