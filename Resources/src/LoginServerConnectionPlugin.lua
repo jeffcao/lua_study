@@ -1,6 +1,7 @@
 LoginServerConnectionPlugin = {}
 require "src.CheckSignLua"
 require 'src.MatchLogic'
+require 'src.ShouchonglibaoDonghua'
 
 function LoginServerConnectionPlugin.bind(theClass)
 	function theClass:sign_success(data)
@@ -55,6 +56,17 @@ function LoginServerConnectionPlugin.bind(theClass)
 		
 		if data.prop_list then
 			GlobalSetting.cache_prop = data.prop_list
+		end
+		
+		if data.shouchong_finished then
+			GlobalSetting.shouchong_finished = data.shouchong_finished
+		end
+		if data.shouchong_finished ~= 1 then
+			ShouchonglibaoDonghua.sharedAnimation()
+		end
+		
+		if data.shouchong_prop_id then
+			GlobalSetting.shouchong_prop_id = data.shouchong_prop_id
 		end
 		
 		MatchLogic.parse_match_joined_when_login(data)
@@ -152,7 +164,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 		end
 		if GlobalSetting.login_server_websocket == nil then
 			print("[LoginServerConnectionPlugin:connect_to_login_server()] login_server is nil, init it.")
-			GlobalSetting.login_server_websocket = WebSocketRails:new(config.login_urls[2], true)
+			GlobalSetting.login_server_websocket = WebSocketRails:new(config.login_urls[4], true)
 			GlobalSetting.login_server_websocket.on_open = __bind(self.on_websocket_ready, self)
 			GlobalSetting.login_server_websocket:bind("connection_error", sign_failure)
 		end

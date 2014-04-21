@@ -73,6 +73,9 @@ GlobalSetting = {
 	
 	game_push_interval = 10,
 	
+	shouchong_finished = 0,
+	shouchong_prop_id = nil,
+	
 	--pay_type = 'anzhi',
 	
 	company_name = {["1019"] = "深圳市景泰通信有限公司", ["1003"]="深圳市新中南实业有限公司", default = "深圳市新中南实业有限公司"},

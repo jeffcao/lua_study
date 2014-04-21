@@ -38,7 +38,7 @@ Explosion = class("Explosion", function()
 end)
 
 function Explosion:ctor()
-	
+
 	local pFrame = cache:spriteFrameByName("baoza_1.png")
 	self:setDisplayFrame(pFrame)
 	self:setScale(GlobalSetting.content_scale_factor)
@@ -81,15 +81,15 @@ function ButterFly:ctor()
 	local pFrame = cache:spriteFrameByName("hu die 001.png")
 	self:setDisplayFrame(pFrame)
 	self:setScale(GlobalSetting.content_scale_factor)
-	
+
 	self.action_tag = 3000
 	self.back_action_tag = 4000
 	self.BACK_TIME = 15
-	
-	local contentSize = self:getContentSize() 
+
+	local contentSize = self:getContentSize()
 	self.half_w = (contentSize.width / 2) * GlobalSetting.content_scale_factor
 	self.half_h = (contentSize.height / 2) * GlobalSetting.content_scale_factor
-	
+
 	self:setPosition(ccp(800 + self.half_w, 295))
 	local flyAnimation = CCAnimationCache:sharedAnimationCache():animationByName("fly")
 	local flyAnimate = CCAnimate:create(flyAnimation)
@@ -102,7 +102,7 @@ end
 function ButterFly:fly()
 	local x = self:getPositionX()
 	local y = self:getPositionY()
-	
+
 	local actions = self:numberOfRunningActions()
 	if (x < 0 - self.half_w or x > 800 + self.half_w or y <= 0 - self.half_h or y > 480 + self.half_h) then
 		self:stopActionByTag(self.action_tag)
@@ -111,9 +111,9 @@ function ButterFly:fly()
 			local b_x = math.random(800)
 			local delay = CCDelayTime:create(self.BACK_TIME)
 			local b_action = CCSequence:createWithTwoActions(delay, CCCallFunc:create(
-					function() 
-						self:setPosition(ccp(b_x, 2 - self.half_h))
-					end))
+			function()
+				self:setPosition(ccp(b_x, 2 - self.half_h))
+			end))
 			cclog("执行飞回动作，时间:" .. self.BACK_TIME .. "x,y:(" .. b_x .. ",0)")
 			b_action:setTag(self.back_action_tag)
 			self:runAction(b_action)
@@ -153,13 +153,13 @@ function Insects:ctor()
 	local pFrame = cache:spriteFrameByName("chong zi01.png")
 	self:setDisplayFrame(pFrame)
 	self:setScale(GlobalSetting.content_scale_factor)
-	
+
 	self.INSECT_DELAY = 120
 	self.action_tag = 3000
-	
-	local contentSize = self:getContentSize() 
+
+	local contentSize = self:getContentSize()
 	self.half_w = (contentSize.width / 2) * GlobalSetting.content_scale_factor
-	
+
 	self:setPosition(ccp(800 + self.half_w, 295))
 	self:scheduleUpdateWithPriorityLua(__bind(self.creep, self), 1)
 end
@@ -182,7 +182,7 @@ function Insects:rightScreenAction()
 	local reset = CCCallFunc:create(function()
 		self:setPosition(ccp(800 + self.half_w,295))
 	end)
-	
+
 	local anims = {creepToDx, turnRight, creepToOx, delay, reset}
 	local action = CCSequence:create(GAnimationPlugin.tabletoarray(anims))
 	return action
@@ -197,7 +197,7 @@ function Insects:creepByX(x)
 	for i = 1, times do
 		table.insert(creeps, self:addCreep(direction))
 	end
-	
+
 	local seq = CCSequence:create(GAnimationPlugin.tabletoarray(creeps))
 	return seq
 end
@@ -235,8 +235,8 @@ function Insects:addTurn(direction)
 	local name = "turn_right"
 	local animate = GAnimationPlugin.getAnimate(name)
 	local anims = {CCDelayTime:create(2 * 0.5), CCMoveBy
-			:create(0, ccp(20, 0)), CCDelayTime:create(0.5), CCMoveBy
-			:create(0, ccp(10, 0)), CCDelayTime:create(2 * 0.5)}
+		:create(0, ccp(20, 0)), CCDelayTime:create(0.5), CCMoveBy
+		:create(0, ccp(10, 0)), CCDelayTime:create(2 * 0.5)}
 	local seq = CCSequence:create(GAnimationPlugin.tabletoarray(anims))
 	local action = CCSpawn:createWithTwoActions(animate, seq)
 	if (direction == -1) then
@@ -248,23 +248,24 @@ end
 
 Insects.sharedInsects = function()
 	local turn_right_frames = { "chong zi04.png", "chong zi03.png",
-			"chong zi06.png", "chong zi07.png", "chong zi08.png" }
+		"chong zi06.png", "chong zi07.png", "chong zi08.png" }
 	GAnimationPlugin.share(turn_right_frames, "turn_right")
-	
+
 	local creep_left_frames = { "chong zi01.png", "chong zi02.png" }
 	GAnimationPlugin.share(creep_left_frames, "creep_left")
-	
+
 	local creep_right_frames = { "chong zi10.png", "chong zi11.png" }
 	GAnimationPlugin.share(creep_right_frames, "creep_right")
-	
+
 	local up_left_frames = { "chong zi04.png", "chong zi03.png", "chong zi04.png" }
 	GAnimationPlugin.share(up_left_frames, "up_left")
-	
+
 	local up_right_frames = { "chong zi08.png", "chong zi09.png",
-			"chong zi08.png" }
+		"chong zi08.png" }
 	GAnimationPlugin.share(up_right_frames, "up_right")
 
 end
+
 
 
 

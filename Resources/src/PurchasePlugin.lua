@@ -1,6 +1,7 @@
 PurchasePlugin = {}
 --purchase logic
 require 'AnzhiPurchase'
+require 'ShouchonglibaoBuyBox'
 
 function PurchasePlugin.bind_ui_buy_prop_event(channel)
 	local event_name = PurchasePlugin.get_event_start() .. 'buy_prop'
@@ -116,6 +117,25 @@ function PurchasePlugin.show_buy_notify(product, which)
 			buy()
 		end
 	end
+end
+
+function PurchasePlugin.show_buy_shouchonglibao(product, which)
+	print("[PurchasePlugin:show_buy_shouchonglibao]")
+
+	local scene = runningscene()
+	print('scene', scene.__cname)
+	local buy = function() 
+		print("PurchasePlugin.show_buy_shouchonglibao.buy")
+		ToastPlugin.show_progress_message_box(strings.pp_get_prop_info)
+		scene.cur_product = product
+		scene.cur_product.which = which or 1
+		PurchasePlugin.buy_prop(product.id)
+	end
+	local dialog = createShouchonglibaoBuyBox(buy)
+	dialog:init(product)
+	dialog:attach_to(scene.rootNode)
+	dialog:show()
+	
 end
 
 function PurchasePlugin.buy_prop(product_id)
