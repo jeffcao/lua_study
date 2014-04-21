@@ -2,6 +2,7 @@
 
 require 'consts'
 require 'src.DialogPlugin'
+require 'telephone-charge.ChargeRoomItem'
 
 TelephoneChargeUtil = {}
 
@@ -10,12 +11,7 @@ TelephoneChargeUtil.is_telephone_charge_room = function(room_info)
 end
 
 TelephoneChargeUtil.on_telehone_charge_room_clicked = function()
-	local layer = CCLayer:create()
-	
-	local label = CCLabelTTF:create('test', 'default', "22")
-	local layer_size = layer:getContentSize()
-	label:setPosition(layer_size.width/2, layer_size.height/2)
-	layer:addChild(label)
+	local layer = createChargeRoomItem()
 	DialogPlugin.bind(layer)
 	layer:attach_to_scene()
 end
