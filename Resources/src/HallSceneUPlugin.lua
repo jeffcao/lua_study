@@ -7,6 +7,7 @@ require "GamingScene"
 require "InitPlayerInfoLayer"
 require "FeedbackScene"
 require "PlayerProductsScene"
+require 'src.TelephoneChargeUtil'
 
 HallSceneUPlugin = {}
 
@@ -382,6 +383,11 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:do_on_room_touched(room_info)
+		if TelephoneChargeUtil.is_telephone_charge_room(room_info) then
+			TelephoneChargeUtil.on_telehone_charge_room_clicked()
+			return
+		end
+		
 		local enter_func = function()
 			print("[HallSceneUPlugin:do_on_room_touched]")
 			if tonumber(GlobalSetting.current_user.score) < tonumber(room_info.min_qualification) then

@@ -22,6 +22,14 @@ function scaleNode(node, scaleFactor)
 	
 end
 
+function dumprect(rect, str)
+	print(str)
+	print('origin.x='..rect.origin.x)
+	print('origin.y='..rect.origin.y)
+	print('size.height='..rect.size.height)
+	print('size.width='..rect.size.width)
+end
+
 function endtolua_guifan()
 	--local scene = createGuifanEndScene()
 	--CCDirector:sharedDirector():pushScene(scene)
