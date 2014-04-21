@@ -34,8 +34,8 @@ function ChargeRoomItem:ctor()
         end
     end
     
-    self.rootNode:setTouchEnabled(true)
-	self.rootNode:registerScriptTouchHandler(onTouchRoom)
+    --self.rootNode:setTouchEnabled(true)
+	--self.rootNode:registerScriptTouchHandler(onTouchRoom)
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 end
