@@ -67,4 +67,6 @@ Res = {
 
 -- 牌型
  s_effect_card_type_path = dirMusic .. "card_type/",
+--首充大礼包动画
+ s_shouchonglibao_plist = dirImage .. "shouchonglibao.plist",
 }

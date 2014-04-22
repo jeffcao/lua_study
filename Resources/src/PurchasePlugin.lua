@@ -1,6 +1,7 @@
 PurchasePlugin = {}
 --purchase logic
 require 'AnzhiPurchase'
+require 'ShouchonglibaoBuyBox'
 
 function PurchasePlugin.bind_ui_buy_prop_event(channel)
 	local event_name = PurchasePlugin.get_event_start() .. 'buy_prop'
@@ -118,7 +119,27 @@ function PurchasePlugin.show_buy_notify(product, which)
 	end
 end
 
-function PurchasePlugin.buy_prop(product_id)
+function PurchasePlugin.show_buy_shouchonglibao(product, which)
+	print("[PurchasePlugin:show_buy_shouchonglibao]")
+
+	local scene = runningscene()
+	print('scene', scene.__cname)
+	local buy = function() 
+		print("PurchasePlugin.show_buy_shouchonglibao.buy")
+		ToastPlugin.show_progress_message_box(strings.pp_get_prop_info)
+		scene.cur_product = product
+		scene.cur_product.which = which or 1
+		PurchasePlugin.buy_prop(product.id, true)
+	end
+	
+	local dialog = createShouchonglibaoBuyBox(buy)
+	dialog:init(product)
+	dialog:attach_to(scene.rootNode)
+	dialog:show()
+	
+end
+
+function PurchasePlugin.buy_prop(product_id, dev_test)
 	local failure_msg = strings.hscp_purchase_prop_w
 	local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, payment=getPayType()}
 
@@ -132,9 +153,19 @@ function PurchasePlugin.buy_prop(product_id)
 	end
 	local event_name = PurchasePlugin.get_event_start() .. 'buy_prop'
 	print('buy_prop event_name is', event_name)
-	ws:trigger(event_name, event_data, PurchasePlugin.do_on_buy_message, failure_fuc)
+	if dev_test then
+		ws:trigger(event_name, event_data, PurchasePlugin.do_on_buy_message_dev_test, failure_fuc)
+	else
+		ws:trigger(event_name, event_data, PurchasePlugin.do_on_buy_message, failure_fuc)
+	end
+	
 end
 
+function PurchasePlugin.do_on_buy_message_dev_test(data)
+	print("[PurchasePlugin:do_on_buy_message_dev_test]")
+	dump(data, "[PurchasePlugin:do_on_buy_message_dev_test], data=> ")
+	ToastPlugin.hide_progress_message_box()
+end
 --data:content
 function PurchasePlugin.do_on_buy_message(data)
 	print("[PurchasePlugin:do_on_buy_message]")

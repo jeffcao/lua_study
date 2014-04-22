@@ -23,6 +23,7 @@ require 'src.HallMatchPlugin'
 require 'src.MatchLogic'
 require 'src.KickOut'
 require 'src.PurchasePlugin'
+require 'src.ShouchonglibaoDonghua'
 
 local cjson = require "cjson"
 HallScene = class("HallScene", function() 
@@ -52,6 +53,7 @@ HallScene = class("HallScene", function()
 	self.on_task_btn_clicked = __bind(self.do_on_task_btn_clicked, self)
 	self.on_vip_clicked = __bind(self.on_vip_click, self)
 	self.on_rank_btn_clicked = __bind(self.getRank, self)
+	self.on_shouchonglibao_clicked = __bind(self.on_shouchong_click, self)
 	
 	local ccbproxy = CCBProxy:create()
  	local node = CCBReaderLoad("HallScene.ccbi", ccbproxy, false, "")
@@ -138,8 +140,18 @@ HallScene = class("HallScene", function()
 	Stats:on_start("hall")
 	
 	self:checkVip()
-	
+	self:initShouchonglibao()
 	--self:refresh_room_data()
+ end
+ 
+ function HallScene:initShouchonglibao()
+ 	print("HallScene:initShouchonglibao, GlobalSetting.shouchong_finished=", GlobalSetting.shouchong_finished)
+ 	if GlobalSetting.shouchong_finished == 1 then
+ 		self.hall_shouchong_layer:setVisible(false)
+ 	else
+ 		self.hall_shouchong_layer:setVisible(true)
+ 		ShouchonglibaoDonghua.show(self.hall_shouchong_layer, ccp(self.hall_shouchonglibao_menu:getPosition()))
+ 	end
  end
  
  function HallScene:checkVip()

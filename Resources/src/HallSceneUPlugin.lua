@@ -95,6 +95,16 @@ function HallSceneUPlugin.bind(theClass)
 		CCDirector:sharedDirector():pushScene(scene)
 	end
 	
+	function theClass:on_shouchong_click()
+		local product = GlobalSetting.cache_prop["shouchongdalibao"]
+		dump(product, "HallSceneUPlug.on_shouchong_click, product=> ")
+		PurchasePlugin.show_buy_shouchonglibao(product)
+		
+--		GlobalSetting.shouchong_finished = 1
+--		self.hall_shouchong_layer:setVisible(false)
+		print("HallSceneUPlugin.on_shouchong_click.")
+	end
+	
 	--通过global setting存储的user来更新
 	function theClass:update_player_beans_with_gl()
 		cclog("update_player_beans_with_gl()")
