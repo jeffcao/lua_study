@@ -19,26 +19,13 @@ function ChargeRoomItem:ctor()
  	CCBReaderLoad("ChargeRoomItem.ccbi", ccbproxy, true, "ChargeRoomItem")
 	self:addChild(self.rootNode)
 
-	local function onTouchRoom(eventType, x, y)
-		print("room item touch:" .. eventType)
-		if not self.rootNode:boundingBox():containsPoint(self:convertToNodeSpace(ccp(x, y))) then
-			print("not in boundingbox")
-			return
-		end
-        if eventType == "began" then
-        	self.dianji:setVisible(true)
-            return true
-        elseif eventType == "moved" then
-        elseif eventType == "ended" then
-        	print("[ChargeRoomItem:onTouchRoom] ended")
-        end
-    end
-    
-    --self.rootNode:setTouchEnabled(true)
-	--self.rootNode:registerScriptTouchHandler(onTouchRoom)
-	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+	self.bg:setScaleX(GlobalSetting.content_scale_factor * 0.852)
+	self.bg:setScaleY(GlobalSetting.content_scale_factor * 0.644)
 end
 
-function ChargeRoomItem:init_room_info()
+function ChargeRoomItem:init_room_info(room_info)
+end
+
+function ChargeRoomItem:on_click()
 end

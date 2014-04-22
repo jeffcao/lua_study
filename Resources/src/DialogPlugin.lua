@@ -35,6 +35,7 @@ function DialogPlugin.bind(theClass)
 		if not self:isVisible() then print("self is not visible") return false end
 		print('dialog plugin event is', e)
 		if self.dialogplugin_sel_childs then
+			dump(self.dialogplugin_sel_childs, 'self.dialogplugin_sel_childs')
 			for k,v in pairs(self.dialogplugin_sel_childs) do
 				if cccn(v,x,y) then 
 					local is_btn = v:getTag() == 1011
