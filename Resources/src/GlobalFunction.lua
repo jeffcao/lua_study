@@ -527,6 +527,7 @@ end
 function hasDialogFloating(node)
 	local max_visible_zorder_node = getMaxZOrderVisibleChild(getRootParent(node))
 	local result = max_visible_zorder_node.is_dialog
+	print('has dialog floating', result)
 	return result
 end
 
