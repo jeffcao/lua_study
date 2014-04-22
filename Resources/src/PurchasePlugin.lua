@@ -11,13 +11,14 @@ end
 
 function PurchasePlugin.on_server_notify_buy_finish_success(data)
 	print("[PurchasePlugin:on_server_notify_buy_finish_success]")
+	dump(data, 'on_server_notify_buy_finish_success, data=> ') 
 	PurchasePlugin.show_back_message_box(data.content)
 
 	local success = function(data) 
-		dump(data, 'get user profile after buy success') 
 		GlobalSetting.current_user.score = data.score
 		GlobalSetting.current_user.win_count = data.win_count
 		GlobalSetting.current_user.lost_count = data.lost_count
+		GlobalSetting.shouchong_finished = data.shouchong_finished
 	end
 	--after buy finish success, there are something to do
 	local scene = runningscene()
@@ -26,6 +27,13 @@ function PurchasePlugin.on_server_notify_buy_finish_success(data)
 		scene.after_trigger_success = __bind(scene.display_player_info, scene)
 	else
 		scene.after_trigger_success = success
+	end
+	
+	if data.shouchong_finished and data.shouchong_finished == 1 then
+		GlobalSetting.shouchong_finished = 1
+		if scene.on_shouchong_finished then
+			scene:on_shouchong_finished()
+		end
 	end
 	
 	if scene.get_user_profile then

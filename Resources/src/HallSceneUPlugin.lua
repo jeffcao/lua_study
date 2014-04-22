@@ -105,6 +105,13 @@ function HallSceneUPlugin.bind(theClass)
 		print("HallSceneUPlugin.on_shouchong_click.")
 	end
 	
+	function theClass:on_shouchong_finished()
+		if self.hall_shouchong_layer then
+			self.hall_shouchong_layer:setVisible(false)
+		end
+		print("HallSceneUPlugin.on_shouchong_finished.")
+	end
+	
 	--通过global setting存储的user来更新
 	function theClass:update_player_beans_with_gl()
 		cclog("update_player_beans_with_gl()")
@@ -240,6 +247,7 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:display_player_info(data)
+--		dump(data, "HallSceneUPLug:display_player_info, data=> ")
 		self:init_current_player_info()
 		self:update_global_player_score_ifno(data)
 		if tonumber(GlobalSetting.current_user.flag) == 0 and GlobalSetting.show_init_player_info_box == 1 then
@@ -249,7 +257,7 @@ function HallSceneUPlugin.bind(theClass)
 			init_player_info_layer:show()
 			GlobalSetting.show_init_player_info_box = 0
 		end
-		
+		 
 		self:get_today_activity()
 		self.after_trigger_success = __bind(self.init_today_activity, self)
 	end
