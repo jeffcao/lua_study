@@ -23,7 +23,14 @@ function PurchasePlugin.on_server_notify_buy_finish_success(data)
 	local scene = runningscene()
 	
 	if tonumber(data.shouchong_finished) == 1 then
+		if GlobalSetting.shouchong_finished == 0 then
+			GlobalSetting.shouchong_state_changed = true
+		end
 		GlobalSetting.shouchong_finished = 1
+		
+		if scene.on_shouchonglibao_finished then
+			scene:on_shouchonglibao_finished()
+		end
 	end
 	
 	--update user info

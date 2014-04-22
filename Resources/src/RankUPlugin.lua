@@ -338,4 +338,9 @@ function RankUPlugin.bind(theClass)
 	function theClass:get_mobile_charge()
 		self:actual_get_charge()
 	end
+	
+	function theClass:destoryAllTimerHandler()
+		self.set_huafei_rank_time_hdlr:cancel()
+		self.set_huafei_rank_time_hdlr = nil
+	end
 end

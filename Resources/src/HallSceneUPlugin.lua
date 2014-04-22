@@ -20,6 +20,16 @@ function HallSceneUPlugin.bind(theClass)
 		self:checkVip()
 	end
 	
+	function theClass:on_shouchonglibao_finished()
+		print("HallSceneUPlugin.on_shouchonglibao_finished ")
+		self.hall_shouchong_layer:setVisible(false)
+		if self.rank_dialog then
+			self.rank_dialog:dismiss(true)
+			self.rank_dialog = nil
+		end
+		
+	end
+	
 	function theClass:getRank()
 		if not self.rank_dialog then
 			self.rank_dialog = createRank(GlobalSetting.hall_server_websocket,'ui.')

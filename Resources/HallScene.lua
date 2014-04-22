@@ -148,6 +148,12 @@ HallScene = class("HallScene", function()
  	print("HallScene:initShouchonglibao, GlobalSetting.shouchong_finished=", GlobalSetting.shouchong_finished)
  	if GlobalSetting.shouchong_finished == 1 then
  		self.hall_shouchong_layer:setVisible(false)
+ 		if GlobalSetting.shouchong_state_changed then
+ 			if self.rank_dialog then
+				self.rank_dialog:dismiss(true)
+				self.rank_dialog = nil
+			end
+ 		end
  	else
  		self.hall_shouchong_layer:setVisible(true)
  		ShouchonglibaoDonghua.show(self.hall_shouchong_layer, ccp(self.hall_shouchonglibao_menu:getPosition()))
