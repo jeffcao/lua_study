@@ -1,6 +1,7 @@
 require 'CCBReaderLoad'
 require 'src.DialogPlugin'
 require 'telephone-charge.ChargeRoomItem'
+require 'telephone-charge.ChargeRoomInfo'
 
 ChargeRoomHall = class("ChargeRoomHall", function() 
 	return display.newLayer("ChargeRoomHall")
@@ -120,7 +121,9 @@ function ChargeRoomHall:init_rooms()
         		for index=1, children:count() do
         			local child = children:objectAtIndex(index - 1)
         			if cccn(child.rootNode, x, y) then
-        				ToastPlugin.show_message_box_suc('click at' .. index, {dismiss_time=0.5})
+        			--	ToastPlugin.show_message_box_suc('click at' .. index, {dismiss_time=0.5})
+        				local info = createChargeRoomInfo()
+        				info:show()
         				break
         			end
         		end
