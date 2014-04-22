@@ -3,6 +3,7 @@ bin/
 gen/
 .project
 lint.xml
+Published-HTML5/
 *~
 *.DS*
 tools/encrypt_js

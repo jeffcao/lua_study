@@ -479,7 +479,7 @@
 												<string>FloatScale</string>
 												<key>value</key>
 												<array>
-													<real>19</real>
+													<real>18</real>
 													<integer>0</integer>
 												</array>
 											</dict>
@@ -607,7 +607,7 @@
 												<string>FloatScale</string>
 												<key>value</key>
 												<array>
-													<real>19</real>
+													<real>18</real>
 													<integer>0</integer>
 												</array>
 											</dict>
@@ -837,7 +837,7 @@
 												<string>FloatScale</string>
 												<key>value</key>
 												<array>
-													<real>19</real>
+													<real>18</real>
 													<integer>0</integer>
 												</array>
 											</dict>
@@ -965,7 +965,7 @@
 												<string>FloatScale</string>
 												<key>value</key>
 												<array>
-													<real>19</real>
+													<real>18</real>
 													<integer>0</integer>
 												</array>
 											</dict>
@@ -1038,7 +1038,7 @@
 										<key>value</key>
 										<array>
 											<real>30</real>
-											<real>47</real>
+											<real>48</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -1197,7 +1197,7 @@
 												<string>FloatScale</string>
 												<key>value</key>
 												<array>
-													<real>19</real>
+													<real>18</real>
 													<integer>0</integer>
 												</array>
 											</dict>
@@ -1325,7 +1325,7 @@
 												<string>FloatScale</string>
 												<key>value</key>
 												<array>
-													<real>19</real>
+													<real>18</real>
 													<integer>0</integer>
 												</array>
 											</dict>
@@ -1398,7 +1398,7 @@
 										<key>value</key>
 										<array>
 											<real>30</real>
-											<real>24</real>
+											<real>26</real>
 											<integer>4</integer>
 										</array>
 									</dict>
