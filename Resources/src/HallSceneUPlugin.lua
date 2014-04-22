@@ -97,6 +97,7 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:on_shouchong_click()
 		local product = GlobalSetting.cache_prop["shouchongdalibao"]
+		dump(product, "HallSceneUPlug.on_shouchong_click, product=> ")
 		PurchasePlugin.show_buy_shouchonglibao(product)
 		
 --		GlobalSetting.shouchong_finished = 1
