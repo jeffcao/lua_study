@@ -46,6 +46,9 @@ function DialogPlugin.bind(theClass)
 				end
 			end
 		end
+--		dump(self.bg, "DialogPlugin.on_touch, self.bg=> ")
+--		dump(cccn(self.bg, x,y), "DialogPlugin.on_touch, cccn(self.bg, x,y)=> ")
+--		dump(self.dialogplugin_out_dismiss, "DialogPlugin.on_touch, self.dialogplugin_out_dismiss=> ")
 		if self.bg and (not cccn(self.bg, x,y)) and self.dialogplugin_out_dismiss then
 			self:removeFromParentAndCleanup(true)
 		end

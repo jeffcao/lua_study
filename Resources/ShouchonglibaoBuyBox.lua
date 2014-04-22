@@ -47,7 +47,7 @@ end
 
 function ShouchonglibaoBuyBox:init()
 	print('ShouchonglibaoBuyBox.init')
-		
+	self:setClickOutDismiss(true)
 end
 
 UIControllerPlugin.bind(ShouchonglibaoBuyBox)
