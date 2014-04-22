@@ -104,14 +104,7 @@ function HallSceneUPlugin.bind(theClass)
 --		self.hall_shouchong_layer:setVisible(false)
 		print("HallSceneUPlugin.on_shouchong_click.")
 	end
-	
-	function theClass:on_shouchong_finished()
-		if self.hall_shouchong_layer then
-			self.hall_shouchong_layer:setVisible(false)
-		end
-		print("HallSceneUPlugin.on_shouchong_finished.")
-	end
-	
+
 	--通过global setting存储的user来更新
 	function theClass:update_player_beans_with_gl()
 		cclog("update_player_beans_with_gl()")
