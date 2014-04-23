@@ -111,8 +111,8 @@ function PurchasePlugin.show_buy_notify(product, which)
 		ToastPlugin.show_progress_message_box(strings.pp_get_prop_info)
 		scene.cur_product = product
 		scene.cur_product.which = which or 1
-		PurchasePlugin.buy_prop(product.id)
 		PurchasePlugin.buy_shouchonglibao = false
+		PurchasePlugin.buy_prop(product.id)
 	end
 	local pay_type = getPayType()
 	if pay_type == 'anzhi' or pay_type == 'leyifu' then
@@ -153,8 +153,9 @@ function PurchasePlugin.show_buy_shouchonglibao(product, which)
 		ToastPlugin.show_progress_message_box(strings.pp_get_prop_info)
 		scene.cur_product = product
 		scene.cur_product.which = which or 1
-		PurchasePlugin.buy_prop(product.id, false)
 		PurchasePlugin.buy_shouchonglibao = true
+		PurchasePlugin.buy_prop(product.id)
+		
 	end
 	
 	local dialog = createShouchonglibaoBuyBox(buy)
@@ -164,7 +165,7 @@ function PurchasePlugin.show_buy_shouchonglibao(product, which)
 	
 end
 
-function PurchasePlugin.buy_prop(product_id, dev_test)
+function PurchasePlugin.buy_prop(product_id)
 	local failure_msg = strings.hscp_purchase_prop_w
 	local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, payment=getPayType()}
 
@@ -178,7 +179,7 @@ function PurchasePlugin.buy_prop(product_id, dev_test)
 	end
 	local event_name = PurchasePlugin.get_event_start() .. 'buy_prop'
 	print('buy_prop event_name is', event_name)
-	if dev_test then
+	if GlobalSetting.run_env == 'test' then
 		ws:trigger(event_name, event_data, PurchasePlugin.do_on_buy_message_dev_test, failure_fuc)
 	else
 		ws:trigger(event_name, event_data, PurchasePlugin.do_on_buy_message, failure_fuc)
@@ -189,7 +190,7 @@ end
 function PurchasePlugin.do_on_buy_message_dev_test(data)
 	print("[PurchasePlugin:do_on_buy_message_dev_test]")
 	dump(data, "[PurchasePlugin:do_on_buy_message_dev_test], data=> ")
-	if ToastPlugin.buy_shouchonglibao then
+	if PurchasePlugin.buy_shouchonglibao then
 		GlobalSetting.shouchong_ordered = true
 	end
 	ToastPlugin.hide_progress_message_box()
