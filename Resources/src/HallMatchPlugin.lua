@@ -37,21 +37,6 @@ function HallMatchPlugin.bind(theClass)
 			print('refresh hall room data on_global_match_change')
 			GlobalSetting.hall_scene:refresh_room_data()
 		end
-		--[[
-		local room_id = tonumber(room_info.room_id)
-		if not self.room_datas then return end
-		dump(self.room_datas, 'self.room_datas')
-		for _,room in pairs(self.room_datas.room) do
-			if tonumber(room.room_id) == room_id then
-				for k,v in pairs(room) do
-					if room_info[k] ~= nil then
-						room[k] = room_info[k]--只copy房间本身就有的值
-					end
-				end
-			end
-		end
-		self.room_layer_t:reloadData()
-		]]
 	end
 	
 	function theClass:on_join_success(room_info)

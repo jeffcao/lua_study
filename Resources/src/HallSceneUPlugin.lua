@@ -7,7 +7,7 @@ require "GamingScene"
 require "InitPlayerInfoLayer"
 require "FeedbackScene"
 require "PlayerProductsScene"
-require 'src.TelephoneChargeUtil'
+require 'telephone-charge.TelephoneChargeUtil'
 
 HallSceneUPlugin = {}
 

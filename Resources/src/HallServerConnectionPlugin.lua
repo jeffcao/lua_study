@@ -49,6 +49,12 @@ function HallServerConnectionPlugin.bind(theClass)
 
 	end
 	
+	function theClass:get_charge_matches()
+		self.failure_msg = strings.hscp_get_charge_matches_w
+		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id}
+		self:call_server_method("get_room", event_data)
+	end
+	
 	function theClass:get_today_activity()
 		self.failure_msg = strings.hscp_get_today_activity_w
 		local event_data = {retry="0"}

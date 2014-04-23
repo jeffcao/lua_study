@@ -88,6 +88,8 @@ hsp_connect_game_server_w = '连接游戏服务器失败.',
 --HallServerConnectionPlugin
 hscp_check_connection_w = '与服务器连接认证失败',
 hscp_get_rooms_w = '获取房间列表失败',
+hscp_get_charge_matches_i = '获取话费房比赛...',
+hscp_get_charge_matches_w = '获取话费房比赛失败',
 hscp_get_today_activity_w = '获取今日活动失败',
 hscp_zaixianyouli = strings_general.g_zaixianyouli,--'在线有礼：您已在线满minutes分钟，获得了beans个豆子',
 hscp_get_player_info_w = '获取玩家信息失败',
