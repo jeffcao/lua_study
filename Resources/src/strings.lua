@@ -185,5 +185,6 @@ pp_get_prop_info = '正在获取道具信息...',
 
 --GDataPlugin
 gdp_finding = '请稍等，正在为您匹配玩家...',
+shouchong_warning = "此礼包购买中，请勿重复购买",
 }
 

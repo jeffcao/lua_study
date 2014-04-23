@@ -64,6 +64,10 @@ function LoginServerConnectionPlugin.bind(theClass)
 		if data.shouchong_finished ~= 1 then
 			ShouchonglibaoDonghua.sharedAnimation()
 		end
+		if data.shouchong_ordered ~= nil then
+			GlobalSetting.shouchong_ordered = data.shouchong_ordered
+			print("LoginServerConnectionPlugin.sign_success, GlobalSetting.shouchong_ordered=> ", GlobalSetting.shouchong_ordered)
+		end
 		
 		if data.shouchong_prop_id then
 			GlobalSetting.shouchong_prop_id = data.shouchong_prop_id
