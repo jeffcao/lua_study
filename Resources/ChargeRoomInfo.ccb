@@ -610,7 +610,7 @@
 								<key>value</key>
 								<array>
 									<string>ccbResources/charge.plist</string>
-									<string>weizi_bisaijiangli.jpg</string>
+									<string>weizi_bisaijiangli.png</string>
 								</array>
 							</dict>
 						</array>
@@ -936,7 +936,7 @@
 								<key>value</key>
 								<array>
 									<string>ccbResources/charge.plist</string>
-									<string>weizi_bisaiguize.jpg</string>
+									<string>weizi_bisaiguize.png</string>
 								</array>
 							</dict>
 						</array>
