@@ -610,7 +610,7 @@
 								<key>value</key>
 								<array>
 									<string>ccbResources/charge.plist</string>
-									<string>weizi_bisaiguize.png</string>
+									<string>weizi_bisaijiangli.jpg</string>
 								</array>
 							</dict>
 						</array>
@@ -625,9 +625,9 @@
 						<key>displayName</key>
 						<string>CCLabelTTF</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>award</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -637,7 +637,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>218.8800048828125</real>
+									<real>217.44000244140625</real>
 									<real>57.600002288818359</real>
 									<integer>0</integer>
 								</array>
@@ -883,7 +883,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>5</real>
+									<real>4.6321840286254883</real>
 									<real>90</real>
 									<integer>4</integer>
 								</array>
@@ -936,10 +936,12 @@
 								<key>value</key>
 								<array>
 									<string>ccbResources/charge.plist</string>
-									<string>weizi_bisaiguize.png</string>
+									<string>weizi_bisaiguize.jpg</string>
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -951,9 +953,9 @@
 						<key>displayName</key>
 						<string>CCLabelTTF</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>rule</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -1867,8 +1869,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

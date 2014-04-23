@@ -269,9 +269,9 @@
 								<key>displayName</key>
 								<string>CCSprite</string>
 								<key>memberVarAssignmentName</key>
-								<string></string>
+								<string>head</string>
 								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
+								<integer>1</integer>
 								<key>properties</key>
 								<array>
 									<dict>
@@ -543,9 +543,9 @@
 										<key>displayName</key>
 										<string>CCLabelTTF</string>
 										<key>memberVarAssignmentName</key>
-										<string></string>
+										<string>start_time</string>
 										<key>memberVarAssignmentType</key>
-										<integer>0</integer>
+										<integer>1</integer>
 										<key>properties</key>
 										<array>
 											<dict>
@@ -901,9 +901,9 @@
 										<key>displayName</key>
 										<string>CCLabelTTF</string>
 										<key>memberVarAssignmentName</key>
-										<string></string>
+										<string>ante</string>
 										<key>memberVarAssignmentType</key>
-										<integer>0</integer>
+										<integer>1</integer>
 										<key>properties</key>
 										<array>
 											<dict>
@@ -1127,8 +1127,6 @@
 										<false/>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 							<dict>
 								<key>baseClass</key>

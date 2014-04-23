@@ -30,16 +30,29 @@
                 <key>sourceSize</key>
                 <string>{302,174}</string>
             </dict>
-            <key>weizi_bisaiguize.png</key>
+            <key>weizi_bisaiguize.jpg</key>
             <dict>
                 <key>frame</key>
-                <string>{{168,226},{90,24}}</string>
+                <string>{{196,141},{92,26}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{1,1},{90,24}}</string>
+                <string>{{0,0},{92,26}}</string>
+                <key>sourceSize</key>
+                <string>{92,26}</string>
+            </dict>
+            <key>weizi_bisaijiangli.jpg</key>
+            <dict>
+                <key>frame</key>
+                <string>{{168,226},{92,26}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{92,26}}</string>
                 <key>sourceSize</key>
                 <string>{92,26}</string>
             </dict>
@@ -144,7 +157,7 @@
             <key>size</key>
             <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:fe2ff45c0e625a859ee0ca35604fd91f:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:57a495f0cda697b419d61c29f26a9768:1/1$</string>
             <key>textureFileName</key>
             <string>charge.png</string>
         </dict>
