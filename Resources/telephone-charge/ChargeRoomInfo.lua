@@ -1,5 +1,6 @@
 require 'CCBReaderLoad'
 require 'src.DialogPlugin'
+require 'telephone-charge.DataProxy'
 
 ChargeRoomInfo = class("ChargeRoomInfo", function() 
 	return display.newLayer("ChargeRoomInfo")
@@ -36,9 +37,9 @@ function ChargeRoomInfo:ctor()
 end
 
 function ChargeRoomInfo:init_room_info(room_info)
-end
-
-function ChargeRoomInfo:on_click()
+	local data = DataProxy.get_exist_instance('charge_matches'):get_data()
+	self.rule:setString(data.rule)
+	self.award:setString(data.awards[room_info.type])
 end
 
 DialogPlugin.bind(ChargeRoomInfo)

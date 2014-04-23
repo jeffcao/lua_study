@@ -2,6 +2,7 @@ require 'CCBReaderLoad'
 require 'src.DialogPlugin'
 require 'telephone-charge.ChargeRoomItem'
 require 'telephone-charge.ChargeRoomInfo'
+require 'telephone-charge.DataProxy'
 
 ChargeRoomHall = class("ChargeRoomHall", function() 
 	return display.newLayer("ChargeRoomHall")
@@ -35,13 +36,38 @@ function ChargeRoomHall:ctor()
 	self.close_btn.on_touch_fn = function()
 		self:dismiss()
 	end
+	
+	self:registerNodeEvent()
+	--[[
+	self:registerScriptHandler(function(event) 
+		print('charge_room_hall event:'..event)
+		if self[event] then
+			self[event](self)
+		end
+	end)
+	]]
 end
-local time = 0
+
+function ChargeRoomHall:onEnter()
+	print('charge_room_hall register')
+	DataProxy.get_exist_instance('charge_matches'):register('charge_room_hall', __bind(self.init_rooms, self))
+end
+
+function ChargeRoomHall:onExit()
+	print('charge_room_hall unregister')
+	DataProxy.get_exist_instance('charge_matches'):unregister('charge_room_hall')
+end
+
+--local time = 0
 local positions = {}
 positions[3] = {ccp(25, 120), ccp(270, 120), ccp(515, 120)}
 positions[4] = {ccp(25, 170), ccp(270, 170), ccp(515, 170), ccp(270, 55)}
 function ChargeRoomHall:init_rooms()
-	time = time + 1
+--	time = time + 1
+	local matches = DataProxy.get_exist_instance('charge_matches'):get_data().matches
+	dump(matches, 'matches')
+	local count = #matches
+	
 	local layer = CCLayer:create()
 	local winSize = CCDirector:sharedDirector():getWinSize()
 	layer:setAnchorPoint(ccp(0,0.5))
@@ -51,16 +77,17 @@ function ChargeRoomHall:init_rooms()
 	local margin = 25
 	local deltax = 225
 	
-	if time <= 4 then
+	if count <= 4 then
 		local poses = nil
-		if time <= 3 then
+		if count <= 3 then
 			poses = positions[3]
 		else
 			poses = positions[4]
 		end
 		
-		for index=1, time do
+		for index=1, count do
 			local layer1 = createChargeRoomItem()
+			layer1:init_room_info(matches[index])
 			layer1:setPosition(poses[index])
 			layer:addChild(layer1)
 		end
@@ -71,17 +98,19 @@ function ChargeRoomHall:init_rooms()
 		margin = 50
 		local y1 = 170
 		local y2 = 55
-		local single = toint(time/2)
+		local single = toint(count/2)
 		
 		local startx = margin
 		
 		for index=1, single do
 			local layer2 = createChargeRoomItem()
+			layer2:init_room_info(matches[index])
 			layer2:setPosition(ccp(startx + (index-1)*deltax, y1))
 			layer:addChild(layer2)
 		end
-		for index=single+1, time do
+		for index=single+1, count do
 			local layer2 = createChargeRoomItem()
+			layer2:init_room_info(matches[index])
 			layer2:setPosition(ccp(startx + (index-single-1)*deltax, y2))
 			layer:addChild(layer2)
 		end
@@ -122,8 +151,7 @@ function ChargeRoomHall:init_rooms()
         			local child = children:objectAtIndex(index - 1)
         			if cccn(child.rootNode, x, y) then
         			--	ToastPlugin.show_message_box_suc('click at' .. index, {dismiss_time=0.5})
-        				local info = createChargeRoomInfo()
-        				info:show()
+        				child:on_click()
         				break
         			end
         		end
