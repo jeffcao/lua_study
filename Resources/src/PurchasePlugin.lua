@@ -22,16 +22,20 @@ function PurchasePlugin.on_server_notify_buy_finish_success(data)
 	--after buy finish success, there are something to do
 	local scene = runningscene()
 	
-	if tonumber(data.shouchong_finished) == 1 then
-		if GlobalSetting.shouchong_finished == 0 then
-			GlobalSetting.shouchong_state_changed = true
+	if data.shouchong_finished then
+		if tonumber(data.shouchong_finished) == 1 then
+			GlobalSetting.shouchong_finished = 1
+			GlobalSetting.shouchong_rank_changed = true
+			if scene.on_shouchonglibao_finished then
+				scene:on_shouchonglibao_finished()
+			end
+		else
+			GlobalSetting.shouchong_finished = 0
+			GlobalSetting.shouchong_ordered = false
 		end
-		GlobalSetting.shouchong_finished = 1
-		
-		if scene.on_shouchonglibao_finished then
-			scene:on_shouchonglibao_finished()
-		end
+
 	end
+
 	
 	--update user info
 	if scene.display_player_info then
@@ -108,6 +112,7 @@ function PurchasePlugin.show_buy_notify(product, which)
 		scene.cur_product = product
 		scene.cur_product.which = which or 1
 		PurchasePlugin.buy_prop(product.id)
+		PurchasePlugin.buy_shouchonglibao = false
 	end
 	local pay_type = getPayType()
 	if pay_type == 'anzhi' or pay_type == 'leyifu' then
@@ -138,10 +143,18 @@ function PurchasePlugin.show_buy_shouchonglibao(product, which)
 	print('scene', scene.__cname)
 	local buy = function() 
 		print("PurchasePlugin.show_buy_shouchonglibao.buy")
+		print("PurchasePlugin.show_buy_shouchonglibao.buy, GlobalSetting.shouchong_ordered=> ", GlobalSetting.shouchong_ordered)
+		
+		if GlobalSetting.shouchong_ordered then
+			ToastPlugin.show_message_box(strings.shouchong_warning) 
+			return
+		end
+		
 		ToastPlugin.show_progress_message_box(strings.pp_get_prop_info)
 		scene.cur_product = product
 		scene.cur_product.which = which or 1
-		PurchasePlugin.buy_prop(product.id, true)
+		PurchasePlugin.buy_prop(product.id, false)
+		PurchasePlugin.buy_shouchonglibao = true
 	end
 	
 	local dialog = createShouchonglibaoBuyBox(buy)
@@ -176,6 +189,9 @@ end
 function PurchasePlugin.do_on_buy_message_dev_test(data)
 	print("[PurchasePlugin:do_on_buy_message_dev_test]")
 	dump(data, "[PurchasePlugin:do_on_buy_message_dev_test], data=> ")
+	if ToastPlugin.buy_shouchonglibao then
+		GlobalSetting.shouchong_ordered = true
+	end
 	ToastPlugin.hide_progress_message_box()
 end
 --data:content
@@ -204,6 +220,9 @@ function PurchasePlugin.do_confirm_buy(data)
 		PurchasePlugin.cmcc_pay(data)
 	elseif payType == 'leyifu' then
 		PurchasePlugin.leyifu_pay(data)
+	end
+	if PurchasePlugin.buy_shouchonglibao then
+		GlobalSetting.shouchong_ordered = true
 	end
 end
 

@@ -49,7 +49,7 @@ GlobalSetting = {
 	debug_dump_internal_event = false,
 	debug_timer_name = false,
 	
-	run_env = "test",
+	run_env = "prod",
 	
 	app_id = "public_market_app",
 	
@@ -75,6 +75,8 @@ GlobalSetting = {
 	
 	shouchong_finished = 0,
 	shouchong_prop_id = nil,
+	shouchong_rank_changed = false,
+	shouchong_ordered = true,
 	
 	--pay_type = 'anzhi',
 	
