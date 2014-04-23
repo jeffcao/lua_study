@@ -15,7 +15,7 @@ TelephoneChargeUtil.on_telehone_charge_room_clicked = function()
 	--this function only be called in hall scene, so can use hall scene websocket directly
 	local hall_scene = runningscene()
 	
-	hall_scene.on_trigger_success = function(data)
+	hall_scene.after_trigger_success = function(data)
 		ToastPlugin.hide_progress_message_box()
 		local data_proxy = createDataProxy('charge_matches')
 		data_proxy:set_data(TelephoneChargeUtil.get_test_data())

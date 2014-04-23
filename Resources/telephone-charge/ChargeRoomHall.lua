@@ -38,14 +38,6 @@ function ChargeRoomHall:ctor()
 	end
 	
 	self:registerNodeEvent()
-	--[[
-	self:registerScriptHandler(function(event) 
-		print('charge_room_hall event:'..event)
-		if self[event] then
-			self[event](self)
-		end
-	end)
-	]]
 end
 
 function ChargeRoomHall:onEnter()
