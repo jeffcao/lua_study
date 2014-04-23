@@ -271,8 +271,6 @@
 						<false/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -731,7 +729,7 @@
 										<key>value</key>
 										<array>
 											<string>ccbResources/common.plist</string>
-											<string>btn_use_a.png</string>
+											<string>btn_buy_a.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -746,6 +744,8 @@
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
