@@ -41,6 +41,11 @@ TelephoneChargeUtil.get_test_data = function()
 					 '第三名   3元\n'..
 					 '第四至第六名   20000豆\n'..
 					 '第七至第十名   10000豆'
+	data.awards.twenty = '第一名  20元\n'..
+					 '第二名   10元\n'..
+					 '第三名   6元\n'..
+					 '第四至第六名   40000豆\n'..
+					 '第七至第十名   20000豆'
 	data.awards.thirty = '第一名  30元\n'..
 					 	'第二名   15元\n'..
 					 	'第三名   9元\n'..
@@ -50,7 +55,7 @@ TelephoneChargeUtil.get_test_data = function()
 	data.matches = {}
 	local match10 = {type='ten', start_time='08:00', ante=10000}
 	local match11 = {type='ten', start_time='09:00', ante=10000}
-	local match30 = {type='thirty', start_time='10:00', ante=30000}
+	local match30 = {type='twenty', start_time='10:00', ante=20000}
 	local match31 = {type='thirty', start_time='11:00', ante=30000}
 	table.insert(data.matches, match10)
 	table.insert(data.matches, match11)

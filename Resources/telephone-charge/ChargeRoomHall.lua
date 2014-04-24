@@ -1,5 +1,6 @@
 require 'CCBReaderLoad'
 require 'src.DialogPlugin'
+require 'consts'
 require 'telephone-charge.ChargeRoomItem'
 require 'telephone-charge.ChargeRoomInfo'
 require 'telephone-charge.DataProxy'
@@ -67,6 +68,7 @@ function ChargeRoomHall:onEnter()
 	--if time is near 24:00, set a timer to get charge room from server on 24:00:02
 	local seconds_left = get_seconds_left_today()
 	if seconds_left <= CHARGE_ROOM_24_DETECT_MIN then
+		print('set 24:00 timer', seconds_left)
 		self.timer_24 = Timer.add_timer(seconds_left + CHARGE_ROOM_24_DETECT_EXCEED, __bind(self.get_charge_room_from_server, self), '24_timer')
 	end
 	

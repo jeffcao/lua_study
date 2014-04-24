@@ -32,6 +32,8 @@ function ChargeRoomItem:init_room_info(room_info)
 	local sprite_frame_name = nil
 	if room_info.type == 'ten' then
 		sprite_frame_name = 'wenzi_10yuansai.png'
+	elseif room_info.type == 'twenty' then
+		sprite_frame_name = 'wenzi_20yuansai.png'
 	elseif room_info.type == 'thirty' then
 		sprite_frame_name = 'wenzi_30yuansai.png'
 	end
