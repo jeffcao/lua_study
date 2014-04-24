@@ -95,12 +95,10 @@ function ChargeRoomHall:onExit()
 	DataProxy.get_exist_instance('charge_matches'):unregister('charge_room_hall')
 end
 
---local time = 0
 local positions = {}
 positions[3] = {ccp(25, 120), ccp(270, 120), ccp(515, 120)}
 positions[4] = {ccp(25, 170), ccp(270, 170), ccp(515, 170), ccp(270, 55)}
 function ChargeRoomHall:init_rooms()
---	time = time + 1
 	local matches = DataProxy.get_exist_instance('charge_matches'):get_data().matches
 	dump(matches, 'matches')
 	local count = #matches
@@ -187,7 +185,6 @@ function ChargeRoomHall:init_rooms()
         		for index=1, children:count() do
         			local child = children:objectAtIndex(index - 1)
         			if cccn(child.rootNode, x, y) then
-        			--	ToastPlugin.show_message_box_suc('click at' .. index, {dismiss_time=0.5})
         				child:on_click()
         				break
         			end

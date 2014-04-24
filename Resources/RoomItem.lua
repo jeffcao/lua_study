@@ -78,6 +78,13 @@ function RoomItem:init_promotion_room(room_info, room_index)
 	local bg_sprite_png = 'songdoufang.png'
 	if tonumber(room_info.room_type) == 3 then bg_sprite_png = 'songhuafei.png' end
 	self.promotion_bg:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(bg_sprite_png))
+	
+	--for telephone charge match room, show next match start time
+	--and hide the status_text
+	if tonumber(room_info.room_type) == 3 then
+		self.promotion_time_layer:setVisible(true)
+		self.promotion_status_lbl:setVisible(false)
+	end
 end
 
 

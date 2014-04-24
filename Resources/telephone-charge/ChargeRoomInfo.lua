@@ -34,9 +34,14 @@ function ChargeRoomInfo:ctor()
 	self.close_btn.on_touch_fn = function()
 		self:dismiss()
 	end
+	
+	self.register_account_btn.on_touch_fn = function()
+		ToastPlugin.show_message_box_suc('报名')
+	end
 end
 
 function ChargeRoomInfo:init_room_info(room_info)
+	self.room_info = room_info
 	local data = DataProxy.get_exist_instance('charge_matches'):get_data()
 	self.rule:setString(data.rule)
 	self.award:setString(data.awards[room_info.type])
