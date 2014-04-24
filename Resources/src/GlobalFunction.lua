@@ -6,6 +6,23 @@ function getPayType()
 	--return GlobalSetting.pay_type[GlobalSetting.app_id] or GlobalSetting.pay_type["default"]
 end
 
+function get_time()
+	local t=split(os.date(),' ')
+	local hours= t[4]
+ 	local g={}
+ 	local hoursarr = split(hours,':')
+ 	g.hour=hoursarr[1]
+ 	g.min=hoursarr[2]
+ 	g.second=hoursarr[3]
+ 	return g
+end
+
+function get_seconds_left_today()
+	local g = get_time()
+	local seconds = (23-g.hour)*60*60 + (59-g.min)* 60 + (60-g.second)
+	return seconds
+end
+
 function scaleNode(node, scaleFactor)
 	local node = tolua.cast(node, "CCNode")
 	if node:getTag() >= 1000 then

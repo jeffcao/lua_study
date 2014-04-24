@@ -3,18 +3,37 @@ require 'src.DialogPlugin'
 require 'telephone-charge.ChargeRoomItem'
 require 'telephone-charge.ChargeRoomInfo'
 require 'telephone-charge.DataProxy'
+require 'telephone-charge.ChargeHallMatchPlugin'
 
-ChargeRoomHall = class("ChargeRoomHall", function() 
-	return display.newLayer("ChargeRoomHall")
-	end
-)
+--ChargeRoomHall = class("ChargeRoomHall", function() 
+--	return display.newLayer("ChargeRoomHall")
+--	end
+--)
+
+ChargeRoomHall = class("ChargeRoomHall", CCLayerExtend)
+
+function ChargeRoomHall.extend(target, ...)
+    local t = tolua.getpeer(target)
+    if not t then
+        t = {}
+        tolua.setpeer(target, t)
+    end
+    setmetatable(t, ChargeRoomHall)
+    if target.ctor ~= nil then
+    	target:ctor(...)
+    end
+    return target
+end
 
 function createChargeRoomHall()
 	print("create charge room hall")
-	return ChargeRoomHall.new()
+	--return ChargeRoomHall.new()
+	return ChargeRoomHall.extend(CCLayer:create())
+	--return ChargeRoomHall.new()
 end
 
 function ChargeRoomHall:ctor()
+	print('ChargeRoomHall:ctor()')
 	ccb.charge_room_hall = self
 	
 	local ccbproxy = CCBProxy:create()
@@ -38,15 +57,39 @@ function ChargeRoomHall:ctor()
 	end
 	
 	self:registerNodeEvent()
+	self:onEnter()--because can't receive 'enter' event, so call it manually
 end
 
 function ChargeRoomHall:onEnter()
-	print('charge_room_hall register')
+	print("ChargeRoomHall:onEnter()")
+	self.super.onEnter(self)
+	
+	--if time is near 24:00, set a timer to get charge room from server on 24:00:02
+	local seconds_left = get_seconds_left_today()
+	if seconds_left <= CHARGE_ROOM_24_DETECT_MIN then
+		self.timer_24 = Timer.add_timer(seconds_left + CHARGE_ROOM_24_DETECT_EXCEED, __bind(self.get_charge_room_from_server, self), '24_timer')
+	end
+	
+	--listen global channel match event
+	self:listen_match_event()
+	
+	--listen charge_matches data change, name is charge_room_hall
 	DataProxy.get_exist_instance('charge_matches'):register('charge_room_hall', __bind(self.init_rooms, self))
 end
 
 function ChargeRoomHall:onExit()
-	print('charge_room_hall unregister')
+	print("ChargeRoomHall:onExit()")
+	self.super.onExit(self)
+	
+	--if has set 24:00 timer, cancel this
+	if self.timer_24 then
+		Timer.cancel_timer(self.timer_24)
+	end
+	
+	--unlisten global channel match event
+	self:unlisten_match_event()
+	
+	--unlisten charge_matches data change, name is charge_room_hall
 	DataProxy.get_exist_instance('charge_matches'):unregister('charge_room_hall')
 end
 
@@ -162,3 +205,4 @@ function ChargeRoomHall:init_rooms()
 end
 
 DialogPlugin.bind(ChargeRoomHall)
+ChargeHallMatchPlugin.bind(ChargeRoomHall)
