@@ -396,7 +396,7 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:do_on_room_touched(room_info)
 		if TelephoneChargeUtil.is_telephone_charge_room(room_info) then
-			TelephoneChargeUtil.on_telehone_charge_room_clicked()
+			TelephoneChargeUtil.on_telehone_charge_room_clicked(room_info)
 			return
 		end
 		

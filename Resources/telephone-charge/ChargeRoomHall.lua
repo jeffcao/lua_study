@@ -61,6 +61,10 @@ function ChargeRoomHall:ctor()
 	self:onEnter()--because can't receive 'enter' event, so call it manually
 end
 
+function ChargeRoomHall:set_charge_room(charge_room)
+	self.charge_room = charge_room
+end
+
 function ChargeRoomHall:onEnter()
 	print("ChargeRoomHall:onEnter()")
 	self.super.onEnter(self)

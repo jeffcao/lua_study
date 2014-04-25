@@ -36,7 +36,14 @@ function ChargeRoomInfo:ctor()
 	end
 	
 	self.register_account_btn.on_touch_fn = function()
-		ToastPlugin.show_message_box_suc('报名')
+		--ToastPlugin.show_message_box_suc('报名')
+		--[[
+		MatchLogic.on_match_room_click(self.room_info, function() 
+ 			if GlobalSetting.hall_scene then
+ 				GlobalSetting.hall_scene:on_private_match_start(self.room_info)
+ 			end
+ 		end)
+ 		]]
 	end
 end
 

@@ -5,3 +5,12 @@ ROOM_TYPE_TELEPHONE_CHARGE = 3
 --this is the time point to detect
 CHARGE_ROOM_24_DETECT_MIN = 5 * 60
 CHARGE_ROOM_24_DETECT_EXCEED = 2
+
+CHARGE_MATCH_STATUS = {
+	joining_enable = '10',
+	joining_disable = '11',
+	playing_joining_enable = '20',
+	playing_joining_disable = '21',
+	playing = '30',
+	ended = '40'
+}
