@@ -29,16 +29,18 @@ function ChargeRoomItem:init_room_info(room_info)
 	dump(room_info, 'room_info')
 	self.start_time:setString(room_info.start_time)
 	self.ante:setString(room_info.ante .. '豆子')
+	--[[
 	local sprite_frame_name = nil
-	if room_info.type == 'ten' then
+	if room_info.match_name == '10yuan' then
 		sprite_frame_name = 'wenzi_10yuansai.png'
 	elseif room_info.type == 'twenty' then
 		sprite_frame_name = 'wenzi_20yuansai.png'
 	elseif room_info.type == 'thirty' then
 		sprite_frame_name = 'wenzi_30yuansai.png'
 	end
+	]]
 	CCSpriteFrameCache:sharedSpriteFrameCache():addSpriteFramesWithFile('ccbResources/charge.plist')
-	local frame = CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(sprite_frame_name)
+	local frame = CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(room_info.png_name)
 	self.head:setDisplayFrame(frame)
 end
 

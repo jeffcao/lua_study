@@ -43,8 +43,8 @@ end
 function ChargeRoomInfo:init_room_info(room_info)
 	self.room_info = room_info
 	local data = DataProxy.get_exist_instance('charge_matches'):get_data()
-	self.rule:setString(data.rule)
-	self.award:setString(data.awards[room_info.type])
+	self.rule:setString(data.rule_info[room_info.rule_name])
+	self.award:setString(data.bonus_info[room_info.bonus_name])
 end
 
 DialogPlugin.bind(ChargeRoomInfo)

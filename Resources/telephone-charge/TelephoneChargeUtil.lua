@@ -29,71 +29,78 @@ end
 
 TelephoneChargeUtil.get_test_data = function()
 	local data = {}
-	data.rule = '1.每场比赛30-300人，时间为15分钟，在规\n'..
+	data.rule_info = {}
+	data.rule_info.ten = '1.每场比赛30-300人，时间为15分钟，在规\n'..
 					   '定的时间赢豆最多的玩家获得胜利，获得相\n'..
 					   '应话费奖励。\n'..
 					   '2.所有的虚拟奖品实时到账，用户可在排行\n'..
 					   '中的话费排行查看中奖情况与金额，话费达\n'..
 					   '到20元的整数倍即可提现。'
-	data.awards = {}
-	data.awards.ten = '第一名  10元\n'..
+	data.bonus_info = {}
+	data.bonus_info.ten = '第一名  10元\n'..
 					 '第二名   5元\n'..
 					 '第三名   3元\n'..
 					 '第四至第六名   20000豆\n'..
 					 '第七至第十名   10000豆'
-	data.awards.twenty = '第一名  20元\n'..
+	data.bonus_info.twenty = '第一名  20元\n'..
 					 '第二名   10元\n'..
 					 '第三名   6元\n'..
 					 '第四至第六名   40000豆\n'..
 					 '第七至第十名   20000豆'
-	data.awards.thirty = '第一名  30元\n'..
+	data.bonus_info.thirty = '第一名  30元\n'..
 					 	'第二名   15元\n'..
 					 	'第三名   9元\n'..
 					 	'第四至第六名   60000豆\n'..
 					 	'第七至第十名   30000豆'
 					 	
-	data.matches = {}
-	local match10 = {type='ten', start_time='08:00', ante=10000}
-	local match11 = {type='ten', start_time='09:00', ante=10000}
-	local match30 = {type='twenty', start_time='10:00', ante=20000}
-	local match31 = {type='thirty', start_time='11:00', ante=30000}
-	table.insert(data.matches, match10)
-	table.insert(data.matches, match11)
-	table.insert(data.matches, match30)
-	table.insert(data.matches, match31)
+	data.match_list = {}
+	local match10 = {bonus_name='ten', rule_name='ten', start_time='08:00', ante=10000, png_name='wenzi_10yuansai.png'}
+	local match11 = {bonus_name='ten', rule_name='ten', start_time='09:00', ante=10000, png_name='wenzi_10yuansai.png'}
+	local match30 = {bonus_name='twenty', rule_name='ten', start_time='10:00', ante=20000, png_name='wenzi_20yuansai.png'}
+	local match31 = {bonus_name='thirty', rule_name='ten', start_time='11:00', ante=30000, png_name='wenzi_30yuansai.png'}
+	table.insert(data.match_list, match10)
+	table.insert(data.match_list, match11)
+	table.insert(data.match_list, match30)
+	table.insert(data.match_list, match31)
 	
 	return data
 end
 
 TelephoneChargeUtil.get_test_data2 = function()
 	local data = {}
-	data.rule = '1.每场比赛30-300人，时间为15分钟，在规\n'..
+	data.rule_info = {}
+	data.rule_info.ten = '1.每场比赛30-300人，时间为15分钟，在规\n'..
 					   '定的时间赢豆最多的玩家获得胜利，获得相\n'..
 					   '应话费奖励。\n'..
 					   '2.所有的虚拟奖品实时到账，用户可在排行\n'..
 					   '中的话费排行查看中奖情况与金额，话费达\n'..
 					   '到20元的整数倍即可提现。'
-	data.awards = {}
-	data.awards.ten = '第一名  10元\n'..
+	data.bonus_info = {}
+	data.bonus_info.ten = '第一名  10元\n'..
 					 '第二名   5元\n'..
 					 '第三名   3元\n'..
 					 '第四至第六名   20000豆\n'..
 					 '第七至第十名   10000豆'
-	data.awards.thirty = '第一名  30元\n'..
+	data.bonus_info.twenty = '第一名  20元\n'..
+					 '第二名   10元\n'..
+					 '第三名   6元\n'..
+					 '第四至第六名   40000豆\n'..
+					 '第七至第十名   20000豆'
+	data.bonus_info.thirty = '第一名  30元\n'..
 					 	'第二名   15元\n'..
 					 	'第三名   9元\n'..
 					 	'第四至第六名   60000豆\n'..
 					 	'第七至第十名   30000豆'
 					 	
-	data.matches = {}
-	local match10 = {type='ten', start_time='18:00', ante=10000}
-	local match11 = {type='ten', start_time='19:00', ante=10000}
-	local match30 = {type='thirty', start_time='20:00', ante=30000}
-	local match31 = {type='thirty', start_time='21:00', ante=30000}
-	table.insert(data.matches, match10)
-	table.insert(data.matches, match11)
-	table.insert(data.matches, match30)
-	table.insert(data.matches, match31)
+	data.match_list = {}
+	local match10 = {bonus_name='ten', rule_name='ten', start_time='18:00', ante=10000, png_name='wenzi_10yuansai.png'}
+	local match11 = {bonus_name='ten', rule_name='ten', start_time='19:00', ante=10000, png_name='wenzi_10yuansai.png'}
+	local match30 = {bonus_name='twenty', rule_name='ten', start_time='20:00', ante=20000, png_name='wenzi_20yuansai.png'}
+	local match31 = {bonus_name='thirty', rule_name='ten', start_time='21:00', ante=30000, png_name='wenzi_30yuansai.png'}
+	table.insert(data.match_list, match10)
+	table.insert(data.match_list, match11)
+	table.insert(data.match_list, match30)
+	table.insert(data.match_list, match31)
 	
 	return data
 end

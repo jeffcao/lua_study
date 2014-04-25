@@ -99,7 +99,7 @@ local positions = {}
 positions[3] = {ccp(25, 120), ccp(270, 120), ccp(515, 120)}
 positions[4] = {ccp(25, 170), ccp(270, 170), ccp(515, 170), ccp(270, 55)}
 function ChargeRoomHall:init_rooms()
-	local matches = DataProxy.get_exist_instance('charge_matches'):get_data().matches
+	local matches = DataProxy.get_exist_instance('charge_matches'):get_data().match_list
 	dump(matches, 'matches')
 	local count = #matches
 	
