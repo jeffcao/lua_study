@@ -49,7 +49,7 @@ GlobalSetting = {
 	debug_dump_internal_event = false,
 	debug_timer_name = false,
 	
-	run_env = "test",
+	run_env = "prod",
 	
 	app_id = "public_market_app",
 	
