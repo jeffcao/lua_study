@@ -63,6 +63,13 @@ end
 
 function ChargeRoomHall:set_charge_room(charge_room)
 	self.charge_room = charge_room
+	
+	-- set match's match_type to charge room's room_type
+	-- this value will be used in request join or enter match
+	local matches = DataProxy.get_exist_instance('charge_matches'):get_data().match_list
+	for _, match in pairs(matches) do
+		match.match_type = charge_room.room_type
+	end
 end
 
 function ChargeRoomHall:onEnter()
@@ -204,7 +211,9 @@ function ChargeRoomHall:init_rooms()
 	
 	dumprect(dlg:boundingBox(), 'charge bouding box')
 	dlg.on_touch_fn = onTouchRoom
+	self.rootNode:removeChildByTag(1111, true) -- temp remove match list, should update match list, need time to do this function
 	self.rootNode:addChild(dlg)
+	self:recreate_sel_childs()
 end
 
 DialogPlugin.bind(ChargeRoomHall)

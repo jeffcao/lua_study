@@ -114,9 +114,9 @@ end
 --获取当前房间【可以报名的】比赛序列号
 function MatchLogic.get_join_match_seq(data)
 	local can_join_id = nil
-	if data.can_join and data.cur_match_seq then
+	if data.can_join and (data.cur_match_seq or data.match_seq) then
 		--可以报名当前场次
-		can_join_id = data.cur_match_seq
+		can_join_id = data.cur_match_seq or data.match_seq
 	elseif data.next_match_seq then
 		--只能报名下一场
 		can_join_id = data.next_match_seq

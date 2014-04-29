@@ -30,6 +30,10 @@ function DialogPlugin.bind(theClass)
 		check_dialog_scale9_bg(self)
 	end
 	
+	function theClass:recreate_sel_childs()
+		self.dialogplugin_sel_childs = getTouchChilds(self)
+	end
+	
 	function theClass:on_touch(e,x,y)
 		if self:getZOrder() < getMaxZOrderVisible(self:getParent()) then print("is not touch me") return false end
 		if not self:isVisible() then print("self is not visible") return false end

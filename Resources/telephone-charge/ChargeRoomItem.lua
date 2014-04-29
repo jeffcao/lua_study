@@ -38,6 +38,13 @@ function ChargeRoomItem:init_room_info(room_info)
 end
 
 function ChargeRoomItem:on_click()
+	local status = self.room_info.match_state
+	local joined = self.room_info.p_is_joined
+	if status == CHARGE_MATCH_STATUS.ended then
+		ToastPlugin.show_message_box(strings.tc_match_ended)
+		return
+	end
+	
 	local info = createChargeRoomInfo()
 	info:init_room_info(self.room_info)
     info:show()

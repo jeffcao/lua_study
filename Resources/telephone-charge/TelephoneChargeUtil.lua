@@ -33,7 +33,7 @@ TelephoneChargeUtil.get_status_text = function(room_info)
 	local text = nil
 	
 	local status = room_info.match_state
-	local joined = room_info.joined
+	local joined = room_info.p_is_joined
 	if status == CHARGE_MATCH_STATUS.ended then
 		text = '已结束'
 	elseif status == CHARGE_MATCH_STATUS.playing then

@@ -36,14 +36,67 @@ function ChargeRoomInfo:ctor()
 	end
 	
 	self.register_account_btn.on_touch_fn = function()
-		--ToastPlugin.show_message_box_suc('报名')
-		--[[
-		MatchLogic.on_match_room_click(self.room_info, function() 
+ 		self:on_join_click()
+ 		self:dismiss()
+	end
+end
+
+function ChargeRoomInfo:on_join_click()
+	local text = nil
+	local status = self.room_info.match_state
+	local joined = self.room_info.p_is_joined
+
+	if status == CHARGE_MATCH_STATUS.playing then
+		if joined then
+		--	text = '可进入'
+		else
+			text = strings.tc_match_join_full
+		end
+	elseif status == CHARGE_MATCH_STATUS.playing_joining_disable then
+		if joined then
+		--	text = '可进入'
+		else
+			text = strings.tc_match_join_full
+		end
+	elseif status == CHARGE_MATCH_STATUS.playing_joining_enable then
+		if joined then
+		--	text = '可进入'
+		else
+		--	text = '报名'
+		end
+	elseif status == CHARGE_MATCH_STATUS.joining_disable then
+		if joined then
+			text = strings.tc_match_not_start
+		else 
+			text = strings.tc_match_join_full
+		end
+	elseif status == CHARGE_MATCH_STATUS.joining_enable then
+		if joined then
+			text = strings.tc_match_not_start
+		else
+		--	text = '报名'
+		end
+	end
+	
+	if text then
+		ToastPlugin.show_message_box(text)
+		return
+	end
+	--[[
+	MatchLogic.on_match_room_click(self.room_info, function() 
  			if GlobalSetting.hall_scene then
  				GlobalSetting.hall_scene:on_private_match_start(self.room_info)
  			end
  		end)
- 		]]
+ 	]]
+ 	if GlobalSetting.hall_scene then
+ 		GlobalSetting.hall_scene:do_on_room_touched(self.room_info)
+ 	end
+	do return end
+	if joined then
+	-- enter match game process
+	else
+	-- join match game process
 	end
 end
 
@@ -55,6 +108,7 @@ function ChargeRoomInfo:init_room_info(room_info)
 	self.rule:setString(rule_description)
 	local award_description = string.gsub(data.bonus_info[room_info.bonus_name],'</br>','/n')
 	self.award:setString(award_description)
+	self.join_btn_lbl:setString(TelephoneChargeUtil.get_status_text(room_info))
 end
 
 DialogPlugin.bind(ChargeRoomInfo)
