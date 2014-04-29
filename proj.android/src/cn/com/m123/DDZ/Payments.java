@@ -53,6 +53,7 @@ public class Payments {
 					}
 				}
 			});
+			System.out.println("leyifu init start");
 		} else {
 			do_leyifu_pay(params);
 		}
