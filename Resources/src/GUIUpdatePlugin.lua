@@ -586,6 +586,9 @@ function GUIUpdatePlugin.bind(theClass)
 		end
 		Timer.add_timer(1, exit_gaming_scene)
 		self.g_WebSocket:trigger("g.leave_game", event_data, exit_gaming_scene, exit_gaming_scene)
+		if self.updateMatchEndTime_timer then
+			Timer.cancel_timer(self.updateMatchEndTime_timer)
+		end
 	end
 	
 	function theClass:on_kill_this_scene()
@@ -610,6 +613,7 @@ function GUIUpdatePlugin.bind(theClass)
 		local game_info = data.game_info
 		self.game_info = data.game_info
 		GlobalSetting.game_id = game_info.game_id
+		self:initMatchEndTime(data)
 		self:refreshProps(data)
 		self:updatePlayers(data.players)
 		self:init_channel(game_info)
@@ -635,6 +639,35 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	function theClass:onEnterRoomFailure(data)
 		dump(data, "enter room failure")
+	end
+	
+	function theClass:initMatchEndTime(data)
+		print("GUIUpdatePlugin.initMatchEndTime")
+		if self.updateMatchEndTime_timer then
+			Timer.cancel_timer(self.updateMatchEndTime_timer)
+		end
+		if (not data.match_left_time) or data.match_left_time == 0 then
+			print("GUIUpdatePlugin.initMatchEndTime, return")
+			return
+		end
+		self.match_left_time = data.match_left_time
+		if self.match_left_time and self.match_left_time > 0 then
+			self.layer_match_end_times:setVisible(true)
+			self:updateMatchEndTime()
+		 	self.updateMatchEndTime_timer = Timer.add_repeat_timer(1, __bind(self.updateMatchEndTime, self), "updateMatchEndTime")
+		else
+			self.layer_match_end_times:setVisible(false)
+		end
+	end
+	
+	function theClass:updateMatchEndTime()
+		print("GUIUpdatePlugin.updateMatchEndTime")
+		self.match_left_time = self.match_left_time -1
+		local diff = os.date("%M:%S", self.match_left_time)
+		print("GUIUpdatePlugin.updateMatchEndTime, diff=>", diff)
+		self.lb_match_end_time:setString("距离比赛结束:  "..diff)
+		print("GUIUpdatePlugin.updateMatchEndTime, end")
+		return true
 	end
 	
 	function theClass:onStartReadyClicked() 
