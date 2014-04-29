@@ -82,6 +82,12 @@ function RoomItem:init_promotion_room(room_info, room_index)
 	--for telephone charge match room, show next match start time
 	--and hide the status_text
 	if tonumber(room_info.room_type) == 3 then
+		if not is_blank(room_info.next_match_s_time) then
+			local process_time = function(t) return string.sub(t,string.find(t,'T')+1, string.find(t,'T')+5) end
+			self.promotion_time_lbl:setString(process_time(room_info.next_match_s_time))
+		else
+			self.promotion_time_lbl:setString('敬请期待')
+		end
 		self.promotion_time_layer:setVisible(true)
 		self.promotion_status_lbl:setVisible(false)
 	end
