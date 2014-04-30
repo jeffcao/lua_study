@@ -85,7 +85,8 @@ end
 function MatchLogic.has_joined_cur(data)
 	local user = GlobalSetting.current_user
 	dump(user.joined_match, 'user.joined_match')
-	return table.contains(user.joined_match, data.cur_match_seq)
+	local seq = data.cur_match_seq or data.match_seq
+	return table.contains(user.joined_match, seq)
 end
 
 function MatchLogic.has_joined_next(data)

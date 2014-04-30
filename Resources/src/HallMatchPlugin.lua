@@ -21,6 +21,10 @@ function HallMatchPlugin.bind(theClass)
 			for _,room in pairs(self.room_datas.room) do
 				if tonumber(room.room_id) == tonumber(data.room_id) then
 					dialog:dismiss()
+					
+					--set is_match to true to diff from real match room and
+					--match game
+					room.is_match = true
 					self:do_on_room_touched(room)
 				end
 			end

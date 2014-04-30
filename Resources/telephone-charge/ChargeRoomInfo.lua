@@ -37,11 +37,13 @@ function ChargeRoomInfo:ctor()
 	
 	self.register_account_btn.on_touch_fn = function()
  		self:on_join_click()
- 		self:dismiss()
+ 		Timer.add_timer(0.1, function() self:dismiss() end)
+ 		--self:dismiss()
 	end
 end
 
 function ChargeRoomInfo:on_join_click()
+	dump(self.room_info, 'ChargeRoomInfo:on_join_click()')
 	local text = nil
 	local status = self.room_info.match_state
 	local joined = self.room_info.p_is_joined

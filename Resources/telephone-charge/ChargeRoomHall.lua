@@ -64,11 +64,19 @@ end
 function ChargeRoomHall:set_charge_room(charge_room)
 	self.charge_room = charge_room
 	
+	self:set_matchs_matchtype()
+end
+
+function ChargeRoomHall:set_matchs_matchtype()
+	if not self.charge_room then return end
+
 	-- set match's match_type to charge room's room_type
+	-- set match's room_id to charge room's room_id
 	-- this value will be used in request join or enter match
 	local matches = DataProxy.get_exist_instance('charge_matches'):get_data().match_list
 	for _, match in pairs(matches) do
-		match.match_type = charge_room.room_type
+		match.match_type = self.charge_room.room_type
+		match.room_id = self.charge_room.room_id
 	end
 end
 
@@ -80,7 +88,10 @@ function ChargeRoomHall:onEnter()
 	local seconds_left = get_seconds_left_today()
 	if seconds_left <= CHARGE_ROOM_24_DETECT_MIN then
 		print('set 24:00 timer', seconds_left)
-		self.timer_24 = Timer.add_timer(seconds_left + CHARGE_ROOM_24_DETECT_EXCEED, __bind(self.get_charge_room_from_server, self), '24_timer')
+		local function timer_24_func()
+			self:get_charge_room_from_server('timer_24_func')
+		end
+		self.timer_24 = Timer.add_timer(seconds_left + CHARGE_ROOM_24_DETECT_EXCEED, timer_24_func, '24_timer')
 	end
 	
 	--listen global channel match event
@@ -111,7 +122,12 @@ positions[3] = {ccp(25, 120), ccp(270, 120), ccp(515, 120)}
 positions[4] = {ccp(25, 170), ccp(270, 170), ccp(515, 170), ccp(270, 55)}
 function ChargeRoomHall:init_rooms()
 	local matches = DataProxy.get_exist_instance('charge_matches'):get_data().match_list
-	dump(matches, 'matches')
+	--TODO remove match after index 4 for test
+	--for index=1, #matches do
+	--	if index > 4 then matches[index] = nil end
+	--end
+	
+	--dump(matches, 'matches')
 	local count = #matches
 	
 	local layer = CCLayer:create()
@@ -214,6 +230,7 @@ function ChargeRoomHall:init_rooms()
 	self.rootNode:removeChildByTag(1111, true) -- temp remove match list, should update match list, need time to do this function
 	self.rootNode:addChild(dlg)
 	self:recreate_sel_childs()
+	self:set_matchs_matchtype()
 end
 
 DialogPlugin.bind(ChargeRoomHall)

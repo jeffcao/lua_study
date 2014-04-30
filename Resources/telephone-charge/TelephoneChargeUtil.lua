@@ -8,14 +8,14 @@ require 'telephone-charge.DataProxy'
 TelephoneChargeUtil = {}
 
 TelephoneChargeUtil.is_telephone_charge_room = function(room_info)
-	return room_info and tonumber(room_info.room_type) == ROOM_TYPE_TELEPHONE_CHARGE
+	return room_info and tonumber(room_info.room_type) == ROOM_TYPE_TELEPHONE_CHARGE and (not room_info.is_match)
 end
 
 TelephoneChargeUtil.on_telehone_charge_room_clicked = function(charge_room)
 	--this function only be called in hall scene, so can use hall scene websocket directly
 	local hall_scene = runningscene()
 	
-	hall_scene.after_trigger_success = function(data)
+	local suc_func = function(data)
 		ToastPlugin.hide_progress_message_box()
 		local data_proxy = createDataProxy('charge_matches')
 		--data_proxy:set_data(TelephoneChargeUtil.get_test_data())
@@ -24,7 +24,7 @@ TelephoneChargeUtil.on_telehone_charge_room_clicked = function(charge_room)
 		layer:set_charge_room(charge_room)
 		layer:show()
 	end
-	hall_scene:get_charge_matches(charge_room.room_id)
+	hall_scene:get_charge_matches(charge_room.room_id, suc_func)
 	
 	ToastPlugin.show_progress_message_box(strings.hscp_get_charge_matches_i)
 end
