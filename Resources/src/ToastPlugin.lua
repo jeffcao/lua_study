@@ -169,8 +169,11 @@ ToastPlugin = {}
 		
 		local msg_layer = create_message_layer(message, {type=type,msg_width=w, msg_height=h})
 		if params.touch_dismiss then
-			msg_layer.msg_lb:setTag(11)
-			msg_layer.msg_lb.on_touch_fn = function (e, x, y) if e == "ended" then msg_layer:dismiss() end end
+			msg_layer.content_layer:setTag(11)
+			msg_layer.content_layer.on_touch_fn = function (e, x, y) if e == "ended" then msg_layer:dismiss() end end
+			
+		--	msg_layer.msg_lb:setTag(11)
+		--	msg_layer.msg_lb.on_touch_fn = function (e, x, y) if e == "ended" then msg_layer:dismiss() end end
 		end
 		scaleNode(msg_layer, GlobalSetting.content_scale_factor)
 		
