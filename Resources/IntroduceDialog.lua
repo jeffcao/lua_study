@@ -9,12 +9,15 @@ end
 )
 
 function showIntroduce(moment, msg, layer)
+	-- do nothing, do not show introduce
+--[[
 	local dialog = createIntroduceDialog()
 	dialog:setMessage(msg)
 	layer:addChild(dialog, 6000, 1002)
 	dialog:show()
 	dialog:playIntroduce(moment)
 	return dialog
+]]
 end
 
 function createIntroduceDialog()
