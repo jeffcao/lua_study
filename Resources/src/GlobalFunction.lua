@@ -8,7 +8,12 @@ end
 
 function get_time()
 	local t=split(os.date(),' ')
-	local hours= t[4]
+	local hours = nil
+	if t[3] == '' then
+		hours = t[5]
+	else
+		hours = t[4]
+	end
  	local g={}
  	local hoursarr = split(hours,':')
  	g.hour=hoursarr[1]
