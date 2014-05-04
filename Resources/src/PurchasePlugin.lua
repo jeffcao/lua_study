@@ -198,13 +198,17 @@ end
 --data:content
 function PurchasePlugin.do_on_buy_message(data)
 	print("[PurchasePlugin:do_on_buy_message]")
-	if tostring(data.result_code) == "1" then
+	if tonumber(data.result_code) ~= 0 then
 		ToastPlugin.hide_progress_message_box()
-		local dialog = createYesNoDialog3(runningscene().rootNode)
-		dialog:setMessage(data.content)
-		dialog:setYesButton(function() dialog:dismiss() PurchasePlugin.do_confirm_buy(data) end)
-		dialog:setNoButton(function() dialog:dismiss() end)
-		dialog:show()
+		if tonumber(data.result_code) == 1 then
+			local dialog = createYesNoDialog3(runningscene().rootNode)
+			dialog:setMessage(data.content)
+			dialog:setYesButton(function() dialog:dismiss() PurchasePlugin.do_confirm_buy(data) end)
+			dialog:setNoButton(function() dialog:dismiss() end)
+			dialog:show()
+		elseif data.content then
+			PurchasePlugin.show_back_message_box(data.content)
+		end
 	else
 		PurchasePlugin.do_confirm_buy(data)
 	end
