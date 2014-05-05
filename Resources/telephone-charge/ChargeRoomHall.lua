@@ -188,6 +188,7 @@ function ChargeRoomHall:init_rooms()
         if eventType == "began" then
         	layer.startx = x
         	layer.lastx = x
+        	layer.moved = 0
             return true
         elseif eventType == "moved" then
         	if layer_width <= winSize.width then return end
@@ -203,11 +204,11 @@ function ChargeRoomHall:init_rooms()
         		layer:setPosition(ccp(px+delta, py))
         	end
         	layer.lastx = x
-        	layer.moved = true
+        	layer.moved = layer.moved + 1
         elseif eventType == "ended" then
         	layer.startx = nil
         	layer.lastx = nil
-        	if not layer.moved then
+        	if layer.moved <= MOVE_TEST_LIMIT then
         		local children = layer:getChildren()
         		for index=1, children:count() do
         			local child = children:objectAtIndex(index - 1)

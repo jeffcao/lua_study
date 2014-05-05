@@ -14,3 +14,6 @@ CHARGE_MATCH_STATUS = {
 	playing = '30',
 	ended = '40'
 }
+
+--for test a move is click or flip
+MOVE_TEST_LIMIT = 3
