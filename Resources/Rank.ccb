@@ -2916,9 +2916,9 @@
 										<key>displayName</key>
 										<string>CCLabelTTF</string>
 										<key>memberVarAssignmentName</key>
-										<string></string>
+										<string>get_charge_tip_lbl</string>
 										<key>memberVarAssignmentType</key>
-										<integer>0</integer>
+										<integer>1</integer>
 										<key>properties</key>
 										<array>
 											<dict>
@@ -2928,8 +2928,8 @@
 												<string>Position</string>
 												<key>value</key>
 												<array>
-													<real>230</real>
-													<real>21</real>
+													<real>229</real>
+													<real>22</real>
 													<integer>0</integer>
 												</array>
 											</dict>
