@@ -38,7 +38,7 @@ HallScene = class("HallScene", function()
  end
  
  function HallScene:ctor()
- 	
+ 	self.scene_name = 'HallScene'
 	ccb.hall_scene = self
 	
 	self.on_menu_clicked = __bind(self.onMenuClick, self)
@@ -202,6 +202,7 @@ HallScene = class("HallScene", function()
  function HallScene:onCleanup()
 	print("[HallScene:onCleanup()]")
 	GlobalSetting.hall_scene = nil
+	NotificationProxy.removeObservers(self.scene_name)
 	self.super.onCleanup(self)
 	Timer.cancel_timer(self.music_update)
 end

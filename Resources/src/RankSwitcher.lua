@@ -38,7 +38,7 @@ function RankSwitcher.bind(theClass)
 		if not self.on_set_balance then
 			print('register notification observer')
 			self.on_set_balance = __bind(self.setHuafeiInfo, self)
-			NotificationProxy.registerScriptObserver(self.on_set_balance, "set_user_balance")
+			NotificationProxy.registerScriptObserver(self.on_set_balance, "set_user_balance", runningscene().scene_name)
 		else
 			print('do not register notification observer again')
 		end

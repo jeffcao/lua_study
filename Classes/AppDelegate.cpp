@@ -286,6 +286,7 @@ void AppDelegate::StringReplace(string &strBase, string strSrc, string strDes)
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
 void AppDelegate::applicationDidEnterBackground()
 {
+	CCLOG("AppDelegate::applicationDidEnterBackground");
     CCDirector::sharedDirector()->pause();
     CCNotificationCenter::sharedNotificationCenter()->postNotification("on_pause");
     // if you use SimpleAudioEngine, it must be pause
@@ -298,6 +299,7 @@ void AppDelegate::applicationDidEnterBackground()
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground()
 {
+	CCLOG("AppDelegate::applicationWillEnterForeground");
     CCDirector::sharedDirector()->resume();
     CCNotificationCenter::sharedNotificationCenter()->postNotification("on_resume");
     // if you use SimpleAudioEngine, it must resume here

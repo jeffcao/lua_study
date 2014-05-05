@@ -59,9 +59,9 @@ function ConnectivityPlugin.bind(theClass)
 			self:network_check() 
 		end
 
-		NotificationProxy.registerScriptObserver(nwck,"on_resume")
-		NotificationProxy.registerScriptObserver(nwck,"on_network_change_available")
-		NotificationProxy.registerScriptObserver(nwck,"on_network_change_disable")
+		NotificationProxy.registerScriptObserver(nwck,"on_resume", self.scene_name)
+		NotificationProxy.registerScriptObserver(nwck,"on_network_change_available", self.scene_name)
+		NotificationProxy.registerScriptObserver(nwck,"on_network_change_disable", self.scene_name)
 	end
 
 end

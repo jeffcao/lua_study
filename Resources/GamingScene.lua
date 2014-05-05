@@ -43,6 +43,7 @@ function createGamingScene()
 end
 
 function GamingScene:ctor()
+	self.scene_name = 'GamingScene'
 	self.ccbproxy = CCBProxy:create()
 	self.ccbproxy:retain()
 	ccb.GamingScene = self
@@ -138,6 +139,7 @@ end
 
 function GamingScene:onCleanup()
 	print("[GamingScene:onCleanup()]")
+	NotificationProxy.removeObservers(self.scene_name)
 	self.super.onCleanup(self)
 end
 

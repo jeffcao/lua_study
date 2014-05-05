@@ -96,8 +96,8 @@ function GDataPlugin.bind(theClass)
 		notify_center:registerScriptObserver(self.rootNode, __bind(self.on_pause, self),"on_pause")
 		]]
 		
-		NotificationProxy.registerScriptObserver(__bind(self.on_resume, self),"on_resume")
-		NotificationProxy.registerScriptObserver(__bind(self.on_pause, self),"on_pause")
+		NotificationProxy.registerScriptObserver(__bind(self.on_resume, self),"on_resume", self.scene_name)
+		NotificationProxy.registerScriptObserver(__bind(self.on_pause, self),"on_pause", self.scene_name)
 		
 		
 		self:enter_room(self.g_room_id)

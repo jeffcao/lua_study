@@ -20,6 +20,7 @@ user_token_chars = "-D-D-Z--"
 
 
 function LoginScene:ctor()
+	self.scene_name = 'LoginScene'
 	
 	ccb.login_scene = self
 	
@@ -143,6 +144,7 @@ end
 
 function LoginScene:onCleanup()
 	print("[LoginScene:onCleanup()]")
+	NotificationProxy.removeObservers(self.scene_name)
 	self.super.onCleanup(self)
 end
 

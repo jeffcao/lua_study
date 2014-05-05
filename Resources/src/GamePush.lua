@@ -48,8 +48,8 @@ end
 function GamePush:on_check_success(data)
 	dump(data, '[GamePush]=>game push on check success')
 	self:initSocket(self.game_push_ws, "ui.restore_connection")-- to set socket restore logic
-	NotificationProxy.registerScriptObserver(__bind(self.on_resume, self),"on_resume")-- to observe onResume() event
-	NotificationProxy.registerScriptObserver(__bind(self.on_pause, self),"on_pause")-- to observe onPause() event
+	NotificationProxy.registerScriptObserver(__bind(self.on_resume, self),"on_resume", self.scene_name)-- to observe onResume() event
+	NotificationProxy.registerScriptObserver(__bind(self.on_pause, self),"on_pause", self.scene_name)-- to observe onPause() event
 	local period = GlobalSetting.game_push_interval
 	self:cancel_fetch_hdlr()
 	self:fetch_msg()--fetch once

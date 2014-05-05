@@ -126,7 +126,7 @@ function SetDialog:ctor()
     		cclog('set dialog unregist on volume change')
     	end
     end
-    NotificationProxy.registerScriptObserver(self.volume_func,"on_volume_change")
+    NotificationProxy.registerScriptObserver(self.volume_func,"on_volume_change", runningscene().scene_name)
 end
 
 --[[
