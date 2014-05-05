@@ -33,7 +33,7 @@ function RankSwitcher.bind(theClass)
 		if self:current_tab() == 'huafei' or man then
 			set_rank_string_with_stroke(self.player_bean, self.huafei_rank_data.balance)
 			set_rank_string_with_stroke(self.player_rank, self.huafei_rank_data.position)
-			self.get_huafei_btn:setEnabled(tonumber(self.huafei_rank_data.balance) >= 50)
+			self.get_huafei_btn:setEnabled(tonumber(self.huafei_rank_data.balance) >= GlobalSetting.min_charge_get_limit)
 		end
 		if not self.on_set_balance then
 			print('register notification observer')
@@ -42,6 +42,9 @@ function RankSwitcher.bind(theClass)
 		else
 			print('do not register notification observer again')
 		end
+		
+		local tip = string.gsub(strings.rsw_get_charge_tip, 'rmb', tostring(GlobalSetting.min_charge_get_limit))
+		self.get_charge_tip_lbl:setString(tip)
 		--if GlobalSetting.run_env == 'test' then
 		--	self.get_huafei_btn:setEnabled(true)
 		--end

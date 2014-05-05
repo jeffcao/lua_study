@@ -58,6 +58,10 @@ function LoginServerConnectionPlugin.bind(theClass)
 			GlobalSetting.cache_prop = data.prop_list
 		end
 		
+		if data.min_charge_get_limit then
+			GlobalSetting.min_charge_get_limit = tonumber(data.min)
+		end
+		
 		if data.shouchong_finished then
 			GlobalSetting.shouchong_finished = data.shouchong_finished
 		end

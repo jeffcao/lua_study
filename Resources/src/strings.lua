@@ -57,6 +57,9 @@ ls_connect_server_w = strings_general.g_connect_server_w,
 --LoginScene
 lgs_login_server_ing = '登录服务器...',
 
+--RankSwitcher
+rsw_get_charge_tip = '注： 话费的最小领取额度为 rmb 元',
+
 --RegisterScene
 rs_connect_server_ing = strings_general.g_connect_server_ing,
 
