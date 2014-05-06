@@ -1010,7 +1010,7 @@
 				<key>displayName</key>
 				<string>CCLayer</string>
 				<key>memberVarAssignmentName</key>
-				<string>mobile_box_layer</string>
+				<string>code_box_layer</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -1238,8 +1238,6 @@
 验证码：</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
