@@ -78,7 +78,7 @@ GlobalSetting = {
 	shouchong_rank_changed = false,
 	shouchong_ordered = true,
 	
-	min_charge_get_limit = 10, -- server will pass this parameter and update this
+	min_charge_get_limit = 20, -- server will pass this parameter and update this
 	
 	--pay_type = 'anzhi',
 	
