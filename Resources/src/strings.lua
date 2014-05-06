@@ -194,5 +194,8 @@ shouchong_warning = "此礼包购买中，请勿重复购买",
 tc_match_ended = '本场比赛已经结束了，请关注其他比赛',
 tc_match_not_start = '请耐心等待比赛开始',
 tc_match_join_full = '报名人数已满',
+
+--GamingScene
+gs_my_rank = '我的排名：rank',
 }
 

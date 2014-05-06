@@ -58,8 +58,8 @@ function LoginServerConnectionPlugin.bind(theClass)
 			GlobalSetting.cache_prop = data.prop_list
 		end
 		
-		if data.min_charge_get_limit then
-			GlobalSetting.min_charge_get_limit = tonumber(data.min)
+		if data.system_settings and data.system_settings.credit_limitation then
+			GlobalSetting.min_charge_get_limit = tonumber(data.system_settings.credit_limitation)
 		end
 		
 		if data.shouchong_finished then
@@ -172,7 +172,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 		end
 		if GlobalSetting.login_server_websocket == nil then
 			print("[LoginServerConnectionPlugin:connect_to_login_server()] login_server is nil, init it.")
-			GlobalSetting.login_server_websocket = WebSocketRails:new(config.login_urls[4], true)
+			GlobalSetting.login_server_websocket = WebSocketRails:new(config.login_urls[2], true)
 			GlobalSetting.login_server_websocket.on_open = __bind(self.on_websocket_ready, self)
 			GlobalSetting.login_server_websocket:bind("connection_error", sign_failure)
 		end

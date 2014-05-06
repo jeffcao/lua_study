@@ -105,6 +105,12 @@ function GDataPlugin.bind(theClass)
 		self.socket_label:setVisible(false)
 	end
 	
+	function theClass:set_my_rank(rank, event)
+		print(event, 'set my rank from ', self.myrank, 'to', rank)
+		self.myrank = rank
+		self:updateMyRank()
+	end
+	
 	function theClass:refreshProps(data) 
 		self.using_props = data.using_props
 		self.show_jipaiqi = data.show_jipaiqi

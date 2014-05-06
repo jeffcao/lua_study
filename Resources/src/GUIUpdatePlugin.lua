@@ -39,6 +39,19 @@ function GUIUpdatePlugin.bind(theClass)
 		self:updatePlayerBuchu(self.self_user_lord_value, false)
 		self:updatePlayerBuchu(self.prev_user_lord_value, false)
 		self:updatePlayerBuchu(self.next_user_lord_value, false)
+		
+		--更新我的排名
+		self:updateMyRank()
+	end
+	
+	function theClass:updateMyRank()
+		if not self.myrank then
+			self.layer_my_rank:setVisible(false)
+			return
+		end
+		self.layer_my_rank:setVisible(true)
+		local rank = string.gsub(strings.gs_my_rank, 'rank', tostring(self.myrank))
+		self.lbl_myrank:setString(rank)
 	end
 	
 	function theClass:hideGetLordMenu()
@@ -619,6 +632,8 @@ function GUIUpdatePlugin.bind(theClass)
 		self:init_channel(game_info)
 		self.menu_ready:setVisible(true)
 		self.menu_huanzhuo:setVisible(true)
+		
+		self:set_my_rank(data.rank, 'onEnterRoomSuccess')
 		
 		self.finding_lbl:setVisible(true)
 		
