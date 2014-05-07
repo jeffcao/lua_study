@@ -323,11 +323,11 @@ function GUIUpdatePlugin.bind(theClass)
 			if bSelfFirst then
 				-- 是, 自动出一张
 				cclog("[showPlayCardMenu] self is the first playernot not not ")
-				self:startSelfUserAlarm(30, chupaiCallback)
+				self:startSelfUserAlarm(GlobalSetting.play_card_wait_time, chupaiCallback)
 	 		else 
 				cclog("[showPlayCardMenu] self is NOT the first playernot not not ")
 				-- 不是, 自动不出
-				self:startSelfUserAlarm(30, buchuCallback)
+				self:startSelfUserAlarm(GlobalSetting.play_card_wait_time, buchuCallback)
 			end
 		else
 			self:stopUserAlarm()
@@ -362,7 +362,7 @@ function GUIUpdatePlugin.bind(theClass)
 			self.menu_get_lord:setVisible(true)
 		end
 		-- 开始计时提示
-		self:startSelfUserAlarm(30, function()
+		self:startSelfUserAlarm(GlobalSetting.play_card_wait_time, function()
 			-- 超时为不叫
 			self:doGetLord(0)
 		end)
@@ -676,12 +676,12 @@ function GUIUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:updateMatchEndTime()
-		print("GUIUpdatePlugin.updateMatchEndTime")
+	--	print("GUIUpdatePlugin.updateMatchEndTime")
 		self.match_left_time = self.match_left_time -1
 		local diff = os.date("%M:%S", self.match_left_time)
-		print("GUIUpdatePlugin.updateMatchEndTime, diff=>", diff)
+	--	print("GUIUpdatePlugin.updateMatchEndTime, diff=>", diff)
 		self.lb_match_end_time:setString("距离比赛结束:  "..diff)
-		print("GUIUpdatePlugin.updateMatchEndTime, end")
+	--	print("GUIUpdatePlugin.updateMatchEndTime, end")
 		return true
 	end
 	

@@ -58,8 +58,12 @@ function LoginServerConnectionPlugin.bind(theClass)
 			GlobalSetting.cache_prop = data.prop_list
 		end
 		
-		if data.system_settings and data.system_settings.credit_limitation then
-			GlobalSetting.min_charge_get_limit = tonumber(data.system_settings.credit_limitation)
+		if data.min_charge_get_limit then
+			GlobalSetting.min_charge_get_limit = tonumber(data.min_charge_get_limit)
+		end
+		
+		if data.play_card_wait_time then
+			GlobalSetting.play_card_wait_time = tonumber(data.play_card_wait_time)
 		end
 		
 		if data.shouchong_finished then

@@ -80,6 +80,8 @@ GlobalSetting = {
 	
 	min_charge_get_limit = 20, -- server will pass this parameter and update this
 	
+	play_card_wait_time = 18,--play card wait time limit server will pass this parameter and update this
+	
 	--pay_type = 'anzhi',
 	
 	company_name = {["1019"] = "深圳市景泰通信有限公司", ["1003"]="深圳市新中南实业有限公司", default = "深圳市新中南实业有限公司"},

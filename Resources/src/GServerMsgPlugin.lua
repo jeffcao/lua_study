@@ -43,11 +43,11 @@ function GServerMsgPlugin.bind(theClass)
 		-- 如果当前叫地主是下家，则显示下家在叫地主，并开始计时提示
 		if data.next_user_id == self.next_user.user_id then
 			self:updateLordValue(self.next_user_lord_value, 4)
-			self:startNextUserAlarm(30, nil)
+			self:startNextUserAlarm(GlobalSetting.play_card_wait_time, nil)
 		elseif  data.next_user_id == self.prev_user.user_id then
 			-- 是上家在叫地主
 			self:updateLordValue(self.prev_user_lord_value, 4)
-			self:startPrevUserAlarm(30, nil)
+			self:startPrevUserAlarm(GlobalSetting.play_card_wait_time, nil)
 		end
 		
 		self:playDeliverCardsEffect()
@@ -223,9 +223,9 @@ function GServerMsgPlugin.bind(theClass)
 				self:updateLordValue(self.next_user_lord_value, -1)
 				-- 开始地主的出牌计时提示
 				if data.lord_user_id == self.next_user.user_id then
-					self:startNextUserAlarm(30, nil)
+					self:startNextUserAlarm(GlobalSetting.play_card_wait_time, nil)
 				else
-					self:startPrevUserAlarm(30, nil)
+					self:startPrevUserAlarm(GlobalSetting.play_card_wait_time, nil)
 				end
 				self:check_tech_msg("farmer")
 				self:showLordCards(data.lord_cards, data.lord_value)
@@ -233,10 +233,10 @@ function GServerMsgPlugin.bind(theClass)
 				-- 还没有地主产生，也轮不到自己叫地主， 则标示出叫地主的玩家，并启动计时提示
 				if data.next_user_id == self.next_user.user_id then
 					self:updateLordValue(self.next_user_lord_value, 4)
-					self:startNextUserAlarm(30, nil)
+					self:startNextUserAlarm(GlobalSetting.play_card_wait_time, nil)
 	 			elseif  data.next_user_id == self.prev_user.user_id then
 					self:updateLordValue(self.prev_user_lord_value, 4)
-					self:startPrevUserAlarm(30, nil)
+					self:startPrevUserAlarm(GlobalSetting.play_card_wait_time, nil)
 				end
 			end
 		end
@@ -309,7 +309,7 @@ function GServerMsgPlugin.bind(theClass)
 						self.prevUserLastCard = nil
 					end
 					]]
-				self:startNextUserAlarm(30, nil)
+				self:startNextUserAlarm(GlobalSetting.play_card_wait_time, nil)
 				-- 隐藏下家不出标签
 				self:updatePlayerBuchu(self.next_user_lord_value, false)
 				return
@@ -323,7 +323,7 @@ function GServerMsgPlugin.bind(theClass)
 				
 				if self:isTuoguan() then
 					-- 开始自己计时提示
-					self:startSelfUserAlarm(30, __bind(self.doBuchu, self))
+					self:startSelfUserAlarm(GlobalSetting.play_card_wait_time, __bind(self.doBuchu, self))
 					self:updatePlayerBuchu(self.self_user_lord_value, false)
 				end
 				
@@ -346,7 +346,7 @@ function GServerMsgPlugin.bind(theClass)
 				-- 是下家出的牌，执行下家出牌
 				self:doNextUserPlayCard(card)
 				-- 开始下家出牌计时提示
-				self:startPrevUserAlarm(30, nil)
+				self:startPrevUserAlarm(GlobalSetting.play_card_wait_time, nil)
 				-- 隐藏下家不出标签
 				self:updatePlayerBuchu(self.prev_user_lord_value, false)
 			end
