@@ -85,7 +85,7 @@ HallScene = class("HallScene", function()
 	self:set_btn_stroke(self.task_lbl)
 	set_blue_stroke(self.quick_game_btn_lbl)
 	--self:check_kick_out()
-	MarqueePlugin.addMarquee(self.rootNode,ccp(400,355))
+	MarqueePlugin.addMarquee(self.rootNode,ccp(280,355))
 	GlobalSetting.hall_scene = self
 	--if GlobalSetting.run_env == 'test' then
 	--	local func = function()
