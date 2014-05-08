@@ -194,6 +194,12 @@ function PurchasePlugin.do_on_buy_message_dev_test(data)
 		GlobalSetting.shouchong_ordered = true
 	end
 	ToastPlugin.hide_progress_message_box()
+	if tonumber(data.result_code) ~= 0 then
+		if data.content then
+			PurchasePlugin.show_back_message_box(data.content)
+		end
+	end
+	
 end
 --data:content
 function PurchasePlugin.do_on_buy_message(data)
