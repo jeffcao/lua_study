@@ -243,8 +243,8 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>380</real>
-									<real>250</real>
+									<real>420</real>
+									<real>270</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -774,7 +774,7 @@
 						<key>value</key>
 						<array>
 							<real>50</real>
-							<real>32.208335876464844</real>
+							<real>30</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -887,7 +887,7 @@
 						<key>value</key>
 						<array>
 							<real>50</real>
-							<real>37.916667938232422</real>
+							<real>35</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -941,8 +941,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>340</real>
-							<real>160</real>
+							<real>380</real>
+							<real>180</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1023,7 +1023,7 @@
 						<key>value</key>
 						<array>
 							<real>50.625</real>
-							<real>46.458332061767578</real>
+							<real>43</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -1143,7 +1143,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>50.25</real>
+							<real>50.375</real>
 							<real>60</real>
 							<integer>4</integer>
 						</array>
@@ -1233,11 +1233,13 @@
 						<key>type</key>
 						<string>Text</string>
 						<key>value</key>
-						<string>验证码正在以短信的方式发送
-到您的手机，请输入接收到的
-验证码：</string>
+						<string>您将使用“网捷游戏支付”业务信息费5元。
+密码正以短信方式发送至您的手机，请
+注意查收并输入您接收到的密码：</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
