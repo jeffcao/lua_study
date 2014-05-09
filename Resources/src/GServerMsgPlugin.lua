@@ -375,7 +375,7 @@ function GServerMsgPlugin.bind(theClass)
 		--每局打完之后刷新所有玩家的资料
 		self:doGetUserProfileIfNeed(self.g_user_id, true)
 		--每局打完之后刷新我的排名
-		self:set_my_rank(data.rank[self.g_user_id], 'onServerGameOver')
+		self:set_my_rank(data.game_result.rank[tostring(self.g_user_id)], 'onServerGameOver')
 		if self.prev_user then
 			self:doGetUserProfileIfNeed(self.prev_user.user_id, true)
 		end
