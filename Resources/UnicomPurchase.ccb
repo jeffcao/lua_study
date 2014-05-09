@@ -243,7 +243,7 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>420</real>
+									<real>435</real>
 									<real>270</real>
 									<integer>0</integer>
 								</array>
@@ -941,7 +941,7 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>380</real>
+							<real>408</real>
 							<real>180</real>
 							<integer>0</integer>
 						</array>
@@ -999,6 +999,8 @@
 						<real>0.0</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -1233,13 +1235,11 @@
 						<key>type</key>
 						<string>Text</string>
 						<key>value</key>
-						<string>您将使用“网捷游戏支付”业务信息费5元。
+						<string>您将使用“网捷游戏支付”业务支付信息费5元。
 密码正以短信方式发送至您的手机，请
 注意查收并输入您接收到的密码：</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
