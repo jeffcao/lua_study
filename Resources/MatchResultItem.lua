@@ -28,6 +28,8 @@ function MatchResultItem:init(item)
 	local bonus = ''
 	local cjson = require "cjson"
 	if item.bonus ~= cjson.null then bonus = item.bonus end
-	self.gets_lbl:setString(bonus..' 元话费')
+	local text = '元话费'
+	if item.type and item.type == 'bean' then text = '豆子' end
+	self.gets_lbl:setString(bonus..text)
 end
 
