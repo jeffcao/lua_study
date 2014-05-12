@@ -103,7 +103,7 @@ function GServerMsgPlugin.bind(theClass)
 			cclog("被踢出房间")
 			--设置被踢出标志
 			KickOut.set()
-			self:exit()
+			self:exit(true)
 		else
 			cclog("其他用户被踢出房间，刷新界面")
 			if (data.players) then

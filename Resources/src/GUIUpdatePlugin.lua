@@ -584,7 +584,7 @@ function GUIUpdatePlugin.bind(theClass)
 		self.exit_layer:delayShow()
 	end
 	
-	function theClass:exit()
+	function theClass:exit(disable_notify_server)
 		local event_data = {user_id = self.g_user_id}
 		local exit_gaming_scene = function()
 			local running_scene = CCDirector:sharedDirector():getRunningScene()
@@ -598,7 +598,9 @@ function GUIUpdatePlugin.bind(theClass)
 			end
 		end
 		Timer.add_timer(1, exit_gaming_scene)
-		self.g_WebSocket:trigger("g.leave_game", event_data, exit_gaming_scene, exit_gaming_scene)
+		if not disable_notify_server then
+			self.g_WebSocket:trigger("g.leave_game", event_data, exit_gaming_scene, exit_gaming_scene)
+		end
 		if self.updateMatchEndTime_timer then
 			Timer.cancel_timer(self.updateMatchEndTime_timer)
 		end
