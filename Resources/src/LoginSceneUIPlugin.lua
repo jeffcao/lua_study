@@ -171,16 +171,33 @@ function LoginSceneUIPlugin.bind(theClass)
 		self:hide_progress_message_box()
 	end
 	
-	function theClass:do_on_connection_failure()
+	function theClass:do_on_connection_failure(data)
 		print("[LoginScene:do_on_connection_failure()]")
-		self:hide_progress_message_box()
-		self:show_message_box(strings.lsp_connect_server_w)
+		--self:hide_progress_message_box()
+		--self:show_message_box(strings.lsp_connect_server_w)
+		--for reconnect retry_excceed = true or false
+		--for sign failure retry_excceed = nil
+		if data.retry_excceed == true or data.retry_excceed == nil then 
+			self:hide_progress_message_box()
+			require 'YesNoDialog'
+			local dialog = createYesNoDialog(runningscene().rootNode);
+			dialog:setTitle('温馨提示')
+			dialog:setMessage("连接服务器失败，请退出！")
+			dialog:setYesButton(function() endtolua() end)
+			dialog:setNoButton(function() endtolua() end)
+			dialog:show()
+			--self:show_message_box(strings.ls_connect_server_w)
+	
+		--Timer.add_timer(5, __bind(self.do_close, self))
+		end
 	end
 	
-	function theClass:do_on_connection_hall_server_failure()
+	function theClass:do_on_connection_hall_server_failure(data)
 		print("[LoginScene:do_on_connection_hall_server_failure()]")
-		self:hide_progress_message_box()
-		self:show_message_box(strings.lsp_connect_hall_server_w)
+		if data.retry_excceed == true or data.retry_excceed == nil then 
+			self:hide_progress_message_box()
+			self:show_message_box(strings.lsp_connect_hall_server_w)
+		end
 	end
 	
 end

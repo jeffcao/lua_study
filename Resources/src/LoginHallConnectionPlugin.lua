@@ -11,14 +11,14 @@ function LoginHallConnectionPlugin.bind(theClass)
 			GlobalSetting.hall_server_websocket = nil
 	--		print("[LoginServerConnectionPlugin.sign_failure] result code: "..data.result_code)
 			if "function" == type(self.do_on_connection_hall_server_failure) then
-				self:do_on_connection_hall_server_failure()
+				self:do_on_connection_hall_server_failure(data)
 			end
 		end
 		if GlobalSetting.hall_server_websocket == nil then
 			print("[LoginHallConnectionPlugin:connect_to_hall_server()] hall_server_websocket is nil, init it.")
 			GlobalSetting.hall_server_websocket = WebSocketRails:new("ws://"..GlobalSetting.hall_server_url.."/websocket", true)
 			GlobalSetting.hall_server_websocket.on_open = __bind(self.on_hall_server_websocket_ready, self)
-			GlobalSetting.hall_server_websocket:bind("connection_error", connection_failure)
+			GlobalSetting.hall_server_websocket:bind("connection_closed", connection_failure)
 		end
 		
 	end

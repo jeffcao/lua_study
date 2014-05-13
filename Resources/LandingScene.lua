@@ -340,12 +340,23 @@ function LandingScene:enter_login_scene()
 	CCDirector:sharedDirector():replaceScene(login)
 end
 	
-function LandingScene:do_on_connection_failure()
+function LandingScene:do_on_connection_failure(data)
 	print("[LandingScene:do_on_connection_failure()]")
-	self:show_message_box(strings.ls_connect_server_w)
+	--for reconnect retry_excceed = true or false
+	--for sign failure retry_excceed = nil
+	if data.retry_excceed == true or data.retry_excceed == nil then 
+		self:hide_progress_message_box()
+		require 'YesNoDialog'
+		local dialog = createYesNoDialog(runningscene().rootNode);
+		dialog:setTitle('温馨提示')
+		dialog:setMessage("连接服务器失败，请退出！")
+		dialog:setYesButton(function() self:do_close() end)
+		dialog:setNoButton(function() self:do_close() end)
+		dialog:show()
+		--self:show_message_box(strings.ls_connect_server_w)
 
-	Timer.add_timer(5, __bind(self.do_close, self))
-	
+	--Timer.add_timer(5, __bind(self.do_close, self))
+	end
 end
 
 LoginServerConnectionPlugin.bind(LandingScene)

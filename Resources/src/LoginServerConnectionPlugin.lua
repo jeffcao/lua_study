@@ -171,14 +171,14 @@ function LoginServerConnectionPlugin.bind(theClass)
 			dump(data, "fign_failure data")
 	--		print("[LoginServerConnectionPlugin.sign_failure] result code: "..data.result_code)
 			if "function" == type(self.do_on_connection_failure) then
-				self:do_on_connection_failure()
+				self:do_on_connection_failure(data)
 			end
 		end
 		if GlobalSetting.login_server_websocket == nil then
 			print("[LoginServerConnectionPlugin:connect_to_login_server()] login_server is nil, init it.")
 			GlobalSetting.login_server_websocket = WebSocketRails:new(config.login_urls[2], true)
 			GlobalSetting.login_server_websocket.on_open = __bind(self.on_websocket_ready, self)
-			GlobalSetting.login_server_websocket:bind("connection_error", sign_failure)
+			GlobalSetting.login_server_websocket:bind("connection_closed", sign_failure)
 		end
 		
 	end
