@@ -10,6 +10,8 @@ public:
 	virtual void messageJava(const char* text);
 	virtual const char* get(const char* text);
 	static DDZJniHelper* create();
+	static bool is_onCppMessage;
+	static bool is_messageJava;
 };
 
 #endif

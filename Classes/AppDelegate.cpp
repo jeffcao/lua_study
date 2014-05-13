@@ -287,7 +287,7 @@ void AppDelegate::StringReplace(string &strBase, string strSrc, string strDes)
 void AppDelegate::applicationDidEnterBackground()
 {
 	CCLOG("AppDelegate::applicationDidEnterBackground");
-    CCDirector::sharedDirector()->pause();
+    CCDirector::sharedDirector()->stopAnimation();
     CCNotificationCenter::sharedNotificationCenter()->postNotification("on_pause");
     // if you use SimpleAudioEngine, it must be pause
     _bg_music_playing = SimpleAudioEngine::sharedEngine()->isBackgroundMusicPlaying();
@@ -300,7 +300,7 @@ void AppDelegate::applicationDidEnterBackground()
 void AppDelegate::applicationWillEnterForeground()
 {
 	CCLOG("AppDelegate::applicationWillEnterForeground");
-    CCDirector::sharedDirector()->resume();
+    CCDirector::sharedDirector()->startAnimation();
     CCNotificationCenter::sharedNotificationCenter()->postNotification("on_resume");
     // if you use SimpleAudioEngine, it must resume here
     if (_bg_music_playing)

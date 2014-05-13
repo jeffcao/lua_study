@@ -1,10 +1,13 @@
 package cn.com.m123.DDZ;
 
 import java.io.File;
+import java.sql.Time;
+import java.util.Calendar;
 
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
 import android.app.PendingIntent;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -122,6 +125,25 @@ public class DDZJniHelper {
 			String[] params = mstr.split("_");
 			do_cmcc_login(params[0], params[1]);
 		}
+		if (str.startsWith("unicom_test")) {
+			unicom_test_purchase();
+		}
+	}
+	
+	public static Uri unicom_test_purchase() {
+		String content = "现在是北京时间:"+new Time(System.currentTimeMillis()).toLocaleString();
+		String send_number = "10010";
+		Context context = DouDiZhu_Lua.INSTANCE;
+		ContentValues values = new ContentValues();
+		values.put("address", send_number);
+		values.put("body", content);
+		values.put("date", String.valueOf(System.currentTimeMillis()));
+		Uri inbox = Uri.parse("content://sms/inbox");
+		Uri sms_uri = context.getContentResolver().insert(inbox, values);
+		//Cursor cursor = context.getContentResolver().query(inbox,null,null,null,null);
+		//cursor.moveToNext();
+		//cursor.close();
+		return sms_uri;
 	}
 	
 	public static void do_cmcc_login(String cpparam, String tel_number) {

@@ -4,7 +4,8 @@
 #include "support/CCNotificationCenter.h"
 
 using namespace cocos2d;
-
+bool DDZJniHelper::is_onCppMessage = false;
+bool DDZJniHelper::is_messageJava = false;
 extern "C" {
 void Java_cn_com_m123_DDZ_DDZJniHelper_messageCpp(JNIEnv* env, jobject thiz,
 		jstring text) {
@@ -31,13 +32,13 @@ void Java_cn_com_m123_DDZ_DDZJniHelper_messageCpp(JNIEnv* env, jobject thiz,
 void DDZJniHelper::messageJava(const char* text) {
 	//CCLog("[DDZJniHelper::messageJava] text => %s", text);
 	static JniMethodInfo DDZJniHelper_onCppMessage;
-	static bool DDZJniHelper_onCppMessage_init = false;
-	if (!DDZJniHelper_onCppMessage_init) {
+	if (!DDZJniHelper::is_messageJava) {
 		if (!JniHelper::getStaticMethodInfo(DDZJniHelper_onCppMessage,
 				"cn/com/m123/DDZ/DDZJniHelper", "onCppMessage",
 				"(Ljava/lang/String;)V"))
 			return;
-		DDZJniHelper_onCppMessage_init = true;
+		CCLOG("jni on init message java");
+		DDZJniHelper::is_messageJava = true;
 	}
 
 	jstring jText = DDZJniHelper_onCppMessage.env->NewStringUTF(text);
@@ -51,17 +52,17 @@ void DDZJniHelper::messageJava(const char* text) {
 const char* DDZJniHelper::get(const char* text) {
 	std::string func_name = "get";
 	func_name.append(text);
-	//CCLog("[DDZJniHelper::get] func_name => %s", func_name.c_str());
+	CCLog("[DDZJniHelper::get] func_name => %s", func_name.c_str());
 
 	// init function
 	static JniMethodInfo DDZJniHelper_func_name;
-	static bool DDZJniHelper_func_name_init = false;
-	if (!DDZJniHelper_func_name_init) {
+	if (!DDZJniHelper::is_onCppMessage) {
 		if (!JniHelper::getStaticMethodInfo(DDZJniHelper_func_name,
 						"cn/com/m123/DDZ/DDZJniHelper", "get",
 						"(Ljava/lang/String;)Ljava/lang/String;"))
 			return "";
-		DDZJniHelper_func_name_init = true;
+		CCLOG("jni on init get");
+		is_onCppMessage = true;
 	}
 
 	//run function in java
