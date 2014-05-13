@@ -79,7 +79,13 @@ function GConnectionPlugin.bind(theClass)
 	--网络重连失败
 	function theClass:onSocketReopenFail()
 		cclog("game onSocketReopenFail")
-		self:exit()
+		require 'YesNoDialog'
+		local dialog = createYesNoDialog(runningscene().rootNode);
+		dialog:setMessage("无法重连上服务器，请退出！")
+		dialog:setYesButton(function() self:exit() end)
+		dialog:setNoButton(function() self:exit() end)
+		dialog:show()
+		--self:exit()
 	end
 
 	--restore connection失败，退出游戏

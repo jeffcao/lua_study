@@ -127,7 +127,7 @@ on_error = function(self, event)
 --			self._websocket_id, " , event.websocket: " , websocket_id)
 --		return
 --	end
-
+	--[[ TODO do not dispatch connection_error event here, because on_close will dispatch this event
     local error_event = nil
     local error_data = nil
     if event ~= nil then
@@ -138,7 +138,9 @@ on_error = function(self, event)
     
 	self.dispatcher:dispatch(error_event)
 	self.dispatcher.state = "closed"
-    
+    ]]
+    --TODO do not reconnect in on error, because in on_close will reconnect
+    --[[
     if not self._self_close and self._connection_retries < WebSocketRails.config.CONNECTION_MAX_RETRIES then
     	self:cancel_connection_timout()
     	local delay_seconds = 2 * (self._connection_retries + 1)
@@ -148,7 +150,7 @@ on_error = function(self, event)
     		self:connect()
     	end)
     end 
-    
+    ]]
 end,
 
 flush_queue = function(self)
@@ -239,6 +241,7 @@ connect = function(self)
 	end
 
 	self._connection_retries = self._connection_retries + 1
+	print('reconnect on time:', self._connection_retries)
 	
 	self.dispatcher.state = 'connecting'
 	
@@ -249,11 +252,15 @@ connect = function(self)
     --print(string.format("self._websocket_id => %d", self._websocket_id))
     local reconnect_times = self._connection_retries
     self._connect_timeout = Timer.add_timer(WebSocketRails.config.CONNECTION_TIMEOUT or 20, function()
-		self._connect_timeout = 0
-		print("****ERROR: connect timeout in ", WebSocketRails.config.CONNECTION_TIMEOUT," sec. retry ", reconnect_times , " ...")
-		--WebsocketManager:sharedWebsocketManager():close(self._websocket_id)
-		self:close()
-		self:connect()
+    	if self._connection_retries < WebSocketRails.config.CONNECTION_MAX_RETRIES then
+			self._connect_timeout = 0
+			print("****ERROR: connect timeout in ", WebSocketRails.config.CONNECTION_TIMEOUT," sec. retry ", reconnect_times , " ...")
+			--WebsocketManager:sharedWebsocketManager():close(self._websocket_id)
+			self:close()
+			self:connect()
+		else
+			print("connect retries approach limit, do not reconnect again!!!")
+		end
     end)
     
 end
