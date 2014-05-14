@@ -284,13 +284,7 @@ function HallServerConnectionPlugin.bind(theClass)
 	--网络重连失败
 	function theClass:onSocketReopenFail()
 		self:hide_progress_message_box()
-		require 'YesNoDialog'
-		local dialog = createYesNoDialog(runningscene().rootNode);
-		dialog:setTitle('温馨提示')
-		dialog:setMessage("无法重连上服务器，请退出！")
-		dialog:setYesButton(function() self:exit() end)
-		dialog:setNoButton(function() self:exit() end)
-		dialog:show()
+		notifyConnectFail()
 		--self:show_message_box(strings.hscp_restore_connection_w)
 		print("HallServerConnectionPlugin onSocketReopenFail")
 	end

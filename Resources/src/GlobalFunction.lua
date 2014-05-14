@@ -6,6 +6,17 @@ function getPayType()
 	--return GlobalSetting.pay_type[GlobalSetting.app_id] or GlobalSetting.pay_type["default"]
 end
 
+function notifyConnectFail()
+	require 'YesNoDialog'
+	local dialog = createYesNoDialog(runningscene().rootNode);
+	dialog:setTitle('温馨提示')
+	dialog:setMessage("连接服务器失败，请退出！")
+	dialog:setBackDismiss(false)
+	dialog:setYesButton(function() endtolua() end)
+	dialog:setNoButton(function() endtolua() end)
+	dialog:show()
+end
+
 function get_time()
 	local t=split(os.date(),' ')
 	local hours = nil
