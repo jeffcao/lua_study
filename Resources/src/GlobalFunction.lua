@@ -426,23 +426,29 @@ function hide_label_with_stroke(label)
 end
 
 function set_stroke(label, size, color)
-	local stroke = create_stroke(label, size, color)
+
+	local stroke_texture = create_stroke(label, size, color)
 	if not label.stroke_sprite then
-		label.stroke_sprite = CCSprite:createWithTexture(stroke:getSprite():getTexture())
+		label.stroke_sprite = CCSprite:createWithTexture(stroke_texture)
 		label:getParent():addChild(label.stroke_sprite, label:getZOrder() - 1)
 		label.stroke_size = size
 		label.stroke_color = color
 	else
-		label.stroke_sprite:setTexture(stroke:getSprite():getTexture())
-		label.stroke_sprite:setTextureRect(stroke:getSprite():getTextureRect())
+		label.stroke_sprite:setTexture(stroke_texture)
+	--	label.stroke_sprite:setTextureRect(stroke:getSprite():getTextureRect())
 	end
+	label.stroke_sprite:setFlipY(true)
 	local x = label:getPositionX() + (2*label:getAnchorPoint().x - 1)*label.stroke_size
 	local y = label:getPositionY() + (2*label:getAnchorPoint().y - 1)*label.stroke_size
 	label.stroke_sprite:setPosition(ccp(x,y))
 	label.stroke_sprite:setAnchorPoint(label:getAnchorPoint())
+
 end
 
 function create_stroke(label, size, color)
+	local key = label:getString()
+	local texture_cache = CCTextureCache:sharedTextureCache()
+	
 	if label:getZOrder() == 0 then
 		label:getParent():reorderChild(label, 2)
 	end
@@ -479,7 +485,10 @@ function create_stroke(label, size, color)
     label:setFlipY(false)
     rt:setPosition(position)
 
-    return rt
+	local image = rt:newCCImage()
+	texture_cache:addUIImage(image, key)
+    return texture_cache:textureForKey(key)
+    --return rt
 end
 
 function touchChild(node, arr)
