@@ -7,7 +7,7 @@
             <key>hongqi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{181,45}}</string>
+                <string>{{296,2},{181,45}}</string>
                 <key>offset</key>
                 <string>{0,-1}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>shouchongdalibao.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,49},{292,164}}</string>
+                <string>{{296,49},{292,164}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -30,10 +30,23 @@
                 <key>sourceSize</key>
                 <string>{302,174}</string>
             </dict>
+            <key>shouchongdalibao5.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{292,165}}</string>
+                <key>offset</key>
+                <string>{-2,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{7,5},{292,165}}</string>
+                <key>sourceSize</key>
+                <string>{310,175}</string>
+            </dict>
             <key>weizi_bisaiguize.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{115,407},{90,24}}</string>
+                <string>{{150,414},{90,24}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +59,7 @@
             <key>weizi_bisaijiangli.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{89,407},{90,24}}</string>
+                <string>{{124,414},{90,24}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,30 +72,17 @@
             <key>wenzi29yuansai.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{89,343},{157,27}}</string>
+                <string>{{60,343},{157,27}}</string>
                 <key>offset</key>
                 <string>{-5,1}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{4,0},{157,27}}</string>
                 <key>sourceSize</key>
                 <string>{175,29}</string>
             </dict>
             <key>wenzi_10yuansai.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{60,343},{157,27}}</string>
-                <key>offset</key>
-                <string>{0,1}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{9,0},{157,27}}</string>
-                <key>sourceSize</key>
-                <string>{175,29}</string>
-            </dict>
-            <key>wenzi_20yuansai.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{31,343},{157,27}}</string>
@@ -95,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{175,29}</string>
             </dict>
-            <key>wenzi_30yuansai.png</key>
+            <key>wenzi_20yuansai.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,343},{157,27}}</string>
@@ -108,14 +108,27 @@
                 <key>sourceSize</key>
                 <string>{175,29}</string>
             </dict>
+            <key>wenzi_30yuansai.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{479,2},{157,27}}</string>
+                <key>offset</key>
+                <string>{0,1}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{9,0},{157,27}}</string>
+                <key>sourceSize</key>
+                <string>{175,29}</string>
+            </dict>
             <key>wenzi_bisaishuoming.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{228,116},{108,26}}</string>
+                <string>{{176,169},{108,26}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{3,0},{108,26}}</string>
                 <key>sourceSize</key>
@@ -124,11 +137,11 @@
             <key>wenzi_bisaisonghaufei.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{89,372},{154,33}}</string>
+                <string>{{89,343},{154,33}}</string>
                 <key>offset</key>
                 <string>{1,-1}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{4,2},{154,33}}</string>
                 <key>sourceSize</key>
@@ -137,7 +150,7 @@
             <key>wenzi_shouchongdalibao.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{228,2},{112,26}}</string>
+                <string>{{462,300},{112,26}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +163,7 @@
             <key>yinying01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{185,2},{137,41}}</string>
+                <string>{{462,161},{137,41}}</string>
                 <key>offset</key>
                 <string>{0,1}</string>
                 <key>rotated</key>
@@ -168,9 +181,9 @@
             <key>realTextureFileName</key>
             <string>charge.png</string>
             <key>size</key>
-            <string>{256,512}</string>
+            <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:6f1f38e77f304e795f7c536066b990da:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:aea30e98600b8ea900fbc0eae320bcd3:1/1$</string>
             <key>textureFileName</key>
             <string>charge.png</string>
         </dict>
