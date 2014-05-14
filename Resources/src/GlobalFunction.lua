@@ -479,7 +479,7 @@ function is_phone_support_uiimage()
 	
 	local saved_unsupport_uiimage_devices = CCUserDefault:sharedUserDefault():getStringForKey("unsupport_uiimage_device")
 	if is_blank(saved_unsupport_uiimage_devices) then
-		return is_support('')
+		return is_support('ZTE V889D')
 	else
 		device_support = is_support(saved_unsupport_uiimage_devices)
 		return device_support
