@@ -345,10 +345,12 @@
 										<key>value</key>
 										<array>
 											<string>ccbResources/charge.plist</string>
-											<string>shouchongdalibao.png</string>
+											<string>shouchongdalibao5.png</string>
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -744,8 +746,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
