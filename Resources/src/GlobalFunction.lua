@@ -429,13 +429,13 @@ function set_stroke(label, size, color)
 
 	local stroke_texture = create_stroke(label, size, color)
 	if not label.stroke_sprite then
-		label.stroke_sprite = CCSprite:createWithTexture(stroke_texture)
+		label.stroke_sprite = CCSprite:createWithTexture(stroke_texture.texture)
 		label:getParent():addChild(label.stroke_sprite, label:getZOrder() - 1)
 		label.stroke_size = size
 		label.stroke_color = color
 	else
-		label.stroke_sprite:setTexture(stroke_texture)
-	--	label.stroke_sprite:setTextureRect(stroke:getSprite():getTextureRect())
+		label.stroke_sprite:setTexture(stroke_texture.texture)
+		label.stroke_sprite:setTextureRect(stroke_texture.rect)
 	end
 	label.stroke_sprite:setFlipY(true)
 	local x = label:getPositionX() + (2*label:getAnchorPoint().x - 1)*label.stroke_size
@@ -487,7 +487,7 @@ function create_stroke(label, size, color)
 
 	local image = rt:newCCImage()
 	texture_cache:addUIImage(image, key)
-    return texture_cache:textureForKey(key)
+    return {texture = texture_cache:textureForKey(key), rect = rt:getSprite():getTextureRect()}
     --return rt
 end
 
