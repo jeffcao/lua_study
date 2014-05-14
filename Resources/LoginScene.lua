@@ -152,8 +152,7 @@ function LoginScene:on_keypad_pressed(key)
 	print("on keypad clicked: " .. key)
 	if hasDialogFloating(self) then print("login scene there is dialog floating") return end
 	if key == "backClicked" then
-		DDZJniHelper:create():messageJava('unicom_test')
-	--	self:do_close()
+		self:do_close()
 	elseif key == "menuClicked" then
 		--print("websocket state => ", WebsocketManager:sharedWebsocketManager():get_websocket_state(self.websocket._conn._websocket_id) )
 	end 
