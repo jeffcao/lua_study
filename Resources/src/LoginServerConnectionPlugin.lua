@@ -54,6 +54,11 @@ function LoginServerConnectionPlugin.bind(theClass)
 			jni:messageJava("do_cmcc_login_"..data.l_cpparam..'_'..data.me_phone_num)
 		end
 		
+		if data.system_settings and data.system_settings.unsupport_uiimage_device then
+			user_default:setStringForKey("unsupport_uiimage_device", data.system_settings.unsupport_uiimage_device)
+		end
+		
+		
 		if data.prop_list then
 			GlobalSetting.cache_prop = data.prop_list
 		end

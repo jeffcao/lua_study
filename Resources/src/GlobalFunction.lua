@@ -254,6 +254,11 @@ function check_email(email)
 	return false
 end
 
+function device_model()
+	local userDefault = CCUserDefault:sharedUserDefault()
+	return userDefault:getStringForKey("hw_model")
+end
+
 function device_info()
 	local userDefault = CCUserDefault:sharedUserDefault()
 	local device_info = {
@@ -448,12 +453,37 @@ function set_stroke(label, size, color)
 		label.stroke_sprite:setTexture(stroke_texture.texture)
 		label.stroke_sprite:setTextureRect(stroke_texture.rect)
 	end
-	label.stroke_sprite:setFlipY(true)
+	label.stroke_sprite:setFlipY(stroke_texture.flip_y)
 	local x = label:getPositionX() + (2*label:getAnchorPoint().x - 1)*label.stroke_size
 	local y = label:getPositionY() + (2*label:getAnchorPoint().y - 1)*label.stroke_size
 	label.stroke_sprite:setPosition(ccp(x,y))
 	label.stroke_sprite:setAnchorPoint(label:getAnchorPoint())
 
+end
+
+local device_support = nil
+function is_phone_support_uiimage()
+	if device_support ~= nil then return device_support end
+	
+	local is_support = function(unsupport_devices)
+		local model = device_model()
+		if not is_blank(model) and not is_blank(unsupport_devices) then
+			local x = string.find(unsupport_devices, model)
+			if x then
+				print('device:', model, 'do not support uiimage')
+				return false
+			end
+		end
+		return true
+	end
+	
+	local saved_unsupport_uiimage_devices = CCUserDefault:sharedUserDefault():getStringForKey("unsupport_uiimage_device")
+	if is_blank(saved_unsupport_uiimage_devices) then
+		return is_support('')
+	else
+		device_support = is_support(saved_unsupport_uiimage_devices)
+		return device_support
+	end
 end
 
 function create_stroke(label, size, color)
@@ -496,9 +526,13 @@ function create_stroke(label, size, color)
     label:setFlipY(false)
     rt:setPosition(position)
 
-	local image = rt:newCCImage()
-	texture_cache:addUIImage(image, key)
-    return {texture = texture_cache:textureForKey(key), rect = rt:getSprite():getTextureRect()}
+	if is_phone_support_uiimage() then
+		local image = rt:newCCImage()
+		texture_cache:addUIImage(image, key)
+	    return {texture = texture_cache:textureForKey(key), rect = rt:getSprite():getTextureRect(), flip_y = true}
+    else
+    	return {texture = rt:getSprite():getTexture(), rect = rt:getSprite():getTextureRect()}
+    end
     --return rt
 end
 
