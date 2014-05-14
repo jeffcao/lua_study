@@ -105,6 +105,13 @@ function PurchasePlugin.show_buy_notify(product, which)
 	--	product.title = '为您的豆子保驾护航！'
 	--	product.note = '开启后1个小时状态效果，记牌器显示3个人已出牌，方便您计算对方牌面，点击使反反复复反反复复反反复复方法发用。'
 	--end
+	
+	local shouchonglibao = GlobalSetting.cache_prop["shouchongdalibao"]
+	if shouchonglibao and tostring(shouchonglibao.id) == tostring(product.id) then
+		PurchasePlugin.show_buy_shouchonglibao(product)
+		return
+	end
+	
 	local scene = runningscene()
 	print('scene', scene.__cname)
 	local buy = function() 
