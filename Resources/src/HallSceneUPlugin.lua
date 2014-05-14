@@ -288,8 +288,10 @@ function HallSceneUPlugin.bind(theClass)
 			self:updateTimeTask()
 		end
 		Stats:flush(GlobalSetting.hall_server_websocket)
+		
+		--do not call online_time_get_beans
 		--then call online_time_get_beans
-		self:start_online_time_get_beans()
+		--self:start_online_time_get_beans()
 		
 		self:check_tech_msg("sign")
 	end

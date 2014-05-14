@@ -9,12 +9,18 @@ function ServerNotifyPlugin.bind(theClass)
 					   self.onTimeBeans, self.onBankrupt, self.onMusic, self.onUserLocked, 
 					   self.onGamesBeans, self.onWinsBeans, self.onContinueWinsBeans, self.onPropPrompt,
 					   self.onContinueLoginsBeans, self.onInfoCompletedBeans}
+		funcs[16] = self.onToastMessage
 		funcs[26] = self.onDiploma
 		funcs[27] = self.onMatchResult
 		local func = funcs[tonumber(data.notify_type)+1]
 				
 		if not func then return end
 		func(self,data)
+	end
+	
+	function theClass:onToastMessage(data)
+		dump(data, 'onToastMessage')
+		ToastPlugin.show_server_notify(data.content)
 	end
 	
 	--奖状
