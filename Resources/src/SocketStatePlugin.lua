@@ -31,10 +31,16 @@ function SocketStatePlugin.bind(theClass)
 		self.ss_restore_name = restore_name
 		self.ss_websocket.on_open = function() 
 			if self.onSocketReopened then 
-				self:onSocketReopened() 
+				print('self.ss_websocket',self.ss_websocket)
+				self:onSocketReopened(self.ss_websocket) 
 			end 
 		end
-		self.ss_websocket:bind("connection_closed", function(data) self:onSocketProblem(data, "connection_closed") end)
+		self.ss_websocket:bind("connection_closed", function(data) 
+			dump(self, 'connection_closed self')
+			print('self.onSocketProblem', self.onSocketProblem)
+			print('self.initSocket', self.initSocket)
+			self:onSocketProblem(data, "connection_closed") 
+		end)
 		self.ss_websocket:bind("connection_error", function(data) self:onSocketProblem(data, "connection_error") end)
 		self:bind_server_kill(kill_event)
 	end

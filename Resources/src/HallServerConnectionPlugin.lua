@@ -268,9 +268,11 @@ function HallServerConnectionPlugin.bind(theClass)
 	end
 	
 	--网络已重新连接上
-	function theClass:onSocketReopened()
+	function theClass:onSocketReopened(socket)
 --		self.connection_state = 1
-
+		if GlobalSetting.hall_server_websocket == nil then
+			GlobalSetting.hall_server_websocket = socket
+		end
 		GlobalSetting.hall_server_websocket:bind("ui.hand_shake", function(data) 
 			dump(data, "ui.hand_shake of reopened socket") 
 			GlobalSetting.hall_server_websocket:unbind_clear("ui.hand_shake")
