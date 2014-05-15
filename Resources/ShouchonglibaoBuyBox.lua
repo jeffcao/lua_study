@@ -39,6 +39,8 @@ function ShouchonglibaoBuyBox:ctor(confirm_func)
 	self:addChild(self.rootNode)
 	self.confirm_func = confirm_func
 
+	set_green_stroke(self.commit_btn_lbl)
+	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	self:init_dialog()
 	self:setClickOutDismiss(false)
