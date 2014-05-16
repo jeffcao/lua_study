@@ -97,7 +97,7 @@ on_open = function(self, event)
 end,
 
 on_close = function(self, event)
-	print("[<" .. self.url .. ">.on_close] " , event)
+	print("WebSocketRails_Connection_CC:[<" .. self.url .. ">.on_close] " , event)
 --	if self._websocket_id ~= websocket_id then
 --		print("[WebSocketConnection.on_close] event not own by me, self._websocket_id: ", 
 --			self._websocket_id, " , event.websocket: " , websocket_id)
