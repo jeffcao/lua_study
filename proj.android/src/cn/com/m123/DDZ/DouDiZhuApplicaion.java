@@ -37,6 +37,7 @@ public class DouDiZhuApplicaion extends Application {
 		saveHardwareInfo();
 		initPkgInfo();
 		initPush();
+		initLocalLinkConfig();
 	}
 	
 	public static Context getContext() {
@@ -49,6 +50,10 @@ public class DouDiZhuApplicaion extends Application {
 		AlarmSender.deployAlarm(this, PushManager.ACTION_PUSH_ALARM, 8000);
 	}
 	
+	private void initLocalLinkConfig() {
+		ConfigManager.parseConfig();
+	}
+	
 	private void initDebug() {
 		String pref_name = "Cocos2dxPrefsFile";
 		SharedPreferences sp = getSharedPreferences(pref_name, Context.MODE_PRIVATE);
@@ -56,7 +61,7 @@ public class DouDiZhuApplicaion extends Application {
 		if (f.exists()) {
 			DEBUG = true;
 		}
-		DEBUG=true;
+		//DEBUG=true;
 		Log.i("DDZ", "DEBUG is " + DEBUG);
 		sp.edit().putString("debug", String.valueOf(DEBUG)).commit();
 	}

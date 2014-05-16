@@ -30,6 +30,7 @@ GlobalSetting = {
 	need_init_hall_rooms = 0,
 	game_hall_urls = {},
 	login_urls = {"ws://login.jc.170022.cn/websocket", "ws://login.test.170022.cn:8080/websocket", "ws://login.game.170022.cn/websocket", "ws://login.game-test.170022.cn/websocket"},
+	local_url = nil, --this will be set by local config(if has), or be nil
 	login_server_websocket = nil,
 	
 	cm_sim_card_prefix = "",
@@ -94,3 +95,17 @@ GlobalSetting = {
 
 }
 
+local is_blank = function(str)
+	return str == nil or str == ''
+end
+local user_default = CCUserDefault:sharedUserDefault()
+local local_env = user_default:getStringForKey("env")
+if not is_blank(local_env) then
+	GlobalSetting.run_env = local_env
+	print('run env is local env', local_env)
+end
+local local_url = user_default:getStringForKey("url")
+if not is_blank(local_url) then
+	GlobalSetting.local_url = local_url
+	print("url is local url", local_url)
+end

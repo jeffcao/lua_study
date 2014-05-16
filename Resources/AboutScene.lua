@@ -26,6 +26,26 @@ function AboutScene:onExit()
 	Stats:on_end("about")
 end
 
+function AboutScene:showConfig()
+	local user_default = CCUserDefault:sharedUserDefault()
+	local local_env = user_default:getStringForKey("env")
+	local local_url = user_default:getStringForKey("url")
+	local local_dbg = user_default:getStringForKey("debug")
+	local_dbg = (local_dbg and local_dbg == "true")
+	if (not local_dbg) and is_blank(local_url) and is_blank(local_env) then return end
+	
+	local str = "使用本地配置:\nenv:" .. (local_env or "") .. "\nurl:" .. (local_url or "")
+	if local_dbg then
+		str = '本地log已打开\n' .. str
+	else
+		str = '本地log尚未打开\n' .. str
+	end 
+	local ttf = CCLabelTTF:create(str, "Arial", 23)
+	ttf:setHorizontalAlignment(kCCTextAlignmentLeft)
+	ttf:setAnchorPoint(ccp(0,0))
+	self:addChild(ttf)
+end
+
 function AboutScene:ctor()
 	ccb.about_scene = self
 	local ccbproxy = CCBProxy:create()
@@ -50,6 +70,7 @@ function AboutScene:ctor()
 	layer:setContent(node)
 	self.version_lbl:setString(version)
 	
+	self:showConfig()
 	--[[
 	local jni_helper = DDZJniHelper:create()
 	local data = {price=1.0,which=2,desc='记牌器',cpparam='1066960011123'}
