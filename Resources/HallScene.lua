@@ -156,7 +156,9 @@ HallScene = class("HallScene", function()
  		end
  	else
  		self.hall_shouchong_layer:setVisible(true)
- 		ShouchonglibaoDonghua.show(self.hall_shouchong_layer, ccp(self.hall_shouchonglibao_menu:getPosition()))
+ 		ShouchonglibaoDonghua.show(self.hall_shouchong_layer, ccpAdd(
+ 				ccp(self.hall_shouchonglibao_menu:getPosition()),
+ 				ccp(-4, 2)))
  	end
  end
  
