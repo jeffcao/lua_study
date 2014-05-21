@@ -40,6 +40,12 @@ public class DouDiZhuApplicaion extends Application {
 		initLocalLinkConfig();
 	}
 	
+	public static void debugLog(String str) {
+		if (DEBUG) {
+			System.out.println(str);
+		}
+	}
+	
 	public static Context getContext() {
 		return APP_CONTEXT;
 	}

@@ -97,6 +97,9 @@ public class DDZJniHelper {
 				exit();
 			}
 		}
+		if (str.equals("do_cmcc_more_game")) {
+			do_cmcc_more_game();
+		}
 		if (str.startsWith("do_billing_")) {
 			//System.out.println("do_billing_\n"+str);
 			String mstr = str.substring("do_billing_".length());
@@ -124,33 +127,20 @@ public class DDZJniHelper {
 		}
 	}
 	
+	public static void do_cmcc_more_game() {
+		if (null == DouDiZhu_Lua.INSTANCE) return;
+		GameInterface.viewMoreGames(DouDiZhu_Lua.INSTANCE);
+	}
+	
 	public static void do_cmcc_login(String cpparam, String tel_number) {
 		if (null == DouDiZhu_Lua.INSTANCE) return;
-		//System.out.println("cpparam is " + cpparam);
-		//System.out.println("tel_number is " + tel_number);
-		//GameInterface.initializeApp(DouDiZhu_Lua.INSTANCE, "我爱斗地主", "深圳市新中南实业有限公司", tel_number);
-		GameInterface.initializeApp(DouDiZhu_Lua.INSTANCE);
+		DouDiZhuApplicaion.debugLog("cmcc 设置透传参数：" + cpparam);
 		GameInterface.setExtraArguments(new String[]{cpparam});
-		GameInterface.setLoginListener(DouDiZhu_Lua.INSTANCE, new GameInterface.ILoginCallback() {
-	      @Override
-	      public void onResult(int i, String s, Object o) {
-	      //  System.out.println("Login.Result=" + s);
-	        if(i == LoginResult.SUCCESS_IMPLICIT){
-	      //    Toast.makeText(DouDiZhu_Lua.INSTANCE, "Login 隐士登录成功 " + s, Toast.LENGTH_SHORT).show();
-	        }
-	        if(i == LoginResult.SUCCESS_EXPLICIT){
-	      //    Toast.makeText(DouDiZhu_Lua.INSTANCE, "Login 显示登录成功 " + s, Toast.LENGTH_SHORT).show();
-	        }
-	        if(i == LoginResult.FAILED_EXPLICIT){
-	      //    Toast.makeText(DouDiZhu_Lua.INSTANCE, "Login 显示登录失败", Toast.LENGTH_SHORT).show();
-	        }
-	      }
-	    });
 	}
 	
 	public static void retrybilling(String billingIndex, String cpparam, final String trade_id, final String prop_id) {
-		String dump = String.format("billingIndex:%s\ncpparam:%s\ntrade_id:%s\nprop_id:%s", new Object[]{billingIndex, cpparam,trade_id,prop_id});
-		//System.out.println(dump);
+		String dump = String.format("cmcc retry billing billingIndex:%s\ncpparam:%s\ntrade_id:%s\nprop_id:%s", new Object[]{billingIndex, cpparam,trade_id,prop_id});
+		DouDiZhuApplicaion.debugLog(dump);
 		GameInterface.retryBilling(DouDiZhu_Lua.getContext(), true, true, billingIndex, cpparam, new IPayCallback() {
 			
 			@Override
@@ -159,7 +149,6 @@ public class DDZJniHelper {
 			        switch (resultCode) {
 			          case BillingResult.SUCCESS:
 			            result = "购买道具成功！";
-			        //    getPurchaseInfo();
 			            break;
 			          case BillingResult.FAILED:
 			            result = "购买道具失败！";
@@ -171,15 +160,14 @@ public class DDZJniHelper {
 			            messageToCpp("on_bill_cancel");
 			            break;
 			        }
-			        System.out.println("重试" + result);
-			//        Toast.makeText(DouDiZhu_Lua.getContext(), result, Toast.LENGTH_SHORT).show();
+			        DouDiZhuApplicaion.debugLog("cmcc 重试" + result);
 			}
 		});
 	}
 	
 	public static void dobilling(String billingIndex, String cpparam, final String trade_id, final String prop_id) {
-		String dump = String.format("billingIndex:%s\ncpparam:%s\ntrade_id:%s\nprop_id:%s", new Object[]{billingIndex, cpparam,trade_id,prop_id});
-		//System.out.println(dump);
+		String dump = String.format("cmcc billingIndex:%s\ncpparam:%s\ntrade_id:%s\nprop_id:%s", new Object[]{billingIndex, cpparam,trade_id,prop_id});
+		DouDiZhuApplicaion.debugLog(dump);
 		GameInterface.doBilling(DouDiZhu_Lua.getContext(), true, true, billingIndex, cpparam, new IPayCallback() {
 			
 			@Override
@@ -187,18 +175,16 @@ public class DDZJniHelper {
 				 String result = "";
 			        switch (resultCode) {
 			          case BillingResult.SUCCESS:
-			            result = "购买道具：[" + billingIndex + "] 成功！";
-			        //    getPurchaseInfo();
+			            result = "cmcc 购买道具：[" + billingIndex + "] 成功！";
 			            break;
 			          case BillingResult.FAILED:
-			            result = "购买道具：[" + billingIndex + "] 失败！";
+			            result = "cmcc 购买道具：[" + billingIndex + "] 失败！";
 			            break;
 			          default:
-			            result = "购买道具：[" + billingIndex + "] 取消！";
+			            result = "cmcc 购买道具：[" + billingIndex + "] 取消！";
 			            break;
 			        }
-			        System.out.println(result);
-			//        Toast.makeText(DouDiZhu_Lua.getContext(), result, Toast.LENGTH_SHORT).show();
+			        DouDiZhuApplicaion.debugLog(result);
 			}
 		});
 	}
