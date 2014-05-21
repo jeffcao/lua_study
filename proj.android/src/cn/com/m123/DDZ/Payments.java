@@ -44,16 +44,16 @@ public class Payments {
 				@Override
 				public void onInitFinish(int code, String msg) {
 					if (code == IInitListener.CODE_FAILED) {
-						System.out.println("leyifu init fail:"
+						DouDiZhuApplicaion.debugLog("leyifu init fail:"
 								+ (msg == null ? "null" : msg));
 					} else if (code == IInitListener.CODE_SUCCESS) {
-						System.out.println("leyifu init success");
+						DouDiZhuApplicaion.debugLog("leyifu init success");
 						is_leyifu_inited = true;
 						do_leyifu_pay(params);
 					}
 				}
 			});
-			System.out.println("leyifu init start");
+			DouDiZhuApplicaion.debugLog("leyifu init start");
 		} else {
 			do_leyifu_pay(params);
 		}
@@ -73,7 +73,7 @@ public class Payments {
 			String dump = String.format(
 					"leyifu pay=>\nconsume_code:%s\nprop_id:%s\nprop_name:%s\nprice:%d\ntrade_id:%s",
 					new Object[] { consume_code, prop_id, prop_name, price_i, trade_id });
-			System.out.println(dump);
+			DouDiZhuApplicaion.debugLog(dump);
 			AppTache.requestPay(DouDiZhu_Lua.INSTANCE, true, price_i, 1, consume_code, prop_name, trade_id, DouDiZhu_Lua.LEYIFU_PAY_REQUEST_CODE);
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -99,9 +99,9 @@ public class Payments {
 	public static void dobilling(String billingIndex, String cpparam,
 			final String trade_id, final String prop_id) {
 		String dump = String.format(
-				"billingIndex:%s\ncpparam:%s\ntrade_id:%s\nprop_id:%s",
+				"cmcc dobilling billingIndex:%s\ncpparam:%s\ntrade_id:%s\nprop_id:%s",
 				new Object[] { billingIndex, cpparam, trade_id, prop_id });
-		System.out.println(dump);
+		DouDiZhuApplicaion.debugLog(dump);
 		GameInterface.doBilling(DouDiZhu_Lua.getContext(), true, true,
 				billingIndex, cpparam, new IPayCallback() {
 
@@ -112,7 +112,6 @@ public class Payments {
 						switch (resultCode) {
 						case BillingResult.SUCCESS:
 							result = "购买道具成功！";
-							// getPurchaseInfo();
 							break;
 						case BillingResult.FAILED:
 							result = "购买道具失败！";
@@ -128,9 +127,7 @@ public class Payments {
 							DDZJniHelper.messageToCpp("on_bill_cancel");
 							break;
 						}
-						System.out.println(result);
-						// Toast.makeText(DouDiZhu_Lua.getContext(), result,
-						// Toast.LENGTH_SHORT).show();
+						DouDiZhuApplicaion.debugLog("cmcc pay result:" + result);
 					}
 				});
 	}
@@ -157,36 +154,36 @@ public class Payments {
 					.format("which:%d\nprice:%f\ndesc:%s\ncallBackInfo:%s\ntrade_id:%s\nprop_id:%s",
 							new Object[] { which, price, desc, callBackInfo,
 									trade_id, prop_id });
-			System.out.println("anzhipay----------------------------\n" + str);
+			DouDiZhuApplicaion.debugLog("anzhipay----------------------------\n" + str);
 			payments.registerPaymentsCallBack(new PaymentsInterface() {
 
 				@Override
 				public void onPaymentsWaiting(int arg0, String arg1,
 						float arg2, String arg3) {
-					System.out.println("onPaymentsWaiting");
+					DouDiZhuApplicaion.debugLog("onPaymentsWaiting");
 				}
 
 				@Override
 				public void onPaymentsSuccess(int arg0, String arg1, float arg2) {
-					System.out.println("onPaymentsSuccess");
+					DouDiZhuApplicaion.debugLog("onPaymentsSuccess");
 				}
 
 				@Override
 				public void onPaymentsFail(int arg0, String arg1, float arg2,
 						String arg3) {
-					System.out.println("onPaymentsFail");
+					DouDiZhuApplicaion.debugLog("onPaymentsFail");
 					notify_cancel();
 				}
 
 				@Override
 				public void onPaymentsEnd() {
-					System.out.println("onPaymentsEnd");
+					DouDiZhuApplicaion.debugLog("onPaymentsEnd");
 					notify_cancel();
 				}
 
 				@Override
 				public void onPaymentsBegin() {
-					System.out.println("onPaymentsBegin");
+					DouDiZhuApplicaion.debugLog("onPaymentsBegin");
 				}
 
 				private void notify_cancel() {

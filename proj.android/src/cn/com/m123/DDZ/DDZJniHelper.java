@@ -129,6 +129,7 @@ public class DDZJniHelper {
 	
 	public static void do_cmcc_more_game() {
 		if (null == DouDiZhu_Lua.INSTANCE) return;
+		DouDiZhuApplicaion.debugLog("cmcc more game view");
 		GameInterface.viewMoreGames(DouDiZhu_Lua.INSTANCE);
 	}
 	
@@ -239,10 +240,10 @@ public class DDZJniHelper {
 			@Override
 			public void run() {
 				String params = str.substring("on_pay_".length());
-				System.out.println("params:"+params);
+				DouDiZhuApplicaion.debugLog(" pay params:"+params);
 				if (null == params) return;
 				String[] arr = params.split("__");
-				System.out.println("arr"+arr+", length:"+arr.length);
+				DouDiZhuApplicaion.debugLog("pay arr"+arr+", length:"+arr.length);
 				if (null != arr && arr.length == 2) {
 					Payments.pay(arr[0], arr[1]);
 				}
