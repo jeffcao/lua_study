@@ -1,0 +1,34 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"  >
+
+    <TextView
+        android:id="@+id/hint_textview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="杭州斯凯支付测试程序"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button_pay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/hint_textview"
+        android:layout_marginTop="14dp"
+        android:text="进行付费" />
+
+    <TextView
+        android:id="@+id/test_textview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/button_pay"
+        android:layout_marginTop="14dp"
+        android:text="付费结果：" />
+
+</RelativeLayout>
