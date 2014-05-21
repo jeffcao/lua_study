@@ -58,7 +58,8 @@ function Menu:ctor(menu_dismiss_callback, show_set_fn)
 	local function game_center()
 		dismiss()
 		local jni = DDZJniHelper:create()
-		jni:messageJava("on_open_url_intent_g.10086.cn")
+		--jni:messageJava("on_open_url_intent_g.10086.cn")
+		jni:messageJava("do_cmcc_more_game")
 	end
 	
 	self.show_set_fn = show_set_fn

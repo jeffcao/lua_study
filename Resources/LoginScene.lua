@@ -39,7 +39,7 @@ function LoginScene:ctor()
 	end
 	local function game_center()
 		local jni = DDZJniHelper:create()
-		jni:messageJava("on_open_url_intent_http://g.10086.cn")
+		jni:messageJava("do_cmcc_more_game")
 	end
 	
 	self.on_help_item_clicked = help
