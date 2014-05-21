@@ -1,0 +1,479 @@
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_PROGRAM_VERSION	5.8	//
+BuildConfig	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/BuildConfig.java	/^public final class BuildConfig {$/;"	c
+DEBUG	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/BuildConfig.java	/^    public final static boolean DEBUG = true;$/;"	f	class:BuildConfig
+cn.cmgame.demo	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/BuildConfig.java	/^package cn.cmgame.demo;$/;"	p
+Dialog_Fullscreen	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int Dialog_Fullscreen=0x7f070001;$/;"	f	class:R.style
+R	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^public final class R {$/;"	c
+Theme_billing_dialog	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int Theme_billing_dialog=0x7f070000;$/;"	f	class:R.style
+Theme_leaderboard_dialog	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int Theme_leaderboard_dialog=0x7f070002;$/;"	f	class:R.style
+app_name	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int app_name=0x7f060000;$/;"	f	class:R.string
+attr	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^    public static final class attr {$/;"	c	class:R
+btnBilling1	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int btnBilling1=0x7f080002;$/;"	f	class:R.id
+btnBilling2	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int btnBilling2=0x7f080005;$/;"	f	class:R.id
+btnBilling3	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int btnBilling3=0x7f080009;$/;"	f	class:R.id
+btnBilling5	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int btnBilling5=0x7f08000c;$/;"	f	class:R.id
+btnGetPic	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int btnGetPic=0x7f080007;$/;"	f	class:R.id
+btnGetSession	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int btnGetSession=0x7f080004;$/;"	f	class:R.id
+btnGetSession1	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int btnGetSession1=0x7f080001;$/;"	f	class:R.id
+btnGetSmsCode	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int btnGetSmsCode=0x7f08000b;$/;"	f	class:R.id
+cn.cmgame.demo	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^package cn.cmgame.demo;$/;"	p
+color	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^    public static final class color {$/;"	c	class:R
+drawable	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^    public static final class drawable {$/;"	c	class:R
+edtAccount	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int edtAccount=0x7f080003;$/;"	f	class:R.id
+edtPic	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int edtPic=0x7f080006;$/;"	f	class:R.id
+edtSession1	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int edtSession1=0x7f080000;$/;"	f	class:R.id
+edtSms	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int edtSms=0x7f08000a;$/;"	f	class:R.id
+g_class_name	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int g_class_name=0x7f060001;$/;"	f	class:R.string
+game_item	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int game_item=0x7f030000;$/;"	f	class:R.layout
+game_main	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int game_main=0x7f030001;$/;"	f	class:R.layout
+gc_alipay_login_account_or_password_null	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_alipay_login_account_or_password_null=0x7f06005f;$/;"	f	class:R.string
+gc_alipay_login_need_avail_account	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_alipay_login_need_avail_account=0x7f060060;$/;"	f	class:R.string
+gc_alipay_login_need_avail_password	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_alipay_login_need_avail_password=0x7f060061;$/;"	f	class:R.string
+gc_back_btn	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_back_btn=0x7f020000;$/;"	f	class:R.drawable
+gc_back_btn_select	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_back_btn_select=0x7f020001;$/;"	f	class:R.drawable
+gc_back_btn_selector	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_back_btn_selector=0x7f020002;$/;"	f	class:R.drawable
+gc_back_btn_unable	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_back_btn_unable=0x7f020003;$/;"	f	class:R.drawable
+gc_billing_check_network	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_check_network=0x7f060018;$/;"	f	class:R.string
+gc_billing_cmgc_game_tag	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_cmgc_game_tag=0x7f06001c;$/;"	f	class:R.string
+gc_billing_continue_game	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_continue_game=0x7f060041;$/;"	f	class:R.string
+gc_billing_dialog_cancel	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_dialog_cancel=0x7f060067;$/;"	f	class:R.string
+gc_billing_dialog_cancel_1	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_dialog_cancel_1=0x7f060068;$/;"	f	class:R.string
+gc_billing_dialog_clear	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_dialog_clear=0x7f060064;$/;"	f	class:R.string
+gc_billing_dialog_download_tip	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_dialog_download_tip=0x7f06006d;$/;"	f	class:R.string
+gc_billing_dialog_exit	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_dialog_exit=0x7f060062;$/;"	f	class:R.string
+gc_billing_dialog_getting_verifycode	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_dialog_getting_verifycode=0x7f06006a;$/;"	f	class:R.string
+gc_billing_dialog_getverifycode_again	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_dialog_getverifycode_again=0x7f060069;$/;"	f	class:R.string
+gc_billing_dialog_handling	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_dialog_handling=0x7f06006b;$/;"	f	class:R.string
+gc_billing_dialog_information	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_dialog_information=0x7f06005e;$/;"	f	class:R.string
+gc_billing_dialog_point	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_dialog_point=0x7f06006c;$/;"	f	class:R.string
+gc_billing_dialog_positive	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_dialog_positive=0x7f060066;$/;"	f	class:R.string
+gc_billing_dialog_reject	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_dialog_reject=0x7f060065;$/;"	f	class:R.string
+gc_billing_dialog_sure	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_dialog_sure=0x7f060063;$/;"	f	class:R.string
+gc_billing_error_network	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_error_network=0x7f060010;$/;"	f	class:R.string
+gc_billing_exit_tip	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_exit_tip=0x7f060056;$/;"	f	class:R.string
+gc_billing_fail	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_fail=0x7f060014;$/;"	f	class:R.string
+gc_billing_fail_phone	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_fail_phone=0x7f06001e;$/;"	f	class:R.string
+gc_billing_fail_vericode	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_fail_vericode=0x7f06001f;$/;"	f	class:R.string
+gc_billing_game_again	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_game_again=0x7f060040;$/;"	f	class:R.string
+gc_billing_gamehall	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_gamehall=0x7f060030;$/;"	f	class:R.string
+gc_billing_gamepay	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_gamepay=0x7f060039;$/;"	f	class:R.string
+gc_billing_gamepay_1	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_gamepay_1=0x7f060038;$/;"	f	class:R.string
+gc_billing_get_vericode	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_get_vericode=0x7f060048;$/;"	f	class:R.string
+gc_billing_info_sms_0	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_info_sms_0=0x7f06000d;$/;"	f	class:R.string
+gc_billing_info_sms_1	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_info_sms_1=0x7f060007;$/;"	f	class:R.string
+gc_billing_info_sms_2	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_info_sms_2=0x7f060008;$/;"	f	class:R.string
+gc_billing_info_sms_3	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_info_sms_3=0x7f060009;$/;"	f	class:R.string
+gc_billing_info_sms_4	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_info_sms_4=0x7f06000a;$/;"	f	class:R.string
+gc_billing_info_sms_6	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_info_sms_6=0x7f06000b;$/;"	f	class:R.string
+gc_billing_info_sms_7	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_info_sms_7=0x7f06000c;$/;"	f	class:R.string
+gc_billing_info_sms_8	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_info_sms_8=0x7f06000e;$/;"	f	class:R.string
+gc_billing_info_sms_9	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_info_sms_9=0x7f06000f;$/;"	f	class:R.string
+gc_billing_invalid_china_mobile_card	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_invalid_china_mobile_card=0x7f06001d;$/;"	f	class:R.string
+gc_billing_is_no_network_tip	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_is_no_network_tip=0x7f060057;$/;"	f	class:R.string
+gc_billing_is_no_sound	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_is_no_sound=0x7f060003;$/;"	f	class:R.string
+gc_billing_islow_version	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_islow_version=0x7f060002;$/;"	f	class:R.string
+gc_billing_member_enter	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_member_enter=0x7f060043;$/;"	f	class:R.string
+gc_billing_member_info	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_member_info=0x7f06002d;$/;"	f	class:R.string
+gc_billing_member_join	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_member_join=0x7f060045;$/;"	f	class:R.string
+gc_billing_member_more	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_member_more=0x7f060047;$/;"	f	class:R.string
+gc_billing_member_name	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_member_name=0x7f060035;$/;"	f	class:R.string
+gc_billing_member_partner	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_member_partner=0x7f060037;$/;"	f	class:R.string
+gc_billing_member_pay	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_member_pay=0x7f060036;$/;"	f	class:R.string
+gc_billing_member_right	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_member_right=0x7f060031;$/;"	f	class:R.string
+gc_billing_member_right_1	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_member_right_1=0x7f060032;$/;"	f	class:R.string
+gc_billing_message_content	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_message_content=0x7f060091;$/;"	f	class:R.string
+gc_billing_message_title	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_message_title=0x7f060090;$/;"	f	class:R.string
+gc_billing_monthly_orger	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_monthly_orger=0x7f060033;$/;"	f	class:R.string
+gc_billing_monthly_orger_1	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_monthly_orger_1=0x7f060034;$/;"	f	class:R.string
+gc_billing_more	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_more=0x7f06002f;$/;"	f	class:R.string
+gc_billing_more_time_error	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_more_time_error=0x7f060028;$/;"	f	class:R.string
+gc_billing_net_contacts	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_net_contacts=0x7f060029;$/;"	f	class:R.string
+gc_billing_net_contacts_error	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_net_contacts_error=0x7f06002c;$/;"	f	class:R.string
+gc_billing_net_frend	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_net_frend=0x7f06002b;$/;"	f	class:R.string
+gc_billing_net_phone	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_net_phone=0x7f060026;$/;"	f	class:R.string
+gc_billing_net_phone_2	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_net_phone_2=0x7f060027;$/;"	f	class:R.string
+gc_billing_net_sub	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_net_sub=0x7f06002a;$/;"	f	class:R.string
+gc_billing_net_verifycode	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_net_verifycode=0x7f060023;$/;"	f	class:R.string
+gc_billing_net_verifycode_1	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_net_verifycode_1=0x7f060024;$/;"	f	class:R.string
+gc_billing_net_verifycode_2	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_net_verifycode_2=0x7f060025;$/;"	f	class:R.string
+gc_billing_network_airplane	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_network_airplane=0x7f06001a;$/;"	f	class:R.string
+gc_billing_network_for_billing	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_network_for_billing=0x7f060019;$/;"	f	class:R.string
+gc_billing_network_multi	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_network_multi=0x7f06001b;$/;"	f	class:R.string
+gc_billing_newest_version	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_newest_version=0x7f060058;$/;"	f	class:R.string
+gc_billing_no_charge	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_no_charge=0x7f060020;$/;"	f	class:R.string
+gc_billing_no_network_tip	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_no_network_tip=0x7f060049;$/;"	f	class:R.string
+gc_billing_no_phone_number	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_no_phone_number=0x7f060022;$/;"	f	class:R.string
+gc_billing_no_simcard	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_no_simcard=0x7f060016;$/;"	f	class:R.string
+gc_billing_no_vericode	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_no_vericode=0x7f060021;$/;"	f	class:R.string
+gc_billing_ok	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_ok=0x7f060011;$/;"	f	class:R.string
+gc_billing_ok_history	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_ok_history=0x7f060012;$/;"	f	class:R.string
+gc_billing_ok_order	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_ok_order=0x7f060013;$/;"	f	class:R.string
+gc_billing_open_network_tip	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_open_network_tip=0x7f060055;$/;"	f	class:R.string
+gc_billing_order_again	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_order_again=0x7f06003f;$/;"	f	class:R.string
+gc_billing_order_fail_tip_1	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_order_fail_tip_1=0x7f06004e;$/;"	f	class:R.string
+gc_billing_order_fail_tip_2	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_order_fail_tip_2=0x7f06004f;$/;"	f	class:R.string
+gc_billing_order_fail_tip_3	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_order_fail_tip_3=0x7f060050;$/;"	f	class:R.string
+gc_billing_order_fail_tip_4	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_order_fail_tip_4=0x7f060051;$/;"	f	class:R.string
+gc_billing_order_fail_tip_5	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_order_fail_tip_5=0x7f060052;$/;"	f	class:R.string
+gc_billing_order_fail_tip_6	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_order_fail_tip_6=0x7f060053;$/;"	f	class:R.string
+gc_billing_order_member_tip	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_order_member_tip=0x7f06004b;$/;"	f	class:R.string
+gc_billing_order_player_price	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_order_player_price=0x7f060054;$/;"	f	class:R.string
+gc_billing_order_succ_member_tip	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_order_succ_member_tip=0x7f06004d;$/;"	f	class:R.string
+gc_billing_order_succ_tip	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_order_succ_tip=0x7f06004c;$/;"	f	class:R.string
+gc_billing_order_tip	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_order_tip=0x7f06004a;$/;"	f	class:R.string
+gc_billing_otherpay	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_otherpay=0x7f06003b;$/;"	f	class:R.string
+gc_billing_otherpay_1	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_otherpay_1=0x7f06003a;$/;"	f	class:R.string
+gc_billing_package_enter	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_package_enter=0x7f060044;$/;"	f	class:R.string
+gc_billing_package_info	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_package_info=0x7f06002e;$/;"	f	class:R.string
+gc_billing_package_join	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_package_join=0x7f060046;$/;"	f	class:R.string
+gc_billing_pay_land	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_pay_land=0x7f06003c;$/;"	f	class:R.string
+gc_billing_piccode_tip0	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_piccode_tip0=0x7f060092;$/;"	f	class:R.string
+gc_billing_piccode_tip1	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_piccode_tip1=0x7f060093;$/;"	f	class:R.string
+gc_billing_piccode_tip2	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_piccode_tip2=0x7f060094;$/;"	f	class:R.string
+gc_billing_player_discount	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_player_discount=0x7f06008f;$/;"	f	class:R.string
+gc_billing_purchase	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_purchase=0x7f060042;$/;"	f	class:R.string
+gc_billing_require	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_require=0x7f060015;$/;"	f	class:R.string
+gc_billing_rights_member_land	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_rights_member_land=0x7f06003d;$/;"	f	class:R.string
+gc_billing_rights_normal_land	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_rights_normal_land=0x7f06003e;$/;"	f	class:R.string
+gc_billing_sending	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_sending=0x7f060006;$/;"	f	class:R.string
+gc_billing_simcard_unavailable	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_simcard_unavailable=0x7f060017;$/;"	f	class:R.string
+gc_billing_timeout	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_timeout=0x7f06005d;$/;"	f	class:R.string
+gc_billing_title	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_title=0x7f060004;$/;"	f	class:R.string
+gc_billing_title_2	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_title_2=0x7f060005;$/;"	f	class:R.string
+gc_billing_unknown_server_error	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_unknown_server_error=0x7f060059;$/;"	f	class:R.string
+gc_billing_update_no	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_update_no=0x7f06005c;$/;"	f	class:R.string
+gc_billing_update_prompt	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_update_prompt=0x7f06005a;$/;"	f	class:R.string
+gc_billing_update_yes	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_billing_update_yes=0x7f06005b;$/;"	f	class:R.string
+gc_btn	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_btn=0x7f020004;$/;"	f	class:R.drawable
+gc_btn_enter	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_btn_enter=0x7f020005;$/;"	f	class:R.drawable
+gc_btn_enter_select	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_btn_enter_select=0x7f020006;$/;"	f	class:R.drawable
+gc_btn_enter_selector	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_btn_enter_selector=0x7f020007;$/;"	f	class:R.drawable
+gc_btn_enter_unable	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_btn_enter_unable=0x7f020008;$/;"	f	class:R.drawable
+gc_btn_friend	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_btn_friend=0x7f020009;$/;"	f	class:R.drawable
+gc_btn_friend_enter	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_btn_friend_enter=0x7f02000a;$/;"	f	class:R.drawable
+gc_btn_friend_select	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_btn_friend_select=0x7f02000b;$/;"	f	class:R.drawable
+gc_btn_friend_selector	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_btn_friend_selector=0x7f02000c;$/;"	f	class:R.drawable
+gc_btn_select	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_btn_select=0x7f02000d;$/;"	f	class:R.drawable
+gc_btn_selector	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_btn_selector=0x7f02000e;$/;"	f	class:R.drawable
+gc_close	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_close=0x7f06007d;$/;"	f	class:R.string
+gc_content_bg	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_content_bg=0x7f02000f;$/;"	f	class:R.drawable
+gc_discount_activity	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_discount_activity=0x7f060087;$/;"	f	class:R.string
+gc_discount_info	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_discount_info=0x7f060084;$/;"	f	class:R.string
+gc_discount_level	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_discount_level=0x7f060081;$/;"	f	class:R.string
+gc_discount_player	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_discount_player=0x7f060083;$/;"	f	class:R.string
+gc_discount_player_success	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_discount_player_success=0x7f06008e;$/;"	f	class:R.string
+gc_discount_player_tip_0	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_discount_player_tip_0=0x7f06008a;$/;"	f	class:R.string
+gc_discount_player_tip_1	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_discount_player_tip_1=0x7f06008b;$/;"	f	class:R.string
+gc_discount_player_tip_2	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_discount_player_tip_2=0x7f06008c;$/;"	f	class:R.string
+gc_discount_player_tip_3	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_discount_player_tip_3=0x7f06008d;$/;"	f	class:R.string
+gc_discount_promotion	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_discount_promotion=0x7f060085;$/;"	f	class:R.string
+gc_discount_promotion_tip	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_discount_promotion_tip=0x7f060086;$/;"	f	class:R.string
+gc_discount_tip	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_discount_tip=0x7f060088;$/;"	f	class:R.string
+gc_discount_tip_1	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_discount_tip_1=0x7f060089;$/;"	f	class:R.string
+gc_discount_vip	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_discount_vip=0x7f060082;$/;"	f	class:R.string
+gc_download_ok	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_download_ok=0x7f06006e;$/;"	f	class:R.string
+gc_exit	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_exit=0x7f06007f;$/;"	f	class:R.string
+gc_exit_btn	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_exit_btn=0x7f020010;$/;"	f	class:R.drawable
+gc_exit_btn_select	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_exit_btn_select=0x7f020011;$/;"	f	class:R.drawable
+gc_exit_btn_selector	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_exit_btn_selector=0x7f020012;$/;"	f	class:R.drawable
+gc_exit_content	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_exit_content=0x7f020013;$/;"	f	class:R.drawable
+gc_exit_head	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_exit_head=0x7f020014;$/;"	f	class:R.drawable
+gc_gameDetail_category	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gameDetail_category=0x7f060071;$/;"	f	class:R.string
+gc_gameDetail_cpname	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gameDetail_cpname=0x7f06006f;$/;"	f	class:R.string
+gc_gameDetail_download	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gameDetail_download=0x7f060070;$/;"	f	class:R.string
+gc_game_detail	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_game_detail=0x7f060072;$/;"	f	class:R.string
+gc_game_download	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_game_download=0x7f060075;$/;"	f	class:R.string
+gc_game_introduction	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_game_introduction=0x7f060073;$/;"	f	class:R.string
+gc_game_screenshots	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_game_screenshots=0x7f060074;$/;"	f	class:R.string
+gc_game_title	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_game_title=0x7f060076;$/;"	f	class:R.string
+gc_gamehall	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamehall=0x7f020015;$/;"	f	class:R.drawable
+gc_gamepad_a	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_a=0x7f020016;$/;"	f	class:R.drawable
+gc_gamepad_auto_connected	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_auto_connected=0x7f0600d0;$/;"	f	class:R.string
+gc_gamepad_b	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_b=0x7f020017;$/;"	f	class:R.drawable
+gc_gamepad_bind_tip	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_bind_tip=0x7f0600d7;$/;"	f	class:R.string
+gc_gamepad_confirm_cancel	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_confirm_cancel=0x7f0600ea;$/;"	f	class:R.string
+gc_gamepad_confirm_pay	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_confirm_pay=0x7f0600e9;$/;"	f	class:R.string
+gc_gamepad_confirm_pay_with_session	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_confirm_pay_with_session=0x7f0600e8;$/;"	f	class:R.string
+gc_gamepad_dialog_bind	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_bind=0x7f0600d6;$/;"	f	class:R.string
+gc_gamepad_dialog_connect_fail	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_connect_fail=0x7f0600df;$/;"	f	class:R.string
+gc_gamepad_dialog_connect_fail_gh	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_connect_fail_gh=0x7f0600e1;$/;"	f	class:R.string
+gc_gamepad_dialog_connect_lost	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_connect_lost=0x7f0600e0;$/;"	f	class:R.string
+gc_gamepad_dialog_connect_none	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_connect_none=0x7f0600de;$/;"	f	class:R.string
+gc_gamepad_dialog_connect_ok	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_connect_ok=0x7f0600dd;$/;"	f	class:R.string
+gc_gamepad_dialog_connect_tip	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_connect_tip=0x7f0600d1;$/;"	f	class:R.string
+gc_gamepad_dialog_connect_tip_2	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_connect_tip_2=0x7f0600d2;$/;"	f	class:R.string
+gc_gamepad_dialog_connecting	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_connecting=0x7f0600dc;$/;"	f	class:R.string
+gc_gamepad_dialog_find_multi	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_find_multi=0x7f0600e3;$/;"	f	class:R.string
+gc_gamepad_dialog_find_nothing	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_find_nothing=0x7f0600e2;$/;"	f	class:R.string
+gc_gamepad_dialog_init_btn_connect	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_init_btn_connect=0x7f0600d3;$/;"	f	class:R.string
+gc_gamepad_dialog_init_btn_game	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_init_btn_game=0x7f0600d5;$/;"	f	class:R.string
+gc_gamepad_dialog_init_btn_open	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_init_btn_open=0x7f0600d4;$/;"	f	class:R.string
+gc_gamepad_dialog_low_battery	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_low_battery=0x7f0600e4;$/;"	f	class:R.string
+gc_gamepad_dialog_scaned	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_scaned=0x7f0600d8;$/;"	f	class:R.string
+gc_gamepad_dialog_state_2	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_state_2=0x7f0600d9;$/;"	f	class:R.string
+gc_gamepad_dialog_state_3	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_state_3=0x7f0600da;$/;"	f	class:R.string
+gc_gamepad_dialog_state_4	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_dialog_state_4=0x7f0600db;$/;"	f	class:R.string
+gc_gamepad_enter	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_enter=0x7f020018;$/;"	f	class:R.drawable
+gc_gamepad_errcode_201220	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_errcode_201220=0x7f0600ef;$/;"	f	class:R.string
+gc_gamepad_errcode_201221	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_errcode_201221=0x7f0600f0;$/;"	f	class:R.string
+gc_gamepad_errcode_201222	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_errcode_201222=0x7f0600f1;$/;"	f	class:R.string
+gc_gamepad_errcode_999999	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_errcode_999999=0x7f0600f2;$/;"	f	class:R.string
+gc_gamepad_input_pwd_tip	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_input_pwd_tip=0x7f0600e5;$/;"	f	class:R.string
+gc_gamepad_input_reset_tip	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_input_reset_tip=0x7f0600e6;$/;"	f	class:R.string
+gc_gamepad_lb	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_lb=0x7f020019;$/;"	f	class:R.drawable
+gc_gamepad_map_key	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_map_key=0x7f02001a;$/;"	f	class:R.drawable
+gc_gamepad_mouse_pointer	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_mouse_pointer=0x7f02001b;$/;"	f	class:R.drawable
+gc_gamepad_prompt_back	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_prompt_back=0x7f0600ec;$/;"	f	class:R.string
+gc_gamepad_prompt_no	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_prompt_no=0x7f0600ee;$/;"	f	class:R.string
+gc_gamepad_prompt_sure	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_prompt_sure=0x7f0600eb;$/;"	f	class:R.string
+gc_gamepad_prompt_yes	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_prompt_yes=0x7f0600ed;$/;"	f	class:R.string
+gc_gamepad_raw	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_raw=0x7f02001c;$/;"	f	class:R.drawable
+gc_gamepad_rb	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_rb=0x7f02001d;$/;"	f	class:R.drawable
+gc_gamepad_stick_l	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_stick_l=0x7f02001e;$/;"	f	class:R.drawable
+gc_gamepad_stick_r	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_stick_r=0x7f02001f;$/;"	f	class:R.drawable
+gc_gamepad_supported	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_supported=0x7f0600cf;$/;"	f	class:R.string
+gc_gamepad_unavailable_pwd_tip	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_unavailable_pwd_tip=0x7f0600e7;$/;"	f	class:R.string
+gc_gamepad_x	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_x=0x7f020020;$/;"	f	class:R.drawable
+gc_gamepad_y	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_y=0x7f020021;$/;"	f	class:R.drawable
+gc_gamepad_zoom_in	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_zoom_in=0x7f020022;$/;"	f	class:R.drawable
+gc_gamepad_zoom_out	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gamepad_zoom_out=0x7f020023;$/;"	f	class:R.drawable
+gc_gray	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_gray=0x7f050003;$/;"	f	class:R.color
+gc_green	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_green=0x7f050000;$/;"	f	class:R.color
+gc_into	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_into=0x7f06007e;$/;"	f	class:R.string
+gc_leaderboard_add_friend_from_contacts	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_add_friend_from_contacts=0x7f060103;$/;"	f	class:R.string
+gc_leaderboard_add_friend_success	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_add_friend_success=0x7f060112;$/;"	f	class:R.string
+gc_leaderboard_add_friend_title	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_add_friend_title=0x7f060102;$/;"	f	class:R.string
+gc_leaderboard_apply_accept	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_apply_accept=0x7f060107;$/;"	f	class:R.string
+gc_leaderboard_apply_empty_content	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_apply_empty_content=0x7f0600f3;$/;"	f	class:R.string
+gc_leaderboard_apply_ignore	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_apply_ignore=0x7f060108;$/;"	f	class:R.string
+gc_leaderboard_btn_add_friend	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_btn_add_friend=0x7f06010a;$/;"	f	class:R.string
+gc_leaderboard_btn_friend	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_btn_friend=0x7f06010b;$/;"	f	class:R.string
+gc_leaderboard_btn_selector	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_btn_selector=0x7f020024;$/;"	f	class:R.drawable
+gc_leaderboard_check_contacts	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_check_contacts=0x7f060101;$/;"	f	class:R.string
+gc_leaderboard_commit_score_failed	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_commit_score_failed=0x7f06011e;$/;"	f	class:R.string
+gc_leaderboard_commit_score_ok	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_commit_score_ok=0x7f06011d;$/;"	f	class:R.string
+gc_leaderboard_contacts_empty_content	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_contacts_empty_content=0x7f0600f5;$/;"	f	class:R.string
+gc_leaderboard_contacts_icon	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_contacts_icon=0x7f020025;$/;"	f	class:R.drawable
+gc_leaderboard_contacts_next_page	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_contacts_next_page=0x7f060123;$/;"	f	class:R.string
+gc_leaderboard_contacts_phone	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_contacts_phone=0x7f020026;$/;"	f	class:R.drawable
+gc_leaderboard_contacts_search	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_contacts_search=0x7f060121;$/;"	f	class:R.string
+gc_leaderboard_contacts_search_hint	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_contacts_search_hint=0x7f060122;$/;"	f	class:R.string
+gc_leaderboard_create_record	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_create_record=0x7f0600f6;$/;"	f	class:R.string
+gc_leaderboard_current_high_score	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_current_high_score=0x7f060118;$/;"	f	class:R.string
+gc_leaderboard_current_rank	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_current_rank=0x7f06010d;$/;"	f	class:R.string
+gc_leaderboard_default_icon	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_default_icon=0x7f020027;$/;"	f	class:R.drawable
+gc_leaderboard_default_nick_name	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_default_nick_name=0x7f060114;$/;"	f	class:R.string
+gc_leaderboard_empty_friend_scores	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_empty_friend_scores=0x7f060124;$/;"	f	class:R.string
+gc_leaderboard_empty_score	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_empty_score=0x7f060115;$/;"	f	class:R.string
+gc_leaderboard_error_loading	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_error_loading=0x7f0600fd;$/;"	f	class:R.string
+gc_leaderboard_friend	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_friend=0x7f0600f7;$/;"	f	class:R.string
+gc_leaderboard_friend_accept_failed	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_friend_accept_failed=0x7f06011a;$/;"	f	class:R.string
+gc_leaderboard_friend_accept_ok	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_friend_accept_ok=0x7f060119;$/;"	f	class:R.string
+gc_leaderboard_friend_reject_failed	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_friend_reject_failed=0x7f06011c;$/;"	f	class:R.string
+gc_leaderboard_friend_reject_ok	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_friend_reject_ok=0x7f06011b;$/;"	f	class:R.string
+gc_leaderboard_friend_request	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_friend_request=0x7f060109;$/;"	f	class:R.string
+gc_leaderboard_gray_selector	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_gray_selector=0x7f020028;$/;"	f	class:R.drawable
+gc_leaderboard_invite	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_invite=0x7f0600fb;$/;"	f	class:R.string
+gc_leaderboard_invite_friend	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_invite_friend=0x7f020029;$/;"	f	class:R.drawable
+gc_leaderboard_invite_friend	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_invite_friend=0x7f060100;$/;"	f	class:R.string
+gc_leaderboard_invited	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_invited=0x7f0600fc;$/;"	f	class:R.string
+gc_leaderboard_invited_friend	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_invited_friend=0x7f02002a;$/;"	f	class:R.drawable
+gc_leaderboard_item_add_friend	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_item_add_friend=0x7f02002b;$/;"	f	class:R.drawable
+gc_leaderboard_item_data_is_null	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_item_data_is_null=0x7f0600ff;$/;"	f	class:R.string
+gc_leaderboard_land_friend	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_land_friend=0x7f0600f9;$/;"	f	class:R.string
+gc_leaderboard_land_player	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_land_player=0x7f0600fa;$/;"	f	class:R.string
+gc_leaderboard_light_green_selector	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_light_green_selector=0x7f02002c;$/;"	f	class:R.drawable
+gc_leaderboard_list_divider_line	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_list_divider_line=0x7f02002d;$/;"	f	class:R.drawable
+gc_leaderboard_list_item_add	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_list_item_add=0x7f06010f;$/;"	f	class:R.string
+gc_leaderboard_loading	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_loading=0x7f0600fe;$/;"	f	class:R.string
+gc_leaderboard_login_need	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_login_need=0x7f060120;$/;"	f	class:R.string
+gc_leaderboard_message_number_bg	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_message_number_bg=0x7f02002e;$/;"	f	class:R.drawable
+gc_leaderboard_normal	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_normal=0x7f02002f;$/;"	f	class:R.drawable
+gc_leaderboard_not_adressbook	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_not_adressbook=0x7f06011f;$/;"	f	class:R.string
+gc_leaderboard_notify_apply_title	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_notify_apply_title=0x7f060116;$/;"	f	class:R.string
+gc_leaderboard_notify_invite_title	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_notify_invite_title=0x7f060117;$/;"	f	class:R.string
+gc_leaderboard_player	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_player=0x7f0600f8;$/;"	f	class:R.string
+gc_leaderboard_portait_divider_line	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_portait_divider_line=0x7f020030;$/;"	f	class:R.drawable
+gc_leaderboard_processing	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_processing=0x7f060111;$/;"	f	class:R.string
+gc_leaderboard_rank	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_rank=0x7f020031;$/;"	f	class:R.drawable
+gc_leaderboard_rank_icon	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_rank_icon=0x7f020032;$/;"	f	class:R.drawable
+gc_leaderboard_search_edittext_null	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_search_edittext_null=0x7f060110;$/;"	f	class:R.string
+gc_leaderboard_search_empty_content	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_search_empty_content=0x7f0600f4;$/;"	f	class:R.string
+gc_leaderboard_search_friend	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_search_friend=0x7f060104;$/;"	f	class:R.string
+gc_leaderboard_search_friend_icon	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_search_friend_icon=0x7f020033;$/;"	f	class:R.drawable
+gc_leaderboard_search_hint	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_search_hint=0x7f060105;$/;"	f	class:R.string
+gc_leaderboard_search_result	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_search_result=0x7f06010c;$/;"	f	class:R.string
+gc_leaderboard_search_result_title	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_search_result_title=0x7f060106;$/;"	f	class:R.string
+gc_leaderboard_start_game	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_start_game=0x7f06010e;$/;"	f	class:R.string
+gc_leaderboard_title_remind	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_title_remind=0x7f020034;$/;"	f	class:R.drawable
+gc_leaderboard_waiting_check	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_waiting_check=0x7f060113;$/;"	f	class:R.string
+gc_leaderboard_waiting_verify	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_leaderboard_waiting_verify=0x7f020035;$/;"	f	class:R.drawable
+gc_light_green	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_light_green=0x7f050001;$/;"	f	class:R.color
+gc_loading	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_loading=0x7f060079;$/;"	f	class:R.string
+gc_member_logo	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_member_logo=0x7f020036;$/;"	f	class:R.drawable
+gc_mess	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_mess=0x7f060080;$/;"	f	class:R.string
+gc_mix_billing_info_1	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_mix_billing_info_1=0x7f0600a6;$/;"	f	class:R.string
+gc_mix_billing_info_10	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_mix_billing_info_10=0x7f0600af;$/;"	f	class:R.string
+gc_mix_billing_info_11	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_mix_billing_info_11=0x7f0600b0;$/;"	f	class:R.string
+gc_mix_billing_info_12	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_mix_billing_info_12=0x7f0600b1;$/;"	f	class:R.string
+gc_mix_billing_info_2	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_mix_billing_info_2=0x7f0600a7;$/;"	f	class:R.string
+gc_mix_billing_info_3	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_mix_billing_info_3=0x7f0600a8;$/;"	f	class:R.string
+gc_mix_billing_info_4	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_mix_billing_info_4=0x7f0600a9;$/;"	f	class:R.string
+gc_mix_billing_info_5	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_mix_billing_info_5=0x7f0600aa;$/;"	f	class:R.string
+gc_mix_billing_info_6	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_mix_billing_info_6=0x7f0600ab;$/;"	f	class:R.string
+gc_mix_billing_info_7	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_mix_billing_info_7=0x7f0600ac;$/;"	f	class:R.string
+gc_mix_billing_info_8	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_mix_billing_info_8=0x7f0600ad;$/;"	f	class:R.string
+gc_mix_billing_info_9	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_mix_billing_info_9=0x7f0600ae;$/;"	f	class:R.string
+gc_mix_billing_login_fail	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_mix_billing_login_fail=0x7f0600b2;$/;"	f	class:R.string
+gc_more_game	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_more_game=0x7f020037;$/;"	f	class:R.drawable
+gc_music_bg	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_music_bg=0x7f020038;$/;"	f	class:R.drawable
+gc_net_bg	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_net_bg=0x7f020039;$/;"	f	class:R.drawable
+gc_net_black	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_net_black=0x7f02003a;$/;"	f	class:R.drawable
+gc_net_btn	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_net_btn=0x7f02003b;$/;"	f	class:R.drawable
+gc_net_btn_select	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_net_btn_select=0x7f02003c;$/;"	f	class:R.drawable
+gc_net_btn_selector	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_net_btn_selector=0x7f02003d;$/;"	f	class:R.drawable
+gc_net_remember_account	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_net_remember_account=0x7f060099;$/;"	f	class:R.string
+gc_no	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_no=0x7f06007b;$/;"	f	class:R.string
+gc_no_sdcard	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_no_sdcard=0x7f060078;$/;"	f	class:R.string
+gc_note	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_note=0x7f06007c;$/;"	f	class:R.string
+gc_notification_icon	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_notification_icon=0x7f02003e;$/;"	f	class:R.drawable
+gc_open_title	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_open_title=0x7f02003f;$/;"	f	class:R.drawable
+gc_package_account	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_package_account=0x7f060095;$/;"	f	class:R.string
+gc_package_login	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_package_login=0x7f06009b;$/;"	f	class:R.string
+gc_package_login_remind	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_package_login_remind=0x7f060097;$/;"	f	class:R.string
+gc_package_loginning	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_package_loginning=0x7f06009a;$/;"	f	class:R.string
+gc_package_no_login	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_package_no_login=0x7f06009c;$/;"	f	class:R.string
+gc_package_password	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_package_password=0x7f060096;$/;"	f	class:R.string
+gc_package_register	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_package_register=0x7f06009d;$/;"	f	class:R.string
+gc_package_remember_account	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_package_remember_account=0x7f060098;$/;"	f	class:R.string
+gc_pay_background	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_pay_background=0x7f020040;$/;"	f	class:R.drawable
+gc_piccode	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_piccode=0x7f020041;$/;"	f	class:R.drawable
+gc_purcharse_fail_remind_content	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_purcharse_fail_remind_content=0x7f0600cd;$/;"	f	class:R.string
+gc_purcharse_fail_remind_title	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_purcharse_fail_remind_title=0x7f0600cc;$/;"	f	class:R.string
+gc_purchase_balance_info_1	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_purchase_balance_info_1=0x7f0600c3;$/;"	f	class:R.string
+gc_purchase_balance_info_2	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_purchase_balance_info_2=0x7f0600c4;$/;"	f	class:R.string
+gc_purchase_balance_info_3	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_purchase_balance_info_3=0x7f0600c5;$/;"	f	class:R.string
+gc_purchase_current_balance	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_purchase_current_balance=0x7f0600c2;$/;"	f	class:R.string
+gc_purchase_remind	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_purchase_remind=0x7f0600c1;$/;"	f	class:R.string
+gc_rechage_max_remind	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_rechage_max_remind=0x7f0600c7;$/;"	f	class:R.string
+gc_recharge_account	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_account=0x7f0600b4;$/;"	f	class:R.string
+gc_recharge_affirm_title	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_affirm_title=0x7f0600be;$/;"	f	class:R.string
+gc_recharge_amount	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_amount=0x7f0600b6;$/;"	f	class:R.string
+gc_recharge_amount_null	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_amount_null=0x7f0600c8;$/;"	f	class:R.string
+gc_recharge_btn_affirm	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_btn_affirm=0x7f0600bf;$/;"	f	class:R.string
+gc_recharge_btn_last_step	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_btn_last_step=0x7f0600c0;$/;"	f	class:R.string
+gc_recharge_btn_next_step	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_btn_next_step=0x7f0600ba;$/;"	f	class:R.string
+gc_recharge_discount_content	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_discount_content=0x7f0600bc;$/;"	f	class:R.string
+gc_recharge_discount_title	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_discount_title=0x7f0600bb;$/;"	f	class:R.string
+gc_recharge_fail_no_login_user	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_fail_no_login_user=0x7f0600ce;$/;"	f	class:R.string
+gc_recharge_other_point_hint	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_other_point_hint=0x7f0600b8;$/;"	f	class:R.string
+gc_recharge_other_point_remind	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_other_point_remind=0x7f0600b9;$/;"	f	class:R.string
+gc_recharge_other_point_unit	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_other_point_unit=0x7f0600c6;$/;"	f	class:R.string
+gc_recharge_point	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_point=0x7f0600b5;$/;"	f	class:R.string
+gc_recharge_point_failure	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_point_failure=0x7f0600ca;$/;"	f	class:R.string
+gc_recharge_point_message	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_point_message=0x7f0600cb;$/;"	f	class:R.string
+gc_recharge_point_success	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_point_success=0x7f0600c9;$/;"	f	class:R.string
+gc_recharge_point_unit	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_point_unit=0x7f0600b7;$/;"	f	class:R.string
+gc_recharge_title	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_title=0x7f0600b3;$/;"	f	class:R.string
+gc_recharge_way	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_recharge_way=0x7f0600bd;$/;"	f	class:R.string
+gc_security_password_err	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_security_password_err=0x7f0600a5;$/;"	f	class:R.string
+gc_security_pic_err	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_security_pic_err=0x7f0600a3;$/;"	f	class:R.string
+gc_security_pic_no	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_security_pic_no=0x7f0600a4;$/;"	f	class:R.string
+gc_security_sms_err	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_security_sms_err=0x7f0600a2;$/;"	f	class:R.string
+gc_start_content_bg	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_start_content_bg=0x7f020042;$/;"	f	class:R.drawable
+gc_start_music_ask	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_start_music_ask=0x7f06009e;$/;"	f	class:R.string
+gc_start_music_tip_1	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_start_music_tip_1=0x7f06009f;$/;"	f	class:R.string
+gc_start_music_tip_2	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_start_music_tip_2=0x7f0600a0;$/;"	f	class:R.string
+gc_start_music_tip_3	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_start_music_tip_3=0x7f0600a1;$/;"	f	class:R.string
+gc_sure_btn	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_sure_btn=0x7f020043;$/;"	f	class:R.drawable
+gc_sure_btn_select	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_sure_btn_select=0x7f020044;$/;"	f	class:R.drawable
+gc_sure_btn_selector	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_sure_btn_selector=0x7f020045;$/;"	f	class:R.drawable
+gc_sure_btn_unable	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_sure_btn_unable=0x7f020046;$/;"	f	class:R.drawable
+gc_tab_land_bottom	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_tab_land_bottom=0x7f020047;$/;"	f	class:R.drawable
+gc_tab_land_bottom_select	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_tab_land_bottom_select=0x7f020048;$/;"	f	class:R.drawable
+gc_tab_land_top	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_tab_land_top=0x7f020049;$/;"	f	class:R.drawable
+gc_tab_land_top_select	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_tab_land_top_select=0x7f02004a;$/;"	f	class:R.drawable
+gc_tab_port_left	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_tab_port_left=0x7f02004b;$/;"	f	class:R.drawable
+gc_tab_port_left_select	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_tab_port_left_select=0x7f02004c;$/;"	f	class:R.drawable
+gc_tab_port_right	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_tab_port_right=0x7f02004d;$/;"	f	class:R.drawable
+gc_tab_port_right_select	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_tab_port_right_select=0x7f02004e;$/;"	f	class:R.drawable
+gc_third_pay_way	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_third_pay_way=0x7f02004f;$/;"	f	class:R.drawable
+gc_unexpected_response_format	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_unexpected_response_format=0x7f060077;$/;"	f	class:R.string
+gc_white	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_white=0x7f050002;$/;"	f	class:R.color
+gc_yes	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int gc_yes=0x7f06007a;$/;"	f	class:R.string
+icon	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int icon=0x7f020050;$/;"	f	class:R.drawable
+id	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^    public static final class id {$/;"	c	class:R
+imgCode	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int imgCode=0x7f080008;$/;"	f	class:R.id
+layout	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^    public static final class layout {$/;"	c	class:R
+layout_main	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int layout_main=0x7f030002;$/;"	f	class:R.layout
+opening_sound	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^        public static final int opening_sound=0x7f040000;$/;"	f	class:R.raw
+raw	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^    public static final class raw {$/;"	c	class:R
+string	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^    public static final class string {$/;"	c	class:R
+style	Android.Sdk.Online_20140403_v21014/GameSample/gen/cn/cmgame/demo/R.java	/^    public static final class style {$/;"	c	class:R
+BUTTONS	Android.Sdk.Online_20140403_v21014/GameSample/src/cn/cmgame/demo/BillingDemo.java	/^  static final String[] BUTTONS = new String[]{$/;"	f	class:BillingDemo
+BillingDemo	Android.Sdk.Online_20140403_v21014/GameSample/src/cn/cmgame/demo/BillingDemo.java	/^public class BillingDemo extends ListActivity {$/;"	c
+cn.cmgame.demo	Android.Sdk.Online_20140403_v21014/GameSample/src/cn/cmgame/demo/BillingDemo.java	/^package cn.cmgame.demo;$/;"	p
+exitGame	Android.Sdk.Online_20140403_v21014/GameSample/src/cn/cmgame/demo/BillingDemo.java	/^  private void exitGame() {$/;"	m	class:BillingDemo	file:
+getBillingIndex	Android.Sdk.Online_20140403_v21014/GameSample/src/cn/cmgame/demo/BillingDemo.java	/^  private String getBillingIndex(int i) {$/;"	m	class:BillingDemo	file:
+onCreate	Android.Sdk.Online_20140403_v21014/GameSample/src/cn/cmgame/demo/BillingDemo.java	/^  public void onCreate(Bundle savedInstanceState) {$/;"	m	class:BillingDemo
+onKeyDown	Android.Sdk.Online_20140403_v21014/GameSample/src/cn/cmgame/demo/BillingDemo.java	/^  public boolean onKeyDown(int keyCode, KeyEvent event) {$/;"	m	class:BillingDemo
+onResume	Android.Sdk.Online_20140403_v21014/GameSample/src/cn/cmgame/demo/BillingDemo.java	/^  public void onResume() {$/;"	m	class:BillingDemo
+runtimeScript	Android.Sdk.Online_20140403_v21014/GameSample/src/cn/cmgame/demo/BillingDemo.java	/^  String runtimeScript = "OnBillingDemo";$/;"	f	class:BillingDemo
+unityObject	Android.Sdk.Online_20140403_v21014/GameSample/src/cn/cmgame/demo/BillingDemo.java	/^  String unityObject = "Main Camara";$/;"	f	class:BillingDemo
+CmgameApplication	Android.Sdk.Online_20140403_v21014/GameSample/src/cn/cmgame/demo/CmgameApplication.java	/^public class CmgameApplication extends Application {$/;"	c
+cn.cmgame.demo	Android.Sdk.Online_20140403_v21014/GameSample/src/cn/cmgame/demo/CmgameApplication.java	/^package cn.cmgame.demo;$/;"	p
+onCreate	Android.Sdk.Online_20140403_v21014/GameSample/src/cn/cmgame/demo/CmgameApplication.java	/^  public void onCreate() {$/;"	m	class:CmgameApplication
+BillingResult	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^	public class BillingResult$/;"	c	class:CmBillingAndroid
+CANCELLED	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^		public const String CANCELLED = "3";$/;"	f	class:CmBillingAndroid.BillingResult
+CmBillingAndroid	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^public class CmBillingAndroid$/;"	c
+DoBilling	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^    public void DoBilling(bool useSms, bool isRepeated, String index, String cpparam, String gameObject, String runtimeScriptMethod)$/;"	m	class:CmBillingAndroid
+Exit	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^    public void Exit()$/;"	m	class:CmBillingAndroid
+ExitWithUI	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^    public void ExitWithUI()$/;"	m	class:CmBillingAndroid
+FAILED	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^		public const String FAILED = "2";$/;"	f	class:CmBillingAndroid.BillingResult
+FAILED_EXPLICIT	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^  		public const int FAILED_EXPLICIT = 22;$/;"	f	class:CmBillingAndroid.LoginResult
+FAILED_IMPLICIT	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^  		public const int FAILED_IMPLICIT = 11;$/;"	f	class:CmBillingAndroid.LoginResult
+GetActivateFlag	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^    public bool GetActivateFlag(String index)$/;"	m	class:CmBillingAndroid
+GetGamePlayerAuthState	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^	public int GetGamePlayerAuthState()$/;"	m	class:CmBillingAndroid
+InitializeApp	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^	public void InitializeApp()$/;"	m	class:CmBillingAndroid
+Instance	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^    public static CmBillingAndroid Instance$/;"	p	class:CmBillingAndroid
+IsMusicEnabled	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^    public bool IsMusicEnabled()$/;"	m	class:CmBillingAndroid
+LoginResult	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^	public class LoginResult $/;"	c	class:CmBillingAndroid
+NO	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^  		public const int NO = 2;$/;"	f	class:CmBillingAndroid.SubscribeResult
+NONE	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^		public const String NONE = "0";$/;"	f	class:CmBillingAndroid.BillingResult
+RetryBilling	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^	public void RetryBilling(bool useSms, bool isRepeated, String index, String cpparam, String gameObject, String runtimeScriptMethod)$/;"	m	class:CmBillingAndroid
+SUCCESS	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^		public const String SUCCESS = "1";$/;"	f	class:CmBillingAndroid.BillingResult
+SUCCESS_EXPLICIT	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^  		public const int SUCCESS_EXPLICIT = 2;$/;"	f	class:CmBillingAndroid.LoginResult
+SUCCESS_IMPLICIT	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^  		public const int SUCCESS_IMPLICIT = 1;$/;"	f	class:CmBillingAndroid.LoginResult
+SetActivateFlag	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^	public void SetActivateFlag(String index, bool flag)$/;"	m	class:CmBillingAndroid
+SetExternalArguments	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^	public void SetExternalArguments(String arg)$/;"	m	class:CmBillingAndroid
+SetLoginListener	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^	public void SetLoginListener(String gameObject, String runtimeScript)$/;"	m	class:CmBillingAndroid
+ShowMoreGames	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^	public void ShowMoreGames()$/;"	m	class:CmBillingAndroid
+SubscribeResult	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^	public class SubscribeResult {$/;"	c	class:CmBillingAndroid
+UNKNOWN	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^  		public const int UNKNOWN = 0;$/;"	f	class:CmBillingAndroid.SubscribeResult
+UNKOWN	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^  		public const int UNKOWN = 0;$/;"	f	class:CmBillingAndroid.LoginResult
+YES	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^ 	 	public const int YES = 1;$/;"	f	class:CmBillingAndroid.SubscribeResult
+_instance	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^    private static CmBillingAndroid _instance;$/;"	f	class:CmBillingAndroid	file:
+klass	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroid.cs	/^	private AndroidJavaClass klass = new AndroidJavaClass("cn.cmgame.billing.api.GamePayUnity");$/;"	f	class:CmBillingAndroid	file:
+Awake	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroidDemo.cs	/^	void Awake ()$/;"	m	class:CmBillingAndroidDemo	file:
+Billing	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroidDemo.cs	/^	public static void Billing(String index)$/;"	m	class:CmBillingAndroidDemo
+CheckGameBackgroundMusic	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroidDemo.cs	/^    public static void CheckGameBackgroundMusic()$/;"	m	class:CmBillingAndroidDemo
+CmBillingAndroidDemo	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroidDemo.cs	/^public class CmBillingAndroidDemo : MonoBehaviour$/;"	c
+OnBillingResult	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroidDemo.cs	/^	void OnBillingResult(String result)$/;"	m	class:CmBillingAndroidDemo	file:
+OnLoginResult	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroidDemo.cs	/^	void OnLoginResult(String result)$/;"	m	class:CmBillingAndroidDemo	file:
+Start	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmBillingAndroidDemo.cs	/^	void Start ()$/;"	m	class:CmBillingAndroidDemo	file:
+CmGamepad	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmGamepad.cs	/^public class CmGamepad$/;"	c
+InitGamepad	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmGamepad.cs	/^	public void InitGamepad()$/;"	m	class:CmGamepad
+Instance	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmGamepad.cs	/^    public static CmGamepad Instance$/;"	p	class:CmGamepad
+_instance	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmGamepad.cs	/^    private static CmGamepad _instance;$/;"	f	class:CmGamepad	file:
+klass	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmGamepad.cs	/^	private AndroidJavaClass klass = new AndroidJavaClass("cn.cmgame.gamepad.api.Gamepad");$/;"	f	class:CmGamepad	file:
+CmGameLeaderboard	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmLeaderboard.cs	/^public class CmGameLeaderboard$/;"	c
+InitLeaderboard	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmLeaderboard.cs	/^	public void InitLeaderboard(String key, String secret, String appId)$/;"	m	class:CmGameLeaderboard
+Instance	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmLeaderboard.cs	/^    public static CmGameLeaderboard Instance$/;"	p	class:CmGameLeaderboard
+ShowLeaderboard	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmLeaderboard.cs	/^	public void ShowLeaderboard()$/;"	m	class:CmGameLeaderboard
+_instance	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmLeaderboard.cs	/^    private static CmGameLeaderboard _instance;$/;"	f	class:CmGameLeaderboard	file:
+klass	Android.Sdk.Online_20140403_v21014/SDK/Unity3D/CmLeaderboard.cs	/^	private AndroidJavaClass klass = new AndroidJavaClass("cn.cmgame.leaderboard.api.GameLeaderboard");$/;"	f	class:CmGameLeaderboard	file:
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
