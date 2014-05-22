@@ -181,8 +181,10 @@ function PurchasePlugin.buy_prop(product_id)
 		local user_default = CCUserDefault:sharedUserDefault()
 		local pkg_version_code = user_default:getStringForKey("pkg_version_code")
 		local has_sim_card = user_default:getStringForKey("has_sim_card")
+		local zhiyifu_channel_id = user_default:getStringForKey("zhiyifu_channel_id")
 		event_data.app_version = pkg_version_code
 		event_data.sim = has_sim_card
+		event_data.channel_id = zhiyifu_channel_id
 	end
 	
 	local ws = PurchasePlugin.get_buy_socket()
