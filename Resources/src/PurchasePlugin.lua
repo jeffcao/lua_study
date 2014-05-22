@@ -175,7 +175,16 @@ end
 function PurchasePlugin.buy_prop(product_id)
 	local failure_msg = strings.hscp_purchase_prop_w
 	local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, payment=getPayType()}
-
+	if getPayType() == 'sikai' then
+		--pkg_version_code
+		--has_sim_card
+		local user_default = CCUserDefault:sharedUserDefault()
+		local pkg_version_code = user_default:getStringForKey("pkg_version_code")
+		local has_sim_card = user_default:getStringForKey("has_sim_card")
+		event_data.app_version = pkg_version_code
+		event_data.sim = has_sim_card
+	end
+	
 	local ws = PurchasePlugin.get_buy_socket()
 	if not ws then print('there is no websocket to buy') return end
 

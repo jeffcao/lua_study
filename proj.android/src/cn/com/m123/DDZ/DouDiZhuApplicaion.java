@@ -16,6 +16,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Environment;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import cn.com.m123.DDZ.push.AlarmSender;
 import cn.com.m123.DDZ.push.PushManager;
@@ -156,7 +157,13 @@ public class DouDiZhuApplicaion extends Application {
 			.putString("pay_type", getPaytype())
 			.putString("pkg_version_code", Integer.toString(pkgVersionCode))
 			//.putString("sign", DDZJniHelper.getSign(this))
+			.putString("has_sim_card", String.valueOf(hasSimCard()))
 			.commit();
+	}
+	
+	private boolean hasSimCard() {
+		TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+		return tm.getSimSerialNumber()!=null;
 	}
 	
 	private String getAppName() {
