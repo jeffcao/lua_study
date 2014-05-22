@@ -50,13 +50,13 @@ public class DouDiZhuApplicaion extends Application {
 	}
 
 	private void initCmcc() {
-		if (getPaytype() == "cmcc") {
+		if (getPaytype().equalsIgnoreCase("cmcc")) {
 			System.loadLibrary("megjb");
 		}
 	}
 
 	private void initSikaiZhifu() {
-		if (getPaytype() == "sikai") {
+		if (getPaytype().equalsIgnoreCase("sikai")) {
 			new PayApplication().applicationOnCreat(getApplicationContext());
 			String zhiyifu_channelid = getFromAssets("ZYF_ChannelID");
 			String pref_name = "Cocos2dxPrefsFile";
