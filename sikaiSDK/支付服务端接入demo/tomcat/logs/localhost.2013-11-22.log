@@ -1,0 +1,1071 @@
+2013-11-22 15:41:25 org.apache.catalina.core.ApplicationContext log
+��Ϣ: ContextListener: contextInitialized()
+2013-11-22 15:41:25 org.apache.catalina.core.ApplicationContext log
+��Ϣ: SessionListener: contextInitialized()
+2013-11-22 15:55:39 org.apache.catalina.core.StandardWrapperValve invoke
+����: Servlet.service() for servlet jsp threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 19 in the jsp file: /index.jsp
+Syntax error, insert ";" to complete LocalVariableDeclarationStatement
+16:   
+17:   <body>
+18: 		<%
+19: 			String queryString = request.getQueryString()
+20: 			String signMsg = queryString.substring(queryString.lastIndexOf("&signMsg=") + "&signMsg=".length());
+21: 			
+22: 			out.print(signMsg);
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:92)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:330)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:439)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:349)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:327)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:314)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:326)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:313)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:260)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:859)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:619)
+2013-11-22 16:04:00 org.apache.catalina.core.StandardWrapperValve invoke
+����: Servlet.service() for servlet jsp threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 31 in the jsp file: /index.jsp
+Syntax error, insert ";" to complete BlockStatements
+28: 	    signSource = signSource+"&key="+zhifuyiAppKey;
+29: 	    
+30: 	    try {
+31:             MessageDigest messageDigest MessageDigest.getInstance("MD5");
+32:             byte[] b = messageDigest.digest(signSource.getBytes("utf-8"));
+33:             
+34:             String HEX_CHARS = "0123456789abcdef";
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:92)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:330)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:439)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:349)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:327)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:314)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:326)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:313)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:260)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:859)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:619)
+2013-11-22 16:07:39 org.apache.catalina.core.StandardWrapperValve invoke
+����: Servlet.service() for servlet jsp threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 42 in the jsp file: /index.jsp
+Syntax error, insert ";" to complete Statement
+39: 		            sb.append(HEX_CHARS.charAt(aB & 0x0F));
+40: 		        }
+41: 		        
+42: 		        mySign = sb.toString()
+43: 		        //mySign = mySign.toUpperCase();
+44:       } catch (Exception e) {
+45:           throw new RuntimeException(e);
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:92)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:330)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:439)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:349)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:327)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:314)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:326)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:313)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:260)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:859)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:619)
+2013-11-22 16:26:34 org.apache.catalina.core.StandardWrapperValve invoke
+����: Servlet.service() for servlet jsp threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 57 in the jsp file: /index.jsp
+Map cannot be resolved to a type
+54: 			}
+55: 			
+56: 			/*签名正确，解析订单参数，进行业务处理*/
+57: 			Map<String, String> retMap = null;
+58: 			String[] keyValues = queryString.split("&|=");
+59: 			retMap = new HashMap<String, String>();
+60: 			for (int i = 0; i < keyValues.length; i = i + 2) {
+
+
+An error occurred at line: 59 in the jsp file: /index.jsp
+HashMap cannot be resolved to a type
+56: 			/*签名正确，解析订单参数，进行业务处理*/
+57: 			Map<String, String> retMap = null;
+58: 			String[] keyValues = queryString.split("&|=");
+59: 			retMap = new HashMap<String, String>();
+60: 			for (int i = 0; i < keyValues.length; i = i + 2) {
+61: 					retMap.put(keyValues[i], keyValues[i+1]);
+62: 			}
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:92)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:330)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:439)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:349)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:327)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:314)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:326)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:313)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:260)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:859)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:619)
+2013-11-22 17:15:01 org.apache.catalina.core.StandardWrapperValve invoke
+����: Servlet.service() for servlet jsp threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 24 in the jsp file: /order.jsp
+SystemClock cannot be resolved
+21: 			String merchantId = "10060";			//商户号，此处为示例，请不要将�?0060”放到您的程序中�?
+22: 			
+23: 			String appId = "100004"; 					//应用编号，此处为示例，请不要�?100004"放到您的程序中去
+24: 			String orderId = SystemClock.elapsedRealtime() + "";		//订单号，应保证唯�?��便日后核对数�?
+25: 			
+26: 			//后台回调地址，需要进行urlencode，请不要�?http://www.baidu.com/放到您的程序中去
+27: 			String notifyAddress = URLEncoder.encode("http://www.baidu.com/", "utf-8");
+
+
+An error occurred at line: 30 in the jsp file: /order.jsp
+reqPrice cannot be resolved
+27: 			String notifyAddress = URLEncoder.encode("http://www.baidu.com/", "utf-8");
+28: 			String appName = "测试程序";  		//应用名称，建议使用中文，以便后台统计数据
+29: 			int appVersion = 1006; 						//应用版本，整�?
+30: 			String price = reqPrice;  				//计费价格
+31: 			String paymethod = "sms"; 				//设置使用运营商计费还是第三方计费
+32: 			
+33: 			//三个保留字段提供给CP使用，后台�?知时将源数据返回，可以为null
+
+
+An error occurred at line: 36 in the jsp file: /order.jsp
+Syntax error, insert ")" to complete MethodInvocation
+33: 			//三个保留字段提供给CP使用，后台�?知时将源数据返回，可以为null
+34: 			String reserved1 = "1";
+35: 			String reserved2 = "2";
+36: 			String reserved3 = URLEncoder.encode(""1|=2/3"", "utf-8");//含非法字符的�?��进行urlencode
+37: 			
+38: 	    //步骤二：生成签名�?
+39: 	    //注：签名参数有顺序不能调换，没有出现在订单里的参数，可以不参与签名，�?3个保留字�?
+
+
+An error occurred at line: 36 in the jsp file: /order.jsp
+Syntax error, insert ";" to complete LocalVariableDeclarationStatement
+33: 			//三个保留字段提供给CP使用，后台�?知时将源数据返回，可以为null
+34: 			String reserved1 = "1";
+35: 			String reserved2 = "2";
+36: 			String reserved3 = URLEncoder.encode(""1|=2/3"", "utf-8");//含非法字符的�?��进行urlencode
+37: 			
+38: 	    //步骤二：生成签名�?
+39: 	    //注：签名参数有顺序不能调换，没有出现在订单里的参数，可以不参与签名，�?3个保留字�?
+
+
+An error occurred at line: 36 in the jsp file: /order.jsp
+The left-hand side of an assignment must be a variable
+33: 			//三个保留字段提供给CP使用，后台�?知时将源数据返回，可以为null
+34: 			String reserved1 = "1";
+35: 			String reserved2 = "2";
+36: 			String reserved3 = URLEncoder.encode(""1|=2/3"", "utf-8");//含非法字符的�?��进行urlencode
+37: 			
+38: 	    //步骤二：生成签名�?
+39: 	    //注：签名参数有顺序不能调换，没有出现在订单里的参数，可以不参与签名，�?3个保留字�?
+
+
+An error occurred at line: 36 in the jsp file: /order.jsp
+Syntax error on tokens, ( expected instead
+33: 			//三个保留字段提供给CP使用，后台�?知时将源数据返回，可以为null
+34: 			String reserved1 = "1";
+35: 			String reserved2 = "2";
+36: 			String reserved3 = URLEncoder.encode(""1|=2/3"", "utf-8");//含非法字符的�?��进行urlencode
+37: 			
+38: 	    //步骤二：生成签名�?
+39: 	    //注：签名参数有顺序不能调换，没有出现在订单里的参数，可以不参与签名，�?3个保留字�?
+
+
+An error occurred at line: 43 in the jsp file: /order.jsp
+notifyAddres cannot be resolved
+40: 	    StringBuffer sb = new StringBuffer();
+41: 	    sb.append("merchantId=" + merchantId);
+42: 	    sb.append("&appId=" + appId);
+43: 	    sb.append("&notifyAddress=" + notifyAddres);
+44: 	    sb.append("&appName=" + appName);
+45: 	    sb.append("&appVersion=" + appVersion);
+46: 	    sb.append("&price=" + price);
+
+
+An error occurred at line: 48 in the jsp file: /order.jsp
+Syntax error, insert ") Statement" to complete IfStatement
+45: 	    sb.append("&appVersion=" + appVersion);
+46: 	    sb.append("&price=" + price);
+47: 	    sb.append("&orderId=" + orderId);
+48: 	    if(reserved1 != null && !"".equals(reserved1){
+49: 	    	 sb.append("&reserved1=" + reserved1);
+50: 	    }
+51: 	    if(reserved1 != null && !"".equals(reserved1){
+
+
+An error occurred at line: 51 in the jsp file: /order.jsp
+Syntax error, insert ") Statement" to complete IfStatement
+48: 	    if(reserved1 != null && !"".equals(reserved1){
+49: 	    	 sb.append("&reserved1=" + reserved1);
+50: 	    }
+51: 	    if(reserved1 != null && !"".equals(reserved1){
+52: 	    	 sb.append("&reserved2=" + reserved2);
+53: 	    }
+54: 	    if(reserved1 != null && !"".equals(reserved1){
+
+
+An error occurred at line: 54 in the jsp file: /order.jsp
+Syntax error, insert ") Statement" to complete IfStatement
+51: 	    if(reserved1 != null && !"".equals(reserved1){
+52: 	    	 sb.append("&reserved2=" + reserved2);
+53: 	    }
+54: 	    if(reserved1 != null && !"".equals(reserved1){
+55: 	    	 sb.append("reserved3=" + reserved3);
+56: 	    }
+57: 	    
+
+
+An error occurred at line: 65 in the jsp file: /order.jsp
+signSource cannot be resolved
+62: 	    try {
+63: 	    			//通过MD5计算出签�?
+64:             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+65:             byte[] b = messageDigest.digest(signSource.getBytes("utf-8"));
+66:             
+67:             String HEX_CHARS = "0123456789abcdef";
+68: 	    			StringBuffer sb = new StringBuffer();
+
+
+An error occurred at line: 68 in the jsp file: /order.jsp
+Duplicate local variable sb
+65:             byte[] b = messageDigest.digest(signSource.getBytes("utf-8"));
+66:             
+67:             String HEX_CHARS = "0123456789abcdef";
+68: 	    			StringBuffer sb = new StringBuffer();
+69: 		        for (byte aB : b) {
+70: 		            sb.append(HEX_CHARS.charAt(aB >>> 4 & 0x0F));
+71: 		            sb.append(HEX_CHARS.charAt(aB & 0x0F));
+
+
+An error occurred at line: 92 in the jsp file: /order.jsp
+Syntax error on token ";", assert expected after this token
+89: 													+ "&paymethod=" + paymethod
+90: 													+ "&reserved1=" + reserved1
+91: 													+ "&reserved2=" + reserved2
+92: 													+ "&reserved3=" + reserved3;
+93: 													+ "&merchantSign=" + mySign;
+94: 													
+95: 			out.print("orderInfo");
+
+
+An error occurred at line: 93 in the jsp file: /order.jsp
+The operator + is undefined for the argument type(s) String
+90: 													+ "&reserved1=" + reserved1
+91: 													+ "&reserved2=" + reserved2
+92: 													+ "&reserved3=" + reserved3;
+93: 													+ "&merchantSign=" + mySign;
+94: 													
+95: 			out.print("orderInfo");
+96: 		%>
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:92)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:330)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:439)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:349)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:327)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:314)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:326)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:313)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:260)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:859)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:619)
+2013-11-22 17:16:37 org.apache.catalina.core.StandardWrapperValve invoke
+����: Servlet.service() for servlet jsp threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 30 in the jsp file: /order.jsp
+reqPrice cannot be resolved
+27: 			String notifyAddress = URLEncoder.encode("http://www.baidu.com/", "utf-8");
+28: 			String appName = "测试程序";  		//应用名称，建议使用中文，以便后台统计数据
+29: 			int appVersion = 1006; 						//应用版本，整�?
+30: 			String price = reqPrice;  				//计费价格
+31: 			String paymethod = "sms"; 				//设置使用运营商计费还是第三方计费
+32: 			
+33: 			//三个保留字段提供给CP使用，后台�?知时将源数据返回，可以为null
+
+
+An error occurred at line: 36 in the jsp file: /order.jsp
+Syntax error, insert ")" to complete MethodInvocation
+33: 			//三个保留字段提供给CP使用，后台�?知时将源数据返回，可以为null
+34: 			String reserved1 = "1";
+35: 			String reserved2 = "2";
+36: 			String reserved3 = URLEncoder.encode(""1|=2/3"", "utf-8");//含非法字符的�?��进行urlencode
+37: 			
+38: 	    //步骤二：生成签名�?
+39: 	    //注：签名参数有顺序不能调换，没有出现在订单里的参数，可以不参与签名，�?3个保留字�?
+
+
+An error occurred at line: 36 in the jsp file: /order.jsp
+Syntax error, insert ";" to complete LocalVariableDeclarationStatement
+33: 			//三个保留字段提供给CP使用，后台�?知时将源数据返回，可以为null
+34: 			String reserved1 = "1";
+35: 			String reserved2 = "2";
+36: 			String reserved3 = URLEncoder.encode(""1|=2/3"", "utf-8");//含非法字符的�?��进行urlencode
+37: 			
+38: 	    //步骤二：生成签名�?
+39: 	    //注：签名参数有顺序不能调换，没有出现在订单里的参数，可以不参与签名，�?3个保留字�?
+
+
+An error occurred at line: 36 in the jsp file: /order.jsp
+The left-hand side of an assignment must be a variable
+33: 			//三个保留字段提供给CP使用，后台�?知时将源数据返回，可以为null
+34: 			String reserved1 = "1";
+35: 			String reserved2 = "2";
+36: 			String reserved3 = URLEncoder.encode(""1|=2/3"", "utf-8");//含非法字符的�?��进行urlencode
+37: 			
+38: 	    //步骤二：生成签名�?
+39: 	    //注：签名参数有顺序不能调换，没有出现在订单里的参数，可以不参与签名，�?3个保留字�?
+
+
+An error occurred at line: 36 in the jsp file: /order.jsp
+Syntax error on tokens, ( expected instead
+33: 			//三个保留字段提供给CP使用，后台�?知时将源数据返回，可以为null
+34: 			String reserved1 = "1";
+35: 			String reserved2 = "2";
+36: 			String reserved3 = URLEncoder.encode(""1|=2/3"", "utf-8");//含非法字符的�?��进行urlencode
+37: 			
+38: 	    //步骤二：生成签名�?
+39: 	    //注：签名参数有顺序不能调换，没有出现在订单里的参数，可以不参与签名，�?3个保留字�?
+
+
+An error occurred at line: 43 in the jsp file: /order.jsp
+notifyAddres cannot be resolved
+40: 	    StringBuffer sb = new StringBuffer();
+41: 	    sb.append("merchantId=" + merchantId);
+42: 	    sb.append("&appId=" + appId);
+43: 	    sb.append("&notifyAddress=" + notifyAddres);
+44: 	    sb.append("&appName=" + appName);
+45: 	    sb.append("&appVersion=" + appVersion);
+46: 	    sb.append("&price=" + price);
+
+
+An error occurred at line: 48 in the jsp file: /order.jsp
+Syntax error, insert ") Statement" to complete IfStatement
+45: 	    sb.append("&appVersion=" + appVersion);
+46: 	    sb.append("&price=" + price);
+47: 	    sb.append("&orderId=" + orderId);
+48: 	    if(reserved1 != null && !"".equals(reserved1){
+49: 	    	 sb.append("&reserved1=" + reserved1);
+50: 	    }
+51: 	    if(reserved1 != null && !"".equals(reserved1){
+
+
+An error occurred at line: 51 in the jsp file: /order.jsp
+Syntax error, insert ") Statement" to complete IfStatement
+48: 	    if(reserved1 != null && !"".equals(reserved1){
+49: 	    	 sb.append("&reserved1=" + reserved1);
+50: 	    }
+51: 	    if(reserved1 != null && !"".equals(reserved1){
+52: 	    	 sb.append("&reserved2=" + reserved2);
+53: 	    }
+54: 	    if(reserved1 != null && !"".equals(reserved1){
+
+
+An error occurred at line: 54 in the jsp file: /order.jsp
+Syntax error, insert ") Statement" to complete IfStatement
+51: 	    if(reserved1 != null && !"".equals(reserved1){
+52: 	    	 sb.append("&reserved2=" + reserved2);
+53: 	    }
+54: 	    if(reserved1 != null && !"".equals(reserved1){
+55: 	    	 sb.append("reserved3=" + reserved3);
+56: 	    }
+57: 	    
+
+
+An error occurred at line: 65 in the jsp file: /order.jsp
+signSource cannot be resolved
+62: 	    try {
+63: 	    			//通过MD5计算出签�?
+64:             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+65:             byte[] b = messageDigest.digest(signSource.getBytes("utf-8"));
+66:             
+67:             String HEX_CHARS = "0123456789abcdef";
+68: 	    			StringBuffer sb = new StringBuffer();
+
+
+An error occurred at line: 68 in the jsp file: /order.jsp
+Duplicate local variable sb
+65:             byte[] b = messageDigest.digest(signSource.getBytes("utf-8"));
+66:             
+67:             String HEX_CHARS = "0123456789abcdef";
+68: 	    			StringBuffer sb = new StringBuffer();
+69: 		        for (byte aB : b) {
+70: 		            sb.append(HEX_CHARS.charAt(aB >>> 4 & 0x0F));
+71: 		            sb.append(HEX_CHARS.charAt(aB & 0x0F));
+
+
+An error occurred at line: 92 in the jsp file: /order.jsp
+Syntax error on token ";", assert expected after this token
+89: 													+ "&paymethod=" + paymethod
+90: 													+ "&reserved1=" + reserved1
+91: 													+ "&reserved2=" + reserved2
+92: 													+ "&reserved3=" + reserved3;
+93: 													+ "&merchantSign=" + mySign;
+94: 													
+95: 			out.print("orderInfo");
+
+
+An error occurred at line: 93 in the jsp file: /order.jsp
+The operator + is undefined for the argument type(s) String
+90: 													+ "&reserved1=" + reserved1
+91: 													+ "&reserved2=" + reserved2
+92: 													+ "&reserved3=" + reserved3;
+93: 													+ "&merchantSign=" + mySign;
+94: 													
+95: 			out.print("orderInfo");
+96: 		%>
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:92)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:330)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:439)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:349)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:327)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:314)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:326)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:313)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:260)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:859)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:619)
+2013-11-22 17:17:03 org.apache.catalina.core.StandardWrapperValve invoke
+����: Servlet.service() for servlet jsp threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 36 in the jsp file: /order.jsp
+Syntax error, insert ")" to complete MethodInvocation
+33: 			//三个保留字段提供给CP使用，后台�?知时将源数据返回，可以为null
+34: 			String reserved1 = "1";
+35: 			String reserved2 = "2";
+36: 			String reserved3 = URLEncoder.encode(""1|=2/3"", "utf-8");//含非法字符的�?��进行urlencode
+37: 			
+38: 	    //步骤二：生成签名�?
+39: 	    //注：签名参数有顺序不能调换，没有出现在订单里的参数，可以不参与签名，�?3个保留字�?
+
+
+An error occurred at line: 36 in the jsp file: /order.jsp
+Syntax error, insert ";" to complete LocalVariableDeclarationStatement
+33: 			//三个保留字段提供给CP使用，后台�?知时将源数据返回，可以为null
+34: 			String reserved1 = "1";
+35: 			String reserved2 = "2";
+36: 			String reserved3 = URLEncoder.encode(""1|=2/3"", "utf-8");//含非法字符的�?��进行urlencode
+37: 			
+38: 	    //步骤二：生成签名�?
+39: 	    //注：签名参数有顺序不能调换，没有出现在订单里的参数，可以不参与签名，�?3个保留字�?
+
+
+An error occurred at line: 36 in the jsp file: /order.jsp
+The left-hand side of an assignment must be a variable
+33: 			//三个保留字段提供给CP使用，后台�?知时将源数据返回，可以为null
+34: 			String reserved1 = "1";
+35: 			String reserved2 = "2";
+36: 			String reserved3 = URLEncoder.encode(""1|=2/3"", "utf-8");//含非法字符的�?��进行urlencode
+37: 			
+38: 	    //步骤二：生成签名�?
+39: 	    //注：签名参数有顺序不能调换，没有出现在订单里的参数，可以不参与签名，�?3个保留字�?
+
+
+An error occurred at line: 36 in the jsp file: /order.jsp
+Syntax error on tokens, ( expected instead
+33: 			//三个保留字段提供给CP使用，后台�?知时将源数据返回，可以为null
+34: 			String reserved1 = "1";
+35: 			String reserved2 = "2";
+36: 			String reserved3 = URLEncoder.encode(""1|=2/3"", "utf-8");//含非法字符的�?��进行urlencode
+37: 			
+38: 	    //步骤二：生成签名�?
+39: 	    //注：签名参数有顺序不能调换，没有出现在订单里的参数，可以不参与签名，�?3个保留字�?
+
+
+An error occurred at line: 43 in the jsp file: /order.jsp
+notifyAddres cannot be resolved
+40: 	    StringBuffer sb = new StringBuffer();
+41: 	    sb.append("merchantId=" + merchantId);
+42: 	    sb.append("&appId=" + appId);
+43: 	    sb.append("&notifyAddress=" + notifyAddres);
+44: 	    sb.append("&appName=" + appName);
+45: 	    sb.append("&appVersion=" + appVersion);
+46: 	    sb.append("&price=" + price);
+
+
+An error occurred at line: 48 in the jsp file: /order.jsp
+Syntax error, insert ") Statement" to complete IfStatement
+45: 	    sb.append("&appVersion=" + appVersion);
+46: 	    sb.append("&price=" + price);
+47: 	    sb.append("&orderId=" + orderId);
+48: 	    if(reserved1 != null && !"".equals(reserved1){
+49: 	    	 sb.append("&reserved1=" + reserved1);
+50: 	    }
+51: 	    if(reserved1 != null && !"".equals(reserved1){
+
+
+An error occurred at line: 51 in the jsp file: /order.jsp
+Syntax error, insert ") Statement" to complete IfStatement
+48: 	    if(reserved1 != null && !"".equals(reserved1){
+49: 	    	 sb.append("&reserved1=" + reserved1);
+50: 	    }
+51: 	    if(reserved1 != null && !"".equals(reserved1){
+52: 	    	 sb.append("&reserved2=" + reserved2);
+53: 	    }
+54: 	    if(reserved1 != null && !"".equals(reserved1){
+
+
+An error occurred at line: 54 in the jsp file: /order.jsp
+Syntax error, insert ") Statement" to complete IfStatement
+51: 	    if(reserved1 != null && !"".equals(reserved1){
+52: 	    	 sb.append("&reserved2=" + reserved2);
+53: 	    }
+54: 	    if(reserved1 != null && !"".equals(reserved1){
+55: 	    	 sb.append("reserved3=" + reserved3);
+56: 	    }
+57: 	    
+
+
+An error occurred at line: 65 in the jsp file: /order.jsp
+signSource cannot be resolved
+62: 	    try {
+63: 	    			//通过MD5计算出签�?
+64:             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+65:             byte[] b = messageDigest.digest(signSource.getBytes("utf-8"));
+66:             
+67:             String HEX_CHARS = "0123456789abcdef";
+68: 	    			StringBuffer sb = new StringBuffer();
+
+
+An error occurred at line: 68 in the jsp file: /order.jsp
+Duplicate local variable sb
+65:             byte[] b = messageDigest.digest(signSource.getBytes("utf-8"));
+66:             
+67:             String HEX_CHARS = "0123456789abcdef";
+68: 	    			StringBuffer sb = new StringBuffer();
+69: 		        for (byte aB : b) {
+70: 		            sb.append(HEX_CHARS.charAt(aB >>> 4 & 0x0F));
+71: 		            sb.append(HEX_CHARS.charAt(aB & 0x0F));
+
+
+An error occurred at line: 92 in the jsp file: /order.jsp
+Syntax error on token ";", assert expected after this token
+89: 													+ "&paymethod=" + paymethod
+90: 													+ "&reserved1=" + reserved1
+91: 													+ "&reserved2=" + reserved2
+92: 													+ "&reserved3=" + reserved3;
+93: 													+ "&merchantSign=" + mySign;
+94: 													
+95: 			out.print("orderInfo");
+
+
+An error occurred at line: 93 in the jsp file: /order.jsp
+The operator + is undefined for the argument type(s) String
+90: 													+ "&reserved1=" + reserved1
+91: 													+ "&reserved2=" + reserved2
+92: 													+ "&reserved3=" + reserved3;
+93: 													+ "&merchantSign=" + mySign;
+94: 													
+95: 			out.print("orderInfo");
+96: 		%>
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:92)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:330)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:439)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:349)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:327)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:314)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:326)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:313)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:260)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:859)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:619)
+2013-11-22 17:17:29 org.apache.catalina.core.StandardWrapperValve invoke
+����: Servlet.service() for servlet jsp threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 43 in the jsp file: /order.jsp
+notifyAddres cannot be resolved
+40: 	    StringBuffer sb = new StringBuffer();
+41: 	    sb.append("merchantId=" + merchantId);
+42: 	    sb.append("&appId=" + appId);
+43: 	    sb.append("&notifyAddress=" + notifyAddres);
+44: 	    sb.append("&appName=" + appName);
+45: 	    sb.append("&appVersion=" + appVersion);
+46: 	    sb.append("&price=" + price);
+
+
+An error occurred at line: 48 in the jsp file: /order.jsp
+Syntax error, insert ") Statement" to complete IfStatement
+45: 	    sb.append("&appVersion=" + appVersion);
+46: 	    sb.append("&price=" + price);
+47: 	    sb.append("&orderId=" + orderId);
+48: 	    if(reserved1 != null && !"".equals(reserved1){
+49: 	    	 sb.append("&reserved1=" + reserved1);
+50: 	    }
+51: 	    if(reserved1 != null && !"".equals(reserved1){
+
+
+An error occurred at line: 51 in the jsp file: /order.jsp
+Syntax error, insert ") Statement" to complete IfStatement
+48: 	    if(reserved1 != null && !"".equals(reserved1){
+49: 	    	 sb.append("&reserved1=" + reserved1);
+50: 	    }
+51: 	    if(reserved1 != null && !"".equals(reserved1){
+52: 	    	 sb.append("&reserved2=" + reserved2);
+53: 	    }
+54: 	    if(reserved1 != null && !"".equals(reserved1){
+
+
+An error occurred at line: 54 in the jsp file: /order.jsp
+Syntax error, insert ") Statement" to complete IfStatement
+51: 	    if(reserved1 != null && !"".equals(reserved1){
+52: 	    	 sb.append("&reserved2=" + reserved2);
+53: 	    }
+54: 	    if(reserved1 != null && !"".equals(reserved1){
+55: 	    	 sb.append("reserved3=" + reserved3);
+56: 	    }
+57: 	    
+
+
+An error occurred at line: 65 in the jsp file: /order.jsp
+signSource cannot be resolved
+62: 	    try {
+63: 	    			//通过MD5计算出签�?
+64:             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+65:             byte[] b = messageDigest.digest(signSource.getBytes("utf-8"));
+66:             
+67:             String HEX_CHARS = "0123456789abcdef";
+68: 	    			StringBuffer sb = new StringBuffer();
+
+
+An error occurred at line: 68 in the jsp file: /order.jsp
+Duplicate local variable sb
+65:             byte[] b = messageDigest.digest(signSource.getBytes("utf-8"));
+66:             
+67:             String HEX_CHARS = "0123456789abcdef";
+68: 	    			StringBuffer sb = new StringBuffer();
+69: 		        for (byte aB : b) {
+70: 		            sb.append(HEX_CHARS.charAt(aB >>> 4 & 0x0F));
+71: 		            sb.append(HEX_CHARS.charAt(aB & 0x0F));
+
+
+An error occurred at line: 92 in the jsp file: /order.jsp
+Syntax error on token ";", assert expected after this token
+89: 													+ "&paymethod=" + paymethod
+90: 													+ "&reserved1=" + reserved1
+91: 													+ "&reserved2=" + reserved2
+92: 													+ "&reserved3=" + reserved3;
+93: 													+ "&merchantSign=" + mySign;
+94: 													
+95: 			out.print("orderInfo");
+
+
+An error occurred at line: 93 in the jsp file: /order.jsp
+The operator + is undefined for the argument type(s) String
+90: 													+ "&reserved1=" + reserved1
+91: 													+ "&reserved2=" + reserved2
+92: 													+ "&reserved3=" + reserved3;
+93: 													+ "&merchantSign=" + mySign;
+94: 													
+95: 			out.print("orderInfo");
+96: 		%>
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:92)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:330)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:439)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:349)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:327)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:314)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:326)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:313)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:260)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:859)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:619)
+2013-11-22 17:18:11 org.apache.catalina.core.StandardWrapperValve invoke
+����: Servlet.service() for servlet jsp threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 48 in the jsp file: /order.jsp
+Syntax error, insert ") Statement" to complete IfStatement
+45: 	    sb.append("&appVersion=" + appVersion);
+46: 	    sb.append("&price=" + price);
+47: 	    sb.append("&orderId=" + orderId);
+48: 	    if(reserved1 != null && !"".equals(reserved1){
+49: 	    	 sb.append("&reserved1=" + reserved1);
+50: 	    }
+51: 	    if(reserved1 != null && !"".equals(reserved1){
+
+
+An error occurred at line: 51 in the jsp file: /order.jsp
+Syntax error, insert ") Statement" to complete IfStatement
+48: 	    if(reserved1 != null && !"".equals(reserved1){
+49: 	    	 sb.append("&reserved1=" + reserved1);
+50: 	    }
+51: 	    if(reserved1 != null && !"".equals(reserved1){
+52: 	    	 sb.append("&reserved2=" + reserved2);
+53: 	    }
+54: 	    if(reserved1 != null && !"".equals(reserved1){
+
+
+An error occurred at line: 54 in the jsp file: /order.jsp
+Syntax error, insert ") Statement" to complete IfStatement
+51: 	    if(reserved1 != null && !"".equals(reserved1){
+52: 	    	 sb.append("&reserved2=" + reserved2);
+53: 	    }
+54: 	    if(reserved1 != null && !"".equals(reserved1){
+55: 	    	 sb.append("reserved3=" + reserved3);
+56: 	    }
+57: 	    
+
+
+An error occurred at line: 65 in the jsp file: /order.jsp
+signSource cannot be resolved
+62: 	    try {
+63: 	    			//通过MD5计算出签�?
+64:             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+65:             byte[] b = messageDigest.digest(signSource.getBytes("utf-8"));
+66:             
+67:             String HEX_CHARS = "0123456789abcdef";
+68: 	    			StringBuffer sb = new StringBuffer();
+
+
+An error occurred at line: 68 in the jsp file: /order.jsp
+Duplicate local variable sb
+65:             byte[] b = messageDigest.digest(signSource.getBytes("utf-8"));
+66:             
+67:             String HEX_CHARS = "0123456789abcdef";
+68: 	    			StringBuffer sb = new StringBuffer();
+69: 		        for (byte aB : b) {
+70: 		            sb.append(HEX_CHARS.charAt(aB >>> 4 & 0x0F));
+71: 		            sb.append(HEX_CHARS.charAt(aB & 0x0F));
+
+
+An error occurred at line: 92 in the jsp file: /order.jsp
+Syntax error on token ";", assert expected after this token
+89: 													+ "&paymethod=" + paymethod
+90: 													+ "&reserved1=" + reserved1
+91: 													+ "&reserved2=" + reserved2
+92: 													+ "&reserved3=" + reserved3;
+93: 													+ "&merchantSign=" + mySign;
+94: 													
+95: 			out.print("orderInfo");
+
+
+An error occurred at line: 93 in the jsp file: /order.jsp
+The operator + is undefined for the argument type(s) String
+90: 													+ "&reserved1=" + reserved1
+91: 													+ "&reserved2=" + reserved2
+92: 													+ "&reserved3=" + reserved3;
+93: 													+ "&merchantSign=" + mySign;
+94: 													
+95: 			out.print("orderInfo");
+96: 		%>
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:92)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:330)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:439)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:349)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:327)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:314)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:326)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:313)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:260)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:859)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:619)
+2013-11-22 17:19:04 org.apache.catalina.core.StandardWrapperValve invoke
+����: Servlet.service() for servlet jsp threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 65 in the jsp file: /order.jsp
+signSource cannot be resolved
+62: 	    try {
+63: 	    			//通过MD5计算出签�?
+64:             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+65:             byte[] b = messageDigest.digest(signSource.getBytes("utf-8"));
+66:             
+67:             String HEX_CHARS = "0123456789abcdef";
+68: 	    			StringBuffer sb = new StringBuffer();
+
+
+An error occurred at line: 68 in the jsp file: /order.jsp
+Duplicate local variable sb
+65:             byte[] b = messageDigest.digest(signSource.getBytes("utf-8"));
+66:             
+67:             String HEX_CHARS = "0123456789abcdef";
+68: 	    			StringBuffer sb = new StringBuffer();
+69: 		        for (byte aB : b) {
+70: 		            sb.append(HEX_CHARS.charAt(aB >>> 4 & 0x0F));
+71: 		            sb.append(HEX_CHARS.charAt(aB & 0x0F));
+
+
+An error occurred at line: 92 in the jsp file: /order.jsp
+Syntax error on token ";", assert expected after this token
+89: 													+ "&paymethod=" + paymethod
+90: 													+ "&reserved1=" + reserved1
+91: 													+ "&reserved2=" + reserved2
+92: 													+ "&reserved3=" + reserved3;
+93: 													+ "&merchantSign=" + mySign;
+94: 													
+95: 			out.print("orderInfo");
+
+
+An error occurred at line: 93 in the jsp file: /order.jsp
+The operator + is undefined for the argument type(s) String
+90: 													+ "&reserved1=" + reserved1
+91: 													+ "&reserved2=" + reserved2
+92: 													+ "&reserved3=" + reserved3;
+93: 													+ "&merchantSign=" + mySign;
+94: 													
+95: 			out.print("orderInfo");
+96: 		%>
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:92)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:330)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:439)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:349)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:327)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:314)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:326)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:313)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:260)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:859)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:619)
+2013-11-22 18:06:06 org.apache.catalina.core.StandardWrapperValve invoke
+����: Servlet.service() for servlet jsp threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 36 in the jsp file: /order.jsp
+Syntax error, insert ";" to complete LocalVariableDeclarationStatement
+33: 			int systemId = 300024;						//系统号，300024：支付接�?
+34: 			int payType = 3;									//支付类型�?：充�?
+35: 			String productName = "金币";
+36: 			String channelId = "_1_zhiyifu_"	//渠道号，方便分渠道统计收�?
+37: 			
+38: 			//三个保留字段提供给CP使用，后台�?知时将源数据返回，可以为null
+39: 			String reserved1 = "1";
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:92)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:330)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:439)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:349)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:327)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:314)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:326)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:313)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:260)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:859)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:619)
+2013-11-22 18:14:01 org.apache.catalina.core.ApplicationContext log
+��Ϣ: ContextListener: contextInitialized()
+2013-11-22 18:14:01 org.apache.catalina.core.ApplicationContext log
+��Ϣ: SessionListener: contextInitialized()
+2013-11-22 18:33:28 org.apache.catalina.core.ApplicationContext log
+��Ϣ: ContextListener: contextInitialized()
+2013-11-22 18:33:28 org.apache.catalina.core.ApplicationContext log
+��Ϣ: SessionListener: contextInitialized()
+2013-11-22 18:33:30 org.apache.catalina.core.ApplicationContext log
+��Ϣ: SessionListener: contextDestroyed()
+2013-11-22 18:33:30 org.apache.catalina.core.ApplicationContext log
+��Ϣ: ContextListener: contextDestroyed()
+2013-11-22 18:34:26 org.apache.catalina.core.ApplicationContext log
+��Ϣ: ContextListener: contextInitialized()
+2013-11-22 18:34:26 org.apache.catalina.core.ApplicationContext log
+��Ϣ: SessionListener: contextInitialized()
+2013-11-22 18:51:04 org.apache.catalina.core.StandardWrapperValve invoke
+����: Servlet.service() for servlet jsp threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 24 in the jsp file: /order.jsp
+The method valueof(long) is undefined for the type String
+21: 			String merchantId = "10060";			//斯凯分配的商户号，此处为示例，请不要将�?10060”放到您的程序中�?
+22: 			
+23: 			int appId = 100004; 							//斯凯分配的应用编号，此处为示例，请不要将"100004"放到您的程序中去
+24: 			String orderId = String.valueof(System.currentTimeMillis());		//订单号，应保证唯�?��便日后核对数�?
+25: 			
+26: 			//后台回调地址，需要进行urlencode，请不要�?http://www.baidu.com/放到您的程序中去
+27: 			String notifyAddress = URLEncoder.encode("http://www.baidu.com/", "utf-8");
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:92)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:330)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:439)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:349)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:327)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:314)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:326)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:313)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:260)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:859)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:619)
