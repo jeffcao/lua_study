@@ -16,6 +16,13 @@ import com.astep.pay.IInitListener;
 
 public class Payments {
 
+	public static PaymentInterface getPaymentObj(String type) {
+		if (type.equalsIgnoreCase("sikai")) {
+			return new SkyPayments();
+		}
+		return null;
+	}
+	
 	private static boolean is_leyifu_inited = false;
 
 	public static void pay(String type, String params) {
@@ -25,6 +32,8 @@ public class Payments {
 			cmcc_pay(params);
 		} else if (type.equalsIgnoreCase("leyifu")) {
 			leyifu_pay(params);
+		} else {
+			getPaymentObj(type).pay(params);
 		}
 	}
 

@@ -122,7 +122,7 @@ function PurchasePlugin.show_buy_notify(product, which)
 		PurchasePlugin.buy_prop(product.id)
 	end
 	local pay_type = getPayType()
-	if pay_type == 'anzhi' or pay_type == 'leyifu' then
+	if pay_type == 'anzhi' or pay_type == 'leyifu' or pay_type == 'sikai' then
 		local dialog = createAnzhiPurchase(buy)
 		print('local dialog = createAnzhiPurchase(buy)')
 		dialog:init(product)
@@ -238,10 +238,25 @@ function PurchasePlugin.do_confirm_buy(data)
 		PurchasePlugin.cmcc_pay(data)
 	elseif payType == 'leyifu' then
 		PurchasePlugin.leyifu_pay(data)
+	elseif payType == 'sikai' then
+		PurchasePlugin.sikai_pay(data)
 	end
 	if PurchasePlugin.buy_shouchonglibao then
 		GlobalSetting.shouchong_ordered = true
 	end
+end
+
+function PurchasePlugin.sikai_pay(data)
+	local jni_helper = DDZJniHelper:create()
+	local scene = runningscene()
+	if GlobalSetting.run_env == 'test' and not data.cpparam then data.cpparam = '123456' end
+	dump(scene.cur_product,'scene.cur_product')
+	local j_data = {orderInfo = data.sky}
+	local cjson = require("cjson")
+	local status, s = pcall(cjson.encode, j_data)
+	local str = 'on_pay_sikai__' .. s
+	print('pay:', str)
+	jni_helper:messageJava(str)
 end
 
 function PurchasePlugin.anzhi_pay(data)
