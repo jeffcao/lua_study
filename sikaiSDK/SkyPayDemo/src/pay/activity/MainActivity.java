@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
 		
 		//注释：startUp 方法是开启游戏时读取第三方页面信息
 		int appId = 0;
-		SkyPayServer.getInstance().startUp(MainActivity.this, "payMethod=3rd&appid=" + appId);
+		SkyPayServer.getInstance().startUp(MainActivity.this, "payMethod=3rd&appid=7001949" + appId);
 		
 		setContentView(R.layout.main);
 
