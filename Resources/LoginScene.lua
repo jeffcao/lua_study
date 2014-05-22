@@ -68,12 +68,29 @@ function LoginScene:ctor()
 end
 
 function set_bg(scene)
+	local res, name
+	local function setbg()
+		local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+		cache:addSpriteFramesWithFile(res)
+		scene.bg_sprite:setDisplayFrame(cache:spriteFrameByName(name))
+	end
+	if getPayType() == 'anzhi' then
+		res = 'ccbResources/common3.plist'
+		name = 'bg01_2.png'
+		setbg()
+	elseif getPayType() == 'sikai' then
+		res = 'ccbResources/common3.plist'
+		name = 'bg01_3.png'
+		setbg()
+	end
+--[[
 	local bg = GlobalSetting.login_bg[GlobalSetting.app_id]
 	if bg then
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
 		cache:addSpriteFramesWithFile(bg.res)
 		scene.bg_sprite:setDisplayFrame(cache:spriteFrameByName(bg.name))
 	end
+]]
 end
 
 function LoginScene:setMenus()
