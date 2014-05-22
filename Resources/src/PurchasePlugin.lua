@@ -262,7 +262,7 @@ function PurchasePlugin.sikai_pay(data)
 	local scene = runningscene()
 	if GlobalSetting.run_env == 'test' and not data.cpparam then data.cpparam = '123456' end
 	dump(scene.cur_product,'scene.cur_product')
-	local j_data = {orderInfo = data.sky}
+	local j_data = {orderInfo = data.orderInfo}
 	local cjson = require("cjson")
 	local status, s = pcall(cjson.encode, j_data)
 	local str = 'on_pay_sikai__' .. s
