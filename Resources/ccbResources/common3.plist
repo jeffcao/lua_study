@@ -7,6 +7,19 @@
             <key>bg01_2.png</key>
             <dict>
                 <key>frame</key>
+                <string>{{2,484},{800,480}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{800,480}}</string>
+                <key>sourceSize</key>
+                <string>{800,480}</string>
+            </dict>
+            <key>bg01_3.png</key>
+            <dict>
+                <key>frame</key>
                 <string>{{2,2},{800,480}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
@@ -59,11 +72,11 @@
             <key>yinyingkuang.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,805},{316,145}}</string>
+                <string>{{804,551},{316,145}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{316,145}}</string>
                 <key>sourceSize</key>
@@ -72,11 +85,11 @@
             <key>ziliaokuang03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{965,390},{413,44}}</string>
+                <string>{{2,966},{413,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{413,44}}</string>
                 <key>sourceSize</key>
@@ -92,7 +105,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:78435b5071cc8937b30e39d50d3c6327$</string>
+            <string>$TexturePacker:SmartUpdate:d0cffb00b12e344768cb7d01cdd8f6a8:1/1$</string>
             <key>textureFileName</key>
             <string>common3.png</string>
         </dict>
