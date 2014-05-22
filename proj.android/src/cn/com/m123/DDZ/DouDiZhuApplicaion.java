@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.util.Map;
 import java.util.Set;
 
+import com.skymobi.pay.app.PayApplication;
+
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -32,12 +34,28 @@ public class DouDiZhuApplicaion extends Application {
 	public void onCreate() {
 		APP_CONTEXT = this;
 		super.onCreate();
-		System.loadLibrary("megjb");
+		
 		initDebug();
 		saveHardwareInfo();
 		initPkgInfo();
 		initPush();
 		initLocalLinkConfig();
+		
+		//init sdks
+		initSikaiZhifu();
+		initCmcc();
+	}
+	
+	private void initCmcc() {
+		if (getPaytype() == "cmcc") {
+			System.loadLibrary("megjb");
+		}
+	}
+	
+	private void initSikaiZhifu() {
+		if (getPaytype() == "sikai") {
+			new PayApplication().applicationOnCreat(getApplicationContext());
+		}
 	}
 	
 	public static void debugLog(String str) {
