@@ -50,7 +50,7 @@
     <string name="gc_billing_member_info">成为会员，本游戏免费 </string>
     <string name="gc_billing_package_info">订购{0}包，本游戏免费</string>
     <string name="gc_billing_more">更多游戏</string>
-    <string name="gc_billing_gamehall">和游戏</string>
+    <string name="gc_billing_gamehall">游戏大厅</string>
     <string name="gc_billing_member_right">会员权益</string>
     <string name="gc_billing_member_right_1">会\n员\n权\n益</string>
     <string name="gc_billing_monthly_orger">包月权益</string>
