@@ -142,3 +142,6 @@ cp ../anzhi/anzhi_sdk_pay.jar libs
 cp ../leyifu/libbsjni.so libs/armeabi
 cp ../leyifu/astep.jar libs
 cp ../leyifu/huafubao_sdk.jar libs
+
+cd ..
+ruby pkg.rb
