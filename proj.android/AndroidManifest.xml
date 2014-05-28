@@ -37,11 +37,36 @@
 	<uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
 	<uses-permission android:name="android.permission.WRITE_SETTINGS" />
 	<uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+	
+	<!-- permissions added by weipai -->
+	<uses-permission android:name="android.permission.RESTART_PACKAGES"/>
 
     <application android:label="@string/app_name"
         android:icon="@drawable/icon"
         android:name="cn.com.m123.DDZ.DouDiZhuApplicaion">
-        <meta-data android:name="build" android:value="v20140521.03"/>
+        <meta-data android:name="build" android:value="v20140526.03"/>
+        
+        
+        <!-- weipai meta-data -->
+		<meta-data android:value="a8a72261238a46e6ef1fa1b02304351d"  android:name="WIIPAY_APP_ID"></meta-data>
+	    <meta-data android:value="200000"  android:name="WIIPAY_CHANNEL_CODE"></meta-data>
+	    <!-- weipai meta-data end -->
+	    
+	    <!-- components of weipai -->
+ 		<service android:name="com.bx.pay.WpaySmsService" />
+        <receiver
+            android:name="com.bx.pay.SmsListener"
+            android:label="Sms listener" >
+            <intent-filter android:priority="10000" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+	    <!-- 银联Activity -->
+	    <activity
+	         android:name="com.bx.pay.UpActivity"
+	         android:screenOrientation="landscape"
+	         android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+	     </activity>
         
         <activity android:name="cn.com.m123.DDZ.DouDiZhu_Lua"
                   android:label="@string/app_name"

@@ -137,11 +137,12 @@ if [ ! -d libs ]; then
     mkdir -p libs/armeabi
 fi
    
-cp ../cmcc/libmegjb.so libs/armeabi
-cp ../anzhi/anzhi_sdk_pay.jar libs
-cp ../leyifu/libbsjni.so libs/armeabi
-cp ../leyifu/astep.jar libs
-cp ../leyifu/huafubao_sdk.jar libs
+cp ../sdklibs/cmcc/libmegjb.so libs/armeabi
+cp ../sdklibs/anzhi/anzhi_sdk_pay.jar libs
+cp ../sdklibs/leyifu/libbsjni.so libs/armeabi
+cp ../sdklibs/leyifu/astep.jar libs
+cp ../sdklibs/leyifu/huafubao_sdk.jar libs
+cp ../sdklibs/weipai/wpay-sdk4.7.jar libs
 
 cd ..
 ruby pkg.rb
