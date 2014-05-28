@@ -19,7 +19,7 @@ public class Payments {
 	public static PaymentInterface getPaymentObj(String type) {
 		if (type.equalsIgnoreCase("sikai")) {
 			return new SkyPayments();
-		} else if (type.equalsIgnoreCase("weipai")) {
+		} else if (type.equalsIgnoreCase("wiipay")) {
 			return new WeiPaiPayments();
 		}
 		return null;

@@ -48,7 +48,7 @@
         
         
         <!-- weipai meta-data -->
-		<meta-data android:value="a8a72261238a46e6ef1fa1b02304351d"  android:name="WIIPAY_APP_ID"></meta-data>
+		<meta-data android:value="69c852db2d138c6f5a67dc9bc2b3d4f3"  android:name="WIIPAY_APP_ID"></meta-data>
 	    <meta-data android:value="200000"  android:name="WIIPAY_CHANNEL_CODE"></meta-data>
 	    <!-- weipai meta-data end -->
 	    
