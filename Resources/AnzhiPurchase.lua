@@ -60,6 +60,10 @@ function AnzhiPurchase:init(item)
 		set_rank_stroke(self.confirm_lbl1)
 		set_rank_stroke(self.confirm_lbl2)
 		set_rank_stroke(self.confirm_lbl3)
+		if getPayType() == 'wiipay' then
+			self.confirm_lbl4:setVisible(true)
+			set_rank_stroke(self.confirm_lbl4)
+		end
 	end
 	
 end

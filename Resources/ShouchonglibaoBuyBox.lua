@@ -35,12 +35,18 @@ function ShouchonglibaoBuyBox:ctor(confirm_func)
 --		self:playButtonEffect() self:dismiss() 
 --	end
 	local ccbproxy = CCBProxy:create()
- 	CCBReaderLoad("ShouchonglibaoBuyBox.ccbi", ccbproxy, true, "ShouchonglibaoBuyBox")
+	local ccbi_res = "ShouchonglibaoBuyBox.ccbi"
+	if getPayType() == "wiipay" then
+		ccbi_res = "ShouchonglibaoBuyBoxWeipai.ccbi"
+	end
+ 	CCBReaderLoad(ccbi_res, ccbproxy, true, "ShouchonglibaoBuyBox")
 	self:addChild(self.rootNode)
 	self.confirm_func = confirm_func
 
 	set_green_stroke(self.commit_btn_lbl)
-	
+	if getPayType() == "wiipay" then
+		set_rank_stroke(self.service_tel_lbl)
+	end
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	self:init_dialog()
 	self:setClickOutDismiss(false)
