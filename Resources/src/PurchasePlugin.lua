@@ -89,6 +89,7 @@ function PurchasePlugin.on_bill_cancel()
 		local trade_id = string.sub(params, 1, index - 1)
 		local prop_id = string.sub(params, index+1)
 		
+		local shouchonglibao = GlobalSetting.cache_prop["shouchongdalibao"]
 		if shouchonglibao and tostring(shouchonglibao.id) == prop_id then
 			GlobalSetting.shouchong_ordered = false
 		end
