@@ -16,6 +16,7 @@ public class WeiPaiPayments implements PaymentInterface {
 	private String payCode;
 	private String devPrivateKey;
 	private String devPrivateValue;
+	private String params;
 	@Override
 	public void pay(String params) {
 		DouDiZhuApplicaion.debugLog("weipai: start pay");
@@ -36,6 +37,7 @@ public class WeiPaiPayments implements PaymentInterface {
 
 	private boolean parseParams(String params) {
 		try {
+			this.params = params;
 			JSONObject json = new JSONObject(params);
 			payCode = json.getString("payCode");
 			JSONObject devPrivate = json.getJSONObject("devPrivate");
@@ -82,6 +84,9 @@ public class WeiPaiPayments implements PaymentInterface {
 							+ price + "<br>" + "订单编号：" + logCode + "<br>"
 							+ "支付结果描述：" + showMsg + "<br>").toString();
 			DouDiZhuApplicaion.debugLog(resultStr);
+			if (!"success".equalsIgnoreCase(result)) {
+				Payments.doCancelBilling(params);
+			}
 		}
 	}
 }

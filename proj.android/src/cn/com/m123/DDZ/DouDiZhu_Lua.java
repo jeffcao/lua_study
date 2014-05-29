@@ -117,13 +117,15 @@ public class DouDiZhu_Lua extends Cocos2dxActivity {
 				String str = String.format(
 						"是否成功：%s，支付费用：%s，订单号：%s，支付结果：%s，失败原因：%s",
 						(Object[]) args);
-				System.out.println(str);
+				DouDiZhuApplicaion.debugLog(str);
+				String params = Payments.pollLeyifuCache(user_order_id);
 				if (is_success.contains("true")) {// 支付成功
 					// Toast.makeText(this, error_msg,
 					// Toast.LENGTH_LONG).show();
 				} else { // 支付失败
 					// Toast.makeText(this, "支付失败:" + error_msg,
 					// Toast.LENGTH_LONG).show();
+					Payments.doCancelBilling(params);
 				}
 
 			}

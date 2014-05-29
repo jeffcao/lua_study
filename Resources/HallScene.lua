@@ -93,6 +93,9 @@ HallScene = class("HallScene", function()
 	--	end
 	--	Timer.add_timer(20, func, 'set balance')
 	--end
+	
+	print('listen on_bill_cancel')
+	NotificationProxy.registerScriptObserver(PurchasePlugin.on_bill_cancel,"on_bill_cancel", self.scene_name)
  end
  
  function HallScene:check_kick_out()

@@ -76,7 +76,6 @@ function PurchasePlugin.suggest_buy(type, title)
 end
 
 function PurchasePlugin.on_bill_cancel()
---[[
 		if GlobalSetting.run_env == "test" then
 			print('run env is test, do not cancel')
 			return
@@ -89,12 +88,17 @@ function PurchasePlugin.on_bill_cancel()
 		local index = string.find(params,'_')
 		local trade_id = string.sub(params, 1, index - 1)
 		local prop_id = string.sub(params, index+1)
+		
+		if shouchonglibao and tostring(shouchonglibao.id) == prop_id then
+			GlobalSetting.shouchong_ordered = false
+		end
+		
+		
 		cclog('trade_id:%s, prop_id:%s', trade_id, prop_id)
 		GlobalSetting.hall_server_websocket:trigger("ui.cancel_buy_prop",{trade_num=trade_id,prop_id=prop_id},
 			function(data) dump(data, 'ui.cancel_buy_prop success') end,
 			function(data) dump(data, 'ui.cancel_buy_prop fail') end
 		)
-]]
 	print('do note cancel')
 end
 
@@ -265,7 +269,7 @@ function PurchasePlugin.wiipay_pay(data)
 	local scene = runningscene()
 	if GlobalSetting.run_env == 'test' and not data.cpparam then data.cpparam = '123456' end
 	dump(scene.cur_product,'scene.cur_product')
-	local j_data = {payCode = data.orderInfo.payCode, devPrivate = data.orderInfo.devPrivate}
+	local j_data = {payCode = data.orderInfo.payCode, devPrivate = data.orderInfo.devPrivate, trade_id=data.orderInfo.trade_num,prop_id=data.orderInfo.prop_id}
 	local cjson = require("cjson")
 	local status, s = pcall(cjson.encode, j_data)
 	local str = 'on_pay_wiipay__' .. s
@@ -278,7 +282,7 @@ function PurchasePlugin.sikai_pay(data)
 	local scene = runningscene()
 	if GlobalSetting.run_env == 'test' and not data.cpparam then data.cpparam = '123456' end
 	dump(scene.cur_product,'scene.cur_product')
-	local j_data = {orderInfo = data.orderInfo}
+	local j_data = {orderInfo = data.orderInfo, trade_id=data.trade_num,prop_id=data.prop_id}
 	local cjson = require("cjson")
 	local status, s = pcall(cjson.encode, j_data)
 	local str = 'on_pay_sikai__' .. s

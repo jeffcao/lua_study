@@ -16,6 +16,7 @@ public class SkyPayments implements PaymentInterface {
 
 	private String initInfo = "payMethod=3rd&appid=7001949";
 	private String orderInfo;
+	private String params;
 
 	@Override
 	public void pay(String params) {
@@ -35,6 +36,7 @@ public class SkyPayments implements PaymentInterface {
 
 	private boolean parseParams(String params) {
 		try {
+			this.params = params;
 			JSONObject json = new JSONObject(params);
 			orderInfo = json.getString("orderInfo");
 			if (!json.isNull("initInfo")) {
@@ -61,14 +63,16 @@ public class SkyPayments implements PaymentInterface {
 			if (SkyPayServer.PAY_RETURN_SUCCESS == payRet) {
 				DouDiZhuApplicaion.debugLog("sikai 付费调用成功");
 			} else {
+				Payments.doCancelBilling(this.params);
 				DouDiZhuApplicaion.debugLog("sikai 付费调用失败:" + payRet);
 			}
 		} else {
+			Payments.doCancelBilling(this.params);
 			DouDiZhuApplicaion.debugLog("sikai init fail:" + initRet);
 		}
 	}
 
-	static class SkyPaymentHandler extends Handler {
+	class SkyPaymentHandler extends Handler {
 		public static final String STRING_MSG_CODE = "msg_code";
 		public static final String STRING_PAY_STATUS = "pay_status";
 		public static final String STRING_CHARGE_STATUS = "3rdpay_status";
@@ -92,6 +96,7 @@ public class SkyPayments implements PaymentInterface {
 					 * 返回错误 retInfo格式：msg_code=101&error_code=***
 					 * error_code取值参考文档
 					 */
+					Payments.doCancelBilling(params);
 					return;
 				}
 
