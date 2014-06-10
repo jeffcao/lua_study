@@ -15,6 +15,8 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/CheckSign.cpp \
                    ../../Classes/CheckSign_lua.cpp \
                    ../../Classes/md5.cpp \
+                   ../../Classes/MobClickCpp_lua.cpp \
+                   ../../Classes/MobClickCppExtend_lua.cpp \
                    ../../Classes/md5_lua.cpp \
                    ../../Classes/Downloader.cpp \
                    ../../Classes/Downloader_lua.cpp \
@@ -55,6 +57,8 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes \
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static cocosdenshion_static cocos_extension_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocos_lua_static
+
+LOCAL_LDLIBS := libs/cocos2dx2_libMobClickCpp.a
 			 
 
 LOCAL_CPPFLAGS += -fexceptions

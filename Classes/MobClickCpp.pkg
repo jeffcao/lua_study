@@ -1,0 +1,79 @@
+class MobClickCpp {
+public:
+    static void setAppVersion(const char* appVersion);
+    
+    static void setCrashReportEnabled(bool value);
+    
+    static void setLogEnabled(bool value);
+    
+    static void initJniForCocos2dx2(void* vm, const char *activityName);
+
+    static void startWithAppkey(const char * appKey, const char * channelId = NULL);
+    
+    static void applicationDidEnterBackground();
+    
+    static void applicationWillEnterForeground();
+    
+    static void end();
+    
+    //static void event(const char * eventId, const char * label = NULL);
+
+    //static void event(const char * eventId, eventDict * attributes, int counter = 0);
+    
+    static void beginEvent(const char * eventId);
+   
+    static void endEvent(const char * eventId);
+
+    static void beginEventWithLabel(const char * eventId, const char * label);
+
+    static void endEventWithLabel(const char * eventId, const char * label);
+    
+    //static void beginEventWithAttributes(const char * eventId, const char * primarykey, eventDict * attributes);
+    
+    static void endEventWithAttributes(const char * eventId, const char * primarykey);
+    
+    static void beginLogPageView(const char *pageName);
+    
+    static void endLogPageView(const char *pageName);
+
+    //static void checkUpdate();
+    
+    //static void checkUpdate(const char * title, const char * cancelTitle, const char * otherTitle);
+    
+    static void setUpdateOnlyWifi(bool updateOnlyWifi);
+    
+    static void updateOnlineConfig();
+    
+    static string getConfigParams(const char * key);
+    
+    static void setUserLevel(const char *level);
+    
+    // enum Sex{
+    //    Unkonwn = 0,
+    //    Male = 1,
+    //    Female = 2,
+    //};
+    //static void setUserInfo(const char * userId, Sex sex, int age, const char * platform);
+    
+    static void startLevel(const char * level);
+    
+    static void finishLevel(const char * level);
+    
+    static void failLevel(const char * level);
+    
+    static void pay(double cash, int source, double coin);
+    
+    static void pay(double cash, int source, const char * item, int amount, double price);
+    
+    static void buy(const char *item, int amount, double price);
+    
+    static void use(const char * item, int amount, double price);
+    
+    static void bonus(double coin, int source);
+    
+    static void bonus(const char * item, int amount, double price, int source);
+    
+    static void beginScene(const char* sceneName);
+    
+    static void endScene(const char* sceneName);
+};

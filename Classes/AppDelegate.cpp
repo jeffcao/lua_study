@@ -12,6 +12,9 @@
 #include "Marquee_lua.h"
 #include "CCLuaStack.h"
 #include "CCLuaValue.h"
+#include "MobClickCpp.h"
+#include "MobClickCpp_lua.h"
+#include "MobClickCppExtend_lua.h"
 #include <algorithm>
 #include <vector>
 //#include "CCEditBoxBridge_lua.h"
@@ -209,6 +212,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     tolua_DialogLayerConvertor_open(pLuaState);
     tolua_Downloader_open(pLuaState);
     tolua_md5_open(pLuaState);
+    tolua_MobClickCpp_open(pLuaState);
+    tolua_MobClickCpp_extend(pLuaState);
     tolua_CheckSign_open(pLuaState);
     tolua_Marquee_open(pLuaState);
     luaopen_LuaProxy(pLuaState);
@@ -220,6 +225,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     std::string mainPath = CCFileUtils::sharedFileUtils()->fullPathForFilename("main.lua");
     CCLOG("[DEBUG] mainPath => %s", mainPath.c_str());
     CCLOG("[DEBUG] UserInfo => %s", CCFileUtils::sharedFileUtils()->fullPathForFilename("UserInfo.lua").c_str());
+
+    MobClickCpp::startWithAppkey("5396af9956240ba20301d519", "1000");
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
     tolua_web_socket_open(pLuaState);
@@ -294,6 +301,7 @@ void AppDelegate::applicationDidEnterBackground()
     if (_bg_music_playing)
     	SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
 
+    MobClickCpp::applicationDidEnterBackground();
 }
 
 // this function will be called when the app is active again
@@ -305,6 +313,8 @@ void AppDelegate::applicationWillEnterForeground()
     // if you use SimpleAudioEngine, it must resume here
     if (_bg_music_playing)
         SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+
+    MobClickCpp::applicationWillEnterForeground();
 }
 
 /*void DownloadListener::onError(Downloader::ErrorCode errorCode) {

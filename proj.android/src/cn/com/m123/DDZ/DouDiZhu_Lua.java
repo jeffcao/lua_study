@@ -26,6 +26,9 @@ package cn.com.m123.DDZ;
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
+import com.umeng.analytics.MobclickAgent;
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -50,6 +53,7 @@ public class DouDiZhu_Lua extends Cocos2dxActivity {
 		if ("cmcc".equalsIgnoreCase(payType)) {
 			initializeCMCC();
 		}
+		MobclickAgent.updateOnlineConfig(this);
 	}
 
 	private void initializeCMCC() {
@@ -130,6 +134,10 @@ public class DouDiZhu_Lua extends Cocos2dxActivity {
 
 			}
 		}
+	}
+	
+	public static Context getContext(){
+	    return INSTANCE;
 	}
 
 }
