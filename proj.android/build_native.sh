@@ -143,6 +143,8 @@ cp ../sdklibs/leyifu/libbsjni.so libs/armeabi
 cp ../sdklibs/leyifu/astep.jar libs
 cp ../sdklibs/leyifu/huafubao_sdk.jar libs
 cp ../sdklibs/weipai/wpay-sdk4.7.jar libs
+cp ../sdklibs/umeng/umeng_sdk.jar libs
+cp ../sdklibs/umeng/cocos2dx2_libMobClickCpp.a
 
 cd ..
 ruby pkg.rb
