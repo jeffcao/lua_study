@@ -226,7 +226,11 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCLOG("[DEBUG] mainPath => %s", mainPath.c_str());
     CCLOG("[DEBUG] UserInfo => %s", CCFileUtils::sharedFileUtils()->fullPathForFilename("UserInfo.lua").c_str());
 
-    MobClickCpp::startWithAppkey("5396af9956240ba20301d519", "1000");
+    std::string appid = CCUserDefault::sharedUserDefault()->getStringForKey("appid");
+    std::string debug = CCUserDefault::sharedUserDefault()->getStringForKey("debug");
+    MobClickCpp::startWithAppkey("53994bee56240b395e001d3f", appid.c_str());
+    MobClickCpp::updateOnlineConfig();
+    MobClickCpp::setLogEnabled(debug == "true");
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
     tolua_web_socket_open(pLuaState);

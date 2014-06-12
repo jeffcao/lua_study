@@ -53,7 +53,6 @@ public class DouDiZhu_Lua extends Cocos2dxActivity {
 		if ("cmcc".equalsIgnoreCase(payType)) {
 			initializeCMCC();
 		}
-		MobclickAgent.updateOnlineConfig(this);
 	}
 
 	private void initializeCMCC() {
