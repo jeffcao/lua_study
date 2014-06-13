@@ -1,3 +1,8 @@
+ CONNECT_LOGIN_SERVER = "connect_login_server"
+ SIGIN_IN = "sigin_in"
+ FAST_REGISTER = "fast_register"
+ CONNECT_HALL_SERVER = "connect_hall_server"
+ SIGIN_UP = "sigin_up"
  CONNECT_LOGIN_SERVER_FAULURE = "connect_login_server_faulure"
  OK_FORGOT_PASSWORD = "ok_forgot_password"
  FAST_REQUEST_ROOM = "fast_request_room"

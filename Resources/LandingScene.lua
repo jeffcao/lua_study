@@ -59,6 +59,7 @@ end
 function LandingScene:onEnter()
 	print("[LandingScene:on_enter()]")
 	self.super.onEnter(self)
+	MobClickCpp:beginScene("loading")
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	self:show_progress_message_box(strings.ls_connect_server_ing)
 	self:setup_websocket()
@@ -69,6 +70,7 @@ end
 --websocket连接上之后，首先去访问服务器需不需要更新apk或者resource
 function LandingScene:do_on_websocket_ready()
 	self:hide_progress_message_box()
+	MobClickCpp:endEvent("connect_login_server")
 	local event_data = {retry="0"}
 	local device_info = device_info()
 	table.copy_kv(event_data, device_info)
@@ -260,6 +262,7 @@ end
 
 function LandingScene:onExit()
 	print("[LandingScene:on_exit()]")
+	MobClickCpp:endScene("loading")
 	--Stats:on_end("landing")
 end
 
@@ -292,6 +295,7 @@ end
 
 
 function LandingScene:setup_websocket()
+	MobClickCpp:beginEvent("connect_login_server")
 	self:connect_to_login_server(GlobalSetting)
 end
 
