@@ -135,3 +135,4 @@ end
 
 UIControllerPlugin.bind(VIP)
 HallServerConnectionPlugin.bind(VIP)
+SceneEventPlugin.bind(VIP)

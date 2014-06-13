@@ -64,3 +64,4 @@ end
 
 UserCenterSceneUPlugin.bind(UserCenterScene)
 UIControllerPlugin.bind(UserCenterScene)
+SceneEventPlugin.bind(UserCenterScene)

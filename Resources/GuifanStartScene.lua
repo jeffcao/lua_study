@@ -82,3 +82,4 @@ function GuifanStartScene:translate(view, count)
 	local repeat_anim = CCRepeat:create(fade_anim, count)
 	view:runAction(repeat_anim)
 end
+ SceneEventPlugin.bind(GuifanStartScene)

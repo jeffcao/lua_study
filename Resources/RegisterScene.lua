@@ -3,6 +3,7 @@ require "src.UIControllerPlugin"
 require "src.RegisterSceneUIPlugin"
 require "src.Stats"
 require "src.UserLocked"
+require 'src.SceneEventPlugin'
 
 RegisterScene = class("RegisterScene", function()
 	print("creating new RegisterScene")
@@ -62,6 +63,7 @@ UIControllerPlugin.bind(RegisterScene)
 LoginServerConnectionPlugin.bind(RegisterScene)
 RegisterSceneUIPlugin.bind(RegisterScene)
 UserLocked.bind(RegisterScene)
+SceneEventPlugin.bind(RegisterScene)
 function createRegisterScene()
 	print("createRegisterScene()")
 	local login = RegisterScene.new()

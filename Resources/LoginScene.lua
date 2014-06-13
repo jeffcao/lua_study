@@ -192,5 +192,5 @@ end
 
 SoundEffect.bind(LoginScene)
 UserLocked.bind(LoginScene)
-
+ SceneEventPlugin.bind(LoginScene)
 

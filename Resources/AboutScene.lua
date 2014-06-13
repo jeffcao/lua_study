@@ -219,3 +219,4 @@ function AboutScene:test_slot(i)
 end
 
 UIControllerPlugin.bind(AboutScene)
+SceneEventPlugin.bind(AboutScene)

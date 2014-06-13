@@ -5,7 +5,7 @@ require "src.UIControllerPlugin"
 require "LoginScene"
 require "CCBReaderLoad"
 require "src.Stats"
-
+require 'src.SceneEventPlugin'
 
 LandingScene = class("LandingScene", function()
 	print("creating new landingScene")
@@ -356,6 +356,7 @@ end
 LoginServerConnectionPlugin.bind(LandingScene)
 LoginHallConnectionPlugin.bind(LandingScene)
 UIControllerPlugin.bind(LandingScene)
+SceneEventPlugin.bind(LandingScene)
 
 function createLandingScene()
 	print("createLandingScene()")

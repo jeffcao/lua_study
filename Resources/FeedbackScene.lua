@@ -91,3 +91,4 @@ end
 
 UIControllerPlugin.bind(FeedbackScene)
 HallServerConnectionPlugin.bind(FeedbackScene)
+SceneEventPlugin.bind(FeedbackScene)

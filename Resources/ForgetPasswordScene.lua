@@ -98,3 +98,4 @@ end
 
 UIControllerPlugin.bind(ForgetPasswordScene)
 LoginServerConnectionPlugin.bind(ForgetPasswordScene)
+SceneEventPlugin.bind(ForgetPasswordScene)
