@@ -54,6 +54,33 @@ static void tolua_reg_types (lua_State* tolua_S)
  tolua_usertype(tolua_S,"MobClickCpp");
 }
 
+/* method: end of class  MobClickCpp */
+#ifndef TOLUA_DISABLE_tolua_MobClickCpp_MobClickCpp_end00
+static int tolua_MobClickCpp_MobClickCpp_end00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertable(tolua_S,1,"MobClickCpp",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  {
+   MobClickCpp::end();
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'end'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 //beginEventWithAttributes
 #ifndef TOLUA_DISABLE_tolua_MobClickCpp_MobClickCpp_beginEventWithAttributes
 static int tolua_MobClickCpp_MobClickCpp_beginEventWithAttributes(lua_State* tolua_S)
@@ -217,6 +244,7 @@ TOLUA_API int tolua_MobClickCpp_extend (lua_State* tolua_S)
    tolua_function(tolua_S,"event",tolua_MobClickCpp_MobClickCpp_event01);
    tolua_function(tolua_S,"setUserInfo",tolua_MobClickCpp_MobClickCpp_setUserInfo);
    tolua_function(tolua_S,"beginEventWithAttributes",tolua_MobClickCpp_MobClickCpp_beginEventWithAttributes);
+   tolua_function(tolua_S,"endToLua",tolua_MobClickCpp_MobClickCpp_end00);
   tolua_endmodule(tolua_S);
  tolua_endmodule(tolua_S);
  return 1;

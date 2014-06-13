@@ -14,7 +14,7 @@ public:
     
     static void applicationWillEnterForeground();
     
-    static void end();
+    //static void end();
     
     //static void event(const char * eventId, const char * label = NULL);
 
