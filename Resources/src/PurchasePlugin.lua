@@ -110,10 +110,16 @@ function PurchasePlugin.show_buy_notify(product, which)
 	--	product.title = '为您的豆子保驾护航！'
 	--	product.note = '开启后1个小时状态效果，记牌器显示3个人已出牌，方便您计算对方牌面，点击使反反复复反反复复反反复复方法发用。'
 	--end
+	local pay_type = getPayType()
+	
+	local function onBuyShow()
+		AppStats.event(PURCHASE_SHOW, {paytype=pay_type, commodity=product.id})
+	end
 	
 	local shouchonglibao = GlobalSetting.cache_prop["shouchongdalibao"]
 	if shouchonglibao and tostring(shouchonglibao.id) == tostring(product.id) then
 		PurchasePlugin.show_buy_shouchonglibao(product)
+		onBuyShow()
 		return
 	end
 	
@@ -126,7 +132,7 @@ function PurchasePlugin.show_buy_notify(product, which)
 		PurchasePlugin.buy_shouchonglibao = false
 		PurchasePlugin.buy_prop(product.id)
 	end
-	local pay_type = getPayType()
+	
 	if pay_type == 'anzhi' or pay_type == 'leyifu' or pay_type == 'sikai' or pay_type == 'wiipay' then
 		local dialog = createAnzhiPurchase(buy)
 		print('local dialog = createAnzhiPurchase(buy)')
@@ -136,12 +142,14 @@ function PurchasePlugin.show_buy_notify(product, which)
 		print('dialog:attach_to(scene.rootNode)')
 		dialog:show()
 		print('show buy notify dialog')
+		onBuyShow()
 	elseif pay_type == 'cmcc' then
 		if product.is_prompt then
 			local dialog = createAnzhiPurchase(buy)
 			dialog:init(product)
 			dialog:attach_to(scene.rootNode)
 			dialog:show()
+			onBuyShow()
 		else
 			buy()
 		end
@@ -248,21 +256,13 @@ function PurchasePlugin.do_confirm_buy(data)
 	ToastPlugin.hide_progress_message_box()
 	runningscene().cur_buy_data = data
 	local payType = getPayType()
-	--[[
-	if payType == 'anzhi' then
-		PurchasePlugin.anzhi_pay(data)
-	elseif payType == 'cmcc' then
-		PurchasePlugin.cmcc_pay(data)
-	elseif payType == 'leyifu' then
-		PurchasePlugin.leyifu_pay(data)
-	elseif payType == 'sikai' then
-		PurchasePlugin.sikai_pay(data)
-	end
-	]]
 	PurchasePlugin[payType..'_pay'](data)
 	if PurchasePlugin.buy_shouchonglibao then
 		GlobalSetting.shouchong_ordered = true
 	end
+	
+	local commodity = data.prop_id or data.orderInfo.prop_id
+	AppStats.event(PURCHASE_CONFIRM,{paytype=payType, commodity=commodity})
 end
 
 function PurchasePlugin.wiipay_pay(data)

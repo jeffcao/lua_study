@@ -1,4 +1,5 @@
 require 'src.GlobalFunction'
+require 'src.UmengConstants'
 AppStats = {}
 
 function AppStats.sceneName(name)
