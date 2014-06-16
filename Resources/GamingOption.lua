@@ -20,9 +20,12 @@ end
 function GamingOption:ctor()
 
 	ccb.GamingOption = self
+	--[[
 	for k,v in pairs(fns) do
 		self[k] = v
 	end
+	]]
+	self:init_funcs(fns.on_option_exit, fns.on_option_jipaiqi, fns.on_option_rank)
 	dump(self)
 	--self.on_option_exit = __bind(self.do_on_option_exit, self)
 	--self.on_option_jipaiqi = __bind(self.do_on_option_jipaiqi, self)
@@ -38,6 +41,8 @@ function GamingOption:ctor()
 	print("set option jipaiqi enabled=> ", scene:is_jipaiqi_enable())
 	--self.option_jipaiqi:setEnabled(scene:is_jipaiqi_enable())
 	scaleNode(node, GlobalSetting.content_scale_factor)
+	
+	AppStats.event(UM_TOOLS_SHOW)
 end
 
 function GamingOption:init()
@@ -52,9 +57,18 @@ function GamingOption:init()
 end
 
 function GamingOption:init_funcs(fn1, fn2, fn3) 
-	self.on_option_exit = fn1
-	self.on_option_jipaiqi = fn2
-	self.on_option_rank = fn3
+	self.on_option_exit = function() 
+		fn1() 
+		AppStats.event(UM_TOOLS_EXIT) 
+	end
+	self.on_option_jipaiqi = function() 
+		fn2() 
+		AppStats.event(UM_TOOLS_JIPAIQI) 
+	end
+	self.on_option_rank = function() 
+		fn3() 
+		AppStats.event(UM_TOOLS_RANK) 
+	end
 end
 
 function GamingOption:do_on_option_exit()
