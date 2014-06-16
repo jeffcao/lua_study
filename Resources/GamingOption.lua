@@ -18,18 +18,8 @@ function createGamingOption(fn1,fn2,fn3)
 end
 
 function GamingOption:ctor()
-
 	ccb.GamingOption = self
-	--[[
-	for k,v in pairs(fns) do
-		self[k] = v
-	end
-	]]
 	self:init_funcs(fns.on_option_exit, fns.on_option_jipaiqi, fns.on_option_rank)
-	dump(self)
-	--self.on_option_exit = __bind(self.do_on_option_exit, self)
-	--self.on_option_jipaiqi = __bind(self.do_on_option_jipaiqi, self)
-	--self.on_option_rank = __bind(self.do_on_option_rank, self)
 	local ccbproxy = CCBProxy:create()
  	local node = CCBReaderLoad("GamingOption.ccbi", ccbproxy, false, "")
 	self.rootNode = node
@@ -69,18 +59,6 @@ function GamingOption:init_funcs(fn1, fn2, fn3)
 		fn3() 
 		AppStats.event(UM_TOOLS_RANK) 
 	end
-end
-
-function GamingOption:do_on_option_exit()
-	cclog('do_on_option_exit')
-end
-
-function GamingOption:do_on_option_jipaiqi()
-	cclog('do_on_option_jipaiqi')
-end
-
-function GamingOption:do_on_option_rank()
-	cclog('do_on_option_rank')
 end
 
 UIControllerPlugin.bind(GamingOption)
