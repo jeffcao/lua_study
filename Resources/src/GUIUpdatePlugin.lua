@@ -495,6 +495,7 @@ function GUIUpdatePlugin.bind(theClass)
 		if self.prev_user then
 			self:showUserInfo(self.prev_user.user_id)
 		end
+		AppStats.event(UM_PROFILE_OTHER_SHOW, "prev")
 	end
 	
 	function theClass:onNextUserClicked()
@@ -502,10 +503,12 @@ function GUIUpdatePlugin.bind(theClass)
 		if self.next_user then
 			self:showUserInfo(self.next_user.user_id)
 		end
+		AppStats.event(UM_PROFILE_OTHER_SHOW, "next")
 	end
 	
 	function theClass:onSelfUserClicked()
 		self:showUserInfo(self.self_user.user_id)
+		AppStats.event(UM_PROFILE_SELF_SHOW)
 	end
 	
 	function theClass:showUserInfo(user_id) 
