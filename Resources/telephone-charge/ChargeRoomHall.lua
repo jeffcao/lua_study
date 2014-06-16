@@ -99,6 +99,8 @@ function ChargeRoomHall:onEnter()
 	
 	--listen charge_matches data change, name is charge_room_hall
 	DataProxy.get_exist_instance('charge_matches'):register('charge_room_hall', __bind(self.init_rooms, self))
+	
+	AppStats.event(UM_CHARGE_MATCH_HALL_SHOW)
 end
 
 function ChargeRoomHall:onExit()
