@@ -113,7 +113,7 @@ function PurchasePlugin.show_buy_notify(product, which)
 	local pay_type = getPayType()
 	
 	local function onBuyShow()
-		AppStats.event(PURCHASE_SHOW, {paytype=pay_type, commodity=product.id})
+		AppStats.event(UM_PURCHASE_SHOW, {paytype=pay_type, commodity=product.id})
 	end
 	
 	local shouchonglibao = GlobalSetting.cache_prop["shouchongdalibao"]
@@ -262,7 +262,7 @@ function PurchasePlugin.do_confirm_buy(data)
 	end
 	
 	local commodity = data.prop_id or data.orderInfo.prop_id
-	AppStats.event(PURCHASE_CONFIRM,{paytype=payType, commodity=commodity})
+	AppStats.event(UM_PURCHASE_CONFIRM,{paytype=payType, commodity=commodity})
 end
 
 function PurchasePlugin.wiipay_pay(data)

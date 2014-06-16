@@ -83,14 +83,17 @@ end
 
 function AppStats.event(eventId, labelOrAttributes, counter)
 	if labelOrAttributes == nil then
+		print("AppStats: on event " .. eventId)
 		MobClickCpp:event(eventId)
 		return
 	end
 	if type(labelOrAttributes) == 'string' then
+		print("AppStats: on event " .. eventId .. " " .. labelOrAttributes)
 		MobClickCpp:event(eventId, labelOrAttributes)
 		return
 	end
 	if type(labelOrAttributes) == 'table' then
+		dump(labelOrAttributes, "AppStats: on event " .. eventId )
 		local dic = AppStats.table2dic(labelOrAttributes)
 		MobClickCpp:event(eventId, dic, counter or 0)
 		return
