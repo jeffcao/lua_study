@@ -14,6 +14,13 @@ function AppStats.table2dic(tbl)
 	return dic
 end
 
+function AppStats.getPaySource()
+	local pay_type = getPayType()
+	local pay_source = {leyifu=11,anzhi=12,cmcc=13,gd_unicom=14,sikai=15,wiipay=16}
+	local source = pay_source[pay_type]
+	return source
+end
+
 function AppStats.endToLua()
 	MobClickCpp:endToLua()
 end
@@ -32,11 +39,16 @@ function AppStats.endScene(name)
 	--MobClickCpp:endScene(AppStats.sceneName(name))
 end
 
-function AppStats.payCoin(cash, source, coin)
+function AppStats.payCoin(cash, coin)
+	local source = AppStats.getPaySource()
+	print("AppStats pay:(cash="..cash..", source="..source..", coin="..coin..")")
 	MobClickCpp:pay(cash, source, coin)
 end
 
-function AppStats.payItem(cash, source, item, amount, price)
+function AppStats.payItem(cash, item, amount, price)
+	local source = AppStats.getPaySource()
+	print("AppStats pay:(cash="..cash..", item="..item..", amount="..amount..", source="
+			..source..", price="..price..")")
 	MobClickCpp:pay(cash, source, item, amount, price)
 end
 
