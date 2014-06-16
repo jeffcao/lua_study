@@ -1,3 +1,5 @@
+require 'src.AppStats'
+
 LoginHallConnectionPlugin = {}
 
 
@@ -5,8 +7,11 @@ function LoginHallConnectionPlugin.bind(theClass)
 
 	function theClass:connect_to_hall_server()
 		print("[LoginHallConnectionPlugin:connect_to_hall_server()]")
+		AppStats:beginEvent(UmengConstans.CONNECT_HALL_SERVER)
 		local function connection_failure(data)
 			print("[LoginHallConnectionPlugin.connection_failure].")
+			AppStats:endEvent(UmengConstans.CONNECT_HALL_SERVER)
+			AppStats:event(UmengConstans.CONNECT_LOGIN_SERVER_FAILURE)
 			dump(data, "connection_failure data")
 			GlobalSetting.hall_server_websocket = nil
 	--		print("[LoginServerConnectionPlugin.sign_failure] result code: "..data.result_code)
@@ -48,7 +53,7 @@ function LoginHallConnectionPlugin.bind(theClass)
 	
 	function theClass:on_hall_server_websocket_ready()
 		print("[LoginHallConnectionPlugin:on_hall_server_websocket_ready()]")
-	
+		AppStats:endEvent(UmengConstans.CONNECT_HALL_SERVER)
 		GlobalSetting.hall_server_websocket:bind("ui.hand_shake", function(data) 
 			dump(data, "ui.hand_shake") 
 			GlobalSetting.hall_server_websocket:unbind_clear("ui.hand_shake")

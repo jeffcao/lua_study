@@ -1,3 +1,5 @@
+require 'src.AppStats'
+
 RegisterSceneUIPlugin = {}
 
 function RegisterSceneUIPlugin.bind(theClass)
@@ -68,6 +70,7 @@ function RegisterSceneUIPlugin.bind(theClass)
 	
 	function theClass:do_register_btn_clicked(tag, sender)
 		print("[RegisterScene:do_register_btn_clicked]")
+		AppStats:event(UmengConstans.COMMIT_SIGN_UP)
 		local nick_name_box = tolua.cast(self.nick_name_layer:getChildByTag(101), "CCEditBox")
 		local password_box = tolua.cast(self.password_layer:getChildByTag(102), "CCEditBox")
 		local confirm_pwd_box = tolua.cast(self.confirm_pwd_layer:getChildByTag(103), "CCEditBox")

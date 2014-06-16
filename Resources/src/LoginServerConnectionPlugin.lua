@@ -2,6 +2,7 @@ LoginServerConnectionPlugin = {}
 require "src.CheckSignLua"
 require 'src.MatchLogic'
 require 'src.ShouchonglibaoDonghua'
+require 'src.AppStats'
 
 function LoginServerConnectionPlugin.bind(theClass)
 	function theClass:sign_success(data)
@@ -159,6 +160,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 	
 	function theClass:on_websocket_ready()
 		print("[LoginServerConnectionPlugin:on_websocket_ready()]")
+		AppStats:endEvent(UmengConstans.CONNECT_LOGIN_SERVER)
 		GlobalSetting.login_server_websocket:bind("ui.hand_shake", function(data) 
 			dump(data, "ui.hand_shake") 
 			GlobalSetting.login_server_websocket:unbind_clear("ui.hand_shake")
@@ -171,8 +173,11 @@ function LoginServerConnectionPlugin.bind(theClass)
 	
 	function theClass:connect_to_login_server(config)
 		print("[LoginServerConnectionPlugin:connect_to_login_server()]")
+		AppStats:beginEvent(UmengConstans.CONNECT_LOGIN_SERVER)
 		local function sign_failure(data)
 			print("[LoginServerConnectionPlugin.connect_to_login_server].")
+			AppStats:endEvent(UmengConstans.CONNECT_LOGIN_SERVER)
+			AppStats:event(UmengConstans.CONNECT_LOGIN_SERVER_FAILURE)
 			dump(data, "fign_failure data")
 	--		print("[LoginServerConnectionPlugin.sign_failure] result code: "..data.result_code)
 			if "function" == type(self.do_on_connection_failure) then

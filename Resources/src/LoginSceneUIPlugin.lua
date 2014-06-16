@@ -1,3 +1,5 @@
+require 'src.AppStats'
+
 LoginSceneUIPlugin = {}
 
 function LoginSceneUIPlugin.bind(theClass)
@@ -101,6 +103,7 @@ function LoginSceneUIPlugin.bind(theClass)
 	
 	function theClass:do_ui_register_clicked(tag, sender)
 			print("go to register in login scene")
+			AppStats:event(UmengConstans.SIGIN_UP)
 			CCDirector:sharedDirector():pushScene(createRegisterScene())
 --			CCDirector:sharedDirector():replaceScene(createRegisterScene())	
 	end
@@ -112,13 +115,14 @@ function LoginSceneUIPlugin.bind(theClass)
 	
 	function theClass:do_ui_fast_game_clicked()
 		print("[LoginScene:onKuaisuLoginBtnClick()]")
+		AppStats:event(UmengConstans.FAST_REGISTER)
 		self:show_progress_message_box(strings.lsp_register_ing)
 		self:signup()
 	end
 	
 	function theClass:do_ui_login_clicked(tag, sender)
 		print("[LoginScene:onLoginBtnClick()]")
-	
+		AppStats:event(UmengConstans.SIGIN_IN)
 		local user_id_txt = tolua.cast(self.register_account_layer:getChildByTag(101), "CCEditBox")
 		local user_pwd_txt = tolua.cast(self.forget_password_layer:getChildByTag(102), "CCEditBox")
 		
