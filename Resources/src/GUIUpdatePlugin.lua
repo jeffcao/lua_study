@@ -695,6 +695,7 @@ function GUIUpdatePlugin.bind(theClass)
 		--end
 		if self:check_beans() then
 			self:doStartReady()
+			AppStats.event(UM_ROOM_PREPARE)
 		else
 			local title = nil
 			if is_match_room(self.game_info) then title = strings.gup_suggest_douzi end
@@ -806,6 +807,7 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	function theClass:onChangeDeskClicked()
 		self:doChangeDesk()
+		AppStats.event(UM_ROOM_CHANGE_DESK)
 	end
 	
 	function theClass:updateSocket(status)
