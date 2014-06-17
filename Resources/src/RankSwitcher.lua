@@ -2,6 +2,7 @@ RankSwitcher = {}
 
 function RankSwitcher.bind(theClass)
 	function theClass:switch_to_huafei()
+		AppStats.event(UM_RANK_CHARGE,runningscene().name)
 		print("switch_to_huafei start")
 		self:reset_touches('huafei')
 		self:setHuafeiInfo(true)
@@ -72,6 +73,7 @@ function RankSwitcher.bind(theClass)
 	end
 	
 	function theClass:switch_to_douzi()
+		AppStats.event(UM_RANK_BEAN,runningscene().name)
 		self:reset_touches('douzi')
 		self:setDouziInfo(true)
 		
