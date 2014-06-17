@@ -185,7 +185,7 @@ function GActionPlugin.bind(theClass)
 	
 	function theClass:doGetLord(lord_value) 
 		cclog("[onGetLord] lord_value => " .. lord_value)
-		
+		AppStats.event(UM_GRAB_LORD, tostring(lord_value))
 		-- 通知服务器叫地主的分数
 		local get_lord_event = {user_id=self.g_user_id, lord_value=lord_value}
 		self.g_WebSocket:trigger("g.grab_lord", get_lord_event)
@@ -397,7 +397,7 @@ function GActionPlugin.bind(theClass)
 		end
 			
 	end
-	
+	--[[
 	function theClass:doGetLord(lord_value) 
 		cclog("[onGetLord] lord_value => " .. lord_value)
 		
@@ -408,7 +408,7 @@ function GActionPlugin.bind(theClass)
 		self:hideGetLordMenu()
 		self:updateLordValue(self.self_user_lord_value, lord_value)
 	end
-	
+	]]
 	function theClass:docancelTuoguan(isNotServerAuto) 
 		self.menu_tuoguan:setVisible(false)
 		self._playing_timeout = 0
