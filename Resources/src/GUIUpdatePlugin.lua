@@ -421,6 +421,7 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	function theClass:onReturnClicked() 
 		if self._has_gaming_started then
+			AppStats.event(UM_FLEE_SHOW)
 			self:showExit()
 	 	else 
 			self:exit()
@@ -575,6 +576,7 @@ function GUIUpdatePlugin.bind(theClass)
 			self.exit_layer:setMessage(string.format(strings.gup_mand_eixt_w, tostring(self.escape_money)))
 			self.exit_layer:set_dismiss_cleanup(false)
 			local yes_fn = function()
+				AppStats.event(UM_FLEE_CONFIRM)
 				self.exit_layer:dismiss()
 				self:exit()
 			end
@@ -795,6 +797,7 @@ function GUIUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:onCancelTuoguanClicked()
+		AppStats.event(UM_TUOGUAN_CANCEL)
 		self:docancelTuoguan()
 		self:playButtonEffect()
 	end
@@ -803,7 +806,7 @@ function GUIUpdatePlugin.bind(theClass)
 		if self:isTuoguan() or not self._is_playing then
 			return
 		end
-		
+		AppStats.event(UM_TUOGUAN)
 		self:doTuoguan()
 		self:playButtonEffect()
 	end
