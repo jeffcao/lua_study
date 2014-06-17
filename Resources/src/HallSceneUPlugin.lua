@@ -14,23 +14,6 @@ HallSceneUPlugin = {}
 
 function HallSceneUPlugin.bind(theClass)
 	
-	function theClass:scene_on_become_vip()
-		local is_vip = (GlobalSetting.vip ~= cjson.null)
-		print("scene_on_vip set vip menu visible to " .. tostring(is_vip))
-		self.hall_vip_menu:setVisible(is_vip)
-		self:checkVip()
-	end
-	
-	function theClass:on_shouchonglibao_finished()
-		print("HallSceneUPlugin.on_shouchonglibao_finished ")
-		self.hall_shouchong_layer:setVisible(false)
-		if self.rank_dialog then
-			self.rank_dialog:dismiss(true)
-			self.rank_dialog = nil
-		end
-		
-	end
-	
 	function theClass:getRank()
 		AppStats.event(UM_RANK_SHOW,runningscene().name)
 		if not self.rank_dialog then
@@ -44,14 +27,7 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:onKeypad(key)
 		print("hall scene on key pad")
 		if hasDialogFloating(self) then print("hall scene there is dialog floating") return end
-		if key == "menuClicked" then
-			--[[
-			self.menu_layer = createMenu(__bind(self.menu_dismiss_callback, self), __bind(self.show_set_dialog, self))
-			self.rootNode:addChild(self.menu_layer, 1001, 908)
-			print("[HallSceneUPlugin:display_player_info] menu_layer:show")
-			self.menu_layer:show()
-			]]
-		elseif key == "backClicked" then
+		if key == "backClicked" then
 			if self.menu_layer and self.menu_layer:isShowing() then
 				self.menu_layer:dismiss(true)
 			elseif self.set_dialog_layer then
@@ -67,7 +43,6 @@ function HallSceneUPlugin.bind(theClass)
 					Timer.cancel_timer(GlobalSetting.online_time_get_beans_handle)
 					GlobalSetting.online_time_get_beans_handle = nil
 				end
-				--self:doShowExitDialog()
 			end
 		end
 	end
@@ -97,26 +72,6 @@ function HallSceneUPlugin.bind(theClass)
 		self:update_player_beans_with_gl()
 	end
 	
-	function theClass:on_vip_click()
-		self:do_to_vip()
-	end
-	
-	function theClass:do_to_vip()
-		local scene = createVIP()
-		self.VIP = scene
-		CCDirector:sharedDirector():pushScene(scene)
-	end
-	
-	function theClass:on_shouchong_click()
-		local product = GlobalSetting.cache_prop["shouchongdalibao"]
-		dump(product, "HallSceneUPlug.on_shouchong_click, product=> ")
-		PurchasePlugin.show_buy_shouchonglibao(product)
-		
---		GlobalSetting.shouchong_finished = 1
---		self.hall_shouchong_layer:setVisible(false)
-		print("HallSceneUPlugin.on_shouchong_click.")
-	end
-
 	--通过global setting存储的user来更新
 	function theClass:update_player_beans_with_gl()
 		cclog("update_player_beans_with_gl()")
@@ -282,25 +237,14 @@ function HallSceneUPlugin.bind(theClass)
 		if tonumber(data.result_code) == 0 then
 			cclog('init_today_activity result code is 0')
 			GlobalSetting.time_task = data
-			--[[GlobalSetting.time_task = {}
-			GlobalSetting.time_task.name = data.name
-			GlobalSetting.time_task.content = data.content
-			GlobalSetting.time_task.week = data.week
-			GlobalSetting.time_task.object = data.object]]
 			GlobalSetting.time_task.weekday = get_weekday(data.week)
 			dump(GlobalSetting.time_task, 'GlobalSetting.time_task')
 			self:updateTimeTask()
 		end
 		Stats:flush(GlobalSetting.hall_server_websocket)
 		
-		--do not call online_time_get_beans
-		--then call online_time_get_beans
-		--self:start_online_time_get_beans()
-		
 		self:check_tech_msg("sign")
 	end
-	
-	
 	
 	function theClass:init_current_player_info()
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
@@ -367,7 +311,6 @@ function HallSceneUPlugin.bind(theClass)
 		local t = LuaTableView:createWithHandler(h, CCSizeMake(800,260))
 		t:setDirection(kCCScrollViewDirectionHorizontal)
 		t:reloadData()
-	--	t:setAnchorPoint(ccp(0.5, 0.5))
 		t:setPosition(CCPointMake(0,0))
 		self.middle_layer:addChild(t)
 		self.room_layer_t = t
@@ -386,8 +329,6 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:init_room_tabview(data)
 		print("[HallSceneUPlugin:init_room_tabview]")
-		--table.insert(data.room, 1, {is_promotion=true})
-		--table.insert(data.room, 1, {is_promotion=true})
 		self:refresh_room_tabview(data)
 
 		self:listen_match_event()
@@ -473,7 +414,6 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:updateSocket(status)
 		print("update socket status to " .. status)
-	--	self.socket_label:setString(status)
 	end
 	
 	function theClass:exit()
@@ -483,7 +423,6 @@ function HallSceneUPlugin.bind(theClass)
 		Timer.add_timer(1, exit_hall_scene)
 	end
 	
-	--print("theClass.registerCleanup ==> ", theClass.registerCleanup)
 	if theClass.registerCleanup then
 		print("HallServerConnectionPlugin register cleanup")
 		theClass:registerCleanup("HallServerConnectionPlugin.close_hall_websocket", theClass.close_hall_websocket)

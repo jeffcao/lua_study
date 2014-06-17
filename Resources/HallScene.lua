@@ -11,7 +11,6 @@ require "src.WidgetPlugin"
 require "src.SoundEffect"
 require "Share"
 require "TimeTask"
-require "VIP"
 require "IntroduceDialog"
 require "src.ServerNotifyPlugin"
 require "src.Stats"
@@ -23,7 +22,9 @@ require 'src.HallMatchPlugin'
 require 'src.MatchLogic'
 require 'src.KickOut'
 require 'src.PurchasePlugin'
-require 'src.ShouchonglibaoDonghua'
+
+
+require 'hall.HallPluginBinder'
 
 local cjson = require "cjson"
 HallScene = class("HallScene", function() 
@@ -84,15 +85,8 @@ HallScene = class("HallScene", function()
 	self:set_btn_stroke(self.to_feedback_lbl)
 	self:set_btn_stroke(self.task_lbl)
 	set_blue_stroke(self.quick_game_btn_lbl)
-	--self:check_kick_out()
 	MarqueePlugin.addMarquee(self.rootNode,ccp(280,355))
 	GlobalSetting.hall_scene = self
-	--if GlobalSetting.run_env == 'test' then
-	--	local func = function()
-	--		self:onDiploma({balance = 1002, dp_msg='hhhhhh', dp_award_msg='dpawardmsg'})
-	--	end
-	--	Timer.add_timer(20, func, 'set balance')
-	--end
 	
 	print('listen on_bill_cancel')
 	NotificationProxy.registerScriptObserver(PurchasePlugin.on_bill_cancel,"on_bill_cancel", self.scene_name)
@@ -103,14 +97,11 @@ HallScene = class("HallScene", function()
  	if not reason then return end
  	if reason == 'match_end' then
  		ToastPlugin.show_message_box_suc(strings.hs_match_end)
- 	--	self:show_back_message_box('比赛已经结束')--TODO
  	end
  end
  
  function HallScene:set_btn_stroke(btn_lbl)
- 	cclog("hallscece set to info lbl stroke")
 	set_stroke(btn_lbl, self.btn_stroke_size, self.btn_stroke_color)
-	cclog("hallscece set to info lbl stroke finish")
  end
  
  function HallScene:init()
@@ -127,66 +118,12 @@ HallScene = class("HallScene", function()
 	self:do_on_enter()
 	self:start_push()
 	self:refresh_room_list()
-	--[[
-	local is_playing = SimpleAudioEngine:sharedEngine():isBackgroundMusicPlaying()
-	if bg_music and not is_playing then
-		Timer.add_timer(3, function() 
-	 		self:playBackgroundMusic()
-		end)
-		--self:playBackgroundMusic()
-	end
-	]]
 	self:playBackgroundMusic()
-	local is_vip = (GlobalSetting.vip ~= cjson.null)
-	print("set vip menu visible to " .. tostring(is_vip))
-	self.hall_vip_menu:setVisible(is_vip)
+	
 	Stats:on_start("hall")
 	
 	self:checkVip()
 	self:initShouchonglibao()
-	--self:refresh_room_data()
- end
- 
- function HallScene:initShouchonglibao()
- 	print("HallScene:initShouchonglibao, GlobalSetting.shouchong_finished=", GlobalSetting.shouchong_finished)
- 	if GlobalSetting.shouchong_finished == 1 then
- 		self.hall_shouchong_layer:setVisible(false)
- 		if GlobalSetting.shouchong_rank_changed then
- 			if self.rank_dialog then
-				self.rank_dialog:dismiss(true)
-				self.rank_dialog = nil
-			end
- 		end
- 	else
- 		self.hall_shouchong_layer:setVisible(true)
- 		ShouchonglibaoDonghua.show(self.hall_shouchong_layer, ccpAdd(
- 				ccp(self.hall_shouchonglibao_menu:getPosition()),
- 				ccp(-4, 2)))
- 	end
- end
- 
- function HallScene:checkVip()
- 	local is_vip = (GlobalSetting.vip ~= cjson.null)
- 	if not is_vip then return end
- 	local fn = function()
- 		local is_vip = (GlobalSetting.vip ~= cjson.null)
- 		if not is_vip then return false end
-		local scene = CCDirector:sharedDirector():getRunningScene()
-		local salary_getted = (GlobalSetting.vip.get_salary~=0)
-		if scene ~= self or salary_getted then return false end
-		
-		local blink = CCBlink:create(2, 3)
-		self.hall_vip_menu:runAction(blink)
-		return true
-	end
-	local fn2 = function() fn() self.vip_blink_1 = nil end
-	local fn3 = function() local re = fn() if not re then self.vip_blink = nil end return re end
-	if not self.vip_blink_1 and not self.vip_blink then
-		self.vip_blink_1 = Timer.add_timer(0.5, fn2, "vip_blink_1")
-	end
-	if not self.vip_blink then
-		self.vip_blink = Timer.add_repeat_timer(5, fn3, "vip_blink")
-	end
  end
  
  function HallScene:playMusic()
@@ -229,3 +166,5 @@ end
  UserLocked.bind(HallScene)
  HallMatchPlugin.bind(HallScene)
  SceneEventPlugin.bind(HallScene)
+ 
+ HallPluginBinder.bind(HallScene)
