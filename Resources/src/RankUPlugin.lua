@@ -150,10 +150,8 @@ function RankUPlugin.bind(theClass)
 
 	function theClass:getTabView(name, call_back)
 		if name == 'huafei' then
-			AppStats.event(UM_RANK_CHARGE,"ui")
 			self:getHuafeiTabView(call_back)
 		else
-			AppStats.event(UM_RANK_BEAN,"ui")
 			self:getDouziTabView(call_back)
 		end
 	end
@@ -331,6 +329,7 @@ function RankUPlugin.bind(theClass)
 		local suc = function(data)
 			notify(data, 'get mobile charge sucess', true)
 			set_user_balance(data.left_charge)
+			AppStats.event(UM_RANK_GET_CHARGE,{scene=runningscene().name,charge=data.mobile_charge})
 		end
 		dump(event_data, 'event_data')
 		self.rankuplugin_socket:trigger(self.rankuplugin_event_prefix .. "get_mobile_charge", event_data, suc, fail)
@@ -338,7 +337,6 @@ function RankUPlugin.bind(theClass)
 	end
 
 	function theClass:get_mobile_charge()
-		AppStats.event(UM_RANK_GET_CHARGE,"ui")
 		self:actual_get_charge()
 	end
 	

@@ -32,6 +32,7 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:getRank()
+		AppStats.event(UM_RANK_SHOW,runningscene().name)
 		if not self.rank_dialog then
 			self.rank_dialog = createRank(GlobalSetting.hall_server_websocket,'ui.')
 			self.rootNode:addChild(self.rank_dialog)

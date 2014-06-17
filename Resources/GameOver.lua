@@ -17,9 +17,15 @@ function GameOver:ctor()
 end
 
 function GameOver:initCallback(onToHall, onChangeDesk, onClose)
-	self.onGOChangeDeskClicked = onChangeDesk
+	self.onGOChangeDeskClicked = function()
+		onChangeDesk()
+		AppStats.event(UM_BALANCE_CHANGE_DESK)
+	end
 	self.onGOCloseClicked = onClose
-	self.onGOToHallClicked = onToHall
+	self.onGOToHallClicked = function()
+		onToHall()
+		AppStats.event(UM_BALANCE_TO_HALL)
+	end	
 	self.ccbproxy = CCBProxy:create()
 	self.ccbproxy:retain()
 	ccb.GameOver = self
