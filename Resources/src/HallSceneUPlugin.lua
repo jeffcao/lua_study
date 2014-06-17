@@ -27,19 +27,13 @@ function HallSceneUPlugin.bind(theClass)
 		print("hall scene on key pad")
 		if hasDialogFloating(self) then print("hall scene there is dialog floating") return end
 		if key == "backClicked" then
-			if self.set_dialog_layer then
-				if not self.set_dialog_layer:isShowing() then
-					self.set_dialog_layer = nil
-				end
-			else
-				local scene = createLoginScene()
-				CCDirector:sharedDirector():replaceScene(scene)
-				self:close_hall_websocket()
-				if GlobalSetting.online_time_get_beans_handle then
-					cclog('cancel previous online_time_get_beans while switch')
-					Timer.cancel_timer(GlobalSetting.online_time_get_beans_handle)
-					GlobalSetting.online_time_get_beans_handle = nil
-				end
+			local scene = createLoginScene()
+			CCDirector:sharedDirector():replaceScene(scene)
+			self:close_hall_websocket()
+			if GlobalSetting.online_time_get_beans_handle then
+				cclog('cancel previous online_time_get_beans while switch')
+				Timer.cancel_timer(GlobalSetting.online_time_get_beans_handle)
+				GlobalSetting.online_time_get_beans_handle = nil
 			end
 		end
 	end
@@ -91,19 +85,6 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:do_on_task_btn_clicked()
 		AppStats.event(UM_DAY_ACTIVITY_SHOW)
 		local tm = createTimeTask() self.rootNode:addChild(tm) tm:show()
-	end
-	
-	function theClass:set_dialog_dismiss_callback()
-		self.rootNode:removeChild(self.set_dialog_layer, true)
-		self.set_dialog_layer = nil
-	end
-	
-	function theClass:show_set_dialog()
-		self.set_dialog_layer = createSetDialog(__bind(self.set_dialog_dismiss_callback, self))
-		self.rootNode:addChild(self.set_dialog_layer, 1001, 907)
-		print("[HallSceneUPlugin:show_set_dialog] set_dialog_layer:show")
-		AppStats.event(UM_SETTING_SHOW)
-		self.set_dialog_layer:show()
 	end
 	
 	function theClass:onShareClick(tag, sender)
