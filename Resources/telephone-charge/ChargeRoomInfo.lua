@@ -94,12 +94,10 @@ function ChargeRoomInfo:on_join_click()
  	if GlobalSetting.hall_scene then
  		GlobalSetting.hall_scene:do_on_room_touched(self.room_info)
  	end
-	do return end
-	if joined then
-	-- enter match game process
-	else
-	-- join match game process
-	end
+ 	
+ 	local event_label = "join"
+ 	if joined then event_label = "enter" end
+ 	AppStats.event(UM_JOIN_CHARGE_MATCH, event_label)
 end
 
 function ChargeRoomInfo:init_room_info(room_info)

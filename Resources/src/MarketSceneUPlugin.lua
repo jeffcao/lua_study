@@ -81,12 +81,13 @@ function MarketSceneUPlugin.bind(theClass)
 		CCDirector:sharedDirector():popScene()
 	end
 	
+	--[[
 	function theClass:get_prop_list(type)
 		self:show_progress_message_box(strings.msp_get_props_w)
 		self:shop_prop_list(type)
 		self.after_trigger_success = __bind(self.on_get_tab, self)
 	end
-
+	]]
 	function theClass:init_tabs()
 		local tabs = {}
 		tabs["1"] = {name="1"}
@@ -102,6 +103,17 @@ function MarketSceneUPlugin.bind(theClass)
 		self:setTabHanziNames(hanzi_names)
 		self:init_mtabs(tabs, tab_content, order)
 	end
+	
+	function theClass:tabplugin_on_set_tab(name)
+		local name_hanzi = self.tabnames_hanzi[tonumber(name)]
+		local event_name = UM_SHOP_BEANS
+		if name_hanzi == "礼  包" then
+			event_name = UM_SHOP_GIFTS
+		elseif name_hanzi == "服  务" then
+			event_name = UM_SHOP_SERVICES
+		end
+		AppStats.event(event_name)
+	end
 
 	function theClass:getTabView(name, call_back)
 		self:show_progress_message_box(strings.msp_get_props_w)
@@ -112,11 +124,12 @@ function MarketSceneUPlugin.bind(theClass)
 			call_back(tab_view)
 		end
 	end
-	
+	--[[
 	function theClass:on_get_tab(data)
 		cclog("on get tab data")
 		dump(data, "data=>")
 		self:set_tab_view(name, self:create_product_list(data.commodity))
 		self:set_tab(data.type)
 	end
+	]]
 end

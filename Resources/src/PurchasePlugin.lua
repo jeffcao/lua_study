@@ -60,6 +60,11 @@ function PurchasePlugin.on_server_notify_buy_finish_success(data)
 	if scene.use_prop_bought  and tonumber(data.result_code) == 0 then
 		scene:use_prop_bought(data)
 	end
+	
+	local pay_type = getPayType()
+	AppStats.event(UM_PAY_SUCCESS, {paytype=pay_type, commodity=data.prop_id})
+	local price = data.price/100
+	AppStats.payItem(price, data.prop_id, 1, price)
 end
 
 function PurchasePlugin.show_back_message_box(message)
@@ -100,7 +105,9 @@ function PurchasePlugin.on_bill_cancel()
 			function(data) dump(data, 'ui.cancel_buy_prop success') end,
 			function(data) dump(data, 'ui.cancel_buy_prop fail') end
 		)
-	print('do note cancel')
+		
+		local pay_type = getPayType()
+		AppStats.event(UM_PAY_CANCEL, {paytype=pay_type, commodity=prop_id})
 end
 
 --product:consume_code,name,price,rmb
@@ -113,7 +120,7 @@ function PurchasePlugin.show_buy_notify(product, which)
 	local pay_type = getPayType()
 	
 	local function onBuyShow()
-		AppStats.event(PURCHASE_SHOW, {paytype=pay_type, commodity=product.id})
+		AppStats.event(UM_PURCHASE_SHOW, {paytype=pay_type, commodity=product.id})
 	end
 	
 	local shouchonglibao = GlobalSetting.cache_prop["shouchongdalibao"]
@@ -262,7 +269,7 @@ function PurchasePlugin.do_confirm_buy(data)
 	end
 	
 	local commodity = data.prop_id or data.orderInfo.prop_id
-	AppStats.event(PURCHASE_CONFIRM,{paytype=payType, commodity=commodity})
+	AppStats.event(UM_PURCHASE_CONFIRM,{paytype=payType, commodity=commodity})
 end
 
 function PurchasePlugin.wiipay_pay(data)

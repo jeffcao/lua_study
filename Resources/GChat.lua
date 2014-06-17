@@ -27,6 +27,8 @@ function GChat:ctor()
     	end
     self.rootNode:registerScriptTouchHandler(ontouch)
     self.rootNode:setTouchEnabled(true)
+    
+    AppStats.event(UM_CHAT_SHOW)
 end
 
 function GChat:init(data, click_func)
@@ -77,6 +79,8 @@ function GChat:init(data, click_func)
 				click_func(a1:getTag())
 			--	self:setVisible(false)
 				self:removeFromParentAndCleanup(true)
+				
+				AppStats.event(UM_CHAT_MSG, tostring(a1:getTag()))
 			end
 			return r
 	end)

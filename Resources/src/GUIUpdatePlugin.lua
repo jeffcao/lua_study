@@ -495,6 +495,7 @@ function GUIUpdatePlugin.bind(theClass)
 		if self.prev_user then
 			self:showUserInfo(self.prev_user.user_id)
 		end
+		AppStats.event(UM_PROFILE_OTHER_SHOW, "prev")
 	end
 	
 	function theClass:onNextUserClicked()
@@ -502,10 +503,12 @@ function GUIUpdatePlugin.bind(theClass)
 		if self.next_user then
 			self:showUserInfo(self.next_user.user_id)
 		end
+		AppStats.event(UM_PROFILE_OTHER_SHOW, "next")
 	end
 	
 	function theClass:onSelfUserClicked()
 		self:showUserInfo(self.self_user.user_id)
+		AppStats.event(UM_PROFILE_SELF_SHOW)
 	end
 	
 	function theClass:showUserInfo(user_id) 
@@ -695,6 +698,7 @@ function GUIUpdatePlugin.bind(theClass)
 		--end
 		if self:check_beans() then
 			self:doStartReady()
+			AppStats.event(UM_ROOM_PREPARE)
 		else
 			local title = nil
 			if is_match_room(self.game_info) then title = strings.gup_suggest_douzi end
@@ -806,6 +810,7 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	function theClass:onChangeDeskClicked()
 		self:doChangeDesk()
+		AppStats.event(UM_ROOM_CHANGE_DESK)
 	end
 	
 	function theClass:updateSocket(status)

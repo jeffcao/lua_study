@@ -5,6 +5,7 @@ TabPlugin = {}
 --  setNodeUncheckStatus(tab_data)
 --  getTabView(name, call_back)
 --  getTabNode(name)
+--  tabplugin_on_set_tab(name) #when switch tab, will call this function if it exist
 
 -- theClass must call
 --   init_mtabs(tabs, tab_content, order)
@@ -61,6 +62,8 @@ function TabPlugin.bind(theClass)
 				end
 				self:setNodeCheckStatus(tab_data)
 				tab_data.tab_view:setVisible(true)
+				
+				if self.tabplugin_on_set_tab then self:tabplugin_on_set_tab(name) end
 			else
 				self:setNodeUncheckStatus(tab_data)
 				if tab_data.tab_view then tab_data.tab_view:setVisible(false) end

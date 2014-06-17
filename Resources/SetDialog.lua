@@ -77,9 +77,11 @@ function SetDialog:ctor()
 		--	jni:messageJava("set_music_volume_" .. user_default:getFloatForKey("music_volume"))
 			AppStats.event(UM_SETTING_OPEN_MUSIC)
 			self:playBackgroundMusic()
+			AppStats.event(UM_SETTING_OPEN_MUSIC, runningscene().name)
 		else
 			AppStats.event(UM_SETTING_CLOSE_MUSIC)
 			self:stopBackgroundMusic()
+			AppStats.event(UM_SETTING_CLOSE_MUSIC, runningscene().name)
 		end
     end
   	music_toggle.toggle:registerScriptTapHandler(menuCallback)
@@ -96,6 +98,11 @@ function SetDialog:ctor()
 			AppStats.event(UM_SETTING_CLOSE_EFFECT)
 		end
 		user_default:setBoolForKey("effect_music", not effect_music)
+		if effect_music then
+			AppStats.event(UM_SETTING_OPEN_EFFECT, runningscene().name)
+		else
+			AppStats.event(UM_SETTING_CLOSE_EFFECT, runningscene().name)
+		end
     end
   	effect_toggle.toggle:registerScriptTapHandler(effect_callback)
 	
@@ -136,6 +143,8 @@ function SetDialog:ctor()
     	end
     end
     NotificationProxy.registerScriptObserver(self.volume_func,"on_volume_change", runningscene().scene_name)
+    
+    AppStats.event(UM_SETTING_SHOW, runningscene().name)
 end
 
 --[[

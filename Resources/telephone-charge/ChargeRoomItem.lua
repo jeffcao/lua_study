@@ -48,4 +48,6 @@ function ChargeRoomItem:on_click()
 	local info = createChargeRoomInfo()
 	info:init_room_info(self.room_info)
     info:show()
+    
+    AppStats.event(UM_CHARGE_MATCH_HALL_CLICK_MATCH)
 end
