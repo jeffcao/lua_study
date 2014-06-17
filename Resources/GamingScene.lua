@@ -115,6 +115,7 @@ function GamingScene:onEnter()
 	self.super.onEnter(self)
 	--self:registerCleanup()
 	Stats:on_start("gaming")
+	AppStats.beginScene("GamingScene_"..GlobalSetting.game_info.room_name)
 end
 
 function GamingScene:onExit()
@@ -135,6 +136,8 @@ function GamingScene:onExit()
 	GlobalSetting.game_id = nil
 	self.list_cache = nil
 	print("[GamingScene:on_exit()]")
+	
+	AppStats.endScene("GamingScene_"..GlobalSetting.game_info.room_name)
 end
 
 function GamingScene:onCleanup()
