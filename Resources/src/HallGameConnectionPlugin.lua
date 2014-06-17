@@ -5,12 +5,15 @@ function HallGameConnectionPlugin.bind(theClass)
 
 	function theClass:connect_to_game_server()
 		print("[HallGameConnectionPlugin:connect_to_game_server()]")
+		AppStats.beginEvent(UM_CONNECT_GAME_SERVER)
 		local function connection_failure(data)
 			print("[HallGameConnectionPlugin.connection_failure].")
 			dump(data, "connection_failure data")
 	--		print("[LoginServerConnectionPlugin.sign_failure] result code: "..data.result_code)
 			if data.retry_excceed then
 				print("[HallGameConnectionPlugin.connection_failure]  and end.")
+				AppStats.endEvent(UM_CONNECT_GAME_SERVER)
+				AppStats.event(UM_CONNECT_GAME_SERVER_FAILURE)
 				GlobalSetting.g_WebSocket = nil
 				if "function" == type(self.do_on_connection_game_server_failure) then
 					self:do_on_connection_game_server_failure()
@@ -49,7 +52,7 @@ function HallGameConnectionPlugin.bind(theClass)
 	
 	function theClass:on_game_server_websocket_ready()
 		print("[HallServerConnectionPlugin:on_game_server_websocket_ready()]")
-		
+		AppStats.endEvent(UM_CONNECT_GAME_SERVER)
 		--[[
 		if "function" == type(self.do_on_game_server_websocket_ready) then
 			self:do_on_game_server_websocket_ready()

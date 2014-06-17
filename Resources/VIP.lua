@@ -3,6 +3,8 @@ require "src.UIControllerPlugin"
 require "src.HallServerConnectionPlugin"
 require "src/WebsocketRails/Timer"
 require "src.Stats"
+require "src.AppStats"
+
 VIP = class("VIP", function()
 	print("new VIP")
 	return display.newScene("VIP")	
@@ -109,6 +111,7 @@ end
 
 function VIP:on_get_vip_salary()
 	print("[VIP:on_get_vip_salary]")
+	AppStats.event(UM_VIP_BONUS)
 	self:show_progress_message_box("领取今日工资")
 	self:get_vip_salary()
 end
@@ -135,3 +138,4 @@ end
 
 UIControllerPlugin.bind(VIP)
 HallServerConnectionPlugin.bind(VIP)
+SceneEventPlugin.bind(VIP)

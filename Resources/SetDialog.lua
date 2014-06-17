@@ -1,6 +1,8 @@
 require "src.DialogInterface"
 require "CCBReaderLoad"
 require "src.SoundEffect"
+require 'src.AppStats'
+
 local jni = DDZJniHelper:create()
 local user_default = CCUserDefault:sharedUserDefault()
 SetDialog = class("SetDialog", function()
@@ -73,8 +75,10 @@ function SetDialog:ctor()
 		user_default:setBoolForKey("bg_music", not bg_music)
 		if bg_music then
 		--	jni:messageJava("set_music_volume_" .. user_default:getFloatForKey("music_volume"))
+			AppStats.event(UM_SETTING_OPEN_MUSIC)
 			self:playBackgroundMusic()
 		else
+			AppStats.event(UM_SETTING_CLOSE_MUSIC)
 			self:stopBackgroundMusic()
 		end
     end
@@ -86,6 +90,11 @@ function SetDialog:ctor()
 	self.effect_toggle_layer:addChild(effect_toggle)
 	local function effect_callback(tag, sender)
 		effect_music = effect_toggle.toggle:isChecked()
+		if effect_music then
+			AppStats.event(UM_SETTING_OPEN_EFFECT)
+		else
+			AppStats.event(UM_SETTING_CLOSE_EFFECT)
+		end
 		user_default:setBoolForKey("effect_music", not effect_music)
     end
   	effect_toggle.toggle:registerScriptTapHandler(effect_callback)

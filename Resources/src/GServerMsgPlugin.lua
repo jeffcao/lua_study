@@ -150,6 +150,7 @@ function GServerMsgPlugin.bind(theClass)
 	]]
 	
 	function theClass:getRank()
+		AppStats.event(UM_RANK_SHOW,"ui")
 		if not self.rank_dialog then
 			self.rank_dialog = createRank(GlobalSetting.g_WebSocket,'g.')
 			self.rootNode:addChild(self.rank_dialog)

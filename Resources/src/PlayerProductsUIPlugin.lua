@@ -43,6 +43,8 @@ function PlayerProductsUIPlugin.bind(theClass)
 	
 	function theClass:show_use_notify(product, use_prop_callback)
 		print("[PlayerProductsScene:do_on_trigger_success]")
+--		dump(product, "[PlayerProductsScene:do_on_trigger_success] product=>")
+		AppStats.use(tostring(product.r_prop_id),1,product.price)
 		self.use_prop_callback = use_prop_callback
 		self:show_progress_message_box(strings.ppp_use_props_ing)
 		self:use_cate(product.prop_id)

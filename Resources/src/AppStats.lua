@@ -1,4 +1,5 @@
 require 'src.GlobalFunction'
+require 'src.UmengConstants'
 AppStats = {}
 
 function AppStats.sceneName(name)
@@ -18,11 +19,17 @@ function AppStats.endToLua()
 end
 
 function AppStats.beginScene(name)
-	MobClickCpp:beginScene(AppStats.sceneName(name))
+	name = AppStats.sceneName(name)
+	print('AppStats: beginScene ' .. name)
+	MobClickCpp:beginScene(name)
+	--MobClickCpp:beginScene(AppStats.sceneName(name))
 end
 
 function AppStats.endScene(name)
-	MobClickCpp:endScene(AppStats.sceneName(name))
+	name = AppStats.sceneName(name)
+	print('AppStats: endScene ' .. name)
+	MobClickCpp:endScene(name)
+	--MobClickCpp:endScene(AppStats.sceneName(name))
 end
 
 function AppStats.payCoin(cash, source, coin)

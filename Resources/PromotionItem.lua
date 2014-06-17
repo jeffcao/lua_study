@@ -1,4 +1,6 @@
 require 'PromotionInfoScene'
+require 'src.AppStats'
+
 PromotionItem = class("PromotionItem", function() 
 	print("new promotion item")
 	return display.newLayer("PromotionItem")
@@ -45,6 +47,7 @@ end
 
 function PromotionItem:do_on_speci_clicked()
 	print("[PromotionItem:do_on_speci_clicked]")
+	AppStats.event(UM_MATCH_DETAIL_SHOW)
 	local scene = createPromotionInfoScene(self.item)
 	CCDirector:sharedDirector():pushScene(scene)
 end

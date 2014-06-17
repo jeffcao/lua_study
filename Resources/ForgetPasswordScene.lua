@@ -1,6 +1,7 @@
 require "src.UIControllerPlugin"
 require "src.LoginServerConnectionPlugin"
 require "src.Stats"
+require 'src.AppStats'
 
 ForgetPasswordScene = class("ForgetPasswordScene", function() 
 		return display.newScene("ForgetPasswordScene") 
@@ -49,6 +50,7 @@ end
 
 function ForgetPasswordScene:do_ui_ok_btn_clicked(tag, sender)
 	print("[ForgetPasswordScene:do_ui_ok_btn_clicked]")
+	AppStats.event(UM_OK_FORGOT_PASSWORD)
 	local user_id = trim_blank(self.user_id_box:getText())
 	if is_blank(user_id) then
 		self:show_message_box(strings.forget_pswd_id_nil_w)
@@ -98,3 +100,4 @@ end
 
 UIControllerPlugin.bind(ForgetPasswordScene)
 LoginServerConnectionPlugin.bind(ForgetPasswordScene)
+SceneEventPlugin.bind(ForgetPasswordScene)

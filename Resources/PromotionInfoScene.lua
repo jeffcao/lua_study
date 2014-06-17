@@ -37,3 +37,4 @@ end
  	Stats:on_end("promotion_info")
  end
 PromotionInfoScenePlugin.bind(PromotionInfoScene)
+SceneEventPlugin.bind(PromotionInfoScene)

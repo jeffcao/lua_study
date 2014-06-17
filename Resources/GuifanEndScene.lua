@@ -64,3 +64,4 @@ function GuifanEndScene:onGameCenterExitClicked()
 end
 
  SoundEffect.bind(GuifanEndScene)
+ SceneEventPlugin.bind(GuifanEndScene)

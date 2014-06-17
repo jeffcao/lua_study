@@ -23,10 +23,13 @@ function PromotionInfoScenePlugin.bind(theClass)
 		self.promotion.rule_desc = string.gsub(self.promotion.rule_desc, " ", "\b")
 		self.promotion.description = string.gsub(self.promotion.description, " ", "\b")
 		if name == 'rule' then
+			AppStats.event(UM_MATCH_RULE_SHOW)
 			tab_view = self:createInfoLabel(self.promotion.rule_desc)
 		elseif name == 'speci' then
+			AppStats.event(UM_MATCH_DESC_SHOW)
 			tab_view = self:createSpeciView(self.promotion.description)
 		elseif name == 'record' then
+			AppStats.event(UM_MATCH_BONUS_LOG)
 			tab_view = self:createRecordView(call_back)
 			return
 		end

@@ -1,6 +1,7 @@
 PromotionScenePlugin = {}
 require 'src.MatchLogic'
 require 'src.strings'
+require 'src.AppStats'
 
 function PromotionScenePlugin.bind(theClass)
 
@@ -40,6 +41,7 @@ function PromotionScenePlugin.bind(theClass)
 	
 	function theClass:on_promotion_click(promotion)
 		dump(promotion, 'on_promotion_click')
+--		AppStats.event()
 		promotion.room_type = promotion.match_type
 		MatchLogic.on_match_room_click(promotion, function() 
  			if GlobalSetting.hall_scene then

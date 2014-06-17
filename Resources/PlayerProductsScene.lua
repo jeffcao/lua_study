@@ -83,3 +83,4 @@ end
 PlayerProductsUIPlugin.bind(PlayerProductsScene)
 UIControllerPlugin.bind(PlayerProductsScene)
 HallServerConnectionPlugin.bind(PlayerProductsScene)
+SceneEventPlugin.bind(PlayerProductsScene)

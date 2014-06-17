@@ -8,6 +8,7 @@ require "InitPlayerInfoLayer"
 require "FeedbackScene"
 require "PlayerProductsScene"
 require 'telephone-charge.TelephoneChargeUtil'
+require 'src.AppStats'
 
 HallSceneUPlugin = {}
 
@@ -135,6 +136,7 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:do_on_task_btn_clicked()
+		AppStats.event(UM_DAY_ACTIVITY_SHOW)
 		local tm = createTimeTask() self.rootNode:addChild(tm) tm:show()
 	end
 	
@@ -152,6 +154,7 @@ function HallSceneUPlugin.bind(theClass)
 		self.set_dialog_layer = createSetDialog(__bind(self.set_dialog_dismiss_callback, self))
 		self.rootNode:addChild(self.set_dialog_layer, 1001, 907)
 		print("[HallSceneUPlugin:show_set_dialog] set_dialog_layer:show")
+		AppStats.event(UM_SETTING_SHOW)
 		self.set_dialog_layer:show()
 	end
 	
@@ -395,6 +398,7 @@ function HallSceneUPlugin.bind(theClass)
 
 	function theClass:do_quick_game_btn_clicked(tag, sender)
 		print("[HallSceneUPlugin:do_quick_game_btn_clicked]")
+		AppStats.event(UM_FAST_REQUEST_ROOM)
 		self:show_progress_message_box(strings.hsp_get_room_info_ing)
 		self:fast_begin_game()
 		self.after_trigger_success = __bind(self.do_connect_game_server, self)

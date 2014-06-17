@@ -150,8 +150,10 @@ function RankUPlugin.bind(theClass)
 
 	function theClass:getTabView(name, call_back)
 		if name == 'huafei' then
+			AppStats.event(UM_RANK_CHARGE,"ui")
 			self:getHuafeiTabView(call_back)
 		else
+			AppStats.event(UM_RANK_BEAN,"ui")
 			self:getDouziTabView(call_back)
 		end
 	end
@@ -336,6 +338,7 @@ function RankUPlugin.bind(theClass)
 	end
 
 	function theClass:get_mobile_charge()
+		AppStats.event(UM_RANK_GET_CHARGE,"ui")
 		self:actual_get_charge()
 	end
 	

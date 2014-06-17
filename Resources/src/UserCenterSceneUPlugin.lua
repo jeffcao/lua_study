@@ -2,6 +2,8 @@ require "InfoLayer"
 require "UpdatePasswordLayer"
 require "AvatarListLayer"
 require "PlayerProductsLayer"
+require "src.AppStats"
+
 UserCenterSceneUPlugin = {}
 
 function UserCenterSceneUPlugin.bind(theClass)
@@ -29,26 +31,31 @@ function UserCenterSceneUPlugin.bind(theClass)
 	end
 	
 	function theClass:do_ui_avatar_btn_clicked(tag, sender)
+		AppStats.event(UM_PLAYER_BASE_INFO)
 		self:set_title("biaoti02.png")
 		self:doSetLayer("personal_info")
 	end
 	
 	function theClass:do_ui_update_avatar_btn_clicked(tag, sender)
+		AppStats.event(UM_PLAYER_AVATAR_SHOW)
 		self:set_title("biaoti04.png")
 		self:doSetLayer("update_avatar")
 	end
 	
 	function theClass:do_ui_update_pwd_btn_clicked()
+		AppStats.event(UM_PASSWORD_MODIFY)
 		self:set_title("biaoti01.png")
 		self:doSetLayer("update_password")
 	end
 	
 	function theClass:do_player_cats_btn_clicked()
+		AppStats.event(UM_PLAYER_PROP_LIST)
 		self:set_title("biaoti03.png")
 		self:doSetLayer("player_cats")
 	end
 	
 	function theClass:init_controller(i_layer)
+		AppStats.event(UM_PLAYER_BASE_INFO)
 		i_layer = i_layer or "personal_info"
 		self:display_avatar()
 		self:doSetLayer(i_layer)

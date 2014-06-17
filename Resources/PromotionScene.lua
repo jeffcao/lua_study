@@ -41,3 +41,4 @@ end
  	Stats:on_end("promotion_center")
  end
 PromotionScenePlugin.bind(PromotionScene)
+SceneEventPlugin.bind(PromotionScene)

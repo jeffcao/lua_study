@@ -1,6 +1,7 @@
 require "src.UIControllerPlugin"
 require "src.HallServerConnectionPlugin"
 require "src.Stats"
+require "src.AppStats"
 
 FeedbackScene = class("FeedbackScene", function() 
 		return display.newScene("FeedbackScene") 
@@ -57,6 +58,7 @@ end
 
 function FeedbackScene:do_ui_commit_btn_clicked(tag, sender)
 	print("[FeedbackScene:do_ui_commit_btn_clicked]")
+	AppStats.event(UM_COMMIT_FEEDBACK)
 	local feedback = trim_blank(self.feedback_box:getText())
 	if is_blank(feedback) then
 		self:show_message_box(strings.feedback_nil_w)
@@ -91,3 +93,4 @@ end
 
 UIControllerPlugin.bind(FeedbackScene)
 HallServerConnectionPlugin.bind(FeedbackScene)
+SceneEventPlugin.bind(FeedbackScene)

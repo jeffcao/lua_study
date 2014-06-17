@@ -1,6 +1,7 @@
 require "src.UpdatePasswordLayerUPlugin"
 require "src.UIControllerPlugin"
 require "src.HallServerConnectionPlugin"
+require "src.AppStats"
 
 UpdatePasswordLayer = class("UpdatePasswordLayer", function()
 	print("create UpdatePasswordLayer")
@@ -48,6 +49,7 @@ function UpdatePasswordLayer:ctor()
 end
 
 function UpdatePasswordLayer:do_ui_ok_btn_clicked(tag, sender)
+	AppStats.event(UM_COMMIT_PASSWORD_MODIFY)
 	local old_pwd = self.old_pwd_box:getText()
 	if is_blank(old_pwd) then
 		self:show_message_box(strings.upl_input_old_pswd_t)

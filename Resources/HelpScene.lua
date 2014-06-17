@@ -41,3 +41,4 @@ function HelpScene:ctor()
 end
 HelpSceneUPlugin.bind(HelpScene)
 UIControllerPlugin.bind(HelpScene)
+ SceneEventPlugin.bind(HelpScene)

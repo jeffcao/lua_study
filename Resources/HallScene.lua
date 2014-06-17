@@ -228,3 +228,4 @@ end
  Push.bind(HallScene)
  UserLocked.bind(HallScene)
  HallMatchPlugin.bind(HallScene)
+ SceneEventPlugin.bind(HallScene)

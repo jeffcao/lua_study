@@ -1,5 +1,6 @@
 require "src.HallServerConnectionPlugin"
 require "src.UIControllerPlugin"
+require "src.AppStats"
 
 AvatarListLayer = class("AvatarListLayer", function()
 	return display.newLayer("AvatarListLayer")
@@ -28,6 +29,7 @@ end
 
 function AvatarListLayer:do_ui_avatar_btn_clicked(tag, sender)
 	print("[AvatarListLayer:do_ui_avatar_btn_clicked]")
+	AppStats.event(UM_COMMIT_AVATAR_CHANGE)
 	self:show_progress_message_box(strings.update_avatar_ing)
 	local changed_info = {retry="0", user_id = GlobalSetting.current_user.user_id, avatar = tag-1000}
 	self:complete_user_info(changed_info)
