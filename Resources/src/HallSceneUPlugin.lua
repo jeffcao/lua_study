@@ -47,16 +47,8 @@ function HallSceneUPlugin.bind(theClass)
 		end
 	end
 	
-	function theClass:doShare()
-		self.share_dialog_layer = createShare()
-		self.rootNode:addChild(self.share_dialog_layer, 1001, 907)
-		print("[HallSceneUPlugin:share] share:show")
-		self.share_dialog_layer:show()
-	end
-	
 	function theClass:doShowExitDialog()
 		endtolua_guifan()
-		
 	end
 	
 	function theClass:online_time_beans_update()
@@ -85,10 +77,6 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:do_on_task_btn_clicked()
 		AppStats.event(UM_DAY_ACTIVITY_SHOW)
 		local tm = createTimeTask() self.rootNode:addChild(tm) tm:show()
-	end
-	
-	function theClass:onShareClick(tag, sender)
-		self:doShare()
 	end
 	
 	function theClass:onMenuClick(tag, sender)
