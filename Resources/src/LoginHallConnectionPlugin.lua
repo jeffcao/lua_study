@@ -11,7 +11,7 @@ function LoginHallConnectionPlugin.bind(theClass)
 		local function connection_failure(data)
 			print("[LoginHallConnectionPlugin.connection_failure].")
 			AppStats.endEvent(UM_CONNECT_HALL_SERVER)
-			AppStats.event(UM_CONNECT_LOGIN_SERVER_FAILURE)
+			AppStats.event(UM_CONNECT_HALL_SERVER_FAILURE)
 			dump(data, "connection_failure data")
 			GlobalSetting.hall_server_websocket = nil
 	--		print("[LoginServerConnectionPlugin.sign_failure] result code: "..data.result_code)
