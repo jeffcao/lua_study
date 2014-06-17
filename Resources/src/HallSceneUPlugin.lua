@@ -13,7 +13,6 @@ require 'src.AppStats'
 HallSceneUPlugin = {}
 
 function HallSceneUPlugin.bind(theClass)
-	
 	function theClass:getRank()
 		AppStats.event(UM_RANK_SHOW,runningscene().name)
 		if not self.rank_dialog then
@@ -28,9 +27,7 @@ function HallSceneUPlugin.bind(theClass)
 		print("hall scene on key pad")
 		if hasDialogFloating(self) then print("hall scene there is dialog floating") return end
 		if key == "backClicked" then
-			if self.menu_layer and self.menu_layer:isShowing() then
-				self.menu_layer:dismiss(true)
-			elseif self.set_dialog_layer then
+			if self.set_dialog_layer then
 				if not self.set_dialog_layer:isShowing() then
 					self.set_dialog_layer = nil
 				end
@@ -94,11 +91,6 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:do_on_task_btn_clicked()
 		AppStats.event(UM_DAY_ACTIVITY_SHOW)
 		local tm = createTimeTask() self.rootNode:addChild(tm) tm:show()
-	end
-	
-	function theClass:menu_dismiss_callback()
-		self.rootNode:removeChild(self.menu_layer, true)
-		self.menu_layer = nil
 	end
 	
 	function theClass:set_dialog_dismiss_callback()
