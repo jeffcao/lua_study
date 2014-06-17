@@ -6,8 +6,7 @@ GServerMsgPlugin = {}
 
 function GServerMsgPlugin.bind(theClass)
 
-	-- g_channel and c_channel
-	function theClass:onServerStartGame(data)
+	function theClass:doStartGame(data)
 		dump(data, "[game_start] data -> ")
 		
 		if not self.card_roboter then
@@ -62,6 +61,12 @@ function GServerMsgPlugin.bind(theClass)
 			self.card_roboter:onServerStartGame(self)
 		end
 	end
+
+	-- g_channel and c_channel
+	function theClass:onServerStartGame(data)
+		self:doStartGame(data)
+		self:beginPlayEvent()
+	end
 	
 	function theClass:set_jipaiqi_enable(enable)
 		print("set jipaiqi_enable", enable)
@@ -104,6 +109,10 @@ function GServerMsgPlugin.bind(theClass)
 			--设置被踢出标志
 			KickOut.set()
 			self:exit(true)
+			if self.umeng_game_play then
+				self:endPlayEvent()
+				AppStats.event(UM_GAME_KICK)
+			end
 		else
 			cclog("其他用户被踢出房间，刷新界面")
 			if (data.players) then
@@ -183,7 +192,7 @@ function GServerMsgPlugin.bind(theClass)
 			
 			new_data.escape_money = self.escape_money
 			-- 开始牌局
-			self:onServerStartGame(new_data)
+			self:doStartGame(new_data)
 			-- 显示出牌菜单
 			self:showPlayCardMenu(true)
 			self:showLordCards(data.lord_cards, data.lord_value)
@@ -365,6 +374,17 @@ function GServerMsgPlugin.bind(theClass)
 		
 	end
 	
+	function theClass:beginPlayEvent()
+		AppStats.beginEvent(UM_GAME_PLAY)
+		self.umeng_game_play = true
+	end
+	
+	function theClass:endPlayEvent()
+		if not self.umeng_game_play then return end
+		AppStats.endEvent(UM_GAME_PLAY)
+		self.umeng_game_play = false
+	end
+	
 	-- g_channel and c_channel
 	function theClass:onServerGameOver(data)
 		print("onServerGameOver")
@@ -386,6 +406,7 @@ function GServerMsgPlugin.bind(theClass)
 		if self:is_jipaiqi_enable() then
 			self.card_roboter:onServerGameOver(data)
 		end
+		self:endPlayEvent()
 	end
 	
 	--c_channel

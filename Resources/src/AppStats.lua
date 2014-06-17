@@ -87,10 +87,12 @@ end
 
 function AppStats.beginEvent(eventId)
 	MobClickCpp:beginEvent(eventId)
+	print("AppStats: begin event " ..eventId)
 end
 
 function AppStats.endEvent(eventId)
 	MobClickCpp:endEvent(eventId)
+	print("AppStats: end event " ..eventId)
 end
 
 function AppStats.event(eventId, labelOrAttributes, counter)

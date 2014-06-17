@@ -577,6 +577,7 @@ function GUIUpdatePlugin.bind(theClass)
 			self.exit_layer:set_dismiss_cleanup(false)
 			local yes_fn = function()
 				AppStats.event(UM_FLEE_CONFIRM)
+				self:endPlayEvent()
 				self.exit_layer:dismiss()
 				self:exit()
 			end

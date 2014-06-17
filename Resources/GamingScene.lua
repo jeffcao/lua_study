@@ -138,6 +138,10 @@ function GamingScene:onExit()
 	print("[GamingScene:on_exit()]")
 	
 	AppStats.endScene("GamingScene_"..GlobalSetting.game_info.room_name)
+	if self.umeng_game_play == true then
+		self:endPlayEvent()
+		AppStats.event(UM_EXCEPTION_GAME_PLAY)
+	end
 end
 
 function GamingScene:onCleanup()
