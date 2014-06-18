@@ -34,6 +34,12 @@ function FullMubanStyleLayer:ctor()
 end
 
 function FullMubanStyleLayer:repeat_bg()
+	require 'ui.UIUtil'
+	local winSize = CCDirector:sharedDirector():getWinSize()
+ 	local sprite = UIUtil.getRepeatSprite(winSize.width, winSize.height)
+ 	sprite:setPosition(ccp(winSize.width/2,winSize.height/2))
+ 	self.bg_layer:addChild(sprite)
+--[[
 	local rect = CCRectMake(0,0,750,386)
 	--local sprite = CCSprite:createWithSpriteFrameName("kuang01_tianchong.png")
 	local sprite = CCSprite:create("ccbResources/kuang01_tianchong.png")
@@ -50,6 +56,7 @@ function FullMubanStyleLayer:repeat_bg()
 	sprite:setPosition(ccp(402,219))
 	sprite:setTag(23)
 	self.rootNode:addChild(sprite)
+]]
 end
 
 FullMubanStyleUPlugin.bind(FullMubanStyleLayer)

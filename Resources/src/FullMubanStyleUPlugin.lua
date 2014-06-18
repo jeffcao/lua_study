@@ -29,13 +29,6 @@ function FullMubanStyleUPlugin.bind(theClass)
 	end
 	
 	function theClass:setDecorationHuawen()
-		local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
-		local left = cache:spriteFrameByName("huawen_b.png")
-		local right = cache:spriteFrameByName("huawen_a.png")
-		self.decoration_left:setDisplayFrame(left)
-		self.decoration_right:setDisplayFrame(right)
-		self.close_menu:setPosition(ccp(768,456))
-		self.close_menu:getParent():reorderChild(self.close_menu, self.decoration_right:getZOrder() + 1)
 	end
 	
 	function theClass:removeRepeatBg()
