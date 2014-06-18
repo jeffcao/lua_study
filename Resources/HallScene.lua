@@ -89,6 +89,12 @@ HallScene = class("HallScene", function()
 	
 	print('listen on_bill_cancel')
 	NotificationProxy.registerScriptObserver(PurchasePlugin.on_bill_cancel,"on_bill_cancel", self.scene_name)
+ 
+ 	require 'ui.UIUtil'
+ 	local winSize = CCDirector:sharedDirector():getWinSize()
+ 	local sprite = UIUtil.getRepeatSprite(winSize.width, winSize.height)
+ 	sprite:setPosition(ccp(winSize.width/2,winSize.height/2))
+ 	self.back_bg_layer:addChild(sprite)
  end
  
  function HallScene:check_kick_out()
