@@ -86,7 +86,6 @@ HallScene = class("HallScene", function()
 	set_blue_stroke(self.quick_game_btn_lbl)
 	MarqueePlugin.addMarquee(self.rootNode,ccp(280,355))
 	GlobalSetting.hall_scene = self
-	
 	print('listen on_bill_cancel')
 	NotificationProxy.registerScriptObserver(PurchasePlugin.on_bill_cancel,"on_bill_cancel", self.scene_name)
  
@@ -115,6 +114,7 @@ HallScene = class("HallScene", function()
  
  function HallScene:onEnter() 
 	print("HallScene:onEnter()")
+	GlobalSetting.player_game_position = 2
 	self.super.onEnter(self)
 	GamePush.open()
 	
@@ -129,6 +129,7 @@ HallScene = class("HallScene", function()
 	
 	self:checkVip()
 	self:initShouchonglibao()
+	
  end
  
  function HallScene:playMusic()

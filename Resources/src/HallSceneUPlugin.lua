@@ -364,13 +364,15 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:enter_game_room()
 		local game = createGamingScene()
-		CCDirector:sharedDirector():replaceScene(game)
-		self:close_hall_websocket()
-		if GlobalSetting.online_time_get_beans_handle then
-			cclog('cancel previous online_time_get_beans handler while enter game')
-			Timer.cancel_timer(GlobalSetting.online_time_get_beans_handle)
-			GlobalSetting.online_time_get_beans_handle = nil
-		end
+--		CCDirector:sharedDirector():replaceScene(game)
+		CCDirector:sharedDirector():pushScene(game)
+		GlobalSetting.player_game_position = 3
+--		self:close_hall_websocket()
+--		if GlobalSetting.online_time_get_beans_handle then
+--			cclog('cancel previous online_time_get_beans handler while enter game')
+--			Timer.cancel_timer(GlobalSetting.online_time_get_beans_handle)
+--			GlobalSetting.online_time_get_beans_handle = nil
+--		end
 	end
 	
 	function theClass:updateSocket(status)

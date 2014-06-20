@@ -37,6 +37,9 @@ function HallMatchPlugin.bind(theClass)
 	end
 	
 	function theClass:on_global_match_change(room_info)
+		if not GlobalSetting.hall_scene then
+			print("HallScene:onEnter,GlobalSetting.hall_scene is nil.")
+		end
 		if GlobalSetting.hall_scene then
 			print('refresh hall room data on_global_match_change')
 			GlobalSetting.hall_scene:refresh_room_data()

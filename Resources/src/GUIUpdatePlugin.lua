@@ -596,9 +596,11 @@ function GUIUpdatePlugin.bind(theClass)
 			local running_scene = CCDirector:sharedDirector():getRunningScene()
 			if running_scene == self then 
 				SimpleAudioEngine:sharedEngine():stopBackgroundMusic()
-				local scene = createHallScene()
+--				local scene = createHallScene()
 				DialogLayerConvertor:purgeTouchDispatcher()
-				CCDirector:sharedDirector():replaceScene(scene)
+--				CCDirector:sharedDirector():replaceScene(scene)
+				GlobalSetting.need_init_hall_rooms = 1
+				CCDirector:sharedDirector():popScene()
 			else
 				print("running scene is not self")
 			end

@@ -90,6 +90,9 @@ function RoomItem:init_promotion_room(room_info, room_index)
 		end
 		self.promotion_time_layer:setVisible(true)
 		self.promotion_status_lbl:setVisible(false)
+	else
+		self.promotion_time_layer:setVisible(false)
+		self.promotion_status_lbl:setVisible(true)	
 	end
 end
 

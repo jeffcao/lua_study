@@ -116,11 +116,17 @@ function MarketSceneUPlugin.bind(theClass)
 	end
 
 	function theClass:getTabView(name, call_back)
-		self:show_progress_message_box(strings.msp_get_props_w)
-		self:shop_prop_list(name)
-		
-		self.after_trigger_success = function(data)
-			local tab_view = self:create_product_list(data.commodity)
+--		dump(GlobalSetting.shop_prop_data, 'MatketScene.getTabView, GlobalSetting.shop_prop_data=>')
+		if not GlobalSetting.shop_prop_data[name] then
+			self:show_progress_message_box(strings.msp_get_props_w)
+			self:shop_prop_list(name)
+			self.after_trigger_success = function(data)
+				local tab_view = self:create_product_list(data.commodity)
+				GlobalSetting.shop_prop_data[name] = data.commodity
+				call_back(tab_view)
+			end
+		else
+			local tab_view = self:create_product_list(GlobalSetting.shop_prop_data[name])
 			call_back(tab_view)
 		end
 	end

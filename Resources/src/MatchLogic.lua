@@ -75,8 +75,10 @@ function MatchLogic.clear()
 end
 
 function MatchLogic.notify_event(event_name, data)
+	dump(MatchLogic.events_listener, "MatchLogic.notify_event,events_listener=>")
 	if MatchLogic.events_listener[event_name] then
 		for _,func in pairs(MatchLogic.events_listener[event_name]) do
+			print("MatchLogic.notify_event,event_name="..event_name)
 			func(data)
 		end
 	end
@@ -255,18 +257,20 @@ function MatchLogic.create_match_channel(ws, name)
 	if name ~= 'global_channel' then name = 'm_' .. name end
 	local channel = ws:subscribe(name)
 	cclog('create match channel[%s]:%s', tostring(name), tostring(channel))
-	channel:bind("ui.routine_notify", function(data)
-		dump(data, 'on match channel routine notify')
-		local type = tonumber(data.notify_type)
-		if table.contains({20,21}, type) then
-			cclog('MatchLogic.on_private_match_status_change')
-			MatchLogic.on_private_match_status_change(data)
-		elseif table.contains({22,23,24}, type) then
-			cclog('MatchLogic.on_global_match_status_change')
-			MatchLogic.on_global_match_status_change(data)
-		end
-	end)
+	channel:bind("ui.routine_notify", MatchLogic.on_routine_notify_func)
 	return channel
+end
+
+function MatchLogic.on_routine_notify_func(data)
+	dump(data, 'on match channel routine notify')
+	local type = tonumber(data.notify_type)
+	if table.contains({20,21}, type) then
+		cclog('MatchLogic.on_private_match_status_change')
+		MatchLogic.on_private_match_status_change(data)
+	elseif table.contains({22,23,24}, type) then
+		cclog('MatchLogic.on_global_match_status_change')
+		MatchLogic.on_global_match_status_change(data)
+	end
 end
 
 function MatchLogic.bind_match_channels(scene, ws, bind_global)
@@ -280,6 +284,7 @@ function MatchLogic.bind_match_channels(scene, ws, bind_global)
 	dump(user.joined_match, 'user.joined_match')
 	for _,match_seq in pairs(user.joined_match) do
 		match_seq = tostring(match_seq)
+		dump(scene.match_channels, 'scene.match_channels')
 		if not scene.match_channels[match_seq] then
 			scene.match_channels[match_seq] = MatchLogic.create_match_channel(ws, match_seq)
 		end

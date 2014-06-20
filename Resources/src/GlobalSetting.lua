@@ -91,8 +91,8 @@ GlobalSetting = {
 
 	sina_share_url = "http://service.weibo.com/share/share.php?appkey=2045436852&title="..default_share.."&ralateUid=&language=zh_cn",
 	
-	tencent_share_url = "http://share.v.t.qq.com/index.php?c=share&a=index&appkey=801192940&title="..default_share
-
+	tencent_share_url = "http://share.v.t.qq.com/index.php?c=share&a=index&appkey=801192940&title="..default_share,
+	shop_prop_data = {}
 }
 
 local is_blank = function(str)

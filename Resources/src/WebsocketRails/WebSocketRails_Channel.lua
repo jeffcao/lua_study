@@ -33,7 +33,12 @@ bind = function(self, event_name, callback)
     if self._callbacks[event_name] == nil then
         self._callbacks[event_name] = {}
     end
-    
+    for _, cb in ipairs(self._callbacks[event_name]) do
+        if cb == callback then
+        	print("event %s exists same callback.",event_name)
+        	return
+        end
+    end
     table.insert(self._callbacks[event_name], #self._callbacks[event_name] + 1, callback)
 end,
     

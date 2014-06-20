@@ -341,7 +341,10 @@ function PurchasePlugin.cmcc_pay(data)
 end
 
 function PurchasePlugin.get_buy_socket()
-	local ws = GlobalSetting.hall_server_websocket or GlobalSetting.g_WebSocket
+	local ws = GlobalSetting.hall_server_websocket
+	if GlobalSetting.player_game_position == 3 then
+		ws = GlobalSetting.g_WebSocket
+	end
 	return ws
 end
 
