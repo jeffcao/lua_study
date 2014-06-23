@@ -52,7 +52,7 @@ end
 function Explosion.sharedExplosion()
 	local animFrames = CCArray:create()
 	local str = ""
-	for index = 1, 13 do
+	for index = 1, 7 do
 		str = "baoza_" .. index .. ".png"
 		local frame = cache:spriteFrameByName(str)
 		animFrames:addObject(frame)
@@ -64,7 +64,7 @@ end
 function Explosion.explode(target, z_order)
 	z_order = z_order or 9001
 	local explosion = Explosion.new()
-	explosion:setPosition(ccp(400,200))
+	explosion:setPosition(ccp(400,240))
 	target:addChild(explosion, z_order)
 end
 
