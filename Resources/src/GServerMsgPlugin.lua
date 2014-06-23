@@ -214,7 +214,7 @@ function GServerMsgPlugin.bind(theClass)
 					value = self.self_user.lord_value
 				end
 				cclog("grab_lord: value is " .. value)
-				self:playGrabLordEffect(value, true)
+				self:playGrabLordEffect(value)
 			end
 			
 			
@@ -361,7 +361,7 @@ function GServerMsgPlugin.bind(theClass)
 				self:updatePlayerBuchu(self.prev_user_lord_value, false)
 			end
 			if player.poke_card_count <= 2 and #poke_cards > 0 then
-				self:playCardTips(player.poke_card_count, player.gender == 1)
+				self:playCardTips(player.poke_card_count)
 			end
 		else
 			cclog("is not playing, return to hall")

@@ -48,12 +48,8 @@ Res = {
 
 -- 爆炸声
  s_effect_boom = dirMusic .. "boom/boom.wav",
--- 炸弹男声
- s_effect_bomb_male = dirMusic .. "boom/zhadan_m.wav",
 -- 炸弹女声
  s_effect_bomb_female = dirMusic .. "boom/zhadan_f.wav",
--- 火箭（王炸）男声
- s_effect_rocket_male = dirMusic .. "boom/wangzha_m.wav",
 -- 火箭（王炸）女声
  s_effect_rocket_female = dirMusic .. "boom/wangzha_f.wav",
 --不出
