@@ -1,3 +1,4 @@
+
 local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
 
 
@@ -38,8 +39,9 @@ function ShouchonglibaoDonghua.show(target, pos, z_order)
 	local donghua = ShouchonglibaoDonghua.new()
 	target:addChild(donghua, z_order)
 	donghua:setPosition(pos)
-	
 end
+
+
 
 
 

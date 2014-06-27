@@ -3,6 +3,8 @@ require "src.DialogPlugin"
 require "src.resources"
 require "src.SoundEffect"
 
+require "src.GAnimationPlugin"
+
 ShouchonglibaoBuyBox = class("ShouchonglibaoBuyBox", function()
 	print("new ShouchonglibaoBuyBox")
 	return display.newLayer("ShouchonglibaoBuyBox")
@@ -16,11 +18,13 @@ end
 
 function ShouchonglibaoBuyBox:ctor(confirm_func)
 	ccb.ShouchonglibaoBuyBox = self
+--	GAnimationPlugin.sharedAnimation()
 	self.on_commit_clicked = function() 
 		print("ShouchonglibaoBuyBox.on_buy_clicked")
 		self:playButtonEffect() 
 		self:dismiss() 
 		confirm_func() 
+--		DDZSpring.open(self.rootNode)
 	end
 --	self.on_cancel_clicked = function()
 --		if not self.first_click_tag then 

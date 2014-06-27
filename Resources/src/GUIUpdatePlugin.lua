@@ -453,6 +453,10 @@ function GUIUpdatePlugin.bind(theClass)
 			
 			cclog("show game_over_layer")
 			self.game_over_layer:show()
+			cclog("data.game_result.spring=> "..data.game_result.spring)
+			if tonumber(data.game_result.spring) > 0 then
+				DDZSpring.open(self)
+			end
 			
 			local self_user_win_value = data.game_result.self_balance[tostring(self.self_user.user_id)]
 			self_user_win_value = tonumber(self_user_win_value)

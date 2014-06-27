@@ -1,5 +1,7 @@
 local dirMusic = "res/Music/"
 local dirImage = "ccbResources/"
+local dirParticle = "res/ParticleRes/"
+
 Res = {
 	s_landing_scene = "LandingScene.ccbi",
 	common_plist = "ccbResources/common.plist",
@@ -65,4 +67,10 @@ Res = {
  s_effect_card_type_path = dirMusic .. "card_type/",
 --首充大礼包动画
  s_shouchonglibao_plist = dirImage .. "shouchonglibao.plist",
+ 
+ --飞机粒子特效plist
+ s_ddz_plane_plist = dirParticle .. "feiji.plist",
+--飞机粒子特效plist
+ s_ddz_rocket_plist = dirParticle .. "huojian.plist",
+ 
 }

@@ -1,5 +1,8 @@
 GAnimationPlugin = {}
 local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+g_ddz_plane = nil
+g_ddz_rocket = nil
+g_ddz_spring = nil
 
 function GAnimationPlugin.sharedAnimation()
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
@@ -266,40 +269,172 @@ Insects.sharedInsects = function()
 
 end
 
+DDZPlane = class("DDZPlane", function()
+	return display.newSprite()
+end)
 
+function createDDZPlane()
+	return DDZPlane.new()
+end
 
+function DDZPlane:ctor()
+	local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+	local psys = CCParticleSystemQuad:create(Res.s_ddz_plane_plist)
+	
+	local feiji_img = cache:spriteFrameByName("feiji.png")
+	local feiji_spt = CCSprite:create()
+	
+	feiji_spt:setDisplayFrame(feiji_img)
+	self:addChild(feiji_spt)
+	feiji_spt:setPosition(ccp(30,220))
+	self:addChild(psys)
+	self:setVisible(false)
+end
 
+function DDZPlane.fly(target, z_order)
+	z_order = z_order or 9001
+	if not g_ddz_plane then
+		g_ddz_plane = DDZPlane.new()
+		target:addChild(g_ddz_plane, z_order)
+	end
 
+	g_ddz_plane:setPosition(ccp(490,40))
+	g_ddz_plane:setVisible(true)
+	local move_a = CCMoveTo:create(1, ccp(-90, 40))
+	function destory_me()
+		cclog("DDZPlane.destory_me")
+		g_ddz_plane:setVisible(false)
+--		target:removeChild(ddz_rocket)
+	end
+	g_ddz_plane:runAction(CCSequence:createWithTwoActions(move_a, CCCallFuncN:create(destory_me)))
+		
+end
 
+DDZRocket = class("DDZRocket", function()
+	return display.newSprite()
+end)
 
+function createDDZRocket()
+	return DDZRocket.new()
+end
 
+function DDZRocket:ctor()
+	local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+	local psys = CCParticleSystemQuad:create(Res.s_ddz_rocket_plist)
+	
+	local feiji_img = cache:spriteFrameByName("huojian.png")
+	local feiji_spt = CCSprite:create()
+	
+	feiji_spt:setDisplayFrame(feiji_img)
+	self:addChild(feiji_spt)
+	feiji_spt:setPosition(ccp(150,320))
+	self:addChild(psys)
+	self:setVisible(false)
+end
 
+function DDZRocket.fly(target, z_order)
+	z_order = z_order or 9001
+	if not g_ddz_rocket then
+		g_ddz_rocket = DDZRocket.new()
+		target:addChild(g_ddz_rocket, z_order)
+	end
 
+	g_ddz_rocket:setPosition(ccp(240,-90))
+	g_ddz_rocket:setVisible(true)
+	local move_a = CCMoveTo:create(1, ccp(240, 490))
+	function destory_me()
+		cclog("DDZRocket.destory_me")
+		g_ddz_rocket:setVisible(false)
+--		target:removeChild(ddz_rocket)
+	end
+	g_ddz_rocket:runAction(CCSequence:createWithTwoActions(move_a, CCCallFuncN:create(destory_me)))
+	
+end
 
+DDZSpring = class("DDZSpring", function()
+	return display.newSprite()
+end)
 
+function createDDZSpring()
+	return DDZSpring.new()
+end
 
+function DDZSpring:ctor()
+	local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+	
+	local s_char = cache:spriteFrameByName("spring_char.png")
+	local s_char_spt = CCSprite:create()
+	s_char_spt:setDisplayFrame(s_char)
+	
+	local s_f_1 = cache:spriteFrameByName("spring_fire_1.png")
+	local s_f_1_spt = CCSprite:create()
+	s_f_1_spt:setDisplayFrame(s_f_1)
+	
+	local s_f_2 = cache:spriteFrameByName("spring_fire_2.png")
+	local s_f_2_spt = CCSprite:create()
+	s_f_2_spt:setDisplayFrame(s_f_2)
+	
+	
+	self:addChild(s_char_spt, 999)
+	s_char_spt:setPosition(ccp(150,320))
+	self.char_obj = s_char_spt
+	
+	self:addChild(s_f_1_spt)
+	s_f_1_spt:setPosition(ccp(80,330))
+	self.f_obj_a = s_f_1_spt
+	
+	self:addChild(s_f_2_spt)
+	s_f_2_spt:setPosition(ccp(220,310))
+	self.f_obj_b = s_f_2_spt
 
+	self:setVisible(false)
+end
 
+function DDZSpring.open(target, z_order)
+	cclog("DDZSpring.open")
+	z_order = z_order or 9001
+	if not g_ddz_spring then
+		g_ddz_spring = DDZSpring.new()
+		target:addChild(g_ddz_spring, z_order)
+	end
+	g_ddz_spring.char_obj:setScale(0.05)
+	g_ddz_spring.f_obj_a:setScale(0.05)
+	g_ddz_spring.f_obj_b:setScale(0.05)
+	
+	g_ddz_spring.char_obj:setPosition(ccp(150,320))
+	g_ddz_spring.f_obj_a:setPosition(ccp(80,330))
+	g_ddz_spring.f_obj_b:setPosition(ccp(220,310))
+	
+	g_ddz_spring:setPosition(ccp(240,-90))
+	g_ddz_spring:setVisible(true)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	function destory_me()
+		cclog("DDZSpring.destory_me")
+		g_ddz_spring:setVisible(false)
+--		target:removeChild(ddz_rocket)
+	end
+	
+	char_action = CCCallFuncN:create(function() 
+		cclog("DDZSpring.char_action")
+		g_ddz_spring.char_obj:runAction(CCScaleTo:create(1.0, 1.0, 1.0))
+	end)
+	f_a_action = CCCallFuncN:create(function() 
+		cclog("DDZSpring.f_a_action")
+		g_ddz_spring.f_obj_a:runAction(CCSequence:createWithTwoActions(CCScaleTo:create(1.0, 1.0, 1.0), 
+		 CCSpawn:createWithTwoActions(CCRotateBy:create( 0.8, 45), CCMoveBy:create(0.8,ccp(-10, 25)))))
+	end)
+	f_b_action = CCCallFuncN:create(function() 
+		cclog("DDZSpring.f_b_action")
+		g_ddz_spring.f_obj_b:runAction(CCSequence:createWithTwoActions(CCScaleTo:create(1.0, 1.0, 1.0), 
+		CCSpawn:createWithTwoActions(CCRotateBy:create( 0.8, 45), CCMoveBy:create(0.5,ccp(10, -25)))))
+	end)
+	local array = CCArray:create()
+	array:addObject(char_action)
+	array:addObject(CCDelayTime:create(1))
+	array:addObject(f_a_action)
+	array:addObject(f_b_action)
+	array:addObject(CCDelayTime:create(2.0))
+	array:addObject(CCCallFuncN:create(destory_me))
+	g_ddz_spring:runAction(CCSequence:create(array))
+	
+end

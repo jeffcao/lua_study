@@ -135,9 +135,15 @@ function GActionPlugin.bind(theClass)
 				poke_card:getParent():reorderChild(poke_card, 19 + index)
 			end
 			
-			if card.card_type == CardType.BOMB or card.card_type == CardType.ROCKET then
+			if card.card_type == CardType.BOMB then
 				cclog("炸弹效果")
 				Explosion.explode(self.rootNode, self.BOMB_ORDER)
+			elseif card.card_type == CardType.ROCKET then
+				cclog("DDZRocket")
+				DDZRocket.fly(self.rootNode, self.BOMB_ORDER)
+			elseif card.card_type == CardType.PLANE or card.card_type == CardType.PLANE_WITH_WING  then
+				cclog("DDZPlane")
+				DDZPlane.fly(self.rootNode, self.BOMB_ORDER)
 			end
 			
 			-- 记住本次出牌
@@ -253,6 +259,12 @@ function GActionPlugin.bind(theClass)
 		if card.card_type == CardType.BOMB or card.card_type == CardType.ROCKET then
 			cclog("炸弹效果")
 			Explosion.explode(self.rootNode, self.BOMB_ORDER)
+		elseif card.card_type == CardType.ROCKET then
+			cclog("DDZRocket")
+			DDZRocket.fly(self.rootNode, self.BOMB_ORDER)
+		elseif card.card_type == CardType.PLANE or card.card_type == CardType.PLANE_WITH_WING  then
+			cclog("DDZPlane")
+			DDZPlane.fly(self.rootNode, self.BOMB_ORDER)
 		end
 		
 		-- 记住本次出牌
@@ -314,9 +326,15 @@ function GActionPlugin.bind(theClass)
 			poke_card:setTag(-1)
 		end
 		
-		if card.card_type == CardType.BOMB or card.card_type == CardType.ROCKET then
+		if card.card_type == CardType.BOMB then
 			cclog("炸弹效果")
 			Explosion.explode(self.rootNode, self.BOMB_ORDER)
+		elseif card.card_type == CardType.ROCKET then
+			cclog("DDZRocket")
+			DDZRocket.fly(self.rootNode, self.BOMB_ORDER)
+		elseif card.card_type == CardType.PLANE or card.card_type == CardType.PLANE_WITH_WING  then
+			cclog("DDZPlane")
+			DDZPlane.fly(self.rootNode, self.BOMB_ORDER)
 		end
 		
 		-- 记住本次出牌
