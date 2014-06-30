@@ -45,7 +45,7 @@
 						<key>value</key>
 						<array>
 							<real>9.625</real>
-							<real>75.208335876464844</real>
+							<real>74</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -150,6 +150,8 @@
 您的反馈真实合理，将有机会获得一定的奖励</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -278,8 +280,6 @@
 						<string>支持100个字</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>

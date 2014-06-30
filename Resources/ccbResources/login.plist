@@ -4,27 +4,14 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>bg01.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,2},{800,480}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{800,480}}</string>
-                <key>sourceSize</key>
-                <string>{800,480}</string>
-            </dict>
             <key>btn_history.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{992,481},{25,14}}</string>
+                <string>{{999,2},{25,14}}</string>
                 <key>offset</key>
                 <string>{-1,1}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{5,11},{25,14}}</string>
                 <key>sourceSize</key>
@@ -33,7 +20,7 @@
             <key>btn_history_a.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{965,481},{25,14}}</string>
+                <string>{{972,2},{25,14}}</string>
                 <key>offset</key>
                 <string>{-1,1}</string>
                 <key>rotated</key>
@@ -46,7 +33,7 @@
             <key>jiesuankuang.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,518},{677,439}}</string>
+                <string>{{2,2},{677,439}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +46,7 @@
             <key>jinqi_a.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{832,518},{133,159}}</string>
+                <string>{{851,371},{133,159}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +59,7 @@
             <key>jinqi_b.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{804,383},{133,159}}</string>
+                <string>{{851,236},{133,159}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +72,7 @@
             <key>kuang_login.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{681,518},{380,149}}</string>
+                <string>{{681,419},{380,149}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +85,7 @@
             <key>kuang_regist.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{804,2},{379,168}}</string>
+                <string>{{681,38},{379,168}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +98,7 @@
             <key>shurukuang_denglu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{974,2},{232,44}}</string>
+                <string>{{926,2},{232,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,11 +111,11 @@
             <key>shurukuang_zhuce.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{974,236},{243,34}}</string>
+                <string>{{681,2},{243,34}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{2,1},{243,34}}</string>
                 <key>sourceSize</key>
@@ -144,7 +131,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:24d897fd991e20cd85367907efbafb81$</string>
+            <string>$TexturePacker:SmartUpdate:ee9c65d8390c806466a91f56e588bccb:1/1$</string>
             <key>textureFileName</key>
             <string>login.png</string>
         </dict>
