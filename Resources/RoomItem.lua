@@ -70,15 +70,21 @@ function RoomItem:init_normal_room(room_info, room_index)
 	if bg_sprite_png_index == 4 then bg_sprite_png_index = 6 end
 	local bg_sprite_png = "fangjian0"..bg_sprite_png_index..".png"
 	self.bg_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(bg_sprite_png))
+	local sp_room_type_desc_png = "wenzi_putong.png"
+	self.sp_room_type_desc:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(sp_room_type_desc_png))
 end
 
 function RoomItem:init_promotion_room(room_info, room_index)
 	local status_text = MatchLogic.get_status_text(room_info)
 	self.promotion_status_lbl:setString(status_text)
 	local bg_sprite_png = 'songdoufang.png'
-	if tonumber(room_info.room_type) == 3 then bg_sprite_png = 'songhuafei.png' end
+	local sp_room_type_desc_png = "wenzi_songdou.png"
+	if tonumber(room_info.room_type) == 3 then 
+		bg_sprite_png = 'songhuafei.png' 
+		sp_room_type_desc_png = "wenzi_songhuafei.png"
+	end
 	self.promotion_bg:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(bg_sprite_png))
-	
+	self.sp_room_type_desc:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(sp_room_type_desc_png))
 	--for telephone charge match room, show next match start time
 	--and hide the status_text
 	if tonumber(room_info.room_type) == 3 then

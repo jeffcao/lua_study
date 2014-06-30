@@ -72,15 +72,15 @@ function set_bg(scene)
 	local function setbg()
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
 		cache:addSpriteFramesWithFile(res)
-		scene.bg_sprite:setDisplayFrame(cache:spriteFrameByName(name))
+		scene.sp_game_name:setDisplayFrame(cache:spriteFrameByName(name))
 	end
 	if getPayType() == 'anzhi' then
-		res = 'ccbResources/common3.plist'
-		name = 'bg01_2.png'
+		res = 'ccbResources/ui_wenzi.plist'
+		name = 'wenzi_fuxingdoudizhu.png'
 		setbg()
 	elseif getPayType() == 'sikai' then
-		res = 'ccbResources/common3.plist'
-		name = 'bg01_3.png'
+		res = 'ccbResources/ui_wenzi.plist'
+		name = 'wenzi_quanmingdoudizhu.png'
 		setbg()
 	end
 --[[

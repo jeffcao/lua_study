@@ -41,7 +41,7 @@ function ForgetPasswordScene:ctor()
 	
 	local layer = createFullMubanStyleLayer()
 	self:addChild(layer)
-	layer:setTitle("biaoti08.png")
+	layer:setTitle("wenzi_mimazhaohui.png")
 	
 	layer:setContent(node)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)

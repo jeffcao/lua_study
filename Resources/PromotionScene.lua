@@ -19,7 +19,7 @@ function PromotionScene:ctor()
 
 	local layer = createFullMubanStyleLayer()
 	self:addChild(layer)
-	layer:setTitle('huobaohuodong.png')
+	layer:setTitle('wenzi_huobaohuodong.png')
 	layer:showTitleBg()
 	layer:setDecorationHuawen()
 	self.layer = layer

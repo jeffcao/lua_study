@@ -37,7 +37,7 @@ function HelpScene:ctor()
 	
 	self:addChild(layer)
 	
-	layer:setTitle("biaoti05.png")
+	layer:setTitle("wenzi_youxijianjie.png")
 end
 HelpSceneUPlugin.bind(HelpScene)
 UIControllerPlugin.bind(HelpScene)

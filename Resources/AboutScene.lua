@@ -53,7 +53,7 @@ function AboutScene:ctor()
 	
 	local layer = createFullMubanStyleLayer()
 	self:addChild(layer)
-	layer:setTitle("biaoti07.png")
+	layer:setTitle("wenzi_youxijianjie.png")
 	--layer:setTitleLeft()
 	--layer:showTitleBg()
 	--layer:setDecorationHuawen()
