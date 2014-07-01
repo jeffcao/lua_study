@@ -12,24 +12,24 @@ function LabelButtonTab.bind(theClass)
 	end
 	
 	function theClass:setNodeCheckStatus(tab_data)
-		local cur_y = tab_data.tab_node:getPositionY()
-		local original_y = tab_data.tab_node.original_y
-		if cur_y ~= original_y then return end
+--		local cur_y = tab_data.tab_node:getPositionY()
+--		local original_y = tab_data.tab_node.original_y
+--		if cur_y ~= original_y then return end
 		
-		local cur_x = tab_data.tab_node:getPositionX()
-		tab_data.tab_node:setPosition(ccp(cur_x, original_y - 10))
+--		local cur_x = tab_data.tab_node:getPositionX()
+--		tab_data.tab_node:setPosition(ccp(cur_x, original_y - 10))
 		set_red_stroke(tab_data.tab_node.label)
 		tab_data.tab_node.toggle:setSelectedIndex(1)
 		tab_data.tab_node.menu:setEnabled(false)
 	end
 	
 	function theClass:setNodeUncheckStatus(tab_data)
-		local cur_y = tab_data.tab_node:getPositionY()
-		local original_y = tab_data.tab_node.original_y
-		if cur_y == original_y then return end
-		
-		local cur_x = tab_data.tab_node:getPositionX()
-		tab_data.tab_node:setPosition(ccp(cur_x, original_y))
+--		local cur_y = tab_data.tab_node:getPositionY()
+--		local original_y = tab_data.tab_node.original_y
+--		if cur_y == original_y then return end
+--		
+--		local cur_x = tab_data.tab_node:getPositionX()
+--		tab_data.tab_node:setPosition(ccp(cur_x, original_y))
 		set_blue_stroke(tab_data.tab_node.label)
 		tab_data.tab_node.toggle:setSelectedIndex(0)
 		tab_data.tab_node.menu:setEnabled(true)
@@ -43,11 +43,11 @@ function LabelButtonTab.bind(theClass)
 		
 		local plist = Res.jiesuan_plist
 		CCSpriteFrameCache:sharedSpriteFrameCache():addSpriteFramesWithFile(plist)
-		local menu_normal_sprite = CCSprite:createWithSpriteFrameName("xuanxiangka2.png")
-		local menu_click_sprite = CCSprite:createWithSpriteFrameName("xuanxiangka1.png")
+		local menu_normal_sprite = CCSprite:createWithSpriteFrameName("xuanxiangka.png")
+		local menu_click_sprite = CCSprite:createWithSpriteFrameName("xuanxiangka_a.png")
 		local toggle_sub_normal = CCMenuItemSprite:create(menu_normal_sprite, menu_click_sprite)
-		local toggle_sub_selected = CCMenuItemSprite:create(CCSprite:createWithSpriteFrameName("xuanxiangka1.png"),
-															CCSprite:createWithSpriteFrameName("xuanxiangka1.png"))
+		local toggle_sub_selected = CCMenuItemSprite:create(CCSprite:createWithSpriteFrameName("xuanxiangka_a.png"),
+															CCSprite:createWithSpriteFrameName("xuanxiangka_a.png"))
 		local toggle = CCMenuItemToggle:create(toggle_sub_normal)
 		toggle:addSubItem(toggle_sub_selected)
 		toggle:setSelectedIndex(0)
@@ -58,7 +58,7 @@ function LabelButtonTab.bind(theClass)
 		layer:addChild(menu)
 		layer:addChild(label)
 		self.menu_layer:addChild(layer)
-		layer:setPosition(ccp(40+self.menu_layer:getChildrenCount()*115,20))
+		layer:setPosition(ccp(self.menu_layer:getChildrenCount()*115,20))
 		set_blue_stroke(label)
 		
 		layer.menu = menu

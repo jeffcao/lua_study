@@ -32,7 +32,7 @@ function UserCenterSceneUPlugin.bind(theClass)
 	
 	function theClass:do_ui_avatar_btn_clicked(tag, sender)
 		AppStats.event(UM_PLAYER_BASE_INFO)
-		self:set_title("biaoti02.png")
+		self:set_title("wenzi_gerenziliao.png")
 		self:doSetLayer("personal_info")
 	end
 	

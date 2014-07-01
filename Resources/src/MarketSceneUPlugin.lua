@@ -36,7 +36,7 @@ function MarketSceneUPlugin.bind(theClass)
 			end
 			return r
 		end)
-		local t = LuaTableView:createWithHandler(h, CCSizeMake(800,370))
+		local t = LuaTableView:createWithHandler(h, CCSizeMake(800,360))
 		t:setPosition(CCPointMake(0,10))
 		
 		for index=#(product_list), 1, -1 do

@@ -49,7 +49,7 @@ function FeedbackScene:ctor()
 	
 	local layer = createFullMubanStyleLayer()
 	self:addChild(layer)
-	layer:setTitle("biaoti09.png")
+	layer:setTitle("wenzi_youxifankui.png")
 	
 	layer:setContent(node)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
