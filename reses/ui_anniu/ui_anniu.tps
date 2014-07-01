@@ -148,21 +148,7 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>anniu1_a.png</filename>
-            <filename>anniu3_a.png</filename>
-            <filename>anniu3.png</filename>
-            <filename>anniu4_a.png</filename>
-            <filename>anniu4.png</filename>
-            <filename>anniu5.png</filename>
-            <filename>anniu6_a.png</filename>
-            <filename>anniu6.png</filename>
-            <filename>annniu1.png</filename>
-            <filename>annniu5_a.png</filename>
-            <filename>btn_fanhui_a.png</filename>
-            <filename>btn_fanhui.png</filename>
-            <filename>btn_guanbi_a.png</filename>
-            <filename>btn_guanbi.png</filename>
-            <filename>xuanxiangka.png</filename>
+            <filename></filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

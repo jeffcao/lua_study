@@ -104,86 +104,6 @@
 			</dict>
 			<dict>
 				<key>baseClass</key>
-				<string>CCSprite</string>
-				<key>children</key>
-				<array/>
-				<key>customClass</key>
-				<string></string>
-				<key>displayName</key>
-				<string>bg_zuo</string>
-				<key>memberVarAssignmentName</key>
-				<string></string>
-				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
-				<key>properties</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>22</real>
-							<real>22</real>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>anchorPoint</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>scale</string>
-						<key>type</key>
-						<string>ScaleLock</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<false/>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>tag</string>
-						<key>type</key>
-						<string>Integer</string>
-						<key>value</key>
-						<integer>1000</integer>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>ignoreAnchorPointForPosition</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>displayFrame</string>
-						<key>type</key>
-						<string>SpriteFrame</string>
-						<key>value</key>
-						<array>
-							<string>ccbResources/common2.plist</string>
-							<string>touxianganniulanHuise.png</string>
-						</array>
-					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>baseClass</key>
 				<string>CCLayer</string>
 				<key>children</key>
 				<array>
@@ -194,13 +114,13 @@
 						<array>
 							<dict>
 								<key>baseClass</key>
-								<string>CCSprite</string>
+								<string>CCScale9Sprite</string>
 								<key>children</key>
 								<array/>
 								<key>customClass</key>
 								<string></string>
 								<key>displayName</key>
-								<string>avatar_kuang</string>
+								<string>CCScale9Sprite</string>
 								<key>memberVarAssignmentName</key>
 								<string>avatar_bg</string>
 								<key>memberVarAssignmentType</key>
@@ -215,7 +135,7 @@
 										<key>value</key>
 										<array>
 											<real>50</real>
-											<real>50</real>
+											<real>47</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -237,8 +157,154 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>1.5499999523162842</real>
-											<real>1.5499999523162842</real>
+											<real>1</real>
+											<real>1</real>
+											<false/>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>ignoreAnchorPointForPosition</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>spriteFrame</string>
+										<key>type</key>
+										<string>SpriteFrame</string>
+										<key>value</key>
+										<array>
+											<string>ccbResources/ui_kuang.plist</string>
+											<string>touxiangkuang.png</string>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>preferedSize</string>
+										<key>type</key>
+										<string>Size</string>
+										<key>value</key>
+										<array>
+											<real>83</real>
+											<real>83</real>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>opacity</string>
+										<key>type</key>
+										<string>Byte</string>
+										<key>value</key>
+										<integer>255</integer>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>color</string>
+										<key>type</key>
+										<string>Color3</string>
+										<key>value</key>
+										<array>
+											<integer>255</integer>
+											<integer>255</integer>
+											<integer>255</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>insetLeft</string>
+										<key>type</key>
+										<string>Float</string>
+										<key>value</key>
+										<real>1</real>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>insetTop</string>
+										<key>type</key>
+										<string>Float</string>
+										<key>value</key>
+										<real>1</real>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>insetRight</string>
+										<key>type</key>
+										<string>Float</string>
+										<key>value</key>
+										<real>1</real>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>insetBottom</string>
+										<key>type</key>
+										<string>Float</string>
+										<key>value</key>
+										<real>1</real>
+									</dict>
+								</array>
+								<key>selected</key>
+								<true/>
+							</dict>
+							<dict>
+								<key>baseClass</key>
+								<string>CCSprite</string>
+								<key>children</key>
+								<array/>
+								<key>customClass</key>
+								<string></string>
+								<key>displayName</key>
+								<string>avatar_kuang</string>
+								<key>memberVarAssignmentName</key>
+								<string>avatar_bg_old</string>
+								<key>memberVarAssignmentType</key>
+								<integer>1</integer>
+								<key>properties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>position</string>
+										<key>type</key>
+										<string>Position</string>
+										<key>value</key>
+										<array>
+											<real>50</real>
+											<real>55</real>
+											<integer>4</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>anchorPoint</string>
+										<key>type</key>
+										<string>Point</string>
+										<key>value</key>
+										<array>
+											<real>0.5</real>
+											<real>0.5</real>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>scale</string>
+										<key>type</key>
+										<string>ScaleLock</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -266,8 +332,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/gaming.plist</string>
-											<string>avatar_01.png</string>
+											<string>ccbResources/ui_kuang.plist</string>
+											<string>touxiangkuang.png</string>
 										</array>
 									</dict>
 								</array>
@@ -417,7 +483,7 @@
 										<key>value</key>
 										<array>
 											<real>50</real>
-											<real>55</real>
+											<real>50</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -606,7 +672,7 @@
 								<key>value</key>
 								<array>
 									<real>115</real>
-									<real>321</real>
+									<real>318</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -799,8 +865,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/common.plist</string>
-													<string>Icon_button_gerenziliao.png</string>
+													<string>ccbResources/ui_anniu.plist</string>
+													<string>anniu3.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -810,8 +876,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/common.plist</string>
-													<string>Icon_Button_gerenziliao_xuanzhong.png</string>
+													<string>ccbResources/ui_anniu.plist</string>
+													<string>anniu3_a.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -1010,7 +1076,7 @@
 										<string>FloatScale</string>
 										<key>value</key>
 										<array>
-											<real>23</real>
+											<real>20</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -1264,8 +1330,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/common.plist</string>
-													<string>Icon_button_gerenziliao.png</string>
+													<string>ccbResources/ui_anniu.plist</string>
+													<string>anniu3.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -1275,8 +1341,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/common.plist</string>
-													<string>Icon_Button_gerenziliao_xuanzhong.png</string>
+													<string>ccbResources/ui_anniu.plist</string>
+													<string>anniu3_a.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -1475,7 +1541,7 @@
 										<string>FloatScale</string>
 										<key>value</key>
 										<array>
-											<real>23</real>
+											<real>20</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -1536,7 +1602,7 @@
 								<key>value</key>
 								<array>
 									<real>115</real>
-									<real>166</real>
+									<real>173</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1729,8 +1795,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/common.plist</string>
-													<string>Icon_button_gerenziliao.png</string>
+													<string>ccbResources/ui_anniu.plist</string>
+													<string>anniu3.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -1740,8 +1806,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/common.plist</string>
-													<string>Icon_Button_gerenziliao_xuanzhong.png</string>
+													<string>ccbResources/ui_anniu.plist</string>
+													<string>anniu3_a.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -1940,7 +2006,7 @@
 										<string>FloatScale</string>
 										<key>value</key>
 										<array>
-											<real>23</real>
+											<real>20</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -2001,7 +2067,7 @@
 								<key>value</key>
 								<array>
 									<real>115</real>
-									<real>102</real>
+									<real>116</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -2194,8 +2260,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/common.plist</string>
-													<string>Icon_button_gerenziliao.png</string>
+													<string>ccbResources/ui_anniu.plist</string>
+													<string>anniu3.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -2205,8 +2271,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/common.plist</string>
-													<string>Icon_Button_gerenziliao_xuanzhong.png</string>
+													<string>ccbResources/ui_anniu.plist</string>
+													<string>anniu3_a.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -2405,7 +2471,7 @@
 										<string>FloatScale</string>
 										<key>value</key>
 										<array>
-											<real>23</real>
+											<real>20</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -2466,7 +2532,7 @@
 								<key>value</key>
 								<array>
 									<real>115</real>
-									<real>38</real>
+									<real>59</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -2775,6 +2841,139 @@
 						<string>Check</string>
 						<key>value</key>
 						<false/>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>baseClass</key>
+				<string>CCScale9Sprite</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>CCScale9Sprite</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>0</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>250</real>
+							<real>380</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>rotation</string>
+						<key>type</key>
+						<string>Degrees</string>
+						<key>value</key>
+						<real>90</real>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ignoreAnchorPointForPosition</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>spriteFrame</string>
+						<key>type</key>
+						<string>SpriteFrame</string>
+						<key>value</key>
+						<array>
+							<string>ccbResources/ui_beijing.plist</string>
+							<string>fengexian.png</string>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>preferedSize</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>340</real>
+							<real>2</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>opacity</string>
+						<key>type</key>
+						<string>Byte</string>
+						<key>value</key>
+						<integer>255</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>color</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<integer>255</integer>
+							<integer>255</integer>
+							<integer>255</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>insetLeft</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>insetTop</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>insetRight</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>insetBottom</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
 					</dict>
 				</array>
 			</dict>
