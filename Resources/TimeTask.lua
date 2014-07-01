@@ -33,7 +33,7 @@ function TimeTask:init()
 	self.effect_lbl:setString(task.content)
 	local xq = task.week
 	if xq == 0 then xq = 7 end
-	local frame_name = "Iconmeirihuodongzhou" .. tostring(xq) .. ".png"
+	local frame_name = "wenzi_huodongzhou" .. tostring(xq) .. ".png"
 	local frame = CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(frame_name)
 	self.title_sprite:setDisplayFrame(frame)
 end

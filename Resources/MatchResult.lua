@@ -38,7 +38,7 @@ function MatchResult:init()
 	self.tab_btns:setVisible(false)
 	self.huafei_layer:setVisible(false)
 	self.bottom_lbl1:setVisible(false)
-	
+	self.sp_rake_name:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("wenzi_bisaibang.png"))
 	self.item_name_lbl1:setPosition(ccp(0,0))
 	self.item_name_lbl2:setPosition(ccp(85,0))
 	self.item_name_lbl3:setPosition(ccp(170,0))

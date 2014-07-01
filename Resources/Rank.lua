@@ -80,6 +80,7 @@ function Rank:init()
 	local menus = CCArray:create()
 	self:swallowOnTouch(menus)
 	self:set_strokes()
+	self.sp_rake_name:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("paihangbang.png"))
 end
 
 SoundEffect.bind(Rank)
