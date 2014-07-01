@@ -40,7 +40,7 @@
 								<key>customClass</key>
 								<string></string>
 								<key>displayName</key>
-								<string>bg</string>
+								<string>CCScale9Sprite</string>
 								<key>memberVarAssignmentName</key>
 								<string>bg</string>
 								<key>memberVarAssignmentType</key>
@@ -98,8 +98,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common3.plist</string>
-											<string>tanchukuang.png</string>
+											<string>ccbResources/ui_kuang.plist</string>
+											<string>tanchukuang01.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -109,8 +109,8 @@
 										<string>Size</string>
 										<key>value</key>
 										<array>
-											<real>250</real>
-											<real>80</real>
+											<real>262</real>
+											<real>100</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -148,7 +148,7 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>0.0</real>
+										<real>25</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -164,9 +164,11 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>0.0</real>
+										<real>25</real>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>

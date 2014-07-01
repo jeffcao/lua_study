@@ -148,10 +148,7 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>bg01.png</filename>
-            <filename>bg_shouchongdalibao.png</filename>
-            <filename>fengexian.png</filename>
-            <filename>beijingpintu.png</filename>
+            <filename></filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

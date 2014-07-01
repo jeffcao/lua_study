@@ -232,8 +232,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string>ccbResources/common3.plist</string>
-									<string>tanchukuang.png</string>
+									<string>ccbResources/ui_kuang.plist</string>
+									<string>tanchukuang01.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -274,7 +274,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>2</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -282,7 +282,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>2</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -290,7 +290,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>2</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -298,7 +298,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>0.0</real>
+								<real>2</real>
 							</dict>
 						</array>
 					</dict>
@@ -465,8 +465,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>ccbResources/common3.plist</string>
-							<string>yinyingkuang.png</string>
+							<string>ccbResources/ui_kuang.plist</string>
+							<string>tanchukuang01 di.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1944,8 +1944,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>Icon_Button_queren.png</string>
+											<string>ccbResources/ui_anniu.plist</string>
+											<string>annniu1.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1955,8 +1955,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>Icon_Button_queren_a.png</string>
+											<string>ccbResources/ui_anniu.plist</string>
+											<string>anniu1_a.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -2215,8 +2215,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>45</real>
-							<real>28.875001907348633</real>
+							<real>42.5</real>
+							<real>29.083335876464844</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -2409,8 +2409,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>Icon_Button_qvxiao.png</string>
+											<string>ccbResources/ui_anniu.plist</string>
+											<string>anniu2.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -2420,8 +2420,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>Icon_Button_qvxiao_a.png</string>
+											<string>ccbResources/ui_anniu.plist</string>
+											<string>anniu2_a.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -2436,6 +2436,8 @@
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -2680,8 +2682,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>57</real>
-							<real>28.875001907348633</real>
+							<real>58.5</real>
+							<real>29.083335876464844</real>
 							<integer>4</integer>
 						</array>
 					</dict>

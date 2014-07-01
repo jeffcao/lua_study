@@ -232,8 +232,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string>ccbResources/common3.plist</string>
-									<string>tanchukuang.png</string>
+									<string>ccbResources/ui_kuang.plist</string>
+									<string>tanchukuang01.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -502,8 +502,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>Icon_Button_queren.png</string>
+											<string>ccbResources/ui_anniu.plist</string>
+											<string>annniu1.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -513,8 +513,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>Icon_Button_queren_a.png</string>
+											<string>ccbResources/ui_anniu.plist</string>
+											<string>anniu1_a.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -887,7 +887,7 @@
 						<key>value</key>
 						<array>
 							<real>50</real>
-							<real>67.083328247070312</real>
+							<real>67.499992370605469</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -949,9 +949,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>85</integer>
-							<integer>42</integer>
-							<integer>31</integer>
+							<integer>254</integer>
+							<integer>255</integer>
+							<integer>255</integer>
 						</array>
 					</dict>
 					<dict>
@@ -991,8 +991,6 @@
 						<string>无电话历史记录</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -1060,8 +1058,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>ccbResources/common3.plist</string>
-							<string>yinyingkuang.png</string>
+							<string>ccbResources/ui_kuang.plist</string>
+							<string>tanchukuang01 di.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1129,6 +1127,8 @@
 						<real>0.0</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
