@@ -178,6 +178,14 @@
 				<array>
 					<dict>
 						<key>name</key>
+						<string>visible</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>position</string>
 						<key>type</key>
 						<string>Position</string>
@@ -240,6 +248,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -452,7 +462,7 @@
 						<key>value</key>
 						<array>
 							<string>ccbResources/ui_wenzi.plist</string>
-							<string>dizhushengli.png</string>
+							<string>wenzi_shengli.png</string>
 						</array>
 					</dict>
 				</array>
@@ -921,8 +931,6 @@
 						<false/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>

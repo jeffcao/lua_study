@@ -46,7 +46,7 @@
             <key>fangjiankuang_xuanzhogn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{405,775},{236,277}}</string>
+                <string>{{405,841},{236,277}}</string>
                 <key>offset</key>
                 <string>{6,-6}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>paimingdimian.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{973,261},{346,23}}</string>
+                <string>{{989,261},{346,23}}</string>
                 <key>offset</key>
                 <string>{-28,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>tanchukuang01 di.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{804,261},{359,167}}</string>
+                <string>{{794,444},{359,167}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,11 +137,11 @@
             <key>top_panel_b.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{927,622},{384,64}}</string>
+                <string>{{405,775},{384,64}}</string>
                 <key>offset</key>
                 <string>{0,2}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{5,4},{384,64}}</string>
                 <key>sourceSize</key>
@@ -150,7 +150,7 @@
             <key>touxiangkuang.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{794,622},{130,131}}</string>
+                <string>{{791,805},{130,131}}</string>
                 <key>offset</key>
                 <string>{-1,2}</string>
                 <key>rotated</key>
@@ -159,6 +159,19 @@
                 <string>{{4,0},{130,131}}</string>
                 <key>sourceSize</key>
                 <string>{140,135}</string>
+            </dict>
+            <key>xiaotanchukuang.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{804,261},{183,181}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{183,181}}</string>
+                <key>sourceSize</key>
+                <string>{183,181}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -170,7 +183,7 @@
             <key>size</key>
             <string>{1024,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:6b23f61d9d632a5de1d8a1829f73c9df:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:f90cd82f18a14e901ea00773b62c6516:1/1$</string>
             <key>textureFileName</key>
             <string>ui_kuang.png</string>
         </dict>

@@ -84,7 +84,7 @@
 						<key>value</key>
 						<array>
 							<real>435</real>
-							<real>420</real>
+							<real>430</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -165,7 +165,7 @@
 						<key>value</key>
 						<array>
 							<real>50</real>
-							<real>50</real>
+							<real>54</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -687,7 +687,7 @@
 						<key>value</key>
 						<array>
 							<real>50</real>
-							<real>72</real>
+							<real>76</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -1014,7 +1014,7 @@
 						<key>value</key>
 						<array>
 							<real>50</real>
-							<real>35</real>
+							<real>37</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -1600,7 +1600,7 @@
 						<key>value</key>
 						<array>
 							<real>50</real>
-							<real>8</real>
+							<real>10</real>
 							<integer>4</integer>
 						</array>
 					</dict>

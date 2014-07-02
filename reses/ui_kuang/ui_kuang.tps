@@ -148,18 +148,7 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>daojvfengekuai.png</filename>
-            <filename>dating xia .png</filename>
-            <filename>fangjiankuang_xuanzhogn.png</filename>
-            <filename>fangjiankuang.png</filename>
-            <filename>lansedakuang.png</filename>
-            <filename>paimingdimian.png</filename>
-            <filename>shangfanglan.png</filename>
-            <filename>shangfanglan2.png</filename>
-            <filename>tanchukuang01 di.png</filename>
-            <filename>tanchukuang01.png</filename>
-            <filename>top_panel_b.png</filename>
-            <filename>touxiangkuang.png</filename>
+            <filename></filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

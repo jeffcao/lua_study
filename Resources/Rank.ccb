@@ -104,7 +104,7 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>390</real>
+									<real>405</real>
 									<real>430</real>
 									<integer>0</integer>
 								</array>
@@ -293,8 +293,8 @@
 														<string>SpriteFrame</string>
 														<key>value</key>
 														<array>
-															<string>ccbResources/common.plist</string>
-															<string>Icon_Button_qvxiao.png</string>
+															<string>ccbResources/ui_anniu.plist</string>
+															<string>anniu3_a.png</string>
 														</array>
 													</dict>
 												</array>
@@ -758,8 +758,8 @@
 														<string>SpriteFrame</string>
 														<key>value</key>
 														<array>
-															<string>ccbResources/common.plist</string>
-															<string>Icon_Button_qvxiao.png</string>
+															<string>ccbResources/ui_anniu.plist</string>
+															<string>anniu3_a.png</string>
 														</array>
 													</dict>
 												</array>
@@ -1266,9 +1266,9 @@
 										<string>Size</string>
 										<key>value</key>
 										<array>
-											<real>100</real>
-											<real>100</real>
-											<integer>1</integer>
+											<real>365</real>
+											<real>210</real>
+											<integer>0</integer>
 										</array>
 									</dict>
 									<dict>
@@ -2097,7 +2097,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>4</real>
+											<real>3</real>
 											<real>6</real>
 											<integer>0</integer>
 										</array>
@@ -2109,7 +2109,7 @@
 										<string>Size</string>
 										<key>value</key>
 										<array>
-											<real>340</real>
+											<real>358</real>
 											<real>165</real>
 											<integer>0</integer>
 										</array>
@@ -2206,7 +2206,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>213</real>
+									<real>210</real>
 									<real>347</real>
 									<integer>0</integer>
 								</array>
@@ -2218,7 +2218,7 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>348</real>
+									<real>365</real>
 									<real>210</real>
 									<integer>0</integer>
 								</array>
@@ -3836,7 +3836,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>215</real>
+									<real>210</real>
 									<real>88</real>
 									<integer>0</integer>
 								</array>
@@ -3848,7 +3848,7 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>350</real>
+									<real>365</real>
 									<real>83</real>
 									<integer>0</integer>
 								</array>
@@ -3926,6 +3926,8 @@
 								<false/>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -4723,8 +4725,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
