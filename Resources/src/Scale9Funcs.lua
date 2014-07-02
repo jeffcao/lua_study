@@ -31,7 +31,7 @@ end
 --node:the node to add the scale9sprite, position:the position to add
 --pref_size:the scale9 size, frame:the name of the png
 function add_scale9sprite(node, pref_size, position, frame)
-	frame = frame or "tanchukuang.png"
+	frame = frame or "xiaotanchukuang.png"
 	local sprite_frame = get_scale_frame(frame)
 	local scale9 = CCScale9Sprite:createWithSpriteFrame(sprite_frame)
 	scale9:setPreferredSize(pref_size)

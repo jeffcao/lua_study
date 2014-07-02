@@ -27,6 +27,7 @@ end
 function PlayerProductsLayer:create_product_list()
 	print("[PlayerProductsLayer:create_product_list]")
 	if self.product_list == nil or self.product_list == json.null then
+		self:show_prop_is_empty()
 		return
 	end
 	

@@ -67,6 +67,7 @@ GlobalSetting = {
 	black_stroke = ccc3(48, 48, 48),
 
 	zongse = ccc3(67,31,24),
+	white = ccc3(255, 255, 255),
 	
 	rank_stroke = ccc3(39,13,0),
 	

@@ -26,9 +26,9 @@ ToastPlugin = {}
 
   --------------------------------------------------------create_message_layer
   	function set_lbl_color(lbl, type)
-  		local lb_color = ccc3(67,31,24)
+  		local lb_color = ccc3(255,255,255)
 		if type == 'progress' then lb_color = ccc3(255,255,255)
-		elseif type == 'warning' then lb_color = ccc3(255,0,0) end
+		elseif type == 'warning' then lb_color = ccc3(255,206,36) end
 		lbl:setColor(lb_color)
   	end
   	
@@ -39,9 +39,19 @@ ToastPlugin = {}
 	
 	function createBgSprite(type, msg_width, msg_height)
 		--进度框使用不一样的背景
-		local sprite_frame_name = 'tanchukuang.png'
+		local sprite_frame_name = 'xiaotanchukuang.png'
 		if type == 'progress' then sprite_frame_name = 'cue_a.png' end
-		local msg_sprite = CCScale9Sprite:createWithSpriteFrameName(sprite_frame_name)
+		local msg_sprite = nil
+		if type == 'progress' then
+			msg_sprite = CCScale9Sprite:createWithSpriteFrameName(sprite_frame_name)
+		else
+			local tmpSprite = CCSprite:createWithSpriteFrameName(sprite_frame_name)
+			local size = tmpSprite:getContentSize()
+			local fullRect = CCRectMake(0, 0, size.width, size.height)
+			local insetRect = CCRectMake(20, 20, size.width-40, size.height-40)
+			msg_sprite = CCScale9Sprite:createWithSpriteFrameName(sprite_frame_name, insetRect)
+		end
+	
 		msg_sprite:setAnchorPoint(ccp(0, 0.5))
 		setBgSpriteRect(msg_sprite, msg_width, msg_height)
 		return msg_sprite

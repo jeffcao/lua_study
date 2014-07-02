@@ -50,7 +50,7 @@ function GChat:init(data, click_func)
 					cclog("a1 is " .. a1)
 				--	dump(data[a1],"data[a1]")
 					local a3 = CCLabelTTF:create(data[a1].text, "default", "22")
-					a3:setColor(GlobalSetting.zongse)
+					a3:setColor(GlobalSetting.white)
 					a3:setAnchorPoint(ccp(0,0))
 					a3:setPosition(ccp(20,0))
 					a2.data = data[a1]

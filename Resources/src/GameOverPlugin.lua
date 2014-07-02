@@ -19,12 +19,12 @@ function GameOverPlugin.bind(theClass)
 
 		win_flag = self_user_win_value > 0
 		if win_flag then
-			self.lbl_self_user_win:setDisplayFrame(frameCache:spriteFrameByName("win.png"))
+			self.lbl_self_user_win:setDisplayFrame(frameCache:spriteFrameByName("wenzi_shengli.png"))
 		--	gaming_layer:playWinEffect()
 		else 
 			cclog("self user is lose")
 			lose_persons = lose_persons + 1
-			self.lbl_self_user_win:setDisplayFrame(frameCache:spriteFrameByName("lose.png"))
+			self.lbl_self_user_win:setDisplayFrame(frameCache:spriteFrameByName("wenzi_shibai.png"))
 		--	gaming_layer:playLoseEffect()
 		end
 		
@@ -63,11 +63,11 @@ function GameOverPlugin.bind(theClass)
 		end
 		self.lbl_prev_user_win_value:setString("" .. prev_balance)
 		
-		if lose_persons == 1 then
-			self.game_over_bg:setDisplayFrame(frameCache:spriteFrameByName("nongmingwin.png"))
-		else 
-			self.game_over_bg:setDisplayFrame(frameCache:spriteFrameByName("dizhuwin.png"))
-		end
+--		if lose_persons == 1 then
+--			self.game_over_bg:setDisplayFrame(frameCache:spriteFrameByName("nongmingwin.png"))
+--		else 
+--			self.game_over_bg:setDisplayFrame(frameCache:spriteFrameByName("dizhuwin.png"))
+--		end
 	
 		local avatarFrame = Avatar.getUserAvatarFrame(gaming_layer.self_user)
 		self.game_over_avatar:setDisplayFrame(avatarFrame)

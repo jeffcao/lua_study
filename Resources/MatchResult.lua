@@ -50,7 +50,7 @@ end
 
 function MatchResult:create_rank_list(rank_list)
 	local t = ListViewPlugin.create_list_view(rank_list,
-	createMatchResultItem, 'init', CCSizeMake(348,30), CCSizeMake(348,180))
+	createMatchResultItem, 'init', CCSizeMake(355,30), CCSizeMake(355,165))
 	return t
 end
 	

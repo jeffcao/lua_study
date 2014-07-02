@@ -454,7 +454,7 @@ function GUIUpdatePlugin.bind(theClass)
 			cclog("show game_over_layer")
 			self.game_over_layer:show()
 			cclog("data.game_result.spring=> "..data.game_result.spring)
-			if tonumber(data.game_result.spring) > 0 then
+			if tonumber(data.game_result.spring) > 1 then
 				DDZSpring.open(self)
 			end
 			

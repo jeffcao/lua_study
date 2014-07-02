@@ -39,7 +39,7 @@ function LabelButtonTab.bind(theClass)
 		local hanzi_name = self.labelbuttontab_hanzi_names[tab_name]
 		
 		local layer = CCLayer:create()
-		local label = CCLabelTTF:create(hanzi_name,"default",25)
+		local label = CCLabelTTF:create(hanzi_name,"default",22)
 		
 		local plist = Res.jiesuan_plist
 		CCSpriteFrameCache:sharedSpriteFrameCache():addSpriteFramesWithFile(plist)

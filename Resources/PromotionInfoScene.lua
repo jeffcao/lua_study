@@ -17,7 +17,9 @@ function PromotionInfoScene:ctor(promotion)
 	self.promotion = promotion
 	local layer = createFullMubanStyleLayer()
 	self:addChild(layer)
-	layer:setTitleLeft()
+--	layer:setTitleLeft()
+	layer:setContentBbSize(800, 380)
+	layer:setMenuDown()
 	layer:setTitle('wenzi_huodongxiangqing.png')
 	self.layer = layer
 	self.menu_layer = layer.menu_layer

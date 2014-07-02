@@ -20,8 +20,7 @@ function PlayerProductsUIPlugin.bind(theClass)
 		self:show_progress_message_box(strings.ppp_get_my_props_ing)
 		self.after_trigger_success = __bind(self.show_product_list, self)
 		self:cate_list()
-		
-		
+
 	end
 	
 	function theClass:after_use_product(data)
@@ -39,6 +38,14 @@ function PlayerProductsUIPlugin.bind(theClass)
 			self:init_product_list()
 		end
 		
+	end
+	
+	function theClass:show_prop_is_empty()
+		local lb = CCLabelTTF:create("好空哦，快去商城看看吧！", "default", "22")
+		self:addChild(lb)
+		lb:setColor(GlobalSetting.white)
+		lb:setAnchorPoint(ccp(0.5,0.5))
+		lb:setPosition(ccp(350,250))
 	end
 	
 	function theClass:show_use_notify(product, use_prop_callback)

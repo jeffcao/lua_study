@@ -24,6 +24,14 @@ function FullMubanStyleUPlugin.bind(theClass)
 		self.title_sprite:setPosition(ccp(91,18))
 	end
 	
+	function theClass:setMenuDown()
+		self.menu_layer:setPosition(ccp(7,380))
+	end
+	
+	function theClass:setContentBbSize(b_width, b_height)
+		self.sp_content_bg:setContentSize(CCSizeMake(b_width, b_height))
+	end
+	
 	function theClass:showTitleBg()
 		self.title_bg:setVisible(true)
 	end

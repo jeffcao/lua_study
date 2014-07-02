@@ -28,7 +28,7 @@ function VIP:ctor()
 	
 	local layer = createFullMubanStyleLayer()
 	self:addChild(layer)
-	layer:setTitle("vip_vip.png")
+	layer:setTitle("wenzi_VIP.png")
 	layer:setContent(node)
  	
  	local function valueChanged(strEventName,pSender)

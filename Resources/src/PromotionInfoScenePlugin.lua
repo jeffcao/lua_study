@@ -81,9 +81,9 @@ function PromotionInfoScenePlugin.bind(theClass)
 		local label = CCLabelTTF:create(text,"default",25)
 		label:setAnchorPoint(ccp(0.5,0.5))
 		label:setHorizontalAlignment(kCCTextAlignmentLeft)
-		label:setPosition(400,216)
+		label:setPosition(400,180)
 		label:setDimensions(CCSizeMake(680,360))
-		label:setColor(GlobalSetting.zongse)
+		label:setColor(GlobalSetting.white)
 		return label
 	end
 	
@@ -93,7 +93,7 @@ function PromotionInfoScenePlugin.bind(theClass)
 		if not t then
 			return CCLayer:create()
 		end
-		t:setPosition(CCPointMake(0,40))
+		t:setPosition(CCPointMake(0,10))
 		return t
 	end
 end

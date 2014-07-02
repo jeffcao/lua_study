@@ -128,5 +128,6 @@ function UserCenterSceneUPlugin.bind(theClass)
 		layer:setAnchorPoint(ccp(0.5, 0.5))
 		layer:setPosition(ccp(container_size.width/2, container_size.height/2))	
 		self.c_layer = layer
+
 	end
 end
