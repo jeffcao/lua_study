@@ -715,14 +715,6 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>tag</string>
-						<key>type</key>
-						<string>Integer</string>
-						<key>value</key>
-						<integer>1000</integer>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>ignoreAnchorPointForPosition</string>
 						<key>type</key>
 						<string>Check</string>
@@ -747,8 +739,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>140</real>
-							<real>135</real>
+							<real>132</real>
+							<real>132</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -805,6 +797,8 @@
 						<real>1</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -829,7 +823,7 @@
 						<key>value</key>
 						<array>
 							<real>290</real>
-							<real>321.5</real>
+							<real>323</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1921,8 +1915,6 @@
 						<real>1</real>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>

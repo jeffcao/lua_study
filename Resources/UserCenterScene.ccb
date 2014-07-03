@@ -370,7 +370,7 @@
 										<key>value</key>
 										<array>
 											<real>50</real>
-											<real>47</real>
+											<real>46</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -424,8 +424,8 @@
 										<string>Size</string>
 										<key>value</key>
 										<array>
-											<real>83</real>
-											<real>83</real>
+											<real>128</real>
+											<real>128</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -482,6 +482,8 @@
 										<real>1</real>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 							<dict>
 								<key>baseClass</key>

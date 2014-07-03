@@ -282,7 +282,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>2</real>
+								<real>25</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -301,6 +301,8 @@
 								<real>2</real>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -2436,8 +2438,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
