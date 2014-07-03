@@ -20,8 +20,8 @@ function ChargeRoomItem:ctor()
 	self:addChild(self.rootNode)
 
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
-	self.bg:setScaleX(GlobalSetting.content_scale_factor * 0.852)
-	self.bg:setScaleY(GlobalSetting.content_scale_factor * 0.644)
+--	self.bg:setScaleX(GlobalSetting.content_scale_factor * 0.852)
+--	self.bg:setScaleY(GlobalSetting.content_scale_factor * 0.644)
 end
 
 function ChargeRoomItem:init_room_info(room_info)

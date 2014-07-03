@@ -18,7 +18,7 @@ function MatchResult:ctor()
 	local sc = GlobalSetting.content_scale_factor*0.52
 	self.rank_avatar:setScale(sc)
 	sc = GlobalSetting.content_scale_factor*0.85
-	self.rank_avatar_bg:setScale(sc)
+--	self.rank_avatar_bg:setScale(sc)
 end
 
 function MatchResult:set_strokes()

@@ -39,7 +39,7 @@ function UserCenterScene:ctor(avatar_call_back, i_layer)
 	
 	--self:init_controller(i_layer)
 	
-	self.avatar_bg:setScale(GlobalSetting.content_scale_factor*1.55)
+--	self.avatar_bg:setScale(GlobalSetting.content_scale_factor*1.55)
 	
 	set_blue_stroke(self.update_jiben_btn_lbl)
 	set_blue_stroke(self.update_avatar_btn_lbl)

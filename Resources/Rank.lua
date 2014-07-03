@@ -30,10 +30,10 @@ function Rank:ctor(socket, event_prefix)
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
-	local sc = GlobalSetting.content_scale_factor*0.52
+	local sc = GlobalSetting.content_scale_factor*0.56
 	self.rank_avatar:setScale(sc)
 	sc = GlobalSetting.content_scale_factor*0.85
-	self.rank_avatar_bg:setScale(sc)
+--	self.rank_avatar_bg:setScale(0.6)
 	
 	self:setOnKeypad(function(key)
 		if key == "backClicked" then
