@@ -43,6 +43,8 @@ function PromotionItem:init_item(item)
 	end
 	local sprite_frame = CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(item.image_id)
 	self.icon_sprite:setDisplayFrame(sprite_frame)
+	
+	set_anniu_1_3_stroke(tolua.cast(self.specific_btn_lbl, "CCLabelTTF"))
 end
 
 function PromotionItem:do_on_speci_clicked()

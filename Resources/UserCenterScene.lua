@@ -41,10 +41,10 @@ function UserCenterScene:ctor(avatar_call_back, i_layer)
 	
 --	self.avatar_bg:setScale(GlobalSetting.content_scale_factor*1.55)
 	
-	set_blue_stroke(self.update_jiben_btn_lbl)
-	set_blue_stroke(self.update_avatar_btn_lbl)
-	set_blue_stroke(self.update_pswd_btn_lbl)
-	set_blue_stroke(self.my_prop_btn_lbl)
+	set_anniu_1_3_stroke(self.update_jiben_btn_lbl)
+	set_anniu_1_3_stroke(self.update_avatar_btn_lbl)
+	set_anniu_1_3_stroke(self.update_pswd_btn_lbl)
+	set_anniu_1_3_stroke(self.my_prop_btn_lbl)
 	
 	local layer = createFullMubanStyleLayer()
 	layer:setTitle("wenzi_gerenziliao.png")

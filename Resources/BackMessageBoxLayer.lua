@@ -22,7 +22,7 @@ function BackMessageBoxLayer:ctor()
  	CCBReaderLoad("BackMessageBoxLayer.ccbi", ccbproxy, true, "back_message_box")
 	self:addChild(self.rootNode)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
-	set_blue_stroke(self.reject_btn_lbl)
+	set_anniu_1_3_stroke(self.reject_btn_lbl)
 	self:setNoButton(function() self:dismiss() end)
 	self:init_dialog()
 end

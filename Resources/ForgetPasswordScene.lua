@@ -36,7 +36,7 @@ function ForgetPasswordScene:ctor()
 	self.mail_box:setFont("default",24)
 	self.mail_box:setFontColor(ccc3(255,255,255))
 	
-	set_green_stroke(self.ok_btn_lbl)
+	set_anniu_1_3_stroke(self.ok_btn_lbl)
 	--self.feedback_ttf:setDimensions(CCSizeMake(460,160))
 	
 	local layer = createFullMubanStyleLayer()

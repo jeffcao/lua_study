@@ -17,7 +17,7 @@ function RankSwitcher.bind(theClass)
 		set_rank_string_with_stroke(self.item_name_lbl4, "已领")
 		set_rank_string_with_stroke(self.info_attr_lbl1,"您获得的话费")
 		set_rank_string_with_stroke(self.info_attr_lbl2,"您当前的排名")
-		set_rank_stroke(self.get_huafei_lbl)
+		set_anniu_1_3_stroke(self.get_huafei_lbl)
 		
 		self.item_name_lbl4:setVisible(true)
 		self.huafei_layer:setVisible(true)

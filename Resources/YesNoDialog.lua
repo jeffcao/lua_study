@@ -25,8 +25,8 @@ function YesNoDialog:ctor()
 	self:addChild(self.rootNode)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
-	set_green_stroke(self.reject_btn_lbl)
-	set_red_stroke(self.confirm_btn_lbl)
+	set_red_stroke(self.reject_btn_lbl)
+	set_anniu_1_3_stroke(self.confirm_btn_lbl)
 	
 	self:setYesButton(function()
 		self:dismiss()

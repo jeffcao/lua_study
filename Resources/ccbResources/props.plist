@@ -7,7 +7,7 @@
             <key>N_036_jinrang.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{54,461},{45,50}}</string>
+                <string>{{458,174},{45,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>N_037_jinrang.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,461},{45,50}}</string>
+                <string>{{54,65},{45,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>N_038_jinrang.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{458,54},{45,50}}</string>
+                <string>{{2,65},{45,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,11 +46,11 @@
             <key>S_41_gift.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{208,281},{58,70}}</string>
+                <string>{{177,197},{58,70}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{7,0},{58,70}}</string>
                 <key>sourceSize</key>
@@ -59,7 +59,7 @@
             <key>S_43_gift.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{210,137},{60,68}}</string>
+                <string>{{74,274},{60,68}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
@@ -72,11 +72,11 @@
             <key>S_45_gift.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{206,353},{60,70}}</string>
+                <string>{{322,195},{60,70}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{6,0},{60,70}}</string>
                 <key>sourceSize</key>
@@ -85,11 +85,11 @@
             <key>S__39_gift.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{146,281},{60,70}}</string>
+                <string>{{250,195},{60,70}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{6,0},{60,70}}</string>
                 <key>sourceSize</key>
@@ -163,7 +163,7 @@
             <key>common_jewelry_box_06.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{146,209},{70,62}}</string>
+                <string>{{394,137},{70,62}}</string>
                 <key>offset</key>
                 <string>{0,3}</string>
                 <key>rotated</key>
@@ -189,264 +189,17 @@
             <key>common_jewelry_box_08.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{146,137},{70,62}}</string>
+                <string>{{322,131},{70,62}}</string>
                 <key>offset</key>
                 <string>{0,3}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,1},{70,62}}</string>
                 <key>sourceSize</key>
                 <string>{70,70}</string>
             </dict>
             <key>common_jewelry_box_09.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{74,281},{70,70}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{70,70}}</string>
-                <key>sourceSize</key>
-                <string>{70,70}</string>
-            </dict>
-            <key>common_jewelry_box_10.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{74,209},{70,70}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{70,70}}</string>
-                <key>sourceSize</key>
-                <string>{70,70}</string>
-            </dict>
-            <key>common_jewelry_box_11.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{394,65},{70,62}}</string>
-                <key>offset</key>
-                <string>{0,3}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,1},{70,62}}</string>
-                <key>sourceSize</key>
-                <string>{70,70}</string>
-            </dict>
-            <key>dj_012_jipaiqi.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{74,137},{70,70}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{70,70}}</string>
-                <key>sourceSize</key>
-                <string>{70,70}</string>
-            </dict>
-            <key>dj_013_jifenka.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{322,65},{70,70}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{70,70}}</string>
-                <key>sourceSize</key>
-                <string>{70,70}</string>
-            </dict>
-            <key>dj_014_shuangbeijifenka.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{250,65},{70,70}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{70,70}}</string>
-                <key>sourceSize</key>
-                <string>{70,70}</string>
-            </dict>
-            <key>dj_015_hushenka.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{178,65},{70,70}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{70,70}}</string>
-                <key>sourceSize</key>
-                <string>{70,70}</string>
-            </dict>
-            <key>hushenka_shiyong_03.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{74,96},{29,29}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{1,1},{29,29}}</string>
-                <key>sourceSize</key>
-                <string>{31,31}</string>
-            </dict>
-            <key>jifenka_shiyong.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{64,65},{29,29}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{1,1},{29,29}}</string>
-                <key>sourceSize</key>
-                <string>{31,31}</string>
-            </dict>
-            <key>jipaiqi_shiyong_03.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{33,65},{29,29}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{1,1},{29,29}}</string>
-                <key>sourceSize</key>
-                <string>{31,31}</string>
-            </dict>
-            <key>libao_016_baiyin.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{326,347},{56,61}}</string>
-                <key>offset</key>
-                <string>{-1,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{8,5},{56,61}}</string>
-                <key>sourceSize</key>
-                <string>{74,71}</string>
-            </dict>
-            <key>libao_017_huangjin.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{293,410},{56,61}}</string>
-                <key>offset</key>
-                <string>{-1,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{8,5},{56,61}}</string>
-                <key>sourceSize</key>
-                <string>{74,71}</string>
-            </dict>
-            <key>libao_018_baijin.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{268,347},{56,61}}</string>
-                <key>offset</key>
-                <string>{-1,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{8,5},{56,61}}</string>
-                <key>sourceSize</key>
-                <string>{74,71}</string>
-            </dict>
-            <key>libao_019_zhuanshi.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{272,137},{62,63}}</string>
-                <key>offset</key>
-                <string>{2,-1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{8,5},{62,63}}</string>
-                <key>sourceSize</key>
-                <string>{74,71}</string>
-            </dict>
-            <key>libao_020_zhuanshi_big.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{271,207},{62,63}}</string>
-                <key>offset</key>
-                <string>{2,-1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{8,5},{62,63}}</string>
-                <key>sourceSize</key>
-                <string>{74,71}</string>
-            </dict>
-            <key>libao_021_zhuanshihongchengwangpai.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{268,277},{68,59}}</string>
-                <key>offset</key>
-                <string>{-2,2}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{1,4},{68,59}}</string>
-                <key>sourceSize</key>
-                <string>{74,71}</string>
-            </dict>
-            <key>libao_022_zhuanshixingchenwangpai.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{210,207},{68,59}}</string>
-                <key>offset</key>
-                <string>{0,-1}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{3,7},{68,59}}</string>
-                <key>sourceSize</key>
-                <string>{74,71}</string>
-            </dict>
-            <key>libao_023_zhizunwangpai.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{238,425},{70,53}}</string>
-                <key>offset</key>
-                <string>{2,-1}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{4,10},{70,53}}</string>
-                <key>sourceSize</key>
-                <string>{74,71}</string>
-            </dict>
-            <key>libao_024_liujin_small.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{172,425},{64,70}}</string>
-                <key>offset</key>
-                <string>{-2,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{1,0},{64,70}}</string>
-                <key>sourceSize</key>
-                <string>{70,70}</string>
-            </dict>
-            <key>libao_025_tianjiang_small.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{106,65},{70,70}}</string>
@@ -459,14 +212,261 @@
                 <key>sourceSize</key>
                 <string>{70,70}</string>
             </dict>
-            <key>libao_026_liujin_middle.png</key>
+            <key>common_jewelry_box_10.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{140,353},{64,70}}</string>
+                <string>{{2,402},{70,70}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{70,70}}</string>
+                <key>sourceSize</key>
+                <string>{70,70}</string>
+            </dict>
+            <key>common_jewelry_box_11.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{250,131},{70,62}}</string>
+                <key>offset</key>
+                <string>{0,3}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,1},{70,62}}</string>
+                <key>sourceSize</key>
+                <string>{70,70}</string>
+            </dict>
+            <key>dj_012_jipaiqi.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{137,414},{60,62}}</string>
+                <key>offset</key>
+                <string>{5,1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{10,3},{60,62}}</string>
+                <key>sourceSize</key>
+                <string>{70,70}</string>
+            </dict>
+            <key>dj_013_jifenka.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{394,65},{70,62}}</string>
+                <key>offset</key>
+                <string>{0,3}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,1},{70,62}}</string>
+                <key>sourceSize</key>
+                <string>{70,70}</string>
+            </dict>
+            <key>dj_014_shuangbeijifenka.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{178,65},{70,64}}</string>
+                <key>offset</key>
+                <string>{0,3}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{70,64}}</string>
+                <key>sourceSize</key>
+                <string>{70,70}</string>
+            </dict>
+            <key>dj_015_hushenka.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,330},{70,70}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{70,70}}</string>
+                <key>sourceSize</key>
+                <string>{70,70}</string>
+            </dict>
+            <key>hushenka_shiyong_03.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{74,112},{29,29}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{1,1},{29,29}}</string>
+                <key>sourceSize</key>
+                <string>{31,31}</string>
+            </dict>
+            <key>jifenka_shiyong.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{64,474},{29,29}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{1,1},{29,29}}</string>
+                <key>sourceSize</key>
+                <string>{31,31}</string>
+            </dict>
+            <key>jipaiqi_shiyong_03.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{33,474},{29,29}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{1,1},{29,29}}</string>
+                <key>sourceSize</key>
+                <string>{31,31}</string>
+            </dict>
+            <key>libao_016_baiyin.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{199,403},{56,61}}</string>
+                <key>offset</key>
+                <string>{-1,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,5},{56,61}}</string>
+                <key>sourceSize</key>
+                <string>{74,71}</string>
+            </dict>
+            <key>libao_017_huangjin.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{200,274},{56,61}}</string>
+                <key>offset</key>
+                <string>{-1,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,5},{56,61}}</string>
+                <key>sourceSize</key>
+                <string>{74,71}</string>
+            </dict>
+            <key>libao_018_baijin.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{74,414},{56,61}}</string>
+                <key>offset</key>
+                <string>{-1,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{8,5},{56,61}}</string>
+                <key>sourceSize</key>
+                <string>{74,71}</string>
+            </dict>
+            <key>libao_019_zhuanshi.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{136,274},{62,63}}</string>
+                <key>offset</key>
+                <string>{2,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,5},{62,63}}</string>
+                <key>sourceSize</key>
+                <string>{74,71}</string>
+            </dict>
+            <key>libao_020_zhuanshi_big.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{394,209},{62,63}}</string>
+                <key>offset</key>
+                <string>{2,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,5},{62,63}}</string>
+                <key>sourceSize</key>
+                <string>{74,71}</string>
+            </dict>
+            <key>libao_021_zhuanshihongchengwangpai.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{135,344},{68,59}}</string>
+                <key>offset</key>
+                <string>{-2,2}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{1,4},{68,59}}</string>
+                <key>sourceSize</key>
+                <string>{74,71}</string>
+            </dict>
+            <key>libao_022_zhuanshixingchenwangpai.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{74,344},{68,59}}</string>
+                <key>offset</key>
+                <string>{0,-1}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{3,7},{68,59}}</string>
+                <key>sourceSize</key>
+                <string>{74,71}</string>
+            </dict>
+            <key>libao_023_zhizunwangpai.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{95,203},{70,53}}</string>
+                <key>offset</key>
+                <string>{2,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{4,10},{70,53}}</string>
+                <key>sourceSize</key>
+                <string>{74,71}</string>
+            </dict>
+            <key>libao_024_liujin_small.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{105,137},{64,70}}</string>
                 <key>offset</key>
                 <string>{-2,0}</string>
                 <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{1,0},{64,70}}</string>
+                <key>sourceSize</key>
+                <string>{70,70}</string>
+            </dict>
+            <key>libao_025_tianjiang_small.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{458,114},{50,58}}</string>
+                <key>offset</key>
+                <string>{2,1}</string>
+                <key>rotated</key>
                 <false/>
+                <key>sourceColorRect</key>
+                <string>{{12,5},{50,58}}</string>
+                <key>sourceSize</key>
+                <string>{70,70}</string>
+            </dict>
+            <key>libao_026_liujin_middle.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{178,131},{64,70}}</string>
+                <key>offset</key>
+                <string>{-2,0}</string>
+                <key>rotated</key>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{1,0},{64,70}}</string>
                 <key>sourceSize</key>
@@ -475,24 +475,24 @@
             <key>libao_027_tianjiang_middle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,389},{70,70}}</string>
+                <string>{{458,54},{50,58}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{2,1}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{70,70}}</string>
+                <string>{{12,5},{50,58}}</string>
                 <key>sourceSize</key>
                 <string>{70,70}</string>
             </dict>
             <key>libao_028_liujin_big.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{106,425},{64,70}}</string>
+                <string>{{322,65},{64,70}}</string>
                 <key>offset</key>
                 <string>{-2,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{1,0},{64,70}}</string>
                 <key>sourceSize</key>
@@ -501,24 +501,24 @@
             <key>libao_029_tianjiang_big.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,317},{70,70}}</string>
+                <string>{{196,339},{54,62}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{3,2}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{70,70}}</string>
+                <string>{{11,2},{54,62}}</string>
                 <key>sourceSize</key>
                 <string>{70,70}</string>
             </dict>
             <key>libao_030_gaoji.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{74,353},{64,70}}</string>
+                <string>{{250,65},{64,70}}</string>
                 <key>offset</key>
                 <string>{-2,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{1,0},{64,70}}</string>
                 <key>sourceSize</key>
@@ -540,7 +540,7 @@
             <key>libao_032_ganenlibao.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{329,272},{54,56}}</string>
+                <string>{{252,337},{54,56}}</string>
                 <key>offset</key>
                 <string>{1,-1}</string>
                 <key>rotated</key>
@@ -553,7 +553,7 @@
             <key>libao_033_zhounian_small.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,245},{70,70}}</string>
+                <string>{{2,258},{70,70}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -566,7 +566,7 @@
             <key>libao_034_zhounian_middle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,173},{70,70}}</string>
+                <string>{{2,186},{70,70}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -579,7 +579,7 @@
             <key>libao_035_zhounian_big.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,101},{70,70}}</string>
+                <string>{{2,114},{70,70}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -592,7 +592,7 @@
             <key>shuangbeijifenka_shiyong_03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,65},{29,29}}</string>
+                <string>{{2,474},{29,29}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -612,7 +612,7 @@
             <key>size</key>
             <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:3a7402d48739c01f8bf1f96af24c34fc$</string>
+            <string>$TexturePacker:SmartUpdate:5c9b777b69f7862bcf25b52341d360b9:1/1$</string>
             <key>textureFileName</key>
             <string>props.png</string>
         </dict>

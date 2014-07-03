@@ -19,7 +19,7 @@ function InputMobile:ctor(confirm_func)
  	CCBReaderLoad("InputMobile.ccbi", ccbproxy, true, "InputMobile")
 	self:addChild(self.rootNode)
 	self.confirm_func = confirm_func
-	set_green_stroke(self.commit_btn_lbl)
+	set_anniu_1_3_stroke(self.commit_btn_lbl)
 	
 	self:init_input_controller()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)

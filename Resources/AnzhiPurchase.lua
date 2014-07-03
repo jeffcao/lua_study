@@ -47,7 +47,7 @@ function AnzhiPurchase:init(item)
 	dump(item, 'anzhi purchase init item--2')
 	set_rank_string_with_stroke(self.name_lbl, item.name)
 	set_rank_string_with_stroke(self.price_lbl, item.rmb..'元')
-	set_rank_stroke(self.commit_btn_lbl)
+	set_anniu_1_3_stroke(self.commit_btn_lbl)
 	set_rank_stroke(self.cancel_btn_lbl)
 	set_rank_stroke(self.shoujia_lbl)
 	self.note_lbl:setString(item.note)
@@ -57,12 +57,12 @@ function AnzhiPurchase:init(item)
 		set_rank_string_with_stroke(self.prompt_lbl, item.title)
 	else
 		self.prompt_lbl:setVisible(false)
-		set_rank_stroke(self.confirm_lbl1)
-		set_rank_stroke(self.confirm_lbl2)
-		set_rank_stroke(self.confirm_lbl3)
+		set_anniu_1_3_stroke(self.confirm_lbl1)
+		set_anniu_1_3_stroke(self.confirm_lbl2)
+		set_anniu_1_3_stroke(self.confirm_lbl3)
 		if getPayType() == 'wiipay' then
 			self.confirm_lbl4:setVisible(true)
-			set_rank_stroke(self.confirm_lbl4)
+			set_anniu_1_3_stroke(self.confirm_lbl4)
 		end
 	end
 	

@@ -47,7 +47,7 @@ function ShouchonglibaoBuyBox:ctor(confirm_func)
 	self:addChild(self.rootNode)
 	self.confirm_func = confirm_func
 
-	set_green_stroke(self.commit_btn_lbl)
+	set_anniu_1_3_stroke(self.commit_btn_lbl)
 	if getPayType() == "wiipay" then
 		set_rank_stroke(self.service_tel_lbl)
 	end

@@ -65,6 +65,10 @@ GlobalSetting = {
 	light_blue_stroke = ccc3(7,49,64),
 
 	black_stroke = ccc3(48, 48, 48),
+	
+	anniu_1_3_stroke = ccc3(0, 79, 146),
+	anniu5_stroke = ccc3(0, 107, 5),
+	anniu6_stroke = ccc3(0, 63, 107),
 
 	zongse = ccc3(67,31,24),
 	white = ccc3(255, 255, 255),

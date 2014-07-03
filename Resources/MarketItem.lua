@@ -26,7 +26,7 @@ function MarketItem:ctor()
 	
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 	cache:addSpriteFramesWithFile(Res.props_plist)
-		
+	
 end
 
 function MarketItem:init_item(product, show_buy_notify)
@@ -48,7 +48,7 @@ function MarketItem:init_item(product, show_buy_notify)
 	local icon_sprite = tolua.cast(self.icon_sprite, "CCSprite")
 	icon_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(product.icon))
 	print("[MarketItem:init_item] name=> "..product.name.." icon=> "..product.icon)
-	
+	set_anniu_1_3_stroke(tolua.cast(self.lb_buy_btn, "CCLabelTTF"))
 end
 
 function MarketItem:do_ui_buy_btn_clicked(tag, sender)

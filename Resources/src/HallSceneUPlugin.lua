@@ -70,7 +70,7 @@ function HallSceneUPlugin.bind(theClass)
 		if not task then return end
 		dump(task, 'time task is ')
 		self.task_lbl:setString(task.name)
-		self:set_btn_stroke(self.task_lbl)
+--		self:set_btn_stroke(self.task_lbl)
 		self.task_layer:setVisible(true)
 	end
 	

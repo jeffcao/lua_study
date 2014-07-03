@@ -14,7 +14,7 @@ function Diploma:ctor()
 	self:addChild(self.rootNode)
 	self:init_dialog()
 	--self.award_lbl.stroke_size = 3
-	set_green_stroke(self.confirm_btn_lbl)
+	set_anniu_1_3_stroke(self.confirm_btn_lbl)
 	self.msg_lbl:setContentSize(CCSizeMake(400,75))
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 end

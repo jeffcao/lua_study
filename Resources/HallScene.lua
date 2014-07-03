@@ -80,10 +80,10 @@ HallScene = class("HallScene", function()
 	
 	self.btn_stroke_color = GlobalSetting.zongse
 	self.btn_stroke_size = 2.5
-	self:set_btn_stroke(self.to_info_lbl)
-	self:set_btn_stroke(self.to_feedback_lbl)
-	self:set_btn_stroke(self.task_lbl)
-	set_blue_stroke(self.quick_game_btn_lbl)
+--	self:set_btn_stroke(self.to_info_lbl)
+--	self:set_btn_stroke(self.to_feedback_lbl)
+--	self:set_btn_stroke(self.task_lbl)
+	set_anniu5_stroke(self.quick_game_btn_lbl)
 	MarqueePlugin.addMarquee(self.rootNode,ccp(280,380))
 	GlobalSetting.hall_scene = self
 	print('listen on_bill_cancel')

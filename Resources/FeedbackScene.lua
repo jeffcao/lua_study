@@ -45,7 +45,7 @@ function FeedbackScene:ctor()
 	self.feedback_box:setMaxLength(100)
 	--self.feedback_ttf:setDimensions(CCSizeMake(460,160))
 	
-	set_green_stroke(self.commit_btn_lbl)
+	set_anniu_1_3_stroke(self.commit_btn_lbl)
 	
 	local layer = createFullMubanStyleLayer()
 	self:addChild(layer)

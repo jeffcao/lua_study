@@ -96,19 +96,19 @@ function GamingScene:ctor()
 end
 
 function GamingScene:setStrokes()
-	set_blue_stroke(self.menu_item_buchu_lbl)
-	set_blue_stroke(self.menu_item_reselect_lbl)
-	set_blue_stroke(self.menu_item_tip_lbl)
-	set_blue_stroke(self.menu_item_play_lbl)
+	set_anniu_1_3_stroke(self.menu_item_buchu_lbl)
+	set_anniu_1_3_stroke(self.menu_item_reselect_lbl)
+	set_anniu_1_3_stroke(self.menu_item_tip_lbl)
+	set_anniu_1_3_stroke(self.menu_item_play_lbl)
 	
-	set_blue_stroke(self.menu_item_bujiao_lbl)
-	set_blue_stroke(self.menu_item_1fen_lbl)
-	set_blue_stroke(self.menu_item_2fen_lbl)
-	set_blue_stroke(self.menu_item_3fen_lbl)
+	set_anniu_1_3_stroke(self.menu_item_bujiao_lbl)
+	set_anniu_1_3_stroke(self.menu_item_1fen_lbl)
+	set_anniu_1_3_stroke(self.menu_item_2fen_lbl)
+	set_anniu_1_3_stroke(self.menu_item_3fen_lbl)
 	
-	set_blue_stroke(self.menu_item_ready_lbl)
+	set_anniu_1_3_stroke(self.menu_item_ready_lbl)
 	
-	set_blue_stroke(self.menu_item_huanzhuo_lbl)
+	set_anniu_1_3_stroke(self.menu_item_huanzhuo_lbl)
 end
 
 function GamingScene:onEnter()

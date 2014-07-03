@@ -409,6 +409,16 @@ function set_string_with_stroke(label, str)
 	set_stroke(label, label.stroke_size, label.stroke_color)
 end
 
+function set_anniu_1_3_stroke(label)
+	set_stroke(label, 2, GlobalSetting.anniu_1_3_stroke)
+end
+function set_anniu5_stroke(label)
+	set_stroke(label, 2, GlobalSetting.anniu5_stroke)
+end
+function set_anniu6_stroke(label)
+	set_stroke(label, 2, GlobalSetting.anniu6_stroke)
+end
+
 function set_blue_stroke(label)
 	set_stroke(label, 2, GlobalSetting.blue_stroke)
 end

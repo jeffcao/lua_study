@@ -26,7 +26,7 @@ function YesNoDialog3:ctor()
 	
 	self:create_scroll_view(self.scroll_layer, self.msg)
 	
-	set_blue_stroke(self.confirm_btn_lbl)
+	set_anniu_1_3_stroke(self.confirm_btn_lbl)
 	set_blue_stroke(self.reject_btn_lbl)
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
