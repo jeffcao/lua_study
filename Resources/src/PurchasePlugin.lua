@@ -63,8 +63,8 @@ function PurchasePlugin.on_server_notify_buy_finish_success(data)
 	
 	local pay_type = getPayType()
 	AppStats.event(UM_PAY_SUCCESS, {paytype=pay_type, commodity=data.prop_id})
-	local price = data.price/100
-	AppStats.payItem(price, data.prop_id, 1, price)
+--	local price = data.price/100
+	AppStats.payItem(price, data.prop_id, 1, data.price)
 end
 
 function PurchasePlugin.show_back_message_box(message)
