@@ -93,6 +93,12 @@ function GamingScene:ctor()
 	self:listen_match_event()
 	
 	MarqueePlugin.addMarquee(self.rootNode,ccp(400,355))
+	
+	require 'ui.UIUtil'
+ 	local winSize = CCDirector:sharedDirector():getWinSize()
+ 	local sprite = UIUtil.getRepeatSprite(winSize.width, winSize.height)
+ 	sprite:setPosition(ccp(winSize.width/2,winSize.height/2))
+ 	self.back_bg_layer:addChild(sprite)
 end
 
 function GamingScene:setStrokes()
