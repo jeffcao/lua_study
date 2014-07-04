@@ -167,6 +167,7 @@ public class DouDiZhuApplicaion extends Application {
 				.putString("pkg_build", pkgBuild)
 				.putString("app_name", getAppName())
 				.putString("pay_type", getPaytype())
+				.putString("umeng_app_key", get_umeng_app_key())
 				.putString("pkg_version_code", Integer.toString(pkgVersionCode))
 				// .putString("sign", DDZJniHelper.getSign(this))
 				.putString("has_sim_card", String.valueOf(hasSimCard()))
@@ -192,6 +193,10 @@ public class DouDiZhuApplicaion extends Application {
 	public String getPaytype() {
 		String raw_result = getByRaw(R.raw.paytype);
 		return raw_result != null ? raw_result : "cmcc";
+	}
+	public String get_umeng_app_key() {
+		String raw_result = getByRaw(R.raw.umeng_app_key);
+		return raw_result != null ? raw_result : "53994bee56240b395e001d3f";
 	}
 
 	private String getByRaw(int raw_id) {

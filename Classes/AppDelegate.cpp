@@ -228,7 +228,9 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     std::string appid = CCUserDefault::sharedUserDefault()->getStringForKey("appid");
     std::string debug = CCUserDefault::sharedUserDefault()->getStringForKey("debug");
-    MobClickCpp::startWithAppkey("53994bee56240b395e001d3f", appid.c_str());
+    std::string umeng_app_key =  CCUserDefault::sharedUserDefault()->getStringForKey("umeng_app_key");
+    CCLOG("[DEBUG] umeng_app_key => %s", umeng_app_key.c_str());
+    MobClickCpp::startWithAppkey(umeng_app_key.c_str(), appid.c_str());
     MobClickCpp::updateOnlineConfig();
     MobClickCpp::setLogEnabled(debug == "true");
 
