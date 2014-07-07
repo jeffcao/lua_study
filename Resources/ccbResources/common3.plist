@@ -7,28 +7,15 @@
             <key>plus.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,163},{133,18}}</string>
+                <string>{{2,2},{133,18}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{133,18}}</string>
                 <key>sourceSize</key>
                 <string>{133,18}</string>
-            </dict>
-            <key>tanchukuang.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,2},{159,159}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{159,159}}</string>
-                <key>sourceSize</key>
-                <string>{159,159}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -38,9 +25,9 @@
             <key>realTextureFileName</key>
             <string>common3.png</string>
             <key>size</key>
-            <string>{256,256}</string>
+            <string>{32,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:53cea2ff325251e557c1ca9bfae9eb53:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:06c117143e70478eac774d0843a699e2:1/1$</string>
             <key>textureFileName</key>
             <string>common3.png</string>
         </dict>

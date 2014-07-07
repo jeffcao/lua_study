@@ -13,7 +13,26 @@
 	<key>fileVersion</key>
 	<integer>4</integer>
 	<key>guides</key>
-	<array/>
+	<array>
+		<dict>
+			<key>orientation</key>
+			<integer>0</integer>
+			<key>position</key>
+			<real>135</real>
+		</dict>
+		<dict>
+			<key>orientation</key>
+			<integer>1</integer>
+			<key>position</key>
+			<real>-27</real>
+		</dict>
+		<dict>
+			<key>orientation</key>
+			<integer>0</integer>
+			<key>position</key>
+			<real>15</real>
+		</dict>
+	</array>
 	<key>jsControlled</key>
 	<true/>
 	<key>nodeGraph</key>
@@ -31,121 +50,7 @@
 						<key>baseClass</key>
 						<string>CCLayer</string>
 						<key>children</key>
-						<array>
-							<dict>
-								<key>baseClass</key>
-								<string>CCScale9Sprite</string>
-								<key>children</key>
-								<array/>
-								<key>customClass</key>
-								<string></string>
-								<key>displayName</key>
-								<string>CCScale9Sprite</string>
-								<key>memberVarAssignmentName</key>
-								<string></string>
-								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
-								<key>properties</key>
-								<array>
-									<dict>
-										<key>name</key>
-										<string>scale</string>
-										<key>type</key>
-										<string>ScaleLock</string>
-										<key>value</key>
-										<array>
-											<real>1</real>
-											<real>1</real>
-											<false/>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>ignoreAnchorPointForPosition</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>spriteFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string>ccbResources/ui_beijing.plist</string>
-											<string>beijingpintu.png</string>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>preferedSize</string>
-										<key>type</key>
-										<string>Size</string>
-										<key>value</key>
-										<array>
-											<real>800</real>
-											<real>480</real>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>opacity</string>
-										<key>type</key>
-										<string>Byte</string>
-										<key>value</key>
-										<integer>255</integer>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>color</string>
-										<key>type</key>
-										<string>Color3</string>
-										<key>value</key>
-										<array>
-											<integer>255</integer>
-											<integer>255</integer>
-											<integer>255</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetLeft</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetTop</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetRight</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetBottom</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-								</array>
-							</dict>
-						</array>
+						<array/>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
@@ -1130,7 +1035,7 @@
 										<key>value</key>
 										<array>
 											<real>510</real>
-											<real>46</real>
+											<real>40</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -1142,7 +1047,7 @@
 										<key>value</key>
 										<array>
 											<real>94</real>
-											<real>93</real>
+											<real>73</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -2204,7 +2109,7 @@
 												<key>value</key>
 												<array>
 													<real>85</real>
-													<real>33</real>
+													<real>37</real>
 													<integer>0</integer>
 												</array>
 											</dict>
@@ -2321,7 +2226,7 @@
 										<key>value</key>
 										<array>
 											<real>387</real>
-											<real>45</real>
+											<real>40</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -4076,8 +3981,6 @@
 								<false/>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -4418,9 +4321,9 @@
 												<string>Position</string>
 												<key>value</key>
 												<array>
-													<real>51</real>
-													<real>35</real>
-													<integer>0</integer>
+													<real>50</real>
+													<real>50</real>
+													<integer>4</integer>
 												</array>
 											</dict>
 											<dict>
@@ -4883,9 +4786,9 @@
 												<string>Position</string>
 												<key>value</key>
 												<array>
-													<real>51</real>
-													<real>35</real>
-													<integer>0</integer>
+													<real>50</real>
+													<real>50</real>
+													<integer>4</integer>
 												</array>
 											</dict>
 											<dict>
@@ -5348,9 +5251,9 @@
 												<string>Position</string>
 												<key>value</key>
 												<array>
-													<real>52</real>
-													<real>35</real>
-													<integer>0</integer>
+													<real>50</real>
+													<real>50</real>
+													<integer>4</integer>
 												</array>
 											</dict>
 											<dict>
