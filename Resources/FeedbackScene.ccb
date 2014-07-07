@@ -506,8 +506,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>Icon_Button_queren_a.png</string>
+											<string>ccbResources/ui_anniu.plist</string>
+											<string>anniu3_a.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -735,8 +735,6 @@
 								<string>确  定</string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
