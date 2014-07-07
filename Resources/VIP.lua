@@ -35,7 +35,7 @@ function VIP:ctor()
 		local value = pSender:getValue()
     end
     --Add the slider
-    local track_scale9 = CCSprite:createWithSpriteFrameName("VIP_hongse.png")
+    local track_scale9 = CCSprite:createWithSpriteFrameName("VIP_lvse.png")
     local track_scale9_2 = CCSprite:createWithSpriteFrameName("VIP_heise.png")
     local thumb = CCSprite:createWithSpriteFrameName("VIP_jiantou.png")
     local pSlider = CCControlSlider:create(track_scale9_2,track_scale9 ,thumb)
