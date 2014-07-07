@@ -248,8 +248,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -819,9 +817,11 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>返 回</string>
+								<string>返   回</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -1284,7 +1284,7 @@
 								<key>type</key>
 								<string>Text</string>
 								<key>value</key>
-								<string>换 桌</string>
+								<string>换   桌</string>
 							</dict>
 						</array>
 					</dict>
