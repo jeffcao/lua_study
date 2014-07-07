@@ -43,8 +43,8 @@ function ChargeRoomHall:ctor()
 	self:addChild(self.rootNode)
 
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
-	self.bg:setScaleX(GlobalSetting.content_scale_factor * (800/609))
-	self.bg:setScaleY(GlobalSetting.content_scale_factor * (340/359))
+--	self.bg:setScaleX(GlobalSetting.content_scale_factor * (800/609))
+--	self.bg:setScaleY(GlobalSetting.content_scale_factor * (340/359))
 	
 	self:init_rooms()
 	
