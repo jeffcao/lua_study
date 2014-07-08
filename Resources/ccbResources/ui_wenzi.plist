@@ -7,7 +7,7 @@
             <key>dizhushengli.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,347},{332,145}}</string>
+                <string>{{2,451},{332,145}}</string>
                 <key>offset</key>
                 <string>{1,-5}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>nongminshengli.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,200},{332,145}}</string>
+                <string>{{2,304},{332,145}}</string>
                 <key>offset</key>
                 <string>{1,-5}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>paihangbang.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{336,242},{116,40}}</string>
+                <string>{{215,598},{116,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,11 +46,11 @@
             <key>wenzi_VIP.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{336,284},{82,36}}</string>
+                <string>{{150,674},{82,36}}</string>
                 <key>offset</key>
                 <string>{2,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{4,3},{82,36}}</string>
                 <key>sourceSize</key>
@@ -59,7 +59,7 @@
             <key>wenzi_VIPlicheng.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{336,324},{162,40}}</string>
+                <string>{{336,346},{162,40}}</string>
                 <key>offset</key>
                 <string>{1,-1}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>wenzi_banyejijiao.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{291,684},{139,32}}</string>
+                <string>{{329,749},{139,32}}</string>
                 <key>offset</key>
                 <string>{-53,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>wenzi_bisaibang.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{336,200},{116,40}}</string>
+                <string>{{336,304},{116,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>wenzi_bisaisonghuafei.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,528},{197,40}}</string>
+                <string>{{2,632},{197,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>wenzi_changgongyaozhai.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,673},{139,32}}</string>
+                <string>{{188,745},{139,32}}</string>
                 <key>offset</key>
                 <string>{-52,0}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>wenzi_dizhupochan.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{291,650},{139,32}}</string>
+                <string>{{329,715},{139,32}}</string>
                 <key>offset</key>
                 <string>{-52,0}</string>
                 <key>rotated</key>
@@ -137,7 +137,7 @@
             <key>wenzi_dizhuzhiyi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,639},{139,32}}</string>
+                <string>{{188,711},{139,32}}</string>
                 <key>offset</key>
                 <string>{-52,1}</string>
                 <key>rotated</key>
@@ -150,7 +150,7 @@
             <key>wenzi_fuxingdoudizhu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,101},{456,97}}</string>
+                <string>{{2,205},{456,97}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +163,7 @@
             <key>wenzi_gerenziliao.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{336,409},{159,41}}</string>
+                <string>{{336,431},{159,41}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
@@ -176,11 +176,11 @@
             <key>wenzi_huobaohuodong.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{465,534},{157,41}}</string>
+                <string>{{333,638},{157,41}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{9,4},{157,41}}</string>
                 <key>sourceSize</key>
@@ -189,7 +189,7 @@
             <key>wenzi_huodongxiangqing.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{336,366},{159,41}}</string>
+                <string>{{336,388},{159,41}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
@@ -202,7 +202,7 @@
             <key>wenzi_huodongzhou1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,673},{139,32}}</string>
+                <string>{{188,745},{139,32}}</string>
                 <key>offset</key>
                 <string>{-52,0}</string>
                 <key>rotated</key>
@@ -215,7 +215,7 @@
             <key>wenzi_huodongzhou2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{291,684},{139,32}}</string>
+                <string>{{329,749},{139,32}}</string>
                 <key>offset</key>
                 <string>{-53,0}</string>
                 <key>rotated</key>
@@ -228,7 +228,7 @@
             <key>wenzi_huodongzhou3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,494},{211,32}}</string>
+                <string>{{2,598},{211,32}}</string>
                 <key>offset</key>
                 <string>{-16,0}</string>
                 <key>rotated</key>
@@ -241,7 +241,7 @@
             <key>wenzi_huodongzhou4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,639},{139,32}}</string>
+                <string>{{188,711},{139,32}}</string>
                 <key>offset</key>
                 <string>{-52,1}</string>
                 <key>rotated</key>
@@ -254,7 +254,7 @@
             <key>wenzi_huodongzhou5.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{291,616},{139,32}}</string>
+                <string>{{329,681},{139,32}}</string>
                 <key>offset</key>
                 <string>{-52,0}</string>
                 <key>rotated</key>
@@ -267,7 +267,7 @@
             <key>wenzi_huodongzhou6.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{291,650},{139,32}}</string>
+                <string>{{329,715},{139,32}}</string>
                 <key>offset</key>
                 <string>{-52,0}</string>
                 <key>rotated</key>
@@ -280,7 +280,7 @@
             <key>wenzi_huodongzhou7.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,605},{139,32}}</string>
+                <string>{{188,677},{139,32}}</string>
                 <key>offset</key>
                 <string>{-52,0}</string>
                 <key>rotated</key>
@@ -293,7 +293,7 @@
             <key>wenzi_mimazhaohui.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{304,575},{159,39}}</string>
+                <string>{{336,597},{159,39}}</string>
                 <key>offset</key>
                 <string>{-5,-1}</string>
                 <key>rotated</key>
@@ -306,11 +306,11 @@
             <key>wenzi_putong.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{201,568},{101,35}}</string>
+                <string>{{150,758},{101,35}}</string>
                 <key>offset</key>
                 <string>{-4,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{101,35}}</string>
                 <key>sourceSize</key>
@@ -319,7 +319,7 @@
             <key>wenzi_quanmingdoudizhu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{456,97}}</string>
+                <string>{{2,106},{456,97}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -332,7 +332,7 @@
             <key>wenzi_shangxindexiaobaicai.PNG</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,494},{211,32}}</string>
+                <string>{{2,598},{211,32}}</string>
                 <key>offset</key>
                 <string>{-16,0}</string>
                 <key>rotated</key>
@@ -345,7 +345,7 @@
             <key>wenzi_shengli.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,570},{144,146}}</string>
+                <string>{{2,674},{144,146}}</string>
                 <key>offset</key>
                 <string>{0,-4}</string>
                 <key>rotated</key>
@@ -358,7 +358,7 @@
             <key>wenzi_shibai.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,707},{138,68}}</string>
+                <string>{{187,779},{138,68}}</string>
                 <key>offset</key>
                 <string>{-2,7}</string>
                 <key>rotated</key>
@@ -371,11 +371,11 @@
             <key>wenzi_songdou.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{201,531},{101,35}}</string>
+                <string>{{470,681},{101,35}}</string>
                 <key>offset</key>
                 <string>{-4,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{101,35}}</string>
                 <key>sourceSize</key>
@@ -384,7 +384,7 @@
             <key>wenzi_songhuafei.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{215,494},{101,35}}</string>
+                <string>{{201,640},{101,35}}</string>
                 <key>offset</key>
                 <string>{-4,0}</string>
                 <key>rotated</key>
@@ -397,7 +397,7 @@
             <key>wenzi_tudijianbing.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,605},{139,32}}</string>
+                <string>{{188,677},{139,32}}</string>
                 <key>offset</key>
                 <string>{-52,0}</string>
                 <key>rotated</key>
@@ -407,10 +407,23 @@
                 <key>sourceSize</key>
                 <string>{267,44}</string>
             </dict>
+            <key>wenzi_woaidoudizhu.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{457,102}}</string>
+                <key>offset</key>
+                <string>{4,-3}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,9},{457,102}}</string>
+                <key>sourceSize</key>
+                <string>{465,114}</string>
+            </dict>
             <key>wenzi_wugufengdeng.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{291,616},{139,32}}</string>
+                <string>{{329,681},{139,32}}</string>
                 <key>offset</key>
                 <string>{-52,0}</string>
                 <key>rotated</key>
@@ -423,7 +436,7 @@
             <key>wenzi_youxibangzhu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{304,534},{159,39}}</string>
+                <string>{{336,556},{159,39}}</string>
                 <key>offset</key>
                 <string>{-3,-2}</string>
                 <key>rotated</key>
@@ -436,7 +449,7 @@
             <key>wenzi_youxidating.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{336,493},{159,39}}</string>
+                <string>{{336,515},{159,39}}</string>
                 <key>offset</key>
                 <string>{-4,-1}</string>
                 <key>rotated</key>
@@ -449,7 +462,7 @@
             <key>wenzi_youxifankui.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{336,452},{159,39}}</string>
+                <string>{{336,474},{159,39}}</string>
                 <key>offset</key>
                 <string>{-3,-2}</string>
                 <key>rotated</key>
@@ -475,7 +488,7 @@
             <key>wenzi_youxishangcheng.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{460,2},{159,41}}</string>
+                <string>{{461,2},{159,41}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
@@ -495,7 +508,7 @@
             <key>size</key>
             <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:9dfa19e705f7dcd02ec68d94b98ac071:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:03c809c393a24de2f1fdbd025d8daea9:1/1$</string>
             <key>textureFileName</key>
             <string>ui_wenzi.png</string>
         </dict>
