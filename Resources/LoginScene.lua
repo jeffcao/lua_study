@@ -82,15 +82,11 @@ function set_bg(scene)
 		res = 'ccbResources/ui_wenzi.plist'
 		name = 'wenzi_quanmingdoudizhu.png'
 		setbg()
+	elseif getPayType() == 'wiipay' then
+		res = 'ccbResources/ui_wenzi.plist'
+		name = 'wenzi_woaidoudizhu.png'
+		setbg()
 	end
---[[
-	local bg = GlobalSetting.login_bg[GlobalSetting.app_id]
-	if bg then
-		local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
-		cache:addSpriteFramesWithFile(bg.res)
-		scene.bg_sprite:setDisplayFrame(cache:spriteFrameByName(bg.name))
-	end
-]]
 end
 
 function LoginScene:setMenus()
