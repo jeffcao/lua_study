@@ -13,6 +13,12 @@ function PurchasePlugin.on_server_notify_buy_finish_success(data)
 	print("[PurchasePlugin:on_server_notify_buy_finish_success]")
 	dump(data, 'on_server_notify_buy_finish_success, data=> ') 
 	PurchasePlugin.show_back_message_box(data.content)
+	
+	--purchase fail
+	if tonumber(data.result_code) ~= 0 then
+		AppStats.event(UM_PAY_FAIL)
+		return
+	end
 
 	local success = function(data) 
 		GlobalSetting.current_user.score = data.score
