@@ -33,13 +33,13 @@
             <key>bg_shouchongdalibao.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,484},{328,269}}</string>
+                <string>{{2,484},{328,335}}</string>
                 <key>offset</key>
-                <string>{0,45}</string>
+                <string>{0,-12}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{328,269}}</string>
+                <string>{{0,24},{328,335}}</string>
                 <key>sourceSize</key>
                 <string>{328,359}</string>
             </dict>
@@ -66,7 +66,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:76c764c8588bc114492e974146c7bfee:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:6208ab60e143a34be7bf80029d7eb628:1/1$</string>
             <key>textureFileName</key>
             <string>ui_beijing.png</string>
         </dict>
