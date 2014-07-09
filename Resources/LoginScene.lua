@@ -82,10 +82,6 @@ function set_bg(scene)
 		res = 'ccbResources/ui_wenzi.plist'
 		name = 'wenzi_quanmingdoudizhu.png'
 		setbg()
-	elseif getPayType() == 'wiipay' then
-		res = 'ccbResources/ui_wenzi.plist'
-		name = 'wenzi_woaidoudizhu.png'
-		setbg()
 	end
 end
 
