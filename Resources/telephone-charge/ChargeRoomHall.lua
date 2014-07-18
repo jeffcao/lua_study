@@ -208,9 +208,8 @@ function ChargeRoomHall:init_rooms()
         	layer.lastx = x
         	layer.moved = layer.moved + 1
         elseif eventType == "ended" then
-        	layer.startx = nil
-        	layer.lastx = nil
-        	if layer.moved <= MOVE_TEST_LIMIT then
+        	local delta = math.abs(layer.lastx - layer.startx)
+        	if layer.moved <= MOVE_TEST_LIMIT or delta < 10 then
         		local children = layer:getChildren()
         		for index=1, children:count() do
         			local child = children:objectAtIndex(index - 1)
@@ -220,6 +219,8 @@ function ChargeRoomHall:init_rooms()
         			end
         		end
         	end
+        	layer.startx = nil
+        	layer.lastx = nil
         	layer.moved = nil
         end
         return true
