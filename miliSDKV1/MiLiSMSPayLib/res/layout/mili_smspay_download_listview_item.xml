@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="94.67dp"
+        android:background="@drawable/mili_smspay_press_download_listview_bg" >
+
+        <TextView
+            android:id="@+id/mili_smspy_download_listview_game_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14.67dp"
+            android:layout_marginTop="19.67dp"
+            android:layout_toRightOf="@+id/mili_smspy_download_listview_game_icon"
+            android:singleLine="true"
+            android:textSize="17sp"
+            android:text="游戏名称"
+            android:maxWidth="110.33dp"
+            android:textColor="#303030" />
+
+        <ImageView
+            android:id="@+id/mili_smspy_download_listview_game_icon"
+            android:layout_width="67.33dp"
+            android:layout_height="67.33dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14.33dp"
+            android:layout_marginTop="10.67dp" />
+
+        <TextView
+            android:id="@+id/mili_smsp_download_listview_game_app_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="26dp"
+            android:layout_toRightOf="@+id/mili_smspy_download_listview_game_name_text"
+            android:singleLine="true"
+            android:text="15M"
+            android:textColor="#909090"
+            android:textSize="11sp" />
+
+        <Button
+            android:id="@+id/mili_sms_download_listview_game_download_button"
+            android:layout_width="67.33dp"
+            android:layout_height="26.67dp"
+            android:layout_above="@+id/mili_smspy_download_listview_game_introduce"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/mili_smspy_download_listview_game_icon"
+            android:layout_marginRight="14.67dp"
+            android:background="@drawable/mili_msmpay_press_green_rect_button"
+            android:gravity="center"
+            android:text="下载"
+            android:textColor="#ffffff"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/mili_sms_download_listview_game_install_button"
+            android:layout_width="67.33dp"
+            android:layout_height="26.67dp"
+            android:layout_above="@+id/mili_smspy_download_listview_game_introduce"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/mili_smspy_download_listview_game_icon"
+            android:layout_marginRight="14.67dp"
+            android:background="@drawable/mili_smspay_press_gray_stroke_rect_button"
+            android:gravity="center"
+            android:text="安装"
+            android:textColor="#8e8e8e"
+            android:textSize="12sp"
+            android:visibility="gone" />
+          <Button
+            android:id="@+id/mili_sms_download_listview_game_open_button"
+            android:layout_width="67.33dp"
+            android:layout_height="26.67dp"
+            android:layout_above="@+id/mili_smspy_download_listview_game_introduce"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/mili_smspy_download_listview_game_icon"
+            android:layout_marginRight="14.67dp"
+            android:background="@drawable/mili_smspay_press_gray_stroke_rect_button"
+            android:gravity="center"
+            android:text="打开"
+            android:textColor="#8e8e8e"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/mili_smspy_download_listview_game_introduce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/mili_smspy_download_listview_game_name_text"
+            android:layout_alignRight="@+id/mili_sms_download_listview_game_download_button"
+            android:layout_below="@+id/mili_smspy_download_listview_game_name_text"
+            android:layout_marginTop="6.3dp"
+            android:layout_toRightOf="@+id/mili_smspy_download_listview_game_icon"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:maxWidth="214.7dp"
+            android:text="null"
+            android:textColor="#909090"
+            android:textSize="11sp" />
+
+        <ImageView
+            android:id="@+id/mili_smspy_download_listview_biaozhi_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:src="@drawable/mili_smspay_download_listview_first" />
+    </RelativeLayout>
+
+</RelativeLayout>

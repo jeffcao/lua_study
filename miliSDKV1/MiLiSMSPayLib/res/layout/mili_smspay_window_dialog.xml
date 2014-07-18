@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="282.67dp"
+        android:layout_height="213.33dp" >
+
+        <ImageView
+            android:id="@+id/mili_game_ad"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+             />
+
+        <ImageView
+            android:id="@+id/mili_game_ad_close"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4.7dp"
+            android:src="@drawable/mili_smspay_stop_dialog_close" />
+    </RelativeLayout>
+
+</LinearLayout>

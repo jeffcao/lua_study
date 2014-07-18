@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50.67dp"
+        android:background="#ffffff" >
+
+        <ImageView
+            android:id="@+id/mili_smspay_download_list_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="12.67dp"
+            android:src="@drawable/mili_smspay_back" />
+
+        <TextView
+            android:id="@+id/mili_smspay_download_list_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="拒绝流氓  正品推荐"
+            android:textColor="#4ca6f7" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/mili_smspay_top_layout"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#e9e9e9"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:text="省流量秒速体验专区"
+                android:textColor="#7e7e7e" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="#e9e9e9"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/mili_smspay_download_listview_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="112.33dp"
+                android:layout_marginTop="10dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/mili_smspay_download_listview_viewpager_unselect_first"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="18.67dp"
+                    android:src="@drawable/mili_smspay_download_listview_viewpager_select" />
+
+                <ImageView
+                    android:id="@+id/mili_smspay_download_listview_viewpager_unselect_sec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/mili_smspay_download_listview_viewpager_unselect" />
+
+                <ImageView
+                    android:id="@+id/mili_smspay_download_listview_viewpager_unselect_third"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18.67dp"
+                    android:src="@drawable/mili_smspay_download_listview_viewpager_unselect" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/mili_smspay_download_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:scrollbars="none" >
+    </ListView>
+
+</LinearLayout>
