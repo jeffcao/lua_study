@@ -88,6 +88,12 @@ HallScene = class("HallScene", function()
 	GlobalSetting.hall_scene = self
 	print('listen on_bill_cancel')
 	NotificationProxy.registerScriptObserver(PurchasePlugin.on_bill_cancel,"on_bill_cancel", self.scene_name)
+	
+	print('listen on_mili_success')
+	NotificationProxy.registerScriptObserver(PurchasePlugin.on_mili_success,"on_mili_success", self.scene_name)
+	
+	print('listen on_miliuu_success')
+	NotificationProxy.registerScriptObserver(PurchasePlugin.on_miliuu_success,"on_miliuu_success", self.scene_name)
  
  	require 'ui.UIUtil'
  	local winSize = CCDirector:sharedDirector():getWinSize()

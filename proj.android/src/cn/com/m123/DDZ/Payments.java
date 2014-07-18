@@ -56,6 +56,10 @@ public class Payments {
 			return new SkyPayments();
 		} else if (type.equalsIgnoreCase("wiipay")) {
 			return new WeiPaiPayments();
+		} else if (type.equalsIgnoreCase("mili")) {
+			return new MiliPayments();
+		} else if (type.equalsIgnoreCase("miliuu")) {
+			return new MiliuuPayments();
 		}
 		return null;
 	}

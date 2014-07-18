@@ -16,7 +16,7 @@ end
 
 function AppStats.getPaySource()
 	local pay_type = getPayType()
-	local pay_source = {leyifu=11,anzhi=12,cmcc=13,gd_unicom=14,sikai=15,wiipay=16}
+	local pay_source = {leyifu=11,anzhi=12,cmcc=13,gd_unicom=14,sikai=15,wiipay=16,mili=17,miliuu=18}
 	local source = pay_source[pay_type]
 	return source
 end

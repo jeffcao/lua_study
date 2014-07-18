@@ -86,6 +86,28 @@ function PurchasePlugin.suggest_buy(type, title)
 	PurchasePlugin.show_buy_notify(product)
 end
 
+function PurchasePlugin.on_mili_success()
+	local pay_type = getPayType()
+		local user_default = CCUserDefault:sharedUserDefault()
+		local params = user_default:getStringForKey("on_"..pay_type.."_success")
+		print("on_"..pay_type.."_success", params)
+		user_default:setStringForKey("on_"..pay_type.."_success", "")
+		if is_blank(params) then return end
+		
+		local strs = string.split(params,'_')
+		
+		cclog('trade_id:%s, prop_id:%s, pay_id:%s', strs[1], strs[2]. strs[3])
+		local event_name = 'ui.'..pay_type..'_success'
+		GlobalSetting.hall_server_websocket:trigger(event_name,{trade_num=strs[1],prop_id=strs[2],pay_id=strs[3]},
+			function(data) dump(data, event_name .. ' success') end,
+			function(data) dump(data, event_name .. ' fail') end
+		)
+end
+
+function PurchasePlugin.on_miliuu_success()
+	PurchasePlugin.on_mili_success()
+end
+
 function PurchasePlugin.on_bill_cancel()
 		if GlobalSetting.run_env == "test" then
 			print('run env is test, do not cancel')
@@ -146,7 +168,7 @@ function PurchasePlugin.show_buy_notify(product, which)
 		PurchasePlugin.buy_prop(product.id)
 	end
 	
-	if pay_type == 'anzhi' or pay_type == 'leyifu' or pay_type == 'sikai' or pay_type == 'wiipay' then
+	if pay_type == 'anzhi' or pay_type == 'leyifu' or pay_type == 'sikai' or pay_type == 'wiipay' or pay_type == 'mili' or pay_type == 'miliuu' then
 		local dialog = createAnzhiPurchase(buy)
 		print('local dialog = createAnzhiPurchase(buy)')
 		dialog:init(product)
@@ -276,6 +298,31 @@ function PurchasePlugin.do_confirm_buy(data)
 	
 	local commodity = data.prop_id or data.orderInfo.prop_id
 	AppStats.event(UM_PURCHASE_CONFIRM,{paytype=payType, commodity=commodity})
+end
+
+function PurchasePlugin.miliuu_pay(data)
+	PurchasePlugin.mili_pay(data)
+end
+
+function PurchasePlugin.mili_pay(data)
+	local jni_helper = DDZJniHelper:create()
+	local scene = runningscene()
+	dump(scene.cur_product,'scene.cur_product')
+	
+	local pay_id = data.consume_code or '000000'
+	local trade_id = data.trade_num
+	local prop_id = data.prop_id
+	if data.orderInfo then
+		trade_id = trade_id or data.orderInfo.trade_num
+		prop_id = prop_id or data.orderInfo.prop_id
+	end
+	local j_data = {pay_id = pay_id, trade_id=trade_id, prop_id=prop_id}
+	local cjson = require("cjson")
+	local status, s = pcall(cjson.encode, j_data)
+	local pay_prefix = 'on_pay_'..getPayType()..'__'
+	local str = pay_prefix .. s
+	print('pay:', str)
+	jni_helper:messageJava(str)
 end
 
 function PurchasePlugin.wiipay_pay(data)
