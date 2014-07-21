@@ -94,11 +94,21 @@ function PurchasePlugin.on_mili_success()
 		user_default:setStringForKey("on_"..pay_type.."_success", "")
 		if is_blank(params) then return end
 		
-		local strs = string.split(params,'_')
+		local cjson = require 'cjson'
+		params = cjson.decode(params)
 		
-		cclog('trade_id:%s, prop_id:%s, pay_id:%s', strs[1], strs[2]. strs[3])
-		local event_name = 'ui.'..pay_type..'_success'
-		GlobalSetting.hall_server_websocket:trigger(event_name,{trade_num=strs[1],prop_id=strs[2],pay_id=strs[3]},
+		local md5 = MD5:create()
+		md5:update(params.trade_id..params.key..'success')
+		local token = md5:to_char_array()
+		cclog('trade_id:%s, prop_id:%s, pay_id:%s, key:%s, token:%s', 
+			params.trade_id, params.prop_id, params.pay_id, params.key, token)
+		local event_name = PurchasePlugin.get_event_start() .. 'mili_request'
+		PurchasePlugin.get_buy_socket():trigger(event_name,{
+			payment=pay_type,
+			cpparam=params.trade_id,
+			status="success",
+			token=token
+			},
 			function(data) dump(data, event_name .. ' success') end,
 			function(data) dump(data, event_name .. ' fail') end
 		)
@@ -309,14 +319,14 @@ function PurchasePlugin.mili_pay(data)
 	local scene = runningscene()
 	dump(scene.cur_product,'scene.cur_product')
 	
-	local pay_id = data.consume_code or '000000'
+	local pay_id = data.orderInfo.consume_code or '000000'
 	local trade_id = data.trade_num
 	local prop_id = data.prop_id
 	if data.orderInfo then
 		trade_id = trade_id or data.orderInfo.trade_num
 		prop_id = prop_id or data.orderInfo.prop_id
 	end
-	local j_data = {pay_id = pay_id, trade_id=trade_id, prop_id=prop_id}
+	local j_data = {pay_id = pay_id, trade_id=trade_id, prop_id=prop_id, key=data.orderInfo.key}
 	local cjson = require("cjson")
 	local status, s = pcall(cjson.encode, j_data)
 	local pay_prefix = 'on_pay_'..getPayType()..'__'

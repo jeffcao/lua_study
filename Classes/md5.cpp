@@ -124,6 +124,10 @@ void MD5::update(const string &str) {
 	update((const byte*)str.c_str(), str.length());
 }
 
+void MD5::update(const char* str) {
+	update((const byte*)str, strlen(str));
+}
+
 void MD5::update_with_file(const char* path) {
 	ifstream file(path);
 	update(file);

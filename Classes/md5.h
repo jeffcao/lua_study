@@ -20,6 +20,7 @@ public:
 	MD5(ifstream &in);
 	static MD5* create();
 	void update(const void *input, size_t length);
+	void update(const char* str);
 	void update(const string &str);
 	void update(ifstream &in);
 	void update_with_file(const char* path);

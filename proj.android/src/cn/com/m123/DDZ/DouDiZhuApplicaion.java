@@ -29,7 +29,7 @@ public class DouDiZhuApplicaion extends Application {
 	public static int pkgVersionCode;
 	public static String pkgBuild;
 	public static String appid;
-	public static boolean DEBUG = false;
+	public static boolean DEBUG = true;
 
 	public static final String TAG = DouDiZhuApplicaion.class.getName();
 

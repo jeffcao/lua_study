@@ -1,6 +1,6 @@
 /*
 ** Lua binding: md5
-** Generated automatically by tolua++-1.0.93 on Wed Oct 30 09:36:42 2013.
+** Generated automatically by tolua++-1.0.92 on Mon Jul 21 11:57:58 2014.
 */
 
 /****************************************************************************
@@ -115,6 +115,39 @@ static int tolua_md5_MD5_update_with_file00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: update of class  MD5 */
+#ifndef TOLUA_DISABLE_tolua_md5_MD5_update00
+static int tolua_md5_MD5_update00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"MD5",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  MD5* self = (MD5*)  tolua_tousertype(tolua_S,1,0);
+  const char* str = ((const char*)  tolua_tostring(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'update'", NULL);
+#endif
+  {
+   self->update(str);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'update'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: to_char_array of class  MD5 */
 #ifndef TOLUA_DISABLE_tolua_md5_MD5_to_char_array00
 static int tolua_md5_MD5_to_char_array00(lua_State* tolua_S)
@@ -158,6 +191,7 @@ TOLUA_API int tolua_md5_open (lua_State* tolua_S)
   tolua_beginmodule(tolua_S,"MD5");
    tolua_function(tolua_S,"create",tolua_md5_MD5_create00);
    tolua_function(tolua_S,"update_with_file",tolua_md5_MD5_update_with_file00);
+   tolua_function(tolua_S,"update",tolua_md5_MD5_update00);
    tolua_function(tolua_S,"to_char_array",tolua_md5_MD5_to_char_array00);
   tolua_endmodule(tolua_S);
  tolua_endmodule(tolua_S);

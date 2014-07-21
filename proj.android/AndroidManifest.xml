@@ -72,7 +72,7 @@
         <!-- mili meta-data -->
         <meta-data
             android:name="MILI_PAY_APPID"
-            android:value="21839440" >
+            android:value="21839690" >
         </meta-data>
         <meta-data
             android:name="MILI_PAY_CHANNELID"

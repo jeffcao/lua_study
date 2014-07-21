@@ -36,6 +36,7 @@ public class MiliPayments implements PaymentInterface {
 	}
 	
 	private void do_mili_pay(final String params) {
+		DouDiZhuApplicaion.debugLog("mili: pay id is " + payId);
 		mPay.Pay(new PayCallback() {
 			
 			@Override
@@ -44,7 +45,7 @@ public class MiliPayments implements PaymentInterface {
 					DouDiZhuApplicaion.debugLog(getPayType() + " 付费调用成功");
 					SharedPreferences sp = DouDiZhu_Lua.INSTANCE.getSharedPreferences(
 							"Cocos2dxPrefsFile", Context.MODE_PRIVATE);
-					sp.edit().putString("on_"+getPayType()+"_success", trade_id + "_" + prop_id + "_" + payId)
+					sp.edit().putString("on_"+getPayType()+"_success", params)
 							.commit();
 					DDZJniHelper.messageToCpp("on_"+getPayType()+"_success");
 				} else {
