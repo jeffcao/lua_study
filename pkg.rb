@@ -20,6 +20,8 @@ end
 #Charge.xml, Config.xml, CosumeCodeInfo.xml, d_data_store.dat s_data_store.dat(移动sdk) 
 #SkyPayInfo.xml(斯凯), ZYF_ChannelID（斯凯）, SourceConfig（乐易付）
 configs = {
+	"mili"=>[],
+	"miliuu"=>[],
 	"wiipay"=>["proj.android/assets/alipay_plugin_20120428msp.apk",
 		"proj.android/assets/UPPayPluginEx.apk"],
 	"leyifu"=>["proj.android/res/drawable/hfb_*", 
