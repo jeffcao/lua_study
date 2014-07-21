@@ -74,11 +74,12 @@ function set_bg(scene)
 		cache:addSpriteFramesWithFile(res)
 		scene.sp_game_name:setDisplayFrame(cache:spriteFrameByName(name))
 	end
-	if getPayType() == 'anzhi' then
+	local pay_type = getPayType()
+	if pay_type == 'anzhi' then
 		res = 'ccbResources/ui_wenzi.plist'
 		name = 'wenzi_fuxingdoudizhu.png'
 		setbg()
-	elseif getPayType() == 'sikai' then
+	elseif pay_type == 'sikai' or pay_type == 'mili' or pay_type == 'miliuu' then
 		res = 'ccbResources/ui_wenzi.plist'
 		name = 'wenzi_quanmingdoudizhu.png'
 		setbg()
