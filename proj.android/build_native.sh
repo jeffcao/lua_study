@@ -144,7 +144,9 @@ cp ../sdklibs/leyifu/astep.jar libs
 cp ../sdklibs/leyifu/huafubao_sdk.jar libs
 cp ../sdklibs/weipai/wpay-sdk4.7.jar libs
 cp ../sdklibs/umeng/umeng_sdk.jar libs
-cp ../sdklibs/umeng/cocos2dx2_libMobClickCpp.a
-
+cp ../sdklibs/umeng/cocos2dx2_libMobClickCpp.a libs
+cp ../miliSDKV1/android-support-v4.jar libs
+cp ../miliSDKV1/jsoup-1.7.2.jar libs
+cp ../miliSDKV1/milipay_sms.jar libs
 cd ..
 ruby pkg.rb
