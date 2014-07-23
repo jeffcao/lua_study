@@ -1,8 +1,5 @@
 GAnimationPlugin = {}
 local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
-g_ddz_plane = nil
-g_ddz_rocket = nil
-g_ddz_spring = nil
 
 function GAnimationPlugin.sharedAnimation()
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
@@ -293,20 +290,21 @@ end
 
 function DDZPlane.fly(target, z_order)
 	z_order = z_order or 9001
-	if not g_ddz_plane then
-		g_ddz_plane = DDZPlane.new()
-		target:addChild(g_ddz_plane, z_order)
+	if not target.ddz_plane then
+		local ddz_plane = DDZPlane.new()
+		target:addChild(ddz_plane, z_order)
+		target.ddz_plane = ddz_plane
 	end
 
-	g_ddz_plane:setPosition(ccp(490,40))
-	g_ddz_plane:setVisible(true)
+	target.ddz_plane:setPosition(ccp(490,40))
+	target.ddz_plane:setVisible(true)
 	local move_a = CCMoveTo:create(1, ccp(-90, 40))
 	function destory_me()
 		cclog("DDZPlane.destory_me")
-		g_ddz_plane:setVisible(false)
+		target.ddz_plane:setVisible(false)
 --		target:removeChild(ddz_rocket)
 	end
-	g_ddz_plane:runAction(CCSequence:createWithTwoActions(move_a, CCCallFuncN:create(destory_me)))
+	target.ddz_plane:runAction(CCSequence:createWithTwoActions(move_a, CCCallFuncN:create(destory_me)))
 		
 end
 
@@ -334,20 +332,21 @@ end
 
 function DDZRocket.fly(target, z_order)
 	z_order = z_order or 9001
-	if not g_ddz_rocket then
-		g_ddz_rocket = DDZRocket.new()
-		target:addChild(g_ddz_rocket, z_order)
+	if not target.ddz_rocket then
+		local ddz_rocket = DDZRocket.new()
+		target:addChild(ddz_rocket, z_order)
+		target.ddz_rocket = ddz_rocket
 	end
 
-	g_ddz_rocket:setPosition(ccp(240,-90))
-	g_ddz_rocket:setVisible(true)
+	target.ddz_rocket:setPosition(ccp(240,-90))
+	target.ddz_rocket:setVisible(true)
 	local move_a = CCMoveTo:create(1, ccp(240, 490))
 	function destory_me()
 		cclog("DDZRocket.destory_me")
-		g_ddz_rocket:setVisible(false)
+		target.ddz_rocket:setVisible(false)
 --		target:removeChild(ddz_rocket)
 	end
-	g_ddz_rocket:runAction(CCSequence:createWithTwoActions(move_a, CCCallFuncN:create(destory_me)))
+	target.ddz_rocket:runAction(CCSequence:createWithTwoActions(move_a, CCCallFuncN:create(destory_me)))
 	
 end
 
@@ -393,39 +392,40 @@ end
 function DDZSpring.open(target, z_order)
 	cclog("DDZSpring.open")
 	z_order = z_order or 9001
-	if not g_ddz_spring then
-		g_ddz_spring = DDZSpring.new()
-		target:addChild(g_ddz_spring, z_order)
+	if not target.ddz_spring then
+		local ddz_spring = DDZSpring.new()
+		target:addChild(ddz_spring, z_order)
+		target.ddz_spring = ddz_spring
 	end
-	g_ddz_spring.char_obj:setScale(0.05)
-	g_ddz_spring.f_obj_a:setScale(0.05)
-	g_ddz_spring.f_obj_b:setScale(0.05)
+	target.ddz_spring.char_obj:setScale(0.05)
+	target.ddz_spring.f_obj_a:setScale(0.05)
+	target.ddz_spring.f_obj_b:setScale(0.05)
 	
-	g_ddz_spring.char_obj:setPosition(ccp(150,320))
-	g_ddz_spring.f_obj_a:setPosition(ccp(80,330))
-	g_ddz_spring.f_obj_b:setPosition(ccp(220,310))
+	target.ddz_spring.char_obj:setPosition(ccp(150,320))
+	target.ddz_spring.f_obj_a:setPosition(ccp(80,330))
+	target.ddz_spring.f_obj_b:setPosition(ccp(220,310))
 	
-	g_ddz_spring:setPosition(ccp(240,-90))
-	g_ddz_spring:setVisible(true)
+	target.ddz_spring:setPosition(ccp(240,-90))
+	target.ddz_spring:setVisible(true)
 
 	function destory_me()
 		cclog("DDZSpring.destory_me")
-		g_ddz_spring:setVisible(false)
+		target.ddz_spring:setVisible(false)
 --		target:removeChild(ddz_rocket)
 	end
 	
 	char_action = CCCallFuncN:create(function() 
 		cclog("DDZSpring.char_action")
-		g_ddz_spring.char_obj:runAction(CCScaleTo:create(1.0, 1.0, 1.0))
+		target.ddz_spring.char_obj:runAction(CCScaleTo:create(1.0, 1.0, 1.0))
 	end)
 	f_a_action = CCCallFuncN:create(function() 
 		cclog("DDZSpring.f_a_action")
-		g_ddz_spring.f_obj_a:runAction(CCSequence:createWithTwoActions(CCScaleTo:create(1.0, 1.0, 1.0), 
+		target.ddz_spring.f_obj_a:runAction(CCSequence:createWithTwoActions(CCScaleTo:create(1.0, 1.0, 1.0), 
 		 CCSpawn:createWithTwoActions(CCRotateBy:create( 0.8, 45), CCMoveBy:create(0.8,ccp(-10, 25)))))
 	end)
 	f_b_action = CCCallFuncN:create(function() 
 		cclog("DDZSpring.f_b_action")
-		g_ddz_spring.f_obj_b:runAction(CCSequence:createWithTwoActions(CCScaleTo:create(1.0, 1.0, 1.0), 
+		target.ddz_spring.f_obj_b:runAction(CCSequence:createWithTwoActions(CCScaleTo:create(1.0, 1.0, 1.0), 
 		CCSpawn:createWithTwoActions(CCRotateBy:create( 0.8, 45), CCMoveBy:create(0.5,ccp(10, -25)))))
 	end)
 	local array = CCArray:create()
@@ -435,6 +435,6 @@ function DDZSpring.open(target, z_order)
 	array:addObject(f_b_action)
 	array:addObject(CCDelayTime:create(2.0))
 	array:addObject(CCCallFuncN:create(destory_me))
-	g_ddz_spring:runAction(CCSequence:create(array))
+	target.ddz_spring:runAction(CCSequence:create(array))
 	
 end
