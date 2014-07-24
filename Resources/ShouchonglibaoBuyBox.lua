@@ -40,8 +40,11 @@ function ShouchonglibaoBuyBox:ctor(confirm_func)
 --	end
 	local ccbproxy = CCBProxy:create()
 	local ccbi_res = "ShouchonglibaoBuyBox.ccbi"
-	if getPayType() == "wiipay" then
+	local pay_type = getPayType()
+	if pay_type == "wiipay" then
 		ccbi_res = "ShouchonglibaoBuyBoxWeipai.ccbi"
+	elseif pay_type == "mili" or pay_type == "miliuu" then
+		ccbi_res = "ShouchonglibaoBuyBoxMili.ccbi"
 	end
  	CCBReaderLoad(ccbi_res, ccbproxy, true, "ShouchonglibaoBuyBox")
 	self:addChild(self.rootNode)
