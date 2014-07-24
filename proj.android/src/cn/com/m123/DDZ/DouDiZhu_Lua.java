@@ -26,10 +26,9 @@ package cn.com.m123.DDZ;
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
-import com.umeng.analytics.MobclickAgent;
-
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import cn.cmgame.billing.api.GameInterface;
@@ -137,6 +136,12 @@ public class DouDiZhu_Lua extends Cocos2dxActivity {
 	
 	public static Context getContext(){
 	    return INSTANCE;
+	}
+	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		DouDiZhuApplicaion.debugLog("onConfigurationChanged");
+		super.onConfigurationChanged(newConfig);
 	}
 
 }
