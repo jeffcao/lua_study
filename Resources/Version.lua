@@ -1,4 +1,4 @@
-resource_version = "2.1.0"
+resource_version = "2.1.1"
 
 print("resource_version is ", resource_version)
 
