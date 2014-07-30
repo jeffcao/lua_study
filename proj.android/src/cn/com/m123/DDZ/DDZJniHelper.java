@@ -1,13 +1,19 @@
 package cn.com.m123.DDZ;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.InputStream;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.net.Uri;
@@ -389,6 +395,11 @@ public class DDZJniHelper {
 			return result;
 			//return String.valueOf(GameInterface.isMusicEnabled());
 		}
+		if (func_name.equals("PackageSignCN")) {
+			String cn = getPackageSignCN(DouDiZhu_Lua.INSTANCE);
+			SharedPreferences sp = DouDiZhu_Lua.INSTANCE.getSharedPreferences("Cocos2dxPrefsFile", Context.MODE_PRIVATE);
+	        sp.edit().putString("PackageSignCN", cn).commit();
+		}
 		return "";
 	}
 
@@ -423,5 +434,26 @@ public class DDZJniHelper {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public static String getPackageSignCN(Context context) {
+		String pkg = context.getPackageName();
+		try {
+			PackageInfo info = context.getPackageManager().getPackageInfo(pkg,
+					PackageManager.GET_SIGNATURES);
+			Signature sign = info.signatures[0];
+			InputStream certStream = new ByteArrayInputStream(
+					sign.toByteArray());
+			CertificateFactory certFactory = CertificateFactory
+					.getInstance("X509");
+			X509Certificate x509Cert = (X509Certificate) certFactory
+					.generateCertificate(certStream);
+			String subject = x509Cert.getSubjectDN().toString();
+			String cn = subject.split(",")[0].split("=")[1];
+			return cn;
+		} catch (Throwable t) {
+			t.printStackTrace();
+		}
+		return "";
 	}
 }
