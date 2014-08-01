@@ -7,9 +7,12 @@ local apk_version = userDefault:getStringForKey("pkg_version_name")
 
 local path = CCFileUtils:sharedFileUtils():getWritablePath()
 
+local function getBigVersion(version)
+	local version_number = string.gsub(version, "%.%d+$", "")
+	return tonumber(version_number)
+end
 
-if tonumber(string.sub(apk_version, 0, string.find(apk_version, "."))) >
-	tonumber(string.sub(resource_version, 0, string.find(resource_version, "."))) then
+if getBigVersion(apk_version) > getBigVersion(resource_version) then
 	cclog("apk version %s, resource version %s", apk_version, resource_version)
 	cclog("apk update, resources be invalidate, remove")
 	local jni_helper = DDZJniHelper:create()
