@@ -53,8 +53,12 @@ function DialogPlugin.bind(theClass)
 --		dump(self.bg, "DialogPlugin.on_touch, self.bg=> ")
 --		dump(cccn(self.bg, x,y), "DialogPlugin.on_touch, cccn(self.bg, x,y)=> ")
 --		dump(self.dialogplugin_out_dismiss, "DialogPlugin.on_touch, self.dialogplugin_out_dismiss=> ")
-		if self.bg and (not cccn(self.bg, x,y)) and self.dialogplugin_out_dismiss then
-			self:removeFromParentAndCleanup(true)
+		if self.bg and (not cccn(self.bg, x,y)) then
+			if self.dialogplugin_on_out_fn then
+				self.dialogplugin_on_out_fn()
+			elseif self.dialogplugin_out_dismiss then
+				self:removeFromParentAndCleanup(true)
+			end
 		end
 		return true 
 	end
@@ -121,6 +125,11 @@ function DialogPlugin.bind(theClass)
 	function theClass:isShowing()
 		if self.dialogplugin_destoryed then return false end
 		return self:isVisible()
+	end
+	
+	--设置点击对话框之外的响应
+	function theClass:setOnOut(fn)
+		self.dialogplugin_on_out_fn = fn
 	end
 	
 	--设置点击返回按钮的响应，默认dismiss对话框

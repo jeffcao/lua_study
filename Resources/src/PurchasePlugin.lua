@@ -236,7 +236,7 @@ end
 
 function PurchasePlugin.show_buy_dialog_cancel(product)
 	local jni_helper = DDZJniHelper:create()
-	local j_data = {point_num="1"}
+	local j_data = {point_num=product.consume_code}
 	
 	local cjson = require("cjson")
 	local status, s = pcall(cjson.encode, j_data)
@@ -269,7 +269,15 @@ function PurchasePlugin.show_buy_shouchonglibao(product, which)
 	end
 	
 	local dialog = createShouchonglibaoBuyBox(buy)
+	local cancelFunc = function()
+		dialog:dismiss()
+		if getPayType() ~= 'letu' then return end
+		PurchasePlugin.show_buy_dialog_cancel(product)
+	end
 	dialog:init(product)
+	dialog:setClickOutDismiss(false)
+	dialog:setOnOut(cancelFunc)
+	dialog:setOnBack(cancelFunc)
 	dialog:attach_to(scene.rootNode)
 	dialog:show()
 	
