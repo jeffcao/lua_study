@@ -69,7 +69,7 @@ end
 --websocket连接上之后，首先去访问服务器需不需要更新apk或者resource
 function LandingScene:do_on_websocket_ready()
 	self:hide_progress_message_box()
-	local event_data = {retry="0"}
+	local event_data = {retry="0", run_env=GlobalSetting.run_env}
 	local device_info = device_info()
 	table.copy_kv(event_data, device_info)
 	local check_update_fail = function()
