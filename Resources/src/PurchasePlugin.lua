@@ -206,6 +206,11 @@ function PurchasePlugin.show_buy_notify(product, which)
 		PurchasePlugin.buy_prop(product.id)
 	end
 	
+	local cancelBuy = function()
+		if pay_type ~= 'letu' then return end
+		PurchasePlugin.show_buy_dialog_cancel(product)
+	end
+	
 	if pay_type == 'cmcc' then
 		if product.is_prompt then
 			local dialog = createAnzhiPurchase(buy)
@@ -217,7 +222,7 @@ function PurchasePlugin.show_buy_notify(product, which)
 			buy()
 		end
 	else
-		local dialog = createAnzhiPurchase(buy)
+		local dialog = createAnzhiPurchase(buy, cancelBuy)
 		print('local dialog = createAnzhiPurchase(buy)')
 		dialog:init(product)
 		print('dialog:init(product)')
@@ -227,6 +232,18 @@ function PurchasePlugin.show_buy_notify(product, which)
 		print('show buy notify dialog')
 		onBuyShow()
 	end
+end
+
+function PurchasePlugin.show_buy_dialog_cancel(product)
+	local jni_helper = DDZJniHelper:create()
+	local j_data = {point_num="1"}
+	
+	local cjson = require("cjson")
+	local status, s = pcall(cjson.encode, j_data)
+	local pay_prefix = 'on_cancel_pay_'..getPayType()..'__'
+	local str = pay_prefix .. s
+	print('cancel pay:', str)
+	jni_helper:messageJava(str)
 end
 
 function PurchasePlugin.show_buy_shouchonglibao(product, which)

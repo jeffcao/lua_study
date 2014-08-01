@@ -71,4 +71,10 @@ public class MiliPayments implements PaymentInterface {
 			return false;
 		}
 	}
+
+	@Override
+	public void cancelPay(String params) {
+		// TODO Auto-generated method stub
+		
+	}
 }

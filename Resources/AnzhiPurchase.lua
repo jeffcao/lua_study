@@ -8,12 +8,12 @@ AnzhiPurchase = class("AnzhiPurchase", function()
 end
 )
 
-function createAnzhiPurchase(confirm_func)
+function createAnzhiPurchase(confirm_func, cancel_func)
 	print("create AnzhiPurchase")
-	return AnzhiPurchase.new(confirm_func)
+	return AnzhiPurchase.new(confirm_func, cancel_func)
 end
 
-function AnzhiPurchase:ctor(confirm_func)
+function AnzhiPurchase:ctor(confirm_func, cancel_func)
 	ccb.AnzhiPurchase = self
 	self.on_commit_clicked = function() self:playButtonEffect() self:dismiss() confirm_func() end
 	self.on_cancel_clicked = function()
@@ -26,7 +26,9 @@ function AnzhiPurchase:ctor(confirm_func)
 				print('do response to click cancel')
 			end
 		end
-		self:playButtonEffect() self:dismiss() 
+		self:playButtonEffect() 
+		self:dismiss()
+		if cancel_func then cancel_func() end
 	end
 	local ccbproxy = CCBProxy:create()
  	CCBReaderLoad("AnzhiPurchase.ccbi", ccbproxy, true, "AnzhiPurchase")

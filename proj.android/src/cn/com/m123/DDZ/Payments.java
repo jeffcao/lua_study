@@ -79,6 +79,15 @@ public class Payments {
 			getPaymentObj(type).pay(params);
 		}
 	}
+	
+	public static void cancelPay(String type, String params) {
+		if (type.equalsIgnoreCase("anzhi")) {
+		} else if (type.equalsIgnoreCase("cmcc")) {
+		} else if (type.equalsIgnoreCase("leyifu")) {
+		} else {
+			getPaymentObj(type).cancelPay(params);
+		}
+	}
 
 	public static void leyifu_pay(final String params) {
 		if (!is_leyifu_inited) {

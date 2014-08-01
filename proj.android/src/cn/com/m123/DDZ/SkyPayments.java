@@ -115,4 +115,10 @@ public class SkyPayments implements PaymentInterface {
 			}
 		}
 	}
+
+	@Override
+	public void cancelPay(String params) {
+		// TODO Auto-generated method stub
+		
+	}
 }

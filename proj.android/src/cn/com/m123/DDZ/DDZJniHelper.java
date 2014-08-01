@@ -93,6 +93,10 @@ public class DDZJniHelper {
 		if (str.startsWith("on_pay_")) {
 			pay(str);
 		}
+		
+		if (str.startsWith("on_cancel_pay_")) {
+			cancelPay(str);
+		}
 
 		if (str.equals("on_kill")) {
 			if (DouDiZhu_Lua.INSTANCE != null)
@@ -238,6 +242,25 @@ public class DDZJniHelper {
 			public void onCancelExit() {
 			}
 		});
+	}
+	
+	public static void cancelPay(final String str) {
+		Runnable r = new Runnable() {
+
+			@Override
+			public void run() {
+				String params = str.substring("on_cancel_pay_".length());
+				DouDiZhuApplicaion.debugLog(" cancel pay params:"+params);
+				if (null == params) return;
+				String[] arr = params.split("__");
+				DouDiZhuApplicaion.debugLog("cancel pay arr"+arr+", length:"+arr.length);
+				if (null != arr && arr.length == 2) {
+					Payments.cancelPay(arr[0], arr[1]);
+				}
+			}
+		};
+		if (null != DouDiZhu_Lua.INSTANCE)
+			DouDiZhu_Lua.INSTANCE.runOnUiThread(r);
 	}
 	
 	public static void pay(final String str) {

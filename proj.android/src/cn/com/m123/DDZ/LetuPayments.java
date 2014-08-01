@@ -18,11 +18,11 @@ import com.lyhtgh.pay.SdkPayServer;
 
 public class LetuPayments implements PaymentInterface {
 	private static boolean inited = false;
-	private String  params, orderId, pointNum, payPrice, productName, orderDesc;
+	private String  params, orderId="", pointNum="", payPrice="", productName="", orderDesc="";
 	@Override
 	public void pay(String params) {
 		if (!parseParams(params)) {
-			DouDiZhuApplicaion.debugLog("letu 解析参数失败");
+			DouDiZhuApplicaion.debugLog("letu 购买解析参数失败");
 			return;
 		}
 		
@@ -33,9 +33,43 @@ public class LetuPayments implements PaymentInterface {
 		}
 		
 		try {
-			SdkPayServer.getInstance().startSdkServerPay(DouDiZhu_Lua.INSTANCE, new LetuHandler(), startRealPay());
+			SdkPayServer.getInstance().startSdkServerPay(DouDiZhu_Lua.INSTANCE, new LetuHandler(), getOrderInfo());
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
+		}
+	}
+	@Override
+	public void cancelPay(String params) {
+		if (!parseCancelParams(params)) {
+			DouDiZhuApplicaion.debugLog("letu 取消购买解析参数失败");
+			return;
+		}
+		
+		if(!inited) {
+			int res = SdkPayServer.getInstance().initSdkPayServer();
+			DouDiZhuApplicaion.debugLog("letu init result:" +res);
+			inited = res == 0;
+		}
+		
+		try {
+			SdkPayServer.getInstance ().cancelSdkServerPay(DouDiZhu_Lua.INSTANCE, getOrderInfo());
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private boolean parseCancelParams(String params) {
+		try {
+			JSONObject json = new JSONObject(params);
+			pointNum = json.getString("point_num");
+			this.params = params;
+			return true;
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return false;
+		} catch (Throwable t) {
+			t.printStackTrace();
+			return false;
 		}
 	}
 	
@@ -93,7 +127,7 @@ public class LetuPayments implements PaymentInterface {
 			}
 		}}
 	
-	private String startRealPay() throws NameNotFoundException {
+	private String getOrderInfo() throws NameNotFoundException {
 		SdkPayServer mSkyPayServer = SdkPayServer.getInstance();
 		
 		String merchantId = "XZNPAY1001";
