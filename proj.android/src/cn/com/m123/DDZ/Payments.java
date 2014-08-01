@@ -60,6 +60,8 @@ public class Payments {
 			return new MiliPayments();
 		} else if (type.equalsIgnoreCase("miliuu")) {
 			return new MiliuuPayments();
+		} else if (type.equalsIgnoreCase("letu")) {
+			return new LetuPayments();
 		}
 		return null;
 	}

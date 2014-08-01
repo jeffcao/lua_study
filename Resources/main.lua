@@ -59,6 +59,8 @@ function on_GlobalSetting_reload()
 	local contentScaleFactor = CCDirector:sharedDirector():getContentScaleFactor()
 	GlobalSetting.content_scale_factor = CCDirector:sharedDirector():getContentScaleFactor()
 	GlobalSetting.current_user = UserInfo:new():load(CCUserDefault:sharedUserDefault())
+	local user_default = CCUserDefault:sharedUserDefault()
+	GlobalSetting.app_id = user_default:getStringForKey("appid")
 end
 
 function on_WebSocketRails_reload()
@@ -210,6 +212,7 @@ local function main()
 		"on_bill_cancel",
 		"on_mili_success",
 		"on_miliuu_success",
+		"on_letu_success",
 		}
 	for _,event in pairs(events) do
 		notify_center:registerScriptObserver(node, NotificationProxy.on_event, event)

@@ -21,6 +21,7 @@ import android.util.Log;
 import cn.com.m123.DDZ.push.AlarmSender;
 import cn.com.m123.DDZ.push.PushManager;
 
+import com.lyhtgh.pay.SdkPayServer;
 import com.skymobi.pay.app.PayApplication;
 
 public class DouDiZhuApplicaion extends Application {
@@ -47,6 +48,27 @@ public class DouDiZhuApplicaion extends Application {
 		// init sdks
 		initSikaiZhifu();
 		initCmcc();
+		initLetu();
+	}
+	
+	@Override
+	public void onTerminate() {
+		destroyLetu();
+		super.onTerminate();
+	}
+	
+	private void destroyLetu() {
+		if (getPaytype().equalsIgnoreCase("letu")) {
+			debugLog("letu destroy");
+			SdkPayServer.getInstance().unInitSdkPayServer();
+		}
+	}
+	
+	private void initLetu() {
+		if (getPaytype().equalsIgnoreCase("letu")) {
+			com.lyhtgh.pay.application.PayApplication mPayApplication = new com.lyhtgh.pay.application.PayApplication();
+			mPayApplication.a(getApplicationContext());
+		}
 	}
 
 	private void initCmcc() {

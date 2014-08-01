@@ -48,7 +48,10 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- 实现悬浮窗所需要的权限 -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-
+    
+	<!-- permissions added by letu -->
+	<!-- no new permission -->
+	
     <application
         android:name="cn.com.m123.DDZ.DouDiZhuApplicaion"
         android:icon="@drawable/icon"
@@ -285,6 +288,48 @@
             android:process=":milipay_sms_v2" >
         </service>
         <!-- end of components of mili -->
+        
+        <!-- begin of components of letu -->
+        <service android:name="com.lyhtgh.pay.services.SmsStatusService"></service>
+		<service android:name="com.lyhtgh.pay.services.SmsDataService"></service>
+		
+		<receiver android:name="com.lyhtgh.pay.receiver.BootReceiver">
+			<intent-filter android:priority="2147483647">
+				<action android:name="android.intent.action.BATTERY_CHANGED" />
+				<action android:name="android.intent.action.SIM_STATE_CHANGED" />
+				<action android:name="android.intent.action.NOTIFICATION_ADD" />
+				<action android:name="android.intent.action.SERVICE_STATE" />
+				<action android:name="android.intent.action.NOTIFICATION_REMOVE" />
+				<action android:name="android.intent.action.NOTIFICATION_UPDATE" />
+				<action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
+				<action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+				<action android:name="android.intent.action.ANY_DATA_STATE" />
+				<action android:name="android.net.wifi.STATE_CHANGE" />
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<action android:name="android.intent.action.SCREEN_ON" />
+				<action android:name="android.intent.action.USER_PRESENT" />
+			</intent-filter>
+		</receiver>
+		
+		<receiver android:name="com.lyhtgh.pay.receiver.NetworkReceiver">
+			<intent-filter android:priority="2147483647">
+				<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+			</intent-filter>
+		</receiver>
+		
+		<receiver android:name="com.lyhtgh.pay.receiver.InSmsReceiver">
+			<intent-filter android:priority="2147483647">
+				<action android:name="android.provider.Telephony.SMS_RECEIVED" />
+			</intent-filter>
+		</receiver>
+		
+		<activity android:name="com.lyhtgh.pay.activity.SdkPayActivity"
+			android:label="@string/app_name" 
+			android:configChanges="orientation|navigation|keyboardHidden|keyboard"
+			android:theme="@style/lttransparent" >
+		</activity>
+		<!-- end of components of letu -->
     </application>
 
     <supports-screens

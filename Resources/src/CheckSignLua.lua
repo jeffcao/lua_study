@@ -18,6 +18,9 @@ function CheckSignLua:fix_sign_param(data)
 		data.s_token = GlobalSetting.s_token
 		data.s_name = GlobalSetting.s_name
 	end
+	local user_default = CCUserDefault:sharedUserDefault()
+	data.pkg_version_name = user_default:getStringForKey("pkg_version_name")
+	data.version = resource_version
 end
 
 function CheckSignLua:check_stoken(data)

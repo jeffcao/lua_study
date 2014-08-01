@@ -79,7 +79,7 @@ function set_bg(scene)
 		res = 'ccbResources/ui_wenzi.plist'
 		name = 'wenzi_fuxingdoudizhu.png'
 		setbg()
-	elseif pay_type == 'sikai' or pay_type == 'mili' or pay_type == 'miliuu' then
+	elseif pay_type == 'sikai' or pay_type == 'mili' or pay_type == 'miliuu' or pay_type == 'letu' then
 		res = 'ccbResources/ui_wenzi.plist'
 		name = 'wenzi_quanmingdoudizhu.png'
 		setbg()

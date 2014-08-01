@@ -86,32 +86,60 @@ function PurchasePlugin.suggest_buy(type, title)
 	PurchasePlugin.show_buy_notify(product)
 end
 
+function PurchasePlugin.on_letu_success()
+	local pay_type = getPayType()
+	local user_default = CCUserDefault:sharedUserDefault()
+	local params = user_default:getStringForKey("on_"..pay_type.."_success")
+	print("on_"..pay_type.."_success", params)
+	user_default:setStringForKey("on_"..pay_type.."_success", "")
+	if is_blank(params) then return end
+	
+	local cjson = require 'cjson'
+	params = cjson.decode(params)
+	
+	local md5 = MD5:create()
+	md5:update(params.trade_id..params.key..'success')
+	local token = md5:to_char_array()
+	cclog('trade_id:%s, prop_id:%s, pay_id:%s, key:%s, token:%s', 
+		params.trade_id, params.prop_id, params.pay_id, params.key, token)
+	local event_name = PurchasePlugin.get_event_start() .. 'letu_request'
+	PurchasePlugin.get_buy_socket():trigger(event_name,{
+		payment=pay_type,
+		cpparam=params.trade_id,
+		status="success",
+		token=token
+		},
+		function(data) dump(data, event_name .. ' success') end,
+		function(data) dump(data, event_name .. ' fail') end
+	)
+end
+
 function PurchasePlugin.on_mili_success()
 	local pay_type = getPayType()
-		local user_default = CCUserDefault:sharedUserDefault()
-		local params = user_default:getStringForKey("on_"..pay_type.."_success")
-		print("on_"..pay_type.."_success", params)
-		user_default:setStringForKey("on_"..pay_type.."_success", "")
-		if is_blank(params) then return end
-		
-		local cjson = require 'cjson'
-		params = cjson.decode(params)
-		
-		local md5 = MD5:create()
-		md5:update(params.trade_id..params.key..'success')
-		local token = md5:to_char_array()
-		cclog('trade_id:%s, prop_id:%s, pay_id:%s, key:%s, token:%s', 
-			params.trade_id, params.prop_id, params.pay_id, params.key, token)
-		local event_name = PurchasePlugin.get_event_start() .. 'mili_request'
-		PurchasePlugin.get_buy_socket():trigger(event_name,{
-			payment=pay_type,
-			cpparam=params.trade_id,
-			status="success",
-			token=token
-			},
-			function(data) dump(data, event_name .. ' success') end,
-			function(data) dump(data, event_name .. ' fail') end
-		)
+	local user_default = CCUserDefault:sharedUserDefault()
+	local params = user_default:getStringForKey("on_"..pay_type.."_success")
+	print("on_"..pay_type.."_success", params)
+	user_default:setStringForKey("on_"..pay_type.."_success", "")
+	if is_blank(params) then return end
+	
+	local cjson = require 'cjson'
+	params = cjson.decode(params)
+	
+	local md5 = MD5:create()
+	md5:update(params.trade_id..params.key..'success')
+	local token = md5:to_char_array()
+	cclog('trade_id:%s, prop_id:%s, pay_id:%s, key:%s, token:%s', 
+		params.trade_id, params.prop_id, params.pay_id, params.key, token)
+	local event_name = PurchasePlugin.get_event_start() .. 'mili_request'
+	PurchasePlugin.get_buy_socket():trigger(event_name,{
+		payment=pay_type,
+		cpparam=params.trade_id,
+		status="success",
+		token=token
+		},
+		function(data) dump(data, event_name .. ' success') end,
+		function(data) dump(data, event_name .. ' fail') end
+	)
 end
 
 function PurchasePlugin.on_miliuu_success()
@@ -178,17 +206,7 @@ function PurchasePlugin.show_buy_notify(product, which)
 		PurchasePlugin.buy_prop(product.id)
 	end
 	
-	if pay_type == 'anzhi' or pay_type == 'leyifu' or pay_type == 'sikai' or pay_type == 'wiipay' or pay_type == 'mili' or pay_type == 'miliuu' then
-		local dialog = createAnzhiPurchase(buy)
-		print('local dialog = createAnzhiPurchase(buy)')
-		dialog:init(product)
-		print('dialog:init(product)')
-		dialog:attach_to(scene.rootNode)
-		print('dialog:attach_to(scene.rootNode)')
-		dialog:show()
-		print('show buy notify dialog')
-		onBuyShow()
-	elseif pay_type == 'cmcc' then
+	if pay_type == 'cmcc' then
 		if product.is_prompt then
 			local dialog = createAnzhiPurchase(buy)
 			dialog:init(product)
@@ -198,6 +216,16 @@ function PurchasePlugin.show_buy_notify(product, which)
 		else
 			buy()
 		end
+	else
+		local dialog = createAnzhiPurchase(buy)
+		print('local dialog = createAnzhiPurchase(buy)')
+		dialog:init(product)
+		print('dialog:init(product)')
+		dialog:attach_to(scene.rootNode)
+		print('dialog:attach_to(scene.rootNode)')
+		dialog:show()
+		print('show buy notify dialog')
+		onBuyShow()
 	end
 end
 
@@ -308,6 +336,27 @@ function PurchasePlugin.do_confirm_buy(data)
 	
 	local commodity = data.prop_id or data.orderInfo.prop_id
 	AppStats.event(UM_PURCHASE_CONFIRM,{paytype=payType, commodity=commodity})
+end
+
+function PurchasePlugin.letu_pay(data)
+	local jni_helper = DDZJniHelper:create()
+	local scene = runningscene()
+	dump(scene.cur_product,'scene.cur_product')
+	
+	local j_data = {name=data.orderInfo.name,
+					point_num=data.orderInfo.pointNum, 
+					price=data.orderInfo.price, 
+					trade_id=data.orderInfo.orderId, 
+					prop_id=data.orderInfo.prop_id,
+					desc=data.orderInfo.desc,
+					key=data.orderInfo.key}
+	
+	local cjson = require("cjson")
+	local status, s = pcall(cjson.encode, j_data)
+	local pay_prefix = 'on_pay_'..getPayType()..'__'
+	local str = pay_prefix .. s
+	print('pay:', str)
+	jni_helper:messageJava(str)
 end
 
 function PurchasePlugin.miliuu_pay(data)
