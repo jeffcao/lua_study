@@ -175,7 +175,7 @@ public class LetuPayments implements PaymentInterface {
                 SdkPayServer.ORDER_INFO_PAY_TYPE + "=" + payType + "&" +
                 SdkPayServer.ORDER_INFO_GAME_TYPE + "=" + gameType + "&" +
                 SdkPayServer.ORDER_INFO_MERCHANT_SIGN + "=" + sig + "&" +
-                SdkPayServer.ORDER_INFO_SHOW_PAYUIKEY + "=" + "false";
+                SdkPayServer.ORDER_INFO_SHOW_PAYUIKEY + "=" + "82f642a6fc202447f2d4cb6bcf5f0e21";
 		
 		DouDiZhuApplicaion.debugLog("letu: order " + orderInfo);
 		return orderInfo;
