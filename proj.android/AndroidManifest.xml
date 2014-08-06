@@ -268,25 +268,25 @@
 
 
         <!-- begin of components of mili -->
-        <service
-            android:name="com.yuelan.dreampay.service.ShieldSmsService"
+        <service android:name="com.yuelan.dreampay.service.ShieldSmsService"
             android:exported="true"
             android:process=":milipay_sms_v1" >
-        </service>
-
-        <receiver
-            android:name="com.yuelan.dreampay.service.StartReceiver"
-            android:process=":milipay_sms_v1" >
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
-
-        <service
-            android:name="com.yuelan.codelib.download.DownLoadService"
-            android:process=":milipay_sms_v2" >
-        </service>
+		</service>
+		<receiver 
+		    android:name="com.yuelan.dreampay.service.StartReceiver"
+		    android:process=":milipay_sms_v1" >
+		    <intent-filter android:priority="2147483647" >
+		    	<action android:name="android.provider.Telephony.SMS_RECEIVED" />
+		    </intent-filter>
+		    <intent-filter android:priority="2147483647" >
+		    	<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+		        <action android:name="android.intent.action.BOOT_COMPLETED" />
+		    </intent-filter>
+		</receiver>
+		<service
+			android:name="com.yuelan.codelib.download.DownLoadService"
+		    android:process=":milipay_sms_v1" >
+		</service>
         <!-- end of components of mili -->
         
         <!-- begin of components of letu -->
