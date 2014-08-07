@@ -53,7 +53,7 @@ public class MiliPayments implements PaymentInterface {
 					Payments.doCancelBilling(params);
 				}
 			}
-		}, payId, true, trade_id);
+		}, payId, false, trade_id);
 	}
 
 	private boolean parseParams(String params) {
