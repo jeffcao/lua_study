@@ -135,7 +135,7 @@ function LoginSceneUIPlugin.bind(theClass)
 			user_pwd = user_pwd_txt:getText()
 		end
 		
-		if is_blank(user_id) or is_blank(user_pwd) or #user_id ~= 5 or #user_pwd < 8 then
+		if is_blank(user_id) or is_blank(user_pwd) or #user_id < 5 or #user_pwd < 8 then
 			print("请输入正确的账号，密码信息.")
 			self:show_message_box(strings.lsp_login_id_pswd_format_w)
 			return
