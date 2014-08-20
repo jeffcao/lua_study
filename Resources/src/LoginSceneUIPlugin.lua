@@ -8,7 +8,7 @@ function LoginSceneUIPlugin.bind(theClass)
 		self.input_png = "touming.png"
 		local account_box = self:addEditbox(self.register_account_layer, 145, 35, false, 101)
 		account_box:setFontColor(display.COLOR_WHITE)
-		account_box:setMaxLength(5)
+		account_box:setMaxLength(10)
 		local pwd_box = self:addEditbox(self.forget_password_layer, 165, 35, true, 102)
 		pwd_box:setMaxLength(30)
 		pwd_box:setFontColor(display.COLOR_WHITE)
