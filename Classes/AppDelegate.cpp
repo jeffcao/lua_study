@@ -5,7 +5,7 @@
 #include "CCLuaEngine.h"
 #include "SimpleAudioEngine.h"
 //#include "lua++.h"
-#include "WebsocketManager_lua.h"
+//#include "WebsocketManager_lua.h"
 #include "Downloader_lua.h"
 #include "md5_lua.h"
 #include "CheckSign_lua.h"
@@ -18,7 +18,7 @@
 #include <algorithm>
 #include <vector>
 //#include "CCEditBoxBridge_lua.h"
-#include "DialogLayerConvertor_lua.h"
+//#include "DialogLayerConvertor_lua.h"
 #include "DDZJniHelper_lua.h"
 #include "tolua/luaopen_LuaProxy.h"
 extern "C" {
@@ -209,16 +209,16 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     //tolua_WebsocketManager_open(pLuaState);
     tolua_DDZJniHelper_open(pLuaState);
-    tolua_DialogLayerConvertor_open(pLuaState);
+    //tolua_DialogLayerConvertor_open(pLuaState);
     tolua_Downloader_open(pLuaState);
     tolua_md5_open(pLuaState);
     tolua_MobClickCpp_open(pLuaState);
     tolua_MobClickCpp_extend(pLuaState);
     tolua_CheckSign_open(pLuaState);
     tolua_Marquee_open(pLuaState);
-    luaopen_LuaProxy(pLuaState);
-    luaopen_lua_extensions(pLuaState);
-    tolua_extensions_ccb_open(pLuaState);
+    // luaopen_LuaProxy(pLuaState);
+    // luaopen_lua_extensions(pLuaState);
+    // tolua_extensions_ccb_open(pLuaState);
     //luaopen_socket_core(pLuaState);
     //CCFileUtils::sharedFileUtils()->addSearchPath("src");
 
@@ -235,7 +235,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     MobClickCpp::setLogEnabled(debug == "true");
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-    tolua_web_socket_open(pLuaState);
+    //tolua_web_socket_open(pLuaState);
 #endif
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)

@@ -18,7 +18,7 @@ function LabelButtonTab.bind(theClass)
 		
 --		local cur_x = tab_data.tab_node:getPositionX()
 --		tab_data.tab_node:setPosition(ccp(cur_x, original_y - 10))
-		set_red_stroke(tab_data.tab_node.label)
+		--set_red_stroke(tab_data.tab_node.label)
 		tab_data.tab_node.toggle:setSelectedIndex(1)
 		tab_data.tab_node.menu:setEnabled(false)
 	end
@@ -30,7 +30,7 @@ function LabelButtonTab.bind(theClass)
 --		
 --		local cur_x = tab_data.tab_node:getPositionX()
 --		tab_data.tab_node:setPosition(ccp(cur_x, original_y))
-		set_blue_stroke(tab_data.tab_node.label)
+		--set_blue_stroke(tab_data.tab_node.label)
 		tab_data.tab_node.toggle:setSelectedIndex(0)
 		tab_data.tab_node.menu:setEnabled(true)
 	end

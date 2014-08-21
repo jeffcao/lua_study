@@ -14,35 +14,80 @@ function MarketSceneUPlugin.bind(theClass)
 			return
 		end
 
-		local h = LuaEventHandler:create(function(fn, table, a1, a2)
-			local r
-			if fn == "cellSize" then
-				r = CCSizeMake(800,130)
-			elseif fn == "cellAtIndex" then
-				if not a2 then
-					a2 = CCTableViewCell:create()
-					a3 = createMarketItem()
-					print("[MarketSceneUPlugin.create_product_list] a1 =>"..a1)
-					a3:init_item(product_list[a1+1], __bind(self.show_buy_notify, self))
-					a2:addChild(a3, 0, 1)
-				else
-					local a3 = tolua.cast(a2:getChildByTag(1), "CCLayer")
-					a3:init_item(product_list[a1 + 1],  __bind(self.show_buy_notify, self))
-				end
-				r = a2
-			elseif fn == "numberOfCells" then
-				r = #product_list
-			elseif fn == "cellTouched" then
-			end
-			return r
-		end)
-		local t = LuaTableView:createWithHandler(h, CCSizeMake(800,360))
-		t:setPosition(CCPointMake(0,10))
+		-- local h = LuaEventHandler:create(function(fn, table, a1, a2)
+		-- 	local r
+		-- 	if fn == "cellSize" then
+		-- 		r = CCSizeMake(800,130)
+		-- 	elseif fn == "cellAtIndex" then
+		-- 		if not a2 then
+		-- 			a2 = CCTableViewCell:create()
+		-- 			a3 = createMarketItem()
+		-- 			print("[MarketSceneUPlugin.create_product_list] a1 =>"..a1)
+		-- 			a3:init_item(product_list[a1+1], __bind(self.show_buy_notify, self))
+		-- 			a2:addChild(a3, 0, 1)
+		-- 		else
+		-- 			local a3 = tolua.cast(a2:getChildByTag(1), "CCLayer")
+		-- 			a3:init_item(product_list[a1 + 1],  __bind(self.show_buy_notify, self))
+		-- 		end
+		-- 		r = a2
+		-- 	elseif fn == "numberOfCells" then
+		-- 		r = #product_list
+		-- 	elseif fn == "cellTouched" then
+		-- 	end
+		-- 	return r
+		-- end)
+		-- local t = LuaTableView:createWithHandler(h, CCSizeMake(800,360))
+		-- t:setPosition(CCPointMake(0,10))
 		
-		for index=#(product_list), 1, -1 do
-			t:updateCellAtIndex(index-1)
+		-- for index=#(product_list), 1, -1 do
+		-- 	t:updateCellAtIndex(index-1)
+		-- end
+		
+		local function cellSizeForTable(table,idx)
+    	return 800,60
+		end
+
+		local function numberOfCellsInTableView(table)
+			return #product_list
 		end
 		
+		local function tableCellTouched(table,cell)
+		end
+
+		local function tableCellAtIndex(table, idx)
+	    local strValue = string.format("%d",idx)
+	    local cell = table:dequeueCell()
+	    local label = nil
+	    if nil == cell then
+        cell = CCTableViewCell:new()
+				local a3 = createMarketItem()
+				--a3:setContentSize(CCSizeMake(800,130))
+				print("[MarketSceneUPlugin.create_product_list] idx: " .. idx, a3)
+				a3:init_item(product_list[idx+1], __bind(self.show_buy_notify, self))
+				cell:addChild(a3, 0, 1)
+	    else
+				local a3 = tolua.cast(cell:getChildByTag(1), "CCLayer")
+				a3:init_item(product_list[idx + 1],  __bind(self.show_buy_notify, self))
+			end
+
+	    return cell
+		end
+
+    local tableView = CCTableView:create(CCSizeMake(800,360))
+    local t = tableView
+    tableView:setDirection(kCCScrollViewDirectionVertical)
+    tableView:setDirection(kCCScrollViewDirectionVertical)
+    tableView:setVerticalFillOrder(kCCTableViewFillTopDown)
+    tableView:setPosition(CCPointMake(0,10))
+    tableView:registerScriptHandler(tableCellTouched,CCTableView.kTableCellTouched)
+    tableView:registerScriptHandler(cellSizeForTable,CCTableView.kTableCellSizeForIndex)
+    tableView:registerScriptHandler(tableCellAtIndex,CCTableView.kTableCellSizeAtIndex)
+    tableView:registerScriptHandler(numberOfCellsInTableView,CCTableView.kNumberOfCellsInTableView)
+    tableView:reloadData()
+		-- for index=#(product_list), 1, -1 do
+		-- 	t:updateCellAtIndex(index-1)
+		-- end
+
 		return t
 	end
 	

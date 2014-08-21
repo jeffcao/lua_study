@@ -17,7 +17,7 @@ function DialogInterface.bind(theClass)
 		end
 		--self.convertor:unconvert()
 		dump(self.convertor, 'self.convertor')
-		self.convertor:convert()
+		--self.convertor:convert()
 		
 		print("set visible after convert")
 		if self:getZOrder() < getMaxZOrder(self:getParent()) then
@@ -32,7 +32,7 @@ function DialogInterface.bind(theClass)
 	end
 	
 	function theClass:reconvert()
-		self.convertor:convert()
+		--self.convertor:convert()
 	end
 	
 	function theClass:dismiss(need_remove_self)
@@ -42,7 +42,7 @@ function DialogInterface.bind(theClass)
 		need_remove_self = need_remove_self or false
 		
 		
-		self.convertor:unconvert()
+		--self.convertor:unconvert()
 		self:setVisible(false)
 		local parent = self:getParent()
 		
@@ -70,7 +70,7 @@ function DialogInterface.bind(theClass)
 	
 	function theClass:swallowOnTouch(menus)
 		if self.convertor then self.convertor:unconvert() end
-		self.convertor = DialogLayerConvertor:create(menus)
+		--self.convertor = DialogLayerConvertor:create(menus)
     end
     
     function theClass:swallowOnKeypad()

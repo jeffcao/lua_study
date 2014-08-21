@@ -58,10 +58,22 @@ function LoginScene:ctor()
 	self:init_input_controll()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
-	set_anniu6_stroke(self.login_btn_lbl)
-	set_anniu5_stroke(self.kuaisu_login_btn_lbl)
-	set_anniu_1_3_stroke(self.forget_password_btn_lbl)
-	set_anniu_1_3_stroke(self.register_account_btn_lbl)
+	--set_anniu6_stroke(self.login_btn_lbl)
+	--set_anniu5_stroke(self.kuaisu_login_btn_lbl)
+	--set_anniu_1_3_stroke(self.forget_password_btn_lbl)
+	--set_anniu_1_3_stroke(self.register_account_btn_lbl)
+
+	self.kuaisu_login_btn_lbl:enableStroke(GlobalSetting.anniu5_stroke, 0.2)
+	self.login_btn_lbl:enableStroke(GlobalSetting.anniu6_stroke, 0.2)
+	self.forget_password_btn_lbl:enableStroke(GlobalSetting.anniu_1_3_stroke, 0.2)
+	self.register_account_btn_lbl:enableStroke(GlobalSetting.anniu_1_3_stroke, 0.2)
+	-- local kuaisu_lbl = tolua.cast(self.kuaisu_login_btn_lbl, 'CCLabelTTF')
+	-- if kuaisu_lbl then
+	-- 	--kuaisu_lbl:enableShadow(CCSizeMake(0,0), 127, 3.5)
+	-- 	self.kuaisu_login_btn_lbl:enableStroke(GlobalSetting.anniu5_stroke, 0.5)
+	-- else
+	-- 	print('################## self.kuaisu_login_btn_lbl is not CCLabelTTF')
+	-- end
 	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler( __bind(self.on_keypad_pressed, self) )

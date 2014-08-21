@@ -7,7 +7,7 @@ function VipPlugin.bind(theClass)
  		self.hall_vip_menu:setVisible(is_vip)
  		if not is_vip then return end
  		local fn = function()
- 			local is_vip = (GlobalSetting.vip ~= cjson.null)
+ 			local is_vip = GlobalSetting.vip and (GlobalSetting.vip ~= cjson.null)
  			if not is_vip then return false end
 			local scene = CCDirector:sharedDirector():getRunningScene()
 			local salary_getted = (GlobalSetting.vip.get_salary~=0)

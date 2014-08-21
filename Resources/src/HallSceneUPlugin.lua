@@ -269,9 +269,61 @@ function HallSceneUPlugin.bind(theClass)
 			end
 			return r
 		end)
-		local t = LuaTableView:createWithHandler(h, CCSizeMake(800,260))
-		t:setDirection(kCCScrollViewDirectionHorizontal)
-		t:reloadData()
+
+		local function cellSizeForTable(table,idx)
+    	return 260,260
+		end
+
+		local function numberOfCellsInTableView(table)
+			if data and data.room then
+				return #(data.room)
+			end
+
+			return 0
+		end
+		
+		local function tableCellTouched(table,cell)
+		    --print("cell touched at index: " .. cell:getIdx())
+				print("[HallSceneUPlugin:refresh_room_tabview] room_cell_couched")
+				local a3 = tolua.cast(cell:getChildByTag(1), "CCLayer")
+				dump(a3.room_info, "[HallSceneUPlugin:init_room_tabview] room_cell_couched, room_info: ")
+				self:do_on_room_touched(a3.room_info)
+		end
+
+		local function tableCellAtIndex(table, idx)
+	    local strValue = string.format("%d",idx)
+	    local cell = table:dequeueCell()
+	    local label = nil
+	    if nil == cell then
+        cell = CCTableViewCell:new()
+				local a3 = createRoomItem()
+				print("[HallSceneUPlugin:refresh_room_tabview] idx: " .. idx, a3)
+				a3:init_room_info(data.room[idx + 1], idx + 1)
+				cell:addChild(a3, 0, 1)
+	    else
+				local a3 = tolua.cast(cell:getChildByTag(1), "CCLayer")
+				local room_index = idx + 1
+				a3:init_room_info(data.room[room_index], room_index)
+			end
+
+	    return cell
+		end
+
+		-- local t = CCTableView:createWithHandler(h, CCSizeMake(800,260))
+		-- t:setDirection(kCCScrollViewDirectionHorizontal)
+		-- t:reloadData()
+    local tableView = CCTableView:create(CCSizeMake(800,260))
+    local t = tableView
+    tableView:setDirection(kCCScrollViewDirectionHorizontal)
+    -- tableView:setPosition(CCPointMake(20, winSize.height / 2 - 150))
+    --registerScriptHandler functions must be before the reloadData function
+    tableView:registerScriptHandler(tableCellTouched,CCTableView.kTableCellTouched)
+    tableView:registerScriptHandler(cellSizeForTable,CCTableView.kTableCellSizeForIndex)
+    tableView:registerScriptHandler(tableCellAtIndex,CCTableView.kTableCellSizeAtIndex)
+    tableView:registerScriptHandler(numberOfCellsInTableView,CCTableView.kNumberOfCellsInTableView)
+    tableView:reloadData()
+
+
 		t:setPosition(CCPointMake(0,0))
 		self.middle_layer:addChild(t)
 		self.room_layer_t = t

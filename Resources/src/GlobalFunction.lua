@@ -453,6 +453,8 @@ end
 
 function set_stroke(label, size, color)
 
+	do return end
+
 	local stroke_texture = create_stroke(label, size, color)
 	if not label.stroke_sprite then
 		label.stroke_sprite = CCSprite:createWithTexture(stroke_texture.texture)
