@@ -16,28 +16,31 @@ function RoomItem:ctor()
 	
 	local ccbproxy = CCBProxy:create()
  	ccbproxy:retain()
- 	CCBReaderLoad("RoomItem.ccbi", ccbproxy, true, "root_item")
+ 	CCBuilderReaderLoad("RoomItem.ccbi", ccbproxy, self)
 	self:addChild(self.rootNode)
 
 	local function onTouchRoom(eventType, x, y)
-		print("room item touch:" .. eventType)
+		print("room item touch:" .. eventType , '(', x, ', ', y , ')')
+		local rect = self.rootNode:getBoundingBox()
+		print('[RoomItem..onTouchRoom] rect: ', rect:getMinX(), ', ', rect:getMinY(), ', ', rect:getMaxX() , ', ', rect:getMaxY())
 		if not self.rootNode:boundingBox():containsPoint(self:convertToNodeSpace(ccp(x, y))) then
 			print("not in boundingbox")
 			self.dianji:setVisible(false)
-			return
+			return 
 		end
-        if eventType == "began" then
-        	self.dianji:setVisible(true)
-            return true
-        elseif eventType == "moved" then
-        elseif eventType == "ended" then
-        	self.dianji:setVisible(false)
-        	print("[RoomItem:onTouchRoom] ended")
-        end
-    end
     
-    self.rootNode:setTouchEnabled(true)
-	self.rootNode:registerScriptTouchHandler(onTouchRoom)
+    if eventType == "began" then
+    	self.dianji:setVisible(true)
+      return true
+    elseif eventType == "moved" then
+   	elseif eventType == "ended" then
+    	self.dianji:setVisible(false)
+    	print("[RoomItem:onTouchRoom] ended")
+    end
+  end
+    
+ --  self.rootNode:setTouchEnabled(true)
+	-- self.rootNode:registerScriptTouchHandler(onTouchRoom)
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 end

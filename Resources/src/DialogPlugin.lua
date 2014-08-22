@@ -64,15 +64,15 @@ function DialogPlugin.bind(theClass)
 	end
 	
 	function theClass:on_keypad(key)
-		print("on keypad clicked: ", self:getZOrder())
+		print("on keypad clicked: ", self:getZOrder(), key)
 		if self:getZOrder() < getMaxZOrderVisible(self:getParent()) then print("is not keypad me") return end
-		if key == "backClicked" then
+		if key == "back" then
 			if self.dialogplugin_on_back_fn then 
 				self:dialogplugin_on_back_fn()
 			elseif self.dialogplugin_back_dismiss then
 				Timer.add_timer(0.1, __bind(self.dismiss, self), 'dismiss')
 			end
-		elseif key == "menuClicked" then
+		elseif key == "menu" then
 			if self.dialogplugin_on_menu_fn then
 				self:dialogplugin_on_menu_fn()
 			end

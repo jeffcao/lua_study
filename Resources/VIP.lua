@@ -24,7 +24,8 @@ function VIP:ctor()
 	ccb.VIP = self
 	
 	local ccbproxy = CCBProxy:create()
- 	local node = CCBReaderLoad("VIP.ccbi", ccbproxy, false, "")
+ 	--local node = CCBReaderLoad("VIP.ccbi", ccbproxy, false, "")
+ 	local node = CCBuilderReaderLoad("VIP.ccbi", ccbproxy)
 	
 	local layer = createFullMubanStyleLayer()
 	self:addChild(layer)
@@ -50,7 +51,7 @@ function VIP:ctor()
 	
 	dump(GlobalSetting.vip, "vip is=>")
 	
-	local vip = GlobalSetting.vip
+	local vip = GlobalSetting.vip or {vip_level = 1, percent = 0}
 	
 	--设置VIP进度的图标
 	for index=1,4 do

@@ -10,7 +10,7 @@ function UserCenterSceneUPlugin.bind(theClass)
 	function theClass:onKeypad(key)
 		cclog('onkeypad', key)
 		if hasDialogFloating(self) then print("user center scene there is dialog floating") return end
-		if key == "backClicked" then
+		if key == "back" then
 			self:doToHall()
 		end
 	end

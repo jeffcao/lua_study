@@ -23,10 +23,11 @@ function HallSceneUPlugin.bind(theClass)
 		end
 	end
 
-	function theClass:onKeypad(key)
-		print("hall scene on key pad")
+	function theClass:onKeypad(event)
+		local key = event.key
+		print("hall scene on key pad", key)
 		if hasDialogFloating(self) then print("hall scene there is dialog floating") return end
-		if key == "backClicked" then
+		if key == "back" then
 			local scene = createLoginScene()
 			CCDirector:sharedDirector():replaceScene(scene)
 			self:close_hall_websocket()
@@ -240,35 +241,35 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:refresh_room_tabview(data)
 		dump(data,"[HallSceneUPlugin:refresh_room_tabview]")
 		if not self.room_layer_t then
-		local h = LuaEventHandler:create(function(fn, table, a1, a2)
-			local r
-			if fn == "cellSize" then
-				r = CCSizeMake(260,260)
-			elseif fn == "cellAtIndex" then
-				if not a2 then
-					a2 = CCTableViewCell:create()
-					local a3 = createRoomItem()
-					print("[HallSceneUPlugin:refresh_room_tabview] a1: "..a1)
-					a3:init_room_info(data.room[a1], a1)
-					a2:addChild(a3, 0, 1)
-				else
-					local a3 = tolua.cast(a2:getChildByTag(1), "CCLayer")
-					local room_index = a1 + 1
-					a3:init_room_info(data.room[room_index], room_index)
-				end
-				r = a2
-			elseif fn == "numberOfCells" then
-				if data and data.room then
-					r = #(data.room)
-				end
-			elseif fn == "cellTouched" then
-				print("[HallSceneUPlugin:refresh_room_tabview] room_cell_couched")
-				local a3 = tolua.cast(a1:getChildByTag(1), "CCLayer")
-				dump(a3.room_info, "[HallSceneUPlugin:init_room_tabview] room_cell_couched, room_info: ")
-				self:do_on_room_touched(a3.room_info)
-			end
-			return r
-		end)
+		-- local h = LuaEventHandler:create(function(fn, table, a1, a2)
+		-- 	local r
+		-- 	if fn == "cellSize" then
+		-- 		r = CCSizeMake(260,260)
+		-- 	elseif fn == "cellAtIndex" then
+		-- 		if not a2 then
+		-- 			a2 = CCTableViewCell:create()
+		-- 			local a3 = createRoomItem()
+		-- 			print("[HallSceneUPlugin:refresh_room_tabview] a1: "..a1)
+		-- 			a3:init_room_info(data.room[a1], a1)
+		-- 			a2:addChild(a3, 0, 1)
+		-- 		else
+		-- 			local a3 = tolua.cast(a2:getChildByTag(1), "CCLayer")
+		-- 			local room_index = a1 + 1
+		-- 			a3:init_room_info(data.room[room_index], room_index)
+		-- 		end
+		-- 		r = a2
+		-- 	elseif fn == "numberOfCells" then
+		-- 		if data and data.room then
+		-- 			r = #(data.room)
+		-- 		end
+		-- 	elseif fn == "cellTouched" then
+		-- 		print("[HallSceneUPlugin:refresh_room_tabview] room_cell_couched")
+		-- 		local a3 = tolua.cast(a1:getChildByTag(1), "CCLayer")
+		-- 		dump(a3.room_info, "[HallSceneUPlugin:init_room_tabview] room_cell_couched, room_info: ")
+		-- 		self:do_on_room_touched(a3.room_info)
+		-- 	end
+		-- 	return r
+		-- end)
 
 		local function cellSizeForTable(table,idx)
     	return 260,260

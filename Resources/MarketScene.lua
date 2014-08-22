@@ -37,7 +37,7 @@ function MarketScene:ctor(inactive_market_scene_fn)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
 	local keypad_fn = function(key)
-		if key == "backClicked" then
+		if key == "back" then
 			if hasDialogFloating(self) then print "market scene there is dialog floating" return end
 			CCDirector:sharedDirector():popScene()
 		end

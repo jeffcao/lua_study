@@ -120,7 +120,7 @@ function SetDialog:ctor()
 			print("set dialog on key pad")
 			return true
 		end
-		if key == "backClicked" then
+		if key == "back" then
 			print("set dialog on key pad")
 			if self:isShowing()  then
 				self:dismiss()

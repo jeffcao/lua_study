@@ -48,7 +48,7 @@ function GDataPlugin.bind(theClass)
         self.rootNode:setKeypadEnabled(true)
         local key_fn = function(event)
         	print(event)
-        	if event == "backClicked" then
+        	if event == "back" then
         		self:onReturnClicked()
         	end
         end

@@ -3,6 +3,7 @@
 
 #include "CCApplication.h"
 #include <string>
+#include "ProjectConfig/SimulatorConfig.h"
 //#include "Downloader.h"
 
 /**
@@ -38,6 +39,11 @@ public:
     void setSearchPath();
 
     void StringReplace(std::string &strBase, std::string strSrc, std::string strDes);
+
+    void setProjectConfig(const ProjectConfig& config);
+
+private:
+    ProjectConfig m_projectConfig;
 };
 
 /*class DownloadListener : public DownloaderDelegateProtocol {

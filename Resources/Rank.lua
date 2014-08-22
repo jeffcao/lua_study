@@ -36,7 +36,7 @@ function Rank:ctor(socket, event_prefix)
 --	self.rank_avatar_bg:setScale(0.6)
 	
 	self:setOnKeypad(function(key)
-		if key == "backClicked" then
+		if key == "back" then
 			print("Rank on key pad")
 			if self:isShowing()  then
 				self:dismiss()

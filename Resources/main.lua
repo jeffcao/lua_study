@@ -85,7 +85,7 @@ local function main()
     collectgarbage("setstepmul", 5000)
     
     require "framework.init"
-	require "framework.client.init"
+	--require "framework.client.init"
 	
 	local user_default = CCUserDefault:sharedUserDefault()
 	local dbg = user_default:getStringForKey("debug")
@@ -223,7 +223,8 @@ local function main()
 	audio:setEffectsVolume(1)
 	
 	local jni_helper = DDZJniHelper:create()
-	local c_time = tonumber(jni_helper:get("CurrentTime"))
+	--local c_time = tonumber(jni_helper:get("CurrentTime"))
+	local c_time = require('socket.core').gettime() * 1000
 	if c_time < 1000000000000 then
 		c_time = c_time * 10
 	end
@@ -267,7 +268,7 @@ local function main()
 --	layer:setKeypadEnabled(true)
 --	layer:registerScriptKeypadHandler( function(key)
 --			print("on keypad clicked: " .. key)
---			if key == "backClicked" then
+--			if key == "back" then
 --				on_close()
 --			elseif key == "menuClicked" then
 --				print("websocket state => ", WebsocketManager:sharedWebsocketManager():get_websocket_state(login_websocket._conn._websocket_id) )

@@ -28,7 +28,7 @@ function VipPlugin.bind(theClass)
  	end
  	
  	function theClass:scene_on_become_vip()
-		local is_vip = (GlobalSetting.vip ~= cjson.null)
+		local is_vip = (GlobalSetting.vip and GlobalSetting.vip ~= cjson.null)
 		print("scene_on_vip set vip menu visible to " .. tostring(is_vip))
 		self.hall_vip_menu:setVisible(is_vip)
 		self:checkVip()

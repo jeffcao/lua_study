@@ -14,10 +14,20 @@ end
 
 function ChargeRoomInfo:ctor()
 	ccb.charge_room_info = self
+
+	self.on_close_clicked = function()
+		self:dismiss()
+	end
+	self.on_register_clicked = function()
+ 		self:on_join_click()
+ 		Timer.add_timer(0.1, function() self:dismiss() end)
+ 		--self:dismiss()
+	end
 	
 	local ccbproxy = CCBProxy:create()
- 	ccbproxy:retain()
- 	CCBReaderLoad("ChargeRoomInfo.ccbi", ccbproxy, true, "charge_room_info")
+ 	--ccbproxy:retain()
+ 	--CCBReaderLoad("ChargeRoomInfo.ccbi", ccbproxy, true, "charge_room_info")
+ 	CCBuilderReaderLoad("ChargeRoomInfo.ccbi", ccbproxy, self)
 	self:addChild(self.rootNode)
 
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
@@ -34,12 +44,29 @@ function ChargeRoomInfo:ctor()
 	self.close_btn.on_touch_fn = function()
 		self:dismiss()
 	end
+
+	-- self.close_btn:setTouchMode(cc.TOUCH_MODE_ONE_BY_ONE)
+	-- self.close_btn:setTouchEnabled(true)
+	-- self.close_btn:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
+	-- 	dump(event, '[ChargeRoomInfo] self.close_btn touch')
+	-- 		if event.name == 'ended' then
+	-- 			self:dismiss()
+	-- 		end
+	-- 	end)
 	
-	self.register_account_btn.on_touch_fn = function()
- 		self:on_join_click()
- 		Timer.add_timer(0.1, function() self:dismiss() end)
- 		--self:dismiss()
-	end
+	-- self.register_account_btn.on_touch_fn = function()
+ -- 		self:on_join_click()
+ -- 		Timer.add_timer(0.1, function() self:dismiss() end)
+ -- 		--self:dismiss()
+	-- end
+
+	-- self.register_account_btn:setTouchEnabled(true)
+	-- self.register_account_btn:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
+	-- 		if event.name == 'ended' then
+	-- 			self.register_account_btn.on_touch_fn()
+	-- 		end
+	-- 	end)
+
 end
 
 function ChargeRoomInfo:on_join_click()

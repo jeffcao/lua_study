@@ -41,7 +41,7 @@ function IntroduceDialog:ctor()
 	self:swallowOnKeypad()
 
 	self:setOnKeypad(function(key)
-		if key == "backClicked" then
+		if key == "back" then
 			print("introduce dialog on key pad")
 			if self:isShowing()  then
 				self:dismiss()

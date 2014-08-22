@@ -3,12 +3,13 @@ ChargeHallMatchPlugin = {}
 function ChargeHallMatchPlugin.bind(theClass)
 
 	function theClass:listen_match_event()
+		local this = self
 		print('ChargeHallMatchPlugin listen_match_event')
 		self.get_charge_room_from_server_listener = function()
-			self:get_charge_room_from_server('global_match_change')
+			this:get_charge_room_from_server('global_match_change')
 		end
 		self.get_charge_room_from_server_listener_on_join = function()
-			self:get_charge_room_from_server('event_join_success')
+			this:get_charge_room_from_server('event_join_success')
 		end
 		
 		MatchLogic.listen('global_match_change', self.get_charge_room_from_server_listener)

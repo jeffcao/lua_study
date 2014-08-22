@@ -11,6 +11,8 @@ require "src.SoundEffect"
 require "src.UserLocked"
 require 'src.GamePush'
 require 'src.MarqueePlugin'
+require 'CCBReaderLoadX'
+
 LoginScene = class("LoginScene", function()
 	print("creating new loginScene")
 	return display.newScene("LoginScene")
@@ -49,7 +51,7 @@ function LoginScene:ctor()
 	self.on_config_item_clicked = __bind(self.show_set_dialog, self)
 	
 	local ccbproxy = CCBProxy:create()
-	local node = CCBReaderLoad("LoginScene.ccbi", ccbproxy, false, "")
+	local node = CCBuilderReaderLoad("LoginScene.ccbi", ccbproxy)
 	self:addChild(node)
 	
 	self:setMenus()
@@ -76,7 +78,7 @@ function LoginScene:ctor()
 	-- end
 	
 	self.rootNode:setKeypadEnabled(true)
-	self.rootNode:registerScriptKeypadHandler( __bind(self.on_keypad_pressed, self) )
+	self.rootNode:addNodeEventListener(cc.KEYPAD_EVENT, __bind(self.on_keypad_pressed, self) )
 end
 
 function set_bg(scene)
@@ -126,7 +128,7 @@ end
 function LoginScene:onEnter()
 	print("[LoginScene:on_enter()]")
 	--require "sa"
-	self.super.onEnter(self)
+	--self.super.onEnter(self)
 	GamePush.close()
 	self:initMusic()
 	self:playBackgroundMusic()
@@ -167,15 +169,18 @@ end
 function LoginScene:onCleanup()
 	print("[LoginScene:onCleanup()]")
 	NotificationProxy.removeObservers(self.scene_name)
-	self.super.onCleanup(self)
+	--self.super.onCleanup(self)
 end
 
-function LoginScene:on_keypad_pressed(key)
+function LoginScene:on_keypad_pressed(event)
+	--local args = {...}
+	dump(event, '[LoginScene:on_keypad_pressed]')
+	local key = event.key
 	print("on keypad clicked: " .. key)
 	if hasDialogFloating(self) then print("login scene there is dialog floating") return end
-	if key == "backClicked" then
+	if key == "back" then
 		self:do_close()
-	elseif key == "menuClicked" then
+	elseif key == "menu" then
 		--print("websocket state => ", WebsocketManager:sharedWebsocketManager():get_websocket_state(self.websocket._conn._websocket_id) )
 	end 
 end

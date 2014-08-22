@@ -20,15 +20,15 @@
 //#include "CCEditBoxBridge_lua.h"
 //#include "DialogLayerConvertor_lua.h"
 #include "DDZJniHelper_lua.h"
-#include "tolua/luaopen_LuaProxy.h"
-extern "C" {
-#include "cjson/lua_extensions.h"
-#include "luasocket/luasocket.h"
-#include "lua.h"
-}
+// #include "tolua/luaopen_LuaProxy.h"
+// extern "C" {
+// #include "cjson/lua_extensions.h"
+// #include "luasocket/luasocket.h"
+// #include "lua.h"
+// }
 
 #include "CheckSign.h"
-#include "Lua_extensions_CCB.h"
+// #include "Lua_extensions_CCB.h"
 #include "support/CCNotificationCenter.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
@@ -98,6 +98,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     // initialize director
     CCDirector *pDirector = CCDirector::sharedDirector();
     pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
+    pDirector->setProjection(kCCDirectorProjection2D);
 
 
     CCSize screenSize = CCEGLView::sharedOpenGLView()->getFrameSize();
@@ -234,22 +235,71 @@ bool AppDelegate::applicationDidFinishLaunching()
     MobClickCpp::updateOnlineConfig();
     MobClickCpp::setLogEnabled(debug == "true");
 
+    auto pStack = pEngine->getLuaStack();
+
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
     //tolua_web_socket_open(pLuaState);
 #endif
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    CCString* pstrFileContent = CCString::createWithContentsOfFile("main.lua");
-    if (pstrFileContent)
-    {
-        pEngine->executeString(pstrFileContent->getCString());
-    }
-    //pEngine->executeString("require 'main'");
+// #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+//     CCString* pstrFileContent = CCString::createWithContentsOfFile("main.lua");
+//     if (pstrFileContent)
+//     {
+//         pEngine->executeString(pstrFileContent->getCString());
+//     }
+//     //pEngine->executeString("require 'main'");
+// #else
+//     std::string path = CCFileUtils::sharedFileUtils()->fullPathForFilename("main.lua");
+//     pEngine->addSearchPath(path.substr(0, path.find_last_of("/")).c_str());
+//     pEngine->executeScriptFile(path.c_str());
+// #endif
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    // load framework
+    pStack->loadChunksFromZIP("framework_precompiled.zip");
+
+    // set script path
+    string path = CCFileUtils::sharedFileUtils()->fullPathForFilename("main.lua");
 #else
-    std::string path = CCFileUtils::sharedFileUtils()->fullPathForFilename("main.lua");
-    pEngine->addSearchPath(path.substr(0, path.find_last_of("/")).c_str());
-    pEngine->executeScriptFile(path.c_str());
+    // load framework
+    if (m_projectConfig.isLoadPrecompiledFramework())
+    {
+        const string precompiledFrameworkPath = SimulatorConfig::sharedDefaults()->getPrecompiledFrameworkPath();
+        pStack->loadChunksFromZIP(precompiledFrameworkPath.c_str());
+    }
+
+    // set script path
+    string path = CCFileUtils::sharedFileUtils()->fullPathForFilename(m_projectConfig.getScriptFileRealPath().c_str());
 #endif
+
+    size_t pos;
+    while ((pos = path.find_first_of("\\")) != std::string::npos)
+    {
+        path.replace(pos, 1, "/");
+    }
+    size_t p = path.find_last_of("/\\");
+    if (p != path.npos)
+    {
+        const string dir = path.substr(0, p);
+        pStack->addSearchPath(dir.c_str());
+
+        p = dir.find_last_of("/\\");
+        if (p != dir.npos)
+        {
+            pStack->addSearchPath(dir.substr(0, p).c_str());
+        }
+    }
+
+    string env = "__LUA_STARTUP_FILE__=\"";
+    env.append(path);
+    env.append("\"");
+    pEngine->executeString(env.c_str());
+
+    CCLOG("------------------------------------------------");
+    CCLOG("LOAD LUA FILE: %s", path.c_str());
+    CCLOG("------------------------------------------------");
+    pEngine->executeScriptFile(path.c_str());
+
 
     return true;
 }
@@ -257,6 +307,8 @@ bool AppDelegate::applicationDidFinishLaunching()
 //添加缓存目录为加载目录
 void AppDelegate::setSearchPath()
 {
+    //CCFileUtils::sharedFileUtils()->addSearchPath("cui");
+    CCFileUtils::sharedFileUtils()->addSearchPath("cui/");
 	vector<string> searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
     vector<string>::iterator iter = searchPaths.begin();
     std::string file_path = CCFileUtils::sharedFileUtils()->getWritablePath() + "resources";
@@ -302,6 +354,7 @@ void AppDelegate::applicationDidEnterBackground()
 	CCLOG("AppDelegate::applicationDidEnterBackground");
     CCDirector::sharedDirector()->stopAnimation();
     CCNotificationCenter::sharedNotificationCenter()->postNotification("on_pause");
+    CCNotificationCenter::sharedNotificationCenter()->postNotification("APP_ENTER_BACKGROUND_EVENT");
     // if you use SimpleAudioEngine, it must be pause
     _bg_music_playing = SimpleAudioEngine::sharedEngine()->isBackgroundMusicPlaying();
     if (_bg_music_playing)
@@ -316,6 +369,7 @@ void AppDelegate::applicationWillEnterForeground()
 	CCLOG("AppDelegate::applicationWillEnterForeground");
     CCDirector::sharedDirector()->startAnimation();
     CCNotificationCenter::sharedNotificationCenter()->postNotification("on_resume");
+    CCNotificationCenter::sharedNotificationCenter()->postNotification("APP_ENTER_FOREGROUND_EVENT");
     // if you use SimpleAudioEngine, it must resume here
     if (_bg_music_playing)
         SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();

@@ -44,7 +44,7 @@ function MarketSceneUPlugin.bind(theClass)
 		-- end
 		
 		local function cellSizeForTable(table,idx)
-    	return 800,60
+    	return 140, 140
 		end
 
 		local function numberOfCellsInTableView(table)
@@ -64,6 +64,7 @@ function MarketSceneUPlugin.bind(theClass)
 				--a3:setContentSize(CCSizeMake(800,130))
 				print("[MarketSceneUPlugin.create_product_list] idx: " .. idx, a3)
 				a3:init_item(product_list[idx+1], __bind(self.show_buy_notify, self))
+				--local layer = CCLayerColor:create(ccc4(255, 255 * (idx % 2), 0, 255), 800, 130)
 				cell:addChild(a3, 0, 1)
 	    else
 				local a3 = tolua.cast(cell:getChildByTag(1), "CCLayer")
@@ -74,11 +75,10 @@ function MarketSceneUPlugin.bind(theClass)
 		end
 
     local tableView = CCTableView:create(CCSizeMake(800,360))
-    local t = tableView
     tableView:setDirection(kCCScrollViewDirectionVertical)
-    tableView:setDirection(kCCScrollViewDirectionVertical)
-    tableView:setVerticalFillOrder(kCCTableViewFillTopDown)
     tableView:setPosition(CCPointMake(0,10))
+    tableView:setVerticalFillOrder(kCCTableViewFillBottomUp)
+
     tableView:registerScriptHandler(tableCellTouched,CCTableView.kTableCellTouched)
     tableView:registerScriptHandler(cellSizeForTable,CCTableView.kTableCellSizeForIndex)
     tableView:registerScriptHandler(tableCellAtIndex,CCTableView.kTableCellSizeAtIndex)
@@ -88,7 +88,7 @@ function MarketSceneUPlugin.bind(theClass)
 		-- 	t:updateCellAtIndex(index-1)
 		-- end
 
-		return t
+		return tableView
 	end
 	
 	function theClass:show_buy_notify(product)

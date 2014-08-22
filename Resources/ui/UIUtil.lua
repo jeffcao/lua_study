@@ -1,5 +1,8 @@
 UIUtil = {}
 
+GL_LINEAR = 0x2601
+GL_REPEAT = 0x2901
+
 function UIUtil.getRepeatSprite(width, height, file)
 	file = file or "ccbResources/beijingpintu.png"
 	local rect = CCRectMake(0,0,width,height)

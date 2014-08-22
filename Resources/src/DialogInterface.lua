@@ -76,7 +76,7 @@ function DialogInterface.bind(theClass)
     function theClass:swallowOnKeypad()
     	self.swallow_keypad = true
     	self:setOnKeypad(function(key)
-			if key == "backClicked" then
+			if key == "back" then
 				print("dialog on key pad")
 				if self:isShowing()  then
 					self:dismiss(true)

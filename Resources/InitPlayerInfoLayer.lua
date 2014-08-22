@@ -82,7 +82,7 @@ function InitPlayerInfoLayer:init_input_controller()
 	self:swallowOnKeypad()
 
 	self:setOnKeypad(function(key)
-		if key == "backClicked" then
+		if key == "back" then
 			if self:isShowing()  then
 				self:dismiss()
 				self.init_player_info_callback(false)

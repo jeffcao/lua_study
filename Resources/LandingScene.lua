@@ -7,7 +7,7 @@ require "CCBReaderLoad"
 require "src.Stats"
 require 'src.SceneEventPlugin'
 
-LandingScene = class("LandingScene", function()
+LandingScene = quick_class("LandingScene", function()
 	print("creating new landingScene")
 	return display.newScene("LandingScene")
 end)
@@ -32,7 +32,7 @@ function LandingScene:ctor()
 	bg_color:setColor(ccc3(0, 83, 121))
 	
 	self.rootNode:setKeypadEnabled(true)
-	self.rootNode:registerScriptKeypadHandler( __bind(self.on_keypad_pressed, self) )
+	self.rootNode:addNodeEventListener(cc.KEYPAD_EVENT, __bind(self.on_keypad_pressed, self) )
 	
 	--[[
 	on_WebSocketRails_reload = function()
@@ -58,7 +58,7 @@ end
 	
 function LandingScene:onEnter()
 	print("[LandingScene:on_enter()]")
-	self.super.onEnter(self)
+	--self.super.onEnter(self)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	self:show_progress_message_box(strings.ls_connect_server_ing)
 	self:setup_websocket()
@@ -272,12 +272,13 @@ function LandingScene:onCleanup()
 	end
 end
 
-function LandingScene:on_keypad_pressed(key)
+function LandingScene:on_keypad_pressed(event)
+	local key = event.key
 	print("on keypad clicked: " .. key)
 	if hasDialogFloating(self) then print("landing scene there is dialog floating") return end
-	if key == "backClicked" then
+	if key == "back" then
 		self:do_close()
-	elseif key == "menuClicked" then
+	elseif key == "menu" then
 		--print("websocket state => ", WebsocketManager:sharedWebsocketManager():get_websocket_state(self.websocket._conn._websocket_id) )
 	end 
 end

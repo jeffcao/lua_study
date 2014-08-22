@@ -25,7 +25,7 @@ function GuifanEndScene:ctor()
 	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler(function(key)
-		if key == "backClicked" then
+		if key == "back" then
 			CCDirector:sharedDirector():popScene()
 		end
 	end)

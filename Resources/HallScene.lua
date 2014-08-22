@@ -22,6 +22,7 @@ require 'src.HallMatchPlugin'
 require 'src.MatchLogic'
 require 'src.KickOut'
 require 'src.PurchasePlugin'
+require 'CCBReaderLoadX'
 
 
 require 'hall.HallPluginBinder'
@@ -56,7 +57,7 @@ HallScene = class("HallScene", function()
 	self.on_shouchonglibao_clicked = __bind(self.on_shouchong_click, self)
 	
 	local ccbproxy = CCBProxy:create()
- 	local node = CCBReaderLoad("HallScene.ccbi", ccbproxy, false, "")
+ 	local node = CCBuilderReaderLoad("HallScene.ccbi", ccbproxy)
  	self.rootNode = node
 	self:addChild(node)
 	
@@ -66,7 +67,7 @@ HallScene = class("HallScene", function()
 	self.avatar_bg:setScale(GlobalSetting.content_scale_factor * 0.55)
 	
 	self.rootNode:setKeypadEnabled(true)
-	self.rootNode:registerScriptKeypadHandler(__bind(self.onKeypad, self))
+	self.rootNode:addNodeEventListener(cc.KEYPAD_EVENT, __bind(self.onKeypad, self))
 	
 
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
@@ -124,7 +125,7 @@ HallScene = class("HallScene", function()
  function HallScene:onEnter() 
 	print("HallScene:onEnter()")
 	GlobalSetting.player_game_position = 2
-	self.super.onEnter(self)
+	--self.super.onEnter(self)
 	GamePush.open()
 	
 	self:updateTimeTask()

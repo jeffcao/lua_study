@@ -36,10 +36,15 @@ end
 function ChargeRoomHall:ctor()
 	print('ChargeRoomHall:ctor()')
 	ccb.charge_room_hall = self
+
+  self.on_close_clicked = function()
+    self:dismiss()
+  end
 	
 	local ccbproxy = CCBProxy:create()
- 	ccbproxy:retain()
- 	CCBReaderLoad("ChargeRoomHall.ccbi", ccbproxy, true, "charge_room_hall")
+ 	--ccbproxy:retain()
+  --CCBReaderLoad("ChargeRoomHall.ccbi", ccbproxy, true, "charge_room_hall")
+ 	CCBuilderReaderLoad("ChargeRoomHall.ccbi", ccbproxy, self)
 	self:addChild(self.rootNode)
 
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
@@ -53,11 +58,11 @@ function ChargeRoomHall:ctor()
 	self:setBackDismiss(false)
 	self:attach_to(CCDirector:sharedDirector():getRunningScene().rootNode)
 	
-	self.close_btn.on_touch_fn = function()
-		self:dismiss()
-	end
+	-- self.close_btn.on_touch_fn = function()
+	-- 	self:dismiss()
+	-- end
 	
-	self:registerNodeEvent()
+	self:setNodeEventEnabled(true)
 	self:onEnter()--because can't receive 'enter' event, so call it manually
 end
 
@@ -82,7 +87,7 @@ end
 
 function ChargeRoomHall:onEnter()
 	print("ChargeRoomHall:onEnter()")
-	self.super.onEnter(self)
+	--self.super.onEnter(self)
 	
 	--if time is near 24:00, set a timer to get charge room from server on 24:00:02
 	local seconds_left = get_seconds_left_today()
