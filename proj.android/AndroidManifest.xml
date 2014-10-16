@@ -20,33 +20,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
-    <!-- permissions added by leyifu -->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="android.permission.WRITE_SMS" />
-    <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
-<!--     <uses-permission android:name="android.permission.BROADCAST_SMS" />
- -->    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-
-    <!-- permissions added by sikai -->
-    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!-- <uses-permission android:name="android.permission.UPDATE_DEVICE_STATS" />
-    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS" />
-     --><uses-permission android:name="android.permission.RUN_INSTRUMENTATION" />
-<!--     <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
- -->    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
- <!--    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
- -->
-    <!-- permissions added by weipai -->
-    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
-
-    <!-- permissions added by mili -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- 实现悬浮窗所需要的权限 -->
+        <!-- 实现悬浮窗所需要的权限 -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     
 	<!-- permissions added by letu -->

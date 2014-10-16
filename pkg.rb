@@ -113,4 +113,4 @@ def copy_targeted_resources(configs)
 		copy_file(file)
 	end
 end
-copy_targeted_resources(configs)
+# copy_targeted_resources(configs)
