@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.Set;
 
+
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -21,8 +22,6 @@ import android.util.Log;
 import cn.com.m123.DDZ.push.AlarmSender;
 import cn.com.m123.DDZ.push.PushManager;
 
-import com.lyhtgh.pay.SdkPayServer;
-import com.skymobi.pay.app.PayApplication;
 
 public class DouDiZhuApplicaion extends Application {
 	public static Context APP_CONTEXT;
@@ -60,14 +59,14 @@ public class DouDiZhuApplicaion extends Application {
 	private void destroyLetu() {
 		if (getPaytype().equalsIgnoreCase("letu")) {
 			debugLog("letu destroy");
-			SdkPayServer.getInstance().unInitSdkPayServer();
+			//SdkPayServer.getInstance().unInitSdkPayServer();
 		}
 	}
 	
 	private void initLetu() {
 		if (getPaytype().equalsIgnoreCase("letu")) {
-			com.lyhtgh.pay.application.PayApplication mPayApplication = new com.lyhtgh.pay.application.PayApplication();
-			mPayApplication.a(getApplicationContext());
+			//com.lyhtgh.pay.application.PayApplication mPayApplication = new com.lyhtgh.pay.application.PayApplication();
+			//mPayApplication.a(getApplicationContext());
 		}
 	}
 
@@ -78,14 +77,14 @@ public class DouDiZhuApplicaion extends Application {
 	}
 
 	private void initSikaiZhifu() {
-		if (getPaytype().equalsIgnoreCase("sikai")) {
-			new PayApplication().applicationOnCreat(getApplicationContext());
-			String zhiyifu_channelid = getFromAssets("ZYF_ChannelID");
-			String pref_name = "Cocos2dxPrefsFile";
-			SharedPreferences sp = getSharedPreferences(pref_name,
-					Context.MODE_PRIVATE);
-			sp.edit().putString("zhiyifu_channel_id", zhiyifu_channelid).commit();
-		}
+//		if (getPaytype().equalsIgnoreCase("sikai")) {
+//			new PayApplication().applicationOnCreat(getApplicationContext());
+//			String zhiyifu_channelid = getFromAssets("ZYF_ChannelID");
+//			String pref_name = "Cocos2dxPrefsFile";
+//			SharedPreferences sp = getSharedPreferences(pref_name,
+//					Context.MODE_PRIVATE);
+//			sp.edit().putString("zhiyifu_channel_id", zhiyifu_channelid).commit();
+//		}
 	}
 
 	public static void debugLog(String str) {
@@ -214,7 +213,7 @@ public class DouDiZhuApplicaion extends Application {
 
 	public String getPaytype() {
 		String raw_result = getByRaw(R.raw.paytype);
-		return raw_result != null ? raw_result : "cmcc";
+		return raw_result != null ? raw_result : "basic";
 	}
 	public String get_umeng_app_key() {
 		String raw_result = getByRaw(R.raw.umeng_app_key);

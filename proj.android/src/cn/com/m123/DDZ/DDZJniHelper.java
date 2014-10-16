@@ -11,10 +11,10 @@ import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
-import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Environment;
@@ -22,12 +22,6 @@ import android.telephony.SmsManager;
 import android.util.Log;
 import cn.com.m123.DDZ.push.PushManager;
 import cn.com.m123.DDZ.push.PushTask;
-import android.widget.Toast;
-import cn.cmgame.billing.api.BillingResult;
-import cn.cmgame.billing.api.GameInterface;
-import cn.cmgame.billing.api.GameInterface.GameExitCallback;
-import cn.cmgame.billing.api.GameInterface.IPayCallback;
-import cn.cmgame.billing.api.LoginResult;
 
 public class DDZJniHelper {
 
@@ -47,7 +41,7 @@ public class DDZJniHelper {
 	public static void onCppMessage(String str) {
 		// System.out.println("onCppMessage: " + str);
 		if (str.equals("on_set_network_intent")) {
-			SysIntentSender.goNetworkSetting(DouDiZhuApplicaion.APP_CONTEXT);
+//			SysIntentSender.goNetworkSetting(DouDiZhuApplicaion.APP_CONTEXT);
 		}
 		if (str.startsWith("set_music_volume_")) {
 			// System.out.println("set_music_volume is: " + str);
@@ -77,7 +71,7 @@ public class DDZJniHelper {
 		}
 		if (str.startsWith("on_install_")) {
 			String path = str.substring("on_install_".length());
-			SysIntentSender.install(DouDiZhuApplicaion.APP_CONTEXT, path);
+//			SysIntentSender.install(DouDiZhuApplicaion.APP_CONTEXT, path);
 		}
 
 		if (str.startsWith("on_delete_file_")) {
@@ -102,147 +96,147 @@ public class DDZJniHelper {
 			if (DouDiZhu_Lua.INSTANCE != null)
 				DouDiZhu_Lua.INSTANCE.finish();
 		}
-		if (str.equals("do_exit_cmcc")) {
-			if (null != DouDiZhu_Lua.INSTANCE) {
-				exit();
-			}
-		}
-		if (str.equals("do_cmcc_more_game")) {
-			do_cmcc_more_game();
-		}
-		if (str.startsWith("do_billing_")) {
-			//System.out.println("do_billing_\n"+str);
-			String mstr = str.substring("do_billing_".length());
-			String params[] = mstr.split("_");
-			dobilling(params[0], params[1], params[2], params[3]);
-		}
-		if (str.startsWith("retry_billing_")) {
-			//System.out.println("do_billing_\n"+str);
-			if (null == DouDiZhu_Lua.INSTANCE) return;
-			String mstr = str.substring("retry_billing_".length());
-			final String params[] = mstr.split("_");
-			Runnable r = new Runnable() {
-				
-				@Override
-				public void run() {
-					retrybilling(params[0], params[1], params[2], params[3]);
-				}
-			};
-			DouDiZhu_Lua.INSTANCE.runOnUiThread(r);
-		}
-		if (str.startsWith("do_cmcc_login_")) {
-			String mstr = str.substring("do_cmcc_login_".length());
-			String[] params = mstr.split("_");
-			do_cmcc_login(params[0], params[1]);
-		}
+//		if (str.equals("do_exit_cmcc")) {
+//			if (null != DouDiZhu_Lua.INSTANCE) {
+//				exit();
+//			}
+//		}
+//		if (str.equals("do_cmcc_more_game")) {
+//			do_cmcc_more_game();
+//		}
+//		if (str.startsWith("do_billing_")) {
+//			//System.out.println("do_billing_\n"+str);
+//			String mstr = str.substring("do_billing_".length());
+//			String params[] = mstr.split("_");
+//			dobilling(params[0], params[1], params[2], params[3]);
+//		}
+//		if (str.startsWith("retry_billing_")) {
+//			//System.out.println("do_billing_\n"+str);
+//			if (null == DouDiZhu_Lua.INSTANCE) return;
+//			String mstr = str.substring("retry_billing_".length());
+//			final String params[] = mstr.split("_");
+//			Runnable r = new Runnable() {
+//				
+//				@Override
+//				public void run() {
+//					retrybilling(params[0], params[1], params[2], params[3]);
+//				}
+//			};
+//			DouDiZhu_Lua.INSTANCE.runOnUiThread(r);
+//		}
+//		if (str.startsWith("do_cmcc_login_")) {
+//			String mstr = str.substring("do_cmcc_login_".length());
+//			String[] params = mstr.split("_");
+//			do_cmcc_login(params[0], params[1]);
+//		}
 	}
 	
-	public static void do_cmcc_more_game() {
-		if (null == DouDiZhu_Lua.INSTANCE) return;
-		DouDiZhuApplicaion.debugLog("cmcc more game view");
-		GameInterface.viewMoreGames(DouDiZhu_Lua.INSTANCE);
-	}
+//	public static void do_cmcc_more_game() {
+//		if (null == DouDiZhu_Lua.INSTANCE) return;
+//		DouDiZhuApplicaion.debugLog("cmcc more game view");
+//		GameInterface.viewMoreGames(DouDiZhu_Lua.INSTANCE);
+//	}
+//	
+//	public static void do_cmcc_login(String cpparam, String tel_number) {
+//		if (null == DouDiZhu_Lua.INSTANCE) return;
+//		DouDiZhuApplicaion.debugLog("cmcc 设置透传参数：" + cpparam);
+//		GameInterface.setExtraArguments(new String[]{cpparam});
+//	}
+//	
+//	public static void retrybilling(String billingIndex, String cpparam, final String trade_id, final String prop_id) {
+//		String dump = String.format("cmcc retry billing billingIndex:%s\ncpparam:%s\ntrade_id:%s\nprop_id:%s", new Object[]{billingIndex, cpparam,trade_id,prop_id});
+//		DouDiZhuApplicaion.debugLog(dump);
+//		GameInterface.retryBilling(DouDiZhu_Lua.getContext(), true, true, billingIndex, cpparam, new IPayCallback() {
+//			
+//			@Override
+//			public void onResult(int resultCode, String billingIndex, Object obj) {
+//				 String result = "";
+//			        switch (resultCode) {
+//			          case BillingResult.SUCCESS:
+//			            result = "购买道具成功！";
+//			            break;
+//			          case BillingResult.FAILED:
+//			            result = "购买道具失败！";
+//			            break;
+//			          default:
+//			            result = "购买道具取消！";
+//			            SharedPreferences sp = DouDiZhu_Lua.INSTANCE.getSharedPreferences("Cocos2dxPrefsFile", Context.MODE_PRIVATE);
+//			            sp.edit().putString("on_bill_cancel", trade_id+"_"+prop_id).commit();
+//			            messageToCpp("on_bill_cancel");
+//			            break;
+//			        }
+//			        DouDiZhuApplicaion.debugLog("cmcc 重试" + result);
+//			}
+//		});
+//	}
+//	
+//	public static void dobilling(String billingIndex, String cpparam, final String trade_id, final String prop_id) {
+//		String dump = String.format("cmcc billingIndex:%s\ncpparam:%s\ntrade_id:%s\nprop_id:%s", new Object[]{billingIndex, cpparam,trade_id,prop_id});
+//		DouDiZhuApplicaion.debugLog(dump);
+//		GameInterface.doBilling(DouDiZhu_Lua.getContext(), true, true, billingIndex, cpparam, new IPayCallback() {
+//			
+//			@Override
+//			public void onResult(int resultCode, String billingIndex, Object obj) {
+//				 String result = "";
+//			        switch (resultCode) {
+//			          case BillingResult.SUCCESS:
+//			            result = "cmcc 购买道具：[" + billingIndex + "] 成功！";
+//			            break;
+//			          case BillingResult.FAILED:
+//			            result = "cmcc 购买道具：[" + billingIndex + "] 失败！";
+//			            break;
+//			          default:
+//			            result = "cmcc 购买道具：[" + billingIndex + "] 取消！";
+//			            break;
+//			        }
+//			        DouDiZhuApplicaion.debugLog(result);
+//			}
+//		});
+//	}
 	
-	public static void do_cmcc_login(String cpparam, String tel_number) {
-		if (null == DouDiZhu_Lua.INSTANCE) return;
-		DouDiZhuApplicaion.debugLog("cmcc 设置透传参数：" + cpparam);
-		GameInterface.setExtraArguments(new String[]{cpparam});
-	}
-	
-	public static void retrybilling(String billingIndex, String cpparam, final String trade_id, final String prop_id) {
-		String dump = String.format("cmcc retry billing billingIndex:%s\ncpparam:%s\ntrade_id:%s\nprop_id:%s", new Object[]{billingIndex, cpparam,trade_id,prop_id});
-		DouDiZhuApplicaion.debugLog(dump);
-		GameInterface.retryBilling(DouDiZhu_Lua.getContext(), true, true, billingIndex, cpparam, new IPayCallback() {
-			
-			@Override
-			public void onResult(int resultCode, String billingIndex, Object obj) {
-				 String result = "";
-			        switch (resultCode) {
-			          case BillingResult.SUCCESS:
-			            result = "购买道具成功！";
-			            break;
-			          case BillingResult.FAILED:
-			            result = "购买道具失败！";
-			            break;
-			          default:
-			            result = "购买道具取消！";
-			            SharedPreferences sp = DouDiZhu_Lua.INSTANCE.getSharedPreferences("Cocos2dxPrefsFile", Context.MODE_PRIVATE);
-			            sp.edit().putString("on_bill_cancel", trade_id+"_"+prop_id).commit();
-			            messageToCpp("on_bill_cancel");
-			            break;
-			        }
-			        DouDiZhuApplicaion.debugLog("cmcc 重试" + result);
-			}
-		});
-	}
-	
-	public static void dobilling(String billingIndex, String cpparam, final String trade_id, final String prop_id) {
-		String dump = String.format("cmcc billingIndex:%s\ncpparam:%s\ntrade_id:%s\nprop_id:%s", new Object[]{billingIndex, cpparam,trade_id,prop_id});
-		DouDiZhuApplicaion.debugLog(dump);
-		GameInterface.doBilling(DouDiZhu_Lua.getContext(), true, true, billingIndex, cpparam, new IPayCallback() {
-			
-			@Override
-			public void onResult(int resultCode, String billingIndex, Object obj) {
-				 String result = "";
-			        switch (resultCode) {
-			          case BillingResult.SUCCESS:
-			            result = "cmcc 购买道具：[" + billingIndex + "] 成功！";
-			            break;
-			          case BillingResult.FAILED:
-			            result = "cmcc 购买道具：[" + billingIndex + "] 失败！";
-			            break;
-			          default:
-			            result = "cmcc 购买道具：[" + billingIndex + "] 取消！";
-			            break;
-			        }
-			        DouDiZhuApplicaion.debugLog(result);
-			}
-		});
-	}
-	
-	public static void exit() {
-		GameInterface.exit(DouDiZhu_Lua.INSTANCE, new GameExitCallback() {
-			
-			@Override
-			public void onConfirmExit() {
-				if (null != DouDiZhu_Lua.INSTANCE) {
-					
-					SharedPreferences sp = DouDiZhu_Lua.INSTANCE.getSharedPreferences("Cocos2dxPrefsFile", Context.MODE_PRIVATE);
-					String begin = sp.getString("begin_time", "-1");
-					long begin_time = Long.parseLong(begin);
-					if (begin_time > 0) {
-						long end_time = System.currentTimeMillis();
-						long duration = end_time - begin_time;
-						System.out.println("duration is " + duration);
-						if (duration > 0) {
-							sp.edit().putString("last_app_duration", String.valueOf(duration)).commit();
-						}
-					}
-				}
-				/*new Thread(new Runnable() {
-					
-					@Override
-					public void run() {
-						try {
-							Thread.sleep(3);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}*/
-						messageCpp("on_exit");
-						if (null != DouDiZhu_Lua.INSTANCE) {
-							DouDiZhu_Lua.INSTANCE.finish();
-							System.out.println("finish game activitfinish game activity");
-						}
-				/*	}
-				}).start();*/
-			}
-			
-			@Override
-			public void onCancelExit() {
-			}
-		});
-	}
+//	public static void exit() {
+//		GameInterface.exit(DouDiZhu_Lua.INSTANCE, new GameExitCallback() {
+//			
+//			@Override
+//			public void onConfirmExit() {
+//				if (null != DouDiZhu_Lua.INSTANCE) {
+//					
+//					SharedPreferences sp = DouDiZhu_Lua.INSTANCE.getSharedPreferences("Cocos2dxPrefsFile", Context.MODE_PRIVATE);
+//					String begin = sp.getString("begin_time", "-1");
+//					long begin_time = Long.parseLong(begin);
+//					if (begin_time > 0) {
+//						long end_time = System.currentTimeMillis();
+//						long duration = end_time - begin_time;
+//						System.out.println("duration is " + duration);
+//						if (duration > 0) {
+//							sp.edit().putString("last_app_duration", String.valueOf(duration)).commit();
+//						}
+//					}
+//				}
+//				/*new Thread(new Runnable() {
+//					
+//					@Override
+//					public void run() {
+//						try {
+//							Thread.sleep(3);
+//						} catch (InterruptedException e) {
+//							// TODO Auto-generated catch block
+//							e.printStackTrace();
+//						}*/
+//						messageCpp("on_exit");
+//						if (null != DouDiZhu_Lua.INSTANCE) {
+//							DouDiZhu_Lua.INSTANCE.finish();
+//							System.out.println("finish game activitfinish game activity");
+//						}
+//				/*	}
+//				}).start();*/
+//			}
+//			
+//			@Override
+//			public void onCancelExit() {
+//			}
+//		});
+//	}
 	
 	public static void cancelPay(final String str) {
 		Runnable r = new Runnable() {
@@ -255,7 +249,7 @@ public class DDZJniHelper {
 				String[] arr = params.split("__");
 				DouDiZhuApplicaion.debugLog("cancel pay arr"+arr+", length:"+arr.length);
 				if (null != arr && arr.length == 2) {
-					Payments.cancelPay(arr[0], arr[1]);
+					//Payments.cancelPay(arr[0], arr[1]);
 				}
 			}
 		};
@@ -274,7 +268,7 @@ public class DDZJniHelper {
 				String[] arr = params.split("__");
 				DouDiZhuApplicaion.debugLog("pay arr"+arr+", length:"+arr.length);
 				if (null != arr && arr.length == 2) {
-					Payments.pay(arr[0], arr[1]);
+					//Payments.pay(arr[0], arr[1]);
 				}
 			}
 		};
@@ -414,8 +408,9 @@ public class DDZJniHelper {
 			return Environment.getExternalStorageDirectory().getAbsolutePath();
 		}
 		if (func_name.equals("MusicEnabled")) {
-			String result = GameInterface.isMusicEnabled ? "1" : "0";
-			return result;
+//			String result = GameInterface.isMusicEnabled ? "1" : "0";
+//			return result;
+			return "1";
 			//return String.valueOf(GameInterface.isMusicEnabled());
 		}
 		if (func_name.equals("PackageSignCN")) {

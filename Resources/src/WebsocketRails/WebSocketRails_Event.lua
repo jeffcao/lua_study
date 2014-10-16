@@ -4,6 +4,24 @@ WebSocketRails = WebSocketRails or {}
 local json = require "cjson"
 --local json = cjson_safe.new
 
+dump_table = dump_table or function(the_table, level, dumped_objects)
+    level = level or 1
+    dumped_objects = dumped_objects or {}
+    for k, v in pairs(the_table) do
+        print( string.rep("  ", level) .. k, v )
+        if type(v) == "table" and dumped_objects[v] == nil then
+            dumped_objects[v] = true
+            dump_table(v, level + 1, dumped_objects)
+        end
+        dumped_objects[v] = true
+    end
+end
+
+
+
+
+
+
 WebSocketRails.Event = {
 
     new = function (self, params, success_callback, failure_callback)
@@ -42,7 +60,9 @@ WebSocketRails.Event = {
         local attr = this_obj.attr
         if attr ~= nil then
             if (attr.id ~= nil) and (attr.id ~= json.null) then
-                this_obj.id = tonumber( attr.id )
+                if tonumber(attr.id) ~= nil then
+                    this_obj.id = tonumber( attr.id )
+                end
                 --print("this_obj.id => ", this_obj.id)
             end
             
@@ -76,6 +96,8 @@ WebSocketRails.Event = {
             end
             
         end
+
+        --dump_table(this_obj, 3) 
 
         return this_obj
     end,
@@ -147,22 +169,6 @@ WebSocketRails.Event = {
         end
     end
 }
-
-dump_table = dump_table or function(the_table, level, dumped_objects)
-    level = level or 1
-    dumped_objects = dumped_objects or {}
-    for k, v in pairs(the_table) do
-        print( string.rep("  ", level) .. k, v )
-        if type(v) == "table" and dumped_objects[v] == nil then
-            dumped_objects[v] = true
-            dump_table(v, level + 1, dumped_objects)
-        end
-        dumped_objects[v] = true
-    end
-end
-
-
-
 
 
 

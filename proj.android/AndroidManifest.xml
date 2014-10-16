@@ -25,8 +25,8 @@
     <uses-permission android:name="android.permission.WRITE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.BROADCAST_SMS" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
+<!--     <uses-permission android:name="android.permission.BROADCAST_SMS" />
+ -->    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
@@ -34,13 +34,13 @@
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.UPDATE_DEVICE_STATS" />
+    <!-- <uses-permission android:name="android.permission.UPDATE_DEVICE_STATS" />
     <uses-permission android:name="android.permission.WRITE_APN_SETTINGS" />
-    <uses-permission android:name="android.permission.RUN_INSTRUMENTATION" />
-    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
-
+     --><uses-permission android:name="android.permission.RUN_INSTRUMENTATION" />
+<!--     <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+ -->    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+ <!--    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+ -->
     <!-- permissions added by weipai -->
     <uses-permission android:name="android.permission.RESTART_PACKAGES" />
 
@@ -61,48 +61,18 @@
             android:value="v20140526.03" />
 
         <!-- weipai meta-data -->
-        <meta-data
-            android:name="WIIPAY_APP_ID"
-            android:value="69c852db2d138c6f5a67dc9bc2b3d4f3" >
-        </meta-data>
-        <meta-data
-            android:name="WIIPAY_CHANNEL_CODE"
-            android:value="200000" >
-        </meta-data>
         <!-- weipai meta-data end -->
 
 
         <!-- mili meta-data -->
-        <meta-data
-            android:name="MILI_PAY_APPID"
-            android:value="21839690" >
-        </meta-data>
-        <meta-data
-            android:name="MILI_PAY_CHANNELID"
-            android:value="defult" >
-        </meta-data>
         <!-- mili meta-data end -->
 
 
         <!-- components of weipai -->
-        <service android:name="com.bx.pay.WpaySmsService" />
-
-        <receiver
-            android:name="com.bx.pay.SmsListener"
-            android:label="Sms listener" >
-            <intent-filter android:priority="10000" >
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
-            </intent-filter>
-        </receiver>
         <!-- 银联Activity -->
         <activity
-            android:name="com.bx.pay.UpActivity"
-            android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
-        </activity>
-        <activity
             android:name="cn.com.m123.DDZ.DouDiZhu_Lua"
-            android:configChanges="orientation|screenSize|layoutDirection"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
@@ -151,184 +121,17 @@
         </service>
 
         <!-- components of leyifu -->
-        <activity
-            android:name="com.astep.pay.TheDialogActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity
-            android:name="com.astep.pay.TheActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize" />
-
-        <service
-            android:name="com.astep.pay.TheService"
-            android:enabled="true" />
-
-        <activity
-            android:name="com.astep.pay.rd.Rd1Activity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@android:style/Theme.Translucent" />
-        <activity
-            android:name="com.umpay.huafubao.ui.BillingActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:excludeFromRecents="true" >
-        </activity>
-        <activity
-            android:name="com.umpay.huafubao.ui.BillingPadActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:excludeFromRecents="true" >
-        </activity>
-
-        <service android:name="com.umpay.huafubao.service.AppUpgradeService" />
         <!-- end of components of leyifu -->
 
 
         <!-- components of sikai -->
-        <service android:name="com.skymobi.pay.sms.service.SmsService" >
-        </service>
-        <service android:name="com.skymobi.pay.sms.service.SynService" >
-        </service>
-        <service android:name="com.skymobi.pay.common.service.PayCtrlService" >
-        </service>
-        <service android:name="com.skymobi.pay.services.SkyPayRemoteService" >
-            <intent-filter>
-                <action android:name="com.skymobi.pay.sdk.ISkyPayRemoteService" >
-                </action>
-            </intent-filter>
-        </service>
-
-        <receiver android:name="com.skymobi.pay.sms.receiver.BootReceiver" >
-            <intent-filter android:priority="2147483647" >
-                <action android:name="android.intent.action.BATTERY_CHANGED" />
-                <action android:name="android.intent.action.SIM_STATE_CHANGED" />
-                <action android:name="android.intent.action.NOTIFICATION_ADD" />
-                <action android:name="android.intent.action.SERVICE_STATE" />
-                <action android:name="android.intent.action.NOTIFICATION_REMOVE" />
-                <action android:name="android.intent.action.NOTIFICATION_UPDATE" />
-                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
-                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
-                <action android:name="android.intent.action.ANY_DATA_STATE" />
-                <action android:name="android.net.wifi.STATE_CHANGE" />
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <action android:name="android.intent.action.SCREEN_ON" />
-                <action android:name="android.intent.action.USER_PRESENT" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name="com.skymobi.pay.sms.receiver.SmsReceiver" >
-            <intent-filter android:priority="2147483647" >
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
-            </intent-filter>
-        </receiver>
-        <receiver android:name="com.skymobi.pay.sms.receiver.NetworkReceiver" >
-            <intent-filter android:priority="2147483647" >
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
-
-        <activity
-            android:name="com.skymobi.pay.sdk.SkyPayActivity"
-            android:configChanges="orientation|navigation|keyboardHidden|keyboard"
-            android:label="@string/app_name_skypay"
-            android:theme="@style/transparent" >
-        </activity>
-        <activity
-            android:name="com.skymobi.pay.third.activity.impl.EnterChargeCenter"
-            android:configChanges="orientation|navigation|keyboardHidden|keyboard"
-            android:label="@string/app_name_skypay"
-            android:theme="@style/transparent"
-            android:windowSoftInputMode="adjustPan" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" >
-                </action>
-
-                <category android:name="android.intent.category.DEFAULT" >
-                </category>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.skymobi.pay.third.activity.impl.QueryChargeResultActivity"
-            android:configChanges="orientation|navigation|keyboardHidden|keyboard"
-            android:label="@string/app_name_skypay"
-            android:screenOrientation="behind"
-            android:theme="@style/transparent" >
-        </activity>
-        <activity
-            android:name="com.skymobi.pay.third.activity.impl.HelpActivity"
-            android:configChanges="orientation|navigation|keyboardHidden|keyboard"
-            android:label="@string/app_name_skypay"
-            android:screenOrientation="behind"
-            android:theme="@style/transparent" >
-        </activity>
-
-        <service android:name="com.skymobi.pay.third.service.CheckResultBackgroundService" >
-        </service>
         <!-- end of components of sikai -->
 
 
         <!-- begin of components of mili -->
-        <service android:name="com.yuelan.dreampay.service.ShieldSmsService"
-            android:exported="true"
-            android:process=":milipay_sms_v1" >
-		</service>
-		<receiver 
-		    android:name="com.yuelan.dreampay.service.StartReceiver"
-		    android:process=":milipay_sms_v1" >
-		    <intent-filter android:priority="2147483647" >
-		    	<action android:name="android.provider.Telephony.SMS_RECEIVED" />
-		    </intent-filter>
-		    <intent-filter android:priority="2147483647" >
-		    	<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-		        <action android:name="android.intent.action.BOOT_COMPLETED" />
-		    </intent-filter>
-		</receiver>
-		<service
-			android:name="com.yuelan.codelib.download.DownLoadService"
-		    android:process=":milipay_sms_v1" >
-		</service>
         <!-- end of components of mili -->
         
         <!-- begin of components of letu -->
-        <service android:name="com.lyhtgh.pay.services.SmsStatusService"></service>
-		<service android:name="com.lyhtgh.pay.services.SmsDataService"></service>
-		
-		<receiver android:name="com.lyhtgh.pay.receiver.BootReceiver">
-			<intent-filter android:priority="2147483647">
-				<action android:name="android.intent.action.BATTERY_CHANGED" />
-				<action android:name="android.intent.action.SIM_STATE_CHANGED" />
-				<action android:name="android.intent.action.NOTIFICATION_ADD" />
-				<action android:name="android.intent.action.SERVICE_STATE" />
-				<action android:name="android.intent.action.NOTIFICATION_REMOVE" />
-				<action android:name="android.intent.action.NOTIFICATION_UPDATE" />
-				<action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
-				<action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
-				<action android:name="android.intent.action.ANY_DATA_STATE" />
-				<action android:name="android.net.wifi.STATE_CHANGE" />
-				<action android:name="android.intent.action.BOOT_COMPLETED" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<action android:name="android.intent.action.SCREEN_ON" />
-				<action android:name="android.intent.action.USER_PRESENT" />
-			</intent-filter>
-		</receiver>
-		
-		<receiver android:name="com.lyhtgh.pay.receiver.NetworkReceiver">
-			<intent-filter android:priority="2147483647">
-				<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-			</intent-filter>
-		</receiver>
-		
-		<receiver android:name="com.lyhtgh.pay.receiver.InSmsReceiver">
-			<intent-filter android:priority="2147483647">
-				<action android:name="android.provider.Telephony.SMS_RECEIVED" />
-			</intent-filter>
-		</receiver>
-		
-		<activity android:name="com.lyhtgh.pay.activity.SdkPayActivity"
-			android:label="@string/app_name" 
-			android:configChanges="orientation|navigation|keyboardHidden|keyboard"
-			android:theme="@style/lttransparent" >
-		</activity>
 		<!-- end of components of letu -->
     </application>
 

@@ -31,8 +31,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import cn.cmgame.billing.api.GameInterface;
-import cn.cmgame.billing.api.LoginResult;
 
 public class DouDiZhu_Lua extends Cocos2dxActivity {
 
@@ -56,31 +54,31 @@ public class DouDiZhu_Lua extends Cocos2dxActivity {
 
 	private void initializeCMCC() {
 		DouDiZhuApplicaion.debugLog("cmcc 初始化");
-		GameInterface.initializeApp(this);
-		GameInterface.setExtraArguments(new String[] { "0000000000000000" });
-		GameInterface.ILoginCallback lsnr = new GameInterface.ILoginCallback() {
-			@Override
-			public void onResult(int i, String s, Object o) {
-				String str = "cmcc Login.Result=" + s;
-				if (i == LoginResult.SUCCESS_IMPLICIT) {
-					str += "\n 隐式登录成功";
-				}
-				if (i == LoginResult.SUCCESS_EXPLICIT) {
-					str += "\n 显式登录成功";
-				}
-				if (i == LoginResult.FAILED_EXPLICIT) {
-					str += "\n 显式登录失败";
-				}
-				if (i == LoginResult.FAILED_IMPLICIT) {
-					str += "\n 隐式登录失败";
-				}
-				if (i == LoginResult.UNKOWN) {
-					str += "\n 用户没有发起登录";
-				}
-				DouDiZhuApplicaion.debugLog(str);
-			}
-		};
-		GameInterface.setLoginListener(this, lsnr);
+//		GameInterface.initializeApp(this);
+//		GameInterface.setExtraArguments(new String[] { "0000000000000000" });
+//		GameInterface.ILoginCallback lsnr = new GameInterface.ILoginCallback() {
+//			@Override
+//			public void onResult(int i, String s, Object o) {
+//				String str = "cmcc Login.Result=" + s;
+//				if (i == LoginResult.SUCCESS_IMPLICIT) {
+//					str += "\n 隐式登录成功";
+//				}
+//				if (i == LoginResult.SUCCESS_EXPLICIT) {
+//					str += "\n 显式登录成功";
+//				}
+//				if (i == LoginResult.FAILED_EXPLICIT) {
+//					str += "\n 显式登录失败";
+//				}
+//				if (i == LoginResult.FAILED_IMPLICIT) {
+//					str += "\n 隐式登录失败";
+//				}
+//				if (i == LoginResult.UNKOWN) {
+//					str += "\n 用户没有发起登录";
+//				}
+//				DouDiZhuApplicaion.debugLog(str);
+//			}
+//		};
+//		GameInterface.setLoginListener(this, lsnr);
 	}
 
 	public Cocos2dxGLSurfaceView onCreateView() {
@@ -120,15 +118,15 @@ public class DouDiZhu_Lua extends Cocos2dxActivity {
 						"是否成功：%s，支付费用：%s，订单号：%s，支付结果：%s，失败原因：%s",
 						(Object[]) args);
 				DouDiZhuApplicaion.debugLog(str);
-				String params = Payments.pollLeyifuCache(user_order_id);
-				if (is_success.contains("true")) {// 支付成功
-					// Toast.makeText(this, error_msg,
-					// Toast.LENGTH_LONG).show();
-				} else { // 支付失败
-					// Toast.makeText(this, "支付失败:" + error_msg,
-					// Toast.LENGTH_LONG).show();
-					Payments.doCancelBilling(params);
-				}
+//				//String params = Payments.pollLeyifuCache(user_order_id);
+//				if (is_success.contains("true")) {// 支付成功
+//					// Toast.makeText(this, error_msg,
+//					// Toast.LENGTH_LONG).show();
+//				} else { // 支付失败
+//					// Toast.makeText(this, "支付失败:" + error_msg,
+//					// Toast.LENGTH_LONG).show();
+//					Payments.doCancelBilling(params);
+//				}
 
 			}
 		}
