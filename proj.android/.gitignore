@@ -8,3 +8,5 @@ libs/
 lint.xml
 *~
 *.DS*
+project.properties
+local.properties
