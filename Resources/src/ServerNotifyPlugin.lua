@@ -83,7 +83,7 @@ function ServerNotifyPlugin.bind(theClass)
 	function theClass:onUserLocked(data)
 		if self.check_locked and type(self.check_locked) == "function" then
 			self:check_locked(data)
-			require "src/WebsocketRails/Timer"
+			require "src.WebsocketRails.Timer"
 			local function to_login()
 				local scene = createLoginScene()
 				if self.on_kill_this_scene then
