@@ -1,7 +1,7 @@
 Push = {}
 
 function Push.bind(theClass)
-	require "src/WebsocketRails/Timer"
+	require "src.WebsocketRails.Timer"
 	
 	--functions use as interface
 	function theClass:start_push()

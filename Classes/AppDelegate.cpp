@@ -256,49 +256,15 @@ bool AppDelegate::applicationDidFinishLaunching()
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     // load framework
-    pStack->loadChunksFromZIP("framework_precompiled.zip");
-
-    // set script path
-    string path = CCFileUtils::sharedFileUtils()->fullPathForFilename("main.lua");
-#else
-    // load framework
-    if (m_projectConfig.isLoadPrecompiledFramework())
-    {
-        const string precompiledFrameworkPath = SimulatorConfig::sharedDefaults()->getPrecompiledFrameworkPath();
-        pStack->loadChunksFromZIP(precompiledFrameworkPath.c_str());
-    }
-
-    // set script path
-    string path = CCFileUtils::sharedFileUtils()->fullPathForFilename(m_projectConfig.getScriptFileRealPath().c_str());
+    pStack->setXXTEAKeyAndSign("hahaleddz", 9, "hahale", 6);
+    pStack->loadChunksFromZIP("zipres/framework_precompiled.zip");
+    
+    pStack->loadChunksFromZIP("zipres/game.zip");
+    
+    // pStack->setXXTEAKeyAndSign("hahaleddz", 9, "hahale", 6);
+    // pStack->loadChunksFromZIP("zipres/cui.zip");
+    pStack->executeString("require 'main'");
 #endif
-
-    size_t pos;
-    while ((pos = path.find_first_of("\\")) != std::string::npos)
-    {
-        path.replace(pos, 1, "/");
-    }
-    size_t p = path.find_last_of("/\\");
-    if (p != path.npos)
-    {
-        const string dir = path.substr(0, p);
-        pStack->addSearchPath(dir.c_str());
-
-        p = dir.find_last_of("/\\");
-        if (p != dir.npos)
-        {
-            pStack->addSearchPath(dir.substr(0, p).c_str());
-        }
-    }
-
-    string env = "__LUA_STARTUP_FILE__=\"";
-    env.append(path);
-    env.append("\"");
-    pEngine->executeString(env.c_str());
-
-    CCLOG("------------------------------------------------");
-    CCLOG("LOAD LUA FILE: %s", path.c_str());
-    CCLOG("------------------------------------------------");
-    pEngine->executeScriptFile(path.c_str());
 
 
     return true;
