@@ -2,6 +2,7 @@
 
 #include "cocos2d.h"
 #include "script_support/CCScriptSupport.h"
+#include "extensions/AssetsManager/AssetsManager.h"
 #include "CCLuaEngine.h"
 #include "SimpleAudioEngine.h"
 //#include "lua++.h"
@@ -255,6 +256,28 @@ bool AppDelegate::applicationDidFinishLaunching()
 // #endif
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    std::string w_able_path = CCFileUtils::sharedFileUtils()->getWritablePath();
+    //First - get asset file data:
+    std::string s_file = "zipres/cui.zip";
+    CCLog("AppDelegate::applicationDidEnterBackground, s_file => %s", s_file.c_str());
+    unsigned long codeBufferSize = 0;
+    unsigned char* zip_data = CCFileUtils::sharedFileUtils()->getFileData(s_file.c_str(), "rb", &codeBufferSize);
+
+    //second - save it:
+    string dest_path = w_able_path + "/cocos2dx-update-temp-package.zip";
+    CCLog("AppDelegate::applicationDidEnterBackground, dest_path => %s", dest_path.c_str());
+    FILE* dest = fopen(dest_path.c_str(), "wb");
+
+    CCLog("AppDelegate::applicationDidEnterBackground, begin write cui.zip");
+
+    fwrite(zip_data, codeBufferSize, 1, dest);
+    fclose(dest);
+
+    CCLog("AppDelegate::applicationDidEnterBackground, end write cui.zip");
+
+    cocos2d::extension::AssetsManager *assetM = new cocos2d::extension::AssetsManager("", "", w_able_path.c_str());
+    assetM->update();
+
     // load framework
     pStack->setXXTEAKeyAndSign("hahaleddz", 9, "hahale", 6);
     pStack->loadChunksFromZIP("zipres/framework_precompiled.zip");
@@ -278,6 +301,7 @@ void AppDelegate::setSearchPath()
 	vector<string> searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
     vector<string>::iterator iter = searchPaths.begin();
     std::string file_path = CCFileUtils::sharedFileUtils()->getWritablePath() + "resources";
+    CCLog("file_path => %s", file_path.c_str());
     searchPaths.insert(iter, file_path);
     CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
 

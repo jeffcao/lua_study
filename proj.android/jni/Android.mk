@@ -25,6 +25,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
 
 					                   
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes \
+                  $(QUICK_COCOS2DX_ROOT)/lib/cocos2d-x \
 					                    
 
 #LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static cocosdenshion_static cocos_extension_static
