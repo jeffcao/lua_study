@@ -259,7 +259,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     pStack->setXXTEAKeyAndSign("hahaleddz", 9, "hahale", 6);
     pStack->loadChunksFromZIP("zipres/framework_precompiled.zip");
     
-    pStack->loadChunksFromZIP("zipres/game.zip");
+    pStack->loadChunksFromZIP("zipres/slogic.dat");
     
     // pStack->setXXTEAKeyAndSign("hahaleddz", 9, "hahale", 6);
     // pStack->loadChunksFromZIP("zipres/cui.zip");

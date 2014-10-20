@@ -83,30 +83,21 @@ if [[ "$is_clean" ]]; then
 fi
 
 # make sure assets is exist
-if [ -d "$APP_ANDROID_ROOT"/assets_bak ]; then
-    rm -rf "$APP_ANDROID_ROOT"/assets_bak
-fi
-mkdir "$APP_ANDROID_ROOT"/assets_bak
-cp -rf "$APP_ANDROID_ROOT"/assets/zipres "$APP_ANDROID_ROOT"/assets_bak/
-cp -rf "$APP_ANDROID_ROOT"/assets/cui "$APP_ANDROID_ROOT"/assets_bak/
-
 if [ -d "$APP_ANDROID_ROOT"/assets ]; then
     rm -rf "$APP_ANDROID_ROOT"/assets
 fi
-
 mkdir "$APP_ANDROID_ROOT"/assets
+mkdir "$APP_ANDROID_ROOT"/assets/zipres
 
-cp -rf "$APP_ANDROID_ROOT"/assets_bak/* "$APP_ANDROID_ROOT"/assets/
-
-rm -rf "$APP_ANDROID_ROOT"/assets_bak
+source "$QUICK_COCOS2DX_ROOT"/bin/compile_scripts.sh -i "$APP_ROOT"/Resources -o "$APP_ANDROID_ROOT"/assets/zipres/slogic.dat -ek hahaleddz -es hahaleddz -q
 
 # copy resources
 s_file="$APP_ROOT"/Resources/ZYF_ChannelID
 cp -rf "$s_file" "$APP_ANDROID_ROOT"/assets/
-# s_file="$APP_ROOT"/Resources/cui
-# cp -rf "$s_file" "$APP_ANDROID_ROOT"/assets/
-s_file="$APP_ROOT"/Resources/OpeningAnimation
+s_file="$APP_ROOT"/Resources/cui
 cp -rf "$s_file" "$APP_ANDROID_ROOT"/assets/
+# s_file="$APP_ROOT"/Resources/OpeningAnimation
+# cp -rf "$s_file" "$APP_ANDROID_ROOT"/assets/
 s_file="$APP_ROOT"/Resources/res
 cp -rf "$s_file" "$APP_ANDROID_ROOT"/assets/
 
