@@ -18,6 +18,17 @@
 #include "MobClickCppExtend_lua.h"
 #include <algorithm>
 #include <vector>
+
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <errno.h>
+#endif
+
+#include "support/zip_support/unzip.h"
+
+#define BUFFER_SIZE    8192
+#define MAX_FILENAME   512
 //#include "CCEditBoxBridge_lua.h"
 //#include "DialogLayerConvertor_lua.h"
 #include "DDZJniHelper_lua.h"
@@ -256,15 +267,25 @@ bool AppDelegate::applicationDidFinishLaunching()
 // #endif
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    std::string w_able_path = CCFileUtils::sharedFileUtils()->getWritablePath();
+    std::string w_able_path = CCFileUtils::sharedFileUtils()->getWritablePath()+"resources";
     //First - get asset file data:
+    createDirectory(w_able_path.c_str());
+    // mode_t processMask = umask(0);
+
+    // int ret = mkdir(w_able_path.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
+    // umask(processMask);
+    // if (ret != 0 && (errno != EEXIST))
+    // {
+    //     CCLog("AppDelegate::applicationDidEnterBackground, create resources failed.");
+    // }
+
     std::string s_file = "zipres/cui.zip";
     CCLog("AppDelegate::applicationDidEnterBackground, s_file => %s", s_file.c_str());
     unsigned long codeBufferSize = 0;
     unsigned char* zip_data = CCFileUtils::sharedFileUtils()->getFileData(s_file.c_str(), "rb", &codeBufferSize);
 
     //second - save it:
-    string dest_path = w_able_path + "/cocos2dx-update-temp-package.zip";
+    string dest_path = w_able_path + "/cui.zip";
     CCLog("AppDelegate::applicationDidEnterBackground, dest_path => %s", dest_path.c_str());
     FILE* dest = fopen(dest_path.c_str(), "wb");
 
@@ -275,8 +296,9 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     CCLog("AppDelegate::applicationDidEnterBackground, end write cui.zip");
 
-    cocos2d::extension::AssetsManager *assetM = new cocos2d::extension::AssetsManager("", "", w_able_path.c_str());
-    assetM->update();
+    // cocos2d::extension::AssetsManager *assetM = new cocos2d::extension::AssetsManager("", "", w_able_path.c_str());
+    // assetM->update();
+    uncompress(w_able_path.c_str(), dest_path.c_str());
 
     // load framework
     pStack->setXXTEAKeyAndSign("hahaleddz", 9, "hahale", 6);
@@ -289,6 +311,151 @@ bool AppDelegate::applicationDidFinishLaunching()
     pStack->executeString("require 'main'");
 #endif
 
+
+    return true;
+}
+bool AppDelegate::uncompress(const char* out_path, const char* out_full_path)
+{
+    // Open the zip file
+    string outpath = out_path;
+    outpath = outpath + "/";
+    CCLog("AppDelegate::uncompress, outpath= %s", outpath.c_str());
+    string outFileName = out_full_path;
+    unzFile zipfile = unzOpen(outFileName.c_str());
+    if (! zipfile)
+    {
+        CCLog("can not open downloaded zip file %s", outFileName.c_str());
+        return false;
+    }
+    
+    // Get info about the zip file
+    unz_global_info global_info;
+    if (unzGetGlobalInfo(zipfile, &global_info) != UNZ_OK)
+    {
+        CCLog("can not read file global info of %s", outFileName.c_str());
+        unzClose(zipfile);
+        return false;
+    }
+    
+    // Buffer to hold data read from the zip file
+    char readBuffer[BUFFER_SIZE];
+    
+    CCLog("start uncompressing");
+    
+    // Loop to extract all files.
+    uLong i;
+    for (i = 0; i < global_info.number_entry; ++i)
+    {
+        // Get info about current file.
+        unz_file_info fileInfo;
+        char fileName[MAX_FILENAME];
+        if (unzGetCurrentFileInfo(zipfile,
+                                  &fileInfo,
+                                  fileName,
+                                  MAX_FILENAME,
+                                  NULL,
+                                  0,
+                                  NULL,
+                                  0) != UNZ_OK)
+        {
+            CCLog("can not read file info");
+            unzClose(zipfile);
+            return false;
+        }
+        
+        string fullPath = outpath + fileName;
+        CCLog("AppDelegate::uncompress, fullPath= %s", fullPath.c_str());
+        // Check if this entry is a directory or a file.
+        const size_t filenameLength = strlen(fileName);
+        if (fileName[filenameLength-1] == '/')
+        {
+            // get all dir
+            string fileNameStr = string(fileName);
+            size_t position = 0;
+            while((position=fileNameStr.find_first_of("/",position))!=string::npos)
+            {
+                string dirPath =outpath + fileNameStr.substr(0, position);
+                CCLog("AppDelegate::uncompress, dirPath= %s", dirPath.c_str());
+            // Entry is a direcotry, so create it.
+            // If the directory exists, it will failed scilently.
+                if (!createDirectory(dirPath.c_str()))
+            {
+                    CCLog("can not create directory %s", dirPath.c_str());
+                    //unzClose(zipfile);
+                    //return false;
+            }
+                position++;
+        }
+        }
+        else
+        {
+            // Entry is a file, so extract it.
+            
+            // Open current file.
+            if (unzOpenCurrentFile(zipfile) != UNZ_OK)
+            {
+                CCLog("can not open file %s", fileName);
+                unzClose(zipfile);
+                return false;
+            }
+            
+            // Create a file to store current file.
+            FILE *out = fopen(fullPath.c_str(), "wb");
+            if (! out)
+            {
+                CCLog("can not open destination file %s", fullPath.c_str());
+                unzCloseCurrentFile(zipfile);
+                unzClose(zipfile);
+                return false;
+            }
+            
+            // Write current file content to destinate file.
+            int error = UNZ_OK;
+            do
+            {
+                error = unzReadCurrentFile(zipfile, readBuffer, BUFFER_SIZE);
+                if (error < 0)
+                {
+                    CCLog("can not read zip file %s, error code is %d", fileName, error);
+                    unzCloseCurrentFile(zipfile);
+                    unzClose(zipfile);
+                    return false;
+                }
+                
+                if (error > 0)
+                {
+                    fwrite(readBuffer, error, 1, out);
+                }
+            } while(error > 0);
+            
+            fclose(out);
+        }
+        
+        unzCloseCurrentFile(zipfile);
+        
+        // Goto next entry listed in the zip file.
+        if ((i+1) < global_info.number_entry)
+        {
+            if (unzGoToNextFile(zipfile) != UNZ_OK)
+            {
+                CCLog("can not read next file");
+                unzClose(zipfile);
+                return false;
+            }
+        }
+    }
+    
+    CCLog("end uncompressing");
+    
+    return true;
+}
+bool AppDelegate::createDirectory(const char *path) {
+    mode_t processMask = umask(0);
+    int ret = mkdir(path, S_IRWXU | S_IRWXG | S_IRWXO);
+    umask(processMask);
+    if (ret != 0 && (errno != EEXIST)) {
+        return false;
+    }
 
     return true;
 }

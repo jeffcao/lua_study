@@ -90,7 +90,8 @@ mkdir "$APP_ANDROID_ROOT"/assets
 mkdir "$APP_ANDROID_ROOT"/assets/zipres
 cp "$APP_ROOT"/framework_precompiled.zip "$APP_ANDROID_ROOT"/assets/zipres/
 source "$QUICK_COCOS2DX_ROOT"/bin/compile_scripts.sh -i "$APP_ROOT"/Resources -o "$APP_ANDROID_ROOT"/assets/zipres/slogic.dat -ek hahaleddz -es hahaleddz -q
-source "$QUICK_COCOS2DX_ROOT"/bin/pack_files.sh -i "$APP_ROOT"/Resources/cui -o "$APP_ANDROID_ROOT"/assets/zipres/cui.zip -m zip -q
+# source "$QUICK_COCOS2DX_ROOT"/bin/pack_files.sh -i "$APP_ROOT"/Resources/cui -o "$APP_ANDROID_ROOT"/assets/zipres/cui.zip -m zip -q
+zip "$APP_ANDROID_ROOT"/assets/zipres/cui.zip "$APP_ROOT"/Resources/cui/* -rqj
 # copy resources
 s_file="$APP_ROOT"/Resources/ZYF_ChannelID
 cp -rf "$s_file" "$APP_ANDROID_ROOT"/assets/
