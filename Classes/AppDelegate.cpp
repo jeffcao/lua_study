@@ -267,7 +267,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 // #endif
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    std::string w_able_path = CCFileUtils::sharedFileUtils()->getWritablePath()+"resources";
+    std::string w_able_path = CCFileUtils::sharedFileUtils()->getWritablePath()+"cui";
     //First - get asset file data:
     createDirectory(w_able_path.c_str());
     // mode_t processMask = umask(0);
@@ -296,9 +296,33 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     CCLog("AppDelegate::applicationDidEnterBackground, end write cui.zip");
 
+    uncompress(w_able_path.c_str(), dest_path.c_str());
+    remove(dest_path.c_str());
+
+    w_able_path = CCFileUtils::sharedFileUtils()->getWritablePath()+"res";
+    //First - get asset file data:
+    createDirectory(w_able_path.c_str());
+    s_file = "zipres/res.zip";
+    CCLog("AppDelegate::applicationDidEnterBackground, s_file => %s", s_file.c_str());
+    codeBufferSize = 0;
+    zip_data = CCFileUtils::sharedFileUtils()->getFileData(s_file.c_str(), "rb", &codeBufferSize);
+
+
+    dest_path = w_able_path + "/res.zip";
+    CCLog("AppDelegate::applicationDidEnterBackground, dest_path => %s", dest_path.c_str());
+    dest = fopen(dest_path.c_str(), "wb");
+
+    CCLog("AppDelegate::applicationDidEnterBackground, begin write res.zip");
+
+    fwrite(zip_data, codeBufferSize, 1, dest);
+    fclose(dest);
+
+    CCLog("AppDelegate::applicationDidEnterBackground, end write res.zip");
+
     // cocos2d::extension::AssetsManager *assetM = new cocos2d::extension::AssetsManager("", "", w_able_path.c_str());
     // assetM->update();
     uncompress(w_able_path.c_str(), dest_path.c_str());
+    remove(dest_path.c_str());
 
     // load framework
     pStack->setXXTEAKeyAndSign("hahaleddz", 9, "hahale", 6);
@@ -379,16 +403,32 @@ bool AppDelegate::uncompress(const char* out_path, const char* out_full_path)
             // Entry is a direcotry, so create it.
             // If the directory exists, it will failed scilently.
                 if (!createDirectory(dirPath.c_str()))
-            {
-                    CCLog("can not create directory %s", dirPath.c_str());
-                    //unzClose(zipfile);
-                    //return false;
-            }
+                {
+                        CCLog("can not create directory %s", dirPath.c_str());
+                        //unzClose(zipfile);
+                        //return false;
+                }
                 position++;
-        }
+            }   
         }
         else
         {
+            string fileNameStr = string(fileName);
+            size_t position = 0;
+            while((position=fileNameStr.find_first_of("/",position))!=string::npos)
+            {
+                string dirPath =outpath + fileNameStr.substr(0, position);
+                CCLog("AppDelegate::uncompress, dirPath= %s", dirPath.c_str());
+            // Entry is a direcotry, so create it.
+            // If the directory exists, it will failed scilently.
+                if (!createDirectory(dirPath.c_str()))
+                {
+                        CCLog("can not create directory %s", dirPath.c_str());
+                        //unzClose(zipfile);
+                        //return false;
+                }
+                position++;
+            } 
             // Entry is a file, so extract it.
             
             // Open current file.
@@ -464,10 +504,24 @@ bool AppDelegate::createDirectory(const char *path) {
 void AppDelegate::setSearchPath()
 {
     //CCFileUtils::sharedFileUtils()->addSearchPath("cui");
-    CCFileUtils::sharedFileUtils()->addSearchPath("cui/");
+    //CCFileUtils::sharedFileUtils()->addSearchPath("cui/");
 	vector<string> searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
     vector<string>::iterator iter = searchPaths.begin();
-    std::string file_path = CCFileUtils::sharedFileUtils()->getWritablePath() + "resources";
+    std::string file_path = CCFileUtils::sharedFileUtils()->getWritablePath() + "resources/";
+    CCLog("file_path => %s", file_path.c_str());
+    searchPaths.insert(iter, file_path);
+    CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
+
+    searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
+    iter = searchPaths.begin();
+    file_path = CCFileUtils::sharedFileUtils()->getWritablePath() + "cui/";
+    CCLog("file_path => %s", file_path.c_str());
+    searchPaths.insert(iter, file_path);
+    CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
+
+    searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
+    iter = searchPaths.begin();
+    file_path = CCFileUtils::sharedFileUtils()->getWritablePath() + "res/";
     CCLog("file_path => %s", file_path.c_str());
     searchPaths.insert(iter, file_path);
     CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);

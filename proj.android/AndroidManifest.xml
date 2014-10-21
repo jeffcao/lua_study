@@ -25,6 +25,7 @@
 	<!-- permissions added by letu -->
 	<!-- no new permission -->
 	
+    
     <application
         android:name="cn.com.m123.DDZ.DouDiZhuApplicaion"
         android:icon="@drawable/icon"
