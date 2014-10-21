@@ -1,4 +1,4 @@
-package cn.com.m123.DDZ;
+package com.ruitong.WZDDZ;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -67,7 +67,7 @@ public class ConfigManager {
 			return;
 		} finally {
 			String pref_name = "Cocos2dxPrefsFile";
-			SharedPreferences sp = DouDiZhuApplicaion.APP_CONTEXT.getSharedPreferences(pref_name, Context.MODE_PRIVATE);
+			SharedPreferences sp = DDZApplicaion.APP_CONTEXT.getSharedPreferences(pref_name, Context.MODE_PRIVATE);
 			sp.edit().putString("url", url).commit();
 			sp.edit().putString("env", env).commit();
 			System.out.println("local url config:" + url);

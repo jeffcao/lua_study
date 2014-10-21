@@ -1,13 +1,13 @@
-package cn.com.m123.DDZ.test;
+package com.ruitong.WZDDZ.test;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
 import android.content.Context;
-import cn.com.m123.DDZ.R;
-import cn.com.m123.DDZ.push.AlarmSender;
-import cn.com.m123.DDZ.push.PushManager;
+import com.ruitong.WZDDZ.R;
+import com.ruitong.WZDDZ.push.AlarmSender;
+import com.ruitong.WZDDZ.push.PushManager;
 
 public class Test {
 	

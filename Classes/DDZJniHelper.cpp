@@ -7,10 +7,10 @@ using namespace cocos2d;
 bool DDZJniHelper::is_onCppMessage = false;
 bool DDZJniHelper::is_messageJava = false;
 extern "C" {
-void Java_cn_com_m123_DDZ_DDZJniHelper_messageCpp(JNIEnv* env, jobject thiz,
+void Java_com_ruitong_WZDDZ_DDZJniHelper_messageCpp(JNIEnv* env, jobject thiz,
 		jstring text) {
 
-	CCLog("[Java_cn_com_m123_DDZ_DDZJniHelper_test] enter.");
+	CCLog("[Java_com_ruitong_WZDDZ_DDZJniHelper_test] enter.");
 
 	std::string myText = JniHelper::jstring2string(text);
 
@@ -23,9 +23,9 @@ void Java_cn_com_m123_DDZ_DDZJniHelper_messageCpp(JNIEnv* env, jobject thiz,
 	/*DDZJniHelper* h = new DDZJniHelper();
 	const char* is_connected = h->get("IsNetworkConnected");*/
 
-	CCLog("[Java_cn_com_m123_DDZ_DDZJniHelper_test] pText: %s.", myText.c_str());
+	CCLog("[Java_com_ruitong_WZDDZ_DDZJniHelper_test] pText: %s.", myText.c_str());
 
-	CCLog("[Java_cn_com_m123_DDZ_DDZJniHelper_test] return.");
+	CCLog("[Java_com_ruitong_WZDDZ_DDZJniHelper_test] return.");
 }
 }
 
@@ -34,7 +34,7 @@ void DDZJniHelper::messageJava(const char* text) {
 	static JniMethodInfo DDZJniHelper_onCppMessage;
 	if (!DDZJniHelper::is_messageJava) {
 		if (!JniHelper::getStaticMethodInfo(DDZJniHelper_onCppMessage,
-				"cn/com/m123/DDZ/DDZJniHelper", "onCppMessage",
+				"com/ruitong/WZDDZ/DDZJniHelper", "onCppMessage",
 				"(Ljava/lang/String;)V"))
 			return;
 		CCLOG("jni on init message java");
@@ -58,7 +58,7 @@ const char* DDZJniHelper::get(const char* text) {
 	static JniMethodInfo DDZJniHelper_func_name;
 	if (!DDZJniHelper::is_onCppMessage) {
 		if (!JniHelper::getStaticMethodInfo(DDZJniHelper_func_name,
-						"cn/com/m123/DDZ/DDZJniHelper", "get",
+						"com/ruitong/WZDDZ/DDZJniHelper", "get",
 						"(Ljava/lang/String;)Ljava/lang/String;"))
 			return "";
 		CCLOG("jni on init get");

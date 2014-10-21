@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APPNAME="DouDiZhu_Lua"
+APPNAME="WZDDZ"
 
 # options
 

@@ -15,7 +15,7 @@ std::string CheckSign::get_sign() {
 
 	//1.获取context
 	if (!JniHelper::getStaticMethodInfo(func_name,
-			"cn/com/m123/DDZ/DouDiZhuApplicaion", "getContext",
+			"com/ruitong/WZDDZ/DDZApplicaion", "getContext",
 			"()Landroid/content/Context;"))
 		return NULL;
 	jobject j = func_name.env->CallStaticObjectMethod(func_name.classID,

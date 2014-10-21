@@ -1,4 +1,4 @@
-package cn.com.m123.DDZ;
+package com.ruitong.WZDDZ;
 
 import android.content.Context;
 import android.util.AttributeSet;

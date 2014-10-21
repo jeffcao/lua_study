@@ -1,4 +1,4 @@
-package cn.com.m123.DDZ;
+package com.ruitong.WZDDZ;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +25,7 @@ public class Payments {
 	}
 	
 	public static void doCancelBilling(String prop_id, String trade_id) {
-		SharedPreferences sp = DouDiZhu_Lua.INSTANCE.getSharedPreferences(
+		SharedPreferences sp = WZDDZLua.INSTANCE.getSharedPreferences(
 				"Cocos2dxPrefsFile", Context.MODE_PRIVATE);
 		sp.edit().putString("on_bill_cancel", trade_id + "_" + prop_id)
 				.commit();
@@ -53,8 +53,8 @@ public class Payments {
 		String dump = String
 				.format("cmcc dobilling billingIndex:%s\ncpparam:%s\ntrade_id:%s\nprop_id:%s",
 						new Object[] { billingIndex, cpparam, trade_id, prop_id });
-		DouDiZhuApplicaion.debugLog(dump);
-//		GameInterface.doBilling(DouDiZhu_Lua.getContext(), true, true,
+		DDZApplicaion.debugLog(dump);
+//		GameInterface.doBilling(WZDDZLua.getContext(), true, true,
 //				billingIndex, cpparam, new IPayCallback() {
 //
 //					@Override
@@ -74,7 +74,7 @@ public class Payments {
 //							doCancelBilling(prop_id, trade_id);
 //							break;
 //						}
-//						DouDiZhuApplicaion
+//						DDZApplicaion
 //								.debugLog("cmcc pay result:" + result);
 //					}
 //				});

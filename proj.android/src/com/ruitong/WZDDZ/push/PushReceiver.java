@@ -1,9 +1,9 @@
-package cn.com.m123.DDZ.push;
+package com.ruitong.WZDDZ.push;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import cn.com.m123.DDZ.test.Logger;
+import com.ruitong.WZDDZ.test.Logger;
 
 public class PushReceiver extends BroadcastReceiver {
 	private static final String tag = PushReceiver.class.getName();
@@ -15,11 +15,11 @@ public class PushReceiver extends BroadcastReceiver {
      * </intent-filter>
      * #packageName + ".fetch_alarm"
      * <intent-filter>
-     *    <action android:name="cn.com.m123.DDZ.fetch_alarm"/>
+     *    <action android:name="com.ruitong.WZDDZ.fetch_alarm"/>
      * </intent-filter>
      * #packageName + ".push_alarm"
      * <intent-filter>
-     *    <action android:name="cn.com.m123.DDZ.push_alarm"/>
+     *    <action android:name="com.ruitong.WZDDZ.push_alarm"/>
      * </intent-filter>
      * <intent-filter>
      *    <action android:name="android.intent.action.BOOT_COMPLETED"></action>

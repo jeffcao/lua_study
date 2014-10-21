@@ -1,4 +1,4 @@
-package cn.com.m123.DDZ.push;
+package com.ruitong.WZDDZ.push;
 
 import java.io.BufferedReader;
 import java.io.IOException;

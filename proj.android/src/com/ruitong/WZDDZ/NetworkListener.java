@@ -1,4 +1,4 @@
-package cn.com.m123.DDZ;
+package com.ruitong.WZDDZ;
 
 import java.util.List;
 import java.util.Locale;
@@ -73,7 +73,7 @@ public class NetworkListener extends BroadcastReceiver {
 	public static boolean isAppForeground(Context context) {
 		String top_activity_name = getTopActivityName(context);
 		System.out.println("top_activity_name:" + top_activity_name);
-		return top_activity_name.startsWith("cn.com.m123.DDZ");
+		return top_activity_name.startsWith("com.ruitong.WZDDZ");
 	}
 	
 	public static String getTopActivityName(Context context) {

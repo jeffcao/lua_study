@@ -20,7 +20,7 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved)
 {
     JniHelper::setJavaVM(vm);
 
-    MobClickCpp::initJniForCocos2dx2((void*)vm, "cn/com/m123/DDZ/DouDiZhu_Lua");
+    MobClickCpp::initJniForCocos2dx2((void*)vm, "com/ruitong/WZDDZ/WZDDZLua");
 
     return JNI_VERSION_1_4;
 }

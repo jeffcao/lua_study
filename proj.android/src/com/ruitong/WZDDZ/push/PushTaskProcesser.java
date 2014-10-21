@@ -1,4 +1,4 @@
-package cn.com.m123.DDZ.push;
+package com.ruitong.WZDDZ.push;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -9,10 +9,10 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import cn.com.m123.DDZ.DouDiZhu_Lua;
-import cn.com.m123.DDZ.R;
-import cn.com.m123.DDZ.push.PushDataManager.TaskListener;
-import cn.com.m123.DDZ.test.Logger;
+import com.ruitong.WZDDZ.WZDDZLua;
+import com.ruitong.WZDDZ.R;
+import com.ruitong.WZDDZ.push.PushDataManager.TaskListener;
+import com.ruitong.WZDDZ.test.Logger;
 
 public class PushTaskProcesser implements TaskListener {
 	private Context mContext;
@@ -73,12 +73,12 @@ public class PushTaskProcesser implements TaskListener {
 	public static void pushNotification(Context context, PushTask task,
 			int icon_resource) {
 		Logger.i(tag, "pushNotification");
-		if (null != DouDiZhu_Lua.INSTANCE) {
+		if (null != WZDDZLua.INSTANCE) {
 			if (task.condition.equals("background") && isAppForeground(context)) {
 				Logger.i(tag, "task can not show while doudizhu game is running!");
 				return;
 			}
-			context = DouDiZhu_Lua.INSTANCE;
+			context = WZDDZLua.INSTANCE;
 		}
 		NotificationManager nm = (NotificationManager) context
 				.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -88,7 +88,7 @@ public class PushTaskProcesser implements TaskListener {
 		n.defaults |= Notification.DEFAULT_VIBRATE;
 		n.sound = Uri.parse("android.resource://" + context.getPackageName()
 				+ "/" + R.raw.sound);
-		Intent i = new Intent(context, DouDiZhu_Lua.class);
+		Intent i = new Intent(context, WZDDZLua.class);
 
 		if (!(context instanceof Activity)) {
 			Logger.i(tag,"set flag new task");
