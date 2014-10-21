@@ -1,7 +1,7 @@
 --require "FullMubanStyleLayer"
 require "src.UIControllerPlugin"
 require "src.HallServerConnectionPlugin"
-require "src/WebsocketRails/Timer"
+require "src.WebsocketRails.Timer"
 require "src.Stats"
 require "src.AppStats"
 

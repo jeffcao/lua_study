@@ -1,4 +1,4 @@
-package cn.com.m123.DDZ.push;
+package com.ruitong.WZDDZ.push;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,9 +9,9 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import cn.com.m123.DDZ.DouDiZhuApplicaion;
-import cn.com.m123.DDZ.push.NetUtil.HttpMethod;
-import cn.com.m123.DDZ.test.Logger;
+import com.ruitong.WZDDZ.DDZApplicaion;
+import com.ruitong.WZDDZ.push.NetUtil.HttpMethod;
+import com.ruitong.WZDDZ.test.Logger;
 
 public class PushDataFetcher {
 	private Thread fetch_thread;
@@ -80,7 +80,7 @@ public class PushDataFetcher {
 
 	private String getUrl() {
 		String pref_name = "Cocos2dxPrefsFile";
-		SharedPreferences sp = DouDiZhuApplicaion.APP_CONTEXT.getSharedPreferences(pref_name, Context.MODE_PRIVATE);
+		SharedPreferences sp = DDZApplicaion.APP_CONTEXT.getSharedPreferences(pref_name, Context.MODE_PRIVATE);
 		String url = sp.getString("notification_url", null);
 		url = "http://" + url + "/sys_msg/notification_msg";
 		return url;

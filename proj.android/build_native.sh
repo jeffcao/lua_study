@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APPNAME="DouDiZhu_Lua"
+APPNAME="WZDDZ"
 
 # options
 
@@ -32,8 +32,12 @@ done
 
 luac=
 luac_opts=
+is_clean=
 for param in $*
 do
+	if [[ $param =~ ^clean$ ]];then
+		is_clean=true
+	fi
 	if [[ $param =~ ^luac=debug$ ]];then
 		luac=1
 		luac_opts="-bg"		
@@ -43,6 +47,7 @@ do
 		luac_opts="-b"
 	fi
 done
+
 
 # paths
 
@@ -64,51 +69,68 @@ echo "COCOS2DX_ROOT = $COCOS2DX_ROOT"
 echo "APP_ROOT = $APP_ROOT"
 echo "APP_ANDROID_ROOT = $APP_ANDROID_ROOT"
 
+if [[ "$is_clean" ]]; then
+	if [ -d "$APP_ANDROID_ROOT"/bin ]; then
+	    rm -rf "$APP_ANDROID_ROOT"/bin
+	fi	
+	if [ -d "$APP_ANDROID_ROOT"/obj ]; then
+	    rm -rf "$APP_ANDROID_ROOT"/obj
+	fi
+	if [ -d "$APP_ANDROID_ROOT"/libs/armeabi ]; then
+	    rm -rf "$APP_ANDROID_ROOT"/libs/armeabi
+	fi
+	exit 0
+fi
+
 # make sure assets is exist
 if [ -d "$APP_ANDROID_ROOT"/assets ]; then
     rm -rf "$APP_ANDROID_ROOT"/assets
 fi
-
 mkdir "$APP_ANDROID_ROOT"/assets
+mkdir "$APP_ANDROID_ROOT"/assets/zipres
+cp "$APP_ROOT"/framework_precompiled.zip "$APP_ANDROID_ROOT"/assets/zipres/
+source "$QUICK_COCOS2DX_ROOT"/bin/compile_scripts.sh -i "$APP_ROOT"/Resources -o "$APP_ANDROID_ROOT"/assets/zipres/slogic.dat -ek hahaleddz -es hahaleddz -q
+source "$QUICK_COCOS2DX_ROOT"/bin/pack_files.sh -i "$APP_ROOT"/Resources/cui -o "$APP_ANDROID_ROOT"/assets/zipres/cui.zip -m zip -q
+source "$QUICK_COCOS2DX_ROOT"/bin/pack_files.sh -i "$APP_ROOT"/Resources/res -o "$APP_ANDROID_ROOT"/assets/zipres/res.zip -m zip -q
 
+# zip "$APP_ANDROID_ROOT"/assets/zipres/cui.zip "$APP_ROOT"/Resources/cui/* -rqj
 # copy resources
-for file in "$APP_ROOT"/Resources/*
-do
-if [ -d "$file" ]; then
-    cp -rf "$file" "$APP_ANDROID_ROOT"/assets
-fi
+s_file="$APP_ROOT"/Resources/ZYF_ChannelID
+cp -rf "$s_file" "$APP_ANDROID_ROOT"/assets/
+# s_file="$APP_ROOT"/Resources/cui
+# cp -rf "$s_file" "$APP_ANDROID_ROOT"/assets/
+# s_file="$APP_ROOT"/Resources/OpeningAnimation
+# cp -rf "$s_file" "$APP_ANDROID_ROOT"/assets/
+# s_file="$APP_ROOT"/Resources/res
+# cp -rf "$s_file" "$APP_ANDROID_ROOT"/assets/
 
-if [ -f "$file" ]; then
-    cp "$file" "$APP_ANDROID_ROOT"/assets
-fi
-done
 
-if [[ "$luac" ]]; then
-	if [[ -z "$LUA_COMPILER" ]]; then
-		echo "ERROR: please define LUA_COMPILER for compiling lua script"
-		exit 1
-	fi
+# if [[ "$luac" ]]; then
+# 	if [[ -z "$LUA_COMPILER" ]]; then
+# 		echo "ERROR: please define LUA_COMPILER for compiling lua script"
+# 		exit 1
+# 	fi
 	
-	current_path=`pwd`
-	cd "$APP_ANDROID_ROOT/assets"
+# 	current_path=`pwd`
+# 	cd "$APP_ANDROID_ROOT/assets"
 	
-	for lua_src_file in `find "$APP_ROOT/Resources" -iname "*.lua"`
-	do
-		lua_file=`echo "$lua_src_file" | sed 's/\(.*\/Resources\)\/\(.*\)$/\2/'`
-		lua_obj_file=`echo "$lua_file" | sed 's/\(.*\).lua/\1/'`
-		lua_obj_file=${lua_obj_file}.lo
-		lua_dst_file="$APP_ANDROID_ROOT/assets/$lua_file"
-		if [[ $lua_file =~ ^main\.lua$ ]]; then
-			echo "got main.lua"
-			cp $lua_src_file $lua_dst_file
-		else
-			# echo "compiling: $LUA_COMPILER $luac_opts $lua_file $lua_obj_file"	
-			$LUA_COMPILER $luac_opts "$lua_file" "$lua_obj_file"
-			rm $lua_file
-		fi
-	done
-	cd $current_path
-fi
+# 	for lua_src_file in `find "$APP_ROOT/Resources" -iname "*.lua"`
+# 	do
+# 		lua_file=`echo "$lua_src_file" | sed 's/\(.*\/Resources\)\/\(.*\)$/\2/'`
+# 		lua_obj_file=`echo "$lua_file" | sed 's/\(.*\).lua/\1/'`
+# 		lua_obj_file=${lua_obj_file}.lo
+# 		lua_dst_file="$APP_ANDROID_ROOT/assets/$lua_file"
+# 		if [[ $lua_file =~ ^main\.lua$ ]]; then
+# 			echo "got main.lua"
+# 			cp $lua_src_file $lua_dst_file
+# 		else
+# 			# echo "compiling: $LUA_COMPILER $luac_opts $lua_file $lua_obj_file"	
+# 			$LUA_COMPILER $luac_opts "$lua_file" "$lua_obj_file"
+# 			rm $lua_file
+# 		fi
+# 	done
+# 	cd $current_path
+# fi
 
 # copy icons (if they exist)
 file="$APP_ANDROID_ROOT"/assets/Icon-72.png

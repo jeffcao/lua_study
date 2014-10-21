@@ -1,5 +1,5 @@
-APPNAME="DouDiZhu_Lua"
-APP_ANDROID_NAME="cn.com.m123.DDZ"
+APPNAME="WZDDZLua"
+APP_ANDROID_NAME="com.ruitong.WZDDZ"
 
 if [ -z "${SDK_ROOT+aaa}" ]; then
 # ... if SDK_ROOT is not set, use "$HOME/bin/android-sdk"

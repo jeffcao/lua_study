@@ -1,4 +1,4 @@
-package cn.com.m123.DDZ;
+package com.ruitong.WZDDZ;
 
 public interface PaymentInterface {
 	public void pay(String params);

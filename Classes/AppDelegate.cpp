@@ -2,6 +2,7 @@
 
 #include "cocos2d.h"
 #include "script_support/CCScriptSupport.h"
+#include "extensions/AssetsManager/AssetsManager.h"
 #include "CCLuaEngine.h"
 #include "SimpleAudioEngine.h"
 //#include "lua++.h"
@@ -17,6 +18,17 @@
 #include "MobClickCppExtend_lua.h"
 #include <algorithm>
 #include <vector>
+
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <errno.h>
+#endif
+
+#include "support/zip_support/unzip.h"
+
+#define BUFFER_SIZE    8192
+#define MAX_FILENAME   512
 //#include "CCEditBoxBridge_lua.h"
 //#include "DialogLayerConvertor_lua.h"
 #include "DDZJniHelper_lua.h"
@@ -255,51 +267,235 @@ bool AppDelegate::applicationDidFinishLaunching()
 // #endif
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    // load framework
-    pStack->loadChunksFromZIP("framework_precompiled.zip");
+    std::string w_able_path = CCFileUtils::sharedFileUtils()->getWritablePath()+"cui";
+    //First - get asset file data:
+    createDirectory(w_able_path.c_str());
+    // mode_t processMask = umask(0);
 
-    // set script path
-    string path = CCFileUtils::sharedFileUtils()->fullPathForFilename("main.lua");
-#else
-    // load framework
-    if (m_projectConfig.isLoadPrecompiledFramework())
-    {
-        const string precompiledFrameworkPath = SimulatorConfig::sharedDefaults()->getPrecompiledFrameworkPath();
-        pStack->loadChunksFromZIP(precompiledFrameworkPath.c_str());
-    }
+    // int ret = mkdir(w_able_path.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
+    // umask(processMask);
+    // if (ret != 0 && (errno != EEXIST))
+    // {
+    //     CCLog("AppDelegate::applicationDidEnterBackground, create resources failed.");
+    // }
 
-    // set script path
-    string path = CCFileUtils::sharedFileUtils()->fullPathForFilename(m_projectConfig.getScriptFileRealPath().c_str());
+    std::string s_file = "zipres/cui.zip";
+    CCLog("AppDelegate::applicationDidEnterBackground, s_file => %s", s_file.c_str());
+    unsigned long codeBufferSize = 0;
+    unsigned char* zip_data = CCFileUtils::sharedFileUtils()->getFileData(s_file.c_str(), "rb", &codeBufferSize);
+
+    //second - save it:
+    string dest_path = w_able_path + "/cui.zip";
+    CCLog("AppDelegate::applicationDidEnterBackground, dest_path => %s", dest_path.c_str());
+    FILE* dest = fopen(dest_path.c_str(), "wb");
+
+    CCLog("AppDelegate::applicationDidEnterBackground, begin write cui.zip");
+
+    fwrite(zip_data, codeBufferSize, 1, dest);
+    fclose(dest);
+
+    CCLog("AppDelegate::applicationDidEnterBackground, end write cui.zip");
+
+    uncompress(w_able_path.c_str(), dest_path.c_str());
+    remove(dest_path.c_str());
+
+    w_able_path = CCFileUtils::sharedFileUtils()->getWritablePath()+"res";
+    //First - get asset file data:
+    createDirectory(w_able_path.c_str());
+    s_file = "zipres/res.zip";
+    CCLog("AppDelegate::applicationDidEnterBackground, s_file => %s", s_file.c_str());
+    codeBufferSize = 0;
+    zip_data = CCFileUtils::sharedFileUtils()->getFileData(s_file.c_str(), "rb", &codeBufferSize);
+
+
+    dest_path = w_able_path + "/res.zip";
+    CCLog("AppDelegate::applicationDidEnterBackground, dest_path => %s", dest_path.c_str());
+    dest = fopen(dest_path.c_str(), "wb");
+
+    CCLog("AppDelegate::applicationDidEnterBackground, begin write res.zip");
+
+    fwrite(zip_data, codeBufferSize, 1, dest);
+    fclose(dest);
+
+    CCLog("AppDelegate::applicationDidEnterBackground, end write res.zip");
+
+    // cocos2d::extension::AssetsManager *assetM = new cocos2d::extension::AssetsManager("", "", w_able_path.c_str());
+    // assetM->update();
+    uncompress(w_able_path.c_str(), dest_path.c_str());
+    remove(dest_path.c_str());
+
+    // load framework
+    pStack->setXXTEAKeyAndSign("hahaleddz", 9, "hahale", 6);
+    pStack->loadChunksFromZIP("zipres/framework_precompiled.zip");
+    
+    pStack->loadChunksFromZIP("zipres/slogic.dat");
+    
+    // pStack->setXXTEAKeyAndSign("hahaleddz", 9, "hahale", 6);
+    // pStack->loadChunksFromZIP("zipres/cui.zip");
+    pStack->executeString("require 'main'");
 #endif
 
-    size_t pos;
-    while ((pos = path.find_first_of("\\")) != std::string::npos)
-    {
-        path.replace(pos, 1, "/");
-    }
-    size_t p = path.find_last_of("/\\");
-    if (p != path.npos)
-    {
-        const string dir = path.substr(0, p);
-        pStack->addSearchPath(dir.c_str());
 
-        p = dir.find_last_of("/\\");
-        if (p != dir.npos)
+    return true;
+}
+bool AppDelegate::uncompress(const char* out_path, const char* out_full_path)
+{
+    // Open the zip file
+    string outpath = out_path;
+    outpath = outpath + "/";
+    CCLog("AppDelegate::uncompress, outpath= %s", outpath.c_str());
+    string outFileName = out_full_path;
+    unzFile zipfile = unzOpen(outFileName.c_str());
+    if (! zipfile)
+    {
+        CCLog("can not open downloaded zip file %s", outFileName.c_str());
+        return false;
+    }
+    
+    // Get info about the zip file
+    unz_global_info global_info;
+    if (unzGetGlobalInfo(zipfile, &global_info) != UNZ_OK)
+    {
+        CCLog("can not read file global info of %s", outFileName.c_str());
+        unzClose(zipfile);
+        return false;
+    }
+    
+    // Buffer to hold data read from the zip file
+    char readBuffer[BUFFER_SIZE];
+    
+    CCLog("start uncompressing");
+    
+    // Loop to extract all files.
+    uLong i;
+    for (i = 0; i < global_info.number_entry; ++i)
+    {
+        // Get info about current file.
+        unz_file_info fileInfo;
+        char fileName[MAX_FILENAME];
+        if (unzGetCurrentFileInfo(zipfile,
+                                  &fileInfo,
+                                  fileName,
+                                  MAX_FILENAME,
+                                  NULL,
+                                  0,
+                                  NULL,
+                                  0) != UNZ_OK)
         {
-            pStack->addSearchPath(dir.substr(0, p).c_str());
+            CCLog("can not read file info");
+            unzClose(zipfile);
+            return false;
+        }
+        
+        string fullPath = outpath + fileName;
+        CCLog("AppDelegate::uncompress, fullPath= %s", fullPath.c_str());
+        // Check if this entry is a directory or a file.
+        const size_t filenameLength = strlen(fileName);
+        if (fileName[filenameLength-1] == '/')
+        {
+            // get all dir
+            string fileNameStr = string(fileName);
+            size_t position = 0;
+            while((position=fileNameStr.find_first_of("/",position))!=string::npos)
+            {
+                string dirPath =outpath + fileNameStr.substr(0, position);
+                CCLog("AppDelegate::uncompress, dirPath= %s", dirPath.c_str());
+            // Entry is a direcotry, so create it.
+            // If the directory exists, it will failed scilently.
+                if (!createDirectory(dirPath.c_str()))
+                {
+                        CCLog("can not create directory %s", dirPath.c_str());
+                        //unzClose(zipfile);
+                        //return false;
+                }
+                position++;
+            }   
+        }
+        else
+        {
+            string fileNameStr = string(fileName);
+            size_t position = 0;
+            while((position=fileNameStr.find_first_of("/",position))!=string::npos)
+            {
+                string dirPath =outpath + fileNameStr.substr(0, position);
+                CCLog("AppDelegate::uncompress, dirPath= %s", dirPath.c_str());
+            // Entry is a direcotry, so create it.
+            // If the directory exists, it will failed scilently.
+                if (!createDirectory(dirPath.c_str()))
+                {
+                        CCLog("can not create directory %s", dirPath.c_str());
+                        //unzClose(zipfile);
+                        //return false;
+                }
+                position++;
+            } 
+            // Entry is a file, so extract it.
+            
+            // Open current file.
+            if (unzOpenCurrentFile(zipfile) != UNZ_OK)
+            {
+                CCLog("can not open file %s", fileName);
+                unzClose(zipfile);
+                return false;
+            }
+            
+            // Create a file to store current file.
+            FILE *out = fopen(fullPath.c_str(), "wb");
+            if (! out)
+            {
+                CCLog("can not open destination file %s", fullPath.c_str());
+                unzCloseCurrentFile(zipfile);
+                unzClose(zipfile);
+                return false;
+            }
+            
+            // Write current file content to destinate file.
+            int error = UNZ_OK;
+            do
+            {
+                error = unzReadCurrentFile(zipfile, readBuffer, BUFFER_SIZE);
+                if (error < 0)
+                {
+                    CCLog("can not read zip file %s, error code is %d", fileName, error);
+                    unzCloseCurrentFile(zipfile);
+                    unzClose(zipfile);
+                    return false;
+                }
+                
+                if (error > 0)
+                {
+                    fwrite(readBuffer, error, 1, out);
+                }
+            } while(error > 0);
+            
+            fclose(out);
+        }
+        
+        unzCloseCurrentFile(zipfile);
+        
+        // Goto next entry listed in the zip file.
+        if ((i+1) < global_info.number_entry)
+        {
+            if (unzGoToNextFile(zipfile) != UNZ_OK)
+            {
+                CCLog("can not read next file");
+                unzClose(zipfile);
+                return false;
+            }
         }
     }
-
-    string env = "__LUA_STARTUP_FILE__=\"";
-    env.append(path);
-    env.append("\"");
-    pEngine->executeString(env.c_str());
-
-    CCLOG("------------------------------------------------");
-    CCLOG("LOAD LUA FILE: %s", path.c_str());
-    CCLOG("------------------------------------------------");
-    pEngine->executeScriptFile(path.c_str());
-
+    
+    CCLog("end uncompressing");
+    
+    return true;
+}
+bool AppDelegate::createDirectory(const char *path) {
+    mode_t processMask = umask(0);
+    int ret = mkdir(path, S_IRWXU | S_IRWXG | S_IRWXO);
+    umask(processMask);
+    if (ret != 0 && (errno != EEXIST)) {
+        return false;
+    }
 
     return true;
 }
@@ -308,10 +504,25 @@ bool AppDelegate::applicationDidFinishLaunching()
 void AppDelegate::setSearchPath()
 {
     //CCFileUtils::sharedFileUtils()->addSearchPath("cui");
-    CCFileUtils::sharedFileUtils()->addSearchPath("cui/");
+    //CCFileUtils::sharedFileUtils()->addSearchPath("cui/");
 	vector<string> searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
     vector<string>::iterator iter = searchPaths.begin();
-    std::string file_path = CCFileUtils::sharedFileUtils()->getWritablePath() + "resources";
+    std::string file_path = CCFileUtils::sharedFileUtils()->getWritablePath() + "resources/";
+    CCLog("file_path => %s", file_path.c_str());
+    searchPaths.insert(iter, file_path);
+    CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
+
+    searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
+    iter = searchPaths.begin();
+    file_path = CCFileUtils::sharedFileUtils()->getWritablePath() + "cui/";
+    CCLog("file_path => %s", file_path.c_str());
+    searchPaths.insert(iter, file_path);
+    CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
+
+    searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
+    iter = searchPaths.begin();
+    file_path = CCFileUtils::sharedFileUtils()->getWritablePath() + "res/";
+    CCLog("file_path => %s", file_path.c_str());
     searchPaths.insert(iter, file_path);
     CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
 

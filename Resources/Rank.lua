@@ -2,7 +2,7 @@ require "CCBReaderLoad"
 require "src.DialogInterface"
 require "src.RankUPlugin"
 require "src.UIControllerPlugin"
-require "src/WebsocketRails/Timer"
+require "src.WebsocketRails.Timer"
 require "src.SoundEffect"
 require 'HuafeiRankItem'
 

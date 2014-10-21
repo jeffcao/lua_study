@@ -1,7 +1,7 @@
 require "src.HelpSceneUPlugin"
 require "src.UIControllerPlugin"
 require "src.Stats"
-require "src/WebsocketRails/Timer"
+require "src.WebsocketRails.Timer"
 HelpScene = class("HelpScene", function()
 	print("new help scene")
 	return display.newScene("HelpScene")	

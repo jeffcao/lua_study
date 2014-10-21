@@ -1,4 +1,4 @@
-package cn.com.m123.DDZ;
+package com.ruitong.WZDDZ;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.Set;
-
 
 import android.app.Application;
 import android.content.Context;
@@ -19,11 +18,13 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-import cn.com.m123.DDZ.push.AlarmSender;
-import cn.com.m123.DDZ.push.PushManager;
+import com.ruitong.WZDDZ.R;
+
+import com.ruitong.WZDDZ.push.AlarmSender;
+import com.ruitong.WZDDZ.push.PushManager;
 
 
-public class DouDiZhuApplicaion extends Application {
+public class DDZApplicaion extends Application {
 	public static Context APP_CONTEXT;
 	public static String pkgVersionName;
 	public static int pkgVersionCode;
@@ -31,7 +32,7 @@ public class DouDiZhuApplicaion extends Application {
 	public static String appid;
 	public static boolean DEBUG = true;
 
-	public static final String TAG = DouDiZhuApplicaion.class.getName();
+	public static final String TAG = DDZApplicaion.class.getName();
 
 	@Override
 	public void onCreate() {

@@ -1,6 +1,6 @@
-package cn.com.m123.DDZ.push;
+package com.ruitong.WZDDZ.push;
 
-import cn.com.m123.DDZ.test.Logger;
+import com.ruitong.WZDDZ.test.Logger;
 import android.content.Context;
 /**
  * how to use!

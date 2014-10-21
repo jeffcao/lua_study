@@ -1,8 +1,8 @@
-package cn.com.m123.DDZ.push;
+package com.ruitong.WZDDZ.push;
 
 import java.util.Calendar;
 
-import cn.com.m123.DDZ.test.Logger;
+import com.ruitong.WZDDZ.test.Logger;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;

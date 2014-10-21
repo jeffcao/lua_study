@@ -1,4 +1,4 @@
-package cn.com.m123.DDZ.test;
+package com.ruitong.WZDDZ.test;
 
 import java.io.File;
 import java.io.FileOutputStream;

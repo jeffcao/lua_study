@@ -18,11 +18,11 @@ CONFIG_SCREEN_HEIGHT = 480
 
 local function load_requires()
 require "Version"
-require("src/WebsocketRails/WebSocketRails")
-require "src/WebsocketRails/WebSocketRails_Event"
-require "src/WebsocketRails/WebSocketRails_Connection"
-require "src/WebsocketRails/WebSocketRails_Connection_CC"
-require "src/WebsocketRails/WebSocketRails_Channel"
+require("src.WebsocketRails.WebSocketRails")
+require "src.WebsocketRails.WebSocketRails_Event"
+require "src.WebsocketRails.WebSocketRails_Connection"
+require "src.WebsocketRails.WebSocketRails_Connection_CC"
+require "src.WebsocketRails.WebSocketRails_Channel"
 require "src.WebsocketRails.Timer"
 require "src.strings"
 require "src.Scale9Funcs"
@@ -65,14 +65,14 @@ end
 
 function on_WebSocketRails_reload()
 	WebSocketRails.config = GlobalSetting
-	package.loaded["src/WebsocketRails/WebSocketRails_Event"] = nil
-	require "src/WebsocketRails/WebSocketRails_Event"
-	package.loaded["src/WebsocketRails/WebSocketRails_Connection"] = nil
-	require "src/WebsocketRails/WebSocketRails_Connection"
-	package.loaded["src/WebsocketRails/WebSocketRails_Connection_CC"] = nil
-	require "src/WebsocketRails/WebSocketRails_Connection_CC"
-	package.loaded["src/WebsocketRails/WebSocketRails_Channel"] = nil
-	require "src/WebsocketRails/WebSocketRails_Channel"
+	package.loaded["src.WebsocketRails.WebSocketRails_Event"] = nil
+	require "src.WebsocketRails.WebSocketRails_Event"
+	package.loaded["src.WebsocketRails.WebSocketRails_Connection"] = nil
+	require "src.WebsocketRails.WebSocketRails_Connection"
+	package.loaded["src.WebsocketRails.WebSocketRails_Connection_CC"] = nil
+	require "src.WebsocketRails.WebSocketRails_Connection_CC"
+	package.loaded["src.WebsocketRails.WebSocketRails_Channel"] = nil
+	require "src.WebsocketRails.WebSocketRails_Channel"
 end
 
 function on_Timer_reload()
