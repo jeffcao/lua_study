@@ -93,44 +93,6 @@ source "$QUICK_COCOS2DX_ROOT"/bin/compile_scripts.sh -i "$APP_ROOT"/Resources -o
 source "$QUICK_COCOS2DX_ROOT"/bin/pack_files.sh -i "$APP_ROOT"/Resources/cui -o "$APP_ANDROID_ROOT"/assets/zipres/cui.dat -m zip -q
 source "$QUICK_COCOS2DX_ROOT"/bin/pack_files.sh -i "$APP_ROOT"/Resources/res -o "$APP_ANDROID_ROOT"/assets/zipres/res.dat -m zip -q
 
-# zip "$APP_ANDROID_ROOT"/assets/zipres/cui.zip "$APP_ROOT"/Resources/cui/* -rqj
-# copy resources
-s_file="$APP_ROOT"/Resources/ZYF_ChannelID
-cp -rf "$s_file" "$APP_ANDROID_ROOT"/assets/
-# s_file="$APP_ROOT"/Resources/cui
-# cp -rf "$s_file" "$APP_ANDROID_ROOT"/assets/
-# s_file="$APP_ROOT"/Resources/OpeningAnimation
-# cp -rf "$s_file" "$APP_ANDROID_ROOT"/assets/
-# s_file="$APP_ROOT"/Resources/res
-# cp -rf "$s_file" "$APP_ANDROID_ROOT"/assets/
-
-
-# if [[ "$luac" ]]; then
-# 	if [[ -z "$LUA_COMPILER" ]]; then
-# 		echo "ERROR: please define LUA_COMPILER for compiling lua script"
-# 		exit 1
-# 	fi
-	
-# 	current_path=`pwd`
-# 	cd "$APP_ANDROID_ROOT/assets"
-	
-# 	for lua_src_file in `find "$APP_ROOT/Resources" -iname "*.lua"`
-# 	do
-# 		lua_file=`echo "$lua_src_file" | sed 's/\(.*\/Resources\)\/\(.*\)$/\2/'`
-# 		lua_obj_file=`echo "$lua_file" | sed 's/\(.*\).lua/\1/'`
-# 		lua_obj_file=${lua_obj_file}.lo
-# 		lua_dst_file="$APP_ANDROID_ROOT/assets/$lua_file"
-# 		if [[ $lua_file =~ ^main\.lua$ ]]; then
-# 			echo "got main.lua"
-# 			cp $lua_src_file $lua_dst_file
-# 		else
-# 			# echo "compiling: $LUA_COMPILER $luac_opts $lua_file $lua_obj_file"	
-# 			$LUA_COMPILER $luac_opts "$lua_file" "$lua_obj_file"
-# 			rm $lua_file
-# 		fi
-# 	done
-# 	cd $current_path
-# fi
 
 # copy icons (if they exist)
 file="$APP_ANDROID_ROOT"/assets/Icon-72.png
@@ -161,17 +123,5 @@ if [ ! -d libs ]; then
     mkdir -p libs/armeabi
 fi
    
-# cp ../sdklibs/cmcc/libmegjb.so libs/armeabi
-# cp ../sdklibs/anzhi/anzhi_sdk_pay.jar libs
-# cp ../sdklibs/leyifu/libbsjni.so libs/armeabi
-# cp ../sdklibs/leyifu/astep.jar libs
-# cp ../sdklibs/leyifu/huafubao_sdk.jar libs
-# cp ../sdklibs/weipai/wpay-sdk4.7.jar libs
 cp ../sdklibs/umeng/umeng_sdk.jar libs
 cp ../sdklibs/umeng/cocos2dx2_libMobClickCpp.a libs
-# cp ../miliSDKV1.14/android-support-v4.jar libs
-# cp ../miliSDKV1.14/jsoup-1.7.2.jar libs
-# cp ../miliSDKV1.14/milipay_sms.jar libs
-# cp ../letuSDK/lyhtghPayJar.jar libs
-# cd ..
-# ruby pkg.rb
