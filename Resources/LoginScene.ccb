@@ -96,8 +96,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>ccbResources/ui_beijing.plist</string>
-							<string>bg01.png</string>
+							<string>ccbResources/denglu.plist</string>
+							<string>dl_BeiJin.png</string>
 						</array>
 					</dict>
 				</array>
@@ -117,6 +117,14 @@
 				<integer>0</integer>
 				<key>properties</key>
 				<array>
+					<dict>
+						<key>name</key>
+						<string>visible</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
 					<dict>
 						<key>name</key>
 						<string>position</string>
@@ -242,6 +250,14 @@
 				<integer>0</integer>
 				<key>properties</key>
 				<array>
+					<dict>
+						<key>name</key>
+						<string>visible</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
 					<dict>
 						<key>name</key>
 						<string>position</string>
@@ -460,8 +476,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/ui_anniu.plist</string>
-													<string>anniu6.png</string>
+													<string>ccbResources/denglu.plist</string>
+													<string>dl-dengluyouxi.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -471,8 +487,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/ui_anniu.plist</string>
-													<string>anniu6_a.png</string>
+													<string>ccbResources/denglu.plist</string>
+													<string>dl-dengluyouxi.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -567,16 +583,6 @@
 									</dict>
 									<dict>
 										<key>name</key>
-										<string>accelerometerEnabled</string>
-										<key>platform</key>
-										<string>iOS</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
 										<string>mouseEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
@@ -584,16 +590,6 @@
 										<string>Check</string>
 										<key>value</key>
 										<true/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>keyboardEnabled</string>
-										<key>platform</key>
-										<string>Mac</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
 									</dict>
 								</array>
 							</dict>
@@ -612,6 +608,14 @@
 								<integer>1</integer>
 								<key>properties</key>
 								<array>
+									<dict>
+										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
 									<dict>
 										<key>name</key>
 										<string>position</string>
@@ -731,8 +735,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>73</real>
-									<real>15</real>
+									<real>64.040000915527344</real>
+									<real>46.680000305175781</real>
 									<integer>4</integer>
 								</array>
 							</dict>
@@ -792,16 +796,6 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>accelerometerEnabled</string>
-								<key>platform</key>
-								<string>iOS</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
-							</dict>
-							<dict>
-								<key>name</key>
 								<string>mouseEnabled</string>
 								<key>platform</key>
 								<string>Mac</string>
@@ -809,16 +803,6 @@
 								<string>Check</string>
 								<key>value</key>
 								<true/>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>keyboardEnabled</string>
-								<key>platform</key>
-								<string>Mac</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
 							</dict>
 						</array>
 					</dict>
@@ -925,8 +909,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/ui_anniu.plist</string>
-													<string>anniu5.png</string>
+													<string>ccbResources/denglu.plist</string>
+													<string>dl-kuaisuzhuce.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -936,8 +920,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/ui_anniu.plist</string>
-													<string>annniu5_a.png</string>
+													<string>ccbResources/denglu.plist</string>
+													<string>dl-kuaisuzhuce.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -972,7 +956,7 @@
 										<key>value</key>
 										<array>
 											<real>50</real>
-											<real>50</real>
+											<real>43.353847503662109</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -1032,16 +1016,6 @@
 									</dict>
 									<dict>
 										<key>name</key>
-										<string>accelerometerEnabled</string>
-										<key>platform</key>
-										<string>iOS</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
 										<string>mouseEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
@@ -1049,16 +1023,6 @@
 										<string>Check</string>
 										<key>value</key>
 										<true/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>keyboardEnabled</string>
-										<key>platform</key>
-										<string>Mac</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
 									</dict>
 								</array>
 							</dict>
@@ -1077,6 +1041,14 @@
 								<integer>1</integer>
 								<key>properties</key>
 								<array>
+									<dict>
+										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
 									<dict>
 										<key>name</key>
 										<string>position</string>
@@ -1196,8 +1168,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>30</real>
-									<real>15</real>
+									<real>34.799999237060547</real>
+									<real>48.984001159667969</real>
 									<integer>4</integer>
 								</array>
 							</dict>
@@ -1257,16 +1229,6 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>accelerometerEnabled</string>
-								<key>platform</key>
-								<string>iOS</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
-							</dict>
-							<dict>
-								<key>name</key>
 								<string>mouseEnabled</string>
 								<key>platform</key>
 								<string>Mac</string>
@@ -1275,16 +1237,6 @@
 								<key>value</key>
 								<true/>
 							</dict>
-							<dict>
-								<key>name</key>
-								<string>keyboardEnabled</string>
-								<key>platform</key>
-								<string>Mac</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
-							</dict>
 						</array>
 					</dict>
 					<dict>
@@ -1292,6 +1244,166 @@
 						<string>CCLayer</string>
 						<key>children</key>
 						<array>
+							<dict>
+								<key>baseClass</key>
+								<string>CCSprite</string>
+								<key>children</key>
+								<array/>
+								<key>customClass</key>
+								<string></string>
+								<key>displayName</key>
+								<string>CCSprite</string>
+								<key>memberVarAssignmentName</key>
+								<string></string>
+								<key>memberVarAssignmentType</key>
+								<integer>0</integer>
+								<key>properties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>position</string>
+										<key>type</key>
+										<string>Position</string>
+										<key>value</key>
+										<array>
+											<real>-59.040000915527344</real>
+											<real>28.80000114440918</real>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>anchorPoint</string>
+										<key>type</key>
+										<string>Point</string>
+										<key>value</key>
+										<array>
+											<real>0.5</real>
+											<real>0.5</real>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>scale</string>
+										<key>type</key>
+										<string>ScaleLock</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
+											<false/>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>tag</string>
+										<key>type</key>
+										<string>Integer</string>
+										<key>value</key>
+										<integer>1000</integer>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>ignoreAnchorPointForPosition</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>displayFrame</string>
+										<key>type</key>
+										<string>SpriteFrame</string>
+										<key>value</key>
+										<array>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-zhanghao.png</string>
+										</array>
+									</dict>
+								</array>
+							</dict>
+							<dict>
+								<key>baseClass</key>
+								<string>CCSprite</string>
+								<key>children</key>
+								<array/>
+								<key>customClass</key>
+								<string></string>
+								<key>displayName</key>
+								<string>CCSprite</string>
+								<key>memberVarAssignmentName</key>
+								<string></string>
+								<key>memberVarAssignmentType</key>
+								<integer>0</integer>
+								<key>properties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>position</string>
+										<key>type</key>
+										<string>Position</string>
+										<key>value</key>
+										<array>
+											<real>-60.480003356933594</real>
+											<real>-8.6400003433227539</real>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>anchorPoint</string>
+										<key>type</key>
+										<string>Point</string>
+										<key>value</key>
+										<array>
+											<real>0.5</real>
+											<real>0.5</real>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>scale</string>
+										<key>type</key>
+										<string>ScaleLock</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
+											<false/>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>tag</string>
+										<key>type</key>
+										<string>Integer</string>
+										<key>value</key>
+										<integer>1000</integer>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>ignoreAnchorPointForPosition</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>displayFrame</string>
+										<key>type</key>
+										<string>SpriteFrame</string>
+										<key>value</key>
+										<array>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-mima.png</string>
+										</array>
+									</dict>
+								</array>
+							</dict>
 							<dict>
 								<key>baseClass</key>
 								<string>CCScale9Sprite</string>
@@ -1309,13 +1421,21 @@
 								<array>
 									<dict>
 										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>position</string>
 										<key>type</key>
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>-66</real>
-											<real>-26</real>
+											<real>-328.08001708984375</real>
+											<real>54.640003204345703</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -1358,8 +1478,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>kuang_b.png</string>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-mima.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1369,8 +1489,8 @@
 										<string>Size</string>
 										<key>value</key>
 										<array>
-											<real>232</real>
-											<real>44</real>
+											<real>239</real>
+											<real>29</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -1400,7 +1520,7 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>0.0</real>
+										<real>5</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -1408,7 +1528,7 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>0.0</real>
+										<real>5</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -1445,13 +1565,21 @@
 								<array>
 									<dict>
 										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>position</string>
 										<key>type</key>
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>-65</real>
-											<real>30</real>
+											<real>-331.4000244140625</real>
+											<real>112.08000183105469</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -1494,8 +1622,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>kuang_b.png</string>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-zhanghao.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1505,8 +1633,8 @@
 										<string>Size</string>
 										<key>value</key>
 										<array>
-											<real>232</real>
-											<real>44</real>
+											<real>267</real>
+											<real>29</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -1586,7 +1714,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>-120</real>
+											<real>-109.91999816894531</real>
 											<real>11</real>
 											<integer>0</integer>
 										</array>
@@ -1598,7 +1726,7 @@
 										<string>Size</string>
 										<key>value</key>
 										<array>
-											<real>143</real>
+											<real>140</real>
 											<real>35</real>
 											<integer>0</integer>
 										</array>
@@ -1647,16 +1775,6 @@
 									</dict>
 									<dict>
 										<key>name</key>
-										<string>accelerometerEnabled</string>
-										<key>platform</key>
-										<string>iOS</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
 										<string>mouseEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
@@ -1664,16 +1782,6 @@
 										<string>Check</string>
 										<key>value</key>
 										<true/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>keyboardEnabled</string>
-										<key>platform</key>
-										<string>Mac</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
 									</dict>
 								</array>
 							</dict>
@@ -1704,7 +1812,7 @@
 												<string>Position</string>
 												<key>value</key>
 												<array>
-													<real>2</real>
+													<real>16.520000457763672</real>
 													<real>0.0</real>
 													<integer>0</integer>
 												</array>
@@ -1870,16 +1978,6 @@
 									</dict>
 									<dict>
 										<key>name</key>
-										<string>accelerometerEnabled</string>
-										<key>platform</key>
-										<string>iOS</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
 										<string>mouseEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
@@ -1887,16 +1985,6 @@
 										<string>Check</string>
 										<key>value</key>
 										<true/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>keyboardEnabled</string>
-										<key>platform</key>
-										<string>Mac</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
 									</dict>
 								</array>
 							</dict>
@@ -1963,8 +2051,8 @@
 														<string>Position</string>
 														<key>value</key>
 														<array>
-															<real>50</real>
-															<real>50</real>
+															<real>52.461540222167969</real>
+															<real>46.727272033691406</real>
 															<integer>4</integer>
 														</array>
 													</dict>
@@ -2034,8 +2122,8 @@
 														<string>SpriteFrame</string>
 														<key>value</key>
 														<array>
-															<string>ccbResources/ui_anniu.plist</string>
-															<string>anniu3.png</string>
+															<string>ccbResources/denglu.plist</string>
+															<string>dl-zhuce.png</string>
 														</array>
 													</dict>
 													<dict>
@@ -2045,8 +2133,8 @@
 														<string>SpriteFrame</string>
 														<key>value</key>
 														<array>
-															<string>ccbResources/ui_anniu.plist</string>
-															<string>anniu3_a.png</string>
+															<string>ccbResources/denglu.plist</string>
+															<string>dl-zhuce.png</string>
 														</array>
 													</dict>
 													<dict>
@@ -2151,16 +2239,6 @@
 											</dict>
 											<dict>
 												<key>name</key>
-												<string>accelerometerEnabled</string>
-												<key>platform</key>
-												<string>iOS</string>
-												<key>type</key>
-												<string>Check</string>
-												<key>value</key>
-												<false/>
-											</dict>
-											<dict>
-												<key>name</key>
 												<string>mouseEnabled</string>
 												<key>platform</key>
 												<string>Mac</string>
@@ -2168,16 +2246,6 @@
 												<string>Check</string>
 												<key>value</key>
 												<true/>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>keyboardEnabled</string>
-												<key>platform</key>
-												<string>Mac</string>
-												<key>type</key>
-												<string>Check</string>
-												<key>value</key>
-												<false/>
 											</dict>
 										</array>
 									</dict>
@@ -2196,6 +2264,14 @@
 										<integer>1</integer>
 										<key>properties</key>
 										<array>
+											<dict>
+												<key>name</key>
+												<string>visible</string>
+												<key>type</key>
+												<string>Check</string>
+												<key>value</key>
+												<false/>
+											</dict>
 											<dict>
 												<key>name</key>
 												<string>position</string>
@@ -2315,8 +2391,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>117</real>
-											<real>29</real>
+											<real>-133.56001281738281</real>
+											<real>-50.200004577636719</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -2376,16 +2452,6 @@
 									</dict>
 									<dict>
 										<key>name</key>
-										<string>accelerometerEnabled</string>
-										<key>platform</key>
-										<string>iOS</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
 										<string>mouseEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
@@ -2393,16 +2459,6 @@
 										<string>Check</string>
 										<key>value</key>
 										<true/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>keyboardEnabled</string>
-										<key>platform</key>
-										<string>Mac</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
 									</dict>
 								</array>
 							</dict>
@@ -2421,6 +2477,14 @@
 								<integer>0</integer>
 								<key>properties</key>
 								<array>
+									<dict>
+										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
 									<dict>
 										<key>name</key>
 										<string>position</string>
@@ -2549,6 +2613,14 @@
 								<integer>0</integer>
 								<key>properties</key>
 								<array>
+									<dict>
+										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
 									<dict>
 										<key>name</key>
 										<string>position</string>
@@ -2765,8 +2837,8 @@
 														<string>SpriteFrame</string>
 														<key>value</key>
 														<array>
-															<string>ccbResources/ui_anniu.plist</string>
-															<string>anniu3.png</string>
+															<string>ccbResources/denglu.plist</string>
+															<string>dl-wangjimima.png</string>
 														</array>
 													</dict>
 													<dict>
@@ -2776,8 +2848,8 @@
 														<string>SpriteFrame</string>
 														<key>value</key>
 														<array>
-															<string>ccbResources/ui_anniu.plist</string>
-															<string>anniu3_a.png</string>
+															<string>ccbResources/denglu.plist</string>
+															<string>dl-wangjimima.png</string>
 														</array>
 													</dict>
 													<dict>
@@ -2872,16 +2944,6 @@
 											</dict>
 											<dict>
 												<key>name</key>
-												<string>accelerometerEnabled</string>
-												<key>platform</key>
-												<string>iOS</string>
-												<key>type</key>
-												<string>Check</string>
-												<key>value</key>
-												<false/>
-											</dict>
-											<dict>
-												<key>name</key>
 												<string>mouseEnabled</string>
 												<key>platform</key>
 												<string>Mac</string>
@@ -2889,16 +2951,6 @@
 												<string>Check</string>
 												<key>value</key>
 												<true/>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>keyboardEnabled</string>
-												<key>platform</key>
-												<string>Mac</string>
-												<key>type</key>
-												<string>Check</string>
-												<key>value</key>
-												<false/>
 											</dict>
 										</array>
 									</dict>
@@ -2917,6 +2969,14 @@
 										<integer>1</integer>
 										<key>properties</key>
 										<array>
+											<dict>
+												<key>name</key>
+												<string>visible</string>
+												<key>type</key>
+												<string>Check</string>
+												<key>value</key>
+												<false/>
+											</dict>
 											<dict>
 												<key>name</key>
 												<string>position</string>
@@ -3036,8 +3096,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>117</real>
-											<real>-27</real>
+											<real>10.439995765686035</real>
+											<real>-50.040000915527344</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -3097,16 +3157,6 @@
 									</dict>
 									<dict>
 										<key>name</key>
-										<string>accelerometerEnabled</string>
-										<key>platform</key>
-										<string>iOS</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
 										<string>mouseEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
@@ -3114,16 +3164,6 @@
 										<string>Check</string>
 										<key>value</key>
 										<true/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>keyboardEnabled</string>
-										<key>platform</key>
-										<string>Mac</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
 									</dict>
 								</array>
 							</dict>
@@ -3149,8 +3189,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>-120</real>
-											<real>-45</real>
+											<real>-108.48000335693359</real>
+											<real>-24.839998245239258</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -3210,16 +3250,6 @@
 									</dict>
 									<dict>
 										<key>name</key>
-										<string>accelerometerEnabled</string>
-										<key>platform</key>
-										<string>iOS</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
 										<string>mouseEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
@@ -3227,16 +3257,6 @@
 										<string>Check</string>
 										<key>value</key>
 										<true/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>keyboardEnabled</string>
-										<key>platform</key>
-										<string>Mac</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
 									</dict>
 								</array>
 							</dict>
@@ -3267,7 +3287,7 @@
 												<string>Position</string>
 												<key>value</key>
 												<array>
-													<real>89</real>
+													<real>94.760002136230469</real>
 													<real>19</real>
 													<integer>0</integer>
 												</array>
@@ -3475,16 +3495,6 @@
 											</dict>
 											<dict>
 												<key>name</key>
-												<string>accelerometerEnabled</string>
-												<key>platform</key>
-												<string>iOS</string>
-												<key>type</key>
-												<string>Check</string>
-												<key>value</key>
-												<false/>
-											</dict>
-											<dict>
-												<key>name</key>
 												<string>mouseEnabled</string>
 												<key>platform</key>
 												<string>Mac</string>
@@ -3492,16 +3502,6 @@
 												<string>Check</string>
 												<key>value</key>
 												<true/>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>keyboardEnabled</string>
-												<key>platform</key>
-												<string>Mac</string>
-												<key>type</key>
-												<string>Check</string>
-												<key>value</key>
-												<false/>
 											</dict>
 										</array>
 									</dict>
@@ -3592,16 +3592,6 @@
 									</dict>
 									<dict>
 										<key>name</key>
-										<string>accelerometerEnabled</string>
-										<key>platform</key>
-										<string>iOS</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
 										<string>mouseEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
@@ -3609,16 +3599,6 @@
 										<string>Check</string>
 										<key>value</key>
 										<true/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>keyboardEnabled</string>
-										<key>platform</key>
-										<string>Mac</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
 									</dict>
 								</array>
 							</dict>
@@ -3640,8 +3620,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>52</real>
-									<real>58</real>
+									<real>62.880001068115234</real>
+									<real>90.832000732421875</real>
 									<integer>4</integer>
 								</array>
 							</dict>
@@ -3689,16 +3669,6 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>accelerometerEnabled</string>
-								<key>platform</key>
-								<string>iOS</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
-							</dict>
-							<dict>
-								<key>name</key>
 								<string>mouseEnabled</string>
 								<key>platform</key>
 								<string>Mac</string>
@@ -3706,16 +3676,6 @@
 								<string>Check</string>
 								<key>value</key>
 								<true/>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>keyboardEnabled</string>
-								<key>platform</key>
-								<string>Mac</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
 							</dict>
 						</array>
 					</dict>
@@ -3798,16 +3758,6 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>accelerometerEnabled</string>
-						<key>platform</key>
-						<string>iOS</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>mouseEnabled</string>
 						<key>platform</key>
 						<string>Mac</string>
@@ -3815,16 +3765,6 @@
 						<string>Check</string>
 						<key>value</key>
 						<true/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>keyboardEnabled</string>
-						<key>platform</key>
-						<string>Mac</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
 					</dict>
 				</array>
 			</dict>
@@ -3931,8 +3871,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>help_a.png</string>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-bangzhu.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -3942,8 +3882,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>help.png</string>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-bangzhu.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -3989,7 +3929,7 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>119</real>
+									<real>80</real>
 									<real>44</real>
 									<integer>0</integer>
 								</array>
@@ -4038,16 +3978,6 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>accelerometerEnabled</string>
-								<key>platform</key>
-								<string>iOS</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
-							</dict>
-							<dict>
-								<key>name</key>
 								<string>mouseEnabled</string>
 								<key>platform</key>
 								<string>Mac</string>
@@ -4055,16 +3985,6 @@
 								<string>Check</string>
 								<key>value</key>
 								<true/>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>keyboardEnabled</string>
-								<key>platform</key>
-								<string>Mac</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
 							</dict>
 						</array>
 					</dict>
@@ -4166,8 +4086,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>about_a.png</string>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-guanyu.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -4177,8 +4097,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>about.png</string>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-guanyu.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -4212,8 +4132,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>186</real>
-									<real>30</real>
+									<real>116.87999725341797</real>
+									<real>28.559999465942383</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -4224,7 +4144,7 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>122</real>
+									<real>80</real>
 									<real>47</real>
 									<integer>0</integer>
 								</array>
@@ -4273,16 +4193,6 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>accelerometerEnabled</string>
-								<key>platform</key>
-								<string>iOS</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
-							</dict>
-							<dict>
-								<key>name</key>
 								<string>mouseEnabled</string>
 								<key>platform</key>
 								<string>Mac</string>
@@ -4290,16 +4200,6 @@
 								<string>Check</string>
 								<key>value</key>
 								<true/>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>keyboardEnabled</string>
-								<key>platform</key>
-								<string>Mac</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
 							</dict>
 						</array>
 					</dict>
@@ -4467,7 +4367,7 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>111</real>
+									<real>80</real>
 									<real>64</real>
 									<integer>0</integer>
 								</array>
@@ -4516,16 +4416,6 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>accelerometerEnabled</string>
-								<key>platform</key>
-								<string>iOS</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
-							</dict>
-							<dict>
-								<key>name</key>
 								<string>mouseEnabled</string>
 								<key>platform</key>
 								<string>Mac</string>
@@ -4533,16 +4423,6 @@
 								<string>Check</string>
 								<key>value</key>
 								<true/>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>keyboardEnabled</string>
-								<key>platform</key>
-								<string>Mac</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
 							</dict>
 						</array>
 					</dict>
@@ -4644,8 +4524,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>exit.png</string>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-tuichu.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -4655,8 +4535,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>exit_a.png</string>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-tuichu.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -4690,8 +4570,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>340</real>
-									<real>30</real>
+									<real>197.43998718261719</real>
+									<real>27.120000839233398</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -4751,16 +4631,6 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>accelerometerEnabled</string>
-								<key>platform</key>
-								<string>iOS</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
-							</dict>
-							<dict>
-								<key>name</key>
 								<string>mouseEnabled</string>
 								<key>platform</key>
 								<string>Mac</string>
@@ -4768,16 +4638,6 @@
 								<string>Check</string>
 								<key>value</key>
 								<true/>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>keyboardEnabled</string>
-								<key>platform</key>
-								<string>Mac</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
 							</dict>
 						</array>
 					</dict>
@@ -4799,8 +4659,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>403</real>
-							<real>28</real>
+							<real>387.15997314453125</real>
+							<real>75.519996643066406</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -4811,7 +4671,7 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>600</real>
+							<real>300</real>
 							<real>60</real>
 							<integer>0</integer>
 						</array>
@@ -4860,16 +4720,6 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>accelerometerEnabled</string>
-						<key>platform</key>
-						<string>iOS</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>mouseEnabled</string>
 						<key>platform</key>
 						<string>Mac</string>
@@ -4877,16 +4727,6 @@
 						<string>Check</string>
 						<key>value</key>
 						<true/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>keyboardEnabled</string>
-						<key>platform</key>
-						<string>Mac</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
 					</dict>
 				</array>
 			</dict>
@@ -5095,16 +4935,6 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>accelerometerEnabled</string>
-						<key>platform</key>
-						<string>iOS</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>mouseEnabled</string>
 						<key>platform</key>
 						<string>Mac</string>
@@ -5112,16 +4942,6 @@
 						<string>Check</string>
 						<key>value</key>
 						<true/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>keyboardEnabled</string>
-						<key>platform</key>
-						<string>Mac</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
 					</dict>
 				</array>
 			</dict>
@@ -5147,8 +4967,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>408</real>
-							<real>395</real>
+							<real>412.32000732421875</real>
+							<real>438.20001220703125</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -5199,13 +5019,11 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>ccbResources/ui_wenzi.plist</string>
-							<string>wenzi_quanmingdoudizhu.png</string>
+							<string>ccbResources/denglu.plist</string>
+							<string>dl-biaoti.png</string>
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -5276,16 +5094,6 @@
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>accelerometerEnabled</string>
-				<key>platform</key>
-				<string>iOS</string>
-				<key>type</key>
-				<string>Check</string>
-				<key>value</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>name</key>
 				<string>mouseEnabled</string>
 				<key>platform</key>
 				<string>Mac</string>
@@ -5293,16 +5101,6 @@
 				<string>Check</string>
 				<key>value</key>
 				<true/>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>keyboardEnabled</string>
-				<key>platform</key>
-				<string>Mac</string>
-				<key>type</key>
-				<string>Check</string>
-				<key>value</key>
-				<false/>
 			</dict>
 		</array>
 	</dict>
