@@ -103,18 +103,18 @@ end
 function LoginScene:setMenus()
 	--local pay_type = GlobalSetting.pay_type[GlobalSetting.app_id] or GlobalSetting.pay_type["default"]
 	local pay_type = getPayType()
-	if pay_type == 'cmcc' then
-		self.help:setPosition(ccp(36,30))
-		self.about:setPosition(ccp(186,30))
-		self.more:setVisible(true)
-		self.more:setPosition(ccp(340,30))
-		self.switch:setPosition(ccp(483,30))
-	else--anzhi, leyifu
-		self.help:setPosition(ccp(105,30))
-		self.about:setPosition(ccp(255,30))
-		self.more:setVisible(false)
-		self.switch:setPosition(ccp(405,30))
-	end
+	-- if pay_type == 'cmcc' then
+	-- 	self.help:setPosition(ccp(36,30))
+	-- 	self.about:setPosition(ccp(186,30))
+	-- 	self.more:setVisible(true)
+	-- 	self.more:setPosition(ccp(340,30))
+	-- 	self.switch:setPosition(ccp(483,30))
+	-- else--anzhi, leyifu
+	-- 	self.help:setPosition(ccp(105,30))
+	-- 	self.about:setPosition(ccp(255,30))
+	-- 	self.more:setVisible(false)
+	-- 	self.switch:setPosition(ccp(405,30))
+	-- end
 end
 
 function LoginScene:show_set_dialog()

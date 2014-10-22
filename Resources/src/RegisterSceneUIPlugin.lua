@@ -5,14 +5,14 @@ RegisterSceneUIPlugin = {}
 function RegisterSceneUIPlugin.bind(theClass)
 	
 	function theClass:init_input_controller()
-		self.input_png = "kuang_b.png"
-		self.name_box = self:addEditbox(self.nick_name_layer, 225, 30, false, 101)
+		self.input_png = "touming.png"
+		self.name_box = self:addEditbox(self.nick_name_layer, 160, 30, false, 101)
 		self.name_box:setPlaceHolder("昵称为不大于10位的任意字符")
 		self.name_box:setMaxLength(10)
-		self.pwd_box = self:addEditbox(self.password_layer, 225, 30, true, 102)
+		self.pwd_box = self:addEditbox(self.password_layer, 160, 30, true, 102)
 		self.pwd_box:setPlaceHolder("密码为8到20位的任意字符")
 		self.pwd_box:setMaxLength(20)
-		self.c_pwd_box = self:addEditbox(self.confirm_pwd_layer, 225, 30, true, 103)
+		self.c_pwd_box = self:addEditbox(self.confirm_pwd_layer, 160, 30, true, 103)
 		self.c_pwd_box:setMaxLength(20)
 		self.c_pwd_box:setPlaceHolder("再次输入密码")
 		

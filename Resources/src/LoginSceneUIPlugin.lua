@@ -26,13 +26,13 @@ function LoginSceneUIPlugin.bind(theClass)
 			return menu_item
 		end
 	
-		local pwd_bg_sprite = tolua.cast(self.pwd_bg_sprite, "CCScale9Sprite") 
-		local user_bg_sprite = tolua.cast(self.user_bg_sprite, "CCScale9Sprite") 
+		--local pwd_bg_sprite = tolua.cast(self.pwd_bg_sprite, "CCScale9Sprite") 
+		--local user_bg_sprite = tolua.cast(self.user_bg_sprite, "CCScale9Sprite") 
 		
-		self.user_bg_sprite:setSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_b.png"))
-		self.pwd_bg_sprite:setSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_b.png"))
-		self.user_bg_sprite:setPreferredSize(CCSizeMake(220, 40))
-		self.pwd_bg_sprite:setPreferredSize(CCSizeMake(220, 40))
+		--self.user_bg_sprite:setSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("dl-zhanghao.png"))
+		--self.pwd_bg_sprite:setSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_b.png"))
+		--self.user_bg_sprite:setPreferredSize(CCSizeMake(267, 29))
+		--self.pwd_bg_sprite:setPreferredSize(CCSizeMake(220, 40))
 	
 		local user_id_list_sprite = tolua.cast(self.user_id_list_sprite, "CCScale9Sprite")
 		
