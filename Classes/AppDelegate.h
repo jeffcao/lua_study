@@ -46,6 +46,7 @@ private:
     ProjectConfig m_projectConfig;
     bool uncompress(const char* out_path, const char* out_full_path);
     bool createDirectory(const char *path);
+    bool IsDirExistAndCreate(const char *path);
 };
 
 /*class DownloadListener : public DownloaderDelegateProtocol {
