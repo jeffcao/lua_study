@@ -91,17 +91,5 @@ public class PushTask {
 		long remain = target_time - System.currentTimeMillis();
 		return remain;
 	}
-	/**
-	 * {
-	    "last_msg_seq": 20131209,
-	    "messages": [
-	        {
-	            "msg_seq": 20131209,
-	            "content": "sfasdfasdfasdf",
-	            "start_time": "2013-12-05 00:00:00",
-	            "priority": 1
-	        }
-	    ]
-	   }
-	 */
+
 }

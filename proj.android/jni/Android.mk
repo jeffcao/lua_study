@@ -4,7 +4,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := game_shared
 
-LOCAL_MODULE_FILENAME := libgame
+LOCAL_MODULE_FILENAME := libddz
 
 APP_ABI := armeabi
 

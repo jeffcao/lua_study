@@ -535,15 +535,9 @@ void AppDelegate::setSearchPath()
     CCLog("file_path => %s", file_path.c_str());
     searchPaths.insert(iter, file_path);
     CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
+   
 
-    // searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
-    // iter = searchPaths.begin();
-    // file_path = CCFileUtils::sharedFileUtils()->getWritablePath() + "res/";
-    // CCLog("file_path => %s", file_path.c_str());
-    // searchPaths.insert(iter, file_path);
-    // CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
-
-    //CCFileUtils:sharedFileUtils():purgeCachedEntries()
+    // CCFileUtils:sharedFileUtils():purgeCachedEntries()
 
     //set path in lua priorer than default path
     CCLuaEngine* lua_engine = CCLuaEngine::defaultEngine();

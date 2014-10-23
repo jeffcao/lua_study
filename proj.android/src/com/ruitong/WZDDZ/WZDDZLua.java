@@ -39,7 +39,7 @@ public class WZDDZLua extends Cocos2dxActivity {
 	public static final int LEYIFU_PAY_REQUEST_CODE = 2014;
 
 	static {
-		System.loadLibrary("game");
+		System.loadLibrary("ddz");
 	}
 
 	protected void onCreate(Bundle savedInstanceState) {
