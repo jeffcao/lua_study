@@ -104,8 +104,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>ccbResources/ui_kuang.plist</string>
-							<string>fangjiankuang_xuanzhogn.png</string>
+							<string>ccbResources/dating.plist</string>
+							<string>dt-xiaobeijing.png</string>
 						</array>
 					</dict>
 				</array>
@@ -137,8 +137,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>130</real>
-									<real>132</real>
+									<real>72</real>
+									<real>99</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -189,8 +189,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string>ccbResources/hall.plist</string>
-									<string>fangjian01.png</string>
+									<string>ccbResources/dating.plist</string>
+									<string>dt-fangjian1.png</string>
 								</array>
 							</dict>
 						</array>
@@ -217,8 +217,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>47</real>
-									<real>123</real>
+									<real>116</real>
+									<real>121</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -269,7 +269,7 @@
 								<string>FloatScale</string>
 								<key>value</key>
 								<array>
-									<real>17</real>
+									<real>12</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -333,8 +333,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>117</real>
-									<real>123</real>
+									<real>171</real>
+									<real>121</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -385,7 +385,7 @@
 								<string>FloatScale</string>
 								<key>value</key>
 								<array>
-									<real>17</real>
+									<real>12</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -462,7 +462,7 @@
 								<key>value</key>
 								<array>
 									<real>130</real>
-									<real>190.08001708984375</real>
+									<real>146.08001708984375</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -519,6 +519,18 @@
 							</dict>
 							<dict>
 								<key>name</key>
+								<string>color</string>
+								<key>type</key>
+								<string>Color3</string>
+								<key>value</key>
+								<array>
+									<integer>247</integer>
+									<integer>224</integer>
+									<integer>58</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>dimensions</string>
 								<key>type</key>
 								<string>Size</string>
@@ -554,6 +566,8 @@
 								<string>农耕畜牧</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -634,7 +648,7 @@
 										<string>FloatScale</string>
 										<key>value</key>
 										<array>
-											<real>17</real>
+											<real>12</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -698,8 +712,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>45</real>
-											<real>45</real>
+											<real>38.75</real>
+											<real>50</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -750,8 +764,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/hall.plist</string>
-											<string>beans.png</string>
+											<string>ccbResources/dating.plist</string>
+											<string>dt-dadou.png</string>
 										</array>
 									</dict>
 								</array>
@@ -778,7 +792,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>61</real>
+											<real>50.375</real>
 											<real>50</real>
 											<integer>4</integer>
 										</array>
@@ -830,8 +844,20 @@
 										<string>FloatScale</string>
 										<key>value</key>
 										<array>
-											<real>17</real>
+											<real>12</real>
 											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>color</string>
+										<key>type</key>
+										<string>Color3</string>
+										<key>value</key>
+										<array>
+											<integer>255</integer>
+											<integer>79</integer>
+											<integer>79</integer>
 										</array>
 									</dict>
 									<dict>
@@ -890,8 +916,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>114</real>
-									<real>83</real>
+									<real>182</real>
+									<real>103</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1780,8 +1806,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>ccbResources/ui_kuang.plist</string>
-							<string>fangjiankuang.png</string>
+							<string>ccbResources/dating.plist</string>
+							<string>dt-xiaobeijing.png</string>
 						</array>
 					</dict>
 				</array>
@@ -1808,8 +1834,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>41</real>
-							<real>35</real>
+							<real>131</real>
+							<real>94</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1860,8 +1886,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>ccbResources/ui_wenzi.plist</string>
-							<string>wenzi_putong.png</string>
+							<string>ccbResources/dating.plist</string>
+							<string>dt-putongchang.png</string>
 						</array>
 					</dict>
 				</array>
@@ -1944,8 +1970,6 @@
 				<true/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array>
@@ -1955,9 +1979,9 @@
 			<key>width</key>
 			<real>150</real>
 			<key>xPos</key>
-			<real>132.55859375</real>
+			<real>334.55859375</real>
 			<key>yPos</key>
-			<real>137.90625</real>
+			<real>117.90625</real>
 		</dict>
 	</array>
 	<key>resolutions</key>
