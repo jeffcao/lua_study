@@ -348,6 +348,7 @@ bool AppDelegate::uncompress(const char* out_path, const char* out_full_path)
 {
     // Open the zip file
     string outpath = out_path;
+    string zip_pwd = "hahaled";
     outpath = outpath + "/";
     CCLog("AppDelegate::uncompress, outpath= %s", outpath.c_str());
     string outFileName = out_full_path;
@@ -438,7 +439,7 @@ bool AppDelegate::uncompress(const char* out_path, const char* out_full_path)
             // Entry is a file, so extract it.
             
             // Open current file.
-            if (unzOpenCurrentFile(zipfile) != UNZ_OK)
+            if (unzOpenCurrentFilePassword(zipfile, "hahaled") != UNZ_OK)
             {
                 CCLog("can not open file %s", fileName);
                 unzClose(zipfile);

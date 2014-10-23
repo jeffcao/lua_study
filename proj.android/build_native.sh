@@ -90,9 +90,15 @@ mkdir "$APP_ANDROID_ROOT"/assets
 mkdir "$APP_ANDROID_ROOT"/assets/zipres
 cp "$APP_ROOT"/framework_precompiled.zip "$APP_ANDROID_ROOT"/assets/zipres/
 source "$QUICK_COCOS2DX_ROOT"/bin/compile_scripts.sh -i "$APP_ROOT"/Resources -o "$APP_ANDROID_ROOT"/assets/zipres/slogic.dat -ek hahaleddz -es hahaleddz -q
-source "$QUICK_COCOS2DX_ROOT"/bin/pack_files.sh -i "$APP_ROOT"/Resources/cui -o "$APP_ANDROID_ROOT"/assets/zipres/cui.dat -m zip -q
-source "$QUICK_COCOS2DX_ROOT"/bin/pack_files.sh -i "$APP_ROOT"/Resources/res -o "$APP_ANDROID_ROOT"/assets/zipres/res.dat -m zip -q
-
+# source "$QUICK_COCOS2DX_ROOT"/bin/pack_files.sh -i "$APP_ROOT"/Resources/cui -o "$APP_ANDROID_ROOT"/assets/zipres/cui.dat -m zip -q
+# source "$QUICK_COCOS2DX_ROOT"/bin/pack_files.sh -i "$APP_ROOT"/Resources/res -o "$APP_ANDROID_ROOT"/assets/zipres/res.dat -m zip -q
+cd "$APP_ROOT"/Resources/cui
+rm -rf .DS_Store
+zip -rq -P hahaled "$APP_ANDROID_ROOT"/assets/zipres/cui.dat .
+cd "$APP_ROOT"/Resources/res
+rm -rf .DS_Store
+zip -rq -P hahaled "$APP_ANDROID_ROOT"/assets/zipres/res.dat .
+cd "$APP_ANDROID_ROOT"
 
 # copy icons (if they exist)
 file="$APP_ANDROID_ROOT"/assets/Icon-72.png
