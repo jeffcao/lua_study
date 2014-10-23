@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../../Resources/ccbResources/denglu.png</filename>
+        <filename>../../Resources/ccbResources/dating.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -68,9 +68,9 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>2048</int>
+            <int>1024</int>
             <key>height</key>
-            <int>2048</int>
+            <int>1024</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -127,7 +127,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../Resources/ccbResources/denglu.plist</filename>
+                <filename>../../Resources/ccbResources/dating.plist</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -166,25 +166,42 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>dl_BeiJin.png</filename>
-            <filename>dl-bangzhu.png</filename>
-            <filename>dl-biaoti.png</filename>
-            <filename>dl-chongfumima.png</filename>
-            <filename>dl-dengluyouxi.png</filename>
-            <filename>dl-guanyu.png</filename>
-            <filename>dl-henggang.png</filename>
-            <filename>dl-kuaisuzhuce.png</filename>
-            <filename>dl-mima_2.png</filename>
-            <filename>dl-mima.png</filename>
-            <filename>dl-nicheng.png</filename>
-            <filename>dl-queding.png</filename>
-            <filename>dl-quxiao.png</filename>
-            <filename>dl-tuichu.png</filename>
-            <filename>dl-VS.png</filename>
-            <filename>dl-wangjimima.png</filename>
-            <filename>dl-xingbie.png</filename>
-            <filename>dl-zhanghao.png</filename>
-            <filename>dl-zhuce.png</filename>
+            <filename>dt-10yuansonhuafei.png</filename>
+            <filename>dt-beijing.png</filename>
+            <filename>dt-biejujiangxin.png</filename>
+            <filename>dt-bisai.png</filename>
+            <filename>dt-dadou.png</filename>
+            <filename>dt-fangjian1.png</filename>
+            <filename>dt-fangjian2.png</filename>
+            <filename>dt-fangjian3.png</filename>
+            <filename>dt-fangjian4.png</filename>
+            <filename>dt-fangjian5.png</filename>
+            <filename>dt-fangjian6.png</filename>
+            <filename>dt-fangjiandouz.png</filename>
+            <filename>dt-fanhuijian.png</filename>
+            <filename>dt-fankui.png</filename>
+            <filename>dt-fengshengsuiqi.png</filename>
+            <filename>dt-fuyoushihai.png</filename>
+            <filename>dt-huodong.png</filename>
+            <filename>dt-huoodong.png</filename>
+            <filename>dt-jiangshilaoye.png</filename>
+            <filename>dt-jiangshipangbianbeijing.png</filename>
+            <filename>dt-jiangshiyaozhai.png</filename>
+            <filename>dt-jijingzhidou.png</filename>
+            <filename>dt-jingnang.png</filename>
+            <filename>dt-kuaisuyouxi.png</filename>
+            <filename>dt-nonggengchumu.png</filename>
+            <filename>dt-paihangbang.png</filename>
+            <filename>dt-putongchang.png</filename>
+            <filename>dt-shangcheng.png</filename>
+            <filename>dt-songdoufang.png</filename>
+            <filename>dt-touxiang.png</filename>
+            <filename>dt-tuding.png</filename>
+            <filename>dt-xiaobeijing.png</filename>
+            <filename>dt-xiaosongdoufang.png</filename>
+            <filename>dt-youxidating.png</filename>
+            <filename>dt-yuantuting.png</filename>
+            <filename>dt-zhiliao.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
