@@ -50,14 +50,16 @@ function RoomItem:init_room_info(room_info, room_index)
 	room_info.is_promotion = is_match_room(room_info)
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 	cache:addSpriteFramesWithFile(Res.hall_plist)
+	cache:addSpriteFramesWithFile(Res.dating_plist)
 	
 	self.promotion_layer:setVisible(room_info.is_promotion)
 	self.normal_layer:setVisible(not room_info.is_promotion)
-	if not room_info.is_promotion then
-		self:init_normal_room(room_info, room_index)
-	else
-		self:init_promotion_room(room_info, room_index)
-	end
+	self:init_normal_room(room_info, room_index)
+	-- if not room_info.is_promotion then
+	-- 	self:init_normal_room(room_info, room_index)
+	-- else
+	-- 	self:init_promotion_room(room_info, room_index)
+	-- end
 	
 end
 
@@ -68,10 +70,12 @@ function RoomItem:init_normal_room(room_info, room_index)
 	local room_name = self.room_info.name
 	self.title:setString(room_name)
 	
-	if room_index > 2 then room_index = room_index - 2 end
-	local bg_sprite_png_index = (room_index % 6) > 0 and (room_index % 6) or 6
-	if bg_sprite_png_index == 4 then bg_sprite_png_index = 6 end
-	local bg_sprite_png = "fangjian0"..bg_sprite_png_index..".png"
+	-- if room_index > 2 then room_index = room_index - 2 end
+	-- local bg_sprite_png_index = (room_index % 6) > 0 and (room_index % 6) or 6
+	-- if bg_sprite_png_index == 4 then bg_sprite_png_index = 6 end
+	local bg_sprite_png_index =  room_index
+	local bg_sprite_png = "dt-fangjian"..bg_sprite_png_index..".png"
+	print("[RoomItem:init_normal_room], bg_sprite_png= ", bg_sprite_png)
 	self.bg_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(bg_sprite_png))
 	local sp_room_type_desc_png = "wenzi_putong.png"
 	self.sp_room_type_desc:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(sp_room_type_desc_png))
