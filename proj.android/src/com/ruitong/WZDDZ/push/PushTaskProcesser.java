@@ -16,7 +16,8 @@ import com.ruitong.WZDDZ.test.Logger;
 
 public class PushTaskProcesser implements TaskListener {
 	private Context mContext;
-	private int icon_resource = R.drawable.icon;
+//	private int icon_resource = R.drawable.icon;
+	private int icon_resource = 0;
 	private static final String tag = PushTaskProcesser.class.getName();
 	
 	public PushTaskProcesser(Context mContext) {
@@ -66,7 +67,7 @@ public class PushTaskProcesser implements TaskListener {
 
 	private void push(PushTask task) {
 		Logger.i(tag, "push");
-		pushNotification(mContext, task, icon_resource);
+		// pushNotification(mContext, task, icon_resource);
 		PushDAO.getInstance().removeTask(task);
 	}
 
@@ -86,8 +87,8 @@ public class PushTaskProcesser implements TaskListener {
 				System.currentTimeMillis());
 		n.flags = Notification.FLAG_AUTO_CANCEL;
 		n.defaults |= Notification.DEFAULT_VIBRATE;
-		n.sound = Uri.parse("android.resource://" + context.getPackageName()
-				+ "/" + R.raw.sound);
+//		n.sound = Uri.parse("android.resource://" + context.getPackageName()
+//				+ "/" + R.raw.sound);
 		Intent i = new Intent(context, WZDDZLua.class);
 
 		if (!(context instanceof Activity)) {

@@ -44,49 +44,13 @@ public class DDZApplicaion extends Application {
 		initPkgInfo();
 		initPush();
 		initLocalLinkConfig();
-
-		// init sdks
-		initSikaiZhifu();
-		initCmcc();
-		initLetu();
 	}
 	
 	@Override
 	public void onTerminate() {
-		destroyLetu();
 		super.onTerminate();
 	}
 	
-	private void destroyLetu() {
-		if (getPaytype().equalsIgnoreCase("letu")) {
-			debugLog("letu destroy");
-			//SdkPayServer.getInstance().unInitSdkPayServer();
-		}
-	}
-	
-	private void initLetu() {
-		if (getPaytype().equalsIgnoreCase("letu")) {
-			//com.lyhtgh.pay.application.PayApplication mPayApplication = new com.lyhtgh.pay.application.PayApplication();
-			//mPayApplication.a(getApplicationContext());
-		}
-	}
-
-	private void initCmcc() {
-		if (getPaytype().equalsIgnoreCase("cmcc")) {
-			System.loadLibrary("megjb");
-		}
-	}
-
-	private void initSikaiZhifu() {
-//		if (getPaytype().equalsIgnoreCase("sikai")) {
-//			new PayApplication().applicationOnCreat(getApplicationContext());
-//			String zhiyifu_channelid = getFromAssets("ZYF_ChannelID");
-//			String pref_name = "Cocos2dxPrefsFile";
-//			SharedPreferences sp = getSharedPreferences(pref_name,
-//					Context.MODE_PRIVATE);
-//			sp.edit().putString("zhiyifu_channel_id", zhiyifu_channelid).commit();
-//		}
-	}
 
 	public static void debugLog(String str) {
 		if (DEBUG) {
@@ -208,43 +172,14 @@ public class DDZApplicaion extends Application {
 	}
 
 	private String getId() {
-		String raw_result = getByRaw(R.raw.appid);
-		return raw_result != null ? raw_result : "1000";
+		return "2222";
 	}
 
 	public String getPaytype() {
-		String raw_result = getByRaw(R.raw.paytype);
-		return raw_result != null ? raw_result : "basic";
+		return "basic_demo";
 	}
 	public String get_umeng_app_key() {
-		String raw_result = getByRaw(R.raw.umeng_app_key);
-		return raw_result != null ? raw_result : "53994bee56240b395e001d3f";
-	}
-
-	private String getByRaw(int raw_id) {
-		InputStream is = null;
-		String result = null;
-		try {
-			is = getResources().openRawResource(raw_id);
-			byte[] buffer = new byte[1024];
-			int length = is.read(buffer);
-			if (length > 0) {
-				String id = new String(buffer, 0, length);
-				result = id;
-			} else {
-			}
-		} catch (IOException e) {
-			Log.e(TAG, e.getMessage());
-		} finally {
-			if (is != null) {
-				try {
-					is.close();
-				} catch (IOException e) {
-					Log.e(TAG, e.getMessage());
-				}
-			}
-		}
-		return result;
+		return "54406e16fd98c5853000c726";
 	}
 
 	private String getFromAssets(String fileName) {
