@@ -24,7 +24,6 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 	<!-- permissions added by letu -->
 	<!-- no new permission -->
-
     <application
         android:name="com.ruitong.WZDDZ.DDZApplicaion"
         android:label="@string/app_name" android:icon="@drawable/icon">

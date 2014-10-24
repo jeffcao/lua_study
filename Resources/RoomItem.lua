@@ -77,7 +77,7 @@ function RoomItem:init_normal_room(room_info, room_index)
 	local bg_sprite_png = "dt-fangjian"..bg_sprite_png_index..".png"
 	print("[RoomItem:init_normal_room], bg_sprite_png= ", bg_sprite_png)
 	self.bg_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(bg_sprite_png))
-	local sp_room_type_desc_png = "wenzi_putong.png"
+	local sp_room_type_desc_png = "dt-putongchang.png"
 	self.sp_room_type_desc:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(sp_room_type_desc_png))
 end
 
