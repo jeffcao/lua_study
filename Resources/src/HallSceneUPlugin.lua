@@ -235,116 +235,134 @@ function HallSceneUPlugin.bind(theClass)
 	
 	function theClass:refresh_room_data()
 		self:get_all_rooms()
-		self.after_trigger_success = __bind(self.refresh_room_tabview, self)
+		self.after_trigger_success = __bind(self.refresh_room_scrollview, self)
+	end
+
+
+	function theClass:refresh_room_scrollview(data)
+		print("[HallSceneUPlugin:refresh_room_scrollview]")
+		if not self.room_layer_scrollview then
+
+			self.ScrollContainer = display.newLayer()
+		    self.ScrollContainer:setTouchEnabled(true)
+		    self.ScrollContainer:setPosition(ccp(1, 0))
+		    self.ScrollContainer:setTouchSwallowEnabled(false)
+	
+	
+			self.room_layer_scrollview = CCScrollView:create()
+			self.room_layer_scrollview:setContentSize(CCSizeMake(0, 0))
+			self.room_layer_scrollview:setViewSize(CCSizeMake(700, 220))
+			self.room_layer_scrollview:setContainer(self.ScrollContainer)
+			self.room_layer_scrollview:setDirection(kCCScrollViewDirectionHorizontal)
+			self.room_layer_scrollview:setClippingToBounds(true)
+			self.room_layer_scrollview:setBounceable(true)
+			self.room_layer_scrollview:setDelegate(this)
+
+
+			local function scrollView2DidScroll()
+			    -- print("theClass - scrollListener:" .. event.name)
+			end
+			self.room_layer_scrollview:registerScriptHandler(scrollView2DidScroll, CCScrollView.kScrollViewScroll)
+
+			-- self.room_layer_scrollview:onScroll(handler(self, self.scrollListener))
+			self.room_layer_scrollview:setPosition(CCPointMake(0,0))
+			self.middle_layer:addChild(self.room_layer_scrollview)
+			self.room_datas = data
+			local k=0
+			for i=1, #(data.room) do
+				local i_room = createRoomItem()
+				print("[HallSceneUPlugin:refresh_room_scrollview] idx: " .. i, i_room)
+				i_room:init_room_info(data.room[i], i)
+				i_room.on_touch_callback = __bind(self.do_on_room_touched, self)
+				i_room:setPosition(ccp(k*230+5, (i%2)*113))
+				self.ScrollContainer:addChild(i_room)
+				if (i%2) == 0 then k=k+1 end
+
+			end
+
+		end
+		
+	end
+
+	function theClass:scrollListener(event)
+		-- print("theClass - scrollListener:" .. event.name)
 	end
 	
-	function theClass:refresh_room_tabview(data)
-		dump(data,"[HallSceneUPlugin:refresh_room_tabview]")
-		if not self.room_layer_t then
-		-- local h = LuaEventHandler:create(function(fn, table, a1, a2)
-		-- 	local r
-		-- 	if fn == "cellSize" then
-		-- 		r = CCSizeMake(260,260)
-		-- 	elseif fn == "cellAtIndex" then
-		-- 		if not a2 then
-		-- 			a2 = CCTableViewCell:create()
-		-- 			local a3 = createRoomItem()
-		-- 			print("[HallSceneUPlugin:refresh_room_tabview] a1: "..a1)
-		-- 			a3:init_room_info(data.room[a1], a1)
-		-- 			a2:addChild(a3, 0, 1)
-		-- 		else
-		-- 			local a3 = tolua.cast(a2:getChildByTag(1), "CCLayer")
-		-- 			local room_index = a1 + 1
-		-- 			a3:init_room_info(data.room[room_index], room_index)
-		-- 		end
-		-- 		r = a2
-		-- 	elseif fn == "numberOfCells" then
-		-- 		if data and data.room then
-		-- 			r = #(data.room)
-		-- 		end
-		-- 	elseif fn == "cellTouched" then
-		-- 		print("[HallSceneUPlugin:refresh_room_tabview] room_cell_couched")
-		-- 		local a3 = tolua.cast(a1:getChildByTag(1), "CCLayer")
-		-- 		dump(a3.room_info, "[HallSceneUPlugin:init_room_tabview] room_cell_couched, room_info: ")
-		-- 		self:do_on_room_touched(a3.room_info)
-		-- 	end
-		-- 	return r
-		-- end)
 
-		local function cellSizeForTable(table,idx)
-    	return 260,260
-		end
+	-- function theClass:refresh_room_tabview(data)
+	-- 	dump(data,"[HallSceneUPlugin:refresh_room_tabview]")
+	-- 	if not self.room_layer_t then
 
-		local function numberOfCellsInTableView(table)
-			if data and data.room then
-				return #(data.room)
-			end
+	-- 		local function cellSizeForTable(table,idx)
+	-- 			return 260,260
+	-- 		end
 
-			return 0
-		end
+	-- 		local function numberOfCellsInTableView(table)
+	-- 			if data and data.room then
+	-- 				return #(data.room)
+	-- 			end
+
+	-- 			return 0
+	-- 		end
+			
+	-- 		local function tableCellTouched(table,cell)
+	-- 		    --print("cell touched at index: " .. cell:getIdx())
+	-- 				print("[HallSceneUPlugin:refresh_room_tabview] room_cell_couched")
+	-- 				local a3 = tolua.cast(cell:getChildByTag(1), "CCLayer")
+	-- 				dump(a3.room_info, "[HallSceneUPlugin:init_room_tabview] room_cell_couched, room_info: ")
+	-- 				self:do_on_room_touched(a3.room_info)
+	-- 		end
+
+	-- 		local function tableCellAtIndex(table, idx)
+	-- 		    local strValue = string.format("%d",idx)
+	-- 		    local cell = table:dequeueCell()
+	-- 		    local label = nil
+	-- 		    if nil == cell then
+	-- 	        		cell = CCTableViewCell:new()
+	-- 					local a3 = createRoomItem()
+	-- 					print("[HallSceneUPlugin:refresh_room_tabview] idx: " .. idx, a3)
+	-- 					a3:init_room_info(data.room[idx + 1], idx + 1)
+	-- 					cell:addChild(a3, 0, 1)
+	-- 		    else
+	-- 					local a3 = tolua.cast(cell:getChildByTag(1), "CCLayer")
+	-- 					local room_index = idx + 1
+	-- 					a3:init_room_info(data.room[room_index], room_index)
+	-- 			end
+
+	-- 		    return cell
+	-- 		end
+
+	-- 	    local tableView = CCTableView:create(CCSizeMake(800,260))
+	-- 	    local t = tableView
+	-- 	    tableView:setDirection(kCCScrollViewDirectionHorizontal)
+
+	-- 	    tableView:registerScriptHandler(tableCellTouched,CCTableView.kTableCellTouched)
+	-- 	    tableView:registerScriptHandler(cellSizeForTable,CCTableView.kTableCellSizeForIndex)
+	-- 	    tableView:registerScriptHandler(tableCellAtIndex,CCTableView.kTableCellSizeAtIndex)
+	-- 	    tableView:registerScriptHandler(numberOfCellsInTableView,CCTableView.kNumberOfCellsInTableView)
+	-- 	    tableView:reloadData()
+
+
+	-- 		t:setPosition(CCPointMake(0,0))
+	-- 		self.middle_layer:addChild(t)
+	-- 		self.room_layer_t = t
+	-- 		self.room_datas = data
+	-- 	else
+	-- 		for k,v in pairs(data) do
+	-- 			self.room_datas[k] = data[k]
+	-- 		end
+	-- 		self.room_layer_t:reloadData()
+	-- 	end
 		
-		local function tableCellTouched(table,cell)
-		    --print("cell touched at index: " .. cell:getIdx())
-				print("[HallSceneUPlugin:refresh_room_tabview] room_cell_couched")
-				local a3 = tolua.cast(cell:getChildByTag(1), "CCLayer")
-				dump(a3.room_info, "[HallSceneUPlugin:init_room_tabview] room_cell_couched, room_info: ")
-				self:do_on_room_touched(a3.room_info)
-		end
-
-		local function tableCellAtIndex(table, idx)
-	    local strValue = string.format("%d",idx)
-	    local cell = table:dequeueCell()
-	    local label = nil
-	    if nil == cell then
-        cell = CCTableViewCell:new()
-				local a3 = createRoomItem()
-				print("[HallSceneUPlugin:refresh_room_tabview] idx: " .. idx, a3)
-				a3:init_room_info(data.room[idx + 1], idx + 1)
-				cell:addChild(a3, 0, 1)
-	    else
-				local a3 = tolua.cast(cell:getChildByTag(1), "CCLayer")
-				local room_index = idx + 1
-				a3:init_room_info(data.room[room_index], room_index)
-			end
-
-	    return cell
-		end
-
-		-- local t = CCTableView:createWithHandler(h, CCSizeMake(800,260))
-		-- t:setDirection(kCCScrollViewDirectionHorizontal)
-		-- t:reloadData()
-    local tableView = CCTableView:create(CCSizeMake(800,260))
-    local t = tableView
-    tableView:setDirection(kCCScrollViewDirectionHorizontal)
-    -- tableView:setPosition(CCPointMake(20, winSize.height / 2 - 150))
-    --registerScriptHandler functions must be before the reloadData function
-    tableView:registerScriptHandler(tableCellTouched,CCTableView.kTableCellTouched)
-    tableView:registerScriptHandler(cellSizeForTable,CCTableView.kTableCellSizeForIndex)
-    tableView:registerScriptHandler(tableCellAtIndex,CCTableView.kTableCellSizeAtIndex)
-    tableView:registerScriptHandler(numberOfCellsInTableView,CCTableView.kNumberOfCellsInTableView)
-    tableView:reloadData()
-
-
-		t:setPosition(CCPointMake(0,0))
-		self.middle_layer:addChild(t)
-		self.room_layer_t = t
-		self.room_datas = data
-		else
-			for k,v in pairs(data) do
-				self.room_datas[k] = data[k]
-			end
-			self.room_layer_t:reloadData()
-		end
-		
-		for index=#(data.room), 1, -1 do
-			self.room_layer_t:updateCellAtIndex(index-1)
-		end
-	end
+	-- 	for index=#(data.room), 1, -1 do
+	-- 		self.room_layer_t:updateCellAtIndex(index-1)
+	-- 	end
+	-- end
 	
 	function theClass:init_room_tabview(data)
 		print("[HallSceneUPlugin:init_room_tabview]")
-		self:refresh_room_tabview(data)
-
+		-- self:refresh_room_tabview(data)
+		self:refresh_room_scrollview(data)
 		self:listen_match_event()
 		self:check_kick_out()
 		self:get_user_profile()

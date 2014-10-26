@@ -4,7 +4,7 @@ local cjson = require "cjson"
 function VipPlugin.bind(theClass)
 	function theClass:checkVip()
  		local is_vip = (GlobalSetting.vip ~= cjson.null)
- 		self.hall_vip_menu:setVisible(is_vip)
+ 		-- self.hall_vip_menu:setVisible(is_vip)
  		if not is_vip then return end
  		local fn = function()
  			local is_vip = GlobalSetting.vip and (GlobalSetting.vip ~= cjson.null)
