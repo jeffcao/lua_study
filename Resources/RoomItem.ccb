@@ -39,21 +39,13 @@
 				<array>
 					<dict>
 						<key>name</key>
-						<string>visible</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>position</string>
 						<key>type</key>
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>123</real>
-							<real>135</real>
+							<real>107</real>
+							<real>58</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -137,8 +129,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>72</real>
-									<real>99</real>
+									<real>52</real>
+									<real>50</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -217,8 +209,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>116</real>
-									<real>121</real>
+									<real>97</real>
+									<real>66</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -333,8 +325,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>171</real>
-									<real>121</real>
+									<real>147</real>
+									<real>65</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -461,8 +453,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>130</real>
-									<real>146.08001708984375</real>
+									<real>104</real>
+									<real>96.08001708984375</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -566,8 +558,6 @@
 								<string>农耕畜牧</string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -916,8 +906,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>182</real>
-									<real>103</real>
+									<real>158</real>
+									<real>52</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1005,8 +995,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>130</real>
-							<real>145</real>
+							<real>107</real>
+							<real>58</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1661,8 +1651,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>130</real>
-							<real>145</real>
+							<real>107</real>
+							<real>58</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1740,86 +1730,6 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCSprite</string>
-				<key>memberVarAssignmentName</key>
-				<string></string>
-				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
-				<key>properties</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>129</real>
-							<real>124</real>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>anchorPoint</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.5</real>
-							<real>0.5</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>scale</string>
-						<key>type</key>
-						<string>ScaleLock</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<false/>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>tag</string>
-						<key>type</key>
-						<string>Integer</string>
-						<key>value</key>
-						<integer>1000</integer>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>ignoreAnchorPointForPosition</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>displayFrame</string>
-						<key>type</key>
-						<string>SpriteFrame</string>
-						<key>value</key>
-						<array>
-							<string>ccbResources/dating.plist</string>
-							<string>dt-xiaobeijing.png</string>
-						</array>
-					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>baseClass</key>
-				<string>CCSprite</string>
-				<key>children</key>
-				<array/>
-				<key>customClass</key>
-				<string></string>
-				<key>displayName</key>
 				<string>sp_room_type_desc</string>
 				<key>memberVarAssignmentName</key>
 				<string>sp_room_type_desc</string>
@@ -1834,8 +1744,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>131</real>
-							<real>94</real>
+							<real>109</real>
+							<real>30</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1912,8 +1822,8 @@
 				<string>Size</string>
 				<key>value</key>
 				<array>
-					<real>260</real>
-					<real>260</real>
+					<real>213</real>
+					<real>115</real>
 					<integer>0</integer>
 				</array>
 			</dict>
