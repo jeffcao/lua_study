@@ -42,7 +42,7 @@ function RoomItem:ctor()
  --  self.rootNode:setTouchEnabled(true)
 	-- self.rootNode:registerScriptTouchHandler(onTouchRoom)
 	self.rootNode:setTouchEnabled(true)
-	self.rootNode:setTouchSwallowEnabled(true)
+	self.rootNode:setTouchSwallowEnabled(false)
 	self.rootNode:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
 			return self:on_touch_event(event.name, event.x, event.y)
 		end)
@@ -54,10 +54,15 @@ function RoomItem:on_touch_event(eventName, eventX, eventY)
 	if eventName == "began" then
       return true
     elseif eventName == "moved" then
+    	return true
    	elseif eventName == "ended" then
-   		dump(self.room_info, "RoomItem:on_touch_event, self.room_info=")
-    	self.on_touch_callback(self.room_info)
-    	print("[RoomItem:on_touch_event] ended")
+   		if cccn(self.rootNode, eventX, eventY) then
+			dump(self.room_info, "RoomItem:on_touch_event, self.room_info=")
+	    	self.on_touch_callback(self.room_info)
+	    	print("[RoomItem:on_touch_event] ended")
+	    	return true
+		end
+   		
     end
 end
 

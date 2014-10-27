@@ -242,12 +242,22 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:refresh_room_scrollview(data)
 		print("[HallSceneUPlugin:refresh_room_scrollview]")
 		if not self.room_layer_scrollview then
+			self.scrollTop = 220
+			self.scrollHeight = 220
+			self.scrollWidth = 700
+			self.cellHeight = 105
+			self.cellWidth = 512
+			self.cellNums = #(data.room)/2 + #(data.room)%2
 
 			self.ScrollContainer = display.newLayer()
 		    self.ScrollContainer:setTouchEnabled(true)
 		    self.ScrollContainer:setPosition(ccp(1, 0))
 		    self.ScrollContainer:setTouchSwallowEnabled(false)
-	
+		    self.ScrollContainer:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
+		    	print("HallSceneUPlugin:refresh_room_scrollview, ScrollContainer.ontouched")
+		        return self:onScrollCellCallback(event.name, event.x, event.y)
+		    end)
+			
 	
 			self.room_layer_scrollview = CCScrollView:create()
 			self.room_layer_scrollview:setContentSize(CCSizeMake(0, 0))
@@ -260,7 +270,29 @@ function HallSceneUPlugin.bind(theClass)
 
 
 			local function scrollView2DidScroll()
-			    -- print("theClass - scrollListener:" .. event.name)
+				print("HallSceneUPlugin:refresh_room_scrollview, scrollView2DidScroll")
+			     if self.bolTouchEnd == true then
+			        self.bolTouchEnd = false
+			        local offy = self.ScrollContainer:getPositionX()
+			        local miny = self.scrollWidth-self.cellNums*self.cellWidth
+			        print("HallSceneUPlugin:refresh_room_scrollview, scrollView2DidScroll, offy, miny", offy, miny)
+			        if offy < 0 and offy > miny then
+			            local item = -(math.abs(offy)%self.cellWidth)
+			            print("HallSceneUPlugin:refresh_room_scrollview, scrollView2DidScroll, item", item)
+			            if item <= -self.cellWidth/2 then
+			                if offy < self.preOffy then
+			                    item = offy-item-self.cellWidth 
+			                else
+			                    item = offy-item-self.cellWidth
+			                end
+			            else
+			                item = offy-item
+			            end
+			            self.preOffy = offy
+			            print("HallSceneUPlugin:refresh_room_scrollview, scrollView2DidScroll, item", item)
+			            self.room_layer_scrollview:setContentOffset(ccp(item, 1), true)
+			        end
+			    end
 			end
 			self.room_layer_scrollview:registerScriptHandler(scrollView2DidScroll, CCScrollView.kScrollViewScroll)
 
@@ -276,12 +308,23 @@ function HallSceneUPlugin.bind(theClass)
 				i_room.on_touch_callback = __bind(self.do_on_room_touched, self)
 				i_room:setPosition(ccp(k*230+5, (i%2)*113))
 				self.ScrollContainer:addChild(i_room)
-				if (i%2) == 0 then k=k+1 end
+				if (i%2) == 0 then k=k+2 end
 
 			end
 
 		end
 		
+	end
+	function theClass:onScrollCellCallback(event, x, y)
+	    if event == "began" then
+	    	print("HallSceneUPlugin:refresh_room_scrollview, onScrollCellCallback, began")
+	    elseif event == "moved" then
+	    	print("HallSceneUPlugin:refresh_room_scrollview, onScrollCellCallback, moved")
+	    elseif event == "ended" then
+	    	self.bolTouchEnd = true
+	    	print("HallSceneUPlugin:refresh_room_scrollview, onScrollCellCallback, ended")
+	    end
+	    return true
 	end
 
 	function theClass:scrollListener(event)
