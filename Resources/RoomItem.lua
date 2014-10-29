@@ -62,7 +62,7 @@ function RoomItem:on_touch_event(eventName, eventX, eventY)
 	    	print("[RoomItem:on_touch_event] ended")
 	    	return true
 		end
-   		
+   		return true
     end
 end
 

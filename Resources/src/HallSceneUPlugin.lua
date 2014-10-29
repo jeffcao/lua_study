@@ -308,7 +308,7 @@ function HallSceneUPlugin.bind(theClass)
 				i_room.on_touch_callback = __bind(self.do_on_room_touched, self)
 				i_room:setPosition(ccp(k*230+5, (i%2)*113))
 				self.ScrollContainer:addChild(i_room)
-				if (i%2) == 0 then k=k+2 end
+				if (i%2) == 0 then k=k+1 end
 
 			end
 

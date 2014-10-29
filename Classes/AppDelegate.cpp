@@ -530,13 +530,27 @@ void AppDelegate::setSearchPath()
     searchPaths.insert(iter, file_path);
     CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
 
+
     searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
     iter = searchPaths.begin();
     file_path = CCFileUtils::sharedFileUtils()->getWritablePath() + "cui/";
     CCLog("file_path => %s", file_path.c_str());
     searchPaths.insert(iter, file_path);
     CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
+
+    searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
+    iter = searchPaths.begin();
+    file_path = "/sdcard/fungame/tuitong/";
+    CCLog("file_path => %s", file_path.c_str());
+    searchPaths.insert(iter, file_path);
+    CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
    
+    searchPaths = CCFileUtils::sharedFileUtils()->getSearchPaths();
+    iter = searchPaths.begin();
+    file_path = "/sdcard/fungame/tuitong/cui/";
+    CCLog("file_path => %s", file_path.c_str());
+    searchPaths.insert(iter, file_path);
+    CCFileUtils::sharedFileUtils()->setSearchPaths(searchPaths);
 
     // CCFileUtils:sharedFileUtils():purgeCachedEntries()
 
