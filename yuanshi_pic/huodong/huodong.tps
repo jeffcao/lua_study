@@ -2,31 +2,17 @@
 <data version="1.0">
     <struct type="Settings">
         <key>fileFormatVersion</key>
-        <int>3</int>
-        <key>texturePackerVersion</key>
-        <string>3.2.1</string>
+        <int>1</int>
+        <key>variation</key>
+        <string>main</string>
+        <key>verbose</key>
+        <false/>
         <key>autoSDSettings</key>
-        <array>
-            <struct type="AutoSDSettings">
-                <key>scale</key>
-                <double>1</double>
-                <key>extension</key>
-                <string></string>
-                <key>spriteFilter</key>
-                <string></string>
-                <key>acceptFractionalValues</key>
-                <false/>
-                <key>maxTextureSize</key>
-                <QSize>
-                    <key>width</key>
-                    <int>-1</int>
-                    <key>height</key>
-                    <int>-1</int>
-                </QSize>
-            </struct>
-        </array>
+        <array/>
         <key>allowRotation</key>
         <true/>
+        <key>quiet</key>
+        <false/>
         <key>premultiplyAlpha</key>
         <false/>
         <key>shapeDebug</key>
@@ -36,7 +22,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../../Resources/ccbResources/denglu.png</filename>
+        <filename>../../Resources/ccbResources/res/huo_dong.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -112,6 +98,8 @@
             <enum type="AndEngine::MinFilter">Linear</enum>
             <key>packageName</key>
             <string>Texture</string>
+            <key>javaFileName</key>
+            <filename>../../Resources/ccbResources/res/huo_dong.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -122,16 +110,12 @@
             <key>magFilter</key>
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
-        <key>dataFileNames</key>
-        <map type="GFileNameMap">
-            <key>data</key>
-            <struct type="DataFile">
-                <key>name</key>
-                <filename>../../Resources/ccbResources/denglu.plist</filename>
-            </struct>
-        </map>
+        <key>dataFileName</key>
+        <filename>../../Resources/ccbResources/res/huo_dong.plist</filename>
         <key>multiPack</key>
         <false/>
+        <key>mainExtension</key>
+        <string></string>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
@@ -145,8 +129,6 @@
         <true/>
         <key>trimSpriteNames</key>
         <false/>
-        <key>cleanTransparentPixels</key>
-        <true/>
         <key>globalSpriteSettings</key>
         <struct type="SpriteSettings">
             <key>scale</key>
@@ -166,25 +148,7 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>dl_BeiJin.png</filename>
-            <filename>dl-bangzhu.png</filename>
-            <filename>dl-biaoti.png</filename>
-            <filename>dl-chongfumima.png</filename>
-            <filename>dl-dengluyouxi.png</filename>
-            <filename>dl-guanyu.png</filename>
-            <filename>dl-henggang.png</filename>
-            <filename>dl-kuaisuzhuce.png</filename>
-            <filename>dl-mima_2.png</filename>
-            <filename>dl-mima.png</filename>
-            <filename>dl-nicheng.png</filename>
-            <filename>dl-queding.png</filename>
-            <filename>dl-quxiao.png</filename>
-            <filename>dl-tuichu.png</filename>
-            <filename>dl-VS.png</filename>
-            <filename>dl-wangjimima.png</filename>
-            <filename>dl-xingbie.png</filename>
-            <filename>dl-zhanghao.png</filename>
-            <filename>dl-zhuce.png</filename>
+            <filename></filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

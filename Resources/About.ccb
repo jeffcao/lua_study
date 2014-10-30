@@ -39,13 +39,21 @@
 				<array>
 					<dict>
 						<key>name</key>
+						<string>visible</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>position</string>
 						<key>type</key>
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>10</real>
-							<real>72</real>
+							<real>18.75</real>
+							<real>55</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -146,7 +154,7 @@
 						<key>type</key>
 						<string>Text</string>
 						<key>value</key>
-						<string>我爱斗地主游戏由深圳市新中南实业有限公司提供。</string>
+						<string>UU斗地主是深圳市瑞通资讯技术有限公司 荣誉出品</string>
 					</dict>
 				</array>
 			</dict>
@@ -167,13 +175,21 @@
 				<array>
 					<dict>
 						<key>name</key>
+						<string>visible</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>position</string>
 						<key>type</key>
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>80</real>
-							<real>298</real>
+							<real>150</real>
+							<real>126</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -274,7 +290,7 @@
 						<key>type</key>
 						<string>Text</string>
 						<key>value</key>
-						<string>客服热线：400-6788456</string>
+						<string>客服热线：400-1234567</string>
 					</dict>
 				</array>
 			</dict>
@@ -300,8 +316,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>80</real>
-							<real>252</real>
+							<real>68</real>
+							<real>62</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -405,8 +421,166 @@
 						<string>版本: v 1.01(706)</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
+			</dict>
+			<dict>
+				<key>baseClass</key>
+				<string>CCSprite</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>CCSprite</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>0</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>390</real>
+							<real>167</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.5</real>
+							<real>0.5</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>tag</string>
+						<key>type</key>
+						<string>Integer</string>
+						<key>value</key>
+						<integer>1000</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ignoreAnchorPointForPosition</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>displayFrame</string>
+						<key>type</key>
+						<string>SpriteFrame</string>
+						<key>value</key>
+						<array>
+							<string>ccbResources/res/shangchen_jianjie.plist</string>
+							<string>youxi_jianjie/yxjj-xiaotu/yx-duozhi.png</string>
+						</array>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>baseClass</key>
+				<string>CCSprite</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>CCSprite</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>0</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>382</real>
+							<real>282</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.5</real>
+							<real>0.5</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>tag</string>
+						<key>type</key>
+						<string>Integer</string>
+						<key>value</key>
+						<integer>1000</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ignoreAnchorPointForPosition</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>displayFrame</string>
+						<key>type</key>
+						<string>SpriteFrame</string>
+						<key>value</key>
+						<array>
+							<string>ccbResources/res/shangchen_jianjie.plist</string>
+							<string>youxi_jianjie/yxjj-xiaotu/yx-zhi.png</string>
+						</array>
+					</dict>
+				</array>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -506,6 +680,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

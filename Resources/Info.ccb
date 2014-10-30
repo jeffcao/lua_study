@@ -49,6 +49,14 @@
 								<array>
 									<dict>
 										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>position</string>
 										<key>type</key>
 										<string>Position</string>
@@ -288,6 +296,86 @@
 									</dict>
 								</array>
 							</dict>
+							<dict>
+								<key>baseClass</key>
+								<string>CCSprite</string>
+								<key>children</key>
+								<array/>
+								<key>customClass</key>
+								<string></string>
+								<key>displayName</key>
+								<string>CCSprite</string>
+								<key>memberVarAssignmentName</key>
+								<string></string>
+								<key>memberVarAssignmentType</key>
+								<integer>0</integer>
+								<key>properties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>position</string>
+										<key>type</key>
+										<string>Position</string>
+										<key>value</key>
+										<array>
+											<real>32</real>
+											<real>32</real>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>anchorPoint</string>
+										<key>type</key>
+										<string>Point</string>
+										<key>value</key>
+										<array>
+											<real>0.5</real>
+											<real>0.5</real>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>scale</string>
+										<key>type</key>
+										<string>ScaleLock</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
+											<false/>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>tag</string>
+										<key>type</key>
+										<string>Integer</string>
+										<key>value</key>
+										<integer>1000</integer>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>ignoreAnchorPointForPosition</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>displayFrame</string>
+										<key>type</key>
+										<string>SpriteFrame</string>
+										<key>value</key>
+										<array>
+											<string>ccbResources/res/geren_ziliao.plist</string>
+											<string>ziliao3/zl-xiaotu/zl-zhanghao.png</string>
+										</array>
+									</dict>
+								</array>
+							</dict>
 						</array>
 						<key>customClass</key>
 						<string></string>
@@ -307,7 +395,7 @@
 								<key>value</key>
 								<array>
 									<real>224</real>
-									<real>320</real>
+									<real>225</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -396,8 +484,6 @@
 								<false/>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -408,7 +494,82 @@
 								<key>baseClass</key>
 								<string>CCLayer</string>
 								<key>children</key>
-								<array/>
+								<array>
+									<dict>
+										<key>baseClass</key>
+										<string>CCSprite</string>
+										<key>children</key>
+										<array/>
+										<key>customClass</key>
+										<string></string>
+										<key>displayName</key>
+										<string>CCSprite</string>
+										<key>memberVarAssignmentName</key>
+										<string></string>
+										<key>memberVarAssignmentType</key>
+										<integer>0</integer>
+										<key>properties</key>
+										<array>
+											<dict>
+												<key>name</key>
+												<string>position</string>
+												<key>type</key>
+												<string>Position</string>
+												<key>value</key>
+												<array>
+													<real>89</real>
+													<real>17</real>
+													<integer>0</integer>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>anchorPoint</string>
+												<key>type</key>
+												<string>Point</string>
+												<key>value</key>
+												<array>
+													<real>0.5</real>
+													<real>0.5</real>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>scale</string>
+												<key>type</key>
+												<string>ScaleLock</string>
+												<key>value</key>
+												<array>
+													<real>1</real>
+													<real>1</real>
+													<false/>
+													<integer>0</integer>
+												</array>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>ignoreAnchorPointForPosition</string>
+												<key>type</key>
+												<string>Check</string>
+												<key>value</key>
+												<false/>
+											</dict>
+											<dict>
+												<key>name</key>
+												<string>displayFrame</string>
+												<key>type</key>
+												<string>SpriteFrame</string>
+												<key>value</key>
+												<array>
+													<string>ccbResources/res/geren_ziliao.plist</string>
+													<string>ziliao3/zl-xiaotu/zl-beijing.png</string>
+												</array>
+											</dict>
+										</array>
+										<key>selected</key>
+										<true/>
+									</dict>
+								</array>
 								<key>customClass</key>
 								<string></string>
 								<key>displayName</key>
@@ -427,7 +588,7 @@
 										<key>value</key>
 										<array>
 											<real>18.222221374511719</real>
-											<real>40</real>
+											<real>42</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -439,7 +600,7 @@
 										<key>value</key>
 										<array>
 											<real>225</real>
-											<real>30</real>
+											<real>35</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -532,6 +693,14 @@
 								<integer>0</integer>
 								<key>properties</key>
 								<array>
+									<dict>
+										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
 									<dict>
 										<key>name</key>
 										<string>position</string>
@@ -645,6 +814,86 @@
 									</dict>
 								</array>
 							</dict>
+							<dict>
+								<key>baseClass</key>
+								<string>CCSprite</string>
+								<key>children</key>
+								<array/>
+								<key>customClass</key>
+								<string></string>
+								<key>displayName</key>
+								<string>CCSprite</string>
+								<key>memberVarAssignmentName</key>
+								<string></string>
+								<key>memberVarAssignmentType</key>
+								<integer>0</integer>
+								<key>properties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>position</string>
+										<key>type</key>
+										<string>Position</string>
+										<key>value</key>
+										<array>
+											<real>32</real>
+											<real>35</real>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>anchorPoint</string>
+										<key>type</key>
+										<string>Point</string>
+										<key>value</key>
+										<array>
+											<real>0.5</real>
+											<real>0.5</real>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>scale</string>
+										<key>type</key>
+										<string>ScaleLock</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
+											<false/>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>tag</string>
+										<key>type</key>
+										<string>Integer</string>
+										<key>value</key>
+										<integer>1000</integer>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>ignoreAnchorPointForPosition</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>displayFrame</string>
+										<key>type</key>
+										<string>SpriteFrame</string>
+										<key>value</key>
+										<array>
+											<string>ccbResources/res/geren_ziliao.plist</string>
+											<string>ziliao3/zl-xiaotu/zl-nicheng.png</string>
+										</array>
+									</dict>
+								</array>
+							</dict>
 						</array>
 						<key>customClass</key>
 						<string></string>
@@ -664,7 +913,7 @@
 								<key>value</key>
 								<array>
 									<real>224</real>
-									<real>258</real>
+									<real>180</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -774,6 +1023,14 @@
 								<integer>0</integer>
 								<key>properties</key>
 								<array>
+									<dict>
+										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
 									<dict>
 										<key>name</key>
 										<string>position</string>
@@ -887,6 +1144,86 @@
 									</dict>
 								</array>
 							</dict>
+							<dict>
+								<key>baseClass</key>
+								<string>CCSprite</string>
+								<key>children</key>
+								<array/>
+								<key>customClass</key>
+								<string></string>
+								<key>displayName</key>
+								<string>CCSprite</string>
+								<key>memberVarAssignmentName</key>
+								<string></string>
+								<key>memberVarAssignmentType</key>
+								<integer>0</integer>
+								<key>properties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>position</string>
+										<key>type</key>
+										<string>Position</string>
+										<key>value</key>
+										<array>
+											<real>36</real>
+											<real>32</real>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>anchorPoint</string>
+										<key>type</key>
+										<string>Point</string>
+										<key>value</key>
+										<array>
+											<real>0.5</real>
+											<real>0.5</real>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>scale</string>
+										<key>type</key>
+										<string>ScaleLock</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
+											<false/>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>tag</string>
+										<key>type</key>
+										<string>Integer</string>
+										<key>value</key>
+										<integer>1000</integer>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>ignoreAnchorPointForPosition</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>displayFrame</string>
+										<key>type</key>
+										<string>SpriteFrame</string>
+										<key>value</key>
+										<array>
+											<string>ccbResources/res/geren_ziliao.plist</string>
+											<string>ziliao3/zl-xiaotu/zl-xingbie.png</string>
+										</array>
+									</dict>
+								</array>
+							</dict>
 						</array>
 						<key>customClass</key>
 						<string></string>
@@ -906,7 +1243,7 @@
 								<key>value</key>
 								<array>
 									<real>224</real>
-									<real>193</real>
+									<real>135</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1300,6 +1637,14 @@
 								<array>
 									<dict>
 										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>position</string>
 										<key>type</key>
 										<string>Position</string>
@@ -1539,6 +1884,86 @@
 									</dict>
 								</array>
 							</dict>
+							<dict>
+								<key>baseClass</key>
+								<string>CCSprite</string>
+								<key>children</key>
+								<array/>
+								<key>customClass</key>
+								<string></string>
+								<key>displayName</key>
+								<string>CCSprite</string>
+								<key>memberVarAssignmentName</key>
+								<string></string>
+								<key>memberVarAssignmentType</key>
+								<integer>0</integer>
+								<key>properties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>position</string>
+										<key>type</key>
+										<string>Position</string>
+										<key>value</key>
+										<array>
+											<real>35</real>
+											<real>33</real>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>anchorPoint</string>
+										<key>type</key>
+										<string>Point</string>
+										<key>value</key>
+										<array>
+											<real>0.5</real>
+											<real>0.5</real>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>scale</string>
+										<key>type</key>
+										<string>ScaleLock</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
+											<false/>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>tag</string>
+										<key>type</key>
+										<string>Integer</string>
+										<key>value</key>
+										<integer>1000</integer>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>ignoreAnchorPointForPosition</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>displayFrame</string>
+										<key>type</key>
+										<string>SpriteFrame</string>
+										<key>value</key>
+										<array>
+											<string>ccbResources/res/geren_ziliao.plist</string>
+											<string>ziliao3/zl-xiaotu/zl-douzhi.png</string>
+										</array>
+									</dict>
+								</array>
+							</dict>
 						</array>
 						<key>customClass</key>
 						<string></string>
@@ -1558,7 +1983,7 @@
 								<key>value</key>
 								<array>
 									<real>224</real>
-									<real>127</real>
+									<real>90</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1668,6 +2093,14 @@
 								<integer>0</integer>
 								<key>properties</key>
 								<array>
+									<dict>
+										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
 									<dict>
 										<key>name</key>
 										<string>position</string>
@@ -1909,6 +2342,86 @@
 									</dict>
 								</array>
 							</dict>
+							<dict>
+								<key>baseClass</key>
+								<string>CCSprite</string>
+								<key>children</key>
+								<array/>
+								<key>customClass</key>
+								<string></string>
+								<key>displayName</key>
+								<string>CCSprite</string>
+								<key>memberVarAssignmentName</key>
+								<string></string>
+								<key>memberVarAssignmentType</key>
+								<integer>0</integer>
+								<key>properties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>position</string>
+										<key>type</key>
+										<string>Position</string>
+										<key>value</key>
+										<array>
+											<real>36</real>
+											<real>34</real>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>anchorPoint</string>
+										<key>type</key>
+										<string>Point</string>
+										<key>value</key>
+										<array>
+											<real>0.5</real>
+											<real>0.5</real>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>scale</string>
+										<key>type</key>
+										<string>ScaleLock</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
+											<false/>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>tag</string>
+										<key>type</key>
+										<string>Integer</string>
+										<key>value</key>
+										<integer>1000</integer>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>ignoreAnchorPointForPosition</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>displayFrame</string>
+										<key>type</key>
+										<string>SpriteFrame</string>
+										<key>value</key>
+										<array>
+											<string>ccbResources/res/geren_ziliao.plist</string>
+											<string>ziliao3/zl-xiaotu/zl-shenglv.png</string>
+										</array>
+									</dict>
+								</array>
+							</dict>
 						</array>
 						<key>customClass</key>
 						<string></string>
@@ -1928,7 +2441,7 @@
 								<key>value</key>
 								<array>
 									<real>224</real>
-									<real>63</real>
+									<real>45</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -2038,6 +2551,14 @@
 								<integer>0</integer>
 								<key>properties</key>
 								<array>
+									<dict>
+										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
 									<dict>
 										<key>name</key>
 										<string>position</string>
@@ -2275,7 +2796,87 @@
 										<key>type</key>
 										<string>Text</string>
 										<key>value</key>
-										<string>tblin@cn6000.com</string>
+										<string>18965025xxx</string>
+									</dict>
+								</array>
+							</dict>
+							<dict>
+								<key>baseClass</key>
+								<string>CCSprite</string>
+								<key>children</key>
+								<array/>
+								<key>customClass</key>
+								<string></string>
+								<key>displayName</key>
+								<string>CCSprite</string>
+								<key>memberVarAssignmentName</key>
+								<string></string>
+								<key>memberVarAssignmentType</key>
+								<integer>0</integer>
+								<key>properties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>position</string>
+										<key>type</key>
+										<string>Position</string>
+										<key>value</key>
+										<array>
+											<real>57</real>
+											<real>33</real>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>anchorPoint</string>
+										<key>type</key>
+										<string>Point</string>
+										<key>value</key>
+										<array>
+											<real>0.5</real>
+											<real>0.5</real>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>scale</string>
+										<key>type</key>
+										<string>ScaleLock</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
+											<false/>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>tag</string>
+										<key>type</key>
+										<string>Integer</string>
+										<key>value</key>
+										<integer>1000</integer>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>ignoreAnchorPointForPosition</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>displayFrame</string>
+										<key>type</key>
+										<string>SpriteFrame</string>
+										<key>value</key>
+										<array>
+											<string>ccbResources/res/geren_ziliao.plist</string>
+											<string>ziliao3/zl-xiaotu/zl-bangdingshuzhi.png</string>
+										</array>
 									</dict>
 								</array>
 							</dict>

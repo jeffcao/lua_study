@@ -50,7 +50,76 @@
 						<key>baseClass</key>
 						<string>CCLayer</string>
 						<key>children</key>
-						<array/>
+						<array>
+							<dict>
+								<key>baseClass</key>
+								<string>CCSprite</string>
+								<key>children</key>
+								<array/>
+								<key>customClass</key>
+								<string></string>
+								<key>displayName</key>
+								<string>CCSprite</string>
+								<key>memberVarAssignmentName</key>
+								<string></string>
+								<key>memberVarAssignmentType</key>
+								<integer>0</integer>
+								<key>properties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>anchorPoint</string>
+										<key>type</key>
+										<string>Point</string>
+										<key>value</key>
+										<array>
+											<real>0.0</real>
+											<real>0.0</real>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>scale</string>
+										<key>type</key>
+										<string>ScaleLock</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
+											<false/>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>tag</string>
+										<key>type</key>
+										<string>Integer</string>
+										<key>value</key>
+										<integer>1000</integer>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>ignoreAnchorPointForPosition</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>displayFrame</string>
+										<key>type</key>
+										<string>SpriteFrame</string>
+										<key>value</key>
+										<array>
+											<string>ccbResources/dating.plist</string>
+											<string>dt-beijing.png</string>
+										</array>
+									</dict>
+								</array>
+							</dict>
+						</array>
 						<key>customClass</key>
 						<string></string>
 						<key>displayName</key>
@@ -117,6 +186,16 @@
 							</dict>
 							<dict>
 								<key>name</key>
+								<string>accelerometerEnabled</string>
+								<key>platform</key>
+								<string>iOS</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>mouseEnabled</string>
 								<key>platform</key>
 								<string>Mac</string>
@@ -125,85 +204,15 @@
 								<key>value</key>
 								<true/>
 							</dict>
-						</array>
-					</dict>
-					<dict>
-						<key>baseClass</key>
-						<string>CCSprite</string>
-						<key>children</key>
-						<array/>
-						<key>customClass</key>
-						<string></string>
-						<key>displayName</key>
-						<string>top</string>
-						<key>memberVarAssignmentName</key>
-						<string></string>
-						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
-						<key>properties</key>
-						<array>
 							<dict>
 								<key>name</key>
-								<string>position</string>
-								<key>type</key>
-								<string>Position</string>
-								<key>value</key>
-								<array>
-									<real>0.0</real>
-									<real>100</real>
-									<integer>4</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>anchorPoint</string>
-								<key>type</key>
-								<string>Point</string>
-								<key>value</key>
-								<array>
-									<real>0.0</real>
-									<real>1</real>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>scale</string>
-								<key>type</key>
-								<string>ScaleLock</string>
-								<key>value</key>
-								<array>
-									<real>1</real>
-									<real>1</real>
-									<false/>
-									<integer>0</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>tag</string>
-								<key>type</key>
-								<string>Integer</string>
-								<key>value</key>
-								<integer>1000</integer>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>ignoreAnchorPointForPosition</string>
+								<string>keyboardEnabled</string>
+								<key>platform</key>
+								<string>Mac</string>
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
 								<false/>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>displayFrame</string>
-								<key>type</key>
-								<string>SpriteFrame</string>
-								<key>value</key>
-								<array>
-									<string>ccbResources/ui_kuang.plist</string>
-									<string>shangfanglan.png</string>
-								</array>
 							</dict>
 						</array>
 					</dict>
@@ -290,6 +299,16 @@
 							</dict>
 							<dict>
 								<key>name</key>
+								<string>accelerometerEnabled</string>
+								<key>platform</key>
+								<string>iOS</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>mouseEnabled</string>
 								<key>platform</key>
 								<string>Mac</string>
@@ -297,6 +316,16 @@
 								<string>Check</string>
 								<key>value</key>
 								<true/>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>keyboardEnabled</string>
+								<key>platform</key>
+								<string>Mac</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
 							</dict>
 						</array>
 					</dict>
@@ -322,8 +351,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
-									<real>101</real>
+									<real>50</real>
+									<real>73</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -334,8 +363,8 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>800</real>
-									<real>255</real>
+									<real>700</real>
+									<real>220</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -346,8 +375,8 @@
 								<string>Point</string>
 								<key>value</key>
 								<array>
-									<real>0.5</real>
-									<real>0.5</real>
+									<real>0.0</real>
+									<real>0.0</real>
 								</array>
 							</dict>
 							<dict>
@@ -371,60 +400,21 @@
 								<key>value</key>
 								<true/>
 							</dict>
-						</array>
-						<key>selected</key>
-						<true/>
-					</dict>
-					<dict>
-						<key>baseClass</key>
-						<string>CCSprite</string>
-						<key>children</key>
-						<array/>
-						<key>customClass</key>
-						<string></string>
-						<key>displayName</key>
-						<string>bottom</string>
-						<key>memberVarAssignmentName</key>
-						<string></string>
-						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
-						<key>properties</key>
-						<array>
 							<dict>
 								<key>name</key>
-								<string>anchorPoint</string>
+								<string>touchEnabled</string>
+								<key>platform</key>
+								<string>iOS</string>
 								<key>type</key>
-								<string>Point</string>
+								<string>Check</string>
 								<key>value</key>
-								<array>
-									<real>0.0</real>
-									<real>0.0</real>
-								</array>
+								<true/>
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>scale</string>
-								<key>type</key>
-								<string>ScaleLock</string>
-								<key>value</key>
-								<array>
-									<real>1</real>
-									<real>1</real>
-									<false/>
-									<integer>0</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>tag</string>
-								<key>type</key>
-								<string>Integer</string>
-								<key>value</key>
-								<integer>1000</integer>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>ignoreAnchorPointForPosition</string>
+								<string>accelerometerEnabled</string>
+								<key>platform</key>
+								<string>iOS</string>
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
@@ -432,14 +422,23 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>displayFrame</string>
+								<string>mouseEnabled</string>
+								<key>platform</key>
+								<string>Mac</string>
 								<key>type</key>
-								<string>SpriteFrame</string>
+								<string>Check</string>
 								<key>value</key>
-								<array>
-									<string>ccbResources/ui_kuang.plist</string>
-									<string>dating xia .png</string>
-								</array>
+								<true/>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>keyboardEnabled</string>
+								<key>platform</key>
+								<string>Mac</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
 							</dict>
 						</array>
 					</dict>
@@ -551,8 +550,8 @@
 														<string>SpriteFrame</string>
 														<key>value</key>
 														<array>
-															<string>ccbResources/ui_anniu.plist</string>
-															<string>anniu5.png</string>
+															<string>ccbResources/dating.plist</string>
+															<string>dt-kuaisuyouxi.png</string>
 														</array>
 													</dict>
 													<dict>
@@ -562,8 +561,8 @@
 														<string>SpriteFrame</string>
 														<key>value</key>
 														<array>
-															<string>ccbResources/ui_anniu.plist</string>
-															<string>annniu5_a.png</string>
+															<string>ccbResources/dating.plist</string>
+															<string>dt-kuaisuyouxi.png</string>
 														</array>
 													</dict>
 													<dict>
@@ -658,6 +657,16 @@
 											</dict>
 											<dict>
 												<key>name</key>
+												<string>accelerometerEnabled</string>
+												<key>platform</key>
+												<string>iOS</string>
+												<key>type</key>
+												<string>Check</string>
+												<key>value</key>
+												<false/>
+											</dict>
+											<dict>
+												<key>name</key>
 												<string>mouseEnabled</string>
 												<key>platform</key>
 												<string>Mac</string>
@@ -666,133 +675,15 @@
 												<key>value</key>
 												<true/>
 											</dict>
-										</array>
-									</dict>
-									<dict>
-										<key>baseClass</key>
-										<string>CCLabelTTF</string>
-										<key>children</key>
-										<array/>
-										<key>customClass</key>
-										<string></string>
-										<key>displayName</key>
-										<string>CCLabelTTF</string>
-										<key>memberVarAssignmentName</key>
-										<string>quick_game_btn_lbl</string>
-										<key>memberVarAssignmentType</key>
-										<integer>1</integer>
-										<key>properties</key>
-										<array>
 											<dict>
 												<key>name</key>
-												<string>position</string>
-												<key>type</key>
-												<string>Position</string>
-												<key>value</key>
-												<array>
-													<real>50</real>
-													<real>58</real>
-													<integer>4</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>anchorPoint</string>
-												<key>type</key>
-												<string>Point</string>
-												<key>value</key>
-												<array>
-													<real>0.5</real>
-													<real>0.5</real>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>scale</string>
-												<key>type</key>
-												<string>ScaleLock</string>
-												<key>value</key>
-												<array>
-													<real>1</real>
-													<real>1</real>
-													<false/>
-													<integer>0</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>ignoreAnchorPointForPosition</string>
+												<string>keyboardEnabled</string>
+												<key>platform</key>
+												<string>Mac</string>
 												<key>type</key>
 												<string>Check</string>
 												<key>value</key>
 												<false/>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>fontName</string>
-												<key>type</key>
-												<string>FontTTF</string>
-												<key>value</key>
-												<string>Helvetica</string>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>fontSize</string>
-												<key>type</key>
-												<string>FloatScale</string>
-												<key>value</key>
-												<array>
-													<real>24</real>
-													<integer>0</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>color</string>
-												<key>type</key>
-												<string>Color3</string>
-												<key>value</key>
-												<array>
-													<integer>254</integer>
-													<integer>255</integer>
-													<integer>255</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>dimensions</string>
-												<key>type</key>
-												<string>Size</string>
-												<key>value</key>
-												<array>
-													<real>0.0</real>
-													<real>0.0</real>
-													<integer>0</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>horizontalAlignment</string>
-												<key>type</key>
-												<string>IntegerLabeled</string>
-												<key>value</key>
-												<integer>0</integer>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>verticalAlignment</string>
-												<key>type</key>
-												<string>IntegerLabeled</string>
-												<key>value</key>
-												<integer>0</integer>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>string</string>
-												<key>type</key>
-												<string>Text</string>
-												<key>value</key>
-												<string>快速游戏</string>
 											</dict>
 										</array>
 									</dict>
@@ -814,7 +705,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>15</real>
+											<real>13.25</real>
 											<real>50</real>
 											<integer>4</integer>
 										</array>
@@ -875,6 +766,16 @@
 									</dict>
 									<dict>
 										<key>name</key>
+										<string>accelerometerEnabled</string>
+										<key>platform</key>
+										<string>iOS</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>mouseEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
@@ -882,6 +783,16 @@
 										<string>Check</string>
 										<key>value</key>
 										<true/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>keyboardEnabled</string>
+										<key>platform</key>
+										<string>Mac</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
 									</dict>
 								</array>
 							</dict>
@@ -983,8 +894,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/ui_tubiao.plist</string>
-													<string>btn_daojv.png</string>
+													<string>ccbResources/dating.plist</string>
+													<string>dt-huodong.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -1029,8 +940,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>510</real>
-											<real>40</real>
+											<real>456</real>
+											<real>41</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -1090,6 +1001,16 @@
 									</dict>
 									<dict>
 										<key>name</key>
+										<string>accelerometerEnabled</string>
+										<key>platform</key>
+										<string>iOS</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>mouseEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
@@ -1097,6 +1018,16 @@
 										<string>Check</string>
 										<key>value</key>
 										<true/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>keyboardEnabled</string>
+										<key>platform</key>
+										<string>Mac</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
 									</dict>
 								</array>
 							</dict>
@@ -1198,8 +1129,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/ui_tubiao.plist</string>
-													<string>btn_shangcheng.png</string>
+													<string>ccbResources/dating.plist</string>
+													<string>dt-shangcheng.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -1244,8 +1175,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>621</real>
-											<real>40</real>
+											<real>520</real>
+											<real>41</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -1305,226 +1236,13 @@
 									</dict>
 									<dict>
 										<key>name</key>
-										<string>mouseEnabled</string>
-										<key>platform</key>
-										<string>Mac</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<true/>
-									</dict>
-								</array>
-							</dict>
-							<dict>
-								<key>baseClass</key>
-								<string>CCMenu</string>
-								<key>children</key>
-								<array>
-									<dict>
-										<key>baseClass</key>
-										<string>CCMenuItemImage</string>
-										<key>children</key>
-										<array/>
-										<key>customClass</key>
-										<string></string>
-										<key>displayName</key>
-										<string>menu_btn</string>
-										<key>memberVarAssignmentName</key>
-										<string>menu_btn</string>
-										<key>memberVarAssignmentType</key>
-										<integer>1</integer>
-										<key>properties</key>
-										<array>
-											<dict>
-												<key>name</key>
-												<string>position</string>
-												<key>type</key>
-												<string>Position</string>
-												<key>value</key>
-												<array>
-													<real>50</real>
-													<real>50</real>
-													<integer>4</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>anchorPoint</string>
-												<key>type</key>
-												<string>Point</string>
-												<key>value</key>
-												<array>
-													<real>0.5</real>
-													<real>0.5</real>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>scale</string>
-												<key>type</key>
-												<string>ScaleLock</string>
-												<key>value</key>
-												<array>
-													<real>1</real>
-													<real>1</real>
-													<false/>
-													<integer>0</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>tag</string>
-												<key>type</key>
-												<string>Integer</string>
-												<key>value</key>
-												<integer>1000</integer>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>ignoreAnchorPointForPosition</string>
-												<key>type</key>
-												<string>Check</string>
-												<key>value</key>
-												<false/>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>block</string>
-												<key>type</key>
-												<string>Block</string>
-												<key>value</key>
-												<array>
-													<string>on_menu_clicked</string>
-													<integer>1</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>isEnabled</string>
-												<key>type</key>
-												<string>Check</string>
-												<key>value</key>
-												<true/>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>normalSpriteFrame</string>
-												<key>type</key>
-												<string>SpriteFrame</string>
-												<key>value</key>
-												<array>
-													<string>ccbResources/hall.plist</string>
-													<string>btn_menu.png</string>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>selectedSpriteFrame</string>
-												<key>type</key>
-												<string>SpriteFrame</string>
-												<key>value</key>
-												<array>
-													<string>ccbResources/hall.plist</string>
-													<string>btn_menu_a.png</string>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>disabledSpriteFrame</string>
-												<key>type</key>
-												<string>SpriteFrame</string>
-												<key>value</key>
-												<array>
-													<string>ccbResources/hall.plist</string>
-													<string>btn_menu.png</string>
-												</array>
-											</dict>
-										</array>
-									</dict>
-								</array>
-								<key>customClass</key>
-								<string></string>
-								<key>displayName</key>
-								<string>menu_menu</string>
-								<key>memberVarAssignmentName</key>
-								<string></string>
-								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
-								<key>properties</key>
-								<array>
-									<dict>
-										<key>name</key>
-										<string>visible</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>position</string>
-										<key>type</key>
-										<string>Position</string>
-										<key>value</key>
-										<array>
-											<real>92</real>
-											<real>53</real>
-											<integer>4</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>contentSize</string>
-										<key>type</key>
-										<string>Size</string>
-										<key>value</key>
-										<array>
-											<real>71</real>
-											<real>71</real>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>anchorPoint</string>
-										<key>type</key>
-										<string>Point</string>
-										<key>value</key>
-										<array>
-											<real>0.5</real>
-											<real>0.5</real>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>scale</string>
-										<key>type</key>
-										<string>ScaleLock</string>
-										<key>value</key>
-										<array>
-											<real>1</real>
-											<real>1</real>
-											<false/>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>ignoreAnchorPointForPosition</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>touchEnabled</string>
+										<string>accelerometerEnabled</string>
 										<key>platform</key>
 										<string>iOS</string>
 										<key>type</key>
 										<string>Check</string>
 										<key>value</key>
-										<true/>
+										<false/>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -1536,228 +1254,15 @@
 										<key>value</key>
 										<true/>
 									</dict>
-								</array>
-							</dict>
-							<dict>
-								<key>baseClass</key>
-								<string>CCMenu</string>
-								<key>children</key>
-								<array>
-									<dict>
-										<key>baseClass</key>
-										<string>CCMenuItemImage</string>
-										<key>children</key>
-										<array/>
-										<key>customClass</key>
-										<string></string>
-										<key>displayName</key>
-										<string>share_btn</string>
-										<key>memberVarAssignmentName</key>
-										<string>share_btn</string>
-										<key>memberVarAssignmentType</key>
-										<integer>1</integer>
-										<key>properties</key>
-										<array>
-											<dict>
-												<key>name</key>
-												<string>position</string>
-												<key>type</key>
-												<string>Position</string>
-												<key>value</key>
-												<array>
-													<real>50</real>
-													<real>50</real>
-													<integer>4</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>anchorPoint</string>
-												<key>type</key>
-												<string>Point</string>
-												<key>value</key>
-												<array>
-													<real>0.5</real>
-													<real>0.5</real>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>scale</string>
-												<key>type</key>
-												<string>ScaleLock</string>
-												<key>value</key>
-												<array>
-													<real>1</real>
-													<real>1</real>
-													<false/>
-													<integer>0</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>tag</string>
-												<key>type</key>
-												<string>Integer</string>
-												<key>value</key>
-												<integer>1000</integer>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>ignoreAnchorPointForPosition</string>
-												<key>type</key>
-												<string>Check</string>
-												<key>value</key>
-												<false/>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>block</string>
-												<key>type</key>
-												<string>Block</string>
-												<key>value</key>
-												<array>
-													<string>on_ui_share_btn_clicked</string>
-													<integer>1</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>isEnabled</string>
-												<key>type</key>
-												<string>Check</string>
-												<key>value</key>
-												<true/>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>normalSpriteFrame</string>
-												<key>type</key>
-												<string>SpriteFrame</string>
-												<key>value</key>
-												<array>
-													<string>ccbResources/info.plist</string>
-													<string>IconFenxiang.png</string>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>selectedSpriteFrame</string>
-												<key>type</key>
-												<string>SpriteFrame</string>
-												<key>value</key>
-												<array>
-													<string>ccbResources/info.plist</string>
-													<string>IconFenxiang2.png</string>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>disabledSpriteFrame</string>
-												<key>type</key>
-												<string>SpriteFrame</string>
-												<key>value</key>
-												<array>
-													<string></string>
-													<string></string>
-												</array>
-											</dict>
-										</array>
-									</dict>
-								</array>
-								<key>customClass</key>
-								<string></string>
-								<key>displayName</key>
-								<string>share_menu</string>
-								<key>memberVarAssignmentName</key>
-								<string></string>
-								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
-								<key>properties</key>
-								<array>
 									<dict>
 										<key>name</key>
-										<string>visible</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>position</string>
-										<key>type</key>
-										<string>Position</string>
-										<key>value</key>
-										<array>
-											<real>37</real>
-											<real>57</real>
-											<integer>4</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>contentSize</string>
-										<key>type</key>
-										<string>Size</string>
-										<key>value</key>
-										<array>
-											<real>94</real>
-											<real>93</real>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>anchorPoint</string>
-										<key>type</key>
-										<string>Point</string>
-										<key>value</key>
-										<array>
-											<real>0.5</real>
-											<real>0.5</real>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>scale</string>
-										<key>type</key>
-										<string>ScaleLock</string>
-										<key>value</key>
-										<array>
-											<real>1</real>
-											<real>1</real>
-											<false/>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>ignoreAnchorPointForPosition</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>touchEnabled</string>
-										<key>platform</key>
-										<string>iOS</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<true/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>mouseEnabled</string>
+										<string>keyboardEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
 										<key>type</key>
 										<string>Check</string>
 										<key>value</key>
-										<true/>
+										<false/>
 									</dict>
 								</array>
 							</dict>
@@ -1859,8 +1364,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/ui_tubiao.plist</string>
-													<string>btn_huodong.png</string>
+													<string>ccbResources/dating.plist</string>
+													<string>dt-huoodong.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -1905,8 +1410,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>300</real>
-											<real>40</real>
+											<real>325</real>
+											<real>39</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -1966,6 +1471,16 @@
 									</dict>
 									<dict>
 										<key>name</key>
+										<string>accelerometerEnabled</string>
+										<key>platform</key>
+										<string>iOS</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>mouseEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
@@ -1973,6 +1488,16 @@
 										<string>Check</string>
 										<key>value</key>
 										<true/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>keyboardEnabled</string>
+										<key>platform</key>
+										<string>Mac</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
 									</dict>
 								</array>
 							</dict>
@@ -2074,8 +1599,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/ui_tubiao.plist</string>
-													<string>btn_paihangbang.png</string>
+													<string>ccbResources/dating.plist</string>
+													<string>dt-paihangbang.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -2120,8 +1645,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>387</real>
-											<real>40</real>
+											<real>377</real>
+											<real>38</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -2181,6 +1706,16 @@
 									</dict>
 									<dict>
 										<key>name</key>
+										<string>accelerometerEnabled</string>
+										<key>platform</key>
+										<string>iOS</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>mouseEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
@@ -2188,6 +1723,16 @@
 										<string>Check</string>
 										<key>value</key>
 										<true/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>keyboardEnabled</string>
+										<key>platform</key>
+										<string>Mac</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
 									</dict>
 								</array>
 							</dict>
@@ -2404,6 +1949,16 @@
 									</dict>
 									<dict>
 										<key>name</key>
+										<string>accelerometerEnabled</string>
+										<key>platform</key>
+										<string>iOS</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>mouseEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
@@ -2412,537 +1967,15 @@
 										<key>value</key>
 										<true/>
 									</dict>
-								</array>
-							</dict>
-							<dict>
-								<key>baseClass</key>
-								<string>CCScale9Sprite</string>
-								<key>children</key>
-								<array/>
-								<key>customClass</key>
-								<string></string>
-								<key>displayName</key>
-								<string>CCScale9Sprite</string>
-								<key>memberVarAssignmentName</key>
-								<string></string>
-								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
-								<key>properties</key>
-								<array>
 									<dict>
 										<key>name</key>
-										<string>position</string>
-										<key>type</key>
-										<string>Position</string>
-										<key>value</key>
-										<array>
-											<real>230</real>
-											<real>40</real>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>scale</string>
-										<key>type</key>
-										<string>ScaleLock</string>
-										<key>value</key>
-										<array>
-											<real>0.5</real>
-											<real>1</real>
-											<false/>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>rotation</string>
-										<key>type</key>
-										<string>Degrees</string>
-										<key>value</key>
-										<real>90</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>ignoreAnchorPointForPosition</string>
+										<string>keyboardEnabled</string>
+										<key>platform</key>
+										<string>Mac</string>
 										<key>type</key>
 										<string>Check</string>
 										<key>value</key>
 										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>spriteFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string>ccbResources/ui_beijing.plist</string>
-											<string>fengexian.png</string>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>preferedSize</string>
-										<key>type</key>
-										<string>Size</string>
-										<key>value</key>
-										<array>
-											<real>10</real>
-											<real>2</real>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>opacity</string>
-										<key>type</key>
-										<string>Byte</string>
-										<key>value</key>
-										<integer>100</integer>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>color</string>
-										<key>type</key>
-										<string>Color3</string>
-										<key>value</key>
-										<array>
-											<integer>255</integer>
-											<integer>255</integer>
-											<integer>255</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetLeft</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetTop</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetRight</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetBottom</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-								</array>
-							</dict>
-							<dict>
-								<key>baseClass</key>
-								<string>CCScale9Sprite</string>
-								<key>children</key>
-								<array/>
-								<key>customClass</key>
-								<string></string>
-								<key>displayName</key>
-								<string>CCScale9Sprite</string>
-								<key>memberVarAssignmentName</key>
-								<string></string>
-								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
-								<key>properties</key>
-								<array>
-									<dict>
-										<key>name</key>
-										<string>position</string>
-										<key>type</key>
-										<string>Position</string>
-										<key>value</key>
-										<array>
-											<real>350</real>
-											<real>40</real>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>scale</string>
-										<key>type</key>
-										<string>ScaleLock</string>
-										<key>value</key>
-										<array>
-											<real>0.5</real>
-											<real>1</real>
-											<false/>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>rotation</string>
-										<key>type</key>
-										<string>Degrees</string>
-										<key>value</key>
-										<real>90</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>ignoreAnchorPointForPosition</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>spriteFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string>ccbResources/ui_beijing.plist</string>
-											<string>fengexian.png</string>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>preferedSize</string>
-										<key>type</key>
-										<string>Size</string>
-										<key>value</key>
-										<array>
-											<real>10</real>
-											<real>2</real>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>opacity</string>
-										<key>type</key>
-										<string>Byte</string>
-										<key>value</key>
-										<integer>100</integer>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>color</string>
-										<key>type</key>
-										<string>Color3</string>
-										<key>value</key>
-										<array>
-											<integer>255</integer>
-											<integer>255</integer>
-											<integer>255</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetLeft</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetTop</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetRight</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetBottom</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-								</array>
-							</dict>
-							<dict>
-								<key>baseClass</key>
-								<string>CCScale9Sprite</string>
-								<key>children</key>
-								<array/>
-								<key>customClass</key>
-								<string></string>
-								<key>displayName</key>
-								<string>CCScale9Sprite</string>
-								<key>memberVarAssignmentName</key>
-								<string></string>
-								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
-								<key>properties</key>
-								<array>
-									<dict>
-										<key>name</key>
-										<string>position</string>
-										<key>type</key>
-										<string>Position</string>
-										<key>value</key>
-										<array>
-											<real>470</real>
-											<real>40</real>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>scale</string>
-										<key>type</key>
-										<string>ScaleLock</string>
-										<key>value</key>
-										<array>
-											<real>0.5</real>
-											<real>1</real>
-											<false/>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>rotation</string>
-										<key>type</key>
-										<string>Degrees</string>
-										<key>value</key>
-										<real>90</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>ignoreAnchorPointForPosition</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>spriteFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string>ccbResources/ui_beijing.plist</string>
-											<string>fengexian.png</string>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>preferedSize</string>
-										<key>type</key>
-										<string>Size</string>
-										<key>value</key>
-										<array>
-											<real>10</real>
-											<real>2</real>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>opacity</string>
-										<key>type</key>
-										<string>Byte</string>
-										<key>value</key>
-										<integer>100</integer>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>color</string>
-										<key>type</key>
-										<string>Color3</string>
-										<key>value</key>
-										<array>
-											<integer>255</integer>
-											<integer>255</integer>
-											<integer>255</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetLeft</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetTop</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetRight</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetBottom</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-								</array>
-							</dict>
-							<dict>
-								<key>baseClass</key>
-								<string>CCScale9Sprite</string>
-								<key>children</key>
-								<array/>
-								<key>customClass</key>
-								<string></string>
-								<key>displayName</key>
-								<string>CCScale9Sprite</string>
-								<key>memberVarAssignmentName</key>
-								<string></string>
-								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
-								<key>properties</key>
-								<array>
-									<dict>
-										<key>name</key>
-										<string>position</string>
-										<key>type</key>
-										<string>Position</string>
-										<key>value</key>
-										<array>
-											<real>620</real>
-											<real>40</real>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>scale</string>
-										<key>type</key>
-										<string>ScaleLock</string>
-										<key>value</key>
-										<array>
-											<real>0.5</real>
-											<real>1</real>
-											<false/>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>rotation</string>
-										<key>type</key>
-										<string>Degrees</string>
-										<key>value</key>
-										<real>90</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>ignoreAnchorPointForPosition</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>spriteFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string>ccbResources/ui_beijing.plist</string>
-											<string>fengexian.png</string>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>preferedSize</string>
-										<key>type</key>
-										<string>Size</string>
-										<key>value</key>
-										<array>
-											<real>10</real>
-											<real>2</real>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>opacity</string>
-										<key>type</key>
-										<string>Byte</string>
-										<key>value</key>
-										<integer>100</integer>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>color</string>
-										<key>type</key>
-										<string>Color3</string>
-										<key>value</key>
-										<array>
-											<integer>255</integer>
-											<integer>255</integer>
-											<integer>255</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetLeft</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetTop</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetRight</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>insetBottom</string>
-										<key>type</key>
-										<string>Float</string>
-										<key>value</key>
-										<real>0.0</real>
 									</dict>
 								</array>
 							</dict>
@@ -3025,6 +2058,16 @@
 							</dict>
 							<dict>
 								<key>name</key>
+								<string>accelerometerEnabled</string>
+								<key>platform</key>
+								<string>iOS</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>mouseEnabled</string>
 								<key>platform</key>
 								<string>Mac</string>
@@ -3032,6 +2075,16 @@
 								<string>Check</string>
 								<key>value</key>
 								<true/>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>keyboardEnabled</string>
+								<key>platform</key>
+								<string>Mac</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
 							</dict>
 						</array>
 					</dict>
@@ -3062,8 +2115,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>16</real>
-											<real>38</real>
+											<real>18</real>
+											<real>27</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -3114,8 +2167,20 @@
 										<string>FloatScale</string>
 										<key>value</key>
 										<array>
-											<real>20</real>
+											<real>17</real>
 											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>color</string>
+										<key>type</key>
+										<string>Color3</string>
+										<key>value</key>
+										<array>
+											<integer>1</integer>
+											<integer>1</integer>
+											<integer>1</integer>
 										</array>
 									</dict>
 									<dict>
@@ -3152,7 +2217,7 @@
 										<key>type</key>
 										<string>Text</string>
 										<key>value</key>
-										<string></string>
+										<string>568972</string>
 									</dict>
 								</array>
 							</dict>
@@ -3178,8 +2243,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>25</real>
-											<real>12</real>
+											<real>30</real>
+											<real>8</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -3230,8 +2295,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/hall.plist</string>
-											<string>beans.png</string>
+											<string>ccbResources/dating.plist</string>
+											<string>dt-dadou.png</string>
 										</array>
 									</dict>
 								</array>
@@ -3258,8 +2323,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>47.719997406005859</real>
-											<real>13.728000640869141</real>
+											<real>40.719997406005859</real>
+											<real>6.7280006408691406</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -3310,8 +2375,20 @@
 										<string>FloatScale</string>
 										<key>value</key>
 										<array>
-											<real>20</real>
+											<real>17</real>
 											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>color</string>
+										<key>type</key>
+										<string>Color3</string>
+										<key>value</key>
+										<array>
+											<integer>245</integer>
+											<integer>210</integer>
+											<integer>41</integer>
 										</array>
 									</dict>
 									<dict>
@@ -3348,7 +2425,87 @@
 										<key>type</key>
 										<string>Text</string>
 										<key>value</key>
-										<string></string>
+										<string>464654646</string>
+									</dict>
+								</array>
+							</dict>
+							<dict>
+								<key>baseClass</key>
+								<string>CCSprite</string>
+								<key>children</key>
+								<array/>
+								<key>customClass</key>
+								<string></string>
+								<key>displayName</key>
+								<string>CCSprite</string>
+								<key>memberVarAssignmentName</key>
+								<string></string>
+								<key>memberVarAssignmentType</key>
+								<integer>0</integer>
+								<key>properties</key>
+								<array>
+									<dict>
+										<key>name</key>
+										<string>position</string>
+										<key>type</key>
+										<string>Position</string>
+										<key>value</key>
+										<array>
+											<real>90</real>
+											<real>19</real>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>anchorPoint</string>
+										<key>type</key>
+										<string>Point</string>
+										<key>value</key>
+										<array>
+											<real>0.5</real>
+											<real>0.5</real>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>scale</string>
+										<key>type</key>
+										<string>ScaleLock</string>
+										<key>value</key>
+										<array>
+											<real>1</real>
+											<real>1</real>
+											<false/>
+											<integer>0</integer>
+										</array>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>tag</string>
+										<key>type</key>
+										<string>Integer</string>
+										<key>value</key>
+										<integer>1000</integer>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>ignoreAnchorPointForPosition</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>displayFrame</string>
+										<key>type</key>
+										<string>SpriteFrame</string>
+										<key>value</key>
+										<array>
+											<string>ccbResources/dating.plist</string>
+											<string>dt-jiangshipangbianbeijing.png</string>
+										</array>
 									</dict>
 								</array>
 							</dict>
@@ -3431,6 +2588,16 @@
 							</dict>
 							<dict>
 								<key>name</key>
+								<string>accelerometerEnabled</string>
+								<key>platform</key>
+								<string>iOS</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>mouseEnabled</string>
 								<key>platform</key>
 								<string>Mac</string>
@@ -3438,6 +2605,96 @@
 								<string>Check</string>
 								<key>value</key>
 								<true/>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>keyboardEnabled</string>
+								<key>platform</key>
+								<string>Mac</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+						</array>
+					</dict>
+					<dict>
+						<key>baseClass</key>
+						<string>CCSprite</string>
+						<key>children</key>
+						<array/>
+						<key>customClass</key>
+						<string></string>
+						<key>displayName</key>
+						<string>CCSprite</string>
+						<key>memberVarAssignmentName</key>
+						<string>avatar_bg</string>
+						<key>memberVarAssignmentType</key>
+						<integer>1</integer>
+						<key>properties</key>
+						<array>
+							<dict>
+								<key>name</key>
+								<string>position</string>
+								<key>type</key>
+								<string>Position</string>
+								<key>value</key>
+								<array>
+									<real>4</real>
+									<real>417</real>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>anchorPoint</string>
+								<key>type</key>
+								<string>Point</string>
+								<key>value</key>
+								<array>
+									<real>0.0</real>
+									<real>0.0</real>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>scale</string>
+								<key>type</key>
+								<string>ScaleLock</string>
+								<key>value</key>
+								<array>
+									<real>1</real>
+									<real>1</real>
+									<false/>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>tag</string>
+								<key>type</key>
+								<string>Integer</string>
+								<key>value</key>
+								<integer>1000</integer>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>ignoreAnchorPointForPosition</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>displayFrame</string>
+								<key>type</key>
+								<string>SpriteFrame</string>
+								<key>value</key>
+								<array>
+									<string>ccbResources/dating.plist</string>
+									<string>dt-touxiang.png</string>
+								</array>
 							</dict>
 						</array>
 					</dict>
@@ -3585,8 +2842,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>4</real>
-									<real>412</real>
+									<real>15</real>
+									<real>425</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -3620,8 +2877,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>1</real>
+									<real>0.60000002384185791</real>
+									<real>0.60000002384185791</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -3654,6 +2911,16 @@
 							</dict>
 							<dict>
 								<key>name</key>
+								<string>accelerometerEnabled</string>
+								<key>platform</key>
+								<string>iOS</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>mouseEnabled</string>
 								<key>platform</key>
 								<string>Mac</string>
@@ -3662,77 +2929,15 @@
 								<key>value</key>
 								<true/>
 							</dict>
-						</array>
-					</dict>
-					<dict>
-						<key>baseClass</key>
-						<string>CCSprite</string>
-						<key>children</key>
-						<array/>
-						<key>customClass</key>
-						<string></string>
-						<key>displayName</key>
-						<string>CCSprite</string>
-						<key>memberVarAssignmentName</key>
-						<string>avatar_bg</string>
-						<key>memberVarAssignmentType</key>
-						<integer>1</integer>
-						<key>properties</key>
-						<array>
 							<dict>
 								<key>name</key>
-								<string>position</string>
-								<key>type</key>
-								<string>Position</string>
-								<key>value</key>
-								<array>
-									<real>1</real>
-									<real>405</real>
-									<integer>0</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>anchorPoint</string>
-								<key>type</key>
-								<string>Point</string>
-								<key>value</key>
-								<array>
-									<real>0.0</real>
-									<real>0.0</real>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>scale</string>
-								<key>type</key>
-								<string>ScaleLock</string>
-								<key>value</key>
-								<array>
-									<real>0.55000001192092896</real>
-									<real>0.55000001192092896</real>
-									<false/>
-									<integer>0</integer>
-								</array>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>ignoreAnchorPointForPosition</string>
+								<string>keyboardEnabled</string>
+								<key>platform</key>
+								<string>Mac</string>
 								<key>type</key>
 								<string>Check</string>
 								<key>value</key>
 								<false/>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>displayFrame</string>
-								<key>type</key>
-								<string>SpriteFrame</string>
-								<key>value</key>
-								<array>
-									<string>ccbResources/ui_kuang.plist</string>
-									<string>touxiangkuang.png</string>
-								</array>
 							</dict>
 						</array>
 					</dict>
@@ -3844,8 +3049,8 @@
 														<string>SpriteFrame</string>
 														<key>value</key>
 														<array>
-															<string>ccbResources/ui_anniu.plist</string>
-															<string>anniu4.png</string>
+															<string>ccbResources/dating.plist</string>
+															<string>dt-jiangshilaoye.png</string>
 														</array>
 													</dict>
 													<dict>
@@ -3855,8 +3060,8 @@
 														<string>SpriteFrame</string>
 														<key>value</key>
 														<array>
-															<string>ccbResources/ui_anniu.plist</string>
-															<string>anniu4_a.png</string>
+															<string>ccbResources/dating.plist</string>
+															<string>dt-jiangshilaoye.png</string>
 														</array>
 													</dict>
 													<dict>
@@ -3951,6 +3156,16 @@
 											</dict>
 											<dict>
 												<key>name</key>
+												<string>accelerometerEnabled</string>
+												<key>platform</key>
+												<string>iOS</string>
+												<key>type</key>
+												<string>Check</string>
+												<key>value</key>
+												<false/>
+											</dict>
+											<dict>
+												<key>name</key>
 												<string>mouseEnabled</string>
 												<key>platform</key>
 												<string>Mac</string>
@@ -3959,121 +3174,15 @@
 												<key>value</key>
 												<true/>
 											</dict>
-										</array>
-									</dict>
-									<dict>
-										<key>baseClass</key>
-										<string>CCLabelTTF</string>
-										<key>children</key>
-										<array/>
-										<key>customClass</key>
-										<string></string>
-										<key>displayName</key>
-										<string>task_lbl</string>
-										<key>memberVarAssignmentName</key>
-										<string>task_lbl</string>
-										<key>memberVarAssignmentType</key>
-										<integer>1</integer>
-										<key>properties</key>
-										<array>
 											<dict>
 												<key>name</key>
-												<string>position</string>
-												<key>type</key>
-												<string>Position</string>
-												<key>value</key>
-												<array>
-													<real>50</real>
-													<real>50</real>
-													<integer>4</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>anchorPoint</string>
-												<key>type</key>
-												<string>Point</string>
-												<key>value</key>
-												<array>
-													<real>0.5</real>
-													<real>0.5</real>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>scale</string>
-												<key>type</key>
-												<string>ScaleLock</string>
-												<key>value</key>
-												<array>
-													<real>1</real>
-													<real>1</real>
-													<false/>
-													<integer>0</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>ignoreAnchorPointForPosition</string>
+												<string>keyboardEnabled</string>
+												<key>platform</key>
+												<string>Mac</string>
 												<key>type</key>
 												<string>Check</string>
 												<key>value</key>
 												<false/>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>fontName</string>
-												<key>type</key>
-												<string>FontTTF</string>
-												<key>value</key>
-												<string>Helvetica</string>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>fontSize</string>
-												<key>type</key>
-												<string>FloatScale</string>
-												<key>value</key>
-												<array>
-													<real>21</real>
-													<integer>0</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>dimensions</string>
-												<key>type</key>
-												<string>Size</string>
-												<key>value</key>
-												<array>
-													<real>0.0</real>
-													<real>0.0</real>
-													<integer>0</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>horizontalAlignment</string>
-												<key>type</key>
-												<string>IntegerLabeled</string>
-												<key>value</key>
-												<integer>0</integer>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>verticalAlignment</string>
-												<key>type</key>
-												<string>IntegerLabeled</string>
-												<key>value</key>
-												<integer>0</integer>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>string</string>
-												<key>type</key>
-												<string>Text</string>
-												<key>value</key>
-												<string>长工要债</string>
 											</dict>
 										</array>
 									</dict>
@@ -4095,8 +3204,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>0.5</real>
-											<real>79</real>
+											<real>98</real>
+											<real>77.36065673828125</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -4156,6 +3265,16 @@
 									</dict>
 									<dict>
 										<key>name</key>
+										<string>accelerometerEnabled</string>
+										<key>platform</key>
+										<string>iOS</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>mouseEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
@@ -4163,6 +3282,16 @@
 										<string>Check</string>
 										<key>value</key>
 										<true/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>keyboardEnabled</string>
+										<key>platform</key>
+										<string>Mac</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
 									</dict>
 								</array>
 							</dict>
@@ -4269,8 +3398,8 @@
 														<string>SpriteFrame</string>
 														<key>value</key>
 														<array>
-															<string>ccbResources/ui_anniu.plist</string>
-															<string>anniu4.png</string>
+															<string>ccbResources/dating.plist</string>
+															<string>dt-fankui.png</string>
 														</array>
 													</dict>
 													<dict>
@@ -4280,8 +3409,8 @@
 														<string>SpriteFrame</string>
 														<key>value</key>
 														<array>
-															<string>ccbResources/ui_anniu.plist</string>
-															<string>anniu4_a.png</string>
+															<string>ccbResources/dating.plist</string>
+															<string>dt-fankui.png</string>
 														</array>
 													</dict>
 													<dict>
@@ -4376,6 +3505,16 @@
 											</dict>
 											<dict>
 												<key>name</key>
+												<string>accelerometerEnabled</string>
+												<key>platform</key>
+												<string>iOS</string>
+												<key>type</key>
+												<string>Check</string>
+												<key>value</key>
+												<false/>
+											</dict>
+											<dict>
+												<key>name</key>
 												<string>mouseEnabled</string>
 												<key>platform</key>
 												<string>Mac</string>
@@ -4384,121 +3523,15 @@
 												<key>value</key>
 												<true/>
 											</dict>
-										</array>
-									</dict>
-									<dict>
-										<key>baseClass</key>
-										<string>CCLabelTTF</string>
-										<key>children</key>
-										<array/>
-										<key>customClass</key>
-										<string></string>
-										<key>displayName</key>
-										<string>task_lbl</string>
-										<key>memberVarAssignmentName</key>
-										<string>to_feedback_lbl</string>
-										<key>memberVarAssignmentType</key>
-										<integer>1</integer>
-										<key>properties</key>
-										<array>
 											<dict>
 												<key>name</key>
-												<string>position</string>
-												<key>type</key>
-												<string>Position</string>
-												<key>value</key>
-												<array>
-													<real>50</real>
-													<real>50</real>
-													<integer>4</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>anchorPoint</string>
-												<key>type</key>
-												<string>Point</string>
-												<key>value</key>
-												<array>
-													<real>0.5</real>
-													<real>0.5</real>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>scale</string>
-												<key>type</key>
-												<string>ScaleLock</string>
-												<key>value</key>
-												<array>
-													<real>1</real>
-													<real>1</real>
-													<false/>
-													<integer>0</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>ignoreAnchorPointForPosition</string>
+												<string>keyboardEnabled</string>
+												<key>platform</key>
+												<string>Mac</string>
 												<key>type</key>
 												<string>Check</string>
 												<key>value</key>
 												<false/>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>fontName</string>
-												<key>type</key>
-												<string>FontTTF</string>
-												<key>value</key>
-												<string>Helvetica</string>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>fontSize</string>
-												<key>type</key>
-												<string>FloatScale</string>
-												<key>value</key>
-												<array>
-													<real>21</real>
-													<integer>0</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>dimensions</string>
-												<key>type</key>
-												<string>Size</string>
-												<key>value</key>
-												<array>
-													<real>0.0</real>
-													<real>0.0</real>
-													<integer>0</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>horizontalAlignment</string>
-												<key>type</key>
-												<string>IntegerLabeled</string>
-												<key>value</key>
-												<integer>0</integer>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>verticalAlignment</string>
-												<key>type</key>
-												<string>IntegerLabeled</string>
-												<key>value</key>
-												<integer>0</integer>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>string</string>
-												<key>type</key>
-												<string>Text</string>
-												<key>value</key>
-												<string>反   馈</string>
 											</dict>
 										</array>
 									</dict>
@@ -4520,8 +3553,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>105</real>
-											<real>79</real>
+											<real>99.5</real>
+											<real>-43.950817108154297</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -4581,6 +3614,16 @@
 									</dict>
 									<dict>
 										<key>name</key>
+										<string>accelerometerEnabled</string>
+										<key>platform</key>
+										<string>iOS</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>mouseEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
@@ -4588,6 +3631,16 @@
 										<string>Check</string>
 										<key>value</key>
 										<true/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>keyboardEnabled</string>
+										<key>platform</key>
+										<string>Mac</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
 									</dict>
 								</array>
 							</dict>
@@ -4694,8 +3747,8 @@
 														<string>SpriteFrame</string>
 														<key>value</key>
 														<array>
-															<string>ccbResources/ui_anniu.plist</string>
-															<string>anniu4.png</string>
+															<string>ccbResources/dating.plist</string>
+															<string>dt-zhiliao.png</string>
 														</array>
 													</dict>
 													<dict>
@@ -4705,8 +3758,8 @@
 														<string>SpriteFrame</string>
 														<key>value</key>
 														<array>
-															<string>ccbResources/ui_anniu.plist</string>
-															<string>anniu4_a.png</string>
+															<string>ccbResources/dating.plist</string>
+															<string>dt-zhiliao.png</string>
 														</array>
 													</dict>
 													<dict>
@@ -4801,6 +3854,16 @@
 											</dict>
 											<dict>
 												<key>name</key>
+												<string>accelerometerEnabled</string>
+												<key>platform</key>
+												<string>iOS</string>
+												<key>type</key>
+												<string>Check</string>
+												<key>value</key>
+												<false/>
+											</dict>
+											<dict>
+												<key>name</key>
 												<string>mouseEnabled</string>
 												<key>platform</key>
 												<string>Mac</string>
@@ -4809,133 +3872,15 @@
 												<key>value</key>
 												<true/>
 											</dict>
-										</array>
-									</dict>
-									<dict>
-										<key>baseClass</key>
-										<string>CCLabelTTF</string>
-										<key>children</key>
-										<array/>
-										<key>customClass</key>
-										<string></string>
-										<key>displayName</key>
-										<string>task_lbl</string>
-										<key>memberVarAssignmentName</key>
-										<string>to_info_lbl</string>
-										<key>memberVarAssignmentType</key>
-										<integer>1</integer>
-										<key>properties</key>
-										<array>
 											<dict>
 												<key>name</key>
-												<string>position</string>
-												<key>type</key>
-												<string>Position</string>
-												<key>value</key>
-												<array>
-													<real>50</real>
-													<real>50</real>
-													<integer>4</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>anchorPoint</string>
-												<key>type</key>
-												<string>Point</string>
-												<key>value</key>
-												<array>
-													<real>0.5</real>
-													<real>0.5</real>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>scale</string>
-												<key>type</key>
-												<string>ScaleLock</string>
-												<key>value</key>
-												<array>
-													<real>1</real>
-													<real>1</real>
-													<false/>
-													<integer>0</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>ignoreAnchorPointForPosition</string>
+												<string>keyboardEnabled</string>
+												<key>platform</key>
+												<string>Mac</string>
 												<key>type</key>
 												<string>Check</string>
 												<key>value</key>
 												<false/>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>fontName</string>
-												<key>type</key>
-												<string>FontTTF</string>
-												<key>value</key>
-												<string>Helvetica</string>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>fontSize</string>
-												<key>type</key>
-												<string>FloatScale</string>
-												<key>value</key>
-												<array>
-													<real>21</real>
-													<integer>0</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>color</string>
-												<key>type</key>
-												<string>Color3</string>
-												<key>value</key>
-												<array>
-													<integer>254</integer>
-													<integer>255</integer>
-													<integer>255</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>dimensions</string>
-												<key>type</key>
-												<string>Size</string>
-												<key>value</key>
-												<array>
-													<real>0.0</real>
-													<real>0.0</real>
-													<integer>0</integer>
-												</array>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>horizontalAlignment</string>
-												<key>type</key>
-												<string>IntegerLabeled</string>
-												<key>value</key>
-												<integer>0</integer>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>verticalAlignment</string>
-												<key>type</key>
-												<string>IntegerLabeled</string>
-												<key>value</key>
-												<integer>0</integer>
-											</dict>
-											<dict>
-												<key>name</key>
-												<string>string</string>
-												<key>type</key>
-												<string>Text</string>
-												<key>value</key>
-												<string>资   料</string>
 											</dict>
 										</array>
 									</dict>
@@ -4957,9 +3902,9 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>53</real>
-											<real>79</real>
-											<integer>4</integer>
+											<real>198</real>
+											<real>8</real>
+											<integer>0</integer>
 										</array>
 									</dict>
 									<dict>
@@ -5018,6 +3963,16 @@
 									</dict>
 									<dict>
 										<key>name</key>
+										<string>accelerometerEnabled</string>
+										<key>platform</key>
+										<string>iOS</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>mouseEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
@@ -5025,6 +3980,16 @@
 										<string>Check</string>
 										<key>value</key>
 										<true/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>keyboardEnabled</string>
+										<key>platform</key>
+										<string>Mac</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
 									</dict>
 								</array>
 							</dict>
@@ -5107,6 +4072,16 @@
 							</dict>
 							<dict>
 								<key>name</key>
+								<string>accelerometerEnabled</string>
+								<key>platform</key>
+								<string>iOS</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>mouseEnabled</string>
 								<key>platform</key>
 								<string>Mac</string>
@@ -5114,6 +4089,16 @@
 								<string>Check</string>
 								<key>value</key>
 								<true/>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>keyboardEnabled</string>
+								<key>platform</key>
+								<string>Mac</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
 							</dict>
 						</array>
 					</dict>
@@ -5248,6 +4233,14 @@
 						<array>
 							<dict>
 								<key>name</key>
+								<string>visible</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>position</string>
 								<key>type</key>
 								<string>Position</string>
@@ -5322,6 +4315,16 @@
 							</dict>
 							<dict>
 								<key>name</key>
+								<string>accelerometerEnabled</string>
+								<key>platform</key>
+								<string>iOS</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>mouseEnabled</string>
 								<key>platform</key>
 								<string>Mac</string>
@@ -5329,6 +4332,16 @@
 								<string>Check</string>
 								<key>value</key>
 								<true/>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>keyboardEnabled</string>
+								<key>platform</key>
+								<string>Mac</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
 							</dict>
 						</array>
 					</dict>
@@ -5530,6 +4543,16 @@
 									</dict>
 									<dict>
 										<key>name</key>
+										<string>accelerometerEnabled</string>
+										<key>platform</key>
+										<string>iOS</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>mouseEnabled</string>
 										<key>platform</key>
 										<string>Mac</string>
@@ -5537,6 +4560,16 @@
 										<string>Check</string>
 										<key>value</key>
 										<true/>
+									</dict>
+									<dict>
+										<key>name</key>
+										<string>keyboardEnabled</string>
+										<key>platform</key>
+										<string>Mac</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
 									</dict>
 								</array>
 							</dict>
@@ -5551,6 +4584,14 @@
 						<integer>1</integer>
 						<key>properties</key>
 						<array>
+							<dict>
+								<key>name</key>
+								<string>visible</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
 							<dict>
 								<key>name</key>
 								<string>position</string>
@@ -5619,6 +4660,16 @@
 							</dict>
 							<dict>
 								<key>name</key>
+								<string>accelerometerEnabled</string>
+								<key>platform</key>
+								<string>iOS</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>mouseEnabled</string>
 								<key>platform</key>
 								<string>Mac</string>
@@ -5626,6 +4677,16 @@
 								<string>Check</string>
 								<key>value</key>
 								<true/>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>keyboardEnabled</string>
+								<key>platform</key>
+								<string>Mac</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
 							</dict>
 						</array>
 					</dict>
@@ -5696,6 +4757,16 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>accelerometerEnabled</string>
+						<key>platform</key>
+						<string>iOS</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>mouseEnabled</string>
 						<key>platform</key>
 						<string>Mac</string>
@@ -5703,6 +4774,16 @@
 						<string>Check</string>
 						<key>value</key>
 						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>keyboardEnabled</string>
+						<key>platform</key>
+						<string>Mac</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
 					</dict>
 				</array>
 			</dict>
@@ -5728,8 +4809,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>383</real>
-							<real>457</real>
+							<real>405</real>
+							<real>443</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -5780,8 +4861,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>ccbResources/ui_wenzi.plist</string>
-							<string>wenzi_youxidating.png</string>
+							<string>ccbResources/dating.plist</string>
+							<string>dt-youxidating.png</string>
 						</array>
 					</dict>
 				</array>
@@ -5855,6 +4936,16 @@
 			</dict>
 			<dict>
 				<key>name</key>
+				<string>accelerometerEnabled</string>
+				<key>platform</key>
+				<string>iOS</string>
+				<key>type</key>
+				<string>Check</string>
+				<key>value</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>mouseEnabled</string>
 				<key>platform</key>
 				<string>Mac</string>
@@ -5862,6 +4953,16 @@
 				<string>Check</string>
 				<key>value</key>
 				<true/>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>keyboardEnabled</string>
+				<key>platform</key>
+				<string>Mac</string>
+				<key>type</key>
+				<string>Check</string>
+				<key>value</key>
+				<false/>
 			</dict>
 		</array>
 	</dict>
