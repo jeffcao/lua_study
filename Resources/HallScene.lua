@@ -63,8 +63,8 @@ HallScene = class("HallScene", function()
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
-	self.avatar_btn:setScale(GlobalSetting.content_scale_factor * 0.6)
-	self.avatar_bg:setScale(GlobalSetting.content_scale_factor * 0.55)
+	-- self.avatar_btn:setScale(GlobalSetting.content_scale_factor * 0.6)
+	-- self.avatar_bg:setScale(GlobalSetting.content_scale_factor * 0.55)
 	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:addNodeEventListener(cc.KEYPAD_EVENT, __bind(self.onKeypad, self))
@@ -81,10 +81,7 @@ HallScene = class("HallScene", function()
 	
 	self.btn_stroke_color = GlobalSetting.zongse
 	self.btn_stroke_size = 2.5
---	self:set_btn_stroke(self.to_info_lbl)
---	self:set_btn_stroke(self.to_feedback_lbl)
---	self:set_btn_stroke(self.task_lbl)
-	set_anniu5_stroke(self.quick_game_btn_lbl)
+
 	MarqueePlugin.addMarquee(self.rootNode,ccp(280,380))
 	GlobalSetting.hall_scene = self
 	print('listen on_bill_cancel')
@@ -101,9 +98,9 @@ HallScene = class("HallScene", function()
  
  	require 'ui.UIUtil'
  	local winSize = CCDirector:sharedDirector():getWinSize()
- 	local sprite = UIUtil.getRepeatSprite(winSize.width, winSize.height)
- 	sprite:setPosition(ccp(winSize.width/2,winSize.height/2))
- 	self.back_bg_layer:addChild(sprite)
+ 	-- local sprite = UIUtil.getRepeatSprite(winSize.width, winSize.height)
+ 	-- sprite:setPosition(ccp(winSize.width/2,winSize.height/2))
+ 	-- self.back_bg_layer:addChild(sprite)
  end
  
  function HallScene:check_kick_out()
@@ -124,6 +121,7 @@ HallScene = class("HallScene", function()
  
  function HallScene:onEnter() 
 	print("HallScene:onEnter()")
+
 	GlobalSetting.player_game_position = 2
 	--self.super.onEnter(self)
 	GamePush.open()

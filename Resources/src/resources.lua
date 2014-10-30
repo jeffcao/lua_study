@@ -13,6 +13,11 @@ Res = {
  	hall_plist = "ccbResources/hall.plist",
  	props_plist = "ccbResources/props.plist",
  	jiesuan_plist = "ccbResources/jiesuan.plist",
+ 	dating_plist = "ccbResources/dating.plist",
+ 	ui_wenzi_plist = "ccbResources/ui_wenzi.plist",
+ 	geren_ziliao_plist = "ccbResources/res/geren_ziliao.plist",
+ 	youxi_zhong_plist = "ccbResources/res/youxi_zhong.plist",
+ 	shangchen_jianjie_plist = "ccbResources/res/shangchen_jianjie.plist",
 
 -- 背景音乐
  s_music_bg = dirMusic .. "bg/1.mp3",

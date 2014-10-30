@@ -47,7 +47,7 @@ function UserCenterScene:ctor(avatar_call_back, i_layer)
 	set_anniu_1_3_stroke(self.my_prop_btn_lbl)
 	
 	local layer = createFullMubanStyleLayer()
-	layer:setTitle("wenzi_gerenziliao.png")
+	layer:setTitle("ziliao1/zl-xiaotu/zl-gerenzhiliao.png")
 	self:addChild(layer)
 	layer:setContent(node)
 	layer:setOnBackClicked(function() print('muban on close') end)

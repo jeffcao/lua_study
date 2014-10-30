@@ -16,16 +16,25 @@ function TabPlugin.bind(theClass)
 	--tabs:{tabname:tab_data,...}
 	--  tab_data:name, tab_view=nil, tab_node=nil
 	--tab_content:the layer to add tab_view in it
-	function theClass:init_mtabs(tabs, tab_content, order)
+	function theClass:init_mtabs(tabs, tab_content, order, tabs_frams)
 		self.tabplugin_tabs = tabs
 		self.tabplugin_tab_content = tab_content
+		self.tabplugin_tab_frams = tabs_frams
+		dump(tabs_frams, "theClass:init_mtabs, tabs_frams")
 		--cause when pairs table, the item which key is not number will not be visited in order
 		--set order table to visit the tab_table
 		for _, tab_name in pairs(order) do
 			tab_data = self.tabplugin_tabs[tab_name]
+
 			if not tab_data then print("must set and only set every tab's order") return end
 			if not tab_data.tab_node then
-				tab_data.tab_node = self:getTabNode(tab_name)
+				if tabs_frams then
+					dump(tab_name, "theClass:init_mtabs, tab_name")
+					dump(tabs_frams[tab_name], "theClass:init_mtabs, tab_fram")
+					tab_data.tab_node = self:getTabNode(tab_name, tabs_frams[tab_name][1], tabs_frams[tab_name][2])
+				else
+					tab_data.tab_node = self:getTabNode(tab_name)
+				end
 			end
 		end
 	end

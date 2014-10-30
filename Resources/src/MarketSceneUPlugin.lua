@@ -14,37 +14,9 @@ function MarketSceneUPlugin.bind(theClass)
 			return
 		end
 
-		-- local h = LuaEventHandler:create(function(fn, table, a1, a2)
-		-- 	local r
-		-- 	if fn == "cellSize" then
-		-- 		r = CCSizeMake(800,130)
-		-- 	elseif fn == "cellAtIndex" then
-		-- 		if not a2 then
-		-- 			a2 = CCTableViewCell:create()
-		-- 			a3 = createMarketItem()
-		-- 			print("[MarketSceneUPlugin.create_product_list] a1 =>"..a1)
-		-- 			a3:init_item(product_list[a1+1], __bind(self.show_buy_notify, self))
-		-- 			a2:addChild(a3, 0, 1)
-		-- 		else
-		-- 			local a3 = tolua.cast(a2:getChildByTag(1), "CCLayer")
-		-- 			a3:init_item(product_list[a1 + 1],  __bind(self.show_buy_notify, self))
-		-- 		end
-		-- 		r = a2
-		-- 	elseif fn == "numberOfCells" then
-		-- 		r = #product_list
-		-- 	elseif fn == "cellTouched" then
-		-- 	end
-		-- 	return r
-		-- end)
-		-- local t = LuaTableView:createWithHandler(h, CCSizeMake(800,360))
-		-- t:setPosition(CCPointMake(0,10))
-		
-		-- for index=#(product_list), 1, -1 do
-		-- 	t:updateCellAtIndex(index-1)
-		-- end
 		
 		local function cellSizeForTable(table,idx)
-    	return 140, 140
+    	return 140, 100
 		end
 
 		local function numberOfCellsInTableView(table)
@@ -74,9 +46,9 @@ function MarketSceneUPlugin.bind(theClass)
 	    return cell
 		end
 
-    local tableView = CCTableView:create(CCSizeMake(800,360))
+    local tableView = CCTableView:create(CCSizeMake(800,270))
     tableView:setDirection(kCCScrollViewDirectionVertical)
-    tableView:setPosition(CCPointMake(0,10))
+    tableView:setPosition(CCPointMake(0,5))
     tableView:setVerticalFillOrder(kCCTableViewFillBottomUp)
 
     tableView:registerScriptHandler(tableCellTouched,CCTableView.kTableCellTouched)
@@ -138,6 +110,11 @@ function MarketSceneUPlugin.bind(theClass)
 		tabs["1"] = {name="1"}
 		tabs["2"] = {name="2"}
 		tabs["3"] = {name="3"}
+
+		local tabs_frams = {}
+		tabs_frams["1"] = {"shangchen-1/sc-xiaotu/sc-douzi.png", "shangchen-1/sc-xiaotu/sc-douzi.png"} 
+		tabs_frams["2"] = {"shangchen-1/sc-xiaotu/sc-libao.png", "shangchen-1/sc-xiaotu/sc-libao.png"} 
+		tabs_frams["3"] = {"shangchen-1/sc-xiaotu/sc-fuwu.png", "shangchen-1/sc-xiaotu/sc-fuwu.png"} 
 		local order = {"1","2","3"}
 		local tab_content = self.content_layer
 		local hanzi_names = {}
@@ -146,7 +123,7 @@ function MarketSceneUPlugin.bind(theClass)
 		end
 		dump(hanzi_names, 'hanzi_names')
 		self:setTabHanziNames(hanzi_names)
-		self:init_mtabs(tabs, tab_content, order)
+		self:init_mtabs(tabs, tab_content, order, tabs_frams)
 	end
 	
 	function theClass:tabplugin_on_set_tab(name)

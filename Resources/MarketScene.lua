@@ -19,7 +19,7 @@ end
 
 function MarketScene:ctor(inactive_market_scene_fn)
 	self.tabs = {}
-	self.tabnames_hanzi = {"豆  子", "礼  包", "服  务"}
+	self.tabnames_hanzi = {"", "", ""}
 	self.inactive_market_scene_fn = inactive_market_scene_fn
 	self.ccbproxy = CCBProxy:create()
 	self.on_close_clicked = __bind(self.on_close_click, self)

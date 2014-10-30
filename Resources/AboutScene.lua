@@ -47,13 +47,14 @@ function AboutScene:showConfig()
 end
 
 function AboutScene:ctor()
+	CCSpriteFrameCache:sharedSpriteFrameCache():addSpriteFramesWithFile(Res.shangchen_jianjie_plist)
 	ccb.about_scene = self
 	local ccbproxy = CCBProxy:create()
  	local node = CCBReaderLoad("About.ccbi", ccbproxy, false, "")
 	
 	local layer = createFullMubanStyleLayer()
 	self:addChild(layer)
-	layer:setTitle("wenzi_youxijianjie.png")
+	layer:setTitle("youxi_jianjie/yxjj-xiaotu/yx-jianjie.png")
 	--layer:setTitleLeft()
 	--layer:showTitleBg()
 	--layer:setDecorationHuawen()
@@ -187,6 +188,7 @@ end
 function AboutScene:test_slot(i)
 	require 'src.resources'
 	CCSpriteFrameCache:sharedSpriteFrameCache():addSpriteFramesWithFile(Res.props_plist)
+	CCSpriteFrameCache:sharedSpriteFrameCache():addSpriteFramesWithFile(Res.shangchen_jianjie_plist)
 	local layer = CCLayer:create()
 	local frames = {"common_jewelry_box_06.png", "libao_024_liujin_small.png", "dj_012_jipaiqi.png"}
 	for index=1,#frames do

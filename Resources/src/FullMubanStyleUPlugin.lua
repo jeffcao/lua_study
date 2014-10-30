@@ -12,8 +12,14 @@ function FullMubanStyleUPlugin.bind(theClass)
 	
 	function theClass:setTitle(sprite_frame, plist_name)
 		plist_name = plist_name or Res.common_plist
+		local plist_name2 = Res.geren_ziliao_plist
+		local plist_name3 = Res.ui_wenzi_plist
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
 		cache:addSpriteFramesWithFile(plist_name)
+		
+		cache:addSpriteFramesWithFile(plist_name2)
+		cache:addSpriteFramesWithFile(plist_name3)
+
 		local frame = cache:spriteFrameByName(sprite_frame)
 		assert(frame, "muban set title, frame is null")
 		self.title:setDisplayFrame(frame)

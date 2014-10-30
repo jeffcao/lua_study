@@ -111,7 +111,7 @@ function PlayerProductsScene:create_product_list()
     return cell
 	end
 
-  local tableView = CCTableView:create(CCSizeMake(700,380))
+  local tableView = CCTableView:create(CCSizeMake(700,280))
 	--tableView:setAnchorPoint(ccp(0.5,0.5))
 	tableView:setPosition(CCPointMake(0,70))
   -- tableView:setDirection(kCCScrollViewDirectionHorizontal)

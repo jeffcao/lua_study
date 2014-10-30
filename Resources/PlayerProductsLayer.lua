@@ -67,7 +67,7 @@ function PlayerProductsLayer:create_product_list()
 	-- return t
 
 	local function cellSizeForTable(table,idx)
-  	return 140, 140
+  	return 140, 100
 	end
 
 	local function numberOfCellsInTableView(table)
@@ -97,9 +97,9 @@ function PlayerProductsLayer:create_product_list()
     return cell
 	end
 
-  local tableView = CCTableView:create(CCSizeMake(700,380))
+  local tableView = CCTableView:create(CCSizeMake(700,260))
 	tableView:setAnchorPoint(ccp(0.5,0.5))
-	tableView:setPosition(CCPointMake(3,45))
+	tableView:setPosition(CCPointMake(3,60))
   -- tableView:setDirection(kCCScrollViewDirectionHorizontal)
   -- tableView:setPosition(CCPointMake(20, winSize.height / 2 - 150))
   --registerScriptHandler functions must be before the reloadData function
