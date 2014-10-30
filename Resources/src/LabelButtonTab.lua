@@ -35,19 +35,20 @@ function LabelButtonTab.bind(theClass)
 		tab_data.tab_node.menu:setEnabled(true)
 	end
 	
-	function theClass:getTabNode(tab_name)
+	function theClass:getTabNode(tab_name, name_frame_1, name_frame_2)
 		local hanzi_name = self.labelbuttontab_hanzi_names[tab_name]
-		
+		name_frame_1 = name_frame_1 or "xuanxiangka.png"
+		name_frame_2 = name_frame_2 or "xuanxiangka_a.png"
 		local layer = CCLayer:create()
 		local label = CCLabelTTF:create(hanzi_name,"default",22)
 		
 		local plist = Res.jiesuan_plist
 		CCSpriteFrameCache:sharedSpriteFrameCache():addSpriteFramesWithFile(plist)
-		local menu_normal_sprite = CCSprite:createWithSpriteFrameName("xuanxiangka.png")
-		local menu_click_sprite = CCSprite:createWithSpriteFrameName("xuanxiangka_a.png")
+		local menu_normal_sprite = CCSprite:createWithSpriteFrameName(name_frame_1)
+		local menu_click_sprite = CCSprite:createWithSpriteFrameName(name_frame_2)
 		local toggle_sub_normal = CCMenuItemSprite:create(menu_normal_sprite, menu_click_sprite)
-		local toggle_sub_selected = CCMenuItemSprite:create(CCSprite:createWithSpriteFrameName("xuanxiangka_a.png"),
-															CCSprite:createWithSpriteFrameName("xuanxiangka_a.png"))
+		local toggle_sub_selected = CCMenuItemSprite:create(CCSprite:createWithSpriteFrameName(name_frame_2),
+															CCSprite:createWithSpriteFrameName(name_frame_2))
 		local toggle = CCMenuItemToggle:create(toggle_sub_normal)
 		toggle:addSubItem(toggle_sub_selected)
 		toggle:setSelectedIndex(0)
