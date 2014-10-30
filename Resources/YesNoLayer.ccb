@@ -232,8 +232,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string>ccbResources/ui_kuang.plist</string>
-									<string>tanchukuang01.png</string>
+									<string>ccbResources/res/shangchen_jianjie.plist</string>
+									<string>shangchen-3/sc-xiaotu/sc-beijingtu.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -243,8 +243,8 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>460</real>
-									<real>340</real>
+									<real>352</real>
+									<real>174</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -416,13 +416,21 @@
 				<array>
 					<dict>
 						<key>name</key>
+						<string>visible</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>position</string>
 						<key>type</key>
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>50</real>
-							<real>52.5</real>
+							<real>70.75</real>
+							<real>7.2916665077209473</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -1103,8 +1111,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1.png</string>
+											<string>ccbResources/res/shangchen_jianjie.plist</string>
+											<string>youxi_jianjie/yxjj-xiaotu/yx-fanhui.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1125,13 +1133,11 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string></string>
-											<string></string>
+											<string>ccbResources/res/shangchen_jianjie.plist</string>
+											<string>shangchen-1/sc-xiaotu/sc-fanhui.png</string>
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -1489,8 +1495,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>50</real>
-							<real>52.708332061767578</real>
+							<real>49.75</real>
+							<real>48.749996185302734</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -1541,7 +1547,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>20</real>
+							<real>17</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1564,8 +1570,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>350</real>
-							<real>200</real>
+							<real>330</real>
+							<real>130</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1594,6 +1600,8 @@
 						<string>您正在游戏中，此时强退系统将最大输赢扣初您的豆子。</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -1617,8 +1625,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>50</real>
-							<real>52.916664123535156</real>
+							<real>49.625</real>
+							<real>48.958332061767578</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -1629,8 +1637,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>350</real>
-							<real>200</real>
+							<real>330</real>
+							<real>150</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1738,8 +1746,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>49.875</real>
-							<real>79.333335876464844</real>
+							<real>50</real>
+							<real>65.375</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -1790,7 +1798,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>26</real>
+							<real>18</real>
 							<integer>0</integer>
 						</array>
 					</dict>

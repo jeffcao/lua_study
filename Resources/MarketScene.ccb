@@ -89,8 +89,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -531,8 +529,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>50</real>
-							<real>80.208335876464844</real>
+							<real>49.625</real>
+							<real>74.375</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -543,8 +541,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>800</real>
-							<real>380</real>
+							<real>730</real>
+							<real>330</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -621,6 +619,8 @@
 						<false/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
