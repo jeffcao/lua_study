@@ -16,10 +16,10 @@ function createPromotionScene()
 end
 
 function PromotionScene:ctor()
-
+	CCSpriteFrameCache:sharedSpriteFrameCache():addSpriteFramesWithFile(Res.huo_dong_plist)
 	local layer = createFullMubanStyleLayer()
 	self:addChild(layer)
-	layer:setTitle('wenzi_huobaohuodong.png')
+	layer:setTitle('hb-hd/hd-xiaotu/hd-huobaohuodong.png')
 	layer:showTitleBg()
 	layer:setDecorationHuawen()
 	self.layer = layer

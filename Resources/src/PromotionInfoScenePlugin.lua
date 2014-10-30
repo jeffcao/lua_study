@@ -8,10 +8,14 @@ function PromotionInfoScenePlugin.bind(theClass)
 	function theClass:init_tabs()
 		local tabs = {speci = {name="speci"}, rule = {name="rule"}, record = {name="record"}}
 		local order = {"speci","rule","record"}
+		local tabs_frams = {}
+		tabs_frams["speci"]={"hd-xq/hd-xiaotu/hd-jirshao.png","hd-xq/hd-xiaotu/hd-jirshao.png"}
+		tabs_frams["rule"]={"hd-xq/hd-xiaotu/hd-guize.png","hd-xq/hd-xiaotu/hd-guize.png"}
+		tabs_frams["record"]={"hd-xq/hd-xiaotu/hd-huojiangjilu.png","hd-xq/hd-xiaotu/hd-huojiangjilu.png"}
 		local tab_content = self.layer
-		local hanzi_names = {speci="活动介绍", rule="活动规则", record="获奖记录"}
+		local hanzi_names = {speci="", rule="", record=""}
 		self:setTabHanziNames(hanzi_names)
-		self:init_mtabs(tabs, tab_content, order)
+		self:init_mtabs(tabs, tab_content, order, tabs_frams)
 		self:set_tab('speci')
 	end
 
