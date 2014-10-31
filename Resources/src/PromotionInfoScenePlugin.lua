@@ -82,18 +82,18 @@ function PromotionInfoScenePlugin.bind(theClass)
 	end
 	
 	function theClass:createInfoLabel(text)
-		local label = CCLabelTTF:create(text,"default",25)
+		local label = CCLabelTTF:create(text,"default",20)
 		label:setAnchorPoint(ccp(0.5,0.5))
 		label:setHorizontalAlignment(kCCTextAlignmentLeft)
-		label:setPosition(400,180)
-		label:setDimensions(CCSizeMake(680,360))
+		label:setPosition(400,160)
+		label:setDimensions(CCSizeMake(680,270))
 		label:setColor(GlobalSetting.white)
 		return label
 	end
 	
 	function theClass:create_record_list(record_list)
 		local t = ListViewPlugin.create_list_view(record_list,
-			createAwardRecordItem, 'init_award', CCSizeMake(800,80), CCSizeMake(800,360))
+			createAwardRecordItem, 'init_award', CCSizeMake(800,80), CCSizeMake(800,270))
 		if not t then
 			return CCLayer:create()
 		end
