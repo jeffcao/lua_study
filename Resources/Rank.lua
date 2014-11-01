@@ -29,6 +29,7 @@ function Rank:ctor(socket, event_prefix)
 	self:init()
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+	self.close = tolua.cast(self.close_btn, "CCMenuItemImage")
 	
 	local sc = GlobalSetting.content_scale_factor*0.56
 	self.rank_avatar:setScale(sc)
@@ -43,6 +44,12 @@ function Rank:ctor(socket, event_prefix)
 			end
 		end
 	end)
+
+	self.close:registerScriptTapHandler(function()
+			if self:isShowing()  then
+				self:dismiss()
+			end
+		end)
 	--GlobalSetting.rank_dialog = self
 	
 	local fn = function()
