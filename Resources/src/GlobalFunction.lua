@@ -644,3 +644,7 @@ function is_match_room(data)
 	type = tonumber(type)
 	return type == 2 or type == 3
 end
+
+function toint(v)
+    return math.round(tonumber(v))
+end
