@@ -1093,9 +1093,9 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
+									<real>52</real>
 									<real>50</real>
-									<real>50</real>
-									<integer>4</integer>
+									<integer>0</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1145,8 +1145,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string>ccbResources/hall.plist</string>
-									<string>songdoufang.png</string>
+									<string>ccbResources/dating.plist</string>
+									<string>dt-fangjian1.png</string>
 								</array>
 							</dict>
 						</array>
@@ -1173,8 +1173,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>122</real>
-									<real>82</real>
+									<real>141</real>
+									<real>61</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -1294,8 +1294,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>0.0</real>
-											<real>50</real>
+											<real>-22</real>
+											<real>98</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -1399,6 +1399,8 @@
 										<string>开赛时间：</string>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 							<dict>
 								<key>baseClass</key>
@@ -1422,8 +1424,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>70</real>
-											<real>50</real>
+											<real>59.333332061767578</real>
+											<real>106</real>
 											<integer>4</integer>
 										</array>
 									</dict>
