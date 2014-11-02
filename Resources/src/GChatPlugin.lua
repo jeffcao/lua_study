@@ -31,6 +31,7 @@ function GChatPlugin.bind(theClass)
     ]]
 	
 	function theClass:showChatBoard() 
+		print("showChatBoard, voice_props.num= ", #self.voice_props)
 		if not self.voice_props and (#self.voice_props > 0)then
 			return
 		end

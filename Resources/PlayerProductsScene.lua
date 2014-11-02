@@ -92,23 +92,23 @@ function PlayerProductsScene:create_product_list()
 	end
 
 	local function tableCellAtIndex(table, idx)
-    local strValue = string.format("%d",idx)
-    local cell = table:dequeueCell()
-    local label = nil
-    if nil == cell then
-      cell = CCTableViewCell:new()
-			local a3 = createPlayerProductItem()
-			print("[MarketSceneUPlugin.create_product_list] a1 =>"..idx)
-			a3:init_item(self.product_list[idx+1], __bind(self.show_use_notify, self), true)
-			cell:addChild(a3, 0, 1)
-    else
-			local a3 = tolua.cast(cell:getChildByTag(1), "CCLayer")
-			if a3 then
-				a3:init_item(self.product_list[idx + 1],  __bind(self.show_use_notify, self), true)
-			end
+	    local strValue = string.format("%d",idx)
+	    local cell = table:dequeueCell()
+	    local label = nil
+	    if nil == cell then
+	      cell = CCTableViewCell:new()
+				local a3 = createPlayerProductItem()
+				print("[MarketSceneUPlugin.create_product_list] a1 =>"..idx)
+				a3:init_item(self.product_list[idx+1], __bind(self.show_use_notify, self), true)
+				cell:addChild(a3, 0, 1)
+	    else
+				local a3 = tolua.cast(cell:getChildByTag(1), "CCLayer")
+				if a3 then
+					a3:init_item(self.product_list[idx + 1],  __bind(self.show_use_notify, self), true)
+				end
 		end
 
-    return cell
+	    return cell
 	end
 
   local tableView = CCTableView:create(CCSizeMake(700,280))

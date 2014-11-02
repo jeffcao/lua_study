@@ -73,7 +73,7 @@ function GamingScene:ctor()
 	
 	self:initData()
 	
-	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+	
 	self.next_user_avatar:setScale(0.65 * GlobalSetting.content_scale_factor)
 	self.self_user_avatar:setScale(0.65 * GlobalSetting.content_scale_factor)
 	self.prev_user_avatar:setScale(0.65 * GlobalSetting.content_scale_factor)
@@ -92,13 +92,20 @@ function GamingScene:ctor()
 	
 	self:listen_match_event()
 	
-	MarqueePlugin.addMarquee(self.rootNode,ccp(400,355))
+	
+	local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
+	cache:addSpriteFramesWithFile(Res.youxi_zhong_plist)
 	
 	require 'ui.UIUtil'
  	local winSize = CCDirector:sharedDirector():getWinSize()
- 	local sprite = UIUtil.getRepeatSprite(winSize.width, winSize.height)
+ 	-- local sprite = UIUtil.getRepeatSprite(winSize.width, winSize.height, "ccbResources/yx-beijing1.png")
+ 	local sprite = CCSprite:createWithSpriteFrameName("youxizhong1/yx-beijing1.png")
  	sprite:setPosition(ccp(winSize.width/2,winSize.height/2))
- 	self.back_bg_layer:addChild(sprite)
+ 	self.back_bg_layer:addChild(sprite, 0, 1010)
+
+ 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+
+ 	MarqueePlugin.addMarquee(self.rootNode,ccp(400,355))
 end
 
 function GamingScene:setStrokes()
