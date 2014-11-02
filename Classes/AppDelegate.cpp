@@ -331,14 +331,15 @@ bool AppDelegate::applicationDidFinishLaunching()
     
 
     // load framework
-    // pStack->setXXTEAKeyAndSign("hahaleddz", 9, "hahale", 6);
+    pStack->setXXTEAKeyAndSign("hahaleddz", 9, "hahale", 6);
     pStack->loadChunksFromZIP("zipres/framework_precompiled.zip");
     
     // pStack->loadChunksFromZIP("zipres/slogic.dat");
     
     // pStack->setXXTEAKeyAndSign("hahaleddz", 9, "hahale", 6);
-    // pStack->loadChunksFromZIP("zipres/cui.zip");
+    pStack->loadChunksFromZIP("zipres/cui.zip");
     pStack->executeString("require 'main'");
+    
 #endif
 
 

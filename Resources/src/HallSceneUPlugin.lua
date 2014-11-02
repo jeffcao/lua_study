@@ -70,7 +70,7 @@ function HallSceneUPlugin.bind(theClass)
 		local task = GlobalSetting.time_task
 		if not task then return end
 		dump(task, 'time task is ')
-		self.task_lbl:setString(task.name)
+		-- self.task_lbl:setString(task.name)
 --		self:set_btn_stroke(self.task_lbl)
 		self.task_layer:setVisible(true)
 	end
@@ -307,8 +307,16 @@ function HallSceneUPlugin.bind(theClass)
 				i_room:init_room_info(data.room[i], i)
 				i_room.on_touch_callback = __bind(self.do_on_room_touched, self)
 				i_room:setPosition(ccp(k*230+5, (i%2)*113))
-				self.ScrollContainer:addChild(i_room)
+				self.ScrollContainer:addChild(i_room, 0, data.room[i].room_id)
 				if (i%2) == 0 then k=k+1 end
+
+			end
+		else
+			for i=1, #(data.room) do
+				local i_room_info = data.room[i]
+				local i_room = self.ScrollContainer:findChildByTag(i_room_info.room_id)
+	
+				i_room:init_room_info(i_room_info, i)
 
 			end
 
