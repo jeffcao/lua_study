@@ -72,8 +72,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>ccbResources/ui_kuang.plist</string>
-							<string>tanchukuang01.png</string>
+							<string>ccbResources/res/shangchen_jianjie.plist</string>
+							<string>shangchen-3/sc-xiaotu/sc-beijingtu.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -83,8 +83,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>435</real>
-							<real>430</real>
+							<real>500</real>
+							<real>440</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -114,7 +114,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>5</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -122,7 +122,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>10</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -130,7 +130,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>5</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -138,9 +138,11 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>5</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -164,8 +166,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>50</real>
-							<real>96</real>
+							<real>55.977012634277344</real>
+							<real>100.04762268066406</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -320,8 +322,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string>ccbResources/ui_anniu.plist</string>
-									<string>btn_guanbi.png</string>
+									<string>ccbResources/res/shangchen_jianjie.plist</string>
+									<string>shangchen-1/sc-xiaotu/sc-fanhui.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -366,8 +368,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>398.8800048828125</real>
-							<real>391.68002319335938</real>
+							<real>436.8800048828125</real>
+							<real>413.68002319335938</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -673,7 +675,7 @@
 						<key>value</key>
 						<array>
 							<real>50</real>
-							<real>76</real>
+							<real>75.047622680664062</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -979,7 +981,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>50</real>
+							<real>50.229885101318359</real>
 							<real>37</real>
 							<integer>4</integer>
 						</array>
@@ -1211,8 +1213,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
