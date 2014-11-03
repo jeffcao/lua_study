@@ -18,6 +18,7 @@ Res = {
  	geren_ziliao_plist = "ccbResources/res/geren_ziliao.plist",
  	youxi_zhong_plist = "ccbResources/res/youxi_zhong.plist",
  	shangchen_jianjie_plist = "ccbResources/res/shangchen_jianjie.plist",
+ 	huo_dong_plist = "ccbResources/res/huo_dong.plist",
 
 -- 背景音乐
  s_music_bg = dirMusic .. "bg/1.mp3",

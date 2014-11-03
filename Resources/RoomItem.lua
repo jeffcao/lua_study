@@ -107,10 +107,10 @@ function RoomItem:init_promotion_room(room_info, room_index)
 	self.promotion_status_lbl:setString(status_text)
 	local bg_sprite_png = 'dt-fangjian1.png'
 	local sp_room_type_desc_png = "dt-xiaosongdoufang.png"
-	if tonumber(room_info.room_type) == 3 then 
-		bg_sprite_png = 'songhuafei.png' 
-		sp_room_type_desc_png = "wenzi_songhuafei.png"
-	end
+	-- if tonumber(room_info.room_type) == 3 then 
+	-- 	bg_sprite_png = 'songhuafei.png' 
+	-- 	sp_room_type_desc_png = "wenzi_songhuafei.png"
+	-- end
 	self.promotion_bg:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(bg_sprite_png))
 	self.sp_room_type_desc:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(sp_room_type_desc_png))
 	--for telephone charge match room, show next match start time

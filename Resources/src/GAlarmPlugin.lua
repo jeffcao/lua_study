@@ -82,7 +82,7 @@ function GAlarmPlugin.bind(theClass)
 				callbackFunc()
 			end
 		end
-		self:startAlarm( ccp(120, 310), tick_count, callback )
+		self:startAlarm( ccp(154, 310), tick_count, callback )
 	end
 	
 	-----------------------------------------------------------------------------
@@ -97,6 +97,6 @@ function GAlarmPlugin.bind(theClass)
 				callbackFunc()
 			end
 		end
-		self:startAlarm( ccp(680, 310), tick_count, callback )
+		self:startAlarm( ccp(650, 310), tick_count, callback )
 	end
 end

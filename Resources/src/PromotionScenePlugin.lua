@@ -33,7 +33,7 @@ function PromotionScenePlugin.bind(theClass)
 	
 	function theClass:create_promotion_list(promotion_list)
 		local t = ListViewPlugin.create_list_view(promotion_list,
-			createPromotionItem, 'init_item', CCSizeMake(800,130), CCSizeMake(800,370),
+			createPromotionItem, 'init_item', CCSizeMake(800,100), CCSizeMake(800,270),
 			__bind(self.on_promotion_click, self))
 		t:setPosition(CCPointMake(0,10))
 		return t

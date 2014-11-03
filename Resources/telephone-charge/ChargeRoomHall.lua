@@ -124,123 +124,76 @@ function ChargeRoomHall:onExit()
 	DataProxy.get_exist_instance('charge_matches'):unregister('charge_room_hall')
 end
 
-local positions = {}
-positions[3] = {ccp(25, 120), ccp(270, 120), ccp(515, 120)}
-positions[4] = {ccp(25, 170), ccp(270, 170), ccp(515, 170), ccp(270, 55)}
+
 function ChargeRoomHall:init_rooms()
 	local matches = DataProxy.get_exist_instance('charge_matches'):get_data().match_list
-	--TODO remove match after index 4 for test
-	--for index=1, #matches do
-	--	if index > 4 then matches[index] = nil end
-	--end
+	print("[ChargeRoomHall:refresh_room_scrollview]")
+		if not self.croom_layer_scrollview then
+			self.scrollTop = 270
+			self.scrollHeight = 270
+			self.scrollWidth = 700
+			self.cellHeight = 115
+			self.cellWidth = 225
+			self.cellNums = #(matches)/2 + #(matches)%2
+
+			self.ScrollContainer = display.newLayer()
+		    self.ScrollContainer:setTouchEnabled(true)
+		    self.ScrollContainer:setPosition(ccp(1, 0))
+		    self.ScrollContainer:setTouchSwallowEnabled(false)
+		    self.ScrollContainer:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
+		    	print("ChargeRoomHall:refresh_room_scrollview, ScrollContainer.ontouched")
+		        return self:onScrollCellCallback(event.name, event.x, event.y)
+		    end)
+			
 	
-	--dump(matches, 'matches')
-	local count = #matches
-	
-	local layer = CCLayer:create()
-	local winSize = CCDirector:sharedDirector():getWinSize()
-	layer:setAnchorPoint(ccp(0,0.5))
-	layer:setPosition(0, winSize.height/2)
-	layer:ignoreAnchorPointForPosition(false)
-	
-	local margin = 25
-	local deltax = 225
-	
-	if count <= 4 then
-		local poses = nil
-		if count <= 3 then
-			poses = positions[3]
-		else
-			poses = positions[4]
+			self.croom_layer_scrollview = CCScrollView:create()
+			self.croom_layer_scrollview:setContentSize(CCSizeMake(0, 0))
+			self.croom_layer_scrollview:setViewSize(CCSizeMake(700, 270))
+			self.croom_layer_scrollview:setContainer(self.ScrollContainer)
+			self.croom_layer_scrollview:setDirection(kCCScrollViewDirectionHorizontal)
+			self.croom_layer_scrollview:setClippingToBounds(true)
+			self.croom_layer_scrollview:setBounceable(true)
+			self.croom_layer_scrollview:setDelegate(this)
+
+
+			local function scrollView2DidScroll()
+				print("ChargeRoomHall:refresh_room_scrollview, scrollView2DidScroll")
+			     
+			end
+			self.croom_layer_scrollview:registerScriptHandler(scrollView2DidScroll, CCScrollView.kScrollViewScroll)
+
+			-- self.room_layer_scrollview:onScroll(handler(self, self.scrollListener))
+			self.croom_layer_scrollview:setPosition(CCPointMake(0,0))
+			self.r_content:addChild(self.croom_layer_scrollview)
+			self.room_datas = matches
+			local k=0
+			for i=1, #(matches) do
+				local i_room = createChargeRoomItem()
+				print("[ChargeRoomHall:refresh_room_scrollview] idx: " .. i, i_room)
+				i_room:init_room_info(matches[i])
+
+				i_room:setPosition(ccp(k*225+5, (i%2)*130+20))
+				self.ScrollContainer:addChild(i_room)
+				if (i%2) == 0 then k=k+1 end
+
+			end
+
 		end
-		
-		for index=1, count do
-			local layer1 = createChargeRoomItem()
-			layer1:init_room_info(matches[index])
-			layer1:setPosition(poses[index])
-			layer:addChild(layer1)
-		end
-		local h = winSize.height * (2/3)
-		local w = winSize.width
-		layer:setContentSize(CCSizeMake(w, h))
-	else
-		margin = 50
-		local y1 = 170
-		local y2 = 55
-		local single = toint(count/2)
-		
-		local startx = margin
-		
-		for index=1, single do
-			local layer2 = createChargeRoomItem()
-			layer2:init_room_info(matches[index])
-			layer2:setPosition(ccp(startx + (index-1)*deltax, y1))
-			layer:addChild(layer2)
-		end
-		for index=single+1, count do
-			local layer2 = createChargeRoomItem()
-			layer2:init_room_info(matches[index])
-			layer2:setPosition(ccp(startx + (index-single-1)*deltax, y2))
-			layer:addChild(layer2)
-		end
-		local h = winSize.height * (2/3)
-		local w = (single)*deltax
-		print('set node to h='..h..'w='..w)
-		layer:setContentSize(CCSizeMake(w, h))
-	end
-	
-	local function onTouchRoom(eventType, x, y)
-		print("room item touch:" .. eventType)
-		local layer_width = layer:getContentSize().width
-        if eventType == "began" then
-        	layer.startx = x
-        	layer.lastx = x
-        	layer.moved = 0
-            return true
-        elseif eventType == "moved" then
-        	if layer_width <= winSize.width then return end
-        	local delta = x - layer.lastx
-        	local px,py = layer:getPosition()
-        	local max = 0
-        	local min = CCDirector:sharedDirector():getWinSize().width - 2 * margin - layer_width
-        	if px + delta >= max then
-        		layer:setPosition(ccp(max, py))
-        	elseif px + delta <= min then
-        		layer:setPosition(ccp(min, py))
-        	else
-        		layer:setPosition(ccp(px+delta, py))
-        	end
-        	layer.lastx = x
-        	layer.moved = layer.moved + 1
-        elseif eventType == "ended" then
-        	local delta = math.abs(layer.lastx - layer.startx)
-        	if layer.moved <= MOVE_TEST_LIMIT or delta < 10 then
-        		local children = layer:getChildren()
-        		for index=1, children:count() do
-        			local child = children:objectAtIndex(index - 1)
-        			if cccn(child.rootNode, x, y) then
-        				child:on_click()
-        				break
-        			end
-        		end
-        	end
-        	layer.startx = nil
-        	layer.lastx = nil
-        	layer.moved = nil
-        end
-        return true
-    end
-	
-	local dlg = layer
-	dlg:setTag(1111)
-	
-	dumprect(dlg:boundingBox(), 'charge bouding box')
-	dlg.on_touch_fn = onTouchRoom
-	self.rootNode:removeChildByTag(1111, true) -- temp remove match list, should update match list, need time to do this function
-	self.rootNode:addChild(dlg)
-	self:recreate_sel_childs()
-	self:set_matchs_matchtype()
+
 end
+
+function ChargeRoomHall:onScrollCellCallback(event, x, y)
+    if event == "began" then
+    	print("ChargeRoomHall:onScrollCellCallback,  began")
+    elseif event == "moved" then
+    	print("ChargeRoomHall:onScrollCellCallback,  moved")
+    elseif event == "ended" then
+    	self.bolTouchEnd = true
+    	print("ChargeRoomHall:onScrollCellCallback,  ended")
+    end
+    return true
+end
+
 
 DialogPlugin.bind(ChargeRoomHall)
 ChargeHallMatchPlugin.bind(ChargeRoomHall)

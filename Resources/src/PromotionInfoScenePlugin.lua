@@ -8,10 +8,14 @@ function PromotionInfoScenePlugin.bind(theClass)
 	function theClass:init_tabs()
 		local tabs = {speci = {name="speci"}, rule = {name="rule"}, record = {name="record"}}
 		local order = {"speci","rule","record"}
+		local tabs_frams = {}
+		tabs_frams["speci"]={"hd-xq/hd-xiaotu/hd-jirshao.png","hd-xq/hd-xiaotu/hd-jirshao.png"}
+		tabs_frams["rule"]={"hd-xq/hd-xiaotu/hd-guize.png","hd-xq/hd-xiaotu/hd-guize.png"}
+		tabs_frams["record"]={"hd-xq/hd-xiaotu/hd-huojiangjilu.png","hd-xq/hd-xiaotu/hd-huojiangjilu.png"}
 		local tab_content = self.layer
-		local hanzi_names = {speci="活动介绍", rule="活动规则", record="获奖记录"}
+		local hanzi_names = {speci="", rule="", record=""}
 		self:setTabHanziNames(hanzi_names)
-		self:init_mtabs(tabs, tab_content, order)
+		self:init_mtabs(tabs, tab_content, order, tabs_frams)
 		self:set_tab('speci')
 	end
 
@@ -78,18 +82,18 @@ function PromotionInfoScenePlugin.bind(theClass)
 	end
 	
 	function theClass:createInfoLabel(text)
-		local label = CCLabelTTF:create(text,"default",25)
+		local label = CCLabelTTF:create(text,"default",20)
 		label:setAnchorPoint(ccp(0.5,0.5))
 		label:setHorizontalAlignment(kCCTextAlignmentLeft)
-		label:setPosition(400,180)
-		label:setDimensions(CCSizeMake(680,360))
+		label:setPosition(400,160)
+		label:setDimensions(CCSizeMake(680,270))
 		label:setColor(GlobalSetting.white)
 		return label
 	end
 	
 	function theClass:create_record_list(record_list)
 		local t = ListViewPlugin.create_list_view(record_list,
-			createAwardRecordItem, 'init_award', CCSizeMake(800,80), CCSizeMake(800,360))
+			createAwardRecordItem, 'init_award', CCSizeMake(800,80), CCSizeMake(800,270))
 		if not t then
 			return CCLayer:create()
 		end

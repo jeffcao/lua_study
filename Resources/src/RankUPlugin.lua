@@ -16,13 +16,13 @@ function RankUPlugin.bind(theClass)
 
 	function theClass:create_rank_list(rank_list)
 		local t = ListViewPlugin.create_list_view(rank_list,
-		createRankItem, 'init', CCSizeMake(348,30), CCSizeMake(348,165))
+		createRankItem, 'init', CCSizeMake(720,50), CCSizeMake(720,245))
 		return t
 	end
 
 	function theClass:create_huafei_rank_list(rank_list)
 		local t = ListViewPlugin.create_list_view(rank_list,
-		createHuafeiRankItem, 'init', CCSizeMake(348,30), CCSizeMake(348,165))
+		createHuafeiRankItem, 'init', CCSizeMake(720,50), CCSizeMake(720,245))
 		return t
 	end
 

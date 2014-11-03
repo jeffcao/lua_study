@@ -16,7 +16,7 @@ do
   #adb -s $sid push luaScripts/ /sdcard/fungame/DDZ/lua
   #adb -s $sid push lua.zip /sdcard/tblin/TMS/
   #adb -s $sid shell "cd /sdcard/tblin/TMS ; busybox unzip -o lua.zip"
-  adb -s $sid push ../Resources/ /sdcard/fungame/tuitong
+  adb -s $sid push ../Resources/ /sdcard/fungame/ruitong
 done
 
 

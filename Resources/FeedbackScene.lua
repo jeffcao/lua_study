@@ -36,7 +36,7 @@ function FeedbackScene:ctor()
  	
  	self.input_png = "ccbResources/yinyingkuang.png"
  	self.direct = true
-	self.feedback_box = self:addEditbox(self.feed_layer, 500, 200, false, 101)
+	self.feedback_box = self:addEditbox(self.feed_layer, 500, 145, false, 101)
 	self.feedback_box:setInputMode(kEditBoxInputModeAny)
 	self.feedback_box:registerScriptEditBoxHandler(editBoxTextEventHandle)
 	--self.feedback_box:setFontColor(display.COLOR_WHITE)
