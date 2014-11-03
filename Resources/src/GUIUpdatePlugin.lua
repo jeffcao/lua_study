@@ -111,6 +111,7 @@ function GUIUpdatePlugin.bind(theClass)
 	
 	function theClass:updateLordCard(lord_card_ui, lord_poke_card)
 		cclog("updateLordCard")
+		CCSpriteFrameCache:sharedSpriteFrameCache():addSpriteFramesWithFile(Res.s_cards_plist)
 		local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
 		--cache:addSpriteFramesWithFile(plist_name)
 		--lord_card_ui = tolua.cast(lord_card_ui,"CCSprite")
@@ -121,7 +122,7 @@ function GUIUpdatePlugin.bind(theClass)
 			local scale = 0.4 * GlobalSetting.content_scale_factor
 			lord_card_ui:setScale(scale)
 		else
-			local frame = cache:spriteFrameByName("poke_bg_small.png")
+			local frame = cache:spriteFrameByName("beimian.png")
 			lord_card_ui:setDisplayFrame(frame)
 			local scale = 1.0 * GlobalSetting.content_scale_factor
 			lord_card_ui:setScale(scale)
