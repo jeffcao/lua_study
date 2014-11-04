@@ -7,19 +7,6 @@
             <key>a01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{146,722},{70,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{70,100}}</string>
-                <key>sourceSize</key>
-                <string>{70,100}</string>
-            </dict>
-            <key>a02.png</key>
-            <dict>
-                <key>frame</key>
                 <string>{{350,650},{70,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
@@ -30,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>a03.png</key>
+            <key>a02.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{248,650},{70,100}}</string>
@@ -43,7 +30,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>a04.png</key>
+            <key>a03.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{146,650},{70,100}}</string>
@@ -56,7 +43,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>a05.png</key>
+            <key>a04.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{74,854},{70,100}}</string>
@@ -69,7 +56,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>a06.png</key>
+            <key>a05.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{74,752},{70,100}}</string>
@@ -82,7 +69,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>a07.png</key>
+            <key>a06.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{74,650},{70,100}}</string>
@@ -95,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>a08.png</key>
+            <key>a07.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{380,578},{70,100}}</string>
@@ -108,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>a09.png</key>
+            <key>a08.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{278,578},{70,100}}</string>
@@ -121,7 +108,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>a10.png</key>
+            <key>a09.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{176,578},{70,100}}</string>
@@ -134,7 +121,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>a11.png</key>
+            <key>a10.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{74,578},{70,100}}</string>
@@ -147,7 +134,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>a12.png</key>
+            <key>a11.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,884},{70,100}}</string>
@@ -160,7 +147,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>a13.png</key>
+            <key>a12.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,782},{70,100}}</string>
@@ -173,7 +160,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>b01.png</key>
+            <key>a13.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,680},{70,100}}</string>
@@ -186,7 +173,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>b02.png</key>
+            <key>b01.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,578},{70,100}}</string>
@@ -199,7 +186,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>b03.png</key>
+            <key>b02.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{410,506},{70,100}}</string>
@@ -212,7 +199,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>b04.png</key>
+            <key>b03.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{308,506},{70,100}}</string>
@@ -225,7 +212,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>b05.png</key>
+            <key>b04.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{206,506},{70,100}}</string>
@@ -238,7 +225,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>b06.png</key>
+            <key>b05.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{104,506},{70,100}}</string>
@@ -251,7 +238,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>b07.png</key>
+            <key>b06.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,506},{70,100}}</string>
@@ -264,7 +251,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>b08.png</key>
+            <key>b07.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{410,434},{70,100}}</string>
@@ -277,7 +264,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>b09.png</key>
+            <key>b08.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{308,434},{70,100}}</string>
@@ -290,7 +277,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>b10.png</key>
+            <key>b09.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{206,434},{70,100}}</string>
@@ -303,7 +290,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>b11.png</key>
+            <key>b10.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{104,434},{70,100}}</string>
@@ -316,7 +303,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>b12.png</key>
+            <key>b11.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,434},{70,100}}</string>
@@ -329,7 +316,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>b13.png</key>
+            <key>b12.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{410,362},{70,100}}</string>
@@ -342,7 +329,7 @@
                 <key>sourceSize</key>
                 <string>{70,100}</string>
             </dict>
-            <key>beimian.png</key>
+            <key>b13.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{308,362},{70,100}}</string>
@@ -354,6 +341,19 @@
                 <string>{{0,0},{70,100}}</string>
                 <key>sourceSize</key>
                 <string>{70,100}</string>
+            </dict>
+            <key>beimian.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,986},{21,30}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{21,30}}</string>
+                <key>sourceSize</key>
+                <string>{21,30}</string>
             </dict>
             <key>c01.png</key>
             <dict>
@@ -729,7 +729,7 @@
             <key>size</key>
             <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:97aea51abf3e48da20a04877dc4d70c7:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:6cd7a4cef190eb45c4b4f8c3cd768b35:1/1$</string>
             <key>textureFileName</key>
             <string>poke_cards.png</string>
         </dict>
