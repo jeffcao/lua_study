@@ -129,6 +129,14 @@
 								<array>
 									<dict>
 										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>position</string>
 										<key>type</key>
 										<string>Position</string>
@@ -346,8 +354,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/info.plist</string>
-													<string>touxiang00_m.png</string>
+													<string>ccbResources/res/gerentouxiang.plist</string>
+													<string>tx-xiaotu/touxiang00_f.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -427,8 +435,8 @@
 										<string>ScaleLock</string>
 										<key>value</key>
 										<array>
-											<real>0.60000002384185791</real>
-											<real>0.60000002384185791</real>
+											<real>1</real>
+											<real>1</real>
 											<false/>
 											<integer>0</integer>
 										</array>
@@ -581,8 +589,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>115</real>
-									<real>250</real>
+									<real>111</real>
+									<real>238</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -671,6 +679,8 @@
 								<false/>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -2918,8 +2928,6 @@
 						<real>0.0</real>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

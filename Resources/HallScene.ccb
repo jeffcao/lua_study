@@ -2635,12 +2635,20 @@
 						<array>
 							<dict>
 								<key>name</key>
+								<string>visible</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>position</string>
 								<key>type</key>
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>4</real>
+									<real>3</real>
 									<real>417</real>
 									<integer>0</integer>
 								</array>
@@ -2692,8 +2700,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string>ccbResources/dating.plist</string>
-									<string>dt-touxiang.png</string>
+									<string>ccbResources/res/gerentouxiang.plist</string>
+									<string>tx-xiaotu/touxiang01.png</string>
 								</array>
 							</dict>
 						</array>
@@ -2796,8 +2804,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/common.plist</string>
-											<string>touming.png</string>
+											<string>ccbResources/res/gerentouxiang.plist</string>
+											<string>tx-xiaotu/touxiang01.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -2823,6 +2831,8 @@
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -2842,8 +2852,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>15</real>
-									<real>425</real>
+									<real>8</real>
+									<real>411</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -2877,8 +2887,8 @@
 								<string>ScaleLock</string>
 								<key>value</key>
 								<array>
-									<real>0.60000002384185791</real>
-									<real>0.60000002384185791</real>
+									<real>1</real>
+									<real>1</real>
 									<false/>
 									<integer>0</integer>
 								</array>

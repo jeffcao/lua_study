@@ -196,8 +196,8 @@
 												<string>ScaleLock</string>
 												<key>value</key>
 												<array>
-													<real>0.64999997615814209</real>
-													<real>0.64999997615814209</real>
+													<real>1</real>
+													<real>1</real>
 													<false/>
 													<integer>0</integer>
 												</array>
@@ -244,8 +244,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/info.plist</string>
-													<string>touxiang00_m.png</string>
+													<string>ccbResources/res/gerentouxiang.plist</string>
+													<string>tx-xiaotu/touxiang01.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -398,6 +398,14 @@
 								<array>
 									<dict>
 										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>position</string>
 										<key>type</key>
 										<string>Position</string>
@@ -447,8 +455,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_kuang.plist</string>
-											<string>touxiangkuang.png</string>
+											<string>ccbResources/res/gerentouxiang.plist</string>
+											<string>tx-xiaotu/touxiang00_f.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -458,8 +466,8 @@
 										<string>Size</string>
 										<key>value</key>
 										<array>
-											<real>85</real>
-											<real>85</real>
+											<real>78</real>
+											<real>78</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -489,7 +497,7 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>1</real>
+										<real>0.0</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -497,7 +505,7 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>1</real>
+										<real>0.0</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -505,7 +513,7 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>1</real>
+										<real>0.0</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -513,7 +521,7 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>1</real>
+										<real>0.0</real>
 									</dict>
 								</array>
 							</dict>
@@ -1484,8 +1492,8 @@
 												<string>ScaleLock</string>
 												<key>value</key>
 												<array>
-													<real>0.64999997615814209</real>
-													<real>0.64999997615814209</real>
+													<real>1</real>
+													<real>1</real>
 													<false/>
 													<integer>0</integer>
 												</array>
@@ -1532,8 +1540,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/info.plist</string>
-													<string>touxiang00_m.png</string>
+													<string>ccbResources/res/gerentouxiang.plist</string>
+													<string>tx-xiaotu/touxiang01.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -1686,6 +1694,14 @@
 								<array>
 									<dict>
 										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>position</string>
 										<key>type</key>
 										<string>Position</string>
@@ -1735,8 +1751,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_kuang.plist</string>
-											<string>touxiangkuang.png</string>
+											<string>ccbResources/res/gerentouxiang.plist</string>
+											<string>tx-xiaotu/touxiang00_f.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1746,8 +1762,8 @@
 										<string>Size</string>
 										<key>value</key>
 										<array>
-											<real>85</real>
-											<real>85</real>
+											<real>78</real>
+											<real>78</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -1777,7 +1793,7 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>1</real>
+										<real>0.0</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -1785,7 +1801,7 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>1</real>
+										<real>0.0</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -1793,7 +1809,7 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>1</real>
+										<real>0.0</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -1801,7 +1817,7 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>1</real>
+										<real>0.0</real>
 									</dict>
 								</array>
 							</dict>
@@ -3171,8 +3187,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>87</real>
-											<real>90</real>
+											<real>84</real>
+											<real>91</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -3267,8 +3283,8 @@
 												<string>Position</string>
 												<key>value</key>
 												<array>
-													<real>50</real>
-													<real>50</real>
+													<real>50.925926208496094</real>
+													<real>53.669723510742188</real>
 													<integer>4</integer>
 												</array>
 											</dict>
@@ -3290,8 +3306,8 @@
 												<string>ScaleLock</string>
 												<key>value</key>
 												<array>
-													<real>0.64999997615814209</real>
-													<real>0.64999997615814209</real>
+													<real>1</real>
+													<real>1</real>
 													<false/>
 													<integer>0</integer>
 												</array>
@@ -3338,8 +3354,8 @@
 												<string>SpriteFrame</string>
 												<key>value</key>
 												<array>
-													<string>ccbResources/info.plist</string>
-													<string>touxiang00_m.png</string>
+													<string>ccbResources/res/gerentouxiang.plist</string>
+													<string>tx-xiaotu/touxiang01.png</string>
 												</array>
 											</dict>
 											<dict>
@@ -3492,6 +3508,14 @@
 								<array>
 									<dict>
 										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>position</string>
 										<key>type</key>
 										<string>Position</string>
@@ -3541,8 +3565,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_kuang.plist</string>
-											<string>touxiangkuang.png</string>
+											<string>ccbResources/res/gerentouxiang.plist</string>
+											<string>tx-xiaotu/touxiang00_f.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -3552,8 +3576,8 @@
 										<string>Size</string>
 										<key>value</key>
 										<array>
-											<real>85</real>
-											<real>85</real>
+											<real>78</real>
+											<real>78</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -3583,7 +3607,7 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>1</real>
+										<real>0.0</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -3591,7 +3615,7 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>1</real>
+										<real>0.0</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -3599,7 +3623,7 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>1</real>
+										<real>0.0</real>
 									</dict>
 									<dict>
 										<key>name</key>
@@ -3607,7 +3631,7 @@
 										<key>type</key>
 										<string>Float</string>
 										<key>value</key>
-										<real>1</real>
+										<real>0.0</real>
 									</dict>
 								</array>
 							</dict>
@@ -4339,8 +4363,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -7319,8 +7341,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>anniu1_a.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/yxz1-bujiao.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -7330,8 +7352,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1_b.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/yxz1-bujiao.png</string>
 										</array>
 									</dict>
 								</array>
@@ -7429,8 +7451,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu_01.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -7440,8 +7462,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>anniu1_a.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu_01.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -7451,8 +7473,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1_b.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu_01.png</string>
 										</array>
 									</dict>
 								</array>
@@ -7550,8 +7572,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu_02.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -7561,8 +7583,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>anniu1_a.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu_02.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -7572,8 +7594,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1_b.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu_02.png</string>
 										</array>
 									</dict>
 								</array>
@@ -7671,8 +7693,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu_03.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -7682,8 +7704,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>anniu1_a.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu_03.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -7693,11 +7715,13 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1_b.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu_03.png</string>
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -8288,6 +8312,14 @@
 						<integer>0</integer>
 						<key>properties</key>
 						<array>
+							<dict>
+								<key>name</key>
+								<string>visible</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
 							<dict>
 								<key>name</key>
 								<string>position</string>
@@ -10494,7 +10526,7 @@
 						<key>value</key>
 						<array>
 							<real>164</real>
-							<real>145</real>
+							<real>146</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -11084,7 +11116,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>15</real>
+									<real>15.384614944458008</real>
 									<real>50</real>
 									<integer>4</integer>
 								</array>
