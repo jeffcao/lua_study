@@ -13,6 +13,7 @@ end
 
 TelephoneChargeUtil.on_telehone_charge_room_clicked = function(charge_room)
 	--this function only be called in hall scene, so can use hall scene websocket directly
+	print("TelephoneChargeUtil.on_telehone_charge_room_clicked")
 	local hall_scene = runningscene()
 	
 	local suc_func = function(data)
@@ -23,6 +24,7 @@ TelephoneChargeUtil.on_telehone_charge_room_clicked = function(charge_room)
 		local layer = createChargeRoomHall()
 		layer:set_charge_room(charge_room)
 		layer:show()
+		print("TelephoneChargeUtil.on_telehone_charge_room_clicked, layer:show()")
 	end
 	hall_scene:get_charge_matches(charge_room.room_id, suc_func)
 	

@@ -77,7 +77,7 @@ function UIControllerPlugin.bind(theClass)
 		local avatar_png_index_gender = tonumber(cur_user.gender) == 1 and "m" or "f"
 		avatar_png_index = avatar_png_index == "00" and "00_"..avatar_png_index_gender or avatar_png_index
 		local avatar_png = "touxiang"..avatar_png_index..".png"
-		return avatar_png
+		return "tx-xiaotu/"..avatar_png
 	end
 	
 	function theClass:show_back_message_box(message)

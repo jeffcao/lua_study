@@ -178,9 +178,9 @@ function GPlayerUpdatePlugin.bind(theClass)
 	function theClass:updatePlayerAvatar(player, player_avatar_ui, player_avatar_bg)
 		local avatarFrame = nil
 		if not player then
-			if player_avatar_bg:isVisible() then
-				player_avatar_bg:setVisible(false)
-			end
+			-- if player_avatar_bg:isVisible() then
+			-- 	player_avatar_bg:setVisible(false)
+			-- end
 			if player_avatar_ui:isVisible() then
 				player_avatar_ui:setVisible(false)
 			end
@@ -188,9 +188,9 @@ function GPlayerUpdatePlugin.bind(theClass)
 			if not player_avatar_ui:isVisible() then
 				player_avatar_ui:setVisible(true)
 			end
-			if not player_avatar_bg:isVisible() then
-				player_avatar_bg:setVisible(true)
-			end
+			-- if not player_avatar_bg:isVisible() then
+			-- 	player_avatar_bg:setVisible(true)
+			-- end
 			avatarFrame = Avatar.getUserAvatarFrame(player)
 			player_avatar_ui:setNormalSpriteFrame(avatarFrame)
 			player_avatar_ui:setSelectedSpriteFrame(avatarFrame)
