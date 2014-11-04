@@ -36,12 +36,14 @@ function ChargeRoomItem:on_touch_event(eventName, eventX, eventY)
     elseif eventName == "moved" then
     	return true
    	elseif eventName == "ended" then
-   		if cccn(self.rootNode, eventX, eventY) then
-			dump(self.room_info, "ChargeRoomItem:on_touch_event, self.room_info=")
-	    	self:on_click()
-	    	print("[ChargeRoomItem:on_touch_event] ended")
-	    	return true
-		end
+   		if not GlobalSetting.charge_hall_scroll_view_moving then
+   			if cccn(self.rootNode, eventX, eventY) then
+				dump(self.room_info, "ChargeRoomItem:on_touch_event, self.room_info=")
+		    	self:on_click()
+		    	print("[ChargeRoomItem:on_touch_event] ended")
+			end
+   		end
+   		
    		return true
     end
 end

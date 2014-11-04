@@ -72,6 +72,7 @@ HallScene = class("HallScene", function()
 
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 	cache:addSpriteFramesWithFile(Res.common_plist)
+	cache:addSpriteFramesWithFile(Res.geren_touxiang_plist)
 	
 	self.socket_label = tolua.cast(self.socket_label, "CCLabelTTF")
 	

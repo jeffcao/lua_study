@@ -281,51 +281,51 @@ bool AppDelegate::applicationDidFinishLaunching()
         //     CCLog("AppDelegate::applicationDidEnterBackground, create resources failed.");
         // }
 
-        // std::string s_file = "zipres/cui.dat";
-        // CCLog("AppDelegate::applicationDidEnterBackground, s_file => %s", s_file.c_str());
-        // unsigned long codeBufferSize = 0;
-        // unsigned char* zip_data = CCFileUtils::sharedFileUtils()->getFileData(s_file.c_str(), "rb", &codeBufferSize);
+        std::string s_file = "zipres/cui.dat";
+        CCLog("AppDelegate::applicationDidEnterBackground, s_file => %s", s_file.c_str());
+        unsigned long codeBufferSize = 0;
+        unsigned char* zip_data = CCFileUtils::sharedFileUtils()->getFileData(s_file.c_str(), "rb", &codeBufferSize);
 
-        // //second - save it:
-        // string dest_path = w_able_path + "/cui.zip";
-        // CCLog("AppDelegate::applicationDidEnterBackground, dest_path => %s", dest_path.c_str());
-        // FILE* dest = fopen(dest_path.c_str(), "wb");
+        //second - save it:
+        string dest_path = w_able_path + "/cui.zip";
+        CCLog("AppDelegate::applicationDidEnterBackground, dest_path => %s", dest_path.c_str());
+        FILE* dest = fopen(dest_path.c_str(), "wb");
 
-        // CCLog("AppDelegate::applicationDidEnterBackground, begin write cui.dat");
+        CCLog("AppDelegate::applicationDidEnterBackground, begin write cui.dat");
 
-        // fwrite(zip_data, codeBufferSize, 1, dest);
-        // fclose(dest);
+        fwrite(zip_data, codeBufferSize, 1, dest);
+        fclose(dest);
 
-        // CCLog("AppDelegate::applicationDidEnterBackground, end write cui.dat");
+        CCLog("AppDelegate::applicationDidEnterBackground, end write cui.dat");
 
-        // uncompress(w_able_path.c_str(), dest_path.c_str());
-        // remove(dest_path.c_str());
-        // w_able_path = CCFileUtils::sharedFileUtils()->getWritablePath()+"resources";
-        // createDirectory(w_able_path.c_str());
-        // w_able_path = CCFileUtils::sharedFileUtils()->getWritablePath()+"resources/res";
-        // //First - get asset file data:
-        // createDirectory(w_able_path.c_str());
-        // s_file = "zipres/res.dat";
-        // CCLog("AppDelegate::applicationDidEnterBackground, s_file => %s", s_file.c_str());
-        // codeBufferSize = 0;
-        // zip_data = CCFileUtils::sharedFileUtils()->getFileData(s_file.c_str(), "rb", &codeBufferSize);
+        uncompress(w_able_path.c_str(), dest_path.c_str());
+        remove(dest_path.c_str());
+        w_able_path = CCFileUtils::sharedFileUtils()->getWritablePath()+"resources";
+        createDirectory(w_able_path.c_str());
+        w_able_path = CCFileUtils::sharedFileUtils()->getWritablePath()+"resources/res";
+        //First - get asset file data:
+        createDirectory(w_able_path.c_str());
+        s_file = "zipres/res.dat";
+        CCLog("AppDelegate::applicationDidEnterBackground, s_file => %s", s_file.c_str());
+        codeBufferSize = 0;
+        zip_data = CCFileUtils::sharedFileUtils()->getFileData(s_file.c_str(), "rb", &codeBufferSize);
 
 
-        // dest_path = w_able_path + "/res.zip";
-        // CCLog("AppDelegate::applicationDidEnterBackground, dest_path => %s", dest_path.c_str());
-        // dest = fopen(dest_path.c_str(), "wb");
+        dest_path = w_able_path + "/res.zip";
+        CCLog("AppDelegate::applicationDidEnterBackground, dest_path => %s", dest_path.c_str());
+        dest = fopen(dest_path.c_str(), "wb");
 
-        // CCLog("AppDelegate::applicationDidEnterBackground, begin write res.dat");
+        CCLog("AppDelegate::applicationDidEnterBackground, begin write res.dat");
 
-        // fwrite(zip_data, codeBufferSize, 1, dest);
-        // fclose(dest);
+        fwrite(zip_data, codeBufferSize, 1, dest);
+        fclose(dest);
 
-        // CCLog("AppDelegate::applicationDidEnterBackground, end write res.dat");
+        CCLog("AppDelegate::applicationDidEnterBackground, end write res.dat");
 
-        // // cocos2d::extension::AssetsManager *assetM = new cocos2d::extension::AssetsManager("", "", w_able_path.c_str());
-        // // assetM->update();
-        // uncompress(w_able_path.c_str(), dest_path.c_str());
-        // remove(dest_path.c_str());
+        // cocos2d::extension::AssetsManager *assetM = new cocos2d::extension::AssetsManager("", "", w_able_path.c_str());
+        // assetM->update();
+        uncompress(w_able_path.c_str(), dest_path.c_str());
+        remove(dest_path.c_str());
         
     }
     
@@ -334,9 +334,9 @@ bool AppDelegate::applicationDidFinishLaunching()
     pStack->setXXTEAKeyAndSign("hahaleddz", 9, "hahale", 6);
     pStack->loadChunksFromZIP("zipres/framework_precompiled.zip");
     
-    // pStack->loadChunksFromZIP("zipres/slogic.dat");
+    pStack->loadChunksFromZIP("zipres/slogic.dat");
     
-    // pStack->setXXTEAKeyAndSign("hahaleddz", 9, "hahale", 6);
+    pStack->setXXTEAKeyAndSign("hahaleddz", 9, "hahale", 6);
     pStack->loadChunksFromZIP("zipres/cui.zip");
     pStack->executeString("require 'main'");
     

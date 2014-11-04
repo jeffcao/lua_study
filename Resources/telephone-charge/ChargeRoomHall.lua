@@ -132,11 +132,12 @@ function ChargeRoomHall:init_rooms()
 			self.scrollTop = 270
 			self.scrollHeight = 270
 			self.scrollWidth = 700
-			self.cellHeight = 115
-			self.cellWidth = 225
+			self.cellHeight = 130
+			self.cellWidth = 230
 			self.cellNums = #(matches)/2 + #(matches)%2
 
 			self.ScrollContainer = display.newLayer()
+			self.ScrollContainer:setContentSize(CCSizeMake(self.cellWidth*self.cellNums, self.cellHeight*2))
 		    self.ScrollContainer:setTouchEnabled(true)
 		    self.ScrollContainer:setPosition(ccp(1, 0))
 		    self.ScrollContainer:setTouchSwallowEnabled(false)
@@ -155,10 +156,11 @@ function ChargeRoomHall:init_rooms()
 			self.croom_layer_scrollview:setBounceable(true)
 			self.croom_layer_scrollview:setDelegate(this)
 
+			self.preOffy = self.ScrollContainer:getPositionX()
 
 			local function scrollView2DidScroll()
 				print("ChargeRoomHall:refresh_room_scrollview, scrollView2DidScroll")
-			     
+			
 			end
 			self.croom_layer_scrollview:registerScriptHandler(scrollView2DidScroll, CCScrollView.kScrollViewScroll)
 
@@ -184,14 +186,22 @@ end
 
 function ChargeRoomHall:onScrollCellCallback(event, x, y)
     if event == "began" then
-    	print("ChargeRoomHall:onScrollCellCallback,  began")
+    	self.bolTouchEnd = false
+    	self.scroll_view_moved_x_s = x
+    	GlobalSetting.charge_hall_scroll_view_moving = false
+    	print("ChargeRoomHall:onScrollCellCallback, began")
     elseif event == "moved" then
-    	print("ChargeRoomHall:onScrollCellCallback,  moved")
+    	local x_distance = math.abs(x - self.scroll_view_moved_x_s)
+    	print("ChargeRoomHall:onScrollCellCallback, moved, x_distance=", x_distance)
+    	if x_distance > 10 then
+    		GlobalSetting.charge_hall_scroll_view_moving = true
+    	end
     elseif event == "ended" then
     	self.bolTouchEnd = true
     	print("ChargeRoomHall:onScrollCellCallback,  ended")
     end
     return true
+
 end
 
 

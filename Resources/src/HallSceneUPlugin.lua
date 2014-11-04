@@ -245,11 +245,12 @@ function HallSceneUPlugin.bind(theClass)
 			self.scrollTop = 220
 			self.scrollHeight = 220
 			self.scrollWidth = 700
-			self.cellHeight = 105
-			self.cellWidth = 512
+			self.cellHeight = 226
+			self.cellWidth = 235
 			self.cellNums = #(data.room)/2 + #(data.room)%2
 
 			self.ScrollContainer = display.newLayer()
+			self.ScrollContainer:setContentSize(CCSizeMake(self.cellWidth*self.cellNums, self.cellHeight))
 		    self.ScrollContainer:setTouchEnabled(true)
 		    self.ScrollContainer:setPosition(ccp(1, 0))
 		    self.ScrollContainer:setTouchSwallowEnabled(false)
@@ -271,28 +272,7 @@ function HallSceneUPlugin.bind(theClass)
 
 			local function scrollView2DidScroll()
 				print("HallSceneUPlugin:refresh_room_scrollview, scrollView2DidScroll")
-			     if self.bolTouchEnd == true then
-			        self.bolTouchEnd = false
-			        local offy = self.ScrollContainer:getPositionX()
-			        local miny = self.scrollWidth-self.cellNums*self.cellWidth
-			        print("HallSceneUPlugin:refresh_room_scrollview, scrollView2DidScroll, offy, miny", offy, miny)
-			        if offy < 0 and offy > miny then
-			            local item = -(math.abs(offy)%self.cellWidth)
-			            print("HallSceneUPlugin:refresh_room_scrollview, scrollView2DidScroll, item", item)
-			            if item <= -self.cellWidth/2 then
-			                if offy < self.preOffy then
-			                    item = offy-item-self.cellWidth 
-			                else
-			                    item = offy-item-self.cellWidth
-			                end
-			            else
-			                item = offy-item
-			            end
-			            self.preOffy = offy
-			            print("HallSceneUPlugin:refresh_room_scrollview, scrollView2DidScroll, item", item)
-			            self.room_layer_scrollview:setContentOffset(ccp(item, 1), true)
-			        end
-			    end
+			    
 			end
 			self.room_layer_scrollview:registerScriptHandler(scrollView2DidScroll, CCScrollView.kScrollViewScroll)
 
@@ -314,7 +294,7 @@ function HallSceneUPlugin.bind(theClass)
 		else
 			for i=1, #(data.room) do
 				local i_room_info = data.room[i]
-				local i_room = self.ScrollContainer:findChildByTag(i_room_info.room_id)
+				local i_room = self.ScrollContainer:getChildByTag(i_room_info.room_id)
 	
 				i_room:init_room_info(i_room_info, i)
 
@@ -325,9 +305,15 @@ function HallSceneUPlugin.bind(theClass)
 	end
 	function theClass:onScrollCellCallback(event, x, y)
 	    if event == "began" then
+	    	self.scroll_view_moved_x_s = x
+	    	GlobalSetting.hall_scroll_view_moving = false
 	    	print("HallSceneUPlugin:refresh_room_scrollview, onScrollCellCallback, began")
 	    elseif event == "moved" then
-	    	print("HallSceneUPlugin:refresh_room_scrollview, onScrollCellCallback, moved")
+	    	local x_distance = math.abs(x - self.scroll_view_moved_x_s)
+	    	print("HallSceneUPlugin:refresh_room_scrollview, onScrollCellCallback, moved, x_distance=", x_distance)
+	    	if x_distance > 10 then
+	    		GlobalSetting.hall_scroll_view_moving = true
+	    	end
 	    elseif event == "ended" then
 	    	self.bolTouchEnd = true
 	    	print("HallSceneUPlugin:refresh_room_scrollview, onScrollCellCallback, ended")

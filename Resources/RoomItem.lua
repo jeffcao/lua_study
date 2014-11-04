@@ -56,12 +56,16 @@ function RoomItem:on_touch_event(eventName, eventX, eventY)
     elseif eventName == "moved" then
     	return true
    	elseif eventName == "ended" then
-   		if cccn(self.rootNode, eventX, eventY) then
-			dump(self.room_info, "RoomItem:on_touch_event, self.room_info=")
-	    	self.on_touch_callback(self.room_info)
-	    	print("[RoomItem:on_touch_event] ended")
-	    	return true
-		end
+   		if not GlobalSetting.hall_scroll_view_moving  then
+   			if cccn(self.rootNode, eventX, eventY) then
+				dump(self.room_info, "RoomItem:on_touch_event, self.room_info=")
+		    	self.on_touch_callback(self.room_info)
+		    	print("[RoomItem:on_touch_event] ended")
+		    	return true
+			end
+   		end
+   		
+   		
    		return true
     end
 end
