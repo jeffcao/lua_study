@@ -232,8 +232,8 @@
 								<string>SpriteFrame</string>
 								<key>value</key>
 								<array>
-									<string>ccbResources/ui_kuang.plist</string>
-									<string>tanchukuang01.png</string>
+									<string>ccbResources/res/shangchen_jianjie.plist</string>
+									<string>shangchen-3/sc-xiaotu/sc-beijingtu.png</string>
 								</array>
 							</dict>
 							<dict>
@@ -243,8 +243,8 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>390</real>
-									<real>280</real>
+									<real>352</real>
+									<real>250</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -282,7 +282,7 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>25</real>
+								<real>10</real>
 							</dict>
 							<dict>
 								<key>name</key>
@@ -298,11 +298,9 @@
 								<key>type</key>
 								<string>Float</string>
 								<key>value</key>
-								<real>2</real>
+								<real>5</real>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -416,6 +414,14 @@
 				<integer>0</integer>
 				<key>properties</key>
 				<array>
+					<dict>
+						<key>name</key>
+						<string>visible</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
 					<dict>
 						<key>name</key>
 						<string>position</string>
@@ -565,7 +571,7 @@
 								<key>value</key>
 								<array>
 									<real>5</real>
-									<real>50</real>
+									<real>136.66667175292969</real>
 									<integer>4</integer>
 								</array>
 							</dict>
@@ -681,7 +687,7 @@
 								<key>value</key>
 								<array>
 									<real>20</real>
-									<real>50</real>
+									<real>136.66667175292969</real>
 									<integer>4</integer>
 								</array>
 							</dict>
@@ -809,7 +815,7 @@
 								<key>value</key>
 								<array>
 									<real>35</real>
-									<real>50</real>
+									<real>136.66667175292969</real>
 									<integer>4</integer>
 								</array>
 							</dict>
@@ -933,7 +939,7 @@
 								<key>value</key>
 								<array>
 									<real>85</real>
-									<real>50</real>
+									<real>136.66667175292969</real>
 									<integer>4</integer>
 								</array>
 							</dict>
@@ -1170,7 +1176,7 @@
 						<key>value</key>
 						<array>
 							<real>29.5</real>
-							<real>38</real>
+							<real>43.125</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -1286,7 +1292,7 @@
 						<key>value</key>
 						<array>
 							<real>34.875</real>
-							<real>58.333332061767578</real>
+							<real>58.958332061767578</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -1342,6 +1348,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -1366,7 +1374,7 @@
 						<key>value</key>
 						<array>
 							<real>30.5</real>
-							<real>69</real>
+							<real>72.291664123535156</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -1494,7 +1502,7 @@
 						<key>value</key>
 						<array>
 							<real>41</real>
-							<real>57.75</real>
+							<real>58.333332061767578</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -1946,8 +1954,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1.png</string>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-queding.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1957,8 +1965,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>anniu1_a.png</string>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-queding.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -2100,6 +2108,14 @@
 						<array>
 							<dict>
 								<key>name</key>
+								<string>visible</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>position</string>
 								<key>type</key>
 								<string>Position</string>
@@ -2218,7 +2234,7 @@
 						<key>value</key>
 						<array>
 							<real>42.5</real>
-							<real>29.083335876464844</real>
+							<real>29.166666030883789</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -2411,8 +2427,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>anniu2.png</string>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-quxiao.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -2422,8 +2438,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>anniu2_a.png</string>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-quxiao.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -2563,6 +2579,14 @@
 						<integer>1</integer>
 						<key>properties</key>
 						<array>
+							<dict>
+								<key>name</key>
+								<string>visible</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
 							<dict>
 								<key>name</key>
 								<string>position</string>

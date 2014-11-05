@@ -733,12 +733,20 @@
 						<array>
 							<dict>
 								<key>name</key>
+								<string>visible</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>position</string>
 								<key>type</key>
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>50</real>
+									<real>50.166667938232422</real>
 									<real>50</real>
 									<integer>4</integer>
 								</array>
@@ -979,8 +987,6 @@
 								<string>初级VIP</string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -2328,7 +2334,7 @@
 						<key>value</key>
 						<array>
 							<real>50</real>
-							<real>60</real>
+							<real>56.875</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -2417,6 +2423,8 @@
 						<false/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>

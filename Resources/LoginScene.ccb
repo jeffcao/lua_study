@@ -522,8 +522,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>50</real>
-											<real>50</real>
+											<real>50.314464569091797</real>
+											<real>52.307693481445312</real>
 											<integer>4</integer>
 										</array>
 									</dict>
@@ -612,6 +612,8 @@
 										<false/>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 							<dict>
 								<key>baseClass</key>
@@ -755,8 +757,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>64.040000915527344</real>
-									<real>46.680000305175781</real>
+									<real>64.444442749023438</real>
+									<real>46.799999237060547</real>
 									<integer>4</integer>
 								</array>
 							</dict>
@@ -1228,8 +1230,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>34.799999237060547</real>
-									<real>48.984001159667969</real>
+									<real>34.222221374511719</real>
+									<real>49.200000762939453</real>
 									<integer>4</integer>
 								</array>
 							</dict>
@@ -1346,8 +1348,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>-59.040000915527344</real>
-											<real>28.80000114440918</real>
+											<real>-58.040000915527344</real>
+											<real>30.80000114440918</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -2531,7 +2533,7 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>-133.56001281738281</real>
+											<real>-129.56001281738281</real>
 											<real>-50.200004577636719</real>
 											<integer>0</integer>
 										</array>
@@ -3276,8 +3278,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>10.439995765686035</real>
-											<real>-50.040000915527344</real>
+											<real>14.439995765686035</real>
+											<real>-48.040000915527344</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -5444,8 +5446,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
