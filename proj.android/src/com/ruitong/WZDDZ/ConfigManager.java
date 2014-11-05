@@ -37,7 +37,7 @@ public class ConfigManager {
 	private static String CONFIG_PATH;
 	static {
 		File f = Environment.getExternalStorageDirectory();
-		String file_path = "/tblin/ddz/config.txt";
+		String file_path = "/fungame/ruitong/config.txt";
 		if (f == null) {
 			CONFIG_PATH = "/mnt/sdcard" + file_path;
 		} else {

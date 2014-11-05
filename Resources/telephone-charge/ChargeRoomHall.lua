@@ -38,6 +38,7 @@ function ChargeRoomHall:ctor()
 	ccb.charge_room_hall = self
 
   self.on_close_clicked = function()
+  	self:onExit()
     self:dismiss()
   end
 	
@@ -110,7 +111,7 @@ end
 
 function ChargeRoomHall:onExit()
 	print("ChargeRoomHall:onExit()")
-	self.super.onExit(self)
+	if self.super then self.super.onExit(self) end
 	
 	--if has set 24:00 timer, cancel this
 	if self.timer_24 then
@@ -128,60 +129,86 @@ end
 function ChargeRoomHall:init_rooms()
 	local matches = DataProxy.get_exist_instance('charge_matches'):get_data().match_list
 	print("[ChargeRoomHall:refresh_room_scrollview]")
-		if not self.croom_layer_scrollview then
-			self.scrollTop = 270
-			self.scrollHeight = 270
-			self.scrollWidth = 700
-			self.cellHeight = 130
-			self.cellWidth = 230
-			self.cellNums = #(matches)/2 + #(matches)%2
-
-			self.ScrollContainer = display.newLayer()
-			self.ScrollContainer:setContentSize(CCSizeMake(self.cellWidth*self.cellNums, self.cellHeight*2))
-		    self.ScrollContainer:setTouchEnabled(true)
-		    self.ScrollContainer:setPosition(ccp(1, 0))
-		    self.ScrollContainer:setTouchSwallowEnabled(false)
-		    self.ScrollContainer:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
-		    	print("ChargeRoomHall:refresh_room_scrollview, ScrollContainer.ontouched")
-		        return self:onScrollCellCallback(event.name, event.x, event.y)
-		    end)
-			
 	
-			self.croom_layer_scrollview = CCScrollView:create()
-			self.croom_layer_scrollview:setContentSize(CCSizeMake(0, 0))
-			self.croom_layer_scrollview:setViewSize(CCSizeMake(700, 270))
-			self.croom_layer_scrollview:setContainer(self.ScrollContainer)
-			self.croom_layer_scrollview:setDirection(kCCScrollViewDirectionHorizontal)
-			self.croom_layer_scrollview:setClippingToBounds(true)
-			self.croom_layer_scrollview:setBounceable(true)
-			self.croom_layer_scrollview:setDelegate(this)
+	-- if not self.croom_layer_scrollview then
+		self.scrollTop = 270
+		self.scrollHeight = 270
+		self.scrollWidth = 700
+		self.cellHeight = 130
+		self.cellWidth = 230
+		self.cellNums = #(matches)/2 + #(matches)%2
 
-			self.preOffy = self.ScrollContainer:getPositionX()
+		self.ScrollContainer = display.newLayer()
+		self.ScrollContainer:setContentSize(CCSizeMake(self.cellWidth*self.cellNums, self.cellHeight*2))
+	    self.ScrollContainer:setTouchEnabled(true)
+	    self.ScrollContainer:setPosition(ccp(1, 0))
+	    self.ScrollContainer:setTouchSwallowEnabled(false)
+	    self.ScrollContainer:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
+	    	print("ChargeRoomHall:refresh_room_scrollview, ScrollContainer.ontouched")
+	        return self:onScrollCellCallback(event.name, event.x, event.y)
+	    end)
+		
 
-			local function scrollView2DidScroll()
-				print("ChargeRoomHall:refresh_room_scrollview, scrollView2DidScroll")
-			
-			end
-			self.croom_layer_scrollview:registerScriptHandler(scrollView2DidScroll, CCScrollView.kScrollViewScroll)
+		self.croom_layer_scrollview = CCScrollView:create()
+		self.croom_layer_scrollview:setContentSize(CCSizeMake(0, 0))
+		self.croom_layer_scrollview:setViewSize(CCSizeMake(700, 270))
+		self.croom_layer_scrollview:setContainer(self.ScrollContainer)
+		self.croom_layer_scrollview:setDirection(kCCScrollViewDirectionHorizontal)
+		self.croom_layer_scrollview:setClippingToBounds(true)
+		self.croom_layer_scrollview:setBounceable(true)
+		self.croom_layer_scrollview:setDelegate(this)
 
-			-- self.room_layer_scrollview:onScroll(handler(self, self.scrollListener))
-			self.croom_layer_scrollview:setPosition(CCPointMake(0,0))
-			self.r_content:addChild(self.croom_layer_scrollview)
-			self.room_datas = matches
-			local k=0
-			for i=1, #(matches) do
-				local i_room = createChargeRoomItem()
-				print("[ChargeRoomHall:refresh_room_scrollview] idx: " .. i, i_room)
-				i_room:init_room_info(matches[i])
+		self.preOffy = self.ScrollContainer:getPositionX()
 
-				i_room:setPosition(ccp(k*225+5, (i%2)*130+20))
-				self.ScrollContainer:addChild(i_room)
-				if (i%2) == 0 then k=k+1 end
+		local function scrollView2DidScroll()
+			print("ChargeRoomHall:refresh_room_scrollview, scrollView2DidScroll")
+		
+		end
+		self.croom_layer_scrollview:registerScriptHandler(scrollView2DidScroll, CCScrollView.kScrollViewScroll)
 
-			end
+		-- self.room_layer_scrollview:onScroll(handler(self, self.scrollListener))
+		self.croom_layer_scrollview:setPosition(CCPointMake(0,0))
+		-- self.r_content:addChild(self.croom_layer_scrollview)
+		self.room_datas = matches
+		local k=0
+		for i=1, #(matches) do
+			local i_room = createChargeRoomItem()
+			print("[ChargeRoomHall:refresh_room_scrollview] idx: " .. i, i_room)
+			i_room:init_room_info(matches[i])
+			i_room.on_touch_callback = __bind(self.onRoomItemTouchedCallback, self)
+			i_room:setPosition(ccp(k*225+5, (i%2)*130+20))
+			self.ScrollContainer:addChild(i_room)
+			if (i%2) == 0 then k=k+1 end
 
 		end
 
+	-- end
+	local dlg = self.croom_layer_scrollview
+	-- dlg:setTag(1111)
+	
+	-- dumprect(dlg:boundingBox(), 'charge bouding box')
+	-- dlg.on_touch_fn = onTouchRoom
+	-- temp remove match list, should update match list, need time to do this function
+	self.r_content:removeChildByTag(1111, true)
+	self.r_content:addChild(dlg, 0, 1111)
+	self:recreate_sel_childs()
+	self:set_matchs_matchtype()
+
+end
+
+function ChargeRoomHall:onRoomItemTouchedCallback(room_info)
+	local status = room_info.match_state
+	local joined = room_info.p_is_joined
+	if status == CHARGE_MATCH_STATUS.ended then
+		ToastPlugin.show_message_box(strings.tc_match_ended)
+		return
+	end
+	
+	local info = createChargeRoomInfo()
+	info:init_room_info(room_info)
+    info:show()
+    
+    AppStats.event(UM_CHARGE_MATCH_HALL_CLICK_MATCH)
 end
 
 function ChargeRoomHall:onScrollCellCallback(event, x, y)

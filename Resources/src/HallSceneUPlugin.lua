@@ -242,17 +242,17 @@ function HallSceneUPlugin.bind(theClass)
 	function theClass:refresh_room_scrollview(data)
 		print("[HallSceneUPlugin:refresh_room_scrollview]")
 		if not self.room_layer_scrollview then
-			self.scrollTop = 220
-			self.scrollHeight = 220
+			self.scrollTop = 240
+			self.scrollHeight = 240
 			self.scrollWidth = 700
-			self.cellHeight = 226
-			self.cellWidth = 235
+			self.cellHeight = 240
+			self.cellWidth = 240
 			self.cellNums = #(data.room)/2 + #(data.room)%2
 
 			self.ScrollContainer = display.newLayer()
 			self.ScrollContainer:setContentSize(CCSizeMake(self.cellWidth*self.cellNums, self.cellHeight))
 		    self.ScrollContainer:setTouchEnabled(true)
-		    self.ScrollContainer:setPosition(ccp(1, 0))
+		    self.ScrollContainer:setPosition(ccp(5, -5))
 		    self.ScrollContainer:setTouchSwallowEnabled(false)
 		    self.ScrollContainer:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
 		    	print("HallSceneUPlugin:refresh_room_scrollview, ScrollContainer.ontouched")
@@ -262,7 +262,7 @@ function HallSceneUPlugin.bind(theClass)
 	
 			self.room_layer_scrollview = CCScrollView:create()
 			self.room_layer_scrollview:setContentSize(CCSizeMake(0, 0))
-			self.room_layer_scrollview:setViewSize(CCSizeMake(700, 220))
+			self.room_layer_scrollview:setViewSize(CCSizeMake(self.scrollWidth, self.scrollHeight))
 			self.room_layer_scrollview:setContainer(self.ScrollContainer)
 			self.room_layer_scrollview:setDirection(kCCScrollViewDirectionHorizontal)
 			self.room_layer_scrollview:setClippingToBounds(true)
@@ -277,7 +277,7 @@ function HallSceneUPlugin.bind(theClass)
 			self.room_layer_scrollview:registerScriptHandler(scrollView2DidScroll, CCScrollView.kScrollViewScroll)
 
 			-- self.room_layer_scrollview:onScroll(handler(self, self.scrollListener))
-			self.room_layer_scrollview:setPosition(CCPointMake(0,0))
+			self.room_layer_scrollview:setPosition(CCPointMake(0,-5))
 			self.middle_layer:addChild(self.room_layer_scrollview)
 			self.room_datas = data
 			local k=0
@@ -286,7 +286,7 @@ function HallSceneUPlugin.bind(theClass)
 				print("[HallSceneUPlugin:refresh_room_scrollview] idx: " .. i, i_room)
 				i_room:init_room_info(data.room[i], i)
 				i_room.on_touch_callback = __bind(self.do_on_room_touched, self)
-				i_room:setPosition(ccp(k*230+5, (i%2)*113))
+				i_room:setPosition(ccp(k*self.cellWidth, (i%2)*120))
 				self.ScrollContainer:addChild(i_room, 0, data.room[i].room_id)
 				if (i%2) == 0 then k=k+1 end
 

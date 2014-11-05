@@ -20,7 +20,7 @@ function MarketItem:ctor()
 	self:addChild(node)
 
 	self.rootNode:ignoreAnchorPointForPosition(false)
-	self.rootNode:setAnchorPoint(ccp(0,0.5))
+	self.rootNode:setAnchorPoint(ccp(0,0))
 
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
