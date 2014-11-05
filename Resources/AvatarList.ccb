@@ -54,8 +54,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>51</real>
-											<real>265</real>
+											<real>46.555557250976562</real>
+											<real>239.44444274902344</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -125,8 +125,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/info.plist</string>
-											<string>touxiang00_m.png</string>
+											<string>ccbResources/res/gerentouxiang.plist</string>
+											<string>tx-xiaotu/touxiang00_m.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -175,8 +175,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>414</real>
-											<real>157</real>
+											<real>51.777767181396484</real>
+											<real>123.66666412353516</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -246,8 +246,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/info.plist</string>
-											<string>touxiang00_f.png</string>
+											<string>ccbResources/res/gerentouxiang.plist</string>
+											<string>tx-xiaotu/touxiang00_f.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -296,8 +296,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>172</real>
-											<real>265</real>
+											<real>155.33332824707031</real>
+											<real>236.11111450195312</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -367,8 +367,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/info.plist</string>
-											<string>touxiang01.png</string>
+											<string>ccbResources/res/gerentouxiang.plist</string>
+											<string>tx-xiaotu/touxiang01.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -417,8 +417,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>293</real>
-											<real>265</real>
+											<real>274.11111450195312</real>
+											<real>238.33332824707031</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -488,8 +488,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/info.plist</string>
-											<string>touxiang02.png</string>
+											<string>ccbResources/res/gerentouxiang.plist</string>
+											<string>tx-xiaotu/touxiang02.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -538,8 +538,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>414</real>
-											<real>266</real>
+											<real>404</real>
+											<real>240.44444274902344</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -609,371 +609,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/info.plist</string>
-											<string>touxiang03.png</string>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>selectedSpriteFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string></string>
-											<string></string>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>disabledSpriteFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string></string>
-											<string></string>
-										</array>
-									</dict>
-								</array>
-							</dict>
-							<dict>
-								<key>baseClass</key>
-								<string>CCMenuItemImage</string>
-								<key>children</key>
-								<array/>
-								<key>customClass</key>
-								<string></string>
-								<key>displayName</key>
-								<string>CCMenuItemImage</string>
-								<key>memberVarAssignmentName</key>
-								<string>avatar_04_btn</string>
-								<key>memberVarAssignmentType</key>
-								<integer>1</integer>
-								<key>properties</key>
-								<array>
-									<dict>
-										<key>name</key>
-										<string>position</string>
-										<key>type</key>
-										<string>Position</string>
-										<key>value</key>
-										<array>
-											<real>50</real>
-											<real>158</real>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>anchorPoint</string>
-										<key>type</key>
-										<string>Point</string>
-										<key>value</key>
-										<array>
-											<real>0.5</real>
-											<real>0.5</real>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>scale</string>
-										<key>type</key>
-										<string>ScaleLock</string>
-										<key>value</key>
-										<array>
-											<real>1</real>
-											<real>1</real>
-											<false/>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>tag</string>
-										<key>type</key>
-										<string>Integer</string>
-										<key>value</key>
-										<integer>1004</integer>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>ignoreAnchorPointForPosition</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>block</string>
-										<key>type</key>
-										<string>Block</string>
-										<key>value</key>
-										<array>
-											<string>on_ui_avatar_btn_clicked</string>
-											<integer>1</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>isEnabled</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<true/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>normalSpriteFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string>ccbResources/info.plist</string>
-											<string>touxiang04.png</string>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>selectedSpriteFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string></string>
-											<string></string>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>disabledSpriteFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string></string>
-											<string></string>
-										</array>
-									</dict>
-								</array>
-							</dict>
-							<dict>
-								<key>baseClass</key>
-								<string>CCMenuItemImage</string>
-								<key>children</key>
-								<array/>
-								<key>customClass</key>
-								<string></string>
-								<key>displayName</key>
-								<string>CCMenuItemImage</string>
-								<key>memberVarAssignmentName</key>
-								<string>avatar_05_btn</string>
-								<key>memberVarAssignmentType</key>
-								<integer>0</integer>
-								<key>properties</key>
-								<array>
-									<dict>
-										<key>name</key>
-										<string>position</string>
-										<key>type</key>
-										<string>Position</string>
-										<key>value</key>
-										<array>
-											<real>172</real>
-											<real>157</real>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>anchorPoint</string>
-										<key>type</key>
-										<string>Point</string>
-										<key>value</key>
-										<array>
-											<real>0.5</real>
-											<real>0.5</real>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>scale</string>
-										<key>type</key>
-										<string>ScaleLock</string>
-										<key>value</key>
-										<array>
-											<real>1</real>
-											<real>1</real>
-											<false/>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>tag</string>
-										<key>type</key>
-										<string>Integer</string>
-										<key>value</key>
-										<integer>1005</integer>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>ignoreAnchorPointForPosition</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>block</string>
-										<key>type</key>
-										<string>Block</string>
-										<key>value</key>
-										<array>
-											<string>on_ui_avatar_btn_clicked</string>
-											<integer>1</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>isEnabled</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<true/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>normalSpriteFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string>ccbResources/info.plist</string>
-											<string>touxiang05.png</string>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>selectedSpriteFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string></string>
-											<string></string>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>disabledSpriteFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string></string>
-											<string></string>
-										</array>
-									</dict>
-								</array>
-							</dict>
-							<dict>
-								<key>baseClass</key>
-								<string>CCMenuItemImage</string>
-								<key>children</key>
-								<array/>
-								<key>customClass</key>
-								<string></string>
-								<key>displayName</key>
-								<string>CCMenuItemImage</string>
-								<key>memberVarAssignmentName</key>
-								<string>avatar_06_btn</string>
-								<key>memberVarAssignmentType</key>
-								<integer>1</integer>
-								<key>properties</key>
-								<array>
-									<dict>
-										<key>name</key>
-										<string>position</string>
-										<key>type</key>
-										<string>Position</string>
-										<key>value</key>
-										<array>
-											<real>292</real>
-											<real>156</real>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>anchorPoint</string>
-										<key>type</key>
-										<string>Point</string>
-										<key>value</key>
-										<array>
-											<real>0.5</real>
-											<real>0.5</real>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>scale</string>
-										<key>type</key>
-										<string>ScaleLock</string>
-										<key>value</key>
-										<array>
-											<real>1</real>
-											<real>1</real>
-											<false/>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>tag</string>
-										<key>type</key>
-										<string>Integer</string>
-										<key>value</key>
-										<integer>1006</integer>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>ignoreAnchorPointForPosition</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>block</string>
-										<key>type</key>
-										<string>Block</string>
-										<key>value</key>
-										<array>
-											<string>on_ui_avatar_btn_clicked</string>
-											<integer>1</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>isEnabled</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<true/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>normalSpriteFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string>ccbResources/info.plist</string>
-											<string>touxiang06.png</string>
+											<string>ccbResources/res/gerentouxiang.plist</string>
+											<string>tx-xiaotu/touxiang03.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1022,8 +659,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>51</real>
-											<real>50</real>
+											<real>154.33334350585938</real>
+											<real>124.44444274902344</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -1093,8 +730,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/info.plist</string>
-											<string>touxiang50.png</string>
+											<string>ccbResources/res/gerentouxiang.plist</string>
+											<string>tx-xiaotu/touxiang50.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1143,8 +780,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>172</real>
-											<real>50</real>
+											<real>274.22222900390625</real>
+											<real>126.66667175292969</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -1214,8 +851,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/info.plist</string>
-											<string>touxiang51.png</string>
+											<string>ccbResources/res/gerentouxiang.plist</string>
+											<string>tx-xiaotu/touxiang51.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1264,8 +901,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>291</real>
-											<real>49</real>
+											<real>405.4444580078125</real>
+											<real>130.11111450195312</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -1335,8 +972,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/info.plist</string>
-											<string>touxiang52.png</string>
+											<string>ccbResources/res/gerentouxiang.plist</string>
+											<string>tx-xiaotu/touxiang52.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1362,127 +999,8 @@
 										</array>
 									</dict>
 								</array>
-							</dict>
-							<dict>
-								<key>baseClass</key>
-								<string>CCMenuItemImage</string>
-								<key>children</key>
-								<array/>
-								<key>customClass</key>
-								<string></string>
-								<key>displayName</key>
-								<string>CCMenuItemImage</string>
-								<key>memberVarAssignmentName</key>
-								<string>avatar_53_btn</string>
-								<key>memberVarAssignmentType</key>
-								<integer>1</integer>
-								<key>properties</key>
-								<array>
-									<dict>
-										<key>name</key>
-										<string>position</string>
-										<key>type</key>
-										<string>Position</string>
-										<key>value</key>
-										<array>
-											<real>414</real>
-											<real>50</real>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>anchorPoint</string>
-										<key>type</key>
-										<string>Point</string>
-										<key>value</key>
-										<array>
-											<real>0.5</real>
-											<real>0.5</real>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>scale</string>
-										<key>type</key>
-										<string>ScaleLock</string>
-										<key>value</key>
-										<array>
-											<real>1</real>
-											<real>1</real>
-											<false/>
-											<integer>0</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>tag</string>
-										<key>type</key>
-										<string>Integer</string>
-										<key>value</key>
-										<integer>1053</integer>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>ignoreAnchorPointForPosition</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<false/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>block</string>
-										<key>type</key>
-										<string>Block</string>
-										<key>value</key>
-										<array>
-											<string>on_ui_avatar_btn_clicked</string>
-											<integer>1</integer>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>isEnabled</string>
-										<key>type</key>
-										<string>Check</string>
-										<key>value</key>
-										<true/>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>normalSpriteFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string>ccbResources/info.plist</string>
-											<string>touxiang53.png</string>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>selectedSpriteFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string></string>
-											<string></string>
-										</array>
-									</dict>
-									<dict>
-										<key>name</key>
-										<string>disabledSpriteFrame</string>
-										<key>type</key>
-										<string>SpriteFrame</string>
-										<key>value</key>
-										<array>
-											<string></string>
-											<string></string>
-										</array>
-									</dict>
-								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -1701,8 +1219,6 @@
 						<false/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
