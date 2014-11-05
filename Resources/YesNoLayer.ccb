@@ -646,8 +646,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1.png</string>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-queding.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -657,8 +657,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>anniu1_a.png</string>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-queding.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -673,6 +673,8 @@
 										</array>
 									</dict>
 								</array>
+								<key>selected</key>
+								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -798,6 +800,14 @@
 						<integer>1</integer>
 						<key>properties</key>
 						<array>
+							<dict>
+								<key>name</key>
+								<string>visible</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
 							<dict>
 								<key>name</key>
 								<string>position</string>
@@ -1111,8 +1121,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/res/shangchen_jianjie.plist</string>
-											<string>youxi_jianjie/yxjj-xiaotu/yx-fanhui.png</string>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-quxiao.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1122,8 +1132,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>anniu1_a.png</string>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-quxiao.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1133,8 +1143,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/res/shangchen_jianjie.plist</string>
-											<string>shangchen-1/sc-xiaotu/sc-fanhui.png</string>
+											<string>ccbResources/denglu.plist</string>
+											<string>dl-quxiao.png</string>
 										</array>
 									</dict>
 								</array>
@@ -1265,13 +1275,21 @@
 						<array>
 							<dict>
 								<key>name</key>
+								<string>visible</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
 								<string>position</string>
 								<key>type</key>
 								<string>Position</string>
 								<key>value</key>
 								<array>
 									<real>50</real>
-									<real>50</real>
+									<real>52.272727966308594</real>
 									<integer>4</integer>
 								</array>
 							</dict>
@@ -1600,8 +1618,6 @@
 						<string>您正在游戏中，此时强退系统将最大输赢扣初您的豆子。</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>

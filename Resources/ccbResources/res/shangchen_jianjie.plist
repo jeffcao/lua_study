@@ -20,7 +20,7 @@
             <key>shangchen-1/sc-xiaotu/sc-bangzhu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{968,1103},{60,38}}</string>
+                <string>{{968,1045},{60,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>shangchen-1/sc-xiaotu/sc-daoju.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{66,1960},{55,55}}</string>
+                <string>{{38,1902},{55,55}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>shangchen-1/sc-xiaotu/sc-doudou.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{968,1041},{60,38}}</string>
+                <string>{{968,983},{60,38}}</string>
                 <key>offset</key>
                 <string>{2,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>shangchen-1/sc-xiaotu/sc-douzi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{38,1896},{62,37}}</string>
+                <string>{{37,1838},{62,37}}</string>
                 <key>offset</key>
                 <string>{1,-1}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>shangchen-1/sc-xiaotu/sc-fanhui.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{989,2},{83,33}}</string>
+                <string>{{2,1838},{83,33}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,11 +85,11 @@
             <key>shangchen-1/sc-xiaotu/sc-fuwu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1967},{64,37}}</string>
+                <string>{{2,1994},{64,37}}</string>
                 <key>offset</key>
                 <string>{0,-1}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,2},{64,37}}</string>
                 <key>sourceSize</key>
@@ -98,7 +98,7 @@
             <key>shangchen-1/sc-xiaotu/sc-goumai.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1896},{69,34}}</string>
+                <string>{{2,1923},{69,34}}</string>
                 <key>offset</key>
                 <string>{0,-1}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>shangchen-1/sc-xiaotu/sc-jingxi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{968,916},{61,39}}</string>
+                <string>{{968,858},{61,39}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>shangchen-1/sc-xiaotu/sc-jipaiqi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{41,1960},{62,23}}</string>
+                <string>{{968,579},{62,23}}</string>
                 <key>offset</key>
                 <string>{0,2}</string>
                 <key>rotated</key>
@@ -137,7 +137,7 @@
             <key>shangchen-1/sc-xiaotu/sc-libao.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{968,979},{60,38}}</string>
+                <string>{{968,921},{60,38}}</string>
                 <key>offset</key>
                 <string>{0,-1}</string>
                 <key>rotated</key>
@@ -150,7 +150,7 @@
             <key>shangchen-1/sc-xiaotu/sc-youxishangcheng.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{804,2},{183,72}}</string>
+                <string>{{804,78},{183,72}}</string>
                 <key>offset</key>
                 <string>{0,-1}</string>
                 <key>rotated</key>
@@ -163,7 +163,7 @@
             <key>shangchen-1/sc-xiaotu/sc-zhi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{968,1165},{436,37}}</string>
+                <string>{{968,1107},{436,37}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
@@ -176,7 +176,7 @@
             <key>shangchen-2/sc-xiaotu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{968,701},{52,51}}</string>
+                <string>{{968,643},{52,51}}</string>
                 <key>offset</key>
                 <string>{-1,1}</string>
                 <key>rotated</key>
@@ -189,7 +189,7 @@
             <key>shangchen-3/sc-xiaotu/sc-beijingtu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{804,149},{352,174}}</string>
+                <string>{{804,225},{352,174}}</string>
                 <key>offset</key>
                 <string>{0,-2}</string>
                 <key>rotated</key>
@@ -202,7 +202,7 @@
             <key>shangchen-3/sc-xiaotu/sc-tishi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{968,754},{160,44}}</string>
+                <string>{{968,696},{160,44}}</string>
                 <key>offset</key>
                 <string>{0,-2}</string>
                 <key>rotated</key>
@@ -215,7 +215,7 @@
             <key>shangchen-3/sc-xiaotu/sc-zhi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1603},{291,72}}</string>
+                <string>{{2,1545},{291,72}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -238,10 +238,23 @@
                 <key>sourceSize</key>
                 <string>{800,480}</string>
             </dict>
+            <key>youxi_jianjie/yxjj-xiaotu/yx-bangzhu.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{804,2},{188,74}}</string>
+                <key>offset</key>
+                <string>{0,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{1,2},{188,74}}</string>
+                <key>sourceSize</key>
+                <string>{190,76}</string>
+            </dict>
             <key>youxi_jianjie/yxjj-xiaotu/yx-duozhi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{804,503},{678,162}}</string>
+                <string>{{804,579},{678,162}}</string>
                 <key>offset</key>
                 <string>{2,0}</string>
                 <key>rotated</key>
@@ -254,7 +267,7 @@
             <key>youxi_jianjie/yxjj-xiaotu/yx-fanhui.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{989,2},{83,33}}</string>
+                <string>{{2,1838},{83,33}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,7 +280,7 @@
             <key>youxi_jianjie/yxjj-xiaotu/yx-jianjie.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{804,76},{183,71}}</string>
+                <string>{{804,152},{183,71}}</string>
                 <key>offset</key>
                 <string>{1,-1}</string>
                 <key>rotated</key>
@@ -280,7 +293,7 @@
             <key>youxi_jianjie/yxjj-xiaotu/yx-zhi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{989,87},{612,26}}</string>
+                <string>{{994,2},{612,26}}</string>
                 <key>offset</key>
                 <string>{1,1}</string>
                 <key>rotated</key>
@@ -300,7 +313,7 @@
             <key>size</key>
             <string>{1024,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:f72b7459a64233149ab525b13d6f493b:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:d0ac8f4055777ab10dd48662f846a895:1/1$</string>
             <key>textureFileName</key>
             <string>shangchen_jianjie.png</string>
         </dict>

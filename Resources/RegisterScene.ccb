@@ -400,8 +400,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>152.6400146484375</real>
-											<real>190.08001708984375</real>
+											<real>155.6400146484375</real>
+											<real>191.08001708984375</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -560,8 +560,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>151.20001220703125</real>
-											<real>113.76000213623047</real>
+											<real>150.20001220703125</real>
+											<real>112.76000213623047</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -640,8 +640,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>152.6400146484375</real>
-											<real>79.199996948242188</real>
+											<real>151.6400146484375</real>
+											<real>77.199996948242188</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -1850,8 +1850,6 @@
 										<false/>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 							<dict>
 								<key>baseClass</key>
@@ -2460,8 +2458,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>64.511116027832031</real>
-									<real>43.692001342773438</real>
+									<real>65.111114501953125</real>
+									<real>44</real>
 									<integer>4</integer>
 								</array>
 							</dict>
@@ -3212,6 +3210,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
