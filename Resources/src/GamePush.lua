@@ -76,13 +76,7 @@ end
 
 function GamePush:on_websocket_ready()
 	print("[GamePush:on_websocket_ready()]")
-	self.game_push_ws:bind("ui.hand_shake", function(data)
-		print('receive ui.hand_shake')
-		dump(data, "ui.hand_shake")
-		self.game_push_ws:unbind_clear("ui.hand_shake")
-		CheckSignLua:generate_stoken(data)
-		self:do_on_websocket_ready()
-	end)
+	self:do_on_websocket_ready()
 end
 
 function GamePush:open_push()
@@ -160,16 +154,8 @@ end
 --网络已重新连接上
 function GamePush:onSocketReopened()
 	dump(self, "GamePush:onSocketReopened self is")
-	print("before bind hand_shake")
-	self.game_push_ws:bind("ui.hand_shake", function(data)
-		dump(data, "ui.hand_shake of reopened socket")
-		self.game_push_ws:unbind_clear("ui.hand_shake")
-		CheckSignLua:generate_stoken(data)
-		print("GamePush onSocketReopened")
-		self:restoreConnection()
-		self:updateSocket("socket: reopened, restoring")
-	end)
-	print("after bind hand_shake")
+	self:restoreConnection()
+	self:updateSocket("socket: reopened, restoring")
 end
 
 --网络重连失败

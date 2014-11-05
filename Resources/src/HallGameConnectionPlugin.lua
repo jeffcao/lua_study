@@ -59,14 +59,9 @@ function HallGameConnectionPlugin.bind(theClass)
 		end
 		]]
 		
-		GlobalSetting.g_WebSocket:bind("ui.hand_shake", function(data) 
-			dump(data, "ui.hand_shake") 
-			GlobalSetting.g_WebSocket:unbind_clear("ui.hand_shake")
-			CheckSignLua:generate_stoken(data)
-			if "function" == type(self.do_on_game_server_websocket_ready) then
-				self:do_on_game_server_websocket_ready()
-			end
-		end)
+		if "function" == type(self.do_on_game_server_websocket_ready) then
+			self:do_on_game_server_websocket_ready()
+		end
 	end
 	
 	function theClass:do_on_game_server_websocket_ready()

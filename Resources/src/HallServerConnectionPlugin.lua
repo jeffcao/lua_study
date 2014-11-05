@@ -201,15 +201,10 @@ function HallServerConnectionPlugin.bind(theClass)
 		print("[HallServerConnectionPlugin:on_websocket_ready()]")
 --		self.connection_state = 1
 		print("[HallServerConnectionPlugin:on_websocket_ready()]")
-		GlobalSetting.hall_server_websocket:bind("ui.hand_shake", function(data) 
-			dump(data, "ui.hand_shake") 
-			GlobalSetting.hall_server_websocket:unbind_clear("ui.hand_shake")
-			CheckSignLua:generate_stoken(data)
-			self:init_channel()
-			if "function" == type(self.do_on_websocket_ready) then
-				self:do_on_websocket_ready()
-			end
-		end)
+		self:init_channel()
+		if "function" == type(self.do_on_websocket_ready) then
+			self:do_on_websocket_ready()
+		end
 	end
 	
 	function theClass:connect_to_hall_server()
@@ -273,14 +268,8 @@ function HallServerConnectionPlugin.bind(theClass)
 		if GlobalSetting.hall_server_websocket == nil then
 			GlobalSetting.hall_server_websocket = socket
 		end
-		GlobalSetting.hall_server_websocket:bind("ui.hand_shake", function(data) 
-			dump(data, "ui.hand_shake of reopened socket") 
-			GlobalSetting.hall_server_websocket:unbind_clear("ui.hand_shake")
-			CheckSignLua:generate_stoken(data)
-			print("HallServerConnectionPlugin onSocketReopened")
-			self:restoreConnection()
-			self:updateSocket("socket: reopened, restoring")
-		end)
+		self:restoreConnection()
+		self:updateSocket("socket: reopened, restoring")
 	end
 	
 	--网络重连失败

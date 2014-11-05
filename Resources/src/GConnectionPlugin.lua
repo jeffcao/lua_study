@@ -66,14 +66,8 @@ function GConnectionPlugin.bind(theClass)
 		--self:restoreConnection()
 		--self:updateSocket("socket: reopened, restoring")
 		
-		GlobalSetting.g_WebSocket:bind("ui.hand_shake", function(data) 
-			dump(data, "ui.hand_shake of reopened socket") 
-			GlobalSetting.g_WebSocket:unbind_clear("ui.hand_shake")
-			CheckSignLua:generate_stoken(data)
-			print("HallServerConnectionPlugin onSocketReopened")
-			self:restoreConnection()
-			self:updateSocket("socket: reopened, restoring")
-		end)
+		self:restoreConnection()
+		self:updateSocket("socket: reopened, restoring")
 	end
 	
 	--网络重连失败
