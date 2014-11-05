@@ -57,7 +57,7 @@ function HallMatchPlugin.bind(theClass)
 	end
 	
 	function theClass:refresh_room_list()
-		if self.room_layer_t then self.room_layer_t:reloadData() end
+		if self.room_layer_scrollview then self:refresh_room_data() end
 	end
 	
 end
