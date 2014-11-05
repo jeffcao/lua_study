@@ -29,7 +29,7 @@ function LandingScene:ctor()
 --	self.sprite_loading = self.ccbproxy:getNodeWithType("sprite_loading", "CCSprite")
 	
 	local bg_color = tolua.cast(self.bg_color, "CCLayerColor")
-	bg_color:setColor(ccc3(0, 83, 121))
+	bg_color:setColor(ccc3(0, 10, 47))
 	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:addNodeEventListener(cc.KEYPAD_EVENT, __bind(self.on_keypad_pressed, self) )
@@ -58,8 +58,8 @@ end
 	
 function LandingScene:onEnter()
 	print("[LandingScene:on_enter()]")
-	CCUserDefault:sharedUserDefault():setBoolForKey("effect_music", true)
-	CCUserDefault:sharedUserDefault():setBoolForKey("bg_music", true)
+	-- CCUserDefault:sharedUserDefault():setBoolForKey("effect_music", true)
+	-- CCUserDefault:sharedUserDefault():setBoolForKey("bg_music", true)
 
 
 	--self.super.onEnter(self)

@@ -49,13 +49,13 @@ ii_update_info_s = '更新资料成功',
 
 --LandingScene
 ls_connect_server_ing = strings_general.g_connect_server_ing,
-ls_load_data_ing = '加载数据...',
+ls_load_data_ing = '资源加载...',
 ls_login_w = strings_general.g_login_w,
 ls_connect_hall_w = strings_general.g_connect_hall_w,
 ls_connect_server_w = strings_general.g_connect_server_w,
 
 --LoginScene
-lgs_login_server_ing = '登录服务器...',
+lgs_login_server_ing = '连接服务中...',
 
 --RankSwitcher
 rsw_get_charge_tip = '注： 话费的最小领取额度为 rmb 元',

@@ -31,7 +31,7 @@ function FullMubanStyleUPlugin.bind(theClass)
 	end
 	
 	function theClass:setMenuDown()
-		self.menu_layer:setPosition(ccp(7,380))
+		self.menu_layer:setPosition(ccp(7,338))
 	end
 	
 	function theClass:setContentBbSize(b_width, b_height)
