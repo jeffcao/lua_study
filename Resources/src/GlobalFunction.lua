@@ -284,7 +284,6 @@ function device_info()
 	if is_blank(device_info.pkg_resource_version) then
 		device_info.pkg_resource_version = device_info.pkg_version_name
 	end
-	CheckSignLua:fix_sign_param(device_info)
 	--for test
 	--if GlobalSetting.run_env == "test" then
 	--	device_info.pkg_resource_version = "1.7"

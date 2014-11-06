@@ -9,7 +9,6 @@
 //#include "WebsocketManager_lua.h"
 #include "Downloader_lua.h"
 #include "md5_lua.h"
-#include "CheckSign_lua.h"
 #include "Marquee_lua.h"
 #include "CCLuaStack.h"
 #include "CCLuaValue.h"
@@ -39,8 +38,7 @@
 // #include "lua.h"
 // }
 
-#include "CheckSign.h"
-// #include "Lua_extensions_CCB.h"
+
 #include "support/CCNotificationCenter.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
@@ -227,7 +225,6 @@ bool AppDelegate::applicationDidFinishLaunching()
     tolua_md5_open(pLuaState);
     tolua_MobClickCpp_open(pLuaState);
     tolua_MobClickCpp_extend(pLuaState);
-    tolua_CheckSign_open(pLuaState);
     tolua_Marquee_open(pLuaState);
     // luaopen_LuaProxy(pLuaState);
     // luaopen_lua_extensions(pLuaState);

@@ -207,31 +207,18 @@ function PurchasePlugin.show_buy_notify(product, which)
 	end
 	
 	local cancelBuy = function()
-		if pay_type ~= 'letu' then return end
-		PurchasePlugin.show_buy_dialog_cancel(product)
+		return
 	end
 	
-	if pay_type == 'cmcc' then
-		if product.is_prompt then
-			local dialog = createAnzhiPurchase(buy)
-			dialog:init(product)
-			dialog:attach_to(scene.rootNode)
-			dialog:show()
-			onBuyShow()
-		else
-			buy()
-		end
-	else
-		local dialog = createAnzhiPurchase(buy, cancelBuy)
-		print('local dialog = createAnzhiPurchase(buy)')
-		dialog:init(product)
-		print('dialog:init(product)')
-		dialog:attach_to(scene.rootNode)
-		print('dialog:attach_to(scene.rootNode)')
-		dialog:show()
-		print('show buy notify dialog')
-		onBuyShow()
-	end
+	local dialog = createAnzhiPurchase(buy, cancelBuy)
+	print('local dialog = createAnzhiPurchase(buy)')
+	dialog:init(product)
+	print('dialog:init(product)')
+	dialog:attach_to(scene.rootNode)
+	print('dialog:attach_to(scene.rootNode)')
+	dialog:show()
+	print('show buy notify dialog')
+	onBuyShow()
 end
 
 function PurchasePlugin.show_buy_dialog_cancel(product)
@@ -271,8 +258,7 @@ function PurchasePlugin.show_buy_shouchonglibao(product, which)
 	local dialog = createShouchonglibaoBuyBox(buy)
 	local cancelFunc = function()
 		dialog:dismiss()
-		if getPayType() ~= 'letu' then return end
-		PurchasePlugin.show_buy_dialog_cancel(product)
+		return 
 	end
 	dialog:init(product)
 	dialog:setClickOutDismiss(false)
@@ -286,17 +272,6 @@ end
 function PurchasePlugin.buy_prop(product_id)
 	local failure_msg = strings.hscp_purchase_prop_w
 	local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, payment=getPayType()}
-	if getPayType() == 'sikai' then
-		--pkg_version_code
-		--has_sim_card
-		local user_default = CCUserDefault:sharedUserDefault()
-		local pkg_version_code = user_default:getStringForKey("pkg_version_code")
-		local has_sim_card = user_default:getStringForKey("has_sim_card")
-		local zhiyifu_channel_id = user_default:getStringForKey("zhiyifu_channel_id")
-		event_data.app_version = pkg_version_code
-		event_data.sim = has_sim_card
-		event_data.channel_id = zhiyifu_channel_id
-	end
 	
 	local ws = PurchasePlugin.get_buy_socket()
 	if not ws then print('there is no websocket to buy') return end
@@ -363,119 +338,6 @@ function PurchasePlugin.do_confirm_buy(data)
 	AppStats.event(UM_PURCHASE_CONFIRM,{paytype=payType, commodity=commodity})
 end
 
-function PurchasePlugin.letu_pay(data)
-	local jni_helper = DDZJniHelper:create()
-	local scene = runningscene()
-	dump(scene.cur_product,'scene.cur_product')
-	
-	local j_data = {name=data.orderInfo.name,
-					point_num=data.orderInfo.pointNum, 
-					price=data.orderInfo.price, 
-					trade_id=data.orderInfo.orderId, 
-					prop_id=data.orderInfo.prop_id,
-					desc=data.orderInfo.desc,
-					key=data.orderInfo.key}
-	
-	local cjson = require("cjson")
-	local status, s = pcall(cjson.encode, j_data)
-	local pay_prefix = 'on_pay_'..getPayType()..'__'
-	local str = pay_prefix .. s
-	print('pay:', str)
-	jni_helper:messageJava(str)
-end
-
-function PurchasePlugin.miliuu_pay(data)
-	PurchasePlugin.mili_pay(data)
-end
-
-function PurchasePlugin.mili_pay(data)
-	local jni_helper = DDZJniHelper:create()
-	local scene = runningscene()
-	dump(scene.cur_product,'scene.cur_product')
-	
-	local pay_id = data.orderInfo.consume_code or '000000'
-	local trade_id = data.trade_num
-	local prop_id = data.prop_id
-	if data.orderInfo then
-		trade_id = trade_id or data.orderInfo.trade_num
-		prop_id = prop_id or data.orderInfo.prop_id
-	end
-	local j_data = {pay_id = pay_id, trade_id=trade_id, prop_id=prop_id, key=data.orderInfo.key}
-	local cjson = require("cjson")
-	local status, s = pcall(cjson.encode, j_data)
-	local pay_prefix = 'on_pay_'..getPayType()..'__'
-	local str = pay_prefix .. s
-	print('pay:', str)
-	jni_helper:messageJava(str)
-end
-
-function PurchasePlugin.wiipay_pay(data)
-	local jni_helper = DDZJniHelper:create()
-	local scene = runningscene()
-	if GlobalSetting.run_env == 'test' and not data.cpparam then data.cpparam = '123456' end
-	dump(scene.cur_product,'scene.cur_product')
-	local j_data = {payCode = data.orderInfo.payCode, devPrivate = data.orderInfo.devPrivate, trade_id=data.orderInfo.trade_num,prop_id=data.orderInfo.prop_id}
-	local cjson = require("cjson")
-	local status, s = pcall(cjson.encode, j_data)
-	local str = 'on_pay_wiipay__' .. s
-	print('pay:', str)
-	jni_helper:messageJava(str)
-end
-
-function PurchasePlugin.sikai_pay(data)
-	local jni_helper = DDZJniHelper:create()
-	local scene = runningscene()
-	if GlobalSetting.run_env == 'test' and not data.cpparam then data.cpparam = '123456' end
-	dump(scene.cur_product,'scene.cur_product')
-	local j_data = {orderInfo = data.orderInfo, trade_id=data.trade_num,prop_id=data.prop_id}
-	local cjson = require("cjson")
-	local status, s = pcall(cjson.encode, j_data)
-	local str = 'on_pay_sikai__' .. s
-	print('pay:', str)
-	jni_helper:messageJava(str)
-end
-
-function PurchasePlugin.anzhi_pay(data)
-	local jni_helper = DDZJniHelper:create()
-	local scene = runningscene()
-	if GlobalSetting.run_env == 'test' and not data.cpparam then data.cpparam = '123456' end
-	dump(scene.cur_product,'scene.cur_product')
-	local j_data = {price=scene.cur_product.rmb,which=data.which,desc=scene.cur_product.name,cpparam=data.cpparam,
-					trade_id=data.trade_num,prop_id=data.prop_id}
-	local cjson = require("cjson")
-	local status, s = pcall(cjson.encode, j_data)
-	local str = 'on_pay_anzhi__' .. s
-	print('pay:', str)
-	jni_helper:messageJava(str)
-end
-
-function PurchasePlugin.leyifu_pay(data)
-	dump(data, 'leyifu data')
-	local jni_helper = DDZJniHelper:create()
-	local scene = runningscene()
-	if GlobalSetting.run_env == 'test' and not data.cpparam then data.cpparam = '123456' end
-	dump(scene.cur_product,'scene.cur_product')
-	local j_data = {price=data.price,which=data.which,desc=scene.cur_product.name,cpparam=data.cpparam,
-					consume_code=data.consume_code,prop_id=data.prop_id,prop_name=scene.cur_product.name,trade_id=data.trade_num}
-	local cjson = require("cjson")
-	local status, s = pcall(cjson.encode, j_data)
-	local str = 'on_pay_leyifu__' .. s
-	print('pay:', str)
-	jni_helper:messageJava(str)
-end
-
-function PurchasePlugin.cmcc_pay(data)
-	local jni_helper = DDZJniHelper:create()
-	local scene = runningscene()
-	if GlobalSetting.run_env == 'test' and not data.cpparam then data.cpparam = '123456' end
-	dump(scene.cur_product,'scene.cur_product')
-	local j_data = {billingIndex=data.billingIndex,cpparam=data.cpparam,trade_id=data.trade_num,prop_id=data.prop_id}
-	local cjson = require("cjson")
-	local status, s = pcall(cjson.encode, j_data)
-	local str = 'on_pay_cmcc__' .. s
-	print('pay:', str)
-	jni_helper:messageJava(str)
-end
 
 function PurchasePlugin.get_buy_socket()
 	local ws = GlobalSetting.hall_server_websocket

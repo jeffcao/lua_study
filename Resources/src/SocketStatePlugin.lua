@@ -66,7 +66,7 @@ function SocketStatePlugin.bind(theClass)
 		if GlobalSetting.game_id then
 			event_data.game_id = GlobalSetting.game_id
 		end
-		CheckSignLua:fix_sign_param(event_data)
+
 		local succ = function(data)
 			if self.onSocketRestored then
 				self:onSocketRestored(data)

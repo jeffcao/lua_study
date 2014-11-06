@@ -1,5 +1,4 @@
 LoginServerConnectionPlugin = {}
-require "src.CheckSignLua"
 require 'src.MatchLogic'
 require 'src.ShouchonglibaoDonghua'
 require 'src.AppStats'
@@ -98,7 +97,6 @@ function LoginServerConnectionPlugin.bind(theClass)
 		print("[LoginServerConnectionPlugin.sign_failure].")
 		dump(data, "fign_failure data")
 		
-		CheckSignLua:check_stoken(data)
 		
 --		print("[LoginServerConnectionPlugin.sign_failure] result code: "..data.result_code)
 		if "function" == type(self.do_on_login_failure) then
@@ -108,7 +106,6 @@ function LoginServerConnectionPlugin.bind(theClass)
 	
 	function theClass:sign_in_by_token(user_id, user_token)
 		local event_data = {retry="0", login_type="102", user_id = user_id, payment=getPayType(), token = user_token, app_id = GlobalSetting.app_id, version=resource_version}
-		CheckSignLua:fix_sign_param(event_data)
 		GlobalSetting.login_server_websocket:trigger("login.sign_in", 
 			event_data,
 			__bind(self.sign_success, self),
@@ -117,7 +114,6 @@ function LoginServerConnectionPlugin.bind(theClass)
 	
 	function theClass:sign_in_by_password(username, password)
 		local event_data = {retry="0", login_type="103", user_id = username, payment=getPayType(), password = password, app_id = GlobalSetting.app_id, version=resource_version}
-		CheckSignLua:fix_sign_param(event_data)
 		GlobalSetting.login_server_websocket:trigger("login.sign_in", 
 			event_data,
 			__bind(self.sign_success, self),
