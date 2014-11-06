@@ -210,9 +210,6 @@ local function main()
 		"set_user_balance", 
 		"on_volume_change", 
 		"on_bill_cancel",
-		"on_mili_success",
-		"on_miliuu_success",
-		"on_letu_success",
 		}
 	for _,event in pairs(events) do
 		notify_center:registerScriptObserver(node, NotificationProxy.on_event, event)

@@ -88,15 +88,14 @@ GlobalSetting = {
 	
 	play_card_wait_time = 18,--play card wait time limit server will pass this parameter and update this
 	
-	--pay_type = 'anzhi',
 	
-	company_name = {["1019"] = "深圳市景泰通信有限公司", ["1003"]="深圳市新中南实业有限公司", default = "深圳市新中南实业有限公司"},
+	company_name = {["1019"] = "XXX有限公司", ["1003"]="XXXxxx有限公司", default = "XXXSSSS有限公司"},
 	login_bg = {["1019"] = {name="bg01_2.png",res="ccbResources/common3.plist"}},
 	pay_type = {["1019"]="anzhi", ["1003"]="cmcc",default="cmcc"},
 
-	sina_share_url = "http://service.weibo.com/share/share.php?appkey=2045436852&title="..default_share.."&ralateUid=&language=zh_cn",
+	sina_share_url = "",
 	
-	tencent_share_url = "http://share.v.t.qq.com/index.php?c=share&a=index&appkey=801192940&title="..default_share,
+	tencent_share_url = "",
 	shop_prop_data = {},
 	hall_scroll_view_moving = false,
 	charge_hall_scroll_view_moving = false

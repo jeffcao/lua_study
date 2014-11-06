@@ -86,65 +86,6 @@ function PurchasePlugin.suggest_buy(type, title)
 	PurchasePlugin.show_buy_notify(product)
 end
 
-function PurchasePlugin.on_letu_success()
-	local pay_type = getPayType()
-	local user_default = CCUserDefault:sharedUserDefault()
-	local params = user_default:getStringForKey("on_"..pay_type.."_success")
-	print("on_"..pay_type.."_success", params)
-	user_default:setStringForKey("on_"..pay_type.."_success", "")
-	if is_blank(params) then return end
-	
-	local cjson = require 'cjson'
-	params = cjson.decode(params)
-	
-	local md5 = MD5:create()
-	md5:update(params.trade_id..params.key..'success')
-	local token = md5:to_char_array()
-	cclog('trade_id:%s, prop_id:%s, pay_id:%s, key:%s, token:%s', 
-		params.trade_id, params.prop_id, params.pay_id, params.key, token)
-	local event_name = PurchasePlugin.get_event_start() .. 'letu_request'
-	PurchasePlugin.get_buy_socket():trigger(event_name,{
-		payment=pay_type,
-		cpparam=params.trade_id,
-		status="success",
-		token=token
-		},
-		function(data) dump(data, event_name .. ' success') end,
-		function(data) dump(data, event_name .. ' fail') end
-	)
-end
-
-function PurchasePlugin.on_mili_success()
-	local pay_type = getPayType()
-	local user_default = CCUserDefault:sharedUserDefault()
-	local params = user_default:getStringForKey("on_"..pay_type.."_success")
-	print("on_"..pay_type.."_success", params)
-	user_default:setStringForKey("on_"..pay_type.."_success", "")
-	if is_blank(params) then return end
-	
-	local cjson = require 'cjson'
-	params = cjson.decode(params)
-	
-	local md5 = MD5:create()
-	md5:update(params.trade_id..params.key..'success')
-	local token = md5:to_char_array()
-	cclog('trade_id:%s, prop_id:%s, pay_id:%s, key:%s, token:%s', 
-		params.trade_id, params.prop_id, params.pay_id, params.key, token)
-	local event_name = PurchasePlugin.get_event_start() .. 'mili_request'
-	PurchasePlugin.get_buy_socket():trigger(event_name,{
-		payment=pay_type,
-		cpparam=params.trade_id,
-		status="success",
-		token=token
-		},
-		function(data) dump(data, event_name .. ' success') end,
-		function(data) dump(data, event_name .. ' fail') end
-	)
-end
-
-function PurchasePlugin.on_miliuu_success()
-	PurchasePlugin.on_mili_success()
-end
 
 function PurchasePlugin.on_bill_cancel()
 		if GlobalSetting.run_env == "test" then

@@ -121,8 +121,8 @@ lsp_connect_hall_server_w = strings_general.g_connect_hall_w,
 
 --MarketSceneUPlugin
 msp_purchase_no_code_w = '此道具无消息代码，无法完成购买.',
-msp_purchase_not_cmcc_w = '尊敬的客户，非中国移动客户暂不支持购买道具.',
-msp_purchase_notify = '尊敬的客户，您即将购买的是\n游戏名：我爱斗地主\n道具名：name\n道具数量：1\n服务提供商：深圳市新中南实业有限公司\n资费说明：\nprice 点（即消费rmb元人民币）\n点击确认按钮确认购买，中国移动\n客服电话400-6788456',
+msp_purchase_not_cmcc_w = '尊敬的客户，暂不支持购买道具.',
+msp_purchase_notify = '尊敬的客户，您即将购买的是\n游戏名：斗地主\n道具名：name\n道具数量：1\n服务提供商：xxxx有限公司\n资费说明：\nprice 点（即消费rmb元人民币）\n点击确认按钮确认购买，中国\n客服电话234234234',
 msp_purchase = '购买道具',
 msp_purchase_pay_ing = '正在发送付款请求...',
 msp_get_props_w = '获取商品列表',

@@ -60,22 +60,11 @@ function LoginScene:ctor()
 	self:init_input_controll()
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
-	--set_anniu6_stroke(self.login_btn_lbl)
-	--set_anniu5_stroke(self.kuaisu_login_btn_lbl)
-	--set_anniu_1_3_stroke(self.forget_password_btn_lbl)
-	--set_anniu_1_3_stroke(self.register_account_btn_lbl)
-
 	self.kuaisu_login_btn_lbl:enableStroke(GlobalSetting.anniu5_stroke, 0.2)
 	self.login_btn_lbl:enableStroke(GlobalSetting.anniu6_stroke, 0.2)
 	self.forget_password_btn_lbl:enableStroke(GlobalSetting.anniu_1_3_stroke, 0.2)
 	self.register_account_btn_lbl:enableStroke(GlobalSetting.anniu_1_3_stroke, 0.2)
-	-- local kuaisu_lbl = tolua.cast(self.kuaisu_login_btn_lbl, 'CCLabelTTF')
-	-- if kuaisu_lbl then
-	-- 	--kuaisu_lbl:enableShadow(CCSizeMake(0,0), 127, 3.5)
-	-- 	self.kuaisu_login_btn_lbl:enableStroke(GlobalSetting.anniu5_stroke, 0.5)
-	-- else
-	-- 	print('################## self.kuaisu_login_btn_lbl is not CCLabelTTF')
-	-- end
+
 	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:addNodeEventListener(cc.KEYPAD_EVENT, __bind(self.on_keypad_pressed, self) )
@@ -89,32 +78,15 @@ function set_bg(scene)
 		scene.sp_game_name:setDisplayFrame(cache:spriteFrameByName(name))
 	end
 	local pay_type = getPayType()
-	if pay_type == 'anzhi' then
-		res = 'ccbResources/ui_wenzi.plist'
-		name = 'wenzi_fuxingdoudizhu.png'
-		setbg()
-	elseif pay_type == 'sikai' or pay_type == 'mili' or pay_type == 'miliuu' or pay_type == 'letu' then
-		res = 'ccbResources/ui_wenzi.plist'
-		name = 'wenzi_quanmingdoudizhu.png'
-		setbg()
-	end
+	res = 'ccbResources/ui_wenzi.plist'
+	name = 'wenzi_quanmingdoudizhu.png'
+	setbg()
 end
 
 function LoginScene:setMenus()
 	--local pay_type = GlobalSetting.pay_type[GlobalSetting.app_id] or GlobalSetting.pay_type["default"]
 	local pay_type = getPayType()
-	-- if pay_type == 'cmcc' then
-	-- 	self.help:setPosition(ccp(36,30))
-	-- 	self.about:setPosition(ccp(186,30))
-	-- 	self.more:setVisible(true)
-	-- 	self.more:setPosition(ccp(340,30))
-	-- 	self.switch:setPosition(ccp(483,30))
-	-- else--anzhi, leyifu
-	-- 	self.help:setPosition(ccp(105,30))
-	-- 	self.about:setPosition(ccp(255,30))
-	-- 	self.more:setVisible(false)
-	-- 	self.switch:setPosition(ccp(405,30))
-	-- end
+
 end
 
 function LoginScene:show_set_dialog()
