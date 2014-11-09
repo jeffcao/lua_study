@@ -186,7 +186,7 @@ function LoginServerConnectionPlugin.bind(theClass)
 		end
 		if GlobalSetting.login_server_websocket == nil then
 			print("[LoginServerConnectionPlugin:connect_to_login_server()] login_server is nil, init it.")
-			local url = config.login_urls[4]
+			local url = config.login_urls[1]
 			if GlobalSetting.local_url then
 				url = GlobalSetting.local_url
 			end

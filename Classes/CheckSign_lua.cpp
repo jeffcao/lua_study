@@ -65,8 +65,7 @@ static int tolua_CheckSign_CheckSign_check_sign00(lua_State* tolua_S)
      !tolua_isusertable(tolua_S,1,"CheckSign",0,&tolua_err) ||
      !tolua_isstring(tolua_S,2,0,&tolua_err) ||
      !tolua_isstring(tolua_S,3,0,&tolua_err) ||
-     !tolua_isstring(tolua_S,4,0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,5,&tolua_err)
+     !tolua_isnoobj(tolua_S,4,&tolua_err)
  )
   goto tolua_lerror;
  else
@@ -74,9 +73,8 @@ static int tolua_CheckSign_CheckSign_check_sign00(lua_State* tolua_S)
  {
   const char* s_name = ((const char*)  tolua_tostring(tolua_S,2,0));
   const char* s_code = ((const char*)  tolua_tostring(tolua_S,3,0));
-  const char* i_code = ((const char*)  tolua_tostring(tolua_S,4,0));
   {
-   const char* tolua_ret = (const char*)  CheckSign::check_sign(s_name,s_code,i_code);
+   const char* tolua_ret = (const char*)  CheckSign::check_sign(s_name,s_code);
    tolua_pushstring(tolua_S,(const char*)tolua_ret);
   }
  }

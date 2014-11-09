@@ -2,11 +2,10 @@ CheckSignLua = {}
 
 function CheckSignLua:generate_stoken(data)
 	local s_code = data.v_code
-	local i_code = data.v_flag
 	DDZJniHelper:create():get("PackageSignCN")
 	local s_name = CCUserDefault:sharedUserDefault():getStringForKey("PackageSignCN")
 	print('s_name is', s_name)
-	local s_token = CheckSign:check_sign(s_name, s_code, i_code)
+	local s_token = CheckSign:check_sign(s_name, s_code)
 	GlobalSetting.s_token = s_token
 	GlobalSetting.s_name = s_name
 	print("s_token is", s_token)
