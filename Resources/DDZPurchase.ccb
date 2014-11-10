@@ -1348,8 +1348,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -2803,7 +2801,7 @@
 		<key>displayName</key>
 		<string>CCLayer</string>
 		<key>jsController</key>
-		<string>AnzhiPurchase</string>
+		<string>DDZPurchase</string>
 		<key>memberVarAssignmentName</key>
 		<string>rootNode</string>
 		<key>memberVarAssignmentType</key>
@@ -2895,6 +2893,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
