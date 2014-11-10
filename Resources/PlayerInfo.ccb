@@ -239,8 +239,8 @@
 						<string>SpriteFrame</string>
 						<key>value</key>
 						<array>
-							<string>ccbResources/ui_kuang.plist</string>
-							<string>tanchukuang01.png</string>
+							<string>ccbResources/res/youxi_zhong.plist</string>
+							<string>youxizhong2/yxz2-xiaotu/yxz2-tishibeijingcheng.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -250,8 +250,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>435</real>
-							<real>260</real>
+							<real>376</real>
+							<real>220</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -281,7 +281,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>2</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -289,7 +289,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>10</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -297,7 +297,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>2</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -305,7 +305,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>5</real>
 					</dict>
 				</array>
 			</dict>
@@ -324,6 +324,14 @@
 				<integer>0</integer>
 				<key>properties</key>
 				<array>
+					<dict>
+						<key>name</key>
+						<string>visible</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
 					<dict>
 						<key>name</key>
 						<string>position</string>
@@ -568,8 +576,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>400</real>
-							<real>360</real>
+							<real>387</real>
+							<real>354</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -684,8 +692,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>290</real>
-							<real>323</real>
+							<real>283</real>
+							<real>318</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -741,6 +749,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -759,12 +769,20 @@
 				<array>
 					<dict>
 						<key>name</key>
+						<string>visible</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>position</string>
 						<key>type</key>
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>291</real>
+							<real>285</real>
 							<real>317</real>
 							<integer>0</integer>
 						</array>
@@ -877,8 +895,6 @@
 						<real>1</real>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -902,8 +918,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>425</real>
-							<real>360</real>
+							<real>411</real>
+							<real>354</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1018,7 +1034,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>400</real>
+							<real>387</real>
 							<real>325</real>
 							<integer>0</integer>
 						</array>
@@ -1134,7 +1150,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>425</real>
+							<real>415</real>
 							<real>325</real>
 							<integer>0</integer>
 						</array>
@@ -1250,8 +1266,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>400</real>
-							<real>290</real>
+							<real>389</real>
+							<real>292</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1366,8 +1382,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>425</real>
-							<real>290</real>
+							<real>415</real>
+							<real>292</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1482,8 +1498,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>400</real>
-							<real>255</real>
+							<real>373</real>
+							<real>260</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1598,8 +1614,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>425</real>
-							<real>255</real>
+							<real>395</real>
+							<real>260</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1797,6 +1813,14 @@
 				<array>
 					<dict>
 						<key>name</key>
+						<string>visible</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>position</string>
 						<key>type</key>
 						<string>Position</string>
@@ -1939,7 +1963,7 @@
 						<key>value</key>
 						<array>
 							<real>290</real>
-							<real>245</real>
+							<real>248</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2196,7 +2220,7 @@
 						<key>value</key>
 						<array>
 							<real>402</real>
-							<real>200</real>
+							<real>205</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2207,7 +2231,7 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>413</real>
+							<real>370</real>
 							<real>44</real>
 							<integer>0</integer>
 						</array>
@@ -2401,8 +2425,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
+									<real>28</real>
 									<real>29</real>
-									<real>30</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -2477,8 +2501,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>540</real>
-							<real>290</real>
+							<real>529</real>
+							<real>297</real>
 							<integer>0</integer>
 						</array>
 					</dict>
