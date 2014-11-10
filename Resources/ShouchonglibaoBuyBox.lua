@@ -41,19 +41,13 @@ function ShouchonglibaoBuyBox:ctor(confirm_func)
 	local ccbproxy = CCBProxy:create()
 	local ccbi_res = "ShouchonglibaoBuyBox.ccbi"
 	local pay_type = getPayType()
-	if pay_type == "wiipay" then
-		ccbi_res = "ShouchonglibaoBuyBoxWeipai.ccbi"
-	elseif pay_type == "mili" or pay_type == "miliuu" then
-		ccbi_res = "ShouchonglibaoBuyBoxMili.ccbi"
-	end
+	
  	CCBReaderLoad(ccbi_res, ccbproxy, true, "ShouchonglibaoBuyBox")
 	self:addChild(self.rootNode)
 	self.confirm_func = confirm_func
 
 	set_anniu_1_3_stroke(self.commit_btn_lbl)
-	if getPayType() == "wiipay" then
-		set_rank_stroke(self.service_tel_lbl)
-	end
+
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	self:init_dialog()
 	self:setClickOutDismiss(false)

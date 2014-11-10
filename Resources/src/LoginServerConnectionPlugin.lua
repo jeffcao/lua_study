@@ -50,11 +50,6 @@ function LoginServerConnectionPlugin.bind(theClass)
 			GlobalSetting.push_handler = nil
 		end
 		
-		if data.l_cpparam and data.me_phone_num and getPayType() == 'cmcc' then
-			local jni = DDZJniHelper:create()
-			jni:messageJava("do_cmcc_login_"..data.l_cpparam..'_'..data.me_phone_num)
-		end
-		
 		if data.system_settings and data.system_settings.unsupport_uiimage_device then
 			user_default:setStringForKey("unsupport_uiimage_device", data.system_settings.unsupport_uiimage_device)
 		end

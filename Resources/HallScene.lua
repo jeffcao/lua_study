@@ -85,17 +85,9 @@ HallScene = class("HallScene", function()
 
 	MarqueePlugin.addMarquee(self.rootNode,ccp(280,380))
 	GlobalSetting.hall_scene = self
-	print('listen on_bill_cancel')
-	NotificationProxy.registerScriptObserver(PurchasePlugin.on_bill_cancel,"on_bill_cancel", self.scene_name)
-	
-	print('listen on_mili_success')
-	NotificationProxy.registerScriptObserver(PurchasePlugin.on_mili_success,"on_mili_success", self.scene_name)
-	
-	print('listen on_miliuu_success')
-	NotificationProxy.registerScriptObserver(PurchasePlugin.on_miliuu_success,"on_miliuu_success", self.scene_name)
-	
-	print('listen on_letu_success')
-	NotificationProxy.registerScriptObserver(PurchasePlugin.on_letu_success,"on_letu_success", self.scene_name)
+
+	print('listen on_dadou_success')
+	NotificationProxy.registerScriptObserver(PurchasePlugin.on_dadou_success,"on_dadou_success", self.scene_name)
  
  	require 'ui.UIUtil'
  	local winSize = CCDirector:sharedDirector():getWinSize()
