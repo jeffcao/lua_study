@@ -20,6 +20,8 @@ Res = {
  	shangchen_jianjie_plist = "ccbResources/res/shangchen_jianjie.plist",
  	huo_dong_plist = "ccbResources/res/huo_dong.plist",
  	geren_touxiang_plist = "ccbResources/res/gerentouxiang.plist",
+ 	dao_ju_plist = "ccbResources/res/dao_ju.plist",
+
 
 -- 背景音乐
  s_music_bg = dirMusic .. "bg/1.mp3",

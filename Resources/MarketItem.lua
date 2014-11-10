@@ -24,9 +24,9 @@ function MarketItem:ctor()
 
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
-	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
+	local cache = CCSpriteFrameCache:sharedSpriteFrameCache()
 	cache:addSpriteFramesWithFile(Res.props_plist)
-	
+	cache:addSpriteFramesWithFile(Res.dao_ju_plist)
 end
 
 function MarketItem:init_item(product, show_buy_notify)

@@ -18,6 +18,7 @@ function PlayerProductItem:ctor()
 	local cache = CCSpriteFrameCache:sharedSpriteFrameCache();
 	print('before cache:addSpriteFramesWithFile( "' .. Res.props_plist .. '")')
 	cache:addSpriteFramesWithFile(Res.props_plist)
+	cache:addSpriteFramesWithFile(Res.dao_ju_plist)
 	print('after cache:addSpriteFramesWithFile( "' .. Res.props_plist .. '")')	
 
 	print('[PlayerProductItem:ctor] before load PlayerProductItem.ccbi')

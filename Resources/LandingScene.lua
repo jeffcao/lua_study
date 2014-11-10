@@ -58,8 +58,8 @@ end
 	
 function LandingScene:onEnter()
 	print("[LandingScene:on_enter()]")
-	-- CCUserDefault:sharedUserDefault():setBoolForKey("effect_music", true)
-	-- CCUserDefault:sharedUserDefault():setBoolForKey("bg_music", true)
+	CCUserDefault:sharedUserDefault():setBoolForKey("effect_music", true)
+	CCUserDefault:sharedUserDefault():setBoolForKey("bg_music", true)
 
 
 	--self.super.onEnter(self)
