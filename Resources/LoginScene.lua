@@ -88,33 +88,13 @@ function set_bg(scene)
 		cache:addSpriteFramesWithFile(res)
 		scene.sp_game_name:setDisplayFrame(cache:spriteFrameByName(name))
 	end
-	local pay_type = getPayType()
-	if pay_type == 'anzhi' then
-		res = 'ccbResources/ui_wenzi.plist'
-		name = 'wenzi_fuxingdoudizhu.png'
-		setbg()
-	elseif pay_type == 'sikai' or pay_type == 'mili' or pay_type == 'miliuu' or pay_type == 'letu' then
-		res = 'ccbResources/ui_wenzi.plist'
-		name = 'wenzi_quanmingdoudizhu.png'
-		setbg()
-	end
+	
 end
 
 function LoginScene:setMenus()
 	--local pay_type = GlobalSetting.pay_type[GlobalSetting.app_id] or GlobalSetting.pay_type["default"]
 	local pay_type = getPayType()
-	-- if pay_type == 'cmcc' then
-	-- 	self.help:setPosition(ccp(36,30))
-	-- 	self.about:setPosition(ccp(186,30))
-	-- 	self.more:setVisible(true)
-	-- 	self.more:setPosition(ccp(340,30))
-	-- 	self.switch:setPosition(ccp(483,30))
-	-- else--anzhi, leyifu
-	-- 	self.help:setPosition(ccp(105,30))
-	-- 	self.about:setPosition(ccp(255,30))
-	-- 	self.more:setVisible(false)
-	-- 	self.switch:setPosition(ccp(405,30))
-	-- end
+
 end
 
 function LoginScene:show_set_dialog()
@@ -151,14 +131,7 @@ function LoginScene:initMusic()
 		effect_music = effect_open
 		bg_music = bg_open
 	end
-	if getPayType() == 'cmcc' then
-		local music_state = jni:get("MusicEnabled")
-		print("music_state=> ", music_state, string.len(music_state))
-		do_effect(music_state=="1", music_state=="1")
-	else
-		print('initMusic not cmcc')
-		do_effect(not user_default:getBoolForKey("bg_music"), not user_default:getBoolForKey("effect_music"))
-	end
+	do_effect(not user_default:getBoolForKey("bg_music"), not user_default:getBoolForKey("effect_music"))
 end
 
 function LoginScene:onExit()

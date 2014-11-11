@@ -159,13 +159,6 @@ function HallServerConnectionPlugin.bind(theClass)
 	
 	end
 	
-	function theClass:timing_buy_prop(trad_seq, product_id)
-		self.failure_msg = strings.hscp_purchase_prop_w
-		local event_data = {user_id = GlobalSetting.current_user.user_id, prop_id = product_id, trade_id = trad_seq}
-		self:call_server_method("timing_buy_prop", event_data)
-		
-	end
-	
 	function theClass:cate_list()
 		self.failure_msg = strings.hscp_get_my_props_list_w
 		local event_data = {retry="0", user_id = GlobalSetting.current_user.user_id}

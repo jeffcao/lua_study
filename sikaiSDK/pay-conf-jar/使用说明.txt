@@ -1,2 +1,0 @@
-方法一：把本目录拷贝到您的工程目录下，直接运行start.bat
-方法二：打开start.bat，将currentProjectPath给成您的工程路径如：E:\workspace\TestAndroidPayJar保存，再运行start.bat
