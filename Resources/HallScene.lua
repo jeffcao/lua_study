@@ -152,8 +152,9 @@ HallScene = class("HallScene", function()
 	print("[HallScene:onCleanup()]")
 	GlobalSetting.hall_scene = nil
 	NotificationProxy.removeObservers(self.scene_name)
-	self.super.onCleanup(self)
+	-- self.super.onCleanup(self)
 	Timer.cancel_timer(self.music_update)
+	self:close_hall_websocket()
 end
  
  function HallScene:onEnterTransitionDidFinish()

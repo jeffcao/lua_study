@@ -143,6 +143,7 @@ function LoginScene:onCleanup()
 	print("[LoginScene:onCleanup()]")
 	NotificationProxy.removeObservers(self.scene_name)
 	--self.super.onCleanup(self)
+	self:close_login_websocket()
 end
 
 function LoginScene:on_keypad_pressed(event)
