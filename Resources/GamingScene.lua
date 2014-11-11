@@ -160,7 +160,8 @@ end
 function GamingScene:onCleanup()
 	print("[GamingScene:onCleanup()]")
 	NotificationProxy.removeObservers(self.scene_name)
-	self.super.onCleanup(self)
+	self:close_game_websocket()
+	-- self.super.onCleanup(self)
 end
 
 function GamingScene:onNextUserClicked()

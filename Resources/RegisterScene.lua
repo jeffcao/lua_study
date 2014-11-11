@@ -51,7 +51,7 @@ end
 
 function RegisterScene:onCleanup()
 	print("[RegisterScene:onCleanup()]")
-	self.super.onCleanup(self)
+	-- self.super.onCleanup(self)
 
 end
 
