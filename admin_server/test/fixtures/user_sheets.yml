@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: MyString
+  online_time_count: 1
+  login_count: 1
+  paiju_time_count: 1
+  paiju_count: 1
+  paiju_break_count: 1
+  bank_broken_count: 1
+
+two:
+  date: MyString
+  online_time_count: 1
+  login_count: 1
+  paiju_time_count: 1
+  paiju_count: 1
+  paiju_break_count: 1
+  bank_broken_count: 1

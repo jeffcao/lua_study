@@ -1,0 +1,49 @@
+<%= form_tag("/admin/every_hour_huo_yue_users/cx", method: "post") do %>
+    <div class="field" align="left" xmlns="http://www.w3.org/1999/html">
+      日期:
+      <select name="date">
+        <% @q_date.each do |date| %>
+            <option value="<%= date %>" <%= "selected" if date ==@date %>><%= date %></option>
+        <% end %>
+      </select>
+      <button id="button" type="submit">查询</button>
+
+    </div>
+    <table class="index_table index">
+      <tr>
+        <th class="sortable sorted-desc id"><%= @date %></th>
+        <% (0..23).each do |i|%>
+            <th class="sortable sorted-desc id" colspan="4" align="center"><%= i %>点</th>
+        <% end %>
+      </tr>
+      <tr>
+        <td class="sortable sorted-desc id">时间分段</td>
+        <% (0..23).each do |i|%>
+            <% nex_index_key = i + 1%>
+            <% index_key = i>=10? "#{i}":"0#{i}"%>
+
+            <% nex_index_key = nex_index_key>10? "#{nex_index_key}":"0#{nex_index_key}"%>
+            <% nex_index_key = "00" if nex_index_key.to_i == 24%>
+            <td class="sortable sorted-desc id"><%= "#{index_key}:00-#{index_key}:15" %></td>
+            <td class="sortable sorted-desc id"><%= "#{index_key}:15-#{index_key}:30" %></td>
+            <td class="sortable sorted-desc id"><%= "#{index_key}:30-#{index_key}:45" %></td>
+            <td class="sortable sorted-desc id"><%= "#{index_key}:45-#{nex_index_key}:00" %></td>
+      <% end %>
+      </tr>
+      <% i =1 %>
+      <% @bl_date.each do |date|%>
+          <tr class="<%= i%2==0 ? "odd" : "even" %>">
+            <td class="sortable sorted-desc id"><%= date %></td>
+            <% (0..23).each do |m|%>
+                <% key = "#{date}-#{m}"%>
+                <td class="sortable sorted-desc id"><%= @data["#{key}-count_1"].to_i%></td>
+                <td class="sortable sorted-desc id"><%= @data["#{key}-count_2"].to_i%></td>
+                <td class="sortable sorted-desc id"><%= @data["#{key}-count_3"].to_i%></td>
+                <td class="sortable sorted-desc id"><%= @data["#{key}-count_4"].to_i%></td>
+            <% end %>
+          </tr>
+          <% i= i + 1%>
+      <%end %>
+    </table>
+<% end %>
+

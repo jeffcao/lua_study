@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mobile: MyString
+  pay_type: MyString
+  status: 1
+  cause: MyText
+  picture_path: MyString
+
+two:
+  mobile: MyString
+  pay_type: MyString
+  status: 1
+  cause: MyText
+  picture_path: MyString

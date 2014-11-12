@@ -1,0 +1,65 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  appid: MyString
+  string: MyString
+  imsi: MyString
+  string: MyString
+  mac: MyString
+  string: MyString
+  nick_name: MyString
+  string: MyString
+  brand: MyString
+  string: MyString
+  display: MyString
+  string: MyString
+  fingerprint: MyString
+  string: MyString
+  imei: MyString
+  string: MyString
+  os_release: MyString
+  string: MyString
+  version: MyString
+  string: MyString
+  city_id: MyString
+  integer: MyString
+  province_id: MyString
+  integer: MyString
+  user_id: MyString
+  integer: MyString
+  login_ip: MyString
+  string: MyString
+  login_time: MyString
+  datetime: MyString
+
+two:
+  appid: MyString
+  string: MyString
+  imsi: MyString
+  string: MyString
+  mac: MyString
+  string: MyString
+  nick_name: MyString
+  string: MyString
+  brand: MyString
+  string: MyString
+  display: MyString
+  string: MyString
+  fingerprint: MyString
+  string: MyString
+  imei: MyString
+  string: MyString
+  os_release: MyString
+  string: MyString
+  version: MyString
+  string: MyString
+  city_id: MyString
+  integer: MyString
+  province_id: MyString
+  integer: MyString
+  user_id: MyString
+  integer: MyString
+  login_ip: MyString
+  string: MyString
+  login_time: MyString
+  datetime: MyString

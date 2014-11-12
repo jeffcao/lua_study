@@ -1,0 +1,63 @@
+<%= form_tag "/admin/pay_mobiles", :multipart => true, :method => "post" do %>
+    <% pay_fangshi = ["淘宝", "网银", "电信网站", "移动网站", "联通网站", "充值卡"] %>
+    <% status = ["已冲","未冲"]%>
+
+    <table class="index_table index">
+      <% i=1 %>
+      <tr class="<%= i%2==0 ? "odd" : "even" %>">
+        <td>手机号码:&nbsp&nbsp<input name="mobile" value=""></td>
+        <% i=i+1 %>
+      </tr>
+      <tr class="<%= i%2==0 ? "odd" : "even" %>">
+        <td>充值方式:&nbsp&nbsp
+          <select name="fangshi">
+            <option value="10000">充值方式</option>
+            <% pay_fangshi.each do |fangshi| %>
+                <option value="<%= pay_fangshi.find_index(fangshi) %>"><%= fangshi %></option>
+            <% end %>
+          </select>
+
+        </td>
+        <% i=i+1 %>
+      </tr>
+
+      <tr class="<%= i%2==0 ? "odd" : "even" %>">
+        <td>发奖状态:&nbsp&nbsp
+        <select name="status">
+          <option value="10000">充值状态</option>
+         <% status.each do |statu|%>
+         <option value="<%= status.find_index(statu) %>"><%= statu %></option>
+        <%end%>
+        </select>
+
+
+        </td>
+        <% i=i+1 %>
+      </tr>
+
+      <tr class="<%= i%2==0 ? "odd" : "even" %>">
+        <td>
+        未发奖原因(可不填):<textarea name="reason" cols ="50" rows = "3"></textarea>
+        </td>
+        <% i=i+1 %>
+      </tr>
+
+      <tr class="<%= i%2==0 ? "odd" : "even" %>">
+        <td>附件:&nbsp &nbsp<%= file_field("file", "file") %></td>
+        <% i=i+1 %>
+      </tr>
+
+      <tr class="<%= i%2==0 ? "odd" : "even" %>">
+        <td><%= submit_tag "提交" %></td>
+        <% i=i+1 %>
+      </tr>
+
+
+    </table>
+
+<% end %>
+
+
+
+
+

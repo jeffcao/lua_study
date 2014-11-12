@@ -1,0 +1,27 @@
+<%= form_tag "" do %>
+商城道具名称：<select name="test" id="test" align="center">
+<option value="0">请选择</option>
+<% @product.each do |p| %>
+<option value="<%= p.id %>"><%= p.product_name %></option>
+<% end %>
+</select>
+<br><br>
+<% i = 0 %>
+道具一览：<br><br><% @product_item.each do |p| %>
+<% i =i + 1 %>
+<input type="checkbox" id="<%= p.id %>"  name="item[]" align="center" value="<%= p.id %>"> <%= p.item_name %>&nbsp &nbsp
+ <% if p.beans == 0 %>
+ <% name = "ka_#{p.id}" %>
+ 数量：<input value="0" name="<%= name %>" id="<%= name %>" >
+ <% end %>
+ <% if i%3 ==0 %>
+ <br><br>
+ <% else %>
+ &nbsp &nbsp &nbsp
+  <% end %>
+<% end %>
+
+<br><br>
+<button id="button" type="submit" align="right">确定</button>
+<% end %>
+

@@ -1,0 +1,33 @@
+<table class="index_table index">
+  <tr>
+    <th class="sortable sorted-desc id">日期</th>
+    <th class="sortable sorted-desc id">总领取话费金额（元）</th>
+    <th class="sortable sorted-desc id">总领取话费用户数（个）</th>
+    <th class="sortable sorted-desc id">充值状态</th>
+  </tr>
+  <% i =1 %>
+  <% (@begin_date..@date).each do |r_date| %>
+      <% next if r_date.to_s > Time.now.strftime("%Y-%m-%d").to_s %>
+      <% unless @content["#{r_date}-count_fee_0"].nil? %>
+
+          <tr class="<%= i%2==0 ? "odd" : "even" %>">
+            <td><a href="/admin/market_counts/list?date=<%= r_date %>"> <%= r_date %></a></td>
+            <td><%= @content["#{r_date}-count_fee_0"] %></td>
+            <td><%= @content["#{r_date}-count_0"] %></td>
+            <td>未充</td>
+            <% i=i+1 %>
+          </tr>
+      <% end %>
+      <% unless @content["#{r_date}-count_fee_1"].nil? %>
+          <tr class="<%= i%2==0 ? "odd" : "even" %>">
+            <td><a href="/admin/market_counts/list?date=<%= r_date %>"><%= r_date %></a></td>
+            <td><%= @content["#{r_date}-count_fee_1"] %></td>
+            <td><%= @content["#{r_date}-count_1"] %></td>
+            <td>已充</td>
+            <% i=i+1 %>
+          </tr>
+      <% end %>
+
+  <% end %>
+
+</table>

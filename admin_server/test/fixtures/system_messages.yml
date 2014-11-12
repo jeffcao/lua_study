@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyString
+  message_type: 1
+  failure_time: 1
+
+two:
+  content: MyString
+  message_type: 1
+  failure_time: 1

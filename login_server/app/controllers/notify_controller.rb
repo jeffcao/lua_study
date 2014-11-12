@@ -1,0 +1,3 @@
+class NotifyController  < BaseController
+
+end

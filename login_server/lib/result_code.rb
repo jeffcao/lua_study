@@ -1,0 +1,95 @@
+require "game_config"
+require "game_text"
+require 'game_const'
+module ResultCode
+
+  include GameConfig
+  include GameText
+  include GameConst
+
+  # 登录成功
+  LOGIN_OK = 0
+  # 请求成功
+  SUCCESS = 0
+
+  #登陆失败 密码错误
+  LOGIN_FAIL = 200
+  #更改密码失败
+  RESET_PASSWORD_FAIL = 201
+  #token失效
+  TOKEN_IS_LOST = 202
+  #找回密码时，输入的邮箱没有帮顶
+  EMAIL_IS_NOT_BIND = 203
+
+  #快速注册
+  FAST_SIGN_UP = "100"
+  #普通注册
+  NORMAL_SIGN_UP = "101"
+  #快速登陆
+  FAST_SIGN_IN = "102"
+  #普通登陆
+  NORMAL_SIGN_IN = "103"
+  #用第三方账号登录
+  THE_MARKET_USER_SIGN_IN = "104"
+
+  #更新个人资料
+  UPDATE_USER_PROFILE_FAIL = 203
+  #retry设定值
+  CONNECTION_RETRY_BEGIN = "0"
+  #retry 设定值
+  REDIS_KEY_VALUE_LOST = 300
+  #完善资料失败
+
+  #用户没又可用的道具
+  PROP_IS_NULL = 400
+
+  #用户桌子上的状态
+  USER_TABLE_READY = 1
+  USER_TABLE_LEFT = 0
+  ROBOT = 1 #托管
+
+  ROOM_FULL = 1
+  UN_MATCH_QUALIFICATION = 2
+  ROOM_MAINTENANCE = 3
+  ROOM_UNDEFINED = 4
+  USER_NOT_FOUND = 5
+
+  PLAY_CARD_TIMEOUT = 18
+  USER_GET_MOBILE_CHARGE = 20
+
+
+
+  #断线重连失败编号
+  RESTORE_CON_VERIFICATION_FAIlURE = 1
+  RESTORE_CON_DISCONNECTION_TIMEOUT = 2
+  RESTORE_CON_READY_GAME_TIMEOUT = 3
+
+  #注册用户初始分数
+  USER_INITIAL_SCORE = 10000
+
+  ALL_GAME_ROOMS_REDIS_KEY = "game_rooms_0000"
+  USER_STATE_KEY_SUFFIX = "1000"
+  USER_DISCONNECTION_TIME_SUFFIX = "1001"
+
+  WAITING_TABLES_KEY_SUFFIX = "2000"
+  ROOM_KEY_SUFFIX = "2001"
+  TABLE_KEY_SUFFIX = "2002"
+  JOIN_GAME_NOTIFY_RESP_SUFFIX = "2003"
+  LEAVE_GAME_NOTIFY_RESP_SUFFIX = "2004"
+  ROOM_ONLINE_COUNT_KEY_SUFFIX = "2005"
+  PAI_JU_ZHUNBEI_KEY_SUFFIX = "2006"
+  JIAO_DI_ZHU_KEY_SUFFIX = "2007"
+  RECOVER_PAI_JU_KEY_SUFFIX = "3000"
+  TABLE_TRIGGER_INFO_KEY_SUFFIX = "2008"
+
+
+  NOTIFY_RETRY_INTERVAL = 10    # second
+  NOTIFY_RESPONSE_TIMEOUT = 60  # second
+  PLAYER_READY_TIMEOUT = 33   #准备超时后自动准备
+
+  RESTORE_CONNECTION_TIMEOUT = 300
+
+  SERVER_CONNECTIONS_COUNT_KEY = "login_connections_count_key"
+
+  USER_IN_BLACK_LIST = 401
+end

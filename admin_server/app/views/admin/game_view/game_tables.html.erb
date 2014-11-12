@@ -1,0 +1,44 @@
+<%= form_tag "" do %>
+    <div class="field" align="center">
+      <%= label_tag '桌子ID:' %>
+      <input name="table_id" value="<%= @table_id unless @table_id.nil? %>">&nbsp &nbsp
+      <button id="button" type="submit">查询</button>
+    </div>
+<% end %>
+<p>
+</p>
+<p>
+</p>
+<table class="index_table index">
+  <tr>
+    <th class="sortable sorted-desc id">桌子ID</th>
+    <th class="sortable sorted-desc id">房间名称</th>
+    <th class="sortable sorted-desc id">用户ID</th>
+    <th class="sortable sorted-desc id">桌子状态</th>
+  </tr>
+  <% i = 0 %>
+  <% style = "odd" %>
+  <% @tables.each do |table| %>
+      <% if i%2 == 1 %>
+          <% style="even" %>
+      <% else %>
+          <% style = "odd" %>
+      <% end %>
+      <% i=i+1 %>
+      <tr class="<%= style %>">
+        <td><%= table[:table_id] %></td>
+        <td><%= table[:room_name] %></td>
+        <td><%= table[:user_id] %></td>
+        <td><%= table[:state] %></td>
+      </tr>
+  <% end %>
+</table>
+<a href="online_players">在线用户列表</a>
+&nbsp &nbsp &nbsp
+<a href="room_msg">房间列表</a>
+&nbsp &nbsp &nbsp
+<a href="game_view">实时数据统计</a>
+&nbsp &nbsp &nbsp
+<a href="table_user">桌子上用户信息</a>
+&nbsp &nbsp &nbsp
+<a href="table_user">桌子列表刷新</a>

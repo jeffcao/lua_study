@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  game_room_id: 1
+  user_id: 1
+  count: 1
+  date: MyString
+
+two:
+  game_room_id: 1
+  user_id: 1
+  count: 1
+  date: MyString

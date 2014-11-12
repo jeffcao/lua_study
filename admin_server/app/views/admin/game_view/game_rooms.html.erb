@@ -1,0 +1,32 @@
+
+<%= form_tag "" do %>
+    <div class="field" align="center">
+      <%= label_tag '房间ID:' %>
+      <input name="room_id" value="<%= @room_id unless @room_id.nil? %>">&nbsp &nbsp
+      <button id="button" type="submit">查询</button>
+    </div>
+<% end %>
+<table class="index_table index">
+  <tr class="odd" bgcolor="#d9e4ec"><th class="sortable sorted-desc id">房间名称1</th><th class="sortable sorted-desc id">桌子ID</th><th class="sortable sorted-desc id">等待桌子ID</th><th class="sortable sorted-desc id">游戏中桌子ID</th><th class="sortable sorted-desc id">在线用户总数</th><th class="sortable sorted-desc id">房间最大用户数</th><th class="sortable sorted-desc id">房间最小资产限制</th><th class="sortable sorted-desc id">房间最大资产限制</th></tr>
+  <% i = 0 %>
+  <% style = "odd" %>
+  <% @rooms.each do |room| %>
+      <% if i%2 == 1 %>
+          <% style="even" %>
+      <% else %>
+          <% style = "odd" %>
+      <% end %>
+      <% i=i+1 %>
+  <tr class="<%= style %>" ><td><%= room[:room_name] %></td><td><%= room[:table_id] %></td><td><%= room[:waiting_tables] %></td><td><%= room[:busy_tables] %></td><td><%= room[:online_user_count] %></td><td><%= room[:limit_online_count] %></td><td><%= room[:min_qualification] %></td><td><%= room[:max_qualification] %></td></tr>
+  <% end %>
+</table>
+<a href="online_players">在线用户列表</a>
+&nbsp &nbsp &nbsp
+<a href="game_tables">游戏桌子列表</a>
+&nbsp &nbsp &nbsp
+<a href="game_view">实时数据统计</a>
+&nbsp &nbsp &nbsp
+<a href="table_user">桌子上用户信息</a>
+&nbsp &nbsp &nbsp
+<a href="room_msg">房间列表刷新</a>
+

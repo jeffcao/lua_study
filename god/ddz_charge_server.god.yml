@@ -1,0 +1,6 @@
+servers: 2
+socket: /tmp/rtddz_charge_server.sock
+#user: jeffcao
+#group: jeffcao
+chdir: /data/local/game/ddz/deploy/charge_server
+pid: tmp/pids/thin.pid

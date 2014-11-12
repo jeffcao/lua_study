@@ -1,0 +1,59 @@
+<%= form_tag "" do %>
+    <div class="field" align="center">
+      <%= label_tag '桌子ID:' %>
+      <input name="table_id" value="<%= @table_id unless @table_id.nil? %>">&nbsp &nbsp
+      <button id="button" type="submit">查询</button>
+    </div>
+<% end %>
+<table class="index_table index">
+  <% @table_users.each do |table_user| %>
+      <tr class="odd">
+        <td>桌子ID:</td>
+        <td><%= table_user[:table_id] %></td>
+      </tr>
+      <tr class="even">
+        <td>房间name:</td>
+        <td><%= table_user[:room_name] %></td>
+      </tr>
+      <% if table_user[:users].length >0 %>
+          <% users = table_user[:users] %>
+          <tr>
+            <th>用户ID</th>
+            <th>用户昵称</th>
+            <th>性别</th>
+            <th>积分</th>
+            <th>socket实例</th>
+            <th>用户状态</th>
+            <th>机器人</th>
+            <th>dead?</th>
+            <th>最后活动时间</th>
+            <th>操作</th>
+          </tr>
+          <% users.each do |user| %>
+              <tr class="even">
+                <td><%= user[:user_id] %></td>
+                <td><%= user[:nick_name] %></td>
+                <td><%= user[:gender] %></td>
+                <td><%= user[:score] %></td>
+                <td><%= user[:socket] %></td>
+                <td><%= user[:state] %></td>
+                <td><%= user[:robot] %></td>
+                <td><%= user[:dead?] %></td>
+                <td><%= user[:last_action_time] %></td>
+                <td><a href="table_user?id=<%= user[:user_id]%>"><button>释放用户</button></a>
+                </td>
+              </tr>
+          <% end %>
+      <% end %>
+  <% end %>
+</table>
+
+<a href="online_players">在线用户列表</a>
+&nbsp &nbsp &nbsp
+<a href="game_tables">游戏桌子列表</a>
+&nbsp &nbsp &nbsp
+<a href="game_view">实时数据统计</a>
+&nbsp &nbsp &nbsp
+<a href="room_msg">游戏房间列表</a>
+&nbsp &nbsp &nbsp
+<a href="table_user">桌子用户信息</a>

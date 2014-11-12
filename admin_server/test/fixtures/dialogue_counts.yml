@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  dialogue_id: 1
+  count: 1
+
+two:
+  dialogue_id: 1
+  count: 1

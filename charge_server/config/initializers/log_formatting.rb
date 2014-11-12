@@ -1,0 +1,1 @@
+../../../model_module/config/initializers/log_formatting.rb

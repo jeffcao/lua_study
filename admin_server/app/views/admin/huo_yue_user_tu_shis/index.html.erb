@@ -1,0 +1,114 @@
+<html>
+<head>
+
+  <title>JSChart</title>
+
+  <script type="text/javascript" src="../jscharts.js"></script>
+
+</head>
+<body>
+<%= form_tag("/admin/huo_yue_user_tu_shis", method: "post") do %>
+    <div class="field" align="left" xmlns="http://www.w3.org/1999/html">
+      日期:
+      <select name="date">
+        <% @bl_date.each do |date| %>
+            <option value="<%= date %>" <%= "selected" if date ==@date %>><%= date %></option>
+        <% end %>
+      </select>
+      <button id="button" type="submit">查询</button>
+    </div>
+<% end %>
+
+<div id="graph">Loading graph...</div>
+
+<script type="text/javascript">
+    var myChart = new JSChart('graph', 'line');
+//    myChart.setDataArray([[1, 80],[2, 40],[3, 60],[4, 65],[5, 50],[6, 50],[7, 60],[8, 80],[9, 150],[10, 100]], 'blue');
+//    myChart.setDataArray([[1, 100],[2, 55],[3, 80],[4, 115],[5, 80],[6, 70],[7, 30],[8, 130],[9, 160],[10, 170]], 'green');
+//    myChart.setDataArray([[1, 150],[2, 25],[3, 100],[4, 80],[5, 20],[6, 65],[7, 0],[8, 155],[9, 190],[10, 200]], 'gray');
+    <% unless @a.blank?%>
+    myChart.setDataArray(<%=@a%>, 'blue');
+    <% end %>
+    <% unless @b.blank?%>
+    myChart.setDataArray(<%=@b%>, 'green');
+    <%end%>
+    <% unless @c.blank?%>
+    myChart.setDataArray(<%=@c%>, 'gray');
+    <%end%>
+    myChart.setSize(1250, 300);
+    myChart.setAxisValuesNumberY(11);
+
+    myChart.setIntervalStartY(0);
+    myChart.setIntervalEndY(<%= @max_data%>);
+    myChart.setLabelX([0,'00']);
+    myChart.setLabelX([1,'01']);
+    myChart.setLabelX([2,'02']);
+    myChart.setLabelX([3,'03']);
+    myChart.setLabelX([4,'04']);
+    myChart.setLabelX([5,'05']);
+    myChart.setLabelX([6,'06']);
+    myChart.setLabelX([7,'07']);
+    myChart.setLabelX([8,'08']);
+    myChart.setLabelX([9,'09']);
+    myChart.setLabelX([10,'10']);
+    myChart.setLabelX([11,'11']);
+    myChart.setLabelX([12,'12']);
+    myChart.setLabelX([13,'13']);
+    myChart.setLabelX([14,'14']);
+    myChart.setLabelX([15,'15']);
+    myChart.setLabelX([16,'16']);
+    myChart.setLabelX([17,'17']);
+    myChart.setLabelX([18,'18']);
+    myChart.setLabelX([19,'19']);
+    myChart.setLabelX([20,'20']);
+    myChart.setLabelX([21,'21']);
+    myChart.setLabelX([22,'22']);
+    myChart.setLabelX([23,'23']);
+    myChart.setLabelX([24,'24']);
+
+    myChart.setAxisValuesNumberX(5);
+    myChart.setShowXValues(false);
+    myChart.setTitleColor('#454545');
+    myChart.setAxisValuesColor('#454545');
+    myChart.setLineColor('#A4D314', 'green');
+    myChart.setLineColor('#BBBBBB', 'gray');
+    myChart.setTooltip([0,' ']);
+    myChart.setTooltip([1,' ']);
+    myChart.setTooltip([2,' ']);
+    myChart.setTooltip([3,' ']);
+    myChart.setTooltip([4,' ']);
+    myChart.setTooltip([5,' ']);
+    myChart.setTooltip([6,' ']);
+    myChart.setTooltip([7,' ']);
+    myChart.setTooltip([8,' ']);
+    myChart.setTooltip([9,' ']);
+    myChart.setTooltip([10,' ']);
+    myChart.setTooltip([11,' ']);
+    myChart.setTooltip([12,' ']);
+    myChart.setTooltip([13,' ']);
+    myChart.setTooltip([14,' ']);
+    myChart.setTooltip([15,' ']);
+    myChart.setTooltip([16,' ']);
+    myChart.setTooltip([17,' ']);
+    myChart.setTooltip([18,' ']);
+    myChart.setTooltip([19,' ']);
+    myChart.setTooltip([20,' ']);
+    myChart.setTooltip([21,' ']);
+    myChart.setTooltip([22,' ']);
+    myChart.setTooltip([23,' ']);
+    myChart.setTooltip([24,' ']);
+    myChart.setFlagColor('#9D16FC');
+    myChart.setFlagRadius(4);
+    myChart.setAxisPaddingRight(90);
+    myChart.setLegendShow(true);
+    myChart.setLegendPosition(1200, 80);
+    myChart.setLegendForLine('blue', '<%=@date.to_s[5,5]%>');
+    myChart.setLegendForLine('green', '<%=@middle_date.to_s[5,5]%>');
+    myChart.setLegendForLine('gray', '<%=@last_date.to_s[5,5]%>');
+    myChart.draw();
+
+</script>
+
+
+</body>
+</html>

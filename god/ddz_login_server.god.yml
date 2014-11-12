@@ -1,0 +1,6 @@
+servers: 2
+socket: /tmp/rtddz_login_server.sock
+#user: jeffcao
+#group: jeffcao
+chdir: /data/local/game/ddz/deploy/login_server
+pid: tmp/pids/thin.pid

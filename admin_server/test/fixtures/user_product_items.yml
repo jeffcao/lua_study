@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  game_id: 1
+  item_name: MyString
+  item_note: MyString
+  cate_module: MyString
+  using_point: MyString
+  beans: 1
+  item_feature: MyString
+
+two:
+  user_id: 1
+  game_id: 1
+  item_name: MyString
+  item_note: MyString
+  cate_module: MyString
+  using_point: MyString
+  beans: 1
+  item_feature: MyString

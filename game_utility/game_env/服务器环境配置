@@ -1,0 +1,225 @@
+0. 创建 doudizhu 用户
+useradd doudizhu
+passwd doudizhu
+
+sudo yum install wget tar openssl-devel zlib-devel gcc gcc-c++ make autoconf readline-devel curl-devel expat-devel gettext-devel
+
+
+1. 配置 ruby
+
+Installing libyaml
+
+$ wget http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz
+$ tar xzvf yaml-0.1.4.tar.gz
+$ cd yaml-0.1.4
+$ ./configure --prefix=/usr/local
+$ make
+$ make install
+
+Install ruby
+
+wget ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p448.tar.gz
+$ tar xzvf ruby-1.9.3-p448.tar.gz
+$ cd ruby-1.9.3-p448
+./configure --enable-shared --enable-pthread --prefix=/data/local/ddz_env/ruby-1.9.3-p448
+make 
+sudo make install
+
+
+
+ossl_pkey_ec.c:815: error: ‘EC_GROUP_new_curve_GF2m’ undeclared (first use in this function)
+————————————————————————————
+即修改ext/openssl/ossl_pkey_ec.c代码如下：
+
+http://blog.csdn.net/iefreer/article/details/18828515
+
+
+重新编译：
+
+
+
+
+
+
+cd /usr/local
+sudo ln -s /data/local/ddz_env/ruby-1.9.3-p448 ruby
+
+sudo /usr/local/ruby/bin/gem install rails
+
+
+2. 配置 redis
+
+Install tcl
+wget http://prdownloads.sourceforge.net/tcl/tcl8.6.1-src.tar.gz
+tar -xzvf tcl8.6.1-src.tar.gz
+cd tcl8.6.1
+cd unix/
+./configure
+make 
+sudo make install
+
+Install reids
+
+tar zxvf redis-2.4.14.tar.gz # 解压缩
+4
+mv redis-2.4.14 /usr/local/redis
+5
+cd /usr/local/redis
+6
+make
+7
+make test # 如没有安装tcl，这里会出错
+
+http://www.tcl.tk/doc/howto/compile.html
+
+mv redis-2.6.16 /data/local/ddz_env/
+cd /data/local/ddz_env/redis-2.6.16/
+make
+make PREFIX=/data/local/ddz_env/redis-2.6.16 install
+
+
+redis default conf:
+6379.conf
+
+
+redis 作为 service 自动启动
+redis-server
+
+用这个脚本管理之前，需要先配置下面的内核参数，否则Redis脚本在重启或停止redis时，将会报错，并且不能自动在停止服务前同步数据到磁盘上：
+
+vi /etc/sysctl.conf
+
+vm.overcommit_memory = 1
+
+然后应用生效：
+sysctl -p
+
+cp redis-server /etc/init.d/
+chmod 755 /etc/init.d/redis-server
+chkconfig --add redis-server
+chkconfig --level 345 redis-server on
+chkconfig --list redis-server
+
+3. 配置 mysql client
+sudo yum -y groupinstall "MySQL Database client"
+
+4. 配置 nginx
+sudo yum install -y gcc ruby-devel libxml2 libxml2-devel libxslt libxslt-devel  GD library
+yum install gd gd-devel
+
+wget http://nginx.org/download/nginx-1.4.3.zip
+wget http://sourceforge.net/projects/pcre/files/pcre/8.33/pcre-8.33.tar.gz/download
+
+./configure --prefix=/data/local/ddz_env/nginx-1.4.3 --user=nginx --group=nginx --with-poll_module --with-file-aio --with-ipv6 --with-http_ssl_module --with-http_realip_module --with-http_addition_module --with-http_xslt_module --with-http_image_filter_module --with-http_sub_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-http_gzip_static_module --with-http_random_index_module --with-http_secure_link_module --with-http_degradation_module --with-http_stub_status_module --with-mail --with-mail_ssl_module --with-http_realip_module --with-pcre=/data/local/game/temp/pcre-8.33
+
+make 
+sudo make install
+
+nginx config
+nginx-server
+
+cp nginx-server /etc/init.d/nginx
+chmod +x /etc/init.d/nginx
+chkconfig --add nginx
+chkconfig nginx on
+
+
+配置 mongodb
+
+
+5. 配置 git
+
+
+       # yum -y install zlib-devel openssl-devel perl cpio expat-devel gettext-devel 
+       yum install perl-ExtUtils-MakeMaker
+
+       # yum install autoconf 
+      
+
+       当然在安装这些以来之前，可以先确认上面的那些以来已经安装了，shell命令如下：
+
+       # rpm -qa | grep zlib-devel 
+      
+
+       第二步，下载git的tar文件和解压：
+
+       # wget http://git-core.googlecode.com/files/git-1.8.3.2.tar.gz 
+       # chmod +x git-1.8.3.2.tar.gz 
+       # tar xzvf git-1.8.3.2.tar.gz 
+
+	   第三步，开始安装：
+
+       # cd git-1.8.3.2 
+       # autoconf 
+       # ./configure --with-curl=/opt/git 
+       # make 
+       # make install 
+
+6. 设置 最大文件打开数量
+
+       vi /etc/security/limits.conf
+       加入如下内容：
+       doudizhu soft nofile 655360
+       doudizhu hard nofile 655360
+       nginx soft nofile 655360
+       nginx hard nofile 655360
+
+       vi /etc/sysctl.conf
+       加入如下内容：
+       fs.file-max = 2390251
+
+       Then save and close the file. Users need to log out and log back in again to changes take effect or they can just type the following command:
+
+       # sysctl -p
+
+
+bundle install:
+
+yum install mysql-devel gcc make
+gem install mysql2 -v '0.3.13'
+gem install nokogiri -v '1.6.3.1'
+
+
+
+
+UCloud账号：25407046@szreton.com
+密码：reton321000
+
+主机 root密码：yy_0755_email
+
+ddzdeploy@DdzDeploy
+rtddz@RuiTong_ddz
+
+MySql root密码：yy_0755_email_db
+rtddz@RuiTong_ddz, ddz_dep
+
+Mongo 密码：yy_0755_email_db_mo
+ddzuser@ddz123456
+
+后台管理账号;
+rtadmin@rtgame.com  / rtGameAdmin
+
+
+在 DNS 手机连接网络的 dns 中添加如下解析：
+180.150.187.129 rtddz.admin.com rtddz.login.com rtddz.hall.com rtddz.game.com rtddz.message.com rtddz.charge.com rtddz.mock.com
+
+后台管理url:
+http://rtddz.admin.com/admin
+后台管理账号;
+rtadmin@rtgame.com  / rtGameAdmin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

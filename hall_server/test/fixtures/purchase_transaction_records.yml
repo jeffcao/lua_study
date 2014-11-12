@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  request_id: MyString
+  operator_user_id: 1
+  request_url: MyString
+  request_message: MyString
+  response_message: MyString
+  request_ip: MyString
+  request_time: 2013-06-20 13:52:41
+  response_time: 2013-06-20 13:52:41
+  elapsed_time: 2013-06-20 13:52:41
+
+two:
+  request_id: MyString
+  operator_user_id: 1
+  request_url: MyString
+  request_message: MyString
+  response_message: MyString
+  request_ip: MyString
+  request_time: 2013-06-20 13:52:41
+  response_time: 2013-06-20 13:52:41
+  elapsed_time: 2013-06-20 13:52:41

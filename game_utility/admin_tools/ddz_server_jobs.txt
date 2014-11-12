@@ -1,0 +1,9 @@
+04 00 * * * cd /data/local/game/deploy/game_job/game_cron_task && /usr/local/ruby/bin/ruby arrange_match.rb > /dev/null
+*/1 * * * * cd /data/local/game/deploy/game_job/game_cron_task && /usr/local/ruby/bin/ruby match_monitor.rb > /dev/null
+*/30 * * * * cd /data/local/game/deploy/game_job/game_cron_task && /usr/local/ruby/bin/ruby user_mobile_charge_list.rb > /dev/null
+*/10 * * * * cd /data/local/game/deploy/game_job/game_cron_task && /usr/local/ruby/bin/ruby collect_game_message.rb > /dev/null
+*/30 * * * * cd /data/local/game/deploy/game_job/game_cron_task && /usr/local/ruby/bin/ruby prop_expired_monitor.rb > /dev/null
+*/30 * * * * cd /data/local/game/deploy/game_job/game_cron_task && /usr/local/ruby/bin/ruby user_score_list.rb >/dev/null
+03 00 * * 0 cd /data/local/game/deploy/game_job && /usr/local/ruby/bin/ruby week_0_00.rb >/dev/null
+03 00 * * 1 cd /data/local/game/deploy/game_job && /usr/local/ruby/bin/ruby week_01_00.rb >/dev/null
+58 23 * * * cd /data/local/game/deploy/game_job/game_cron_task && /usr/local/ruby/bin/ruby ddz_sheet.rb > /dev/null

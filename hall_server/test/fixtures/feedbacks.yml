@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  brand: 
+  model: MyString
+  display: MyString
+  os_release: MyString
+  content: MyText
+  manufactory: MyString
+  string: MyString
+
+two:
+  user_id: 1
+  brand: 
+  model: MyString
+  display: MyString
+  os_release: MyString
+  content: MyText
+  manufactory: MyString
+  string: MyString

@@ -1,0 +1,72 @@
+%title hello
+
+%table(class="index_table index" )
+  %tr.odd
+    %td 游戏服务器实例:
+    %td
+      %input(id="instances" value= "#{@instances}" type="text" style="width:500px")
+  %tr.even
+    %td 注册用户总数:
+    %td
+      %input(id="user_count" value= "#{@user_count}" type="text")
+  %tr.odd
+    %td 在线用户总数:
+    %td
+      %input(id="online_count" type="text" value="#{@online_count}" autocomplete="true" )
+
+  %tr.even
+    %td 游戏房间总数:
+    %td
+      %input(id="room_count" type="text" value="#{@room_count}" )
+
+  %tr.odd
+    %td 开放房间数字:
+    %td
+      %input(id="online_room" type="text" value="#{@online_room}" )
+  %tr.even
+    %td 桌子总数:
+    %td
+      %input(id="table_count" type="text" value="#{@table_count}" )
+  -#%tr.odd
+  -#  %td 登录服务连接数:
+  -#  %td
+  -#    %input(id="login_con_count" type="text" value="#{@login_con_count}" )
+  -#%tr.even
+  -#  %td 大厅服务连接数:
+  -#  %td
+  -#    %input(id="hall_con_count" type="text" value="#{@hall_con_count}" )
+  -#%tr.odd
+  -#  %td 游戏服务连接数:
+  -#  %td
+  -#    %input(id="game_con_room" type="text" value="#{@game_con_count}" )
+
+%br
+%br
+%br
+= link_to "在线用户列表", "online_players"
+&nbsp &nbsp &nbsp
+= link_to "游戏桌子列表", "game_tables"
+&nbsp &nbsp &nbsp
+= link_to "游戏房间列表", "room_msg"
+&nbsp &nbsp &nbsp
+= link_to "桌子上用户信息", "table_user"
+&nbsp &nbsp &nbsp
+= link_to "订单信息", "charge_user"
+&nbsp &nbsp &nbsp
+= link_to "商品映射", "product_map"
+&nbsp &nbsp &nbsp
+= link_to "房间访问UI图示", "visit_count"
+&nbsp &nbsp &nbsp
+= link_to "用户行为图示", "bean_distribution"
+
+%button(id="btnRefresh") 实时刷新
+
+
+-#table>
+-#    <tr><td>user_id:</td><td><input id="user_id" style="width:300px" autocomplete  type="text" value="123" /></td></tr>
+-#    <tr><td>nick_name:</td><td><input id="name" style="width:300px" autocomplete  type="text" value="nick_name" /></td></tr>
+-#    <tr><td>score:</td><td><input id="score" style="width:300px" autocomplete  type="text" value="1000" /></td></tr>
+-#    <tr><td>age:</td><td><input id="age" style="width:300px" autocomplete  type="text" value="4" /></td></tr>
+-#    <tr><td><button id="btnRefresh">Refresh</button></td></tr>
+-#    <tr><td><button id="btnPlayers">online players</button></td></tr>
+-#</table>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>hello</title>
+  <meta content="authenticity_token" name="csrf-param" />
+</head>
+<body>
+<table>
+  <tr><td>用户ID</td><td>用户昵称</td><td>用户性别</td><td>用户积分</td><td>用户所在桌子</td><td>用户所在房间</td></tr>
+  <% @a.each do |id|%>
+  <tr><td><%= id %></td></tr>
+  <% end %>
+  <tr><td><button id="onplayer">刷新</button></td></tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<h1>资源包上传</h1>
+<%= form_for :mytest,:url => resource_upload_admin_resource_updates_path, :html =>{:multipart => true} do |f| %>
+    版本号:  <input  name="version">&nbsp &nbsp &nbsp
+    文件名称:  <input  name="tmp_name" size="50">&nbsp &nbsp &nbsp
+
+    适用的环境:<select name="env">
+    <option value="test">测试</option>
+    <option value="dev">开发</option>
+    <option value="prod">生产</option>
+    </select><br/><br/>
+    <%
+       @apply_app_id = []
+       partners = Partmer.all
+       partners.each do |p|
+         @apply_app_id.push(p.partner_appid)
+       end
+       @apply_app_id = @apply_app_id.join(",")
+       @apply_app_id = "1003,1004,1005" if partners.blank?
+    %>
+    适用的appid:&nbsp&nbsp&nbsp<textarea name="apply_app_id" rows="2" cols="4"><%= @apply_app_id%></textarea>
+    <%= f.file_field :myfile %><br/><br/>
+    <%= f.submit "resource_upload" %>
+<% end %>

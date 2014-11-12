@@ -1,0 +1,1 @@
+{ "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "ns" : "test.get_mobile_charge_logs", "name" : "_id_" } ] }

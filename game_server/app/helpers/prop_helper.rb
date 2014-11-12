@@ -1,0 +1,1 @@
+../../../model_module/helper/prop_helper.rb

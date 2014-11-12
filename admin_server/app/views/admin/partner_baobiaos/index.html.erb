@@ -1,0 +1,84 @@
+<%= form_tag("/admin/partner_baobiaos/cx", method: "post") do %>
+    <div class="field" align="center" xmlns="http://www.w3.org/1999/html">
+      日期:
+      <select name="date">
+        <% unless @date.nil? %>
+            <option><%= @date %></option>
+        <% end %>
+        <% @select_date.each do |select_date| %>
+            <option><%= select_date["date"] %></option>
+        <% end %>
+      </select>&nbsp
+      <select name="begin_day">
+        <% (1..31).each do |begin_day| %>
+            <option <%= "selected" if begin_day.to_i == @begin_day.to_i %>><%= begin_day<10 ? "0#{begin_day}" : begin_day %></option>
+        <% end %>
+      </select>至--<select name="end_day">
+      <% (1..31).each do |end_day| %>
+          <option <%= "selected" if end_day.to_i == @end_day.to_i %>><%= end_day<10 ? "0#{end_day}" : end_day %></option>
+      <% end %></select>&nbsp
+      <% if @role != "cp" %>
+          渠道商：
+          <select name="partner">
+            <% unless @partner.nil? %>
+                <option value=<%="#{@partner}"%>><%=@partner_msg["#{@partner}"] %></option>
+            <% end %>
+            <% @partner_msg.each do |key, value| %>
+                <option value=<%="#{key}" %>>
+                  <%= "#{value}" %></option>
+            <% end %>
+          </select>
+      <% end %>
+
+      <button id="button" type="submit">查询</button>
+    </div>
+    <table class="index_table index">
+      <tr>
+        <th class="sortable sorted-desc id">日期</th>
+        <th class="sortable sorted-desc id">总注册用户数字</th>
+        <th class="sortable sorted-desc id">合作方ID</th>
+        <th class="sortable sorted-desc id">当日新注册用户数</th>
+        <th class="sortable sorted-desc id">当日总登陆用户数</th>
+        <th class="sortable sorted-desc id">当日充值总金额</th>
+        <th class="sortable sorted-desc id">次日留存数</th>
+        <th class="sortable sorted-desc id">三日留存数</th>
+        <th class="sortable sorted-desc id">七日留存数</th>
+        <th class="sortable sorted-desc id">次日留存百分比</th>
+        <th class="sortable sorted-desc id">三日留存百分比</th>
+        <th class="sortable sorted-desc id">七日留存百分比</th>
+      </tr>
+      <% i=1 %>
+      <% @records.each do |record| %>
+          <% i = i + 1 %>
+          <tr class="<%= i%2==0 ? "odd" : "even" %>">
+            <td><%= record["date"] %></td>
+            <td><%= record["total_users_count"] %></td>
+            <td><%= record["appid"] %></td>
+            <td><%= record["add_count"] %></td>
+            <td><%= record["login_count"] %></td>
+            <td><%= (record["consume_count"]/100).round(2) %></td>
+            <td><%= record["one_day_left_user"].to_i %></td>
+            <td><%= record["three_day_left_user"].to_i %></td>
+            <td><%= record["seven_day_left_user"].to_i %></td>
+            <td><%= record["one_day_left_user_rate"].to_s+"%" %></td>
+            <td><%= record["three_day_left_user_rate"].to_s+"%" %></td>
+            <td><%= record["seven_day_left_user_rate"].to_s+"%" %></td>
+          </tr>
+      <% end %>
+      <tr>
+        <th class="sortable sorted-desc id">日期</th>
+        <th class="sortable sorted-desc id">总注册用户数字</th>
+        <th class="sortable sorted-desc id">合作方ID</th>
+        <th class="sortable sorted-desc id">当日新注册用户数</th>
+        <th class="sortable sorted-desc id">当日总登陆用户数</th>
+        <th class="sortable sorted-desc id">当日充值总金额</th>
+        <th class="sortable sorted-desc id">次日留存数</th>
+        <th class="sortable sorted-desc id">三日留存数</th>
+        <th class="sortable sorted-desc id">七日留存数</th>
+        <th class="sortable sorted-desc id">次日留存百分比</th>
+        <th class="sortable sorted-desc id">三日留存百分比</th>
+        <th class="sortable sorted-desc id">七日留存百分比</th>
+      </tr>
+    </table>
+<% end %>
+<h4>当月实际应该结算金额：<%= @month_account.account unless @month_account.nil? %></h4>

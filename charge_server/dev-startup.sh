@@ -1,0 +1,3 @@
+#!/bin/sh
+bundle exec thin -s2 -S /tmp/rtddz_charge_server.sock -e development start
+#bundle exec thin -s1 -p 5002 -e development start

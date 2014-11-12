@@ -1,0 +1,33 @@
+<%= form_tag "" do %>
+    <div class="field" align="center">
+      <%= label_tag '查询日期:' %>
+      <input name="date" value="<%= @date  %>">&nbsp &nbsp
+      <button id="button" type="submit">查询</button>
+    </div>
+<% end %>
+<table class="index_table index">
+  <tr class="odd">
+    <td>用户帐号</td>
+    <td>用户昵称</td>
+    <td>手机号码</td>
+    <td>号码归属地</td>
+    <td>排行榜名次</td>
+    <td>金额</td>
+    <td>index</td>
+  </tr>
+  <tr class="even">
+    <td>51870</td>
+    <td>用户昵称</td>
+    <td>13632702673</td>
+    <td>广东深圳</td>
+    <td>2</td>
+    <td>10.0</td>
+  </tr>
+  <% @records.each do |record| %>
+      <tr class="even">
+        <td>桌子ID:</td>
+        <td><%= table_user[:table_id] %></td>
+      </tr>
+  <% end %>
+</table>
+

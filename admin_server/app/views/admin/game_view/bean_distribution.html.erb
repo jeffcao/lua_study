@@ -1,0 +1,110 @@
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+<%= form_tag("/admin/bean_distribution", method: "post") do %>
+    <center>
+      <h3>选择月份：<select name="month" id="city_id">
+        <% unless @month.nil? %>
+            <option value="<%= @month %>"><%= @month %></option>
+        <% end %>
+        <% @date.each do |month| %>
+            <option value="<%= month %>"><%= month %></option>
+        <% end %>
+      </select>&nbsp &nbsp
+        <button id="button" type="submit">查询</button>
+      </h3>
+    </center><br>
+    <center><h2>用户豆子分布图</h2></center>
+    <div style="text-align:center">
+      <table border="0" cellspacing="0" cellpadding="0" width="100%">
+        <tr>
+          <td>
+            <table class="index_table index">
+              <tr class="odd" bgcolor="#d9e4ec">
+                <th class="sortable sorted-desc id">豆子数范围</th>
+                <th class="sortable sorted-desc id">用户数量</th>
+              </tr>
+              <% i=0 %>
+              <% @beans.each do |beans| %>
+                  <% if i%2 == 0 %>
+                      <% style = "odd" %>
+                  <% else %>
+                      <% style = "even" %>
+                  <% end %>
+
+                  <tr class=<%= style %>>
+                    <td><%= beans %></td>
+                    <td><%= @bean_data[beans] %></td>
+                  </tr>
+                  <% i = i + 1 %>
+              <% end %>
+
+            </table>
+          </td>
+          <td valign="top"><%= bar_chart @bean_data %></td>
+        </tr>
+      </table>
+    </div>
+    <center><h2>牌局对话分布</h2></center>
+    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+      <tr>
+        <td>
+          <table class="index_table index">
+            <tr class="odd" bgcolor="#d9e4ec">
+              <th class="sortable sorted-desc id">对话id</th>
+              <th class="sortable sorted-desc id">内容</th>
+              <th class="sortable sorted-desc id">当月使用总次数</th>
+            </tr>
+            <% i=0 %>
+            <% @dialogue.sort_by { |a| a[1] }.each do |tmp_data| %>
+                <% if i%2 == 0 %>
+                    <% style = "odd" %>
+                <% else %>
+                    <% style = "even" %>
+                <% end %>
+
+                <tr class=<%= style %>>
+                  <td><%= tmp_data[0] %></td>
+                  <td>你的牌打的太好了</td>
+                  <td><%= tmp_data[1] %></td>
+                </tr>
+                <% i = i + 1 %>
+            <% end %>
+          </table>
+        </td>
+        <td><%= bar_chart @dialogue %>
+        </td>
+      </tr>
+    </table>
+    <center><h2>vip用户统计</h2></center>
+    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+      <tr>
+        <td>
+          <table class="index_table index">
+            <tr class="odd" bgcolor="#d9e4ec">
+              <th class="sortable sorted-desc id">vip等级</th>
+              <th class="sortable sorted-desc id">当月总用户</th>
+            </tr>
+            <% i=0 %>
+            <% @vip.sort_by { |a| a[1] }.each do |tmp_data| %>
+                <% if i%2 == 0 %>
+                    <% style = "odd" %>
+                <% else %>
+                    <% style = "even" %>
+                <% end %>
+
+                <tr class=<%= style %>>
+                  <td><%= tmp_data[0] %></td>
+                  <td><%= tmp_data[1] %></td>
+                </tr>
+                <% i = i + 1 %>
+            <% end %>
+          </table>
+        </td>
+        <td><%= bar_chart @vip %>
+        </td>
+      </tr>
+    </table>
+
+
+<% end %>
+
+

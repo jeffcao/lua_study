@@ -1,0 +1,20 @@
+<table class="index_table index">
+  <tr>
+    <th class="sortable sorted-desc id">用户id</th>
+    <th class="sortable sorted-desc id">金额</th>
+    <th class="sortable sorted-desc id">金额详细来源</th>
+    <th class="sortable sorted-desc id">金额类型</th>
+  </tr>
+  <% i = 1%>
+  <% @records.each do |record|%>
+  <tr class="<%= i%2==0 ? "odd" : "even" %>">
+      <td><%=record.user_id %></td>
+      <td><%=record.num %></td>
+      <td><%=record.source %></td>
+      <td><%=record.mobile_type %></td>
+    <% i=i+1 %>
+  </tr>
+  <% end %>
+</table>
+
+

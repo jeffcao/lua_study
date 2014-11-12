@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  consume_code: MyString
+  type: 1
+  game_product_id: 1
+
+two:
+  consume_code: MyString
+  type: 1
+  game_product_id: 1

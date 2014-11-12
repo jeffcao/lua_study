@@ -1,0 +1,15 @@
+
+<%= form_for :mytest,:url => match_arrage_admin_match_arrangements_path do |f| %>
+    <div id="t" style="display:none;"><input name="id" type="text" value="<%= @id %>"/></div>
+    房间类型: <input name="room_type" type="text" value="<%=@record.nil? ? []:@record.room_type %>" /><br><br>
+    周一比赛: <input  name="monday" type="text" value="<%=@record.nil? ? []:@record.monday.to_json %>"/><br><br>
+    周二比赛 :<input  name="tuesday" type="text" value="<%=@record.nil? ? []:@record.tuesday.to_json %>"/><br><br>
+    周三比赛: <input  name="wednesday" type="text" value="<%=@record.nil? ? []:@record.wednesday.to_json %>"/><br><br>
+    周四比赛: <input  name="thursday" type="text" value="<%=@record.nil? ? []:@record.thursday.to_json %>" /><br><br>
+    周五比赛: <input  name="friday" type="text" value="<%=@record.nil? ? []:@record.friday.to_json %>"/><br><br>
+    周六比赛: <input name="saturday" type="text" value="<%=@record.nil? ? []:@record.saturday.to_json %>"/><br><br>
+    周日比赛: <input name="sunday" type="text" value="<%=@record.nil? ? []:@record.sunday.to_json %>"/><br><br>
+    注:填写比赛格式应参考如下内容：<h3><font color="red">{"entry_fee":2000, "match_ante":500, "time_plan":[{"begin_time":"00:00", "duration":15, "count":96}]}</font></h3><br><br>
+    <%= f.submit "确定提交" %>
+<% end %>
+

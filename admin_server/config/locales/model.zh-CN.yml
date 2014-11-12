@@ -1,0 +1,215 @@
+zh-CN:
+  attributes:
+    platform: 游戏平台
+    total_day_money: 当日充值总金额
+    add_exp_user: 日新增付费用户
+    day_exp_user: 日付费用户
+    total_exp_user: 总付费用户
+    add_day_user: 当日新增用户数
+    total_user: 总用户
+    total_online_time: 总在线时长
+    day_login_user: 活跃用户数字
+    avg_hour_online: 每小时在线人数
+    day_max_online: 当日最高在线人数
+    date: 日期
+    operator_type: 类别
+    consume_code: 计费代码
+    max_score: 最高积分
+    min_score: 最低积分
+    score: 积分
+    montent: 时机
+    content: 内容
+    port: 端口
+    domain_name: 入口地址
+    room_type: 房间类别
+    max_qualification: 最高积分
+    min_qualification: 最少积分
+    ante: 底注
+    activity_content: 活动内容
+    activity_type: 活动类别
+    activity_parm: 活动参数
+    activity_model: 活动对应模版
+    activity_memo: 活动说明
+    activity_bject: 活动对象
+    activity_name: 活动名字
+    week_date: 星期
+    zz_word: 正则
+    word: 敏感词
+    mobile: 电话
+    name: 姓名
+    item_type: 类别
+    item_sort: 排序
+    item_feature: 有效期
+    beans: 豆子
+    partner_name: 渠道商名称
+    partner_appid: 渠道商ID
+    using_point: 使用时间
+    cate_module: 对应模版
+    item_note: 道具说明
+    item_name: 道具名称
+    product_sort: 排序
+    icon: 图标
+    state: 状态
+    note: 说明
+    sale_limit: 极限
+    price: 价格
+    product_type: 道具类别
+    product_name: 道具名称
+    title: 主题
+    url: 微博地址
+    avatar: 图像
+    last_login_at: 最后登陆时间
+    nick_name:    昵称
+    email:        邮箱
+    password:     密码
+    appid:        合作方
+    version:      当前版本
+    begin_version: 原始版本
+    msisdn:       手机
+    imsi:         IMSI
+    mac:          MAC
+    imei:         IMEI
+    model:        型号
+    os_release:   发行版本
+    manufactory:  制造商
+    brand:        品牌
+    display:      展示
+    fingerprint:  指纹
+    operator:     运营商
+    gender:       性别
+    birthday:     生日
+    owner:        所有方
+    sender:       发送方
+    status:       状态
+    read_at:      阅读时间
+
+    latitude:     纬度
+    longitude:    经度
+    start_time:   开始时间
+    end_time:     结束时间
+
+    comment:      备注
+
+    last_login_at: 最后登录时间
+    last_login_ip: 最后登录IP
+
+    created_at:    创建时间
+    updated_at:   更新时间
+    online_time_count: 在线时间统计
+    login_count: 用户登陆统计
+    paiju_time_count: 总牌局时长
+    paiju_count: 当日牌局总数
+    paiju_break_count: 牌局中断次数
+    bank_broken_count: 破产统计
+    special_day: 特殊日子
+    entry_fee: 报名费
+    match_ante: 比赛底注
+    time_plan: 时间安排
+    created_by: 录入人
+    code: 代码
+    public_key: 公钥
+    first: 第一名奖励
+    second: 第二名奖励
+    third: 第三奖励
+    fourth: 第四奖励
+    fifth: 第五奖励
+    sixth: 第六奖励
+    seventh: 第七奖励
+    eighth: 第八奖励
+    ninth: 第九奖励
+    tenth: 第十奖励
+    match_type: 比赛类型
+    short_desc: 短标题描述
+    description: 详情描述
+    rule_desc: 规则描述
+    begin_date: 开始日期
+    end_date: 结束日期
+    image: 图标
+    monday: 周一
+    tuesday: 周二
+    wednesday: 周三
+    thursday: 周四
+    friday: 周五
+    saturday: 周六
+    sunday: 周日
+    match_name: 活动名称
+    total_bonsume: 消费总额
+    total_balance: 话费总额
+    get_balance: 可领话费
+    rank: 排名
+    link_man: 联系人
+    telephone: 电话
+    address: 地址
+
+  activerecord:
+    models:
+      user:           用户
+      user_profile:   用户资料
+      accept_message_user: 接受信息用户
+      activity: 活动
+      ban_word: 敏感词
+      game_product_item: 道具明细
+      game_product: 道具
+      game_product_sell_count: 道具卖出统计
+      game_room_url: 游戏房间配置
+      game_score_info: 用户豆子列表
+      game_teach: 游戏教学
+      level: 等级称号
+      prop_consume_code: 道具代码
+      share_weibo: 微博分享
+      system_setting: 系统设置
+      super_user: 管理员
+      user_game_teach: 用户游戏教学
+      game_room: 游戏房间
+      game_view: 游戏概况
+      ddz_sheet: 游戏总表
+      user_sheet: 用户明细
+      apk_signature_public_key: 签名公钥
+      ml_test: 消息录入
+      blacklist: 黑名单
+      game_match: 比赛详情
+      special_match_bonus_setting: 特殊比赛奖励安排
+      match_bonus_setting: 比赛奖励安排
+      match_desc: 比赛规则详情
+      special_match_arrangement: 特殊比赛安排
+#      system_message: 系统消息
+      match_arrangement: 普通比赛安排
+      mobile_list: 话费排行
+      user_total_consume_list: 用户总消费排行
+      distribute_mobile_charge: 每天话费比赛排名详情
+      market_count: 每天领取话费详情
+      user_mobile_list: 话费排行
+      personal_get_mobile_charge: 用户话费明细
+      user_credit_setup: 用户消费上限设置
+      partner_baobiao: 渠道商报表
+      partmer: 渠道商录入
+      match_system_setting: 比赛参数设置
+      ddz_baobiao: 斗地主报表
+      prop_consume_code_for_wiipay: 微派消费代码
+      prop_consume_code_for_sky: 斯凯消费代码
+      prop_consume_code_for_unicom: 联通消费代码
+      prop_consume_code_for_astep: 乐易付消费代码
+      prop_consume_code_for_astepex: 乐易付有信消费代码
+      user_score_list: 用户积分排行
+      every_hour_online_user: 每小时在线人数
+      user_mobile_source: 话费来源
+      user_change_mobile: 用户兑换话费
+      partner_month_account: 合作商报表
+      kefu_pay_mobile: 客服充值表
+      pay_mobile: 客服充值录入
+      every_hour_huo_yue_user: 分时段活跃用户
+      huo_yue_user_tu_shi: 活跃用户图示
+
+
+
+
+
+
+
+
+
+
+
+
+
+

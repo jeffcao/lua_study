@@ -1,0 +1,71 @@
+<%= form_tag("/admin/charge_user", method: "post") do %>
+    <div class="field" align="center" xmlns="http://www.w3.org/1999/html">
+      <%= label_tag '用户ID:' %>
+      <input name="user_id" value="<%= @user_id if @user_id %>"> &nbsp &nbsp
+      状态:
+      <select name="zt"> &nbsp
+        <% action = ["处理中", "成功", "失败", "所有"] %>
+        <% if @zt %>
+            <option value= <%= @zt %>><%= action[@zt.to_i] %></option>
+        <% end %>
+        <option value="0">处理中</option>
+        <option value="1">成功</option>
+        <option value="2">失败</option>
+        <option value="3">所有</option>
+      </select>
+      &nbsp &nbsp
+      <button id="button" type="submit">查询</button>
+    </div>
+<% end %>
+<table class="index_table index">
+  <tr class="odd" bgcolor="#d9e4ec">
+    <th class="sortable sorted-desc id">ID</th>
+    <th class="sortable sorted-desc id">用户ID</th>
+    <th class="sortable sorted-desc id">用户昵称</th>
+    <th class="sortable sorted-desc id">购买道具ID</th>
+    <th class="sortable sorted-desc id">道具名称</th>
+    <th class="sortable sorted-desc id">价钱</th>
+    <th class="sortable sorted-desc id">短信内容</th>
+    <th class="sortable sorted-desc id">状态</th>
+    <th class="sortable sorted-desc id">购买日期</th>
+  </tr>
+  <% i = 0 %>
+  <% style = "even" %>
+  <% @records.each do |record| %>
+      <% if i%2 == 1 %>
+          <% style="odd" %>
+      <% else %>
+          <% style = "even" %>
+      <% end %>
+      <% i=i+1 %>
+      <tr class="<%= style %>">
+        <td><%= record[:id] %></td>
+        <td><%= record[:user_id] %></td>
+        <td><%= record[:nick_name] %></td>
+        <td><%= record[:product_id] %></td>
+        <td><%= record[:product_name] %></td>
+        <td><%= record[:price] %></td>
+        <td><%= record[:sms] %></td>
+        <td><%= record[:action] %></td>
+        <td><%= record[:date] %></td>
+      </tr>
+  <% end %>
+</table>
+<center><a href="charge_user">首页</a>&nbsp &nbsp
+  <% if @page > 0 %>
+      <a href="charge_user?page=<%= @page-1 %><%= "&zt=#{@zt}" unless @zt.nil? %><%= "&user_id=#{@user_id}" unless @user_id.nil? %>">上一页</a>
+  <% else %>
+      上一页
+  <% end %>&nbsp &nbsp
+  <% if @page < @page_count %>
+      <a href="charge_user?page=<%= @page+1 %><%= "&zt=#{@zt}" unless @zt.nil? %><%= "&user_id=#{@user_id}" unless @user_id.nil? %>">下一页 </a>
+  <% else %>
+      下一页
+  <% end %>&nbsp &nbsp
+  <% if @page < @page_count %>
+
+      <a href="charge_user?page=<%= @page_count %><%= "&zt=#{@zt}" unless @zt.nil? %><%= "&user_id=#{@user_id}" unless @user_id.nil? %>">尾页</a>
+  <% else %>
+      尾页
+  <% end %>
+</center>

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  user_product_id: 1
+  game_product_id: 1
+  product_count: 1
+  request_seq: MyString
+  request_type: MyString
+  request_command: MyString
+  request_time: 2013-06-08 17:12:34
+  operator_type: MyString
+  state: 1
+  reason: MyString
+
+two:
+  user_id: 1
+  user_product_id: 1
+  game_product_id: 1
+  product_count: 1
+  request_seq: MyString
+  request_type: MyString
+  request_command: MyString
+  request_time: 2013-06-08 17:12:34
+  operator_type: MyString
+  state: 1
+  reason: MyString

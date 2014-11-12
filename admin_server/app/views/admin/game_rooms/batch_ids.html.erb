@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>hello</title>
+  <meta content="authenticity_token" name="csrf-param" />
+</head>
+<body>
+<table>
+  <tr><td>用户总数:</td><td><input id="user_count" style="width:300px" autocomplete  type="text" value=<%= @user_count %> /></td></tr>
+  <tr><td>在线用户总数:</td><td><input id="online_count" style="width:300px" autocomplete  type="text" value=<%= @online_count %> /></tr>
+  <tr><td>房间总数:</td><td><input id="room_count" style="width:300px" autocomplete  type="text" value=<%= @room_count %> /></td></tr>
+  <tr><td>已开放房间总数:</td><td><input id="online_room" style="width:300px" autocomplete  type="text" value=<%= @online_room %> /></td></tr>
+  <tr><td><button id="btnRefresh">实时数据刷新</button></td><td><a href="online_players"><button >在线用户列表</button></a></td></tr>
+</table>
+</body>
+</html>

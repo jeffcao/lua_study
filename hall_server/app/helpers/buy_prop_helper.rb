@@ -1,0 +1,1 @@
+../../../model_module/helper/buy_prop_helper.rb

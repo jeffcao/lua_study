@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: MyString
+  game_id: MyString
+  day_max_online: 1
+  avg_hour_online: 1
+  day_login_user: 1
+  total_online_time: 1
+  total_user: 1
+  add_day_user: 1
+  total_exp_user: 1
+  day_exp_user: 1
+  add_exp_user: 1
+  total_day_money: 1
+  erpu: 1.5
+
+two:
+  date: MyString
+  game_id: MyString
+  day_max_online: 1
+  avg_hour_online: 1
+  day_login_user: 1
+  total_online_time: 1
+  total_user: 1
+  add_day_user: 1
+  total_exp_user: 1
+  day_exp_user: 1
+  add_exp_user: 1
+  total_day_money: 1
+  erpu: 1.5

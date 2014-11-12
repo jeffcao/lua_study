@@ -1,0 +1,11 @@
+
+<%= semantic_form_for :game_rooms, :url => batch_upload_admin_game_rooms_path do |f| %>
+    <%= f.inputs "Reserved IDs:" do %>
+        <%=   f.input :user_id  %>
+        <%=   f.input :id , :as => :radio %>
+    <% end %>
+    <%= f.actions do %>
+        <%= f.action :submit, :label => "提交" %>
+    <% end %>
+<% end %>
+

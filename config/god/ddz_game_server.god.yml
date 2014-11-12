@@ -1,0 +1,6 @@
+servers: 2
+socket: /tmp/ddz_game_server.sock
+#user: jeffcao
+#group: jeffcao
+chdir: /Users/jeffcao/workspace/doudizhu/game_server
+pid: tmp/pids/thin.pid

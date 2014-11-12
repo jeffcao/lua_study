@@ -1,0 +1,41 @@
+<table class="index_table index">
+  <tr class="odd">
+    <td>用户帐号</td>
+    <td>用户昵称</td>
+    <td>手机号码</td>
+    <td>归属地</td>
+    <td>运行商</td>
+    <td>累计排名</td>
+    <td>累计金额</td>
+    <td>提取金额</td>
+  </tr>
+  <% i=1 %>
+  <% @records.each do |record| %>
+      <% user = User.find(record.user_id) %>
+      <% style = i%2==0 ? "even":"odd" %>
+      <tr class="<%= style %>">
+        <td><%= user.user_id %></td>
+        <td><%= user.user_profile.nick_name %></td>
+        <td><%= user.user_profile.msisdn %></td>
+        <td><%= "深圳" %></td>
+        <td><%= "运营商" %></td>
+        <td><%= record.position %></td>
+        <td><%= user.user_profile.total_balance.to_i %></td>
+        <td><%= user.user_profile.balance %></td>
+      </tr>
+      <% i = i+1 %>
+<% end %>
+</table>
+<center><a href="mobile_lists">首页</a>&nbsp &nbsp
+  <% if @page > 0 %>
+      <a href="mobile_lists?page=<%= @page-1 %>">上一页</a>
+  <% else %>
+      上一页
+  <% end %>&nbsp &nbsp
+  <% if @page < @page_count %>
+      <a href="mobile_lists?page=<%= @page+1 %>">下一页 </a>
+  <% else %>
+      下一页
+  <% end %>&nbsp &nbsp
+  <a href="mobile_lists?page=<%= @page_count %>">尾页</a>
+</center>

@@ -1,0 +1,1 @@
+../../../model_module/config/initializers/WebSocketRails_inject.rb

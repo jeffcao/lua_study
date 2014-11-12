@@ -1,0 +1,1 @@
+../../model_module/config/preinitializer.rb

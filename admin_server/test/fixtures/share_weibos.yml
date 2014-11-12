@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  url: MyString
+  appkey: MyString
+  title: MyString
+  ralate_uid: MyString
+
+two:
+  url: MyString
+  appkey: MyString
+  title: MyString
+  ralate_uid: MyString

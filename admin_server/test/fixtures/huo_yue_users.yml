@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: MyString
+  hour: 1
+  count_1: 1
+  count_2: 1
+  count_3: 1
+  count_4: 1
+
+two:
+  date: MyString
+  hour: 1
+  count_1: 1
+  count_2: 1
+  count_3: 1
+  count_4: 1

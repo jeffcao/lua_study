@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  appid: 1
+  constme_code: MyString
+  enable: MyString
+
+two:
+  appid: 1
+  constme_code: MyString
+  enable: MyString

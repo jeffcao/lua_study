@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  version: MyString
+  md5: MyString
+  new_md5: MyString
+  specifial_code: MyString
+
+two:
+  name: MyString
+  version: MyString
+  md5: MyString
+  new_md5: MyString
+  specifial_code: MyString

@@ -1,0 +1,7 @@
+servers: 2
+socket: /tmp/login_server.sock
+#user: jeffcao
+#group: jeffcao
+chdir: /data/local/game/deploy/login_server
+pid: tmp/pids/thin.pid
+

@@ -1,0 +1,38 @@
+
+<script type="text/javascript" charset="utf-8">
+    var r_value = <%=@return_value %>
+
+    setTimeout(show_result,1)
+    function show_result()
+    {
+        if (r_value == 1)
+            alert("操作成功.")
+        else if (r_value == -1)
+            alert("未找到指定的用户.")
+    }
+
+</script>
+<%= form_tag "" do %>
+    <div class="field" align="center">
+      <table style="width:350px">
+        <tr>
+          <td style="width:50px"><%= label_tag '用户id:' %></td>
+          <td style="width:120px"><input name="userid" id="useridId" value="<%= @date %>"></td>
+          <td  style="width:180px"><button type="submit" onclick="return confirm('确定要对指定用户的透支消费清零?')">透支消费清零</button></td>
+          <td style="display: none"><input name="submitType" id="submitTypeId" value="1"></td>
+        </tr>
+      </table>
+    </div>
+<% end %>
+<%= form_tag "" do %>
+    <div class="field" align="center">
+      <table style="width:350px">
+        <tr>
+          <td style="width:50px"> </td>
+          <td style="width:120px"> </td>
+          <td style="width:180px"><button type="submit"  onclick="return confirm('确定要对所有用户的透支消费清零?')">所有用户透支消费清零</button></td>
+          <td style="display: none"><input name="submitType" id="submitTypeId" value="2"></td>
+        </tr>
+      </table>
+    </div>
+<% end %>

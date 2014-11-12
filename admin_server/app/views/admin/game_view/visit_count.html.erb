@@ -1,0 +1,96 @@
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+
+<center><h2>房间访问统计</h2></center>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+  <tr>
+    <td>
+      <table class="index_table index">
+        <tr class="odd" bgcolor="#d9e4ec">
+          <th class="sortable sorted-desc id">房间ID</th>
+          <th class="sortable sorted-desc id">房间名字</th>
+          <th class="sortable sorted-desc id">总进入次数</th>
+          <th class="sortable sorted-desc id">状态</th>
+        </tr>
+        <% state = ["正常", "维护中"] %>
+        <% i=0 %>
+        <% @rooms.each do |room| %>
+            <% if i%2 == 0 %>
+                <% style = "odd" %>
+            <% else %>
+                <% style = "even" %>
+            <% end %>
+
+            <tr class=<%= style %>>
+              <td><%= room.id %></td>
+              <td><%= room.name %></td>
+              <td><%= @data[room.id].to_i %></td>
+              <td><%= state[room.status.to_i] %></td>
+            </tr>
+            <% i = i + 1 %>
+        <% end %>
+      </table>
+    </td>
+    <td><%= bar_chart @data %></td>
+</table><br>
+<center><h2>当日登陆人数统计</h2></center>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+  <tr>
+    <td>
+      <table class="index_table index">
+        <tr class="odd" bgcolor="#d9e4ec">
+          <th class="sortable sorted-desc id">时间</th>
+          <th class="sortable sorted-desc id">登陆人数</th>
+        </tr>
+        <% i=0 %>
+        <% @login_count.each_with_index do |index| %>
+            <% if i%2 == 0 %>
+                <% style = "odd" %>
+            <% else %>
+                <% style = "even" %>
+            <% end %>
+            <tr class=<%= style %>>
+              <td><%= index[0] %></td>
+              <td><%= index[1] %></td>
+            </tr>
+            <% i = i + 1 %>
+        <% end %></table>
+      </td><td><%= column_chart @login_count  %>
+  </td></tr></table>
+
+
+<center><h2>UI系统设计</h2></center>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+  <tr>
+    <td>
+      <table class="index_table index">
+        <tr class="odd" bgcolor="#d9e4ec">
+          <th class="sortable sorted-desc id">UI_ID</th>
+          <th class="sortable sorted-desc id">访问次数</th>
+          <th class="sortable sorted-desc id">停留时间</th>
+        </tr>
+        <% i=0 %>
+        <% @ui_count.each do |ui| %>
+            <% if i%2 == 0 %>
+                <% style = "odd" %>
+            <% else %>
+                <% style = "even" %>
+            <% end %>
+
+            <tr class=<%= style %>>
+              <td><%= ui.ui_id %></td>
+              <td><%= ui.click_count.to_i %></td>
+              <td><%= ui.time_count.to_i %></td>
+            </tr>
+            <% i = i + 1 %>
+        <% end %>
+      </table>
+    </td>
+    <td><h3>访问次数：</h3><%= bar_chart @visit_data %></td>
+    <td>  <h3>停留时间：</h3><%= bar_chart @time_data %>
+    </td>
+  </tr>
+</table>
+
+
+
+

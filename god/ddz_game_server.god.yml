@@ -1,0 +1,6 @@
+servers: 6
+socket: /tmp/rtddz_game_server.sock
+#user: jeffcao
+#group: jeffcao
+chdir: /data/local/game/ddz/deploy/game_server
+pid: tmp/pids/thin.pid

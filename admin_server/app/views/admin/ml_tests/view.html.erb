@@ -1,0 +1,78 @@
+<div style="border:2px dashed #020; padding:20px;width:300px;border-color:grey;float: left;margin-bottom: 10px"
+     xmlns="http://www.w3.org/1999/html">
+  <h3>我爱斗地主推送管理</h3><br>
+  <marquee behavior="scroll" direction="up" height="30" scrollamount="1">
+    <% unless @msg.nil? %>
+        <% for key in 0..@msg.size-1 do %>
+            <% unless @msg[key].nil? %>
+                等待推送：<%= @msg[key].content %>
+                <br>
+            <% end %>
+
+        <% end %>
+    <% end %>
+  </marquee>
+</div>
+<div style="border:2px dashed  #030; padding:20px;width:400px;border-color:grey;float: left;margin-left:300px;margin-bottom: 100px">
+  <img src="../new.png"><a href="new_msg">
+    <button id="tx" value="0" name="button1" >新建</button>
+  </a>
+  <br>
+  <%= form_tag("ml_tests", method: "post") do %>
+      <img src="../0.png"><button value="0" name="button1">审核中</button><%= @publishing_count %>&nbsp &nbsp
+      <img src="../2.png"><button value="2" name="button1">审核不通过</button><%= @not_publish_count %>
+      <br>
+
+      <img src="../1.png"><button value="1" name="button1">审核通过</button><%= @published_count %>
+      <img src="../3.png"> <button value="3" name="button1">等待推送</button><%= @ready_push %>
+
+      <img src="../5.png"> <button value="5" name="button1">推送取消</button><%= @cancel_count %>
+      <br>
+  <% end %>
+</div>
+<table class="index_table index" id="tuisong" style="table-layout: fixed;">
+  <tr class="even" bgcolor="#d9e4ec">
+    <th class="sortable sorted-desc id">ID</th>
+    <th class="sortable sorted-desc id">内容</th>
+    <th class="sortable sorted-desc id">状态</th>
+    <th class="sortable sorted-desc id">录入人</th>
+    <th class="sortable sorted-desc id">审核人</th>
+    <th class="sortable sorted-desc id">录入时间</th>
+    <th class="sortable sorted-desc id">审核时间</th>
+
+  </tr>
+  <% style = "even" %>
+  <% i=0%>
+  <% @records.each do |r| %>
+      <% unless r.nil? %>
+          <% if i%2==0 %>
+              <% style="odd" %>
+          <% else %>
+              <% style="even" %>
+          <% end %>
+          <tr class="<%= style %>">
+            <td class="sortable sorted-desc id">
+              <a href='action?id=<%= r.id %>'><%= r.id %></a></td>
+            <td style="text-overflow:ellipsis; word-break:keep-all; overflow:hidden;" class="sortable sorted-desc id"><%= r.content %></td>
+            <td class="sortable sorted-desc id"><font color="red"><%= @zt[r.type.to_i] %></font></td>
+            <td class="sortable sorted-desc id"><%= r.editor %></td>
+            <td class="sortable sorted-desc id"><%= r.auditor %></td>
+            <td class="sortable sorted-desc id"><%= r.edit_time %></td>
+            <td class="sortable sorted-desc id"><%= r.audit_time %></td>
+      <% end %>
+  <% i = i+1%>
+  <% end %>
+  </tr>
+
+
+</table>
+<center> 总共<%= @total_page %>页&nbsp&nbsp
+  <% if @page > 1 %>
+      <a href="?page=<%= @page-1 %><% unless @button1.nil? %>&button1=<%=@button1 %><% end %>">
+  <% end %>上一页</a>&nbsp&nbsp 当前第<%= @page %>页 &nbsp&nbsp
+  <% if @page < @total_page %>
+      <a href="?page=<%= @page+1 %><% unless @button1.nil? %>&button1=<%=@button1 %><% end %>">
+  <% end %>下一页</a></center>
+
+
+

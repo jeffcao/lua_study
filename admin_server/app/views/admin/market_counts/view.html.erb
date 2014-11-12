@@ -1,0 +1,184 @@
+<script type="text/javascript">
+    var bbc = {};
+    bbc.getDateList = {
+        defauYearStart: 1970,
+        defauYearEnd: 2031,
+        yearHtml: function (objOption) {
+            if ($('#' + objOption.yearOjb.yearId).length == 0) {
+                alert('当前文档没有定义年份属性' + objOption.yearOjb.yearId + '值');
+                return;
+            }
+
+            var newOptions = "";
+            //增加默认月份
+            if (objOption.yearOjb.yearStart != undefined) {
+                var stringYearStart = objOption.yearOjb.yearStart;
+            } else {
+                var stringYearStart = objOption.operaterDom.defauYearStart;
+            }
+
+
+            if (objOption.yearOjb.yearEnd != undefined) {
+                var stringYearEnd = objOption.yearOjb.yearEnd;
+            } else {
+                var stringYearEnd = objOption.operaterDom.defauYearEnd;
+            }
+
+//            for(i=0;i<23;i++){
+//                newHour +=  "<option value='"+i+"'>"+i+"</option>";
+//            }
+
+            //$('#'+objOption.yearOjb.yearId).html(newOptions);
+
+
+            for (i = stringYearStart; i <= stringYearEnd; i++) {
+                newOptions += "<option value='" + i + "'>" + i + "</option>";
+            }
+
+            //写入HTML
+            $('#' + objOption.yearOjb.yearId).html(newOptions);
+        },
+        monthHtml: function (objOption) {
+            if ($('#' + objOption.monthOjb.monthId).length == 0) {
+                alert('当前文档没有定义月份属性' + objOption.monthOjb.monthId + '值');
+                return;
+            }
+
+            var newOptions = "";
+            for (i = 1; i <= 12; i++) {
+                var newi = i < 10 ? '0' + i : i;
+                newOptions += "<option value='" + newi + "'>" + newi + "</option>";
+            }
+
+            if (objOption.dayOjb != undefined) {
+                //绑定onchange事件
+                $('#' + objOption.monthOjb.monthId).bind('change', function () {
+                    objOption.operaterDom.dayHtml(objOption, 1);
+                });
+            }
+            //写入HTML
+            $('#' + objOption.monthOjb.monthId).html(newOptions);
+
+        },
+        dayHtml: function (objOption, type) { //type 0为初始数据 1为选择后数据
+            if ($('#' + objOption.dayOjb.dayId).length == 0) {
+                alert('当前文档没有定义时间天属性' + objOption.dayOjb.dayId + '值');
+                return;
+            }
+
+            var dayNum = "";
+            if (type == 1) {
+
+                //判断闰年
+                var selectedYear = $('#' + objOption.yearOjb.yearId).val();
+                var selectedMonth = $('#' + objOption.monthOjb.monthId).val();
+
+
+                var inMonth = selectedMonth < 10 ? selectedMonth.substr(-1, 1) - 1 : selectedMonth - 1;
+
+                var isLeapYear = (selectedYear % 4 == 0 && !(selectedYear % 100 == 0)) || selectedYear % 400 == 0 ? 1 : 0;
+                /*4, 6, 9, 11 月为 30 天，注意上面的 inMonth = inMonth - 1*/
+                if (inMonth == 3 || inMonth == 5 || inMonth == 8 || inMonth == 10) {
+                    dayNum = 30;
+                } else if (inMonth == 1) {/*2 月为 28 或者 29 天，视是否为闰年而定*/
+                    dayNum = 28 + isLeapYear;
+                } else {/*其它月则为 31 天*/
+                    dayNum = 31;
+                }
+            } else {
+                dayNum = 31;
+            }
+            var newOptions = "";
+            for (i = 1; i <= dayNum; i++) {
+                var newi = i < 10 ? '0' + i : i;
+                newOptions += "<option value='" + newi + "'>" + newi + "</option>";
+            }
+
+            //写入HTML
+            $('#' + objOption.dayOjb.dayId).html(newOptions);
+            return newOptions;
+
+        },
+
+
+        createListHtml: function (objOption) {
+            objOption.operaterDom.yearHtml(objOption);
+            //显示默认值
+            if (objOption.yearOjb.defaultYear != undefined) {
+                $('#' + objOption.yearOjb.yearId).val(objOption.yearOjb.defaultYear);
+            }
+
+
+            objOption.operaterDom.monthHtml(objOption);
+            if (objOption.monthOjb.defaultMonth != undefined) {
+                $('#' + objOption.monthOjb.monthId).val(objOption.monthOjb.defaultMonth);
+            }
+
+            if (objOption.dayOjb != undefined) {
+                objOption.operaterDom.dayHtml(objOption, 0);
+                if (objOption.dayOjb.defaultDay != undefined) {
+                    $('#' + objOption.dayOjb.dayId).val(objOption.dayOjb.defaultDay);
+                }
+            }
+
+        }
+
+    }
+    $(document).ready(function () {
+        var objOption = {
+            operaterDom: bbc.getDateList, //操作函数名
+            yearOjb: {
+                yearId: 'BBC_yearId',  //操作年份ID
+                yearStart: 2010,       //年份开始时间
+                yearEnd: 2015,          //年份结束时间
+                defaultYear: <%=@year%>       //默认当前显示年份
+
+            },
+            monthOjb: {
+                monthId: 'BBC_monthId',  //操作月份ID
+                defaultMonth: '<%=@month%>'          //默认月份
+            },
+            dayOjb: {
+                dayId: 'BBC_dayId',          //天ID
+                defaultDay: '<%=@day%>'             //默认天
+            }
+        }
+        bbc.getDateList.createListHtml(objOption);
+    });
+</script>
+<%= form_tag("/admin/market_counts/list",method: "post") do %>
+    <div class="field" align="center">
+      <select name="helperYear" id="BBC_yearId"></select>年
+      <select name="helperMonth" id="BBC_monthId"></select>月
+      <select name="helperDay" id="BBC_dayId"></select>日
+      <button id="button" type="submit">查询</button>
+    </div>
+<table class="index_table index">
+  <tr class="odd">
+    <td>用户帐号</td>
+    <td>用户昵称</td>
+    <td>手机号码</td>
+    <td>号码归属地</td>
+    <td>排行榜名次</td>
+    <td>金额</td>
+    <td>状态</td>
+    <td>操作</td>
+  </tr>  <% i =1 %>
+  <% @records.each do |record| %>
+      <% user = User.find_by_user_id(record.user_id)
+         list = UserMobileList.where("user_id"=>user.id).first %>
+      <tr class="<%= i%2!=0 ? "even" : "odd"  %>">
+        <td><a href="/admin/user_mobile_sources/<%= record.user_id%>"><%=record.user_id  %></a></td>
+        <td><%=list.nick_name unless list.nil? %></td>
+        <td><%= record.mobile %></td>
+        <td><%= @area["#{record.mobile}"].nil? ? "未知" : @area["#{record.mobile}"] %></td>
+        <td><%= list.position unless list.nil?  %></td>
+        <td><%= record.fee %></td>
+        <td><%= @status[record.status] %></td>
+        <td><button onclick="return confirm('确定提交')"><a href="/admin/market_counts?id=<%= record.id%>" >已充值<%=@id unless @id.nil?%></a></button></td>
+      </tr>
+      <% i= i+1 %>
+  <% end %>
+</table>
+<% end %>
+

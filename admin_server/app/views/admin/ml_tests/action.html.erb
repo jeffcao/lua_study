@@ -1,0 +1,105 @@
+<% @level = ["", "优先", "普通"] %>
+<% @position = ["","通知栏","大厅跑马灯"] %>
+<div style="border:2px dashed #020; padding:20px;width:300px;border-color:grey;float: left;margin-bottom: 10px"
+     xmlns="http://www.w3.org/1999/html">
+  <h3>我爱斗地主推送管理<%= @email %></h3><br>
+  <marquee behavior="scroll" direction="up" height="30" scrollamount="1">
+    <% unless @msg.nil? %>
+        <% for key in 0..@msg.size-1 do %>
+            <% unless @msg[key].nil? %>
+                等待推送：<%= @msg[key].content %>
+                <br>
+            <% end %>
+
+        <% end %>
+    <% end %>
+  </marquee>
+</div>
+<div style="border:2px dashed  #030; padding:20px;width:300px;border-color:grey;float: left;margin-left:300px;margin-bottom: 100px"><img src="../<%= @record["type"]%>.png">状态：
+  <h3><font color="red"><%= @zt[@record["type"].to_i] %></font></h3>
+</div>
+<br>
+<%= form_tag("tt", method: "post") do %>
+    <div style="width:1000px; height:345px; overflow-y:scroll;">
+
+      <table class="index_table index">
+        <tr class="even">
+          <td>推送内容:&nbsp<textarea name="content"><%= @record.content %></textarea></td>
+
+        </tr>
+        <tr class="even">
+          <td>推送时间:&nbsp<input name="p_time" value="<%= @record.p_time %>"><input name="id" value="<%= @id %>" style="display:none;">
+          </td>
+        </tr>
+        <tr class="even">
+          <td>优先级:&nbsp&nbsp&nbsp<select name="level">
+            <% unless @record.nil? %>
+                <option value=<%= @record.level %>><%= @level[@record.level.to_i] %> </option>
+            <% end %>
+            <option value=1>优先</option>
+            <option value=2>普通</option>
+            <option value=3>撤销</option>
+          </select> &nbsp 显示位置:<select name="position"><option value="<%= @record.position.to_i%>"><%= @position[@record.position.to_i] %></option><option value="1">通知栏</option><option value="2">大厅跑马灯</option></select></td>
+        </tr>
+        <tr class="even">
+          <td>录入人:&nbsp<input name="editor" type="area" value="<%= @record.editor %>">&nbsp
+            送审时间:<input name="edit_time" type="area" value="<%= @record.edit_time %>"></td>
+        </tr>
+
+        <tr class="even">
+          <td>审核人:&nbsp<input name="auditor" value="<%= @record.auditor %>">&nbsp
+            审核时间:<input name="audit_time" value="<%= @record.audit_time %>"></td>
+          </td>
+        </tr>
+        <tr class="even">
+          <td>审核意见:&nbsp<textarea name="advice"><%= @record.advice %></textarea></td>
+        </tr>
+        <% unless @log_record.nil? %>
+            <% for i in 0..@log_record.size-1 do %>
+                <% unless @log_record[i].nil? %>
+
+                    <tr class="even">
+                      <td>审核人:&nbsp<input name="auditor1" value="<%= @log_record[i].auditor %>">&nbsp
+                        审核时间:<input name="audit_time1" value="<%= @log_record[i].audit_time %>"></td>
+                      </td>
+                    </tr>
+                    <tr class="even">
+                      <td>审核意见:&nbsp<textarea name="advice1"><%= @log_record[i].advice %></textarea></td>
+                    </tr>
+                <% end %>
+
+            <% end %>
+        <% end %>
+
+        <tr class="even">
+          <td>
+            <% if @record["type"].to_i==0 && @current_user.email!=@record["editor"] %>
+            <button name="tongguo" value="tongguo">审核通过</button>
+            &nbsp&nbsp
+            <button name="butongguo" value="butongguo">审核不通过</button>
+
+            <% end %>
+            <% if (@record["type"].to_i==0 or @record["type"].to_i==2) && @record["editor"]==@current_user.email %>
+                <button name="edit">修改</button>
+                &nbsp&nbsp
+            <% end %>
+            <% if @record["type"].to_i==3 %>
+
+                <button name="cancel">推送取消</button>
+            <% end %>
+
+            <% if @record["type"].to_i==1 %>
+
+                <button name="tuisong">确定推送</button>
+            <% end %>
+
+            <% if @record["type"].to_i==5 %>
+
+                <button name="resume">恢复推送</button>
+            <% end %>
+
+          </td>
+        </tr>
+      </table>
+    </div>
+<% end %>

@@ -1,0 +1,16 @@
+<h1>apk包上传</h1>
+<%= form_for :mytest,:url => apk_upload_admin_apk_updates_path, :html =>{:multipart => true} do |f| %>
+   版本号:  <input  name="version"><br/><br/>
+    适用环境:  <select name="env">
+  <option value="test">测试</option>
+  <option value="prod">生产</option>
+    <option value="dev">开发</option>
+    </select><br/><br/>
+    适用appid:<input name="appid" ><br/><br/>
+    文件名称:<input name="tmp_name" size="50"><br/><br/>
+
+    <%= f.file_field :myfile %><br/><br/>
+    <%= f.submit "apk_upload" %>
+<% end %>
+
+

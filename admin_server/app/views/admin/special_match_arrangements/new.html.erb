@@ -1,0 +1,13 @@
+<%= form_for :mytest,:url => match_arrage_admin_special_match_arrangements_path do |f| %>
+<div id="t" style="display:none;"><input name="id" type="text" value="<%= @id %>"/></div>
+房间类型:  <input name="room_type" type="text" value="<%= @record.room_type unless @record.nil? %>"/><br><br>
+特殊日子: <input  name="special_day" type="text" value="<%= @record.special_day unless @record.nil? %>"/><br><br>
+报名费用 :<input  name="match_fee" type="text" value="<%= @record.entry_fee unless @record.nil? %>"/><br><br>
+比赛底注: <input  name="match_ante" type="text" value="<%= @record.match_ante unless @record.nil? %>"/><br><br>
+<% time=@record.nil? ? []:@record.time_plan%>
+时间安排: <input  name="arrange_time" type="text" value="<%=time.to_json%>" /><br><br>
+比赛状态: <input id="special_match_arrangement_special_day" name="state" type="text" value="<%= @record.state unless @record.nil? %>"/><br><br>
+注:填写时间安排应参考如下内容：<h3><font color="red">[{"begin_time":"15:30", "duration":120, "count":1},{"begin_time":"15:30", "duration":120, "count":1}]</font></h3><br><br>
+<%= f.submit "确定提交" %>
+<% end %>
+

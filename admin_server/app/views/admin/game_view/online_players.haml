@@ -1,0 +1,53 @@
+
+%p <center>
+%form(formmethod="POST" formaction="")
+  用户ID
+  %input(name="user_id"  value="#{@user_id}" )
+  %button(type="submit" ) 查询
+%p </center>
+
+%p <p></p><p></p>
+%table(border="1px" class="index_table index" )
+  %tr
+    %th ID
+    %th 昵称
+    %th 性别
+    %th 桌子id
+    %th 房间名称
+    %th 积分
+    %th 状态
+    %th 机器人
+
+  -i = 0
+  -@o_players.each do |player|
+    - i=i+1
+    - if i%2==0
+      %tr(class="odd" )
+        %td= player[:user_id]
+        %td= player[:nick_name]
+        %td= player[:gender]
+        %td= player[:table_id]
+        %td= player[:room_name]
+        %td= player[:score]
+        %td= player[:state]
+        %td= player[:robot]
+    - else
+      %tr(class="even" )
+        %td= player[:user_id]
+        %td= player[:nick_name]
+        %td= player[:gender]
+        %td= player[:table_id]
+        %td= player[:room_name]
+        %td= player[:score]
+        %td= player[:state]
+        %td= player[:robot]
+
+= link_to "实时数据统计", "game_view"
+&nbsp &nbsp &nbsp
+= link_to "游戏桌子列表", "game_tables"
+&nbsp &nbsp &nbsp
+= link_to "游戏房间列表", "room_msg"
+&nbsp &nbsp &nbsp
+= link_to "桌子上用户信息", "table_user"
+&nbsp &nbsp &nbsp
+= link_to "在线用户刷新", "online_players"

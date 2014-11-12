@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ui_id: 
+  click_count: 1
+  time_count: 1
+
+two:
+  ui_id: 
+  click_count: 1
+  time_count: 1

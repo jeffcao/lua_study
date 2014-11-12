@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  week_date: 1
+  activity_name: MyString
+  activity_content: MyString
+  activity_object: MyString
+  activity_memo: MyString
+  activity_model: MyString
+  activity_parm: MyString
+  activity_type: MyString
+
+two:
+  week_date: 1
+  activity_name: MyString
+  activity_content: MyString
+  activity_object: MyString
+  activity_memo: MyString
+  activity_model: MyString
+  activity_parm: MyString
+  activity_type: MyString

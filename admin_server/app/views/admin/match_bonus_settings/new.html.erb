@@ -1,0 +1,18 @@
+<%= form_for :mytest,:url => bonus_arrange_admin_match_bonus_settings_path do |f| %>
+    <div id="t" style="display:none;"><input name="id" type="text" value="<%= @id %>"/></div>
+    房间类型:  <input name="room_type" type="text" value="<%= @record.room_type unless @record.nil? %>"/><br><br>
+    活动名称:  <input name="match_name" type="text" value="<%= @record.match_name unless @record.nil? %>"/><br><br>
+    第一奖励:  <input name="first" type="text" value="<%= @record.first unless @record.nil? %>"/><br><br>
+    第二奖励:  <input name="second" type="text" value="<%= @record.second unless @record.nil? %>"/><br><br>
+    第三奖励:  <input name="third" type="text" value="<%= @record.third unless @record.nil? %>"/><br><br>
+    第四奖励:  <input name="fourth" type="text" value="<%= @record.fourth unless @record.nil? %>"/><br><br>
+    第五奖励:  <input name="fifth" type="text" value="<%= @record.fifth unless @record.nil? %>"/><br><br>
+    第六奖励:  <input name="sixth" type="text" value="<%= @record.sixth unless @record.nil? %>"/><br><br>
+    第七奖励:  <input name="seventh" type="text" value="<%= @record.seventh unless @record.nil? %>"/><br><br>
+    第八奖励:  <input name="eighth" type="text" value="<%= @record.eighth unless @record.nil? %>"/><br><br>
+    第九奖励:  <input name="ninth" type="text" value="<%= @record.ninth unless @record.nil? %>"/><br><br>
+    第十奖励:  <input name="tenth" type="text" value="<%= @record.tenth unless @record.nil? %>"/><br><br>
+    奖励名字:  <input name="short_name" type="text" value="<%= @record.short_name unless @record.nil? %>"/><br><br>
+    奖励描述:  <input name="bonus_desc" type="text" value="<%= @record.bonus_desc unless @record.nil? %>"/><br><br>
+    <%= f.submit "确定提交" %>
+<% end %>

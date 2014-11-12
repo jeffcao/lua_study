@@ -1,0 +1,32 @@
+<%= form_tag("/admin/user_consume_lists/list",method: "post") do %>
+    <div class="field" align="center" xmlns="http://www.w3.org/1999/html">
+      <%= label_tag '查询用户id:' %>
+      <input name="date" value="<%= @date %>">&nbsp &nbsp
+      <button type="submit">查询</button>
+    </div>
+<% end %>
+<table class="index_table index">
+  <tr class="odd">
+    <td>排名</td>
+    <td>用户id</td>
+    <td>用户昵称</td>
+    <td>用户手机</td>
+    <td>累计充值金额</td>
+    <td>获取话费累计金额</td>
+    <td>提现金额</td>
+  </tr>
+  <% i=1 %>
+  <% @records.each do |record| %>
+      <% user = User.find_by_user_id(record.user_id) %>
+      <tr class="<%= i%2==0 ? "even":"odd"%>">
+      <td><%=i  %></td>
+      <td><%= record.user_id %></td>
+      <td><%= user.user_profile.nick_name %></td>
+      <td><%= user.user_profile.msisdn %></td>
+      <td><%= record.total_consume.to_i %></td>
+      <td><%= user.user_profile.total_balance %></td>
+      <td><%= user.user_profile.balance %></td>
+      </tr>
+      <% i=i+1 %>
+  <% end %>
+</table>

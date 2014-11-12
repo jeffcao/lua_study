@@ -1,0 +1,1 @@
+../../../model_module/helper/mobile_charge_helper.rb
