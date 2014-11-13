@@ -119,7 +119,7 @@ function GUIUpdatePlugin.bind(theClass)
 			cclog("updateLordCard2:"..lord_poke_card.image_filename)
 			local frame = cache:spriteFrameByName(lord_poke_card.image_filename)
 			lord_card_ui:setDisplayFrame(frame)
-			local scale = 0.4 * GlobalSetting.content_scale_factor
+			local scale = 0.5 * GlobalSetting.content_scale_factor
 			lord_card_ui:setScale(scale)
 		else
 			local frame = cache:spriteFrameByName("beimian.png")
@@ -185,7 +185,7 @@ function GUIUpdatePlugin.bind(theClass)
 	-------------------------------------------------------------
 	function theClass:show_cards() 
 		local p = ccp(20, (self.winSize.height - self.cardContentSize.height)/2)
-		p.y = 0
+		p.y = 17
 		
 		for index, _ in pairs(self._all_cards) do
 			local card = self._all_cards[index].card_sprite
@@ -213,13 +213,13 @@ function GUIUpdatePlugin.bind(theClass)
 			return
 		end
 		
-		local p = ccp(0, 0)	
+		local p = ccp(0, 17)	
 		local cardWidth = self.cardContentSize.width * GlobalSetting.content_scale_factor
 		print("cardWidth", cardWidth)
 		-- 计算牌之间的覆盖位置，最少遮盖30% 即显示面积最多为70%
 		local step = (self.winSize.width) / (#self._all_cards + 1)
-		if step > cardWidth * 0.7 then
-			step = cardWidth * 0.7
+		if step > cardWidth * 0.4 then
+			step = cardWidth * 0.4
 		end
 	
 		-- 计算中心点
@@ -242,7 +242,7 @@ function GUIUpdatePlugin.bind(theClass)
 				card.card_sprite:getParent():reorderChild(card.card_sprite, index)
 			end
 			card.picked = false
-			card.card_sprite:runAction( CCMoveTo:create(0.3, ccp(p.x, p.y) ) )
+			card.card_sprite:runAction( CCMoveTo:create(0.2, ccp(p.x, p.y) ) )
 			p.x = p.x + step
 		end		
 	end

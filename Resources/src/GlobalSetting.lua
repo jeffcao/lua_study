@@ -29,7 +29,7 @@ GlobalSetting = {
 	show_init_player_info_box = 1,
 	need_init_hall_rooms = 0,
 	game_hall_urls = {},
-	login_urls = {"ws://rtddz.login.com/websocket"},
+	login_urls = {"ws://login.uu169.com/websocket"},
 	local_url = nil, --this will be set by local config(if has), or be nil
 	login_server_websocket = nil,
 	

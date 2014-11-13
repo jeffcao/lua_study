@@ -132,8 +132,8 @@ function GPlayerUpdatePlugin.bind(theClass)
 		
 		cclog("[updatePlayerRole] player.player_role => " .. player.player_role)
 		
-		local farmerFrame = CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("role_farmer.png")
-		local lordFrame = CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("role_lord.png")
+		local farmerFrame = CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("youxizhong2/yxz2-xiaotu/yxz2-pingmin.png")
+		local lordFrame = CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("youxizhong2/yxz2-xiaotu/yxz2-dizhu2.png")
 		
 		if player.player_role == self.ROLE_FARMER then
 			role_ui:setDisplayFrame(farmerFrame)
