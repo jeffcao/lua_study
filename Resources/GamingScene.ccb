@@ -2200,7 +2200,7 @@
 										<key>value</key>
 										<array>
 											<string>ccbResources/res/youxi_zhong.plist</string>
-											<string>youxizhong2/yxz2-xiaotu/yxz2-dizhu2.png</string>
+											<string>youxizhong2/yxz2-xiaotu/yxz2-dizhu.png</string>
 										</array>
 									</dict>
 								</array>
@@ -6845,8 +6845,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>460</real>
-							<real>176</real>
+							<real>411</real>
+							<real>172</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -8091,8 +8091,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>460</real>
-							<real>165</real>
+							<real>411</real>
+							<real>172</real>
 							<integer>0</integer>
 						</array>
 					</dict>
