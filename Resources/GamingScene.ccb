@@ -1043,8 +1043,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/gaming.plist</string>
-											<string>role_farmer.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong2/yxz2-xiaotu/yxz2-pingmin.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -1353,7 +1353,7 @@
 								<key>value</key>
 								<array>
 									<real>0.125</real>
-									<real>86.875</real>
+									<real>92.291664123535156</real>
 									<integer>4</integer>
 								</array>
 							</dict>
@@ -2339,8 +2339,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/res/huo_dong.plist</string>
-											<string>hb-hd/hd-xiaotu/hd-dizhu.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong2/yxz2-xiaotu/yxz2-dizhu2.png</string>
 										</array>
 									</dict>
 								</array>
@@ -2638,7 +2638,7 @@
 								<key>value</key>
 								<array>
 									<real>100.125</real>
-									<real>84.166664123535156</real>
+									<real>85.416664123535156</real>
 									<integer>4</integer>
 								</array>
 							</dict>
@@ -3245,8 +3245,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/gaming.plist</string>
-											<string>role_farmer.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong2/yxz2-xiaotu/yxz2-pingmin.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -3934,7 +3934,7 @@
 								<key>value</key>
 								<array>
 									<real>0.375</real>
-									<real>45.625</real>
+									<real>50.416667938232422</real>
 									<integer>4</integer>
 								</array>
 							</dict>
@@ -4312,8 +4312,8 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>173</real>
-									<real>25</real>
+									<real>170</real>
+									<real>27</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -4449,8 +4449,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -4474,7 +4472,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>248</real>
+									<real>252</real>
 									<real>26</real>
 									<integer>0</integer>
 								</array>
@@ -4531,6 +4529,8 @@
 								</array>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -5828,7 +5828,148 @@
 				<key>baseClass</key>
 				<string>CCLayer</string>
 				<key>children</key>
-				<array/>
+				<array>
+					<dict>
+						<key>baseClass</key>
+						<string>CCLayerColor</string>
+						<key>children</key>
+						<array/>
+						<key>customClass</key>
+						<string></string>
+						<key>displayName</key>
+						<string>CCLayerColor</string>
+						<key>memberVarAssignmentName</key>
+						<string></string>
+						<key>memberVarAssignmentType</key>
+						<integer>0</integer>
+						<key>properties</key>
+						<array>
+							<dict>
+								<key>name</key>
+								<string>visible</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>contentSize</string>
+								<key>type</key>
+								<string>Size</string>
+								<key>value</key>
+								<array>
+									<real>100</real>
+									<real>100</real>
+									<integer>1</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>anchorPoint</string>
+								<key>type</key>
+								<string>Point</string>
+								<key>value</key>
+								<array>
+									<real>0.5</real>
+									<real>0.5</real>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>scale</string>
+								<key>type</key>
+								<string>ScaleLock</string>
+								<key>value</key>
+								<array>
+									<real>1</real>
+									<real>1</real>
+									<false/>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>ignoreAnchorPointForPosition</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<true/>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>touchEnabled</string>
+								<key>platform</key>
+								<string>iOS</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<true/>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>accelerometerEnabled</string>
+								<key>platform</key>
+								<string>iOS</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>mouseEnabled</string>
+								<key>platform</key>
+								<string>Mac</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<true/>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>keyboardEnabled</string>
+								<key>platform</key>
+								<string>Mac</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>color</string>
+								<key>type</key>
+								<string>Color3</string>
+								<key>value</key>
+								<array>
+									<integer>255</integer>
+									<integer>0</integer>
+									<integer>0</integer>
+								</array>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>opacity</string>
+								<key>type</key>
+								<string>Byte</string>
+								<key>value</key>
+								<integer>255</integer>
+							</dict>
+							<dict>
+								<key>name</key>
+								<string>blendFunc</string>
+								<key>type</key>
+								<string>Blendmode</string>
+								<key>value</key>
+								<array>
+									<integer>770</integer>
+									<integer>771</integer>
+								</array>
+							</dict>
+						</array>
+					</dict>
+				</array>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
@@ -5846,8 +5987,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-1.2096002101898193</real>
-							<real>0.0</real>
+							<real>-1.25</real>
+							<real>3.5416667461395264</real>
 							<integer>4</integer>
 						</array>
 					</dict>
@@ -5858,9 +5999,9 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
+							<real>800</real>
 							<real>100</real>
-							<real>25</real>
-							<integer>1</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -6040,8 +6181,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu-buchu.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -6051,8 +6192,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>anniu1_a.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu-buchu.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -6062,8 +6203,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1_b.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu-buchu.png</string>
 										</array>
 									</dict>
 								</array>
@@ -6161,8 +6302,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu-chongxuan.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -6172,8 +6313,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>anniu1_a.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu-chongxuan.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -6183,8 +6324,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1_b.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu-chongxuan.png</string>
 										</array>
 									</dict>
 								</array>
@@ -6282,8 +6423,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu-tishi.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -6293,8 +6434,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>anniu1_a.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu-tishi.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -6304,8 +6445,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1_b.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu-tishi.png</string>
 										</array>
 									</dict>
 								</array>
@@ -6403,8 +6544,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu-chupai.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -6414,8 +6555,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>anniu1_a.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu-chupai.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -6425,8 +6566,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>annniu1_b.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu-chupai.png</string>
 										</array>
 									</dict>
 								</array>
@@ -6562,6 +6703,14 @@
 								<array>
 									<dict>
 										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>position</string>
 										<key>type</key>
 										<string>Position</string>
@@ -6676,6 +6825,14 @@
 								<integer>1</integer>
 								<key>properties</key>
 								<array>
+									<dict>
+										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
 									<dict>
 										<key>name</key>
 										<string>position</string>
@@ -6794,6 +6951,14 @@
 								<array>
 									<dict>
 										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
+									<dict>
+										<key>name</key>
 										<string>position</string>
 										<key>type</key>
 										<string>Position</string>
@@ -6908,6 +7073,14 @@
 								<integer>1</integer>
 								<key>properties</key>
 								<array>
+									<dict>
+										<key>name</key>
+										<string>visible</string>
+										<key>type</key>
+										<string>Check</string>
+										<key>value</key>
+										<false/>
+									</dict>
 									<dict>
 										<key>name</key>
 										<string>position</string>
@@ -7145,7 +7318,7 @@
 						<key>value</key>
 						<array>
 							<real>460</real>
-							<real>165</real>
+							<real>176</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -8644,8 +8817,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>anniu3.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu-zhunbei.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -8655,8 +8828,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>anniu3_a.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu-zhunbei.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -8804,6 +8977,14 @@
 						<integer>1</integer>
 						<key>properties</key>
 						<array>
+							<dict>
+								<key>name</key>
+								<string>visible</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
 							<dict>
 								<key>name</key>
 								<string>position</string>
@@ -9045,7 +9226,7 @@
 						<key>value</key>
 						<array>
 							<real>400</real>
-							<real>230</real>
+							<real>232</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -9124,8 +9305,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>633</real>
-							<real>325</real>
+							<real>653</real>
+							<real>316</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -9205,7 +9386,7 @@
 						<key>value</key>
 						<array>
 							<real>147</real>
-							<real>324</real>
+							<real>349</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -10043,8 +10224,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>anniu3.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu-huanzhuo.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -10054,8 +10235,8 @@
 										<string>SpriteFrame</string>
 										<key>value</key>
 										<array>
-											<string>ccbResources/ui_anniu.plist</string>
-											<string>anniu3_a.png</string>
+											<string>ccbResources/res/youxi_zhong.plist</string>
+											<string>youxizhong1/yxz1-xiaotu/anniu-huanzhuo.png</string>
 										</array>
 									</dict>
 									<dict>
@@ -10195,6 +10376,14 @@
 						<integer>1</integer>
 						<key>properties</key>
 						<array>
+							<dict>
+								<key>name</key>
+								<string>visible</string>
+								<key>type</key>
+								<string>Check</string>
+								<key>value</key>
+								<false/>
+							</dict>
 							<dict>
 								<key>name</key>
 								<string>position</string>
@@ -10532,7 +10721,7 @@
 						<key>value</key>
 						<array>
 							<real>164</real>
-							<real>146</real>
+							<real>156</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -10925,7 +11114,7 @@
 						<key>value</key>
 						<array>
 							<real>210</real>
-							<real>340</real>
+							<real>352</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -11263,7 +11452,7 @@
 						<key>value</key>
 						<array>
 							<real>600</real>
-							<real>340</real>
+							<real>347</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -11600,8 +11789,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>210</real>
-							<real>230</real>
+							<real>212</real>
+							<real>204</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -11719,7 +11908,7 @@
 								<key>value</key>
 								<array>
 									<real>127</real>
-									<real>19</real>
+									<real>8</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -11842,8 +12031,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>71</real>
-							<real>116</real>
+							<real>64</real>
+							<real>132</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -11960,9 +12149,9 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>600</real>
-									<real>200</real>
-									<integer>4</integer>
+									<real>6</real>
+									<real>8</real>
+									<integer>0</integer>
 								</array>
 							</dict>
 							<dict>
@@ -12084,9 +12273,9 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>96</real>
-							<real>24.166666030883789</real>
-							<integer>4</integer>
+							<real>768</real>
+							<real>132</real>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
