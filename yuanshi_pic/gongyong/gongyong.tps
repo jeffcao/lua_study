@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../../Resources/ccbResources/res/youxi_zhong.png</filename>
+        <filename>../../Resources/ccbResources/res/gongyong.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -127,7 +127,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../Resources/ccbResources/res/youxi_zhong.plist</filename>
+                <filename>../../Resources/ccbResources/res/gongyong.plist</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -166,7 +166,13 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>./</filename>
+            <filename>dzi.png</filename>
+            <filename>phb-feigexian.png</filename>
+            <filename>fengexian-shu.png</filename>
+            <filename>douzi.png</filename>
+            <filename>dingzhi.png</filename>
+            <filename>phb-01.png</filename>
+            <filename>jipaiqi.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
