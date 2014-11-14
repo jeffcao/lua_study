@@ -77,6 +77,9 @@ function GamingScene:ctor()
 	self.next_user_avatar:setScale(0.65 * GlobalSetting.content_scale_factor)
 	self.self_user_avatar:setScale(0.65 * GlobalSetting.content_scale_factor)
 	self.prev_user_avatar:setScale(0.65 * GlobalSetting.content_scale_factor)
+
+	
+
 	
 	self.json = require "cjson"
 	self.g_WebSocket.on_open = function() print("websockt on open after gaming") end
@@ -104,6 +107,9 @@ function GamingScene:ctor()
  	self.back_bg_layer:addChild(sprite, 0, 1010)
 
  	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+ 	self.lord_poke_card_1:setScale(0.50 * GlobalSetting.content_scale_factor)
+	self.lord_poke_card_2:setScale(0.50 * GlobalSetting.content_scale_factor)
+	self.lord_poke_card_3:setScale(0.50 * GlobalSetting.content_scale_factor)
 
  	MarqueePlugin.addMarquee(self.rootNode,ccp(400,355))
 end
