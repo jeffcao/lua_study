@@ -124,7 +124,7 @@ function GUIUpdatePlugin.bind(theClass)
 		else
 			local frame = cache:spriteFrameByName("beimian.png")
 			lord_card_ui:setDisplayFrame(frame)
-			local scale = 1.0 * GlobalSetting.content_scale_factor
+			local scale = 0.5 * GlobalSetting.content_scale_factor
 			lord_card_ui:setScale(scale)
 		end
 	end
@@ -218,8 +218,8 @@ function GUIUpdatePlugin.bind(theClass)
 		print("cardWidth", cardWidth)
 		-- 计算牌之间的覆盖位置，最少遮盖30% 即显示面积最多为70%
 		local step = (self.winSize.width) / (#self._all_cards + 1)
-		if step > cardWidth * 0.4 then
-			step = cardWidth * 0.4
+		if step > cardWidth * 0.35 then
+			step = cardWidth * 0.35
 		end
 	
 		-- 计算中心点
