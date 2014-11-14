@@ -16,7 +16,7 @@ function MarketSceneUPlugin.bind(theClass)
 
 		
 		local function cellSizeForTable(table,idx)
-    	return 140, 100
+    	return 80, 80
 		end
 
 		local function numberOfCellsInTableView(table)
@@ -46,9 +46,9 @@ function MarketSceneUPlugin.bind(theClass)
 	    return cell
 		end
 
-    local tableView = CCTableView:create(CCSizeMake(800,270))
+    local tableView = CCTableView:create(CCSizeMake(800,260))
     tableView:setDirection(kCCScrollViewDirectionVertical)
-    tableView:setPosition(CCPointMake(0,5))
+    tableView:setPosition(CCPointMake(0,0))
     tableView:setVerticalFillOrder(kCCTableViewFillBottomUp)
 
     tableView:registerScriptHandler(tableCellTouched,CCTableView.kTableCellTouched)

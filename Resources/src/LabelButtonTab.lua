@@ -59,7 +59,7 @@ function LabelButtonTab.bind(theClass)
 		layer:addChild(menu)
 		layer:addChild(label)
 		self.menu_layer:addChild(layer)
-		layer:setPosition(ccp(self.menu_layer:getChildrenCount()*115,20))
+		layer:setPosition(ccp(self.menu_layer:getChildrenCount()*80,20))
 		set_blue_stroke(label)
 		
 		layer.menu = menu
