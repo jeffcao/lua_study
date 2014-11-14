@@ -34,7 +34,7 @@ end
 function GChat:init(data, click_func)
 	
 	local function cellSizeForTable(table,idx)
-  		return 340,30
+  		return 330,30
 	end
 
 	local function numberOfCellsInTableView(table)
@@ -49,7 +49,7 @@ function GChat:init(data, click_func)
 	--	self:setVisible(false)
 		self:removeFromParentAndCleanup(true)
 		
-		AppStats.event(UM_CHAT_MSG, tostring(a1:getTag()))
+		AppStats.event(UM_CHAT_MSG, tostring(cell:getTag()))
 	end
 
 	local function tableCellAtIndex(table, idx)
@@ -59,6 +59,7 @@ function GChat:init(data, click_func)
 	    local label = nil
 	    if nil == cell then
 			cell = CCTableViewCell:new()
+			print("GChat:init, tableCellAtIndex, 1, chat.string=",data[idx+1].text)
 			local a3 = CCLabelTTF:create(data[idx+1].text, "default", "22")
 			a3:setColor(GlobalSetting.white)
 			a3:setAnchorPoint(ccp(0,0))
@@ -68,6 +69,7 @@ function GChat:init(data, click_func)
 			cell:addChild(a3, 0, 1)
 	    else
 	    	local a3 = tolua.cast(cell:getChildByTag(1), "CCLabelTTF")
+	    	print("GChat:init, tableCellAtIndex, 2, chat.string=",data[idx+1].text)
 	    	a3:setString(data[idx+1].text)
 			cell.data = data[idx+1]
 			cell:setTag(data[idx+1].id)
@@ -76,8 +78,8 @@ function GChat:init(data, click_func)
 	    return cell
 	end
 
-  	local tableView = CCTableView:create(CCSizeMake(352,185))
-	--tableView:setAnchorPoint(ccp(0.5,0.5))
+  	local tableView = CCTableView:create(CCSizeMake(330,130))
+	tableView:setAnchorPoint(ccp(0,0))
 	tableView:setPosition(CCPointMake(0,7))
   -- tableView:setDirection(kCCScrollViewDirectionHorizontal)
   -- tableView:setPosition(CCPointMake(20, winSize.height / 2 - 150))

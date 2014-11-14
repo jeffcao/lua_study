@@ -58,7 +58,7 @@ function GAlarmPlugin.bind(theClass)
 	 -- 开始自己计时动作
 	 ----------------------------------------------------------------------------
 	function theClass:startSelfUserAlarm(tick_count, callbackFunc) 
-		self:startAlarm( ccp(400,230), tick_count, callbackFunc )
+		self:startAlarm( ccp(400,250), tick_count, callbackFunc )
 	end
 		
 	-----------------------------------------------------------------------------

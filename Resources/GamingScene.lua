@@ -125,14 +125,14 @@ function GamingScene:setStrokes()
 end
 
 function GamingScene:onEnter()
-	self.super.onEnter(self)
+	-- self.super.onEnter(self)
 	--self:registerCleanup()
 	Stats:on_start("gaming")
 	AppStats.beginScene("GamingScene_"..GlobalSetting.game_info.room_name)
 end
 
 function GamingScene:onExit()
-	self.super.onExit(self)
+	-- self.super.onExit(self)
 	Stats:on_end("gaming")
 	if self.rank_dialog then
 		self.rank_dialog:removeFromParentAndCleanup(true)
