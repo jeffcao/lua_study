@@ -54,8 +54,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>46.555557250976562</real>
-											<real>239.44444274902344</real>
+											<real>50</real>
+											<real>226.66667175292969</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -175,8 +175,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>51.777767181396484</real>
-											<real>123.66666412353516</real>
+											<real>50</real>
+											<real>111.66666412353516</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -296,8 +296,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>155.33332824707031</real>
-											<real>236.11111450195312</real>
+											<real>170</real>
+											<real>226.66667175292969</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -417,8 +417,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>274.11111450195312</real>
-											<real>238.33332824707031</real>
+											<real>290</real>
+											<real>226.66667175292969</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -538,8 +538,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>404</real>
-											<real>240.44444274902344</real>
+											<real>410</real>
+											<real>226.66667175292969</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -659,8 +659,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>154.33334350585938</real>
-											<real>124.44444274902344</real>
+											<real>170</real>
+											<real>111.66666412353516</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -780,8 +780,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>274.22222900390625</real>
-											<real>126.66667175292969</real>
+											<real>290</real>
+											<real>111.66666412353516</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -901,8 +901,8 @@
 										<string>Position</string>
 										<key>value</key>
 										<array>
-											<real>405.4444580078125</real>
-											<real>130.11111450195312</real>
+											<real>410</real>
+											<real>111.66666412353516</real>
 											<integer>0</integer>
 										</array>
 									</dict>
@@ -999,8 +999,6 @@
 										</array>
 									</dict>
 								</array>
-								<key>selected</key>
-								<true/>
 							</dict>
 						</array>
 						<key>customClass</key>
@@ -1081,16 +1079,6 @@
 							</dict>
 							<dict>
 								<key>name</key>
-								<string>accelerometerEnabled</string>
-								<key>platform</key>
-								<string>iOS</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
-							</dict>
-							<dict>
-								<key>name</key>
 								<string>mouseEnabled</string>
 								<key>platform</key>
 								<string>Mac</string>
@@ -1098,16 +1086,6 @@
 								<string>Check</string>
 								<key>value</key>
 								<true/>
-							</dict>
-							<dict>
-								<key>name</key>
-								<string>keyboardEnabled</string>
-								<key>platform</key>
-								<string>Mac</string>
-								<key>type</key>
-								<string>Check</string>
-								<key>value</key>
-								<false/>
 							</dict>
 						</array>
 					</dict>
@@ -1190,16 +1168,6 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>accelerometerEnabled</string>
-						<key>platform</key>
-						<string>iOS</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>mouseEnabled</string>
 						<key>platform</key>
 						<string>Mac</string>
@@ -1207,16 +1175,6 @@
 						<string>Check</string>
 						<key>value</key>
 						<true/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>keyboardEnabled</string>
-						<key>platform</key>
-						<string>Mac</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
 					</dict>
 				</array>
 			</dict>
@@ -1289,16 +1247,6 @@
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>accelerometerEnabled</string>
-				<key>platform</key>
-				<string>iOS</string>
-				<key>type</key>
-				<string>Check</string>
-				<key>value</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>name</key>
 				<string>mouseEnabled</string>
 				<key>platform</key>
 				<string>Mac</string>
@@ -1306,16 +1254,6 @@
 				<string>Check</string>
 				<key>value</key>
 				<true/>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>keyboardEnabled</string>
-				<key>platform</key>
-				<string>Mac</string>
-				<key>type</key>
-				<string>Check</string>
-				<key>value</key>
-				<false/>
 			</dict>
 		</array>
 	</dict>
