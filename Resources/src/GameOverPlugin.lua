@@ -17,14 +17,19 @@ function GameOverPlugin.bind(theClass)
 		local self_user_win_value = game_result.self_balance[tostring(gaming_layer.self_user.user_id)]
 		self_user_win_value = tonumber(self_user_win_value)
 
+		self.lose_face:setVisible(false)
+		self.win_face:setVisible(false)
+
 		win_flag = self_user_win_value > 0
 		if win_flag then
 			self.lbl_self_user_win:setDisplayFrame(frameCache:spriteFrameByName("wenzi_shengli.png"))
+			self.win_face:setVisible(true)
 		--	gaming_layer:playWinEffect()
 		else 
 			cclog("self user is lose")
 			lose_persons = lose_persons + 1
 			self.lbl_self_user_win:setDisplayFrame(frameCache:spriteFrameByName("wenzi_shibai.png"))
+			self.lose_face:setVisible(true)
 		--	gaming_layer:playLoseEffect()
 		end
 		

@@ -67,8 +67,8 @@ function PlayerProductsLayer:create_product_list()
 	-- return t
 
 	local function cellSizeForTable(table,idx)
-  	return 140, 100
-	end
+  	return 100, 100
+  end
 
 	local function numberOfCellsInTableView(table)
 		return #self.product_list

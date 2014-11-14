@@ -32,6 +32,8 @@ function TabPlugin.bind(theClass)
 					dump(tab_name, "theClass:init_mtabs, tab_name")
 					dump(tabs_frams[tab_name], "theClass:init_mtabs, tab_fram")
 					tab_data.tab_node = self:getTabNode(tab_name, tabs_frams[tab_name][1], tabs_frams[tab_name][2])
+					tab_data.tab_node.menu:alignItemsHorizontallyWithPadding(40)
+					-- tab_data.tab_node.menu:setPosition
 				else
 					tab_data.tab_node = self:getTabNode(tab_name)
 				end

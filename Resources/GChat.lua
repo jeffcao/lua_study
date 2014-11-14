@@ -34,7 +34,7 @@ end
 function GChat:init(data, click_func)
 	
 	local function cellSizeForTable(table,idx)
-  		return 330,30
+  		return 30, 30
 	end
 
 	local function numberOfCellsInTableView(table)
@@ -80,7 +80,7 @@ function GChat:init(data, click_func)
 
   	local tableView = CCTableView:create(CCSizeMake(330,130))
 	tableView:setAnchorPoint(ccp(0,0))
-	tableView:setPosition(CCPointMake(0,7))
+	tableView:setPosition(CCPointMake(0,0))
   -- tableView:setDirection(kCCScrollViewDirectionHorizontal)
   -- tableView:setPosition(CCPointMake(20, winSize.height / 2 - 150))
   --registerScriptHandler functions must be before the reloadData function
