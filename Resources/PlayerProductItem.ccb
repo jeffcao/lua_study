@@ -50,7 +50,7 @@
 								<key>value</key>
 								<array>
 									<real>46</real>
-									<real>35</real>
+									<real>38</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -130,7 +130,7 @@
 								<key>value</key>
 								<array>
 									<real>68</real>
-									<real>15</real>
+									<real>18</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -246,7 +246,7 @@
 								<key>value</key>
 								<array>
 									<real>20</real>
-									<real>80</real>
+									<real>83</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -624,7 +624,7 @@
 								<key>value</key>
 								<array>
 									<real>435</real>
-									<real>55</real>
+									<real>58</real>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -835,25 +835,13 @@
 				<array>
 					<dict>
 						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>50</real>
-							<real>50</real>
-							<integer>4</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>contentSize</string>
 						<key>type</key>
 						<string>Size</string>
 						<key>value</key>
 						<array>
 							<real>512</real>
-							<real>100</real>
+							<real>90</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -887,7 +875,7 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
-						<false/>
+						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -933,9 +921,9 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>50</real>
-							<real>40</real>
-							<integer>4</integer>
+							<real>255</real>
+							<real>0.0</real>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1019,7 +1007,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>30</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1035,7 +1023,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>30</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1046,6 +1034,8 @@
 						<real>0.0</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
