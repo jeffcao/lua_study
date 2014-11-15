@@ -39,7 +39,7 @@ ToastPlugin = {}
 	
 	function createBgSprite(type, msg_width, msg_height)
 		--进度框使用不一样的背景
-		local sprite_frame_name = 'xiaotanchukuang.png'
+		local sprite_frame_name = 'yxz2-tishimuban.png'
 		if type == 'progress' then sprite_frame_name = 'cue_a.png' end
 		local msg_sprite = nil
 		if type == 'progress' then
@@ -108,7 +108,7 @@ ToastPlugin = {}
 		cclog("msg_width: " .. msg_width .. ", msg_height: " .. msg_height)
 		addRes()
 
-		local msg_layer = CCLayerColor:create(ccc4(0, 0, 0, 0))
+		local msg_layer = CCLayerColor:create(ccc4(1, 11, 84, 75))
 		msg_layer:setOpacity(100)
 
 		local content_layer = createContentLayer(message, type, msg_width, msg_height)
