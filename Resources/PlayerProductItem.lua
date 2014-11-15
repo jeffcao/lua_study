@@ -23,12 +23,15 @@ function PlayerProductItem:ctor()
 
 	print('[PlayerProductItem:ctor] before load PlayerProductItem.ccbi')
 	local ccbproxy = CCBProxy:create()
-	local node = CCBuilderReaderLoad("PlayerProductItem.ccbi", ccbproxy)
+	--ccbproxy:retain()
+	--local node = CCBuilderReaderLoad("PlayerProductItem.ccbi", ccbproxy)
+	local node = CCBReaderLoad("PlayerProductItem.ccbi", ccbproxy, false)
+	
 	self:addChild(node)
 	print('[PlayerProductItem:ctor] after load PlayerProductItem.ccbi')
 	
 	self.rootNode:ignoreAnchorPointForPosition(false)
-	self.rootNode:setAnchorPoint(ccp(0,0.5))
+	self.rootNode:setAnchorPoint(ccp(0,0.0))
 
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	
