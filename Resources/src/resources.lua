@@ -21,6 +21,7 @@ Res = {
  	huo_dong_plist = "ccbResources/res/huo_dong.plist",
  	geren_touxiang_plist = "ccbResources/res/gerentouxiang.plist",
  	dao_ju_plist = "ccbResources/res/dao_ju.plist",
+ 	gong_yong_plist = "ccbResources/res/gongyong.plist",
 
 
 -- 背景音乐
@@ -38,9 +39,6 @@ Res = {
 
 -- 按键点击音效
  s_music_button_click = dirMusic .. "click/button_click.ogg",
- 
--- 游戏引导音效
- s_music_introduce = dirMusic .. "introduce/",
  
  s_music_vip = dirMusic .. "vip_sounds/",
 

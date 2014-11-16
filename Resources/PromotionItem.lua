@@ -37,9 +37,9 @@ function PromotionItem:init_item(item)
 	duration = string.gsub(duration, 'end', process_time(item.end_date))
 	self.time_lbl:setString(duration)
 	
-	item.image_id = "nongminsongli.png"
+	item.image_id = "hb-hd/hd-xiaotu/yxz2-pingmin.png"
 	if tonumber(item.match_type) == 3 then
-		item.image_id = "dizhusongli.png"
+		item.image_id = "hb-hd/hd-xiaotu/hd-dizhu.png"
 	end
 	local sprite_frame = CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(item.image_id)
 	self.icon_sprite:setDisplayFrame(sprite_frame)

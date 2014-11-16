@@ -64,10 +64,6 @@ function dumprect(rect, str)
 end
 
 function endtolua_guifan()
-	--local scene = createGuifanEndScene()
-	--CCDirector:sharedDirector():pushScene(scene)
-	--local scene = createGuifanEndScene()
-	--CCDirector:sharedDirector():pushScene(scene)
 	endtolua()
 end
 

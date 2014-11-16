@@ -238,18 +238,6 @@ function SoundEffect.bind(theClass)
 		SimpleAudioEngine:sharedEngine():playEffect(s_effect_file)
 	end
 	
-	function theClass:playIntroduce(moment)
-		if not effect_music then return end
-		local p = Res.s_music_introduce
-		local sounds = {
-		sign=p.."3.mp3",
-		shop=p.."5.mp3",
-		enter_room=p.."6.mp3",
-		farmer=p.."8.mp3",
-		lord=p.."7.mp3"
-		}
-		SimpleAudioEngine:sharedEngine():playEffect(sounds[moment])
-	end
 	
 	function theClass:play_vip_voice(voice)
 		cclog("play vip voice " .. voice)

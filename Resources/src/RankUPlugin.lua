@@ -64,7 +64,7 @@ function RankUPlugin.bind(theClass)
 			if self and self:isShowing() and self.timer_time:isVisible() then
 				print('set time')
 				local d = self:getDeltaTime()
-				set_rank_string_with_stroke(self.timer_time,self:getDeltaTime())
+				set_rank_string_with_stroke(self.timer_time,d)
 				if d == "00:00" then
 					--更新排行榜
 					self.rank_data.on_time_over()
@@ -87,18 +87,18 @@ function RankUPlugin.bind(theClass)
 		self:setDeltaTime()
 
 		if not self.rank_content.rank then
-			local ontouch = function(e,x,y)
-				if not self:isVisible() then print("self is not visible") return false end
-				print('event is', e)
-				if not cccn(self.bg, x,y) then
-					self:dismiss()
-				else
-					return false
-				end
-				return true
-			end
-			self.bg:registerScriptTouchHandler(ontouch, false, 200, true)
-			self.bg:setTouchEnabled(true)
+			-- local ontouch = function(e,x,y)
+			-- 	if not self:isVisible() then print("self is not visible") return false end
+			-- 	print('event is', e)
+			-- 	if not cccn(self.bg, x,y) then
+			-- 		self:dismiss()
+			-- 	else
+			-- 		return false
+			-- 	end
+			-- 	return true
+			-- end
+			-- self.bg:registerScriptTouchHandler(ontouch, false, 200, true)
+			-- self.bg:setTouchEnabled(true)
 
 			self.rank_content.rank = self:create_rank_list(self.rank_data.list)
 			local menus = self:get_touch_menus('douzi')

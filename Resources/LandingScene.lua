@@ -33,7 +33,7 @@ function LandingScene:ctor()
 	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:addNodeEventListener(cc.KEYPAD_EVENT, __bind(self.on_keypad_pressed, self) )
-	
+	CCSpriteFrameCache:sharedSpriteFrameCache():addSpriteFramesWithFile(Res.gong_yong_plist)
 	--[[
 	on_WebSocketRails_reload = function()
 		if on_WebSocketRails_reload then
@@ -58,8 +58,8 @@ end
 	
 function LandingScene:onEnter()
 	print("[LandingScene:on_enter()]")
-	CCUserDefault:sharedUserDefault():setBoolForKey("effect_music", true)
-	CCUserDefault:sharedUserDefault():setBoolForKey("bg_music", true)
+	-- CCUserDefault:sharedUserDefault():setBoolForKey("effect_music", true)
+	-- CCUserDefault:sharedUserDefault():setBoolForKey("bg_music", true)
 
 
 	--self.super.onEnter(self)

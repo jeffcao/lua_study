@@ -29,6 +29,7 @@
 
 #define BUFFER_SIZE    8192
 #define MAX_FILENAME   512
+
 //#include "CCEditBoxBridge_lua.h"
 //#include "DialogLayerConvertor_lua.h"
 #include "DDZJniHelper_lua.h"

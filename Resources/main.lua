@@ -37,8 +37,6 @@ require "LandingScene"
 require "GamingScene"
 require "src.resources"
 require "CCBReaderLoad"
-require "GuifanStartScene"
-require "GuifanEndScene"
 end
 
 local json = require "cjson"
@@ -200,7 +198,6 @@ local function main()
 
 	local ls = createLandingScene()
 	CCDirector:sharedDirector():setDisplayStats(false)
---	local ls = createGuifanStartScene()
 	CCDirector:sharedDirector():runWithScene(ls)
 	
 	local notify_center = CCNotificationCenter:sharedNotificationCenter()
