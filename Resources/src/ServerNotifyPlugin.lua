@@ -99,10 +99,12 @@ function ServerNotifyPlugin.bind(theClass)
 	function theClass:onMusic(data)
 		if data.chat == 1 and self.onServerChatMessage then
 			self:onServerChatMessage(data)
+			if data.__srv_resend and data.__srv_resend >= 1 and data.voice == "1.mp3" then return end
+			self:play_vip_voice(data.voice)
 		end
 		--重发的音效不播放出来
-		if data.__srv_resend and data.__srv_resend >= 1 and data.voice == "1.mp3" then return end
-		self:play_vip_voice(data.voice)
+		-- if data.__srv_resend and data.__srv_resend >= 1 and data.voice == "1.mp3" then return end
+		-- self:play_vip_voice(data.voice)
 	end
 	
 	--破产
@@ -151,7 +153,7 @@ function ServerNotifyPlugin.bind(theClass)
 	function theClass:onProp(data)
 		local id = data.user_id
 		local prop_id = data.prop_id
-		self:play_vip_voice("27.mp3")
+		-- self:play_vip_voice("27.mp3")
 		local scene = CCDirector:sharedDirector():getRunningScene()
 		if scene.scene_on_prop then
 			scene:scene_on_prop(data)

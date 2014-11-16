@@ -40,7 +40,7 @@ ToastPlugin = {}
 	function createBgSprite(type, msg_width, msg_height)
 		--进度框使用不一样的背景
 		local sprite_frame_name = 'yxz2-tishimuban.png'
-		if type == 'progress' then sprite_frame_name = 'cue_a.png' end
+		if type == 'progress' then sprite_frame_name = 'yxz2-tishimuban.png' end
 		local msg_sprite = nil
 		if type == 'progress' then
 			msg_sprite = CCScale9Sprite:createWithSpriteFrameName(sprite_frame_name)
@@ -210,7 +210,7 @@ ToastPlugin = {}
 		scaleNode(msg_layer, GlobalSetting.content_scale_factor)
 	
 		--step 2.进度框要加一个进度动画
-		create_progress_animation(progress_sprite)
+		-- create_progress_animation(progress_sprite)
 		
 		--step 3.设置对话框的相关选项
 		initDialog(msg_layer, 'progress')

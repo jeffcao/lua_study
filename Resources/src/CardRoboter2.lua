@@ -31,7 +31,7 @@ function CardRoboter2:init(parent, z_order)
 	z_order = z_order or 9999
 	self.parent = parent
 	self:reset()
-	self.button:setVisible(false)
+	-- self.button:setVisible(false)
 	print("self.layer", self.layer)
 	self.layer:setVisible(false)
 	self.layer:setPosition(ccp(0, 0))
@@ -78,7 +78,7 @@ function CardRoboter2:updateCards()
 		local label = CCLabelTTF:create()
 		label:setFontSize(18)
 		label:setString(self.cards_played[value])
-		label:setPosition(ccp((17 - value + 1)*29, 11))
+		label:setPosition(ccp((18 - value)*33 - 16.5, 11))
 		self.stats_layer:addChild(label)
 	end
 end

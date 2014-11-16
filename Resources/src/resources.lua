@@ -40,9 +40,6 @@ Res = {
 -- 按键点击音效
  s_music_button_click = dirMusic .. "click/button_click.ogg",
  
--- 游戏引导音效
- s_music_introduce = dirMusic .. "introduce/",
- 
  s_music_vip = dirMusic .. "vip_sounds/",
 
 -- 抽牌

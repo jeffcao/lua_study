@@ -84,9 +84,9 @@ function ListViewPlugin.create_list_view(list_data, cell_func_create, cell_func_
 		end
 
     local tableView = CCTableView:create(view_size)
-    -- tableView:setDirection(kCCScrollViewDirectionHorizontal)
-    -- tableView:setPosition(CCPointMake(20, winSize.height / 2 - 150))
-    --registerScriptHandler functions must be before the reloadData function
+    tableView:setDirection(kCCScrollViewDirectionVertical)
+    tableView:setPosition(CCPointMake(0,0))
+    tableView:setVerticalFillOrder(kCCTableViewFillBottomUp)
     tableView:registerScriptHandler(tableCellTouched,CCTableView.kTableCellTouched)
     tableView:registerScriptHandler(cellSizeForTable,CCTableView.kTableCellSizeForIndex)
     tableView:registerScriptHandler(tableCellAtIndex,CCTableView.kTableCellSizeAtIndex)
