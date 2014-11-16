@@ -24,14 +24,12 @@
 	<true/>
 	<key>javascriptMainCCB</key>
 	<string>LandingScene</string>
-	<key>needRepublish</key>
-	<false/>
 	<key>onlyPublishCCBs</key>
 	<false/>
 	<key>publishDirectory</key>
 	<string>Published-iOS</string>
 	<key>publishDirectoryAndroid</key>
-	<string>../rtddz/Resources/cui</string>
+	<string>../DouDiZhu_Lua/Resources/cui</string>
 	<key>publishDirectoryHTML5</key>
 	<string>Published-HTML5</string>
 	<key>publishEnabledAndroid</key>
@@ -75,9 +73,5 @@
 			<string>Resources</string>
 		</dict>
 	</array>
-	<key>versionStr</key>
-	<string>Version: 3.0-alpha5
-GitHub: 76499877e8
-</string>
 </dict>
 </plist>
