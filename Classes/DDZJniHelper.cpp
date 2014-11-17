@@ -59,8 +59,12 @@ const char* DDZJniHelper::get(const char* text) {
 	if (!DDZJniHelper::is_onCppMessage) {
 		if (!JniHelper::getStaticMethodInfo(DDZJniHelper_func_name,
 						"com/ruitong/WZDDZ/DDZJniHelper", "get",
-						"(Ljava/lang/String;)Ljava/lang/String;"))
+						"(Ljava/lang/String;)Ljava/lang/String;")){
+			CCLOG("jni on init get failed");
 			return "";
+		}
+
+			
 		CCLOG("jni on init get");
 		is_onCppMessage = true;
 	}
@@ -79,8 +83,8 @@ const char* DDZJniHelper::get(const char* text) {
 	DDZJniHelper_func_name.env->DeleteLocalRef(js);
 	DDZJniHelper_func_name.env->DeleteLocalRef(jstx);
 
-	//CCLog("[DDZJniHelper::%s] result => %s, length => %d", func_name.c_str(),
-	//		myText.c_str(), myText.length());
+	CCLog("[DDZJniHelper::%s] result => %s, length => %d", func_name.c_str(),
+			myText.c_str(), myText.length());
 	return myText.c_str();
 }
 
