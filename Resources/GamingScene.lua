@@ -28,8 +28,6 @@ require "src.SocketStatePlugin"
 require "src.CardRoboter2"
 require "src.ServerNotifyPlugin"
 require "src.UIControllerPlugin"
-require "GamingOption"
-require "IntroduceDialog"
 require "src.Stats"
 require "src.UserLocked"
 require 'src.GameMatchPlugin'
