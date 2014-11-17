@@ -107,7 +107,7 @@ end
       end
     end
     url = URI.parse(server_url)
-    response = Net::HTTP.post_form(server_url,{'user_id'=>user_id})
+    response = Net::HTTP.post_form(url,{'user_id'=>user_id})
 
 
 #  }

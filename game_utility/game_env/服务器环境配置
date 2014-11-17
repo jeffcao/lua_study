@@ -47,6 +47,12 @@ sudo ln -s /data/local/ddz_env/ruby-1.9.3-p448 ruby
 sudo /usr/local/ruby/bin/gem install rails
 
 
+install Ruby/MySQL
+sudo gem install mysql
+
+
+
+
 2. 配置 redis
 
 Install tcl
