@@ -677,6 +677,7 @@ function GUIUpdatePlugin.bind(theClass)
 			Timer.cancel_timer(self.updateMatchEndTime_timer)
 		end
 		if (not data.match_left_time) or data.match_left_time == 0 then
+			self.layer_match_end_times:setVisible(false)
 			print("GUIUpdatePlugin.initMatchEndTime, return")
 			return
 		end

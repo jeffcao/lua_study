@@ -1,7 +1,6 @@
 require "src.MarketSceneUPlugin"
 require "src.UIControllerPlugin"
 require "src.HallServerConnectionPlugin"
-require "IntroduceDialog"
 require "src.SoundEffect"
 require "src.Stats"
 require "PromotionScene"

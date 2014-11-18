@@ -13,7 +13,8 @@ function RankItem:ctor()
 	self:addChild(self.rootNode)
 	self.rank_lbl:setPosition(ccp(60, 15))
 	self.name_lbl:setPosition(ccp(120, 15))
-	self.bean_lbl:setPosition(ccp(320, 20))
+	self.bean_lbl:setPosition(ccp(320, 15))
+	self.bean_img:setPosition(ccp(300, 30))
 	
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 end
