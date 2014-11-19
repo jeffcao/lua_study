@@ -52,7 +52,7 @@ end
 function RegisterScene:onCleanup()
 	print("[RegisterScene:onCleanup()]")
 	-- self.super.onCleanup(self)
-
+	self:close_login_websocket()
 end
 
 function RegisterScene:do_close()
@@ -61,6 +61,7 @@ end
 
 UIControllerPlugin.bind(RegisterScene)
 LoginServerConnectionPlugin.bind(RegisterScene)
+LoginHallConnectionPlugin.bind(RegisterScene)
 RegisterSceneUIPlugin.bind(RegisterScene)
 UserLocked.bind(RegisterScene)
 SceneEventPlugin.bind(RegisterScene)
