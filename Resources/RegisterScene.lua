@@ -35,7 +35,7 @@ end
 	
 function RegisterScene:onEnter()
 	print("[RegisterScene:on_enter()]")
-	self.super.onEnter(self)
+	-- self.super.onEnter(self)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
 	if GlobalSetting.login_server_websocket == nil then
 		self:show_progress_message_box(strings.rs_connect_server_ing)
@@ -52,7 +52,7 @@ end
 function RegisterScene:onCleanup()
 	print("[RegisterScene:onCleanup()]")
 	-- self.super.onCleanup(self)
-
+	self:close_login_websocket()
 end
 
 function RegisterScene:do_close()
@@ -61,6 +61,7 @@ end
 
 UIControllerPlugin.bind(RegisterScene)
 LoginServerConnectionPlugin.bind(RegisterScene)
+LoginHallConnectionPlugin.bind(RegisterScene)
 RegisterSceneUIPlugin.bind(RegisterScene)
 UserLocked.bind(RegisterScene)
 SceneEventPlugin.bind(RegisterScene)

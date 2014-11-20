@@ -18,6 +18,7 @@ function GTouchPlugin.bind(theClass)
 	
 	function theClass:getCardIndex(loc) 
 		local result = -1
+		if not self._all_cards then return result end
 		for index = -#self._all_cards, -1 do
 			local poke_card = self._all_cards[-index]
 			if poke_card.card_sprite:boundingBox():containsPoint(loc) then
@@ -54,6 +55,7 @@ function GTouchPlugin.bind(theClass)
 	
 	--当触屏按下并移动事件被响应时的处理。
 	function theClass:onTouchMoved(loc)
+		if not self._all_cards then return end
 		local cur_check = self:getCardIndex(loc)
 		cclog("begin:%d, cur_check:%d", self.begin, cur_check)
 		if cur_check == -1 or cur_check == self.last_check then
@@ -99,6 +101,7 @@ function GTouchPlugin.bind(theClass)
 	 -- 点击牌，产生效果选取或取消的效果
 	 -----------------------------------------------------------------
 	function theClass:onTouchEnded(loc)
+		if not self._all_cards then return end
 		local checked_cards = self:getCheckedCards()
 		if #checked_cards > 0 then
 			for _, poke_card in pairs(self._all_cards) do

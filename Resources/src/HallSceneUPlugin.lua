@@ -213,21 +213,22 @@ function HallSceneUPlugin.bind(theClass)
 		cache:addSpriteFramesWithFile(Res.info_plist)
 		
 		print("[HallSceneUPlugin:init_current_player_info]")
-		
+
 		local cur_user = GlobalSetting.current_user
 		dump(cur_user, "[HallSceneUPlugin:init_current_player_info] cur_user: ")
 		local nick_name_lb = tolua.cast(self.nick_name_lb, "CCLabelTTF")
 		nick_name_lb:setString(cur_user.nick_name)
-
+	
 		self:display_player_avatar()
 		
 	end
 	
 	function theClass:update_global_player_score_ifno(score_info)
-	
+		print("[HallSceneUPlugin:update_global_player_score_ifno]")
+
 		local player_beans_lb = tolua.cast(self.player_beans_lb, "CCLabelTTF")
 		player_beans_lb:setString(score_info.score)
-		
+		dump(score_info, "[HallSceneUPlugin:update_global_player_score_ifno] score_info: ")
 		GlobalSetting.current_user.score = score_info.score
 		GlobalSetting.current_user.win_count = score_info.win_count
 		GlobalSetting.current_user.lost_count = score_info.lost_count	
