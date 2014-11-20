@@ -19,14 +19,15 @@ function RegisterScene:ctor()
 	local ccbproxy = CCBProxy:create()
 	local node = CCBReaderLoad("RegisterScene.ccbi", ccbproxy, false, "")
 	self:addChild(node)
-	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+	
 	
 	set_anniu_1_3_stroke(self.register_btn_lbl)
 	set_anniu_1_3_stroke(self.cancel_btn_lbl)
 	
 	set_bg(self)
 	self:init_input_controller()
-
+	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)
+	
 	self.rootNode:setKeypadEnabled(true)
 	self.rootNode:registerScriptKeypadHandler( __bind(self.on_keypad_pressed, self) )
 end

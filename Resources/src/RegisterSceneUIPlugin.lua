@@ -26,7 +26,7 @@ function RegisterSceneUIPlugin.bind(theClass)
 		self.male_item_toggle:addSubItem(male_off_btn)
 		self.male_item_toggle:setSelectedIndex(1)
 		self.male_item_toggle:registerScriptTapHandler(__bind(self.do_male_btn_clicked, self))
-		self.gender_male_menu:addChild(self.male_item_toggle,0,2001)
+		self.gender_male_menu:addChild(self.male_item_toggle,0,201)
 		
 		local female_on_sprite = CCSprite:createWithSpriteFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName("kuang_d.png"))
 		female_on_sprite:setScale(GlobalSetting.content_scale_factor)
@@ -37,7 +37,8 @@ function RegisterSceneUIPlugin.bind(theClass)
 		self.female_item_toggle = CCMenuItemToggle:create(female_on_btn)
 		self.female_item_toggle:registerScriptTapHandler(__bind(self.do_female_btn_clicked, self))
 		self.female_item_toggle:addSubItem(female_off_btn)
-		self.gender_female_menu:addChild(self.female_item_toggle,0,2001)
+		self.gender_female_menu:addChild(self.female_item_toggle,0,201)
+
 		 
 	end
 	
@@ -48,7 +49,7 @@ function RegisterSceneUIPlugin.bind(theClass)
 		if selectedIndex == 0 then
 			menu_toggle:setSelectedIndex(1)
 		else
-			local femal_menu_toggle = tolua.cast(self.gender_female_menu:getChildByTag(2001), "CCMenuItemToggle")
+			local femal_menu_toggle = tolua.cast(self.gender_female_menu:getChildByTag(201), "CCMenuItemToggle")
 			femal_menu_toggle:setSelectedIndex(0)
 		end
 		
@@ -61,7 +62,7 @@ function RegisterSceneUIPlugin.bind(theClass)
 		if selectedIndex == 0 then
 			menu_toggle:setSelectedIndex(1)
 		else
-			local male_menu_toggle = tolua.cast(self.gender_male_menu:getChildByTag(2001), "CCMenuItemToggle")
+			local male_menu_toggle = tolua.cast(self.gender_male_menu:getChildByTag(201), "CCMenuItemToggle")
 			male_menu_toggle:setSelectedIndex(0)
 		end
 	end
@@ -78,7 +79,7 @@ function RegisterSceneUIPlugin.bind(theClass)
 		local nick_name_box = tolua.cast(self.nick_name_layer:getChildByTag(101), "CCEditBox")
 		local password_box = tolua.cast(self.password_layer:getChildByTag(102), "CCEditBox")
 		local confirm_pwd_box = tolua.cast(self.confirm_pwd_layer:getChildByTag(103), "CCEditBox")
-		local male_menu_toggle = tolua.cast(self.gender_male_menu:getChildByTag(2001), "CCMenuItemToggle")
+		local male_menu_toggle = tolua.cast(self.gender_male_menu:getChildByTag(201), "CCMenuItemToggle")
 		
 		local nick_name = nick_name_box:getText()
 		local password = password_box:getText()
