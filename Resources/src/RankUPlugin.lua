@@ -61,7 +61,7 @@ function RankUPlugin.bind(theClass)
 		if self.set_rank_time_hdlr then Timer.cancel_timer(self.set_rank_time_hdlr) end
 		
 		local fn = function()
-			if self and self:isShowing() and self.timer_time:isVisible() then
+			if self and self.isShowing and self:isShowing() and self.timer_time:isVisible() then
 				print('set time')
 				local d = self:getDeltaTime()
 				set_rank_string_with_stroke(self.timer_time,d)

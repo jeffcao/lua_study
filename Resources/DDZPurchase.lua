@@ -45,6 +45,7 @@ function DDZPurchase:init(item)
 	local icon_sprite = tolua.cast(self.icon_sprite, "CCSprite")
 	dump(item, 'ddz purchase init item--1')
 	CCSpriteFrameCache:sharedSpriteFrameCache():addSpriteFramesWithFile(Res.props_plist)
+
 	icon_sprite:setDisplayFrame(CCSpriteFrameCache:sharedSpriteFrameCache():spriteFrameByName(item.icon))
 	dump(item, 'ddz purchase init item--2')
 	set_rank_string_with_stroke(self.name_lbl, item.name)

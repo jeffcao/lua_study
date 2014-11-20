@@ -46,6 +46,8 @@ function GamingScene:ctor()
 	self.ccbproxy = CCBProxy:create()
 	self.ccbproxy:retain()
 	ccb.GamingScene = self
+
+	CCSpriteFrameCache:sharedSpriteFrameCache():addSpriteFramesWithFile(Res.dao_ju_plist)
 	--self.onTuoguanClicked = __bind(self.onTest, self)
 	self.onCancelTuoguanClicked = __bind(self.onCancelTuoguanClicked, self)
 	self.onTuoguanClicked = __bind(self.onTuoguanClicked, self)
