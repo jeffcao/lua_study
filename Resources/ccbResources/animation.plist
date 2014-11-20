@@ -108,32 +108,6 @@
                 <key>sourceSize</key>
                 <string>{179,169}</string>
             </dict>
-            <key>hu die 001.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{958,35},{40,29}}</string>
-                <key>offset</key>
-                <string>{0,-2}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,6},{40,29}}</string>
-                <key>sourceSize</key>
-                <string>{40,37}</string>
-            </dict>
-            <key>hu die 002.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{958,2},{40,31}}</string>
-                <key>offset</key>
-                <string>{0,1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,2},{40,31}}</string>
-                <key>sourceSize</key>
-                <string>{40,37}</string>
-            </dict>
             <key>huojian.png</key>
             <dict>
                 <key>frame</key>
@@ -196,7 +170,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:97e34e5579120d792932d797abcd8e9f:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:6033909c8b6cfefd8f099fdd39789414:1/1$</string>
             <key>textureFileName</key>
             <string>animation.png</string>
         </dict>
