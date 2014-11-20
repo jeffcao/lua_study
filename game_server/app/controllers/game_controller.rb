@@ -42,7 +42,7 @@ class GameController < GameBaseController
     connection_store["client_app_id"] = client_app_id
     discard_version = SystemSetting.find_by_setting_name("discard_version").reload(:lock => true)
     discard_version = discard_version.setting_value unless discard_version.nil?
-    version = User.find_by_user_id(message[:users_id]).user_profile.version
+    version = User.find_by_user_id(message[:user_id]).user_profile.version
     if version.to_s > discard_version.to_s
       unless verify_client(s_name, s_token)
         return
