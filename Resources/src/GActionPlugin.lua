@@ -478,7 +478,11 @@ function GActionPlugin.bind(theClass)
 					self.users[user_id] = data
 					data.user_id = user_id
 					self:updatePlayerLevels()
-					if GlobalSetting.current_user.user_id == user_id then
+					print("game:get_rival_msg, GlobalSetting.current_user.user_id=", GlobalSetting.current_user.user_id)
+					print("game:get_rival_msg, user_id=", user_id)
+					print("game:get_rival_msg, GlobalSetting.current_user.user_id==user_id, ", GlobalSetting.current_user.user_id == user_id)
+					if GlobalSetting.current_user.user_id == tonumber(user_id) then
+						print("game:get_rival_msg, refesh my data")
 						GlobalSetting.current_user.score = data.score
 						GlobalSetting.current_user.win_count = data.win_count
 						GlobalSetting.current_user.lost_count = data.lost_count

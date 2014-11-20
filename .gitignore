@@ -6,6 +6,7 @@ lint.xml
 *~
 *.lo
 *.DS*
+Resources/cui_ver.txt
 tools/encrypt_js
 proj.android/assets/*
 org.eclipse.cdt.codan.core.prefs

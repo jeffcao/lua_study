@@ -58,9 +58,10 @@ end
 	
 function LandingScene:onEnter()
 	print("[LandingScene:on_enter()]")
-	-- CCUserDefault:sharedUserDefault():setBoolForKey("effect_music", true)
-	-- CCUserDefault:sharedUserDefault():setBoolForKey("bg_music", true)
-
+	if LUA_DEBUG then
+		CCUserDefault:sharedUserDefault():setBoolForKey("effect_music", true)
+		CCUserDefault:sharedUserDefault():setBoolForKey("bg_music", true)
+	end
 
 	--self.super.onEnter(self)
 	scaleNode(self.rootNode, GlobalSetting.content_scale_factor)

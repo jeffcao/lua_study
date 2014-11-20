@@ -30,7 +30,7 @@
         android:label="@string/app_name" android:icon="@drawable/icon">
         <meta-data
             android:name="build"
-            android:value="v20140526.03" />
+            android:value="v20141120.03" />
 
 
         <activity

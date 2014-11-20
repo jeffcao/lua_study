@@ -61,6 +61,8 @@ echo "please define NDK_ROOT"
 exit 1
 fi
 
+now_t=$(date +"%Y%m%d%H%M")
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # ... use paths relative to current directory
 #COCOS2DX_ROOT="$DIR/../../.."
@@ -87,6 +89,8 @@ if [[ "$is_clean" ]]; then
 	exit 0
 fi
 
+echo $now_t > $APP_ROOT/Resources/cui_ver.txt
+
 # make sure assets is exist
 if [ -d "$APP_ANDROID_ROOT"/assets ]; then
     rm -rf "$APP_ANDROID_ROOT"/assets
@@ -94,7 +98,7 @@ fi
 mkdir "$APP_ANDROID_ROOT"/assets
 mkdir "$APP_ANDROID_ROOT"/assets/zipres
 cp "$APP_ROOT"/framework_precompiled.zip "$APP_ANDROID_ROOT"/assets/zipres/
-
+cp $APP_ROOT/Resources/cui_ver.txt "$APP_ANDROID_ROOT"/assets
 
 if [[ $DDZ_DEBUG -ne "1" ]]; then
   echo "DDZ_DEBUG ===> false "
@@ -131,6 +135,7 @@ fi
    
 cp ../sdklibs/umeng/umeng_sdk.jar libs
 cp ../sdklibs/umeng/cocos2dx2_libMobClickCpp.a libs
+
 
 
 if [[ "$buildexternalsfromsource" ]]; then

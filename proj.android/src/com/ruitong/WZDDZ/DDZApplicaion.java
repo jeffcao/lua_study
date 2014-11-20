@@ -77,7 +77,7 @@ public class DDZApplicaion extends Application {
 		SharedPreferences sp = getSharedPreferences(pref_name,
 				Context.MODE_PRIVATE);
 		File f = new File(Environment.getExternalStorageDirectory()
-				.getAbsolutePath() + "/ddzdbg");
+				.getAbsolutePath() + "/rtgamedbg");
 		if (f.exists()) {
 			DEBUG = true;
 		}

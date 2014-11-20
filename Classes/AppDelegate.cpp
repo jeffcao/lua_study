@@ -249,6 +249,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     MobClickCpp::setLogEnabled(debug == "true");
 
     auto pStack = pEngine->getLuaStack();
+    auto fileUtils = CCFileUtils::sharedFileUtils();
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
     //tolua_web_socket_open(pLuaState);
@@ -268,11 +269,35 @@ bool AppDelegate::applicationDidFinishLaunching()
 // #endif
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    std::string w_able_path = CCFileUtils::sharedFileUtils()->getWritablePath()+"cui";
-    if (! IsDirExistAndCreate(w_able_path.c_str()))
+    std::string w_able_path = fileUtils->getWritablePath()+"cui";
+
+    unsigned long l = 0;
+    auto self_cui_ver = fileUtils->getFileData("cur_ver.txt", "r", &l);
+    auto dst_cui_ver_file = w_able_path + "/cui_ver.txt";
+    auto needUpdateCUI = true;
+    auto dst_cui_exists = IsDirExistAndCreate(w_able_path.c_str());
+
+    do {
+        if (!dst_cui_exists) {
+            createDirectory(w_able_path.c_str());
+            break;
+        }
+
+        if (!fileUtils->isFileExist(dst_cui_ver_file))
+            break;
+
+        auto dst_cui_ver = fileUtils->getFileData(dst_cui_ver_file.c_str(), "r", &l);
+        if (dst_cui_ver == NULL || strcmp((char const*)self_cui_ver, (char const*)dst_cui_ver) != 0)
+            break;
+
+        needUpdateCUI = false;
+
+    } while (0);
+
+
+    if (needUpdateCUI)
     {
         //First - get asset file data:
-        createDirectory(w_able_path.c_str());
         // mode_t processMask = umask(0);
 
         // int ret = mkdir(w_able_path.c_str(), S_IRWXU | S_IRWXG | S_IRWXO);
