@@ -37,9 +37,9 @@
 						<key>displayName</key>
 						<string>CCSprite</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>bean_img</string>
 						<key>memberVarAssignmentType</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>properties</key>
 						<array>
 							<dict>
@@ -314,8 +314,6 @@
 								<string>50</string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>baseClass</key>
@@ -683,7 +681,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>300</real>
+									<real>350</real>
 									<real>20</real>
 									<integer>0</integer>
 								</array>
