@@ -537,6 +537,7 @@ function GUIUpdatePlugin.bind(theClass)
 	end
 	
 	function theClass:onCloseClicked() 
+		print("theClass:onCloseClicked")
 		local option = nil
 		local fn1 = function()
 			if option then option:dismiss() end
