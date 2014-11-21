@@ -604,6 +604,9 @@ CardUtility.slide_card = function(last_play_card, source_card, is_self_play, is_
 end
 
 CardUtility.tip_card = function(last_play_card, source_card, is_self_last_player)
+	dump(last_play_card, "CardUtility.tip_card, last_play_card=")
+	dump(source_card, "CardUtility.tip_card, source_card=")
+	dump(is_self_last_player, "CardUtility.tip_card, is_self_last_player=")
 	if (is_self_last_player or not last_play_card) then
 		-- 上一手牌是自己或自己是头一个出牌的，倒序选出一手牌
 		local str = ""
@@ -631,12 +634,19 @@ CardUtility.get_larger = function(to_compare_card, source_card)
 	local pairs_cards = {}
     local three_cards = {}
     local four_cards = {}
+
     CardUtility.combine_pokes(source_card, four_cards, pairs_cards, single_cards, three_cards)
     local straight_cards = CardUtility.get_straight(clone_table(pairs_cards), clone_table(single_cards))
     print("straight_cards=>" , straight_cards)
     local pairs_straight_cards = CardUtility.get_pair_straight(clone_table(three_cards), clone_table(pairs_cards))
     print("pairs_straight_cards=>" , pairs_straight_cards)
+
     local result_card = {}
+    dump(single_cards, "single_cards")
+	dump(pairs_cards, "pairs_cards")
+	dump(three_cards, "three_cards")
+	dump(four_cards, "four_cards	")
+
 
 	--CardTest.test_four_with_two()
 	--CardTest.test_straight()

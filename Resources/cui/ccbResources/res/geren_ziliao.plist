@@ -251,6 +251,19 @@
                 <key>sourceSize</key>
                 <string>{800,480}</string>
             </dict>
+            <key>ziliao3/zl-xiaotu/gouxuan-kuangkuang.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1667,275},{32,28}}</string>
+                <key>offset</key>
+                <string>{0,-1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{1,3},{32,28}}</string>
+                <key>sourceSize</key>
+                <string>{34,32}</string>
+            </dict>
             <key>ziliao3/zl-xiaotu/zl-50%.png</key>
             <dict>
                 <key>frame</key>
@@ -332,7 +345,7 @@
             <key>ziliao3/zl-xiaotu/zl-kuangkuang.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1667,275},{28,28}}</string>
+                <string>{{1701,275},{28,28}}</string>
                 <key>offset</key>
                 <string>{-2,-1}</string>
                 <key>rotated</key>
@@ -573,7 +586,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:6f7e6670dae41c7a208c41c01ab1d68c:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:44402bfc7b60d8cbba513ce10a733476:1/1$</string>
             <key>textureFileName</key>
             <string>geren_ziliao.png</string>
         </dict>
