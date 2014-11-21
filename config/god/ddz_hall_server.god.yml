@@ -1,6 +1,0 @@
-servers: 2
-port: 8000
-#user: jeffcao
-#group: jeffcao
-chdir: /Users/jeffcao/workspace/doudizhu/hall_server
-pid: tmp/pids/thin.pid
