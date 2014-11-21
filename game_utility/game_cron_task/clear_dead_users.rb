@@ -21,7 +21,7 @@ p @@redis
 
 class Job
 	def self.trrigger_clear
-	 tmp_instances = `ps aux |grep thin |grep ddz_game_server | awk '{print $2}'`
+	 tmp_instances = `ps aux |grep thin |grep rtddz_game_server | awk '{print $2}'`
      tmp_instances = tmp_instances.split("\n")
      puts tmp_instances
      if tmp_instances.nil? or tmp_instances.length == 0
@@ -29,7 +29,7 @@ class Job
      end
      r_p_id = tmp_instances.first
      tmp_instances.each do |p_id|
-     	tmp_r_pids = `ps aux |grep thin |grep ddz_game_server |grep #{p_id} | awk '{print $2}'`
+     	tmp_r_pids = `ps aux |grep thin |grep rtddz_game_server |grep #{p_id} | awk '{print $2}'`
      	tmp_r_pids = tmp_r_pids.split("\n")
      	if tmp_r_pids.length > 1
      		r_p_id = p_id
