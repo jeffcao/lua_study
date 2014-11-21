@@ -30,10 +30,23 @@
                 <key>sourceSize</key>
                 <string>{727,20}</string>
             </dict>
+            <key>phb-xiaotu/anniu-huafeibang.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{68,834},{100,41}}</string>
+                <key>offset</key>
+                <string>{1,-2}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{3,4},{100,41}}</string>
+                <key>sourceSize</key>
+                <string>{104,45}</string>
+            </dict>
             <key>phb-xiaotu/phb-1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{136,923},{71,33}}</string>
+                <string>{{190,834},{71,33}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
@@ -46,7 +59,7 @@
             <key>phb-xiaotu/phb-12803.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{167,907},{51,14}}</string>
+                <string>{{210,804},{51,14}}</string>
                 <key>offset</key>
                 <string>{-2,0}</string>
                 <key>rotated</key>
@@ -59,7 +72,7 @@
             <key>phb-xiaotu/phb-2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{147,834},{71,33}}</string>
+                <string>{{155,834},{71,33}}</string>
                 <key>offset</key>
                 <string>{-1,1}</string>
                 <key>rotated</key>
@@ -72,7 +85,7 @@
             <key>phb-xiaotu/phb-3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,934},{71,34}}</string>
+                <string>{{100,936},{71,34}}</string>
                 <key>offset</key>
                 <string>{-1,1}</string>
                 <key>rotated</key>
@@ -98,7 +111,7 @@
             <key>phb-xiaotu/phb-4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{112,834},{71,33}}</string>
+                <string>{{136,934},{71,33}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
@@ -111,7 +124,7 @@
             <key>phb-xiaotu/phb-56107.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{112,907},{53,14}}</string>
+                <string>{{155,804},{53,14}}</string>
                 <key>offset</key>
                 <string>{-2,-2}</string>
                 <key>rotated</key>
@@ -124,7 +137,7 @@
             <key>phb-xiaotu/phb-62005.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{135,1007},{53,14}}</string>
+                <string>{{155,907},{53,14}}</string>
                 <key>offset</key>
                 <string>{-2,-1}</string>
                 <key>rotated</key>
@@ -137,7 +150,7 @@
             <key>phb-xiaotu/phb-caigubang.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{68,834},{98,42}}</string>
+                <string>{{111,834},{98,42}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
@@ -150,7 +163,7 @@
             <key>phb-xiaotu/phb-douzhi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{229,954},{42,44}}</string>
+                <string>{{230,954},{42,44}}</string>
                 <key>offset</key>
                 <string>{-1,-2}</string>
                 <key>rotated</key>
@@ -176,7 +189,7 @@
             <key>phb-xiaotu/phb-fanhui.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{68,934},{82,30}}</string>
+                <string>{{68,936},{82,30}}</string>
                 <key>offset</key>
                 <string>{2,-1}</string>
                 <key>rotated</key>
@@ -215,7 +228,7 @@
             <key>phb-xiaotu/phb-mingzhi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,1007},{33,15}}</string>
+                <string>{{136,1007},{33,15}}</string>
                 <key>offset</key>
                 <string>{-1,1}</string>
                 <key>rotated</key>
@@ -241,7 +254,7 @@
             <key>phb-xiaotu/phb-tangyouyou.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{229,894},{58,56}}</string>
+                <string>{{230,894},{58,56}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -254,7 +267,7 @@
             <key>phb-xiaotu/phb-touxiangmeijia.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{182,834},{58,57}}</string>
+                <string>{{171,923},{58,57}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,7 +280,7 @@
             <key>phb-xiaotu/phb-touxiangzhangbo.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{171,923},{58,56}}</string>
+                <string>{{225,834},{58,56}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -280,7 +293,7 @@
             <key>phb-xiaotu/phb-touxiangzheng.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{241,834},{56,55}}</string>
+                <string>{{283,834},{56,55}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
@@ -326,7 +339,7 @@
             <key>size</key>
             <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:cc7094106a8b95fc8430f49cfae86934:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:42444fac5f4e61b20271682a7c551eb4:1/1$</string>
             <key>textureFileName</key>
             <string>pai_hang_bang.png</string>
         </dict>

@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../Resources/ccbResources/res/pai_hang_bang.png</filename>
+        <filename>../../Resources/ccbResources/res/pai_hang_bang.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -99,7 +99,7 @@
             <key>packageName</key>
             <string>Texture</string>
             <key>javaFileName</key>
-            <filename>../Resources/ccbResources/res/pai_hang_bang.java</filename>
+            <filename>../../Resources/ccbResources/res/pai_hang_bang.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../Resources/ccbResources/res/pai_hang_bang.plist</filename>
+        <filename>../../Resources/ccbResources/res/pai_hang_bang.plist</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -148,7 +148,7 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>paihangbang</filename>
+            <filename></filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
