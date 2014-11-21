@@ -40,8 +40,6 @@ function GameOver:initCallback(onToHall, onChangeDesk, onClose)
 	set_anniu_1_3_stroke(self.to_hall_btn_lbl)
 	
 	local menus = CCArray:create()
-	menus:addObject(self.to_hall_btn:getParent())
-	menus:addObject(self.gm_change_table:getParent())
 	menus:addObject(self.return_btn:getParent())
 	self:swallowOnTouch(menus)
 	self:swallowOnKeypad()
