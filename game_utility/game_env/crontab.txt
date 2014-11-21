@@ -9,7 +9,6 @@
 58 01 * * * cd /data/local/game/ddz/deploy/game_job/game_cron_task && /usr/local/ruby/bin/ruby ddz_sheet.rb > /dev/null
 */1 * * * * cd /data/local/game/ddz/deploy/game_job/game_cron_task && /usr/local/ruby/bin/ruby clear_dead_users.rb > /dev/null
 58 1-24/2 * * * cd /data/local/game/ddz/deploy/game_job/game_cron_task && /usr/local/ruby/bin/ruby partner_sheet.rb > /dev/null
-58 7 * * * cd /data/local/game/ddz/deploy/game_job/game_cron_task && /usr/local/ruby/bin/ruby partner_sheet_yesterday.rb > /dev/null
 25 00 * * * cd /data/local/game/ddz/deploy/game_job/game_cron_task && /usr/local/ruby/bin/ruby user_consume_list.rb > /dev/null
 25 00 * * * cd /data/local/game/ddz/deploy/game_job/game_cron_task && /usr/local/ruby/bin/ruby robot_beans.rb > /dev/null
 */1 * * * * cd /data/local/game/ddz/deploy/game_job/game_cron_task && /usr/local/ruby/bin/ruby every_hour_user_online.rb > /dev/null

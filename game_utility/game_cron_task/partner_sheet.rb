@@ -43,7 +43,7 @@ result = []
 partner_appid = []
 link = Mysql2::Client.new(:host => "#{localhost}", :username => "#{username}", :password => "#{password}", :database => "#{database}")
 date = Time.now.strftime("%Y-%m-%d").to_s
-date = "2014-08-20"
+#date = "2014-08-20"
 table = "login_logs_#{date[0..7].gsub("-","")}"
 
 sql = "select distinct(appid) as appid from users"

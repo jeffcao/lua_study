@@ -27,7 +27,7 @@ ActiveAdmin.register PartnerBaobiao do
       if @role!="cp"
         appid = @partner unless @partner.nil?
       end
-      appid = 1000 if appid.nil?
+      appid = 2222 if appid.nil?
 
       unless appid.nil?
         @select_date = PartnerSheet.find_by_sql("select distinct(substring(date,1,7)) as date from partner_sheets order by date desc")

@@ -76,18 +76,18 @@ ActiveAdmin.register DdzBaobiao do
 
       @result.each do |record|
         key = record["date"][8, 2]
-        @month_add_count = @month_add_count + record["add_day_user"]
-        @data["#{key}-day_max_online"] = record["day_max_online"]
-        @data["#{key}-avg_hour_online"] = record["avg_hour_online"]
-        @data["#{key}-day_login_user"] = record["day_login_user"]
-        @data["#{key}-add_day_user"] = record["add_day_user"]
-        @data["#{key}-total_exp_user"] = record["total_exp_user"]
-        @data["#{key}-day_exp_user"] = record["day_exp_user"]
-        @month_chongzhi_user = @month_chongzhi_user + record["day_exp_user"]
-        @month_total_shouru = @month_total_shouru + record["total_day_money"]
-        @data["#{key}-add_exp_user"] = record["add_exp_user"]
-        @data["#{key}-total_day_money"] = record["total_day_money"]
-        @data["#{key}-total_user"] = record["total_user"]
+        @month_add_count = @month_add_count + (record["add_day_user"] || 0)
+        @data["#{key}-day_max_online"] = (record["day_max_online"] || 0)
+        @data["#{key}-avg_hour_online"] = (record["avg_hour_online"] || 0)
+        @data["#{key}-day_login_user"] = (record["day_login_user"] || 0)
+        @data["#{key}-add_day_user"] = (record["add_day_user"] || 0)
+        @data["#{key}-total_exp_user"] = (record["total_exp_user"] || 0)
+        @data["#{key}-day_exp_user"] = (record["day_exp_user"] || 0)
+        @month_chongzhi_user = @month_chongzhi_user + (record["day_exp_user"] || 0)
+        @month_total_shouru = @month_total_shouru + (record["total_day_money"] || 0)
+        @data["#{key}-add_exp_user"] = (record["add_exp_user"] || 0)
+        @data["#{key}-total_day_money"] = (record["total_day_money"] || 0)
+        @data["#{key}-total_user"] = (record["total_user"] || 0)
         unless record["total_day_money"].nil?
 
           @data["#{key}-erpu"] = (record["total_day_money"]/record["day_exp_user"]) unless record["day_exp_user"].nil?
